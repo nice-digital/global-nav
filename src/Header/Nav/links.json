@@ -1,0 +1,40 @@
+[
+	{
+		"href": "https://pathways.nice.org.uk/",
+		"text": "NICE Pathways"
+	},
+	{
+		"href": "https://www.nice.org.uk/guidance",
+		"text": "NICE guidance"
+	},
+	{
+		"href": "https://www.nice.org.uk/standards-and-indicators",
+		"text": "Standards and indicators"
+	},
+	{
+		"href": "https://www.evidence.nhs.uk/",
+		"text": "Evidence search"
+	},
+	{
+		"href": "https://bnf.nice.org.uk/",
+		"text": "BNF",
+		"abbreviation": true,
+		"title": "British National Formulary"
+	},
+	{
+		"href": "https://bnfc.nice.org.uk/",
+		"text": "BNFC",
+		"abbreviation": true,
+		"title": "British National Formulary for Children"
+	},
+	{
+		"href": "https://cks.nice.org.uk/",
+		"text": "CKS",
+		"abbreviation": true,
+		"title": "Clinical Knowledge Summaries"
+	},
+	{
+		"href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
+		"text": "Journals and databases"
+	}
+]

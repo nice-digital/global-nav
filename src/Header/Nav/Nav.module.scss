@@ -1,0 +1,41 @@
+@import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
+@import 'mq';
+
+.nav {
+  a {
+    color: blue;
+    display: block;
+  }
+
+  ul {
+    list-style: none;
+    margin: auto;
+    max-width: rem(1170);
+    padding: 0;
+    width: 100%;
+  }
+
+  @include mq($from: md) {
+    // Fallback for non flexbox browsers that support media queries e.g. IE9
+    ul {
+      display: table;
+    }
+
+    li {
+      display: table-cell;
+    }
+
+    @supports (display: flex) {
+      ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+
+      li {
+        flex-grow: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import 'settings';
+
+.footer {
+  background: $colour-footer-background;
+  color: $colour-footer-text;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+
+  a {
+    color: $colour-footer-text;
+  }
+}
