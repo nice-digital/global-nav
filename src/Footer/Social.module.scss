@@ -1,3 +1,11 @@
+@import '~@nice-digital/design-system/src/stylesheets/settings/settings';
+@import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
+
 .social {
   color: turquoise;
+
+  ul {
+    margin: auto;
+    max-width: rem($nice-container-max-width);
+  }
 }

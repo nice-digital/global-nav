@@ -1,7 +1,8 @@
 [
 	{
 		"href": "https://pathways.nice.org.uk/",
-		"text": "NICE Pathways"
+		"text": "NICE Pathways",
+		"id": "pathways"
 	},
 	{
 		"href": "https://www.nice.org.uk/guidance",

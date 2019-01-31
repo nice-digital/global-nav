@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Global Nav Test Site</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
-	<link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet">
-	<style>
-		body, html {
-			margin: 0;
-			padding: 0;
-		}
-	</style>
-</head>
-<body>
-	<main>
-		<h1>Body here</h1>
-		<p>Body content would go here</p>
-	</main>
-	<div id="footer"></div>
-	<!--[if lt IE 9]><% for (var chunk in htmlWebpackPlugin.files.chunks) { %><% if ((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%><script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script><% } %><% } %><![endif]-->
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Global Nav Test Site</title>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, minimal-ui"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Lato:400"
+			rel="stylesheet"
+		/>
+		<style>
+			body,
+			html {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>Body here</h1>
+			<p>Body content would go here</p>
+		</main>
+		<div id="footer"></div>
+		<script type="text/javascript">
+			global_nav_config = {
+				service: "pathways"
+			};
+		</script>
+		<!--[if lt IE 9
+			]><% for (var chunk in htmlWebpackPlugin.files.chunks) { %><% if
+			((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%><script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script
+			><% } %><% } %><!
+		[endif]-->
+	</body>
 </html>

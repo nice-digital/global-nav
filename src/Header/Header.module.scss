@@ -1,6 +1,16 @@
 @import '~@nice-digital/design-system/src/stylesheets/settings/settings';
+@import 'mq';
 
 .header {
-  border-bottom: 1px solid #000;
   font-family: unquote($nice-font-family-sans);
+}
+
+.mobileMenuBtn {
+  appearance: none;
+  background: none;
+  border: 0;
+
+  @include mq($from: md) {
+    display: none;
+  }
 }

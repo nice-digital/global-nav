@@ -1,24 +1,88 @@
 @import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
 @import 'mq';
 
+// TODO replace with design system mixin
+@mixin inverse-focus-style {
+  outline: 3px solid $colour-focus-inverse;
+}
+
+$colour-nav-background: $colour-nice-teal;
+
 .nav {
+  background: $colour-nav-background;
+  padding: rem($spacing-small 0);
+
   a {
-    color: blue;
+    box-sizing: border-box;
+    color: $colour-nice-white;
     display: block;
+    text-decoration: none;
+    padding: rem($spacing-small $spacing-medium);
+
+    &[aria-current='page'] {
+      background: $colour-nice-white;
+      color: $colour-text;
+    }
+
+    &:focus {
+      @include inverse-focus-style;
+    }
+
+    &:hover {
+      background: $colour-link-inverse-hover;
+      color: $colour-text;
+    }
+  }
+
+  abbr {
+    text-decoration: none;
   }
 
   ul {
     list-style: none;
     margin: auto;
-    max-width: rem(1170);
+    max-width: rem($nice-container-max-width);
     padding: 0;
-    width: 100%;
   }
 
   @include mq($from: md) {
+    padding: 0;
+
+    a {
+      height: 100%;
+      padding: rem($spacing-medium $spacing-medium);
+      position: relative;
+      text-align: center;
+
+      &:focus {
+        //border-color: $colour-focus-inverse;
+        outline: none;
+        box-shadow: inset 0 0 0 3px $colour-focus-inverse;
+      }
+
+      &[aria-current='page'] {
+        &:focus {
+          box-shadow: inset 0 0 0 3px $colour-focus;
+        }
+
+        &:before {
+          background: $colour-nav-background;
+          content: '';
+          display: block;
+          height: 2px;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+      }
+    }
+
     // Fallback for non flexbox browsers that support media queries e.g. IE9
     ul {
       display: table;
+      width: 96%;
+      width: calc(100% - #{rem($spacing-large)});
     }
 
     li {

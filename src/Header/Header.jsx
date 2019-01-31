@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+/*eslint-disable */
 import LogoNameIcon from "@nice-digital/icons/lib/LogoName";
 
 import TLSMessage from "./TLSMessage";
@@ -33,12 +34,17 @@ export default class Header extends Component {
 						<LogoNameIcon width={null} height="50px" />
 					)}
 				</a>
-				<button type="button" onClick={this.handleClick}>
+				<button
+					className={styles.mobileMenuBtn}
+					type="button"
+					onClick={this.handleClick}
+				>
 					{this.state.isExpanded ? "Collapse" : "Expand"} Menu
 				</button>
 				<Search />
 				<Account />
-				<Nav />
+				{/* eslint-disable-line react/prop-types */}
+				<Nav service={this.props.service} />
 				<TLSMessage />
 			</header>
 		);
