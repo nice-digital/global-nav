@@ -27,6 +27,8 @@
 					- [header.enabled](#headerenabled)
 					- [header.onRendering](#headeronrendering)
 					- [header.onRendered](#headeronrendered)
+				- [footer](#footer)
+					- [footer.enabled](#footerenabled)
 	- [Good to know](#good-to-know)
 
 <!-- END doctoc -->
@@ -240,6 +242,20 @@ Function parameters:
 - `element` (`HTMLElement`) the HTML the header was rendered in to
 
 A callback function, called just after the header has been rendered. If it is a string, then a function with that name will be looked for on `window`.
+
+##### footer
+
+- Type: `Object`
+- Default: `null`
+
+Key/value pairs of settings specific to the footer
+
+###### footer.enabled
+
+- Type: `Boolean`
+- Default: `false`
+
+The is disabled by default. Set `footer.enabled` to `true` render it.
 
 ## Good to know
 
