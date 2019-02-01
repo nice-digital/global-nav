@@ -2,5 +2,9 @@
 	"editor.formatOnSave": true,
 	"editor.rulers": [80],
 	"prettier.endOfLine": "lf",
-	"files.eol": "\n"
+	"files.eol": "\n",
+	"sasslint.enable": false,
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false
 }
