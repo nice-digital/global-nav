@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-/*eslint-disable */
+import PropTypes from "prop-types";
 import LogoNameIcon from "@nice-digital/icons/lib/LogoName";
 
 import TLSMessage from "./TLSMessage";
@@ -50,3 +50,7 @@ export default class Header extends Component {
 		);
 	}
 }
+
+Header.propTypes = {
+	service: PropTypes.string
+};
