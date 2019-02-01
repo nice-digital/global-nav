@@ -30,12 +30,16 @@ if (config.header.enabled !== false) {
 		onRendering.call(window, headerElement);
 	}
 
-	render(<Header {...config} />, headerElement, () => {
-		let onRendered = ensureCallback(config.header.onRendered);
-		if (onRendered) {
-			onRendered.call(window, headerElement);
+	render(
+		<Header service={config.service} {...config.header} />,
+		headerElement,
+		() => {
+			let onRendered = ensureCallback(config.header.onRendered);
+			if (onRendered) {
+				onRendered.call(window, headerElement);
+			}
 		}
-	});
+	);
 }
 
 // Render footer

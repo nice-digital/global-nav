@@ -28,29 +28,31 @@ export default class Header extends Component {
 
 	render() {
 		return (
-			<header className={styles.header}>
-				<a href="https://www.nice.org.uk/" aria-label="Home">
-					{typeof SVGRect !== "undefined" && (
-						<LogoNameIcon width={null} height="50px" />
-					)}
-				</a>
-				<button
-					className={styles.mobileMenuBtn}
-					type="button"
-					onClick={this.handleClick}
-				>
-					{this.state.isExpanded ? "Collapse" : "Expand"} Menu
-				</button>
-				<Search />
-				<Account />
-				{/* eslint-disable-line react/prop-types */}
-				<Nav service={this.props.service} />
-				<TLSMessage />
-			</header>
+			this.props.enabled !== false && (
+				<header className={styles.header}>
+					<a href="https://www.nice.org.uk/" aria-label="Home">
+						{typeof SVGRect !== "undefined" && (
+							<LogoNameIcon width={null} height="50px" />
+						)}
+					</a>
+					<button
+						className={styles.mobileMenuBtn}
+						type="button"
+						onClick={this.handleClick}
+					>
+						{this.state.isExpanded ? "Collapse" : "Expand"} Menu
+					</button>
+					<Search />
+					<Account />
+					<Nav service={this.props.service} />
+					<TLSMessage />
+				</header>
+			)
 		);
 	}
 }
 
 Header.propTypes = {
-	service: PropTypes.string
+	service: PropTypes.string,
+	enabled: PropTypes.bool
 };
