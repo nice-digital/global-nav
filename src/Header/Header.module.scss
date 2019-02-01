@@ -3,6 +3,10 @@
 
 .header {
   font-family: unquote($nice-font-family-sans);
+
+  @media print {
+    display: none;
+  }
 }
 
 .mobileMenuBtn {
