@@ -1,5 +1,5 @@
 /*!
- * NICE TopHat 1.0.0 | 2019-01-07
+ * NICE TopHat 1.0.0 | 2019-02-01
  * © Copyright NICE 2015-2019
  * Licensed under MIT (https://github.com/nhsevidence/nice.tophat/blob/master/LICENSE)
  */
@@ -82,16 +82,16 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = ".";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 38:
+/***/ 47:
 /***/ (function(module, exports) {
 
 /**
@@ -1256,4 +1256,4 @@ if (!String.prototype.trim) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=tophat.ie8.js.map
+//# sourceMappingURL=global-nav.ie8.js.map

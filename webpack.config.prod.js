@@ -14,11 +14,11 @@ const commonConfig = {
 	plugins: [
 		new webpack.BannerPlugin({
 			banner: [
-				`NICE TopHat ${pkg.version} | ${
+				`NICE Global Nav ${pkg.version} | ${
 					new Date().toISOString().split("T")[0]
 				}`,
 				`© Copyright NICE 2015-${new Date().getFullYear()}`,
-				"Licensed under MIT (https://github.com/nhsevidence/nice.tophat/blob/master/LICENSE)"
+				"Licensed under MIT (https://github.com/nhsevidence/global-nav/blob/master/LICENSE)"
 			].join("\n")
 		})
 	]

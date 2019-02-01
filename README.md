@@ -14,6 +14,7 @@
 		- [Other commands](#other-commands)
 			- [Tests](#tests)
 			- [Linting](#linting)
+			- [Production build](#production-build)
 		- [IDE](#ide)
 			- [Extensions](#extensions)
 		- [Gotchas](#gotchas)
@@ -130,6 +131,10 @@ If you've installed the [VSCode npm extension](https://marketplace.visualstudio.
 - `npm run lint:js:fix` Fixes linting issues automatically in JavaScript files
 - `npm run lint:scss` Lints just SCSS files
 - `npm run lint:scss:fix` Fixes linting issues automatically in SCSS files
+
+#### Production build
+
+Run `npm run build` to create a production build. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
 
 ### IDE
 

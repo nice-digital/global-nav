@@ -1,8 +1,8 @@
 {
-	"name": "tophat-tails",
+	"name": "@nice-digital/global-nav",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"description": "Global header and footer components for NICE digital services",
+	"main": "src/index.js",
 	"scripts": {
 		"// LOCAL DEV": "",
 		"start": "cross-env NODE_ENV=development webpack-dev-server --progress --hot --inline",
@@ -21,11 +21,24 @@
 		"lint:scss": "stylelint **/*.scss",
 		"lint:scss:fix": "npm run lint:scss -- --fix"
 	},
-	"author": "",
+	"author": "NICE Digital Services (https://github.com/nhsevidence/global-nav/graphs/contributors)",
+	"contributors": [
+		"NICE Digital Services (https://www.nice.org.uk/)",
+		"Ian Routledge (https://www.ediblecode.com)"
+	],
+	"homepage": "https://github.com/nhsevidence/global-nav",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nhsevidence/global-nav.git"
+	},
 	"license": "MIT",
 	"browserslist": [
 		"extends @nice-digital/browserslist-config"
 	],
+	"publishConfig": {
+		"registry": "http://registry.npmjs.org/",
+		"access": "public"
+	},
 	"engines": {
 		"node": ">= 6.9.0"
 	},

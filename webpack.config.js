@@ -10,15 +10,15 @@ const HOT = process.env.HOT !== "false";
 module.exports = {
 	context: path.resolve(__dirname, "src"),
 	entry: {
-		tophat: "./index.js",
+		"global-nav": "./index.js",
 		// To polyfill for ES3 browsers e.g. IE8
 		// We can remove this when we drop IE8 support
-		"tophat.ie8": "es5-polyfill"
+		"global-nav.ie8": "es5-polyfill"
 	},
 
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		publicPath: "/",
+		publicPath: ".",
 		filename: "[name].js"
 	},
 
@@ -71,8 +71,8 @@ module.exports = {
 						options: {
 							modules: true,
 							importLoaders: 1,
-							hashPrefix: "tophat",
-							localIdentName: "th_[hash:base64:5]",
+							hashPrefix: "global-nav",
+							localIdentName: "gn_[hash:base64:5]",
 							sourceMap: ENV === "development"
 						}
 					},
