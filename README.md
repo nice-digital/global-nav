@@ -21,6 +21,12 @@
 		- [React](#react)
 			- [Props](#props)
 		- [CDN](#cdn)
+			- [Configuration](#configuration)
+				- [service](#service)
+				- [header](#header)
+					- [header.enabled](#headerenabled)
+					- [header.onRendering](#headeronrendering)
+					- [header.onRendered](#headeronrendered)
 	- [Good to know](#good-to-know)
 
 <!-- END doctoc -->
@@ -188,7 +194,52 @@ TODO: Add React component props here
 
 TODO: Add CDN usage URLs
 
-TODO: Add CDN configuration options
+#### Configuration
+
+Global Nav configuration is loaded from a global JavaScript variable on the window object called `global_nav_config`. The following config options apply:
+
+##### service
+
+- Type: `String`
+- Default: `null`
+
+The key of the service to highlight on the navigation elements. See [_src/Header/Nav/links.json_](src/Header/Nav/links.json) for the available options.
+
+##### header
+
+- Type: `Object`
+- Default: `null`
+
+Key/value pairs of settings specific to the header
+
+###### header.enabled
+
+- Type: `Boolean`
+- Default: `true`
+
+The header renders by default. Set `header.enabled` to `false` to stop it from rendering.
+
+###### header.onRendering
+
+- Type: `Function | String` signature: `function(element)`
+- Default: `null`
+
+Function parameters:
+
+- `element` (`HTMLElement`) the HTML the header will be rendered in to
+
+A callback function, called just before the header is rendered. If it is a string, then a function with that name will be looked for on `window`.
+
+###### header.onRendered
+
+- Type: `Function | String` signature: `function(element)`
+- Default: `null`
+
+Function parameters:
+
+- `element` (`HTMLElement`) the HTML the header was rendered in to
+
+A callback function, called just after the header has been rendered. If it is a string, then a function with that name will be looked for on `window`.
 
 ## Good to know
 

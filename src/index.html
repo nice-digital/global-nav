@@ -27,8 +27,28 @@
 		</main>
 		<div id="footer"></div>
 		<script type="text/javascript">
+
+			var headerRendering = function(element) {
+				console.log("Header (callback string) rendering into", element);
+			};
+
+			var headerRendered = function(element) {
+				console.log("Header (callback string) rendered into", element);
+			};
+
 			global_nav_config = {
-				service: "pathways"
+				service: "pathways",
+				header: {
+					//enabled: false,
+					//onRendering: "headerRendering",
+					//onRendering: (element) => { console.log("Header (callback func) rendering into", element); },
+
+					//onRendered: headerRendered,
+					//onRendered: (element) => { console.log("Header (callback func) rendered into", element); }
+				},
+				footer: {
+					//enabled: true
+				}
 			};
 		</script>
 		<!--[if lt IE 9
