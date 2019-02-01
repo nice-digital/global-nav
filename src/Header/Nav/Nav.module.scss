@@ -16,8 +16,8 @@ $colour-nav-background: $colour-nice-teal;
     box-sizing: border-box;
     color: $colour-nice-white;
     display: block;
-    text-decoration: none;
     padding: rem($spacing-small $spacing-medium);
+    text-decoration: none;
 
     &[aria-current='page'] {
       background: $colour-nice-white;
@@ -25,12 +25,14 @@ $colour-nav-background: $colour-nice-teal;
     }
 
     &:focus {
-      @include inverse-focus-style;
+      background: $colour-nice-purple;
+      color: $colour-text-inverse;
+      outline: 3px solid $colour-nice-purple;
     }
 
     &:hover {
-      background: $colour-link-inverse-hover;
-      color: $colour-text;
+      background: $colour-nice-teal-2;
+      color: $colour-text-inverse;
     }
   }
 
@@ -54,17 +56,7 @@ $colour-nav-background: $colour-nice-teal;
       position: relative;
       text-align: center;
 
-      &:focus {
-        //border-color: $colour-focus-inverse;
-        outline: none;
-        box-shadow: inset 0 0 0 3px $colour-focus-inverse;
-      }
-
       &[aria-current='page'] {
-        &:focus {
-          box-shadow: inset 0 0 0 3px $colour-focus;
-        }
-
         &:before {
           background: $colour-nav-background;
           content: '';
