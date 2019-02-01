@@ -109,13 +109,19 @@ It then automatically reloads the application in the Browser (so no need for a m
 
 ### Other commands
 
-There are various other commands
-
-TODO
+There are various other commands you can run for further things like tests and linting:
 
 #### Tests
 
-- `npm test` Runs Jest unit tests
+- `npm test` Lints code and runs tests
+- `npm test:unit` Runs Jest unit tests
+- `npm test:unit:watch` Runs Jest unit tests and watches for changes. Run this in development.
+- `npm test:unit:coverage` Runs Jest unit tests and reports coverage
+
+If you've installed the [VSCode npm extension](https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script) then you can easily run scripts by:
+
+- right-clicking the script name in _package.json_
+- or _Ctrl+Shift+P_ -> _npm run script_ -> _test:unit:watch_.
 
 #### Linting
 

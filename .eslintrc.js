@@ -1,6 +1,6 @@
 module.exports = {
-	"parser": "babel-eslint",
-	"extends": [
+	parser: "babel-eslint",
+	extends: [
 		"@nice-digital/eslint-config/es6",
 		"plugin:jsx-a11y/recommended",
 		"plugin:react/recommended",
@@ -8,29 +8,28 @@ module.exports = {
 		"prettier/react",
 		"prettier/standard"
 	],
-	"plugins": [
-		"jsx-a11y"
-	],
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true,
-			"modules": true
+	plugins: ["jsx-a11y"],
+	parserOptions: {
+		ecmaFeatures: {
+			jsx: true,
+			modules: true
 		}
 	},
-	"env": {
-		"es6": true
+	env: {
+		es6: true,
+		jest: true
 	},
-	"settings": {
-		"react": {
-			"version": "16"
+	settings: {
+		react: {
+			version: "16"
 		}
 	},
-	"overrides": [
+	overrides: [
 		{
-			"files": ["**.test.js"],
-			"env": {
-				"jest": true,
-				"browser": true
+			files: ["**.test.js"],
+			env: {
+				jest: true,
+				browser: true
 			}
 		}
 	]
