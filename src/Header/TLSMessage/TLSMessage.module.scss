@@ -1,4 +1,11 @@
+@import '~@nice-digital/design-system/src/stylesheets/settings/settings';
+@import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
+
 .alert {
-  background: red;
-  color: #fff;
+  background: $colour-error-background;
+  border: 1px solid $colour-error;
+  color: $colour-error;
+  margin: rem($spacing-medium) auto 0 auto;
+  max-width: rem($nice-container-max-width);
+  padding: rem($spacing-medium);
 }

@@ -24,7 +24,7 @@ export default class TLSMessage extends Component {
 		return (
 			<div className={styles.alert}>
 				Your version of Internet Explorer (version {ieVersion}) doesnt support
-				TLS 1.2.
+				TLS 1.2. <strong>TODO: Add copy about TLS</strong>
 			</div>
 		);
 	}
