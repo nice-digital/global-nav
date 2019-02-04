@@ -4,12 +4,17 @@
 
 <details>
 <summary><strong>Table of contents</strong></summary>
+
 <!-- START doctoc -->
+
 - [Global navigation](#global-navigation)
 	- [What is it?](#what-is-it)
 		- [Functionality](#functionality)
 		- [Non-functional](#non-functional)
 	- [Stack](#stack)
+		- [Principles](#principles)
+		- [Why Nerv?](#why-nerv)
+			- [Why not Preact?](#why-not-preact)
 	- [Set up](#set-up)
 		- [Other commands](#other-commands)
 			- [Tests](#tests)
@@ -30,7 +35,6 @@
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
 					- [footer.enabled](#footerenabled)
-	- [Good to know](#good-to-know)
 
 <!-- END doctoc -->
 </details>
@@ -84,11 +88,53 @@ The following non-functional requirements apply:
   - with [NICE Digital shared eslint config](https://www.npmjs.com/package/@nice-digital/eslint-config)
 - [Stylelint](https://stylelint.io/) for linting our SCSS
   - TODO with NICE Digital shared stylelint config
+- [Prettier](https://prettier.io/) for code formatting
 - [Jest](https://jestjs.io/) for JS unit tests and snapshot tests
 - [NICE Design System](https://nhsevidence.github.io/nice-design-system/) core for SASS mixins, functions and colour/spacing variables
 - [NICE Icons](https://github.com/nhsevidence/nice-icons)
 
 TODO: add wdio etc here when we add browser based tests
+
+### Principles
+
+Consider the following development principles:
+
+- One single header and footer component across _all_ NICE services
+- Progressively enhanced to support maximum number of devices and browsers
+- Fast performance
+  - single HTTP request for CDN minified bundle
+  - as small as possible bundle size
+- High unit test coverage
+- 'Standard' React wherever possible
+  - easy for any React developer to pickup
+- Consistent code style and formatting
+  - as if a single developer worked across the codebase
+- Clear extension points and hooks for integrating into applications
+  - To avoid some of the issues from TopHat where there was no consistency
+
+### Why Nerv?
+
+You've probably never heard of [Nerv](https://nerv.aotu.io/). So why use it?
+
+We are using React because:
+
+- it gives us structure to our app
+- is well used in the community
+- is easy to test
+- is being adopted across Digital Services.
+
+However, consider the [non-functional requirements](#non-functional) and [development principles](#principles) above - specifically the need to support IE8 and to have a small bundle size. React works in IE9+ (with Polyfills) and is 31.8K (React 16.2.0 + React DOM minified and gzipped). Both of these make it less than ideal for creating a standalone bundle that will load on every page across NICE alongisde each application's code.
+
+This is where Nerv fits in. It's a "blazing fast React alternative, compatible with IE8 and React 16" and is one third of React's size. It's a drop in replacement (via [aliases in Webpack](https://github.com/NervJS/nerv#usage-with-webpack)) so allows us to write 'normal' React, but compile with Nerv.
+
+#### Why not Preact?
+
+We considered [Preact](https://preactjs.com/) as a React alternative as it's only 3kB. However, we discounted it at the time of writing because:
+
+- it didn't have full support for React 16
+- the [browser support](https://preactjs.com/about/browser-support) docs we're vague on detail for supporting IE8 and we struggled to get it to work.
+
+We may consider replacing Nerv with Preact in the future if we drop support for IE8.
 
 ## Set up
 
@@ -267,7 +313,3 @@ Key/value pairs of settings specific to the footer
 - Default: `false`
 
 The is disabled by default. Set `footer.enabled` to `true` render it.
-
-## Good to know
-
-TODO
