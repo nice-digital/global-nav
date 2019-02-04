@@ -6,36 +6,43 @@
 	},
 	{
 		"href": "https://www.nice.org.uk/guidance",
-		"text": "NICE guidance"
+		"text": "NICE guidance",
+		"id": "guidance"
 	},
 	{
 		"href": "https://www.nice.org.uk/standards-and-indicators",
-		"text": "Standards and indicators"
+		"text": "Standards and indicators",
+		"id": "standards"
 	},
 	{
 		"href": "https://www.evidence.nhs.uk/",
-		"text": "Evidence search"
+		"text": "Evidence search",
+		"id": "evidence"
 	},
 	{
 		"href": "https://bnf.nice.org.uk/",
 		"text": "BNF",
 		"abbreviation": true,
-		"title": "British National Formulary"
+		"title": "British National Formulary",
+		"id": "bnf"
 	},
 	{
 		"href": "https://bnfc.nice.org.uk/",
 		"text": "BNFC",
 		"abbreviation": true,
-		"title": "British National Formulary for Children"
+		"title": "British National Formulary for Children",
+		"id": "bnfc"
 	},
 	{
 		"href": "https://cks.nice.org.uk/",
 		"text": "CKS",
 		"abbreviation": true,
-		"title": "Clinical Knowledge Summaries"
+		"title": "Clinical Knowledge Summaries",
+		"id": "cks"
 	},
 	{
 		"href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
-		"text": "Journals and databases"
+		"text": "Journals and databases",
+		"id": "journals"
 	}
 ]
