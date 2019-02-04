@@ -2,8 +2,15 @@
 
 .footer {
   background: $colour-footer-background;
+  box-sizing: border-box;
   color: $colour-footer-text;
-  font-family: Lato, Arial, Helvetica, sans-serif;
+  font-family: unquote($nice-font-family-sans);
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
 
   a {
     color: $colour-footer-text;
