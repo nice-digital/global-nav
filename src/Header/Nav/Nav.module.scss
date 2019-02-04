@@ -43,7 +43,6 @@ $colour-nav-background: $colour-nice-teal;
   ul {
     list-style: none;
     margin: auto;
-    max-width: rem($nice-container-max-width);
     padding: 0;
   }
 
@@ -73,6 +72,8 @@ $colour-nav-background: $colour-nice-teal;
     // Fallback for non flexbox browsers that support media queries e.g. IE9
     ul {
       display: table;
+      max-width: rem($nice-container-max-width);
+      // TODO Replace with mixin from nice design system
       width: 96%;
       width: calc(100% - #{rem($spacing-large)});
     }

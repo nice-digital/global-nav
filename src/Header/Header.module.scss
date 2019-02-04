@@ -1,12 +1,32 @@
 @import '~@nice-digital/design-system/src/stylesheets/settings/settings';
+@import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
 @import 'mq';
 
 .header {
+  box-sizing: border-box;
   font-family: unquote($nice-font-family-sans);
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
 
   @media print {
     display: none;
   }
+}
+
+.container {
+  margin: auto;
+  max-width: rem($nice-container-max-width);
+  // TODO Replace with mixin from nice design system
+  width: 96%;
+  width: calc(100% - #{rem($spacing-large)});
+}
+
+.home {
+  color: $colour-text;
 }
 
 .mobileMenuBtn {
