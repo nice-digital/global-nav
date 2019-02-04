@@ -35,6 +35,7 @@
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
 					- [footer.enabled](#footerenabled)
+	- [Deployments](#deployments)
 
 <!-- END doctoc -->
 </details>
@@ -253,6 +254,13 @@ TODO: Add React component props here
 
 TODO: Add CDN usage URLs
 
+```js
+<!--[if lt IE 9]>
+	<script src="//cdn.nice.org.uk/global-nav/global-nav.ie8.min.js"></script>
+<![endif]-->
+<script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
+```
+
 #### Configuration
 
 Global Nav configuration is loaded from a global JavaScript variable on the window object called `global_nav_config`. The following config options apply:
@@ -313,3 +321,18 @@ Key/value pairs of settings specific to the footer
 - Default: `false`
 
 The is disabled by default. Set `footer.enabled` to `true` render it.
+
+## Deployments
+
+We create 2 deployment artifacts: one for deploying to the CDN and one test site for previewing the header and footer.
+
+To test what the deployment packages looks like locally, run the following command:
+
+```sh
+nuget pack cdn.nuspec -Version X.Y.Z
+# or: nuget pack preview-site.nuspec -Version X.Y.Z
+```
+
+Where the version number can be any valid [SemVer build number](https://octopus.com/blog/semver2) compatible with Octopus Deploy. Note: this version number will be the build number when TeamCity creates this build artifact.
+
+> Note: you'll need to have NuGet.exe in your path or download the latest NuGet.exe from https://www.nuget.org/downloads.
