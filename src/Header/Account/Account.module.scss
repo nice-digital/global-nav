@@ -1,0 +1,11 @@
+@import '~@nice-digital/design-system/src/stylesheets/settings/settings';
+@import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
+
+.signin {
+  border: rem($spacing-xx-small) solid $colour-text;
+  color: $colour-text;
+  display: inline-block;
+  font-weight: bold;
+  padding: rem($spacing-small);
+  text-decoration: none;
+}
