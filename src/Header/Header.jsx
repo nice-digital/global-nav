@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import LogoIcon from "@nice-digital/icons/lib/Logo";
 import LogoNameIcon from "@nice-digital/icons/lib/LogoName";
 
 import TLSMessage from "./TLSMessage";
@@ -30,20 +31,29 @@ export default class Header extends Component {
 		return (
 			this.props.enabled !== false && (
 				<header className={styles.header}>
-					<a href="https://www.nice.org.uk/" aria-label="Home">
-						{typeof SVGRect !== "undefined" && (
-							<LogoNameIcon width={null} height="50px" />
-						)}
-					</a>
-					<button
-						className={styles.mobileMenuBtn}
-						type="button"
-						onClick={this.handleClick}
-					>
-						{this.state.isExpanded ? "Collapse" : "Expand"} Menu
-					</button>
-					<Search />
-					<Account />
+					<div className={styles.container}>
+						<a
+							href="https://www.nice.org.uk/"
+							aria-label="Home"
+							className={styles.home}
+						>
+							{typeof SVGRect !== "undefined" && (
+								<div>
+									<LogoIcon width={null} height="50px" />
+									<LogoNameIcon width={null} height="50px" />
+								</div>
+							)}
+						</a>
+						<button
+							className={styles.mobileMenuBtn}
+							type="button"
+							onClick={this.handleClick}
+						>
+							{this.state.isExpanded ? "Collapse" : "Expand"} Menu
+						</button>
+						<Search />
+						<Account />
+					</div>
 					<Nav service={this.props.service} />
 					<TLSMessage />
 				</header>
