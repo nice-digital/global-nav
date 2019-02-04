@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import Header from "./Header";
 import Footer from "./Footer/Footer";
 
-// Callback can either be a reference to a function
+// Callback can either be a reference to a function or a string name of a global function
 const ensureCallback = callback => {
 	if (callback) {
 		callback = typeof callback === "function" ? callback : window[callback];

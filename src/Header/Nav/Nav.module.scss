@@ -1,15 +1,11 @@
 @import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
 @import 'mq';
 
-// TODO replace with design system mixin
-@mixin inverse-focus-style {
-  outline: 3px solid $colour-focus-inverse;
-}
-
 $colour-nav-background: $colour-nice-teal;
 
 .nav {
   background: $colour-nav-background;
+  display: none;
   padding: rem($spacing-small 0);
 
   a {
@@ -40,13 +36,8 @@ $colour-nav-background: $colour-nice-teal;
     text-decoration: none;
   }
 
-  ul {
-    list-style: none;
-    margin: auto;
-    padding: 0;
-  }
-
   @include mq($from: md) {
+    display: block;
     padding: 0;
 
     a {
@@ -55,44 +46,62 @@ $colour-nav-background: $colour-nice-teal;
       position: relative;
       text-align: center;
 
-      &[aria-current='page'] {
-        &:before {
-          background: $colour-nav-background;
-          content: '';
-          display: block;
-          height: 2px;
-          left: 0;
-          position: absolute;
-          top: 0;
-          width: 100%;
-        }
+      &[aria-current='true']:before {
+        background: $colour-nav-background;
+        content: '';
+        display: block;
+        height: 2px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
       }
     }
+  }
+}
 
+.navExpanded {
+  display: block;
+}
+
+.menu {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+
+  @include mq($from: md) {
     // Fallback for non flexbox browsers that support media queries e.g. IE9
-    ul {
-      display: table;
-      max-width: rem($nice-container-max-width);
-      // TODO Replace with mixin from nice design system
-      width: 96%;
-      width: calc(100% - #{rem($spacing-large)});
-    }
+    display: table;
+    max-width: rem($nice-container-max-width);
+    // TODO Replace with mixin from nice design system
+    width: 96%;
+    width: calc(100% - #{rem($spacing-large)});
 
     li {
       display: table-cell;
     }
 
     @supports (display: flex) {
-      ul {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-      }
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
 
       li {
         flex-grow: 1;
       }
     }
   }
+}
+
+.accountsMenuItem {
+  @include mq($from: md) {
+    display: none !important;
+  }
+}
+
+.lastAccountsMenuItem {
+  border-bottom: 1px solid $colour-nice-white;
+  margin-bottom: rem($spacing-small);
+  padding-bottom: rem($spacing-small);
 }

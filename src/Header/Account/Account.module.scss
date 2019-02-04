@@ -1,5 +1,14 @@
 @import '~@nice-digital/design-system/src/stylesheets/settings/settings';
 @import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
+@import '../../scss/mq';
+
+.accounts {
+  display: none;
+
+  @include mq($from: md) {
+    display: block;
+  }
+}
 
 .signin {
   border: rem($spacing-xx-small) solid $colour-text;

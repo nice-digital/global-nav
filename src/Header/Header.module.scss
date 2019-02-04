@@ -32,7 +32,27 @@
 .mobileMenuBtn {
   appearance: none;
   background: none;
-  border: 0;
+  border: 1px solid $colour-text;
+  padding: rem($spacing-small);
+
+  &:after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid $colour-text;
+    //border-color: $colour-text transparent transparent transparent;
+    //border-style: solid;
+    //border-width: 8px 5px 0 5px;
+    content: '';
+    display: inline-block;
+    height: 0;
+    margin-left: rem($spacing-small);
+    width: 0;
+  }
+
+  &[aria-expanded='true']:after {
+    border-bottom: 8px solid $colour-text;
+    border-top: 0;
+  }
 
   @include mq($from: md) {
     display: none;

@@ -3,8 +3,11 @@
 exports[`Nav Matches snapshot 1`] = `
 <nav
   className="nav"
+  id="header-menu"
 >
-  <ul>
+  <ul
+    className="menu"
+  >
     <li
       key="https://pathways.nice.org.uk/"
     >

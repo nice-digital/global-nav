@@ -15,16 +15,27 @@ export default class Header extends Component {
 		super(props);
 
 		this.state = {
-			isExpanded: false
+			isExpanded: false,
+			isLoggedIn: false,
+			accountsData: null
 		};
 
 		this.handleClick = this.handleClick.bind(this);
+		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
 	}
 
 	handleClick() {
 		this.setState(prevState => ({
 			isExpanded: !prevState.isExpanded
 		}));
+	}
+
+	handleLoginStatusChecked(accountsData) {
+		if (accountsData.display_name) {
+			this.setState({ isLoggedIn: true, accountsData: accountsData });
+		} else {
+			this.setState({ isLoggedIn: false, accountsData: accountsData });
+		}
 	}
 
 	render() {
@@ -47,14 +58,25 @@ export default class Header extends Component {
 						<button
 							className={styles.mobileMenuBtn}
 							type="button"
+							aria-controls="header-menu"
+							aria-expanded={this.state.isExpanded}
 							onClick={this.handleClick}
 						>
-							{this.state.isExpanded ? "Collapse" : "Expand"} Menu
+							{this.state.isExpanded ? "Close" : "Menu"}
 						</button>
 						<Search />
-						<Account />
+						<Account
+							onLoginStatusChecked={this.handleLoginStatusChecked}
+							isLoggedIn={this.state.isLoggedIn}
+							accountsData={this.state.accountsData}
+						/>
 					</div>
-					<Nav service={this.props.service} />
+					<Nav
+						service={this.props.service}
+						isExpanded={this.state.isExpanded}
+						isLoggedIn={this.state.isLoggedIn}
+						accountsData={this.state.accountsData}
+					/>
 					<TLSMessage />
 				</header>
 			)
