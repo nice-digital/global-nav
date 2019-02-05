@@ -329,10 +329,10 @@ We create 2 deployment artifacts: one for deploying to the CDN and one test site
 To test what the deployment packages looks like locally, run the following command:
 
 ```sh
-nuget pack cdn.nuspec -Version X.Y.Z
-# or: nuget pack preview-site.nuspec -Version X.Y.Z
+dotnet pack NICE.GlobalNav.CDN.csproj -o publish /p:Version=1.2.3-r1a2b3c
+# OR dotnet pack NICE.GlobalNav.Preview.csproj -o publish /p:Version=1.2.3-r1a2b3c
 ```
 
 Where the version number can be any valid [SemVer build number](https://octopus.com/blog/semver2) compatible with Octopus Deploy. Note: this version number will be the build number when TeamCity creates this build artifact.
 
-> Note: you'll need to have NuGet.exe in your path or download the latest NuGet.exe from https://www.nuget.org/downloads.
+> Note: you'll need the DotNet Core SDK installed. We don't use NuGet.exe to build so we can run on both Windows and Linux

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="dist\**" Exclude="dist/index.html">
+			<Pack>true</Pack>
+			<PackagePath>global-nav</PackagePath>
+		</Content>
+		<Content Include="dist\**" Exclude="dist/index.html">
+			<Pack>true</Pack>
+			<PackagePath>global-nav/$(Version)</PackagePath>
+		</Content>
+	</ItemGroup>
+</Project>
