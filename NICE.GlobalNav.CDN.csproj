@@ -3,6 +3,10 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<Title>Global Nav CDN</Title>
+		<Description>Global Nav deployment package for the NICE CDN</Description>
+		<RepositoryUrl>https://github.com/nhsevidence/global-nav</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="dist\**" Exclude="dist/index.html">
