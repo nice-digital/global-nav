@@ -52,7 +52,7 @@ The header covers the following high-level functionality:
 - skip links
 - search and autocomplete
 - cookie message
-- TLS warning message fr old IE
+- TLS warning message for old IE
 - sign in and account management via NICE Accounts
   - In the future will support Auth0
 
