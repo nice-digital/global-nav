@@ -15,7 +15,9 @@ exports[`Nav Matches snapshot 1`] = `
         aria-current={null}
         href="https://pathways.nice.org.uk/"
       >
-        NICE Pathways
+        <span>
+          NICE Pathways
+        </span>
       </a>
     </li>
     <li
@@ -25,7 +27,9 @@ exports[`Nav Matches snapshot 1`] = `
         aria-current={null}
         href="https://www.nice.org.uk/guidance"
       >
-        NICE guidance
+        <span>
+          NICE guidance
+        </span>
       </a>
     </li>
     <li
@@ -35,7 +39,9 @@ exports[`Nav Matches snapshot 1`] = `
         aria-current={null}
         href="https://www.nice.org.uk/standards-and-indicators"
       >
-        Standards and indicators
+        <span>
+          Standards and indicators
+        </span>
       </a>
     </li>
     <li
@@ -45,7 +51,9 @@ exports[`Nav Matches snapshot 1`] = `
         aria-current={null}
         href="https://www.evidence.nhs.uk/"
       >
-        Evidence search
+        <span>
+          Evidence search
+        </span>
       </a>
     </li>
     <li
@@ -55,11 +63,13 @@ exports[`Nav Matches snapshot 1`] = `
         aria-current={null}
         href="https://bnf.nice.org.uk/"
       >
-        <abbr
-          title="British National Formulary"
-        >
-          BNF
-        </abbr>
+        <span>
+          <abbr
+            title="British National Formulary"
+          >
+            BNF
+          </abbr>
+        </span>
       </a>
     </li>
     <li
@@ -69,11 +79,13 @@ exports[`Nav Matches snapshot 1`] = `
         aria-current={null}
         href="https://bnfc.nice.org.uk/"
       >
-        <abbr
-          title="British National Formulary for Children"
-        >
-          BNFC
-        </abbr>
+        <span>
+          <abbr
+            title="British National Formulary for Children"
+          >
+            BNFC
+          </abbr>
+        </span>
       </a>
     </li>
     <li
@@ -83,11 +95,13 @@ exports[`Nav Matches snapshot 1`] = `
         aria-current={null}
         href="https://cks.nice.org.uk/"
       >
-        <abbr
-          title="Clinical Knowledge Summaries"
-        >
-          CKS
-        </abbr>
+        <span>
+          <abbr
+            title="Clinical Knowledge Summaries"
+          >
+            CKS
+          </abbr>
+        </span>
       </a>
     </li>
     <li
@@ -97,7 +111,9 @@ exports[`Nav Matches snapshot 1`] = `
         aria-current={null}
         href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
       >
-        Journals and databases
+        <span>
+          Journals and databases
+        </span>
       </a>
     </li>
   </ul>

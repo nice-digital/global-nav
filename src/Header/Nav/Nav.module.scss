@@ -9,21 +9,23 @@ $colour-nav-background: $colour-nice-teal;
   padding: rem($spacing-small 0);
 
   a {
-    box-sizing: border-box;
-    color: $colour-nice-white;
+    color: $colour-text-inverse;
     display: block;
     padding: rem($spacing-small $spacing-medium);
     text-decoration: none;
 
+    &[aria-current='true'],
     &[aria-current='page'] {
-      background: $colour-nice-white;
+      background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
       color: $colour-text;
+      font-weight: bold;
     }
 
     &:focus {
       background: $colour-nice-purple;
       color: $colour-text-inverse;
-      outline: 3px solid $colour-nice-purple;
+      outline: rem($spacing-x-small) solid $colour-nice-purple;
+      z-index: 1; // Push above the adjacent nav items
     }
 
     &:hover {
@@ -45,16 +47,34 @@ $colour-nav-background: $colour-nice-teal;
       padding: rem($spacing-medium $spacing-medium);
       position: relative;
       text-align: center;
+      white-space: nowrap;
 
-      &[aria-current='true']:before {
-        background: $colour-nav-background;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        white-space: normal;
+      }
+
+      // Use pseudo to centrally align text
+      &:before {
         content: '';
-        display: block;
-        height: 2px;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      &[aria-current='true'],
+      &[aria-current='page'] {
+        &:after {
+          background: $colour-nav-background;
+          content: '';
+          display: block;
+          height: rem($spacing-x-small);
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
       }
     }
   }

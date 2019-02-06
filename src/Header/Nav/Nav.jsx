@@ -31,24 +31,35 @@ export default class Nav extends Component {
 								<a href={accountsData.links[text]}>{text}</a>
 							</li>
 						))}
-					{links.map(link => (
-						<li key={link.id}>
-							<a
-								href={link.href}
-								aria-current={
-									this.props.service && link.id === this.props.service
-										? true
-										: null
-								}
-							>
-								{link.abbreviation ? (
-									<abbr title={link.title}>{link.text}</abbr>
-								) : (
-									link.text
-								)}
-							</a>
-						</li>
-					))}
+					{links.map(link => {
+						let ariaCurrent = null;
+
+						if (this.props.service && link.id === this.props.service) {
+							ariaCurrent = true;
+
+							if (
+								location &&
+								link.href ===
+									`${location.protocol}//${location.host}${location.pathname}`
+							) {
+								ariaCurrent = "page";
+							}
+						}
+
+						return (
+							<li key={link.id}>
+								<a href={link.href} aria-current={ariaCurrent}>
+									<span>
+										{link.abbreviation ? (
+											<abbr title={link.title}>{link.text}</abbr>
+										) : (
+											link.text
+										)}
+									</span>
+								</a>
+							</li>
+						);
+					})}
 				</ul>
 			</nav>
 		);
