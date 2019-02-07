@@ -52,7 +52,7 @@ The header covers the following high-level functionality:
 - skip links
 - search and autocomplete
 - cookie message
-- TLS warning message fr old IE
+- TLS warning message for old IE
 - sign in and account management via NICE Accounts
   - In the future will support Auth0
 
@@ -77,7 +77,7 @@ The following non-functional requirements apply:
 - [NervJS](https://github.com/NervJS/nerv) for smaller footprint and IE8 support, until we drop support for IE8, then we can consider Preact
 - [SCSS](https://sass-lang.com/documentation/file.SCSS_FOR_SASS_USERS.html) for styles
 - [CSS Modules](https://github.com/css-modules/css-modules) for generated class names
-- [PostCSS](https://postcss.org/) for trasforming CSS with plugis:
+- [PostCSS](https://postcss.org/) for transforming CSS with plugins:
   - [autoprefixer](https://autoprefixer.github.io/) for automatically adding vendor prefixes in CSS
   - [pixrem](https://github.com/robwierzbowski/node-pixrem) for adding pixel fallbacks to rem values to support IE8+
   - and [NICE Digital shared browserslist config](https://github.com/nhsevidence/browserslist-config#readme)
@@ -124,7 +124,7 @@ We are using React because:
 - is easy to test
 - is being adopted across Digital Services.
 
-However, consider the [non-functional requirements](#non-functional) and [development principles](#principles) above - specifically the need to support IE8 and to have a small bundle size. React works in IE9+ (with Polyfills) and is 31.8K (React 16.2.0 + React DOM minified and gzipped). Both of these make it less than ideal for creating a standalone bundle that will load on every page across NICE alongisde each application's code.
+However, consider the [non-functional requirements](#non-functional) and [development principles](#principles) above - specifically the need to support IE8 and to have a small bundle size. React works in IE9+ (with Polyfills) and is 31.8K (React 16.2.0 + React DOM minified and gzipped). Both of these make it less than ideal for creating a standalone bundle that will load on every page across NICE alongside each application's code.
 
 This is where Nerv fits in. It's a "blazing fast React alternative, compatible with IE8 and React 16" and is one third of React's size. It's a drop in replacement (via [aliases in Webpack](https://github.com/NervJS/nerv#usage-with-webpack)) so allows us to write 'normal' React, but compile with Nerv.
 
@@ -211,7 +211,7 @@ We support 2 main methods for using the Global Nav in your projects: in [React](
 
 Global nav is published as an npm package in the @nice-digital org on npm. This means you can install the package and require the `Header` and `Footer` React components into your application, just as you would for any other 3rd party component.
 
-This is a good option if you're rendering you're app via React, either client side of server side. For example, if you're using [Create React App](https://facebook.github.io/create-react-app/), [Gatsby](https://www.gatsbyjs.org/) or [Next.js](https://nextjs.org/).
+This is a good option if you're rendering you're app via React, either client side or server side. For example, if you're using [Create React App](https://facebook.github.io/create-react-app/), [Gatsby](https://www.gatsbyjs.org/) or [Next.js](https://nextjs.org/).
 
 First, install the [_@nice-digital/global-nav_ package](https://www.npmjs.com/package/@nice-digital/global-nav) into your project:
 
