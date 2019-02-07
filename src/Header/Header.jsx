@@ -74,8 +74,9 @@ export default class Header extends Component {
 					<Nav
 						service={this.props.service}
 						isExpanded={this.state.isExpanded}
-						isLoggedIn={this.state.isLoggedIn}
-						accountsData={this.state.accountsData}
+						accountsLinks={
+							this.state.accountsData && this.state.accountsData.links
+						}
 					/>
 					<TLSMessage />
 				</header>

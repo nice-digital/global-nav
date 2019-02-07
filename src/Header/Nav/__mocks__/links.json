@@ -1,0 +1,14 @@
+[
+	{
+		"href": "https://url1/",
+		"text": "First link",
+		"id": "link1"
+	},
+	{
+		"href": "https://url2/",
+		"text": "Second link",
+		"id": "link2",
+		"abbreviation": true,
+		"title": "Abbreviation title"
+	}
+]

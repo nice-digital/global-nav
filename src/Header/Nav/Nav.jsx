@@ -7,10 +7,15 @@ import links from "./links.json";
 
 export default class Nav extends Component {
 	render() {
-		const { accountsData } = this.props;
+		const { accountsLinks } = this.props;
 
-		const accountsLinks =
-			accountsData && accountsData.links && Object.keys(accountsData.links);
+		// Links from NICE Accounts is an object so flatten to a loop for easier trvaersal
+		const accountsLinksArray =
+			accountsLinks &&
+			Object.keys(accountsLinks).map(text => ({
+				text: text,
+				href: accountsLinks[text]
+			}));
 
 		return (
 			<nav
@@ -20,15 +25,16 @@ export default class Nav extends Component {
 				})}
 			>
 				<ul className={styles.menu}>
-					{accountsLinks &&
-						accountsLinks.map((text, i) => (
+					{accountsLinksArray &&
+						accountsLinksArray.map((link, i) => (
 							<li
-								key={i}
+								key={link.href}
 								className={classnames(styles.accountsMenuItem, {
-									[styles.lastAccountsMenuItem]: i === accountsLinks.length - 1
+									[styles.lastAccountsMenuItem]:
+										i === accountsLinksArray.length - 1
 								})}
 							>
-								<a href={accountsData.links[text]}>{text}</a>
+								<a href={link.href}>{link.text}</a>
 							</li>
 						))}
 					{links.map(link => {
@@ -69,10 +75,5 @@ export default class Nav extends Component {
 Nav.propTypes = {
 	service: PropTypes.string,
 	isExpanded: PropTypes.bool,
-	isLoggedIn: PropTypes.bool.isRequired,
-	accountsData: PropTypes.shape({
-		display_name: PropTypes.string,
-		thumbnail: PropTypes.string,
-		links: PropTypes.object
-	})
+	accountsLinks: PropTypes.object
 };

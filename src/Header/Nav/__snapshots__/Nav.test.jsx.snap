@@ -1,6 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Nav Matches snapshot 1`] = `
+exports[`Nav Matches snapshot with accounts links 1`] = `
+<ul
+  className="menu"
+>
+  <li
+    className="accountsMenuItem"
+    key="https://accounts.nice.org.uk/profile"
+  >
+    <a
+      href="https://accounts.nice.org.uk/profile"
+    >
+      Joe Bloggs
+    </a>
+  </li>
+  <li
+    className="accountsMenuItem lastAccountsMenuItem"
+    key="https://accounts.nice.org.uk/signout"
+  >
+    <a
+      href="https://accounts.nice.org.uk/signout"
+    >
+      Sign out
+    </a>
+  </li>
+  <li
+    key="link1"
+  >
+    <a
+      aria-current={null}
+      href="https://url1/"
+    >
+      <span>
+        First link
+      </span>
+    </a>
+  </li>
+  <li
+    key="link2"
+  >
+    <a
+      aria-current={null}
+      href="https://url2/"
+    >
+      <span>
+        <abbr
+          title="Abbreviation title"
+        >
+          Second link
+        </abbr>
+      </span>
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`Nav Matches snapshot with no accounts links 1`] = `
 <nav
   className="nav"
   id="header-menu"
@@ -9,110 +64,30 @@ exports[`Nav Matches snapshot 1`] = `
     className="menu"
   >
     <li
-      key="pathways"
+      key="link1"
     >
       <a
         aria-current={null}
-        href="https://pathways.nice.org.uk/"
+        href="https://url1/"
       >
         <span>
-          NICE Pathways
+          First link
         </span>
       </a>
     </li>
     <li
-      key="guidance"
+      key="link2"
     >
       <a
         aria-current={null}
-        href="https://www.nice.org.uk/guidance"
-      >
-        <span>
-          NICE guidance
-        </span>
-      </a>
-    </li>
-    <li
-      key="standards"
-    >
-      <a
-        aria-current={null}
-        href="https://www.nice.org.uk/standards-and-indicators"
-      >
-        <span>
-          Standards and indicators
-        </span>
-      </a>
-    </li>
-    <li
-      key="evidence"
-    >
-      <a
-        aria-current={null}
-        href="https://www.evidence.nhs.uk/"
-      >
-        <span>
-          Evidence search
-        </span>
-      </a>
-    </li>
-    <li
-      key="bnf"
-    >
-      <a
-        aria-current={null}
-        href="https://bnf.nice.org.uk/"
+        href="https://url2/"
       >
         <span>
           <abbr
-            title="British National Formulary"
+            title="Abbreviation title"
           >
-            BNF
+            Second link
           </abbr>
-        </span>
-      </a>
-    </li>
-    <li
-      key="bnfc"
-    >
-      <a
-        aria-current={null}
-        href="https://bnfc.nice.org.uk/"
-      >
-        <span>
-          <abbr
-            title="British National Formulary for Children"
-          >
-            BNFC
-          </abbr>
-        </span>
-      </a>
-    </li>
-    <li
-      key="cks"
-    >
-      <a
-        aria-current={null}
-        href="https://cks.nice.org.uk/"
-      >
-        <span>
-          <abbr
-            title="Clinical Knowledge Summaries"
-          >
-            CKS
-          </abbr>
-        </span>
-      </a>
-    </li>
-    <li
-      key="journals"
-    >
-      <a
-        aria-current={null}
-        href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
-      >
-        <span>
-          Journals and databases
         </span>
       </a>
     </li>
