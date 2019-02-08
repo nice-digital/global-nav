@@ -2,6 +2,8 @@
 
 > Global header and footer used across all NICE digital services
 
+[**:rocket: Jump straight to getting started**](#set-up)
+
 <details>
 <summary><strong>Table of contents</strong></summary>
 
@@ -135,13 +137,13 @@ This is where Nerv fits in. It's a "blazing fast React alternative, compatible w
 We considered [Preact](https://preactjs.com/) as a React alternative as it's only 3kB. However, we discounted it at the time of writing because:
 
 - it didn't have full support for React 16
-- the [browser support](https://preactjs.com/about/browser-support) docs we're vague on detail for supporting IE8 and we struggled to get it to work.
+- the [browser support](https://preactjs.com/about/browser-support) docs were vague on detail for supporting IE8 and we struggled to get it to work.
 
 We may consider replacing Nerv with Preact in the future if we drop support for IE8.
 
 ## Set up
 
-TL;DR; to run the project locally, do the following:
+**TL;DR;** to run the project locally, do the following:
 
 - install [Node 6+](https://nodejs.org/en/download/) or latest LTS version
 - run `npm i` on the command line to install dependencies
