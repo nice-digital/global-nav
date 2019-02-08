@@ -18,6 +18,8 @@
 	- [Set up](#set-up)
 		- [Other commands](#other-commands)
 			- [Tests](#tests)
+				- [Run individual files](#run-individual-files)
+				- [Run individual tests](#run-individual-tests)
 			- [Linting](#linting)
 			- [Production build](#production-build)
 		- [IDE](#ide)
@@ -170,6 +172,22 @@ If you've installed the [VSCode npm extension](https://marketplace.visualstudio.
 
 - right-clicking the script name in _package.json_
 - or _Ctrl+Shift+P_ -> _npm run script_ -> _test:unit:watch_.
+
+##### Run individual files
+
+To run a single test file, use the [jest cli option](https://jestjs.io/docs/en/cli.html#jest-regexfortestfiles) to pass in a regex to match test files. For example, to run just files that match _nav_:
+
+```sh
+npm run-script test:unit -- nav
+```
+
+##### Run individual tests
+
+To run a single test, or a bunch of tests that match a given name, use the [jest `--testNamePattern` cli flag](https://jestjs.io/docs/en/cli.html#testnamepattern-regex) (or the `-t` alias). For example, to run all tests that check aria attributes:
+
+```sh
+npm run-script test:unit -- -t aria
+```
 
 #### Linting
 
