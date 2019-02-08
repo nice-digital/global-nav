@@ -10,5 +10,6 @@ module.exports = {
 		"!**/node_modules/**"
 	],
 	snapshotSerializers: ["enzyme-to-json/serializer"],
-	collectCoverage: process.env.TEAMCITY_VERSION ? true : false
+	collectCoverage: process.env.TEAMCITY_VERSION ? true : false,
+	testURL: "https://global-nav-tests.nice.org.uk/"
 };
