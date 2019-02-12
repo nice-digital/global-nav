@@ -17,6 +17,7 @@
 		- [Principles](#principles)
 		- [Why Nerv?](#why-nerv)
 			- [Why not Preact?](#why-not-preact)
+		- [CSS Modules](#css-modules)
 	- [Set up](#set-up)
 		- [Other commands](#other-commands)
 			- [Tests](#tests)
@@ -140,6 +141,10 @@ We considered [Preact](https://preactjs.com/) as a React alternative as it's onl
 - the [browser support](https://preactjs.com/about/browser-support) docs were vague on detail for supporting IE8 and we struggled to get it to work.
 
 We may consider replacing Nerv with Preact in the future if we drop support for IE8.
+
+### CSS Modules
+
+TODO
 
 ## Set up
 
