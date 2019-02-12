@@ -144,7 +144,7 @@ We may consider replacing Nerv with Preact in the future if we drop support for 
 
 ### CSS Modules
 
-TODO
+TODO: Explain why and benefits
 
 ## Set up
 
