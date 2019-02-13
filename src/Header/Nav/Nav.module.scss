@@ -2,35 +2,57 @@
 @import 'mq';
 
 $colour-nav-background: $colour-nice-teal;
+$colour-nav-text: $colour-text-inverse;
 
 .nav {
   background: $colour-nav-background;
+  color: $colour-nav-text;
   display: none;
   padding: rem($spacing-small 0);
 
   a {
-    color: $colour-text-inverse;
+    border: rem($spacing-x-small) solid $colour-nav-background;
+    color: $colour-nav-text;
     display: block;
     padding: rem($spacing-small $spacing-medium);
     text-decoration: none;
+
+    span {
+      text-decoration: inherit;
+    }
 
     &[aria-current='true'],
     &[aria-current='page'] {
       background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
       color: $colour-text;
       font-weight: bold;
+
+      &:focus {
+        outline-color: $colour-focus;
+        outline-offset: rem(-$spacing-small - $spacing-x-small);
+      }
     }
 
     &:focus {
-      background: $colour-nice-purple;
-      color: $colour-text-inverse;
-      outline: rem($spacing-x-small) solid $colour-nice-purple;
+      outline: rem($spacing-x-small) solid $colour-focus-inverse;
+      outline-offset: rem(-$spacing-small);
       z-index: 1; // Push above the adjacent nav items
     }
 
+    &:active {
+      background: #acadad;
+      color: $colour-text;
+    }
+
     &:hover {
-      background: $colour-nice-teal-2;
-      color: $colour-text-inverse;
+      background: #d6d6d6;
+      color: $colour-text;
+      text-decoration: underline;
+
+      &:focus {
+        background: transparent;
+        color: inherit;
+      }
     }
   }
 
@@ -43,6 +65,8 @@ $colour-nav-background: $colour-nice-teal;
     padding: 0;
 
     a {
+      border-left-width: 0;
+      border-right-width: 0;
       height: 100%;
       padding: rem($spacing-medium $spacing-medium);
       position: relative;
@@ -65,15 +89,24 @@ $colour-nav-background: $colour-nice-teal;
 
       &[aria-current='true'],
       &[aria-current='page'] {
+        // Create space between selected item, and adjacent hover states
+        border-left-width: rem($spacing-x-small);
+        border-right-width: rem($spacing-x-small);
+
+        // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
         &:after {
-          background: $colour-nav-background;
+          background: #fff;
           content: '';
           display: block;
           height: rem($spacing-x-small);
           left: 0;
           position: absolute;
-          top: 0;
+          top: 100%;
           width: 100%;
+        }
+
+        &:hover:after {
+          background: #d6d6d6;
         }
       }
     }

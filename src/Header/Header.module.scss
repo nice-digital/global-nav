@@ -3,7 +3,7 @@
 @import 'mq';
 
 .header {
-  border-bottom: rem($spacing-xx-small) solid $colour-nice-teal;
+  border-bottom: rem($spacing-x-small) solid $colour-nice-white; // TODO: Replace with $colour-page when Design System is rolled out everywhere
   box-sizing: border-box;
   font-family: unquote($nice-font-family-sans);
 
@@ -15,10 +15,6 @@
 
   @media print {
     display: none;
-  }
-
-  @include mq($from: md) {
-    border: 0;
   }
 }
 
