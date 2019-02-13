@@ -24,7 +24,17 @@ describe("Nav", () => {
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
-	it("Matches snapshot with accounts links", () => {
+	it("Matches snapshot with single accounts link", () => {
+		const accountsLinks = {
+			"Sign in": "https://accounts.nice.org.uk/"
+		};
+		const wrapper = shallow(
+			<Nav {...defaultProps} accountsLinks={accountsLinks} />
+		);
+		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
+	});
+
+	it("Matches snapshot with multiple accounts links", () => {
 		const accountsLinks = {
 			"Joe Bloggs": "https://accounts.nice.org.uk/profile",
 			"Sign out": "https://accounts.nice.org.uk/signout"
@@ -32,10 +42,10 @@ describe("Nav", () => {
 		const wrapper = shallow(
 			<Nav {...defaultProps} accountsLinks={accountsLinks} />
 		);
-		expect(toJson(wrapper.find("ul"))).toMatchSnapshot();
+		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
 	});
 
-	it("Adds aria-current=true atrribute for selected service", () => {
+	it("Adds aria-current=true attribute for selected service", () => {
 		const wrapper = shallow(<Nav {...defaultProps} service={links[1].id} />);
 		expect(
 			wrapper
@@ -45,7 +55,7 @@ describe("Nav", () => {
 		).toEqual(true);
 	});
 
-	it("Adds aria-current=page atrribute for selected service when matches current URL", () => {
+	it("Adds aria-current=page attribute for selected service when matches current URL", () => {
 		const oldLocation = global.window.location;
 		delete global.window.location;
 		global.window.location = new URL(links[1].href);
@@ -62,26 +72,10 @@ describe("Nav", () => {
 		global.window.location = oldLocation;
 	});
 
-	it("Adds lastAccountsMenuItem css class to the last Accounts menu item", () => {
-		const accountsLinks = {
-			"Joe Bloggs": "https://accounts.nice.org.uk/profile",
-			"Sign out": "https://accounts.nice.org.uk/signout"
-		};
-		const wrapper = shallow(
-			<Nav {...defaultProps} accountsLinks={accountsLinks} />
-		);
-		expect(
-			wrapper
-				.find("li")
-				.at(1)
-				.props().className
-		).toContain("lastAccountsMenuItem");
-	});
-
-	it("Add expanded class to nav when passed isExpanded prop", () => {
+	it("Add expanded class to root element when passed isExpanded prop", () => {
 		const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
-		expect(wrapper.props().className).not.toContain("navExpanded");
+		expect(wrapper.props().className).not.toContain("wrapperExpanded");
 		wrapper.setProps({ isExpanded: true });
-		expect(wrapper.props().className).toContain("navExpanded");
+		expect(wrapper.props().className).toContain("wrapperExpanded");
 	});
 });

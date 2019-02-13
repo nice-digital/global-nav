@@ -4,14 +4,27 @@
 $colour-nav-background: $colour-nice-teal;
 $colour-nav-text: $colour-text-inverse;
 
-.nav {
+.wrapper {
   background: $colour-nav-background;
   color: $colour-nav-text;
   display: none;
-  padding: rem($spacing-small 0);
+
+  @include mq($from: md) {
+    display: block;
+  }
+}
+
+.wrapperExpanded {
+  display: block;
+}
+
+.nav {
+  padding: rem($spacing-x-small 0);
 
   a {
     border: rem($spacing-x-small) solid $colour-nav-background;
+    border-bottom-width: 0;
+    border-top-width: 0;
     color: $colour-nav-text;
     display: block;
     padding: rem($spacing-small $spacing-medium);
@@ -26,10 +39,11 @@ $colour-nav-text: $colour-text-inverse;
       background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
       color: $colour-text;
       font-weight: bold;
+      margin: rem($spacing-x-small 0);
 
       &:focus {
         outline-color: $colour-focus;
-        outline-offset: rem(-$spacing-small - $spacing-x-small);
+        outline-offset: rem(-$spacing-x-small);
       }
     }
 
@@ -48,11 +62,6 @@ $colour-nav-text: $colour-text-inverse;
       background: #d6d6d6;
       color: $colour-text;
       text-decoration: underline;
-
-      &:focus {
-        background: transparent;
-        color: inherit;
-      }
     }
   }
 
@@ -61,17 +70,19 @@ $colour-nav-text: $colour-text-inverse;
   }
 
   @include mq($from: md) {
-    display: block;
-    padding: 0;
-
     a {
       border-left-width: 0;
       border-right-width: 0;
       height: 100%;
+      margin: 0;
       padding: rem($spacing-medium $spacing-medium);
       position: relative;
       text-align: center;
       white-space: nowrap;
+
+      &:focus {
+        outline-offset: rem(-$spacing-x-small);
+      }
 
       span {
         display: inline-block;
@@ -90,8 +101,11 @@ $colour-nav-text: $colour-text-inverse;
       &[aria-current='true'],
       &[aria-current='page'] {
         // Create space between selected item, and adjacent hover states
-        border-left-width: rem($spacing-x-small);
-        border-right-width: rem($spacing-x-small);
+        margin: rem(0 $spacing-x-small);
+
+        &:focus {
+          outline-offset: rem(-$spacing-small);
+        }
 
         // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
         &:after {
@@ -113,8 +127,19 @@ $colour-nav-text: $colour-text-inverse;
   }
 }
 
-.navExpanded {
-  display: block;
+.myAccount {
+  border-top: 1px solid $colour-nice-white;
+
+  @include mq($from: md) {
+    display: none;
+  }
+}
+
+.myAccountHeading {
+  border: rem($spacing-x-small) solid $colour-nav-background;
+  font-size: 100%;
+  margin: 0;
+  padding: rem($spacing-small $spacing-medium);
 }
 
 .menu {
@@ -145,16 +170,4 @@ $colour-nav-text: $colour-text-inverse;
       }
     }
   }
-}
-
-.accountsMenuItem {
-  @include mq($from: md) {
-    display: none !important;
-  }
-}
-
-.lastAccountsMenuItem {
-  border-bottom: 1px solid $colour-nice-white;
-  margin-bottom: rem($spacing-small);
-  padding-bottom: rem($spacing-small);
 }

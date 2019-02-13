@@ -9,7 +9,7 @@ export default class Nav extends Component {
 	render() {
 		const { accountsLinks } = this.props;
 
-		// Links from NICE Accounts is an object so flatten to a loop for easier trvaersal
+		// Links from NICE Accounts is an object so flatten to a loop for easier traversal
 		const accountsLinksArray =
 			accountsLinks &&
 			Object.keys(accountsLinks).map(text => ({
@@ -18,56 +18,59 @@ export default class Nav extends Component {
 			}));
 
 		return (
-			<nav
+			<div
 				id="header-menu"
-				className={classnames(styles.nav, {
-					[styles.navExpanded]: this.props.isExpanded
+				className={classnames(styles.wrapper, {
+					[styles.wrapperExpanded]: this.props.isExpanded
 				})}
 			>
-				<ul className={styles.menu}>
-					{accountsLinksArray &&
-						accountsLinksArray.map((link, i) => (
-							<li
-								key={link.href}
-								className={classnames(styles.accountsMenuItem, {
-									[styles.lastAccountsMenuItem]:
-										i === accountsLinksArray.length - 1
-								})}
-							>
-								<a href={link.href}>{link.text}</a>
-							</li>
-						))}
-					{links.map(link => {
-						let ariaCurrent = null;
+				<nav className={classnames(styles.nav)}>
+					<ul className={styles.menu}>
+						{links.map(({ href, id, text, abbreviation, title }) => {
+							let ariaCurrent = null;
 
-						if (this.props.service && link.id === this.props.service) {
-							ariaCurrent = true;
+							if (this.props.service && id === this.props.service) {
+								ariaCurrent = true;
 
-							if (
-								location &&
-								link.href ===
-									`${location.protocol}//${location.host}${location.pathname}`
-							) {
-								ariaCurrent = "page";
+								if (
+									location &&
+									href ===
+										`${location.protocol}//${location.host}${location.pathname}`
+								) {
+									ariaCurrent = "page";
+								}
 							}
-						}
 
-						return (
-							<li key={link.id}>
-								<a href={link.href} aria-current={ariaCurrent}>
-									<span>
-										{link.abbreviation ? (
-											<abbr title={link.title}>{link.text}</abbr>
-										) : (
-											link.text
-										)}
-									</span>
-								</a>
-							</li>
-						);
-					})}
-				</ul>
-			</nav>
+							return (
+								<li key={id}>
+									<a href={href} aria-current={ariaCurrent}>
+										<span>
+											{abbreviation ? <abbr title={title}>{text}</abbr> : text}
+										</span>
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+				</nav>
+				{accountsLinksArray && (
+					<nav
+						aria-label="My account"
+						className={classnames(styles.nav, styles.myAccount)}
+					>
+						{accountsLinksArray.length > 1 && (
+							<h2 className={styles.myAccountHeading}>My account</h2>
+						)}
+						<ul className={styles.menu}>
+							{accountsLinksArray.map(({ href, text }) => (
+								<li key={href}>
+									<a href={href}>{text}</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				)}
+			</div>
 		);
 	}
 }

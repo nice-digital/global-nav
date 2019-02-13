@@ -1,94 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Nav Matches snapshot with accounts links 1`] = `
-<ul
-  className="menu"
+exports[`Nav Matches snapshot with multiple accounts links 1`] = `
+<nav
+  aria-label="My account"
+  className="nav myAccount"
 >
-  <li
-    className="accountsMenuItem"
-    key="https://accounts.nice.org.uk/profile"
+  <h2
+    className="myAccountHeading"
   >
-    <a
-      href="https://accounts.nice.org.uk/profile"
-    >
-      Joe Bloggs
-    </a>
-  </li>
-  <li
-    className="accountsMenuItem lastAccountsMenuItem"
-    key="https://accounts.nice.org.uk/signout"
+    My account
+  </h2>
+  <ul
+    className="menu"
   >
-    <a
-      href="https://accounts.nice.org.uk/signout"
+    <li
+      key="https://accounts.nice.org.uk/profile"
     >
-      Sign out
-    </a>
-  </li>
-  <li
-    key="link1"
-  >
-    <a
-      aria-current={null}
-      href="https://url1/"
+      <a
+        href="https://accounts.nice.org.uk/profile"
+      >
+        Joe Bloggs
+      </a>
+    </li>
+    <li
+      key="https://accounts.nice.org.uk/signout"
     >
-      <span>
-        First link
-      </span>
-    </a>
-  </li>
-  <li
-    key="link2"
-  >
-    <a
-      aria-current={null}
-      href="https://url2/"
-    >
-      <span>
-        <abbr
-          title="Abbreviation title"
-        >
-          Second link
-        </abbr>
-      </span>
-    </a>
-  </li>
-</ul>
+      <a
+        href="https://accounts.nice.org.uk/signout"
+      >
+        Sign out
+      </a>
+    </li>
+  </ul>
+</nav>
 `;
 
 exports[`Nav Matches snapshot with no accounts links 1`] = `
-<nav
-  className="nav"
+<div
+  className="wrapper"
   id="header-menu"
+>
+  <nav
+    className="nav"
+  >
+    <ul
+      className="menu"
+    >
+      <li
+        key="link1"
+      >
+        <a
+          aria-current={null}
+          href="https://url1/"
+        >
+          <span>
+            First link
+          </span>
+        </a>
+      </li>
+      <li
+        key="link2"
+      >
+        <a
+          aria-current={null}
+          href="https://url2/"
+        >
+          <span>
+            <abbr
+              title="Abbreviation title"
+            >
+              Second link
+            </abbr>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
+exports[`Nav Matches snapshot with single accounts link 1`] = `
+<nav
+  aria-label="My account"
+  className="nav myAccount"
 >
   <ul
     className="menu"
   >
     <li
-      key="link1"
+      key="https://accounts.nice.org.uk/"
     >
       <a
-        aria-current={null}
-        href="https://url1/"
+        href="https://accounts.nice.org.uk/"
       >
-        <span>
-          First link
-        </span>
-      </a>
-    </li>
-    <li
-      key="link2"
-    >
-      <a
-        aria-current={null}
-        href="https://url2/"
-      >
-        <span>
-          <abbr
-            title="Abbreviation title"
-          >
-            Second link
-          </abbr>
-        </span>
+        Sign in
       </a>
     </li>
   </ul>
