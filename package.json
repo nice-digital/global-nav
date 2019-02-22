@@ -54,7 +54,6 @@
 		"@babel/preset-env": "^7.2.3",
 		"@babel/preset-react": "^7.0.0",
 		"@nice-digital/browserslist-config": "^1.0.0",
-		"@nice-digital/design-system": "^0.5.3",
 		"@nice-digital/eslint-config": "^1.0.3",
 		"autoprefixer": "^9.4.4",
 		"babel-eslint": "^10.0.1",
@@ -101,6 +100,7 @@
 		"webpack-merge": "^4.2.1"
 	},
 	"dependencies": {
+		"@nice-digital/design-system": "^0.5.3",
 		"@nice-digital/icons": "^2.0.0-beta.3",
 		"accessible-autocomplete": "^1.6.2",
 		"classnames": "^2.2.6",

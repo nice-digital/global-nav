@@ -89,7 +89,7 @@ The following non-functional requirements apply:
 - [Webpack](https://webpack.js.org/) for module bundling
 - [Babel 7](https://babeljs.io/) for ES6/JSX → ES5 transpilation
 - [js-cookie](https://github.com/js-cookie/js-cookie) for cookie management
-- TODO https://github.com/alphagov/accessible-autocomplete or https://github.com/Pixabay/JavaScript-autoComplete for autocomplete
+- [accessible-autocomplete](https://github.com/alphagov/accessible-autocomplete)
 - [ESLint](https://eslint.org/) for linting our JavaScript
   - with [NICE Digital shared eslint config](https://www.npmjs.com/package/@nice-digital/eslint-config)
 - [Stylelint](https://stylelint.io/) for linting our SCSS

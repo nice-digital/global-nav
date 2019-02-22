@@ -72,7 +72,10 @@ module.exports = {
 							modules: true,
 							importLoaders: 1,
 							hashPrefix: "global-nav",
-							localIdentName: "gn_[hash:base64:5]",
+							localIdentName:
+								ENV === "development"
+									? "[name]__[local]--[hash:base64]"
+									: "gn_[hash:base64:5]",
 							sourceMap: ENV === "development"
 						}
 					},

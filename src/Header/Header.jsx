@@ -55,16 +55,20 @@ export default class Header extends Component {
 								</div>
 							)}
 						</a>
-						<button
-							className={styles.mobileMenuBtn}
-							type="button"
-							aria-controls="header-menu"
-							aria-expanded={this.state.isExpanded}
-							onClick={this.handleClick}
-						>
-							{this.state.isExpanded ? "Close" : "Menu"}
-						</button>
-						<Search />
+						<div className={styles.wrapper}>
+							<div className={styles.search}>
+								{this.props.search && <Search {...this.props.search} />}
+							</div>
+							<button
+								className={styles.mobileMenuBtn}
+								type="button"
+								aria-controls="header-menu"
+								aria-expanded={this.state.isExpanded}
+								onClick={this.handleClick}
+							>
+								{this.state.isExpanded ? "Close" : "Menu"}
+							</button>
+						</div>
 						<Account
 							onLoginStatusChecked={this.handleLoginStatusChecked}
 							isLoggedIn={this.state.isLoggedIn}
@@ -87,5 +91,13 @@ export default class Header extends Component {
 
 Header.propTypes = {
 	service: PropTypes.string,
-	enabled: PropTypes.bool
+	enabled: PropTypes.bool,
+	search: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.shape({ url: PropTypes.string })
+	])
+};
+
+Header.defaultProps = {
+	search: {}
 };

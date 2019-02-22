@@ -27,7 +27,6 @@
 		</main>
 		<div id="footer"></div>
 		<script type="text/javascript">
-
 			var headerRendering = function(element) {
 				console.log("Header (callback string) rendering into", element);
 			};
@@ -39,10 +38,15 @@
 			global_nav_config = {
 				service: "guidance",
 				header: {
+					//searchUrl: "/search"
+					//search: false
+					search: {
+						//url: "/search"
+						autocomplete: [{ Title: "title", Link: "http://www.google.com" }]
+					}
 					//enabled: false,
 					//onRendering: "headerRendering",
 					//onRendering: (element) => { console.log("Header (callback func) rendering into", element); },
-
 					//onRendered: headerRendered,
 					//onRendered: (element) => { console.log("Header (callback func) rendered into", element); }
 				},

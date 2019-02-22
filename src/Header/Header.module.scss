@@ -30,6 +30,10 @@
   color: $colour-text;
 }
 
+.wrapper {
+  display: flex;
+}
+
 .mobileMenuBtn {
   appearance: none;
   background: none;
@@ -58,4 +62,8 @@
   @include mq($from: md) {
     display: none;
   }
+}
+
+.search {
+  flex-grow: 1;
 }
