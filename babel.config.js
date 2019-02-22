@@ -26,7 +26,8 @@ module.exports = function(api) {
 					helpers: false,
 					regenerator: true
 				}
-			]
+			],
+			"react-hot-loader/babel"
 		]
 	};
 };

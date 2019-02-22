@@ -18,7 +18,7 @@ module.exports = {
 
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		publicPath: ".",
+		publicPath: "/",
 		filename: "[name].js"
 	},
 
@@ -32,8 +32,10 @@ module.exports = {
 			"node_modules"
 		],
 		alias: {
-			react: "nervjs",
-			"react-dom": "nervjs"
+			// TODO: Change aliases to nerv for non-HMR IE8 build
+			//react: "nervjs",
+			//"react-dom": "nervjs"
+			"react-dom": "@hot-loader/react-dom"
 		}
 	},
 
@@ -57,11 +59,12 @@ module.exports = {
 				use: "babel-loader",
 				resolve: { extensions: [".js", ".jsx"] }
 			},
-			{
-				test: /\.jsx?$/,
-				enforce: "post",
-				use: "es3ify-loader"
-			},
+			// TODO: Include es3ify-loader for non-HMR IE8 build
+			// {
+			// 	test: /\.jsx?$/,
+			// 	enforce: "post",
+			// 	use: "es3ify-loader"
+			// },
 			{
 				test: /\.scss$/,
 				use: [
@@ -119,13 +122,15 @@ module.exports = {
 		new HtmlWebpackExcludeAssetsPlugin()
 	],
 
+	cache: true,
+
 	optimization: {
 		minimize: false
 	},
 
 	stats: { colors: true },
 
-	devtool: "cheap-module-eval-source-map",
+	devtool: "eval",
 
 	devServer: {
 		port: process.env.PORT || 8080,

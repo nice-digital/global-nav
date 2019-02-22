@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { hot } from "react-hot-loader/root";
 import PropTypes from "prop-types";
-import LogoIcon from "@nice-digital/icons/lib/Logo";
-import LogoNameIcon from "@nice-digital/icons/lib/LogoName";
+import LogoIcon from "@nice-digital/icons/lib/LogoFull";
 
 import TLSMessage from "./TLSMessage";
 import Nav from "./Nav";
@@ -10,7 +10,7 @@ import Account from "./Account";
 
 import styles from "./Header.module.scss";
 
-export default class Header extends Component {
+export class Header extends Component {
 	constructor(props) {
 		super(props);
 
@@ -49,11 +49,9 @@ export default class Header extends Component {
 							className={styles.home}
 						>
 							{typeof SVGRect !== "undefined" && (
-								<div>
-									<LogoIcon width={null} height="50px" />
-									<LogoNameIcon width={null} height="50px" />
-								</div>
+								<LogoIcon width={null} height="50px" />
 							)}
+							{/* TODO: Add fallback PNG logo */}
 						</a>
 						<div className={styles.wrapper}>
 							<div className={styles.search}>
@@ -101,3 +99,5 @@ Header.propTypes = {
 Header.defaultProps = {
 	search: {}
 };
+
+export default hot(Header);
