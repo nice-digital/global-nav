@@ -4,7 +4,6 @@
 $size: rem(40);
 
 .search {
-  margin-right: rem($spacing-small);
   padding-right: $size;
   position: relative;
 }
@@ -24,8 +23,7 @@ $size: rem(40);
   background: $colour-nice-dark-grey;
   border: 0;
   color: $colour-text-inverse;
-  font-size: inherit;
-  height: 100%;
+  height: $size;
   padding: 0;
   position: absolute;
   right: 0;
@@ -39,7 +37,7 @@ $size: rem(40);
   }
 
   .icon {
-    font-size: 130%;
+    font-size: 150%;
     vertical-align: middle;
   }
 }

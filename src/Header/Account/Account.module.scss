@@ -2,19 +2,101 @@
 @import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
 @import '../../scss/mq';
 
-.accounts {
-  display: none;
+.account {
+  position: relative;
+}
 
-  @include mq($from: md) {
-    display: block;
+.button {
+  background: #fff;
+  border: 1px solid $colour-text;
+  color: $colour-text;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: normal;
+  height: rem(40); // TODO: Share a variable with search for height
+  line-height: rem(40);
+  padding: rem(0 $spacing-small);
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.myAccount {
+  &:after {
+    border-left: rem($spacing-x-small) solid transparent;
+    border-right: rem($spacing-x-small) solid transparent;
+    border-top: rem($spacing-small) solid $colour-nice-dark-grey;
+    content: '';
+    display: inline-block;
+    height: 0;
+    margin-left: rem($spacing-small);
+    vertical-align: middle;
+    width: 0;
+  }
+
+  &[aria-expanded='true']:after {
+    border-bottom: rem($spacing-small) solid $colour-text;
+    border-top: 0;
   }
 }
 
-.signin {
-  border: rem($spacing-xx-small) solid $colour-text;
-  color: $colour-text;
-  display: inline-block;
-  font-weight: bold;
-  padding: rem($spacing-small);
-  text-decoration: none;
+.menu {
+  background: $colour-true-white;
+  border: 1px solid $colour-nice-dark-grey;
+  list-style: none;
+  margin: rem($spacing-small + 2px 0 0 0);
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  &:before {
+    border-bottom: rem($spacing-small) solid $colour-nice-dark-grey;
+    border-left: rem($spacing-x-small) solid transparent;
+    border-right: rem($spacing-x-small) solid transparent;
+    bottom: 100%;
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    right: rem($spacing-medium);
+    width: 0;
+  }
+
+  &:after {
+    border-bottom: rem($spacing-small / 1.25) solid $colour-true-white;
+    border-left: rem($spacing-x-small / 1.25) solid transparent;
+    border-right: rem($spacing-x-small / 1.25) solid transparent;
+    bottom: 100%;
+    content: '';
+    display: block;
+    height: 0;
+    margin-right: 1px;
+    position: absolute;
+    right: rem($spacing-medium);
+    width: 0;
+  }
+
+  li {
+    border-top: 1px solid $colour-nice-grey-2;
+    margin: 0;
+  }
+
+  a {
+    display: block;
+    padding: rem($spacing-small $spacing-medium);
+    white-space: nowrap;
+  }
+}
+
+button.menu {
+  &:after {
+    content: 'a';
+  }
 }

@@ -33,13 +33,14 @@ export default class Autocomplete extends Component {
 			<div className={styles.ac}>
 				<AccessableAutocomplete
 					id="autocomplete"
+					placeholder="Search NICE…"
+					displayMenu="overlay"
 					source={(q, s) => {
 						this.suggest(q, s);
 					}}
 					templates={templates}
 					onConfirm={onConfirm}
 				/>
-				{JSON.stringify(this.props.source)}
 			</div>
 		);
 	}

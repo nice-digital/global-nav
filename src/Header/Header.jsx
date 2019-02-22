@@ -66,12 +66,14 @@ export class Header extends Component {
 							>
 								{this.state.isExpanded ? "Close" : "Menu"}
 							</button>
+							<div className={styles.account}>
+								<Account
+									onLoginStatusChecked={this.handleLoginStatusChecked}
+									isLoggedIn={this.state.isLoggedIn}
+									accountsData={this.state.accountsData}
+								/>
+							</div>
 						</div>
-						<Account
-							onLoginStatusChecked={this.handleLoginStatusChecked}
-							isLoggedIn={this.state.isLoggedIn}
-							accountsData={this.state.accountsData}
-						/>
 					</div>
 					<Nav
 						service={this.props.service}

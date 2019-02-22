@@ -1,4 +1,5 @@
 @import '~@nice-digital/design-system/src/stylesheets/settings/settings';
+@import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
 
 /* stylelint-disable */
 .ac {
@@ -21,7 +22,17 @@
 
     .autocomplete__input {
       background-color: $colour-nice-grey-3;
+      height: rem(40);
       position: relative;
+
+      &:focus {
+        z-index: 1;
+      }
+
+      &::placeholder {
+        font-size: 100%;
+        font-weight: normal;
+      }
     }
 
     .autocomplete__hint {
@@ -35,7 +46,7 @@
 
     .autocomplete__input--focused {
       outline-offset: 0;
-      outline: 3px solid #ffbf47;
+      outline: 3px solid $colour-focus;
     }
 
     .autocomplete__input--show-all-values {
@@ -134,15 +145,6 @@
     .autocomplete__hint,
     .autocomplete__option {
       padding: 4px;
-    }
-
-    @media (min-width: 641px) {
-      .autocomplete__hint,
-      .autocomplete__input,
-      .autocomplete__option {
-        font-size: 19px;
-        line-height: 1.31579;
-      }
     }
   }
 }
