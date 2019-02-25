@@ -10,7 +10,7 @@ const HOT = process.env.HOT !== "false";
 module.exports = {
 	context: path.resolve(__dirname, "src"),
 	entry: {
-		"global-nav": "./entry.js",
+		"global-nav": "./index.js",
 		// To polyfill for ES3 browsers e.g. IE8
 		// We can remove this when we drop IE8 support
 		"global-nav.ie8": "es5-polyfill"
