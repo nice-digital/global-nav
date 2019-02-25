@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Global Nav Test Site</title><meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui"><link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet"><style>body,
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Global Nav Test Site</title><meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui"><link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><style>body,
 			html {
 				margin: 0;
 				padding: 0;
@@ -11,19 +11,25 @@
 			};
 
 			global_nav_config = {
-				service: "pathways",
+				service: "guidance",
 				header: {
-					//enabled: false,
+					//search: false
+					search: {
+						//url: "/search"
+						autocomplete: [{ Title: "title", Link: "http://www.google.com" }],
+						autocomplete: false,
+						//placeholder: "SEARCH"
+					},
 					//onRendering: "headerRendering",
 					//onRendering: (element) => { console.log("Header (callback func) rendering into", element); },
-
 					//onRendered: headerRendered,
 					//onRendered: (element) => { console.log("Header (callback func) rendered into", element); }
 				},
+				//header: false,
 				footer: {
 					//enabled: true
 				}
 			};</script><!--[if lt IE 9
-			]><script src="./global-nav.ie8.min.js"></script
+			]><script src="/global-nav.ie8.min.js"></script
 			><!
-		[endif]--><script type="text/javascript" src="./global-nav.min.js"></script></body></html>
+		[endif]--><script type="text/javascript" src="/global-nav.min.js"></script></body></html>

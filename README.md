@@ -31,11 +31,16 @@
 	- [How to use](#how-to-use)
 		- [React](#react)
 			- [Props](#props)
+				- [Header props](#header-props)
+					- [Header.service](#headerservice)
+					- [Header.search](#headersearch)
+					- [Header.search.url](#headersearchurl)
+					- [Header.search.autocomplete](#headersearchautocomplete)
+					- [Header.search.placeholder](#headersearchplaceholder)
 		- [CDN](#cdn)
 			- [Configuration](#configuration)
 				- [service](#service)
 				- [header](#header)
-					- [header.enabled](#headerenabled)
 					- [header.onRendering](#headeronrendering)
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
@@ -273,7 +278,45 @@ const page = () => (
 
 #### Props
 
-TODO: Add React component props here
+##### Header props
+
+###### Header.service
+
+- Type: `String | null`
+- Default: `''`
+
+The identifier of the service to highlight in the main menu.
+See [links.json](src/Header/Nav/link.json) for a list of the available service identifiers.
+
+###### Header.search
+
+- Type: `Boolean | Object`
+- Default: `{}`
+
+Search is enabled by default, pass `false` to disable it e.g. `<Header search={false} />`.
+Or pass a set of key/value pairs to configure search and autocomplete:
+
+###### Header.search.url
+
+- Type: `String`
+- Default: `/search`
+
+The url of the search results page that the search form submits a GET request to.
+For example submitting a search term _paracetamol_ with a url of _/search_ will go to _/search?q=paracetamol_.
+
+###### Header.search.autocomplete
+
+- Type: `Boolean | String | Object`
+- Default: `false`
+
+TODO
+
+###### Header.search.placeholder
+
+- Type: `String`
+- Default: `Search NICE…`
+
+Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
 ### CDN
 
@@ -299,17 +342,14 @@ The key of the service to highlight on the navigation elements. See [_src/Header
 
 ##### header
 
-- Type: `Object`
+- Type: `Boolean | Object`
 - Default: `null`
 
-Key/value pairs of settings specific to the header
+The header renders by default, set `header` to `false` to stop it from rendering e.g. `global_nav_config = { header: false }`.
+Or, pass an object of key/value pairs of settings specific to the header.
+See the [header props](#header-props) section for available options.
 
-###### header.enabled
-
-- Type: `Boolean`
-- Default: `true`
-
-The header renders by default. Set `header.enabled` to `false` to stop it from rendering.
+In addition to the options from the React props, there are also the following callbacks available when rendering using the CDN embed:
 
 ###### header.onRendering
 

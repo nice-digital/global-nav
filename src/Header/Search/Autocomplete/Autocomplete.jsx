@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AccessableAutocomplete from "accessible-autocomplete/react";
+import AccessibleAutocomplete from "accessible-autocomplete/react";
 import PropTypes from "prop-types";
 import styles from "./Autocomplete.module.scss";
 
@@ -15,6 +15,10 @@ const onConfirm = suggestion => {
 
 export default class Autocomplete extends Component {
 	suggest(query, syncResults) {
+		if (this.props.source === false) {
+			return;
+		}
+
 		if (typeof this.props.source === "object") {
 			// TODO: Filter based on query param
 			syncResults(this.props.source);
@@ -31,16 +35,26 @@ export default class Autocomplete extends Component {
 	render() {
 		return (
 			<div className={styles.ac}>
-				<AccessableAutocomplete
-					id="autocomplete"
-					placeholder="Search NICE…"
-					displayMenu="overlay"
-					source={(q, s) => {
-						this.suggest(q, s);
-					}}
-					templates={templates}
-					onConfirm={onConfirm}
-				/>
+				{this.props.source === false ? (
+					<div className="autocomplete__wrapper">
+						<input
+							type="search"
+							className="autocomplete__input autocomplete__input--default"
+							placeholder={this.props.placeholder}
+						/>
+					</div>
+				) : (
+					<AccessibleAutocomplete
+						id="autocomplete"
+						placeholder={this.props.placeholder}
+						displayMenu="overlay"
+						source={(q, s) => {
+							this.suggest(q, s);
+						}}
+						templates={templates}
+						onConfirm={onConfirm}
+					/>
+				)}
 			</div>
 		);
 	}
@@ -48,9 +62,11 @@ export default class Autocomplete extends Component {
 
 Autocomplete.propTypes = {
 	source: PropTypes.oneOfType([
+		PropTypes.bool,
 		PropTypes.string,
 		PropTypes.arrayOf(
 			PropTypes.shape({ Title: PropTypes.string, Link: PropTypes.string })
 		)
-	])
+	]),
+	placeholder: PropTypes.string
 };

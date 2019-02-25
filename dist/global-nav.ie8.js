@@ -1,7 +1,7 @@
 /*!
- * NICE TopHat 1.0.0 | 2019-02-01
+ * NICE Global Nav 1.0.0 | 2019-02-25
  * © Copyright NICE 2015-2019
- * Licensed under MIT (https://github.com/nhsevidence/nice.tophat/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/nhsevidence/global-nav/blob/master/LICENSE)
  */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -82,16 +82,16 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = ".";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 61);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 47:
+/***/ 61:
 /***/ (function(module, exports) {
 
 /**

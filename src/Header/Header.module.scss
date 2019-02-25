@@ -15,14 +15,6 @@
     font-family: inherit;
   }
 
-  a,
-  button,
-  input {
-    &:focus {
-      outline: 3px solid $colour-focus; // TODO: Replace with design system mixin
-    }
-  }
-
   @media print {
     display: none;
   }
@@ -41,6 +33,10 @@
   display: inline-block;
   height: rem(30);
   margin-bottom: rem($spacing-medium);
+
+  &:focus {
+    outline: 3px solid $colour-focus; // TODO: Replace with design system mixin
+  }
 
   svg {
     height: 100%;

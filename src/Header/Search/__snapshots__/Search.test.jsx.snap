@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Rendering Matches snapshot 1`] = `
+<form
+  action="/search"
+  className="search"
+  role="search"
+>
+  <label
+    className="label"
+    htmlFor="autocomplete"
+  >
+    Search term
+  </label>
+  <Autocomplete
+    placeholder="Search NICE…"
+  />
+  <button
+    aria-label="Perform search"
+    className="button"
+    type="submit"
+  >
+    <span
+      aria-hidden="true"
+      className="icon"
+    >
+      ⌕
+    </span>
+  </button>
+</form>
+`;

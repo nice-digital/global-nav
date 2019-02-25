@@ -10,6 +10,7 @@
   background: #fff;
   border: 1px solid $colour-text;
   color: $colour-text;
+  cursor: pointer;
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
@@ -20,6 +21,10 @@
   text-decoration: none;
   vertical-align: middle;
   white-space: nowrap;
+
+  &:focus {
+    outline: 3px solid $colour-focus; // TODO: Replace with design system mixin
+  }
 }
 
 .myAccount {

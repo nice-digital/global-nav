@@ -37,6 +37,26 @@ describe("Header", () => {
 		});
 	});
 
+	describe("Search", () => {
+		it("Renders search by default", () => {
+			const wrapper = shallow(<Header {...defaultProps} />);
+			expect(wrapper.find("Search").length).toEqual(1);
+		});
+
+		it("Doesn't render search if search is disabled", () => {
+			const wrapper = shallow(<Header {...defaultProps} search={false} />);
+			expect(wrapper.find("Search").length).toEqual(0);
+		});
+
+		it("Passes search props down to search component", () => {
+			const searchOptions = { url: "/test", placeholder: "Test placeholder" };
+			const wrapper = shallow(
+				<Header {...defaultProps} search={searchOptions} />
+			);
+			expect(wrapper.find("Search").props()).toEqual(searchOptions);
+		});
+	});
+
 	describe("Nav", () => {
 		it("Nav is collapsed by default", () => {
 			const wrapper = shallow(<Header {...defaultProps} />);

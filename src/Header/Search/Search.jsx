@@ -14,13 +14,16 @@ export default class Search extends Component {
 				<label className={styles.label} htmlFor="autocomplete">
 					Search term
 				</label>
-				<Autocomplete source={this.props.autocomplete} />
+				<Autocomplete
+					source={this.props.autocomplete}
+					placeholder={this.props.placeholder}
+				/>
 				<button
 					className={styles.button}
 					type="submit"
 					aria-label="Perform search"
 				>
-					{!window || typeof SVGRect !== "undefined" ? (
+					{!window || typeof window.SVGRect !== "undefined" ? (
 						<SearchIcon className={styles.icon} />
 					) : (
 						<span className={styles.icon} aria-hidden="true">
@@ -36,13 +39,16 @@ export default class Search extends Component {
 Search.propTypes = {
 	url: PropTypes.string,
 	autocomplete: PropTypes.oneOfType([
+		PropTypes.bool,
 		PropTypes.string,
 		PropTypes.arrayOf(
 			PropTypes.shape({ Title: PropTypes.string, Link: PropTypes.string })
 		)
-	])
+	]),
+	placeholder: PropTypes.string
 };
 
 Search.defaultProps = {
-	url: "/search"
+	url: "/search",
+	placeholder: "Search NICE…"
 };

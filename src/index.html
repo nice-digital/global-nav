@@ -38,18 +38,19 @@
 			global_nav_config = {
 				service: "guidance",
 				header: {
-					//searchUrl: "/search"
 					//search: false
 					search: {
 						//url: "/search"
-						autocomplete: [{ Title: "title", Link: "http://www.google.com" }]
-					}
-					//enabled: false,
+						autocomplete: [{ Title: "title", Link: "http://www.google.com" }],
+						autocomplete: false,
+						//placeholder: "SEARCH"
+					},
 					//onRendering: "headerRendering",
 					//onRendering: (element) => { console.log("Header (callback func) rendering into", element); },
 					//onRendered: headerRendered,
 					//onRendered: (element) => { console.log("Header (callback func) rendered into", element); }
 				},
+				//header: false,
 				footer: {
 					//enabled: true
 				}
