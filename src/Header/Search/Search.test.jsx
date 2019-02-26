@@ -21,6 +21,7 @@ describe("Search", () => {
 			window.SVGRect = {};
 			const wrapper = shallow(<Search {...defaultProps} />);
 			expect(wrapper.find("SvgSearch").length).toEqual(1);
+			expect(wrapper.find("SvgSearch").props()).toEqual({ className: "icon" });
 			window.SVGRect = undefined;
 		});
 
