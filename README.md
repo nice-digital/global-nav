@@ -329,6 +329,15 @@ TODO: Add CDN usage URLs
 <script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
 ```
 
+In the case of a breaking change or for testing you might want to use a specific version of the global nav. You can do so by using a folder name with the build number:
+
+```js
+<!--[if lt IE 9]>
+	<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.ie8.min.js"></script>
+<![endif]-->
+<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.min.js"></script>
+```
+
 #### Configuration
 
 Global Nav configuration is loaded from a global JavaScript variable on the window object called `global_nav_config`. The following config options apply:
