@@ -41,6 +41,12 @@
   svg {
     height: 100%;
   }
+
+  // Fallback image used for Ie8 - IE8 adds a black border round images
+  // We can remove this when we drop support for IE8
+  img {
+    border: 0;
+  }
 }
 
 .wrapper {
