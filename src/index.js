@@ -1,5 +1,5 @@
-import { renderHeader } from "./renderer";
+import { renderHeader, renderFooter } from "./renderer";
 
 renderHeader();
 
-renderHeader();
+renderFooter();
