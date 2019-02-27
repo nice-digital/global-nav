@@ -26,8 +26,9 @@ export default class Search extends Component {
 					{!window || typeof window.SVGRect !== "undefined" ? (
 						<SearchIcon className={styles.icon} />
 					) : (
+						// We can remove this fallback when we drop support for IE8
 						<span className={styles.icon} aria-hidden="true">
-							&#x2315;
+							go
 						</span>
 					)}
 				</button>
