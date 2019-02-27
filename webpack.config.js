@@ -32,10 +32,11 @@ module.exports = {
 			"node_modules"
 		],
 		alias: {
-			// TODO: Change aliases to nerv for non-HMR IE8 build
-			//react: "nervjs",
-			//"react-dom": "nervjs"
-			"react-dom": "@hot-loader/react-dom"
+			react: HOT ? "react" : "nervjs",
+			"react-dom": HOT ? "@hot-loader/react-dom" : "nervjs",
+			"react-hot-loader": HOT
+				? "react-hot-loader"
+				: path.resolve(__dirname, "./fake-react-hot-loader")
 		}
 	},
 
@@ -59,12 +60,6 @@ module.exports = {
 				use: "babel-loader",
 				resolve: { extensions: [".js", ".jsx"] }
 			},
-			// TODO: Include es3ify-loader for non-HMR IE8 build
-			// {
-			// 	test: /\.jsx?$/,
-			// 	enforce: "post",
-			// 	use: "es3ify-loader"
-			// },
 			{
 				test: /\.scss$/,
 				use: [
@@ -105,7 +100,17 @@ module.exports = {
 					}
 				]
 			}
-		]
+		].concat(
+			HOT
+				? []
+				: {
+						// Use es3ify loader to support IE8 by changing something.default to something["default"] etc
+						// We can remove this when we drop support for IE8
+						test: /\.jsx?$/,
+						enforce: "post",
+						use: "es3ify-loader"
+				  }
+		)
 	},
 
 	plugins: [
@@ -113,10 +118,16 @@ module.exports = {
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(ENV)
 		}),
+		// Add a ponyfill for Promise implementation in IE8+
+		// Ponyfill rather than polyfill to avoid polluting global scope
+		new webpack.ProvidePlugin({
+			Promise: "promise-polyfill"
+		}),
 		new HtmlWebpackPlugin({
 			template: "./index.html",
 			minify: { collapseWhitespace: true },
-			// TODO: Why do we do this?
+			// Exlucde the IE8 bundle from outputting in the HTML file.
+			// This is so that we can manually include it in a conditional comment.
 			excludeAssets: [/ie/]
 		}),
 		new HtmlWebpackExcludeAssetsPlugin()
@@ -130,7 +141,10 @@ module.exports = {
 
 	stats: { colors: true },
 
-	devtool: "eval",
+	// Eval sourcemaps don't play nicely with IE8 (because es3ify doesn't work on
+	// strings and we still have code like something.default which breaks IE8).
+	// When we drop support for IE8 then we can revert to just using eval sourcemaps.
+	devtool: HOT ? "eval" : false,
 
 	devServer: {
 		port: process.env.PORT || 8080,
