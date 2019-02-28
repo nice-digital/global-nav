@@ -24,7 +24,7 @@ exports[`Search Rendering Matches snapshot 1`] = `
       aria-hidden="true"
       className="icon"
     >
-      ⌕
+      go
     </span>
   </button>
 </form>

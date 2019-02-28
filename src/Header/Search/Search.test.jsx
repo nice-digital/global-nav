@@ -25,9 +25,9 @@ describe("Search", () => {
 			window.SVGRect = undefined;
 		});
 
-		it("Renders fallback unicode search icon when in an non SVG-compatible browser", () => {
+		it("Renders fallback unicode search button text when in an non SVG-compatible browser", () => {
 			const wrapper = shallow(<Search {...defaultProps} />);
-			expect(wrapper.find("button").text()).toEqual("⌕");
+			expect(wrapper.find("button").text()).toEqual("go");
 		});
 	});
 
