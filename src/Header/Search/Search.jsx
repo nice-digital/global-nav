@@ -28,7 +28,7 @@ export default class Search extends Component {
 					) : (
 						// We can remove this fallback when we drop support for IE8
 						<span className={styles.icon} aria-hidden="true">
-							go
+							search
 						</span>
 					)}
 				</button>

@@ -25,12 +25,12 @@ $size: rem(40);
   color: $colour-text-inverse;
   cursor: pointer;
   height: $size;
-  padding: 0;
+  min-width: $size;
+  padding: rem(0 $spacing-small);
   position: absolute;
   right: 0;
   text-align: center;
   top: 0;
-  width: $size;
 
   &:focus {
     // TODO:  Replace with design system mixin

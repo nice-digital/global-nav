@@ -27,7 +27,7 @@ describe("Search", () => {
 
 		it("Renders fallback unicode search button text when in an non SVG-compatible browser", () => {
 			const wrapper = shallow(<Search {...defaultProps} />);
-			expect(wrapper.find("button").text()).toEqual("go");
+			expect(wrapper.find("button").text()).toEqual("search");
 		});
 	});
 
