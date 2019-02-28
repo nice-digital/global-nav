@@ -322,8 +322,11 @@ Override the placeholder (and label) of the search input box, for example change
 
 TODO: Add CDN usage URLs
 
+TODO: Note HTML5 shiv for IE8
+
 ```js
 <!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="//cdn.nice.org.uk/global-nav/global-nav.ie8.min.js"></script>
 <![endif]-->
 <script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
