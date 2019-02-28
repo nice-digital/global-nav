@@ -26,11 +26,18 @@
   // TODO Replace with mixin from nice design system
   width: 96%;
   width: calc(100% - #{rem($spacing-large)});
+
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
 }
 
 .home {
   color: $colour-true-black;
   display: inline-block;
+  float: left;
   height: rem(30);
   margin-bottom: rem($spacing-medium);
 
@@ -52,14 +59,30 @@
 .wrapper {
   display: flex;
   flex-grow: 1;
+  float: right;
   justify-content: space-between;
   margin-bottom: rem($spacing-medium);
+  width: 50%;
+
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.search {
+  flex-grow: 1;
+  float: left;
+  margin-right: rem($spacing-medium);
+  min-width: percentage(2 / 3);
 }
 
 .mobileMenuBtn {
   appearance: none;
   background: none;
   border: 1px solid $colour-text;
+  float: right;
   font-family: inherit;
   font-size: 110%;
   height: rem(40); // TODO: Share a variable with search for height
@@ -87,17 +110,19 @@
   }
 }
 
-.search {
-  flex-grow: 1;
-  margin-right: rem($spacing-medium);
-
-  @include mq($from: sm) {
-    max-width: 475px;
-  }
-}
-
 .account {
   display: none;
+}
+
+@include mq($until: md) {
+  .home {
+    float: none;
+  }
+
+  .wrapper {
+    float: none;
+    width: auto;
+  }
 }
 
 @include mq($from: md) {
@@ -119,12 +144,12 @@
     justify-content: flex-end;
   }
 
-  .mobileMenuBtn {
-    display: none;
-  }
-
   .search {
     margin-right: rem($spacing-large);
+  }
+
+  .mobileMenuBtn {
+    display: none;
   }
 
   .account {
