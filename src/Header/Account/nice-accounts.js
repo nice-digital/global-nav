@@ -1,8 +1,8 @@
 // Checks if you are logged in via NICE Accounts
 // Returns a promise that resolves with the data from NICE Accounts.
 // Returns a promise that rejects if the data could not be loaded.
-const checkIsLoggedIn = () => {
-	return new Promise((resolve, reject) => {
+const checkIsLoggedIn = function() {
+	return new Promise(function(resolve, reject) {
 		const url = "https://accounts.nice.org.uk/tophat";
 
 		var body = document.body;
@@ -14,7 +14,7 @@ const checkIsLoggedIn = () => {
 
 		let done = false;
 
-		script.onload = script.onreadystatechange = () => {
+		script.onload = script.onreadystatechange = function() {
 			if (
 				!done &&
 				(!script.readyState ||
@@ -31,9 +31,7 @@ const checkIsLoggedIn = () => {
 				resolve(window._na);
 			}
 		};
-		script.onerror = () => {
-			reject();
-		};
+		script.onerror = reject;
 
 		body.insertBefore(script, body.firstChild);
 	});

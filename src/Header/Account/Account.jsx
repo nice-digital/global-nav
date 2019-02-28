@@ -22,14 +22,18 @@ export default class Account extends Component {
 
 	componentDidMount() {
 		checkIsLoggedIn()
-			.then(data => {
-				if (this.props.onLoginStatusChecked) {
-					this.props.onLoginStatusChecked(data);
-				}
-			})
-			.catch(e => {
-				console.warn("Couldn't load account data", e);
-			});
+			.then(
+				function(data) {
+					if (this.props.onLoginStatusChecked) {
+						this.props.onLoginStatusChecked(data);
+					}
+				}.bind(this)
+			)
+			.catch(
+				function(e) {
+					console.warn("Couldn't load account data", e);
+				}.bind(this)
+			);
 	}
 
 	render() {
@@ -51,11 +55,13 @@ export default class Account extends Component {
 					id="my-account"
 				>
 					{accountsData.links &&
-						Object.keys(accountsData.links).map((text, i) => (
-							<li key={i}>
-								<a href={accountsData.links[text]}>{text}</a>
-							</li>
-						))}
+						Object.keys(accountsData.links).map(function(text, i) {
+							return (
+								<li key={i}>
+									<a href={accountsData.links[text]}>{text}</a>
+								</li>
+							);
+						})}
 				</ul>
 			</div>
 		) : (
