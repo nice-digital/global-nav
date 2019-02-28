@@ -1,6 +1,14 @@
 @import '~@nice-digital/design-system/src/stylesheets/settings/settings';
 @import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
 
+.container {
+  margin: 0 auto rem($spacing-medium) auto;
+  max-width: rem($nice-container-max-width);
+  // TODO Replace with mixin from nice design system
+  width: 96%;
+  width: calc(100% - #{rem($spacing-large)});
+}
+
 .alert {
   background: $colour-error-background;
   border: 1px solid $colour-error;
@@ -8,4 +16,12 @@
   margin: rem($spacing-medium) auto 0 auto;
   max-width: rem($nice-container-max-width);
   padding: rem($spacing-medium);
+
+  > :first-child {
+    margin-top: 0;
+  }
+}
+
+.lastP {
+  margin-bottom: 0;
 }

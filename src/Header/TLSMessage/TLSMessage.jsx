@@ -22,10 +22,31 @@ export default class TLSMessage extends Component {
 		}
 
 		return (
-			<div className={styles.alert}>
-				Your version of Internet Explorer (version {ieVersion}) doesnt support
-				TLS 1.2. <strong>TODO: Add copy about TLS</strong>
-			</div>
+			<aside className={styles.container}>
+				<div className={styles.alert}>
+					<h2>Your browser is out of date</h2>
+					<p>
+						Your version of Internet Explorer (version {ieVersion}) is outdated
+						and insecure.
+					</p>
+					<p>
+						NICE will be upgrading websites to latest security standards from{" "}
+						<strong>1 August 2019</strong>.
+					</p>
+					<p>
+						After this date, NICE websites may stop working in Internet Explorer
+						versions 8, 9 and 10.
+						<br />
+						Please upgrade your browser to continue accessing NICE services
+						after this date.
+					</p>
+					<p className={styles.lastP}>
+						<a href="http://www.nice.org.uk/tls-upgrades">
+							Find out how to upgrade your browser
+						</a>
+					</p>
+				</div>
+			</aside>
 		);
 	}
 }
