@@ -321,10 +321,20 @@ const suggestions = [
 <Header search={{ autocomplete: suggestions }} />;
 ```
 
-Pass a string to use either:
+Pass a string, not containing a slash, to use a variable with that name on `window` e.g. `<Header search={{ autocomplete: "topics" }} />`. This is useful for when the suggestions are loaded asynchronously after page load.
 
-- a variable with that name on `window`, if the source name _doesn't_ contain a slash e.g. `<Header search={{ autocomplete: "topics" }} />`. This is useful for when the suggestions are loaded asynchronously after page load
-- or to make a remote call to a URL on demand, if the source name _does_ contain a slash e.g. `<Header search={{ autocomplete: "/autocomplete?ajax=ajax" }} />`.
+Or to make a _remote call_ to a URL on demand, if the source name _does_ contain a slash e.g. `<Header search={{ autocomplete: "/autocomplete?ajax=ajax" }} />`.
+
+The response is expected to be JSON in the format `Array<{ Title: string, Link: string }>` e.g.:
+
+```json
+[
+	{
+		"Title": "Paracetamol",
+		"Link": "/search?q=Paracetamol"
+	}
+]
+```
 
 ###### Header.search.placeholder
 
