@@ -306,10 +306,25 @@ For example submitting a search term _paracetamol_ with a url of _/search_ will 
 
 ###### Header.search.autocomplete
 
-- Type: `Boolean | String | Object`
+- Type: `Boolean | String | Array`
 - Default: `false`
 
-TODO
+The source for autocomplete (typeahead) suggestions. Set to `false` to disable autocomplete.
+
+Pass an array of objects to use as the source. The objects in the array should have two keys of `Title: string` and `Link: string`. E.g.:
+
+```jsx
+const suggestions = [
+	{ Title: "Achilles tendinopathy", Link: "/achilles-tendinopathy" },
+	{ Title: "Acne vulgaris", Link: "/acne-vulgaris" }
+];
+<Header search={{ autocomplete: suggestions }} />;
+```
+
+Pass a string to use either:
+
+- a variable with that name on `window`, if the source name _doesn't_ contain a slash e.g. `<Header search={{ autocomplete: "topics" }} />`. This is useful for when the suggestions are loaded asynchronously after page load
+- or to make a remote call to a URL on demand, if the source name _does_ contain a slash e.g. `<Header search={{ autocomplete: "/autocomplete?ajax=ajax" }} />`.
 
 ###### Header.search.placeholder
 
