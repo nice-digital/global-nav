@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
+<div
+  className="ac"
+>
+  <e
+    autoselect={false}
+    confirmOnBlur={true}
+    cssNamespace="autocomplete"
+    defaultValue=""
+    displayMenu="overlay"
+    dropdownArrow={[Function]}
+    id="autocomplete"
+    minLength={3}
+    name="q"
+    onConfirm={[Function]}
+    placeholder=""
+    required={false}
+    showAllValues={false}
+    showNoOptionsFound={false}
+    source={[Function]}
+    tNoResults={[Function]}
+    templates={
+      Object {
+        "inputValue": [Function],
+        "suggestion": [Function],
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Autocomplete Non-autocomplete should render fallback search box in IE8 1`] = `
+<div
+  className="ac"
+>
+  <div
+    className="autocomplete__wrapper"
+  >
+    <input
+      className="autocomplete__input autocomplete__input--default"
+      defaultValue="diabetes"
+      id="autocomplete"
+      name="q"
+      type="search"
+    />
+  </div>
+</div>
+`;
+
+exports[`Autocomplete Non-autocomplete should render fallback search box when no source 1`] = `
+<div
+  className="ac"
+>
+  <div
+    className="autocomplete__wrapper"
+  >
+    <input
+      className="autocomplete__input autocomplete__input--default"
+      defaultValue="diabetes"
+      id="autocomplete"
+      name="q"
+      type="search"
+    />
+  </div>
+</div>
+`;

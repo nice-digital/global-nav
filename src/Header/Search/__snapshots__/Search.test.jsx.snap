@@ -14,6 +14,7 @@ exports[`Search Rendering Matches snapshot 1`] = `
   </label>
   <Autocomplete
     placeholder="Search NICE…"
+    query=""
     source={false}
   />
   <button

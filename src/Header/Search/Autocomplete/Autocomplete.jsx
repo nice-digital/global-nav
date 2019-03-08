@@ -60,22 +60,35 @@ export default class Autocomplete extends Component {
 
 	render() {
 		const isIE8 = function() {
-			return window.attachEvent && !window.addEventListener;
+			console.log(navigator.userAgent);
+
+			if (!navigator) return false; // For server rendering
+			const ua = navigator.userAgent;
+			var msie = ua.indexOf("MSIE ");
+			if (msie > 0) {
+				return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10) <= 8;
+			}
+
+			return false;
 		};
 
 		return (
 			<div className={styles.ac}>
-				{this.props.source === false || isIE8 ? (
+				{!this.props.source || isIE8() ? (
 					<div className="autocomplete__wrapper">
 						<input
 							type="search"
+							id="autocomplete"
+							name="q"
 							className="autocomplete__input autocomplete__input--default"
 							placeholder={this.props.placeholder}
+							defaultValue={this.props.query}
 						/>
 					</div>
 				) : (
 					<AccessibleAutocomplete
 						id="autocomplete"
+						name="q"
 						placeholder={this.props.placeholder}
 						displayMenu="overlay"
 						minLength={3}
@@ -85,6 +98,7 @@ export default class Autocomplete extends Component {
 						templates={templates}
 						onConfirm={onConfirm}
 						showNoOptionsFound={false}
+						defaultValue={this.props.query}
 					/>
 				)}
 			</div>
@@ -100,7 +114,8 @@ Autocomplete.propTypes = {
 			PropTypes.shape({ Title: PropTypes.string, Link: PropTypes.string })
 		)
 	]),
-	placeholder: PropTypes.string
+	placeholder: PropTypes.string,
+	query: PropTypes.string
 };
 
 Autocomplete.defaultProps = {

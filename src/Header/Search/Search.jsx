@@ -17,6 +17,7 @@ export default class Search extends Component {
 				<Autocomplete
 					source={this.props.autocomplete}
 					placeholder={this.props.placeholder}
+					query={this.props.query}
 				/>
 				<button
 					className={styles.button}
@@ -46,10 +47,12 @@ Search.propTypes = {
 			PropTypes.shape({ Title: PropTypes.string, Link: PropTypes.string })
 		)
 	]),
-	placeholder: PropTypes.string
+	placeholder: PropTypes.string,
+	query: PropTypes.string
 };
 
 Search.defaultProps = {
 	url: "/search",
-	placeholder: "Search NICE…"
+	placeholder: "Search NICE…",
+	query: ""
 };

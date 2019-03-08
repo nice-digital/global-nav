@@ -38,11 +38,13 @@ describe("Search", () => {
 					{...defaultProps}
 					autocomplete="variableName"
 					placeholder="Test placeholder"
+					query="diabetes"
 				/>
 			);
 			expect(wrapper.find("Autocomplete").props()).toEqual({
 				source: "variableName",
-				placeholder: "Test placeholder"
+				placeholder: "Test placeholder",
+				query: "diabetes"
 			});
 		});
 	});
