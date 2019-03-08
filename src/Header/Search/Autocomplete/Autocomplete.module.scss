@@ -14,8 +14,6 @@
       border: 1px solid $colour-nice-grey-2;
       border-radius: 0; /* Safari 10 on iOS adds implicit border rounding. */
       box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
       margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */
       width: 100%;
     }
@@ -67,7 +65,7 @@
 
     .autocomplete__menu {
       background-color: #fff;
-      border: 2px solid #0b0c0c;
+      border: 1px solid $colour-nice-grey-3;
       border-top: 0;
       color: #34384b;
       margin: 0;
@@ -75,7 +73,6 @@
       overflow-x: hidden;
       padding: 0;
       width: 100%;
-      width: calc(100% - 4px);
     }
 
     .autocomplete__menu--visible {
@@ -101,9 +98,23 @@
     .autocomplete__option {
       border-bottom: solid #bfc1c3;
       border-width: 1px 0;
+      color: $colour-text;
       cursor: pointer;
       display: block;
       position: relative;
+
+      a {
+        color: inherit;
+        display: block;
+        padding: rem($spacing-small $spacing-medium);
+        text-decoration: none;
+      }
+
+      mark {
+        background: 0;
+        color: inherit;
+        font-weight: bold;
+      }
     }
 
     .autocomplete__option > * {
@@ -124,9 +135,9 @@
 
     .autocomplete__option--focused,
     .autocomplete__option:hover {
-      background-color: #005ea5;
-      border-color: #005ea5;
-      color: white;
+      background-color: $colour-nice-teal-2;
+      border-color: $colour-nice-teal;
+      color: $colour-text-inverse;
       outline: none;
     }
 
