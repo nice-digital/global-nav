@@ -59,9 +59,13 @@ export default class Autocomplete extends Component {
 	}
 
 	render() {
+		const isIE8 = function() {
+			return window.attachEvent && !window.addEventListener;
+		};
+
 		return (
 			<div className={styles.ac}>
-				{this.props.source === false ? (
+				{this.props.source === false || isIE8 ? (
 					<div className="autocomplete__wrapper">
 						<input
 							type="search"
