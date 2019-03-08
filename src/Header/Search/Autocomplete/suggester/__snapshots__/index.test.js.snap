@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`suggester should find and highlight 5 phrases and/or terms in the correct but ignore non-matches 1`] = `
+Array [
+  Object {
+    "Link": "/brown-fox",
+    "Title": "brown fox",
+    "TitleHtml": "<mark>brown fox</mark>",
+  },
+  Object {
+    "Link": "/quick-brown-fox",
+    "Title": "quick brown fox",
+    "TitleHtml": "quick <mark>brown fox</mark>",
+  },
+  Object {
+    "Link": "/the-quick-brown-fox",
+    "Title": "the quick 'brown fox'",
+    "TitleHtml": "the quick '<mark>brown fox</mark>'",
+  },
+  Object {
+    "Link": "/the-fox-was-brown",
+    "Title": "the fox was brown",
+    "TitleHtml": "the <mark>fox</mark> was <mark>brown</mark>",
+  },
+  Object {
+    "Link": "/the-fox-was-big-and-brown",
+    "Title": "the fox was big and brown",
+    "TitleHtml": "the <mark>fox</mark> was big and <mark>brown</mark>",
+  },
+]
+`;

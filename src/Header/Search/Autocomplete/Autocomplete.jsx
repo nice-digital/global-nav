@@ -3,10 +3,17 @@ import AccessibleAutocomplete from "accessible-autocomplete/react";
 import PropTypes from "prop-types";
 import styles from "./Autocomplete.module.scss";
 
+import { suggester } from "./suggester";
+
 const templates = {
 	inputValue: suggestion => suggestion && suggestion.Title,
-	suggestion: suggestion =>
-		suggestion && `<a href="${suggestion.Link}">${suggestion.Title}</a>`
+	suggestion: function(suggestion) {
+		return (
+			suggestion &&
+			`<a href="${suggestion.Link}">${suggestion.TitleHtml ||
+				suggestion.Title}</a>`
+		);
+	}
 };
 
 const onConfirm = suggestion => {
@@ -14,21 +21,33 @@ const onConfirm = suggestion => {
 };
 
 export default class Autocomplete extends Component {
-	suggest(query, syncResults) {
-		if (this.props.source === false) {
+	suggest(query, populateResults) {
+		if (this.props.source === false) return;
+
+		let source;
+
+		if (Array.isArray(this.props.source)) {
+			source = this.props.source;
+		}
+
+		if (
+			typeof this.props.source === "string" &&
+			this.props.source.indexOf("/") === -1
+		) {
+			source = window[this.props.source];
+			if (!source) return;
+		}
+
+		if (source) {
+			populateResults(suggester(source, query));
 			return;
 		}
 
-		if (typeof this.props.source === "object") {
-			// TODO: Filter based on query param
-			syncResults(this.props.source);
-			return;
-		}
-
-		fetch(`https://www.nice.org.uk/autocomplete?q=${query}&ajax=ajax`)
+		// Default to a URL for asynchronously loading suggestions from the server
+		fetch(`${this.props.source}?q=${query}&ajax=ajax`)
 			.then(response => response.json())
 			.then(data => {
-				syncResults(data);
+				populateResults(data);
 			});
 	}
 
@@ -48,6 +67,7 @@ export default class Autocomplete extends Component {
 						id="autocomplete"
 						placeholder={this.props.placeholder}
 						displayMenu="overlay"
+						minLength={3}
 						source={(q, s) => {
 							this.suggest(q, s);
 						}}
@@ -69,4 +89,8 @@ Autocomplete.propTypes = {
 		)
 	]),
 	placeholder: PropTypes.string
+};
+
+Autocomplete.defaultProps = {
+	source: false
 };
