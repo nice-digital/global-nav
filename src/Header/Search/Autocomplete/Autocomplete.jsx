@@ -5,6 +5,9 @@ import styles from "./Autocomplete.module.scss";
 
 import { suggester } from "./suggester";
 
+// The maximum number of autocomplete results to return
+const maxResults = 5;
+
 const templates = {
 	inputValue: suggestion => suggestion && suggestion.Title,
 	suggestion: function(suggestion) {
@@ -39,15 +42,19 @@ export default class Autocomplete extends Component {
 		}
 
 		if (source) {
-			populateResults(suggester(source, query));
+			populateResults(suggester(source, query, maxResults));
 			return;
 		}
 
 		// Default to a URL for asynchronously loading suggestions from the server
-		fetch(`${this.props.source}?q=${query}&ajax=ajax`)
+		fetch(
+			`${this.props.source}${
+				this.props.source.indexOf("?") === -1 ? "?" : "&"
+			}q=${query}`
+		)
 			.then(response => response.json())
 			.then(data => {
-				populateResults(data);
+				populateResults(data.slice(0, maxResults));
 			});
 	}
 
@@ -73,6 +80,7 @@ export default class Autocomplete extends Component {
 						}}
 						templates={templates}
 						onConfirm={onConfirm}
+						showNoOptionsFound={false}
 					/>
 				)}
 			</div>

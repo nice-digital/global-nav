@@ -2,9 +2,6 @@ import { tokenize } from "./tokenizer";
 import { findPhrase, highlightPhrase } from "./phrase-finder";
 import { findTerms, highlightTerm } from "./term-finder";
 
-// The maximum number of autocomplete results to return
-const maxResults = 5;
-
 const isValidSuggestion = function(suggestion) {
 	return suggestion.phraseMatch != null || suggestion.termMatches.length > 0;
 };
@@ -63,8 +60,9 @@ const sortSuggestions = function(a, b) {
  *
  * @param {Array<{Title, Link}>} suggestions The complete list of sugggestions to filter
  * @param {String} query The search query
+ * @param {Number} maxResults The maximum number of results to show
  */
-export const suggester = function(suggestions, query) {
+export const suggester = function(suggestions, query, maxResults = 5) {
 	const queryTokens = tokenize(query ? query.trim() : "");
 
 	const findPhrasesAndTerms = function(suggestion) {

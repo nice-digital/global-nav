@@ -158,6 +158,14 @@ module.exports = {
 		// hot: false and inline: false to support IE8 in dev mode.
 		// These can be set to true when we add IE8 support
 		hot: HOT,
-		inline: HOT
+		inline: HOT,
+		proxy: {
+			// For mimicking niceorg autocomplete endpoint
+			"/autocomplete": {
+				target: "https://www.nice.org.uk",
+				secure: false,
+				changeOrigin: true
+			}
+		}
 	}
 };
