@@ -118,10 +118,11 @@ module.exports = {
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(ENV)
 		}),
-		// Add a ponyfill for Promise implementation in IE8+
+		// Add a ponyfill for Promise/fetch implementation in IE 8/9+
 		// Ponyfill rather than polyfill to avoid polluting global scope
 		new webpack.ProvidePlugin({
-			Promise: "promise-polyfill"
+			Promise: "promise-polyfill",
+			fetch: "unfetch"
 		}),
 		new HtmlWebpackPlugin({
 			template: "./index.html",
