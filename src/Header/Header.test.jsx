@@ -49,7 +49,11 @@ describe("Header", () => {
 		});
 
 		it("Passes search props down to search component", () => {
-			const searchOptions = { url: "/test", placeholder: "Test placeholder" };
+			const searchOptions = {
+				url: "/test",
+				placeholder: "Test placeholder",
+				query: ""
+			};
 			const wrapper = shallow(
 				<Header {...defaultProps} search={searchOptions} />
 			);
