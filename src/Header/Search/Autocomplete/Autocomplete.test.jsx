@@ -2,7 +2,7 @@ import React from "react";
 import AccessibleAutocomplete from "accessible-autocomplete/react";
 
 import Autocomplete from "./Autocomplete";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
 const IE8UserAgent =
@@ -31,6 +31,19 @@ describe("Autocomplete", () => {
 			expect(wrapper.find(AccessibleAutocomplete).props().defaultValue).toEqual(
 				"diabetes"
 			);
+		});
+
+		it("should add HotJar whitelist attribute to input box", () => {
+			const wrapper = mount(
+				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
+			);
+
+			expect(
+				wrapper
+					.getDOMNode()
+					.querySelector("input#autocomplete")
+					.getAttribute("data-hj-whitelist")
+			).toEqual("");
 		});
 	});
 

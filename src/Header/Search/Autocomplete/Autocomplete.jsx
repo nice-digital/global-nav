@@ -62,8 +62,6 @@ export default class Autocomplete extends Component {
 
 	render() {
 		const isIE8 = function() {
-			console.log(navigator.userAgent);
-
 			if (!navigator) return false; // For server rendering
 			const ua = navigator.userAgent;
 			var msie = ua.indexOf("MSIE ");
@@ -85,6 +83,7 @@ export default class Autocomplete extends Component {
 							className="autocomplete__input autocomplete__input--default"
 							placeholder={this.props.placeholder}
 							defaultValue={this.props.query}
+							data-hj-whitelist=""
 						/>
 					</div>
 				) : (
@@ -94,13 +93,23 @@ export default class Autocomplete extends Component {
 						placeholder={this.props.placeholder}
 						displayMenu="overlay"
 						minLength={3}
-						source={(q, s) => {
+						source={function(q, s) {
 							this.suggest(q, s);
-						}}
+						}.bind(this)}
 						templates={templates}
 						onConfirm={onConfirm}
 						showNoOptionsFound={false}
 						defaultValue={this.props.query}
+						ref={function(acElement) {
+							// TODO: This relies on an inner implementation detail of the autocomplete component, can we do this in a better way?
+							acElement &&
+								acElement.elementReferences &&
+								acElement.elementReferences[-1] &&
+								acElement.elementReferences[-1].setAttribute(
+									"data-hj-whitelist",
+									""
+								);
+						}}
 					/>
 				)}
 			</div>
