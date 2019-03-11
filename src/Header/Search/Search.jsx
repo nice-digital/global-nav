@@ -12,7 +12,7 @@ export default class Search extends Component {
 			<form role="search" action={this.props.url} className={styles.search}>
 				{/* eslint jsx-a11y/label-has-for: 0 */}
 				<label className={styles.label} htmlFor="autocomplete">
-					Search term
+					{this.props.placeholder}
 				</label>
 				<Autocomplete
 					source={this.props.autocomplete}

@@ -10,7 +10,7 @@ exports[`Search Rendering Matches snapshot 1`] = `
     className="label"
     htmlFor="autocomplete"
   >
-    Search term
+    Search NICE…
   </label>
   <Autocomplete
     placeholder="Search NICE…"
