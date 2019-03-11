@@ -9,7 +9,9 @@ import { suggester } from "./suggester";
 const maxResults = 5;
 
 const templates = {
-	inputValue: suggestion => suggestion && suggestion.Title,
+	inputValue: function(suggestion) {
+		return suggestion && suggestion.Title;
+	},
 	suggestion: function(suggestion) {
 		return (
 			suggestion &&
@@ -19,7 +21,7 @@ const templates = {
 	}
 };
 
-const onConfirm = suggestion => {
+const onConfirm = function(suggestion) {
 	if (suggestion) window.location.href = suggestion.Link;
 };
 
