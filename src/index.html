@@ -61,12 +61,14 @@
 			};
 		</script>
 		<!--[if lt IE 9]>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<![endif]-->
-		<!--[if lt IE 9
-			]><% for (var chunk in htmlWebpackPlugin.files.chunks) { %><% if
-			((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%><script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script
-			><% } %><% } %><!
-		[endif]-->
+		<!--[if lt IE 9]>
+			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+				<% if ((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
+					<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+				<% } %>
+			<% } %>
+		<![endif]-->
 	</body>
 </html>
