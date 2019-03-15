@@ -3,14 +3,16 @@
 @import 'mq';
 
 .header {
-  border-bottom: rem($spacing-x-small) solid $colour-nice-white; // TODO: Replace with $colour-page when Design System is rolled out everywhere
+  border-bottom: rem($spacing-xx-small) solid $colour-nice-teal;
   box-sizing: border-box;
   font-family: unquote($nice-font-family-sans);
+  padding: rem($spacing-medium 0 0 0);
 
   *,
   *:before,
   *:after {
     box-sizing: inherit;
+    font-family: inherit;
   }
 
   @media print {
@@ -24,22 +26,73 @@
   // TODO Replace with mixin from nice design system
   width: 96%;
   width: calc(100% - #{rem($spacing-large)});
+
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
 }
 
 .home {
-  color: $colour-text;
+  color: $colour-true-black;
+  display: inline-block;
+  float: left;
+  height: rem(30);
+  margin-bottom: rem($spacing-medium);
+
+  &:focus {
+    outline: 3px solid $colour-focus; // TODO: Replace with design system mixin
+  }
+
+  svg {
+    height: 100%;
+  }
+
+  // Fallback image used for Ie8 - IE8 adds a black border round images
+  // We can remove this when we drop support for IE8
+  img {
+    border: 0;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-grow: 1;
+  float: right;
+  justify-content: space-between;
+  margin-bottom: rem($spacing-medium);
+  width: 50%;
+
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+.search {
+  flex-grow: 1;
+  float: left;
+  margin-right: rem($spacing-medium);
+  min-width: percentage(2 / 3);
 }
 
 .mobileMenuBtn {
   appearance: none;
   background: none;
   border: 1px solid $colour-text;
-  padding: rem($spacing-small);
+  float: right;
+  font-family: inherit;
+  font-size: 110%;
+  height: rem(40); // TODO: Share a variable with search for height
+  min-width: rem(75); // Stops width changing when button text changes
+  white-space: nowrap;
 
   &:after {
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 8px solid $colour-text;
+    border-left: rem($spacing-x-small) solid transparent;
+    border-right: rem($spacing-x-small) solid transparent;
+    border-top: rem($spacing-small) solid $colour-nice-dark-grey;
     //border-color: $colour-text transparent transparent transparent;
     //border-style: solid;
     //border-width: 8px 5px 0 5px;
@@ -47,15 +100,59 @@
     display: inline-block;
     height: 0;
     margin-left: rem($spacing-small);
+    vertical-align: middle;
     width: 0;
   }
 
   &[aria-expanded='true']:after {
-    border-bottom: 8px solid $colour-text;
+    border-bottom: rem($spacing-small) solid $colour-text;
     border-top: 0;
   }
+}
 
-  @include mq($from: md) {
+.account {
+  display: none;
+}
+
+@include mq($until: md) {
+  .home {
+    float: none;
+  }
+
+  .wrapper {
+    float: none;
+    width: auto;
+  }
+}
+
+@include mq($from: md) {
+  .header {
+    border-bottom: rem($spacing-x-small) solid $colour-nice-white; // TODO: Replace with $colour-page when Design System is rolled out everywhere
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .home {
+    height: rem(40); // TODO Use shared size variable
+    margin-right: rem($spacing-large);
+  }
+
+  .wrapper {
+    justify-content: flex-end;
+  }
+
+  .search {
+    margin-right: rem($spacing-large);
+  }
+
+  .mobileMenuBtn {
     display: none;
+  }
+
+  .account {
+    display: block;
   }
 }

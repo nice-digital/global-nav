@@ -1,4 +1,45 @@
+@import '~@nice-digital/design-system/src/stylesheets/settings/settings';
+@import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
+
+$size: rem(40);
 
 .search {
-  color: blue;
+  padding-right: $size;
+  position: relative;
+}
+
+.label {
+  /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+  // TO DO: Replace with design system invisible mixin when available
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+
+.button {
+  background: $colour-nice-dark-grey;
+  border: 0;
+  color: $colour-text-inverse;
+  cursor: pointer;
+  height: $size;
+  min-width: $size;
+  padding: rem(0 $spacing-small);
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 101; // To sit above the search box so the focus outline surrounds the button
+
+  &:focus {
+    // TODO:  Replace with design system mixin
+    outline: 3px solid $colour-focus;
+  }
+
+  .icon {
+    font-size: 150%;
+    vertical-align: middle;
+  }
 }

@@ -18,7 +18,7 @@ module.exports = {
 
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		publicPath: ".",
+		publicPath: "/",
 		filename: "[name].js"
 	},
 
@@ -32,8 +32,11 @@ module.exports = {
 			"node_modules"
 		],
 		alias: {
-			react: "nervjs",
-			"react-dom": "nervjs"
+			react: HOT ? "react" : "nervjs",
+			"react-dom": HOT ? "@hot-loader/react-dom" : "nervjs",
+			"react-hot-loader": HOT
+				? "react-hot-loader"
+				: path.resolve(__dirname, "./fake-react-hot-loader")
 		}
 	},
 
@@ -58,11 +61,6 @@ module.exports = {
 				resolve: { extensions: [".js", ".jsx"] }
 			},
 			{
-				test: /\.jsx?$/,
-				enforce: "post",
-				use: "es3ify-loader"
-			},
-			{
 				test: /\.scss$/,
 				use: [
 					"style-loader",
@@ -72,7 +70,10 @@ module.exports = {
 							modules: true,
 							importLoaders: 1,
 							hashPrefix: "global-nav",
-							localIdentName: "gn_[hash:base64:5]",
+							localIdentName:
+								ENV === "development"
+									? "[name]__[local]--[hash:base64]"
+									: "gn_[hash:base64:5]",
 							sourceMap: ENV === "development"
 						}
 					},
@@ -99,7 +100,17 @@ module.exports = {
 					}
 				]
 			}
-		]
+		].concat(
+			HOT
+				? []
+				: {
+						// Use es3ify loader to support IE8 by changing something.default to something["default"] etc
+						// We can remove this when we drop support for IE8
+						test: /\.jsx?$/,
+						enforce: "post",
+						use: "es3ify-loader"
+				  }
+		)
 	},
 
 	plugins: [
@@ -107,14 +118,23 @@ module.exports = {
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(ENV)
 		}),
+		// Add a ponyfill for Promise/fetch implementation in IE 8/9+
+		// Ponyfill rather than polyfill to avoid polluting global scope
+		new webpack.ProvidePlugin({
+			Promise: "promise-polyfill",
+			fetch: "unfetch"
+		}),
 		new HtmlWebpackPlugin({
 			template: "./index.html",
 			minify: { collapseWhitespace: true },
-			// TODO: Why do we do this?
+			// Exlucde the IE8 bundle from outputting in the HTML file.
+			// This is so that we can manually include it in a conditional comment.
 			excludeAssets: [/ie/]
 		}),
 		new HtmlWebpackExcludeAssetsPlugin()
 	],
+
+	cache: true,
 
 	optimization: {
 		minimize: false
@@ -122,7 +142,10 @@ module.exports = {
 
 	stats: { colors: true },
 
-	devtool: "cheap-module-eval-source-map",
+	// Eval sourcemaps don't play nicely with IE8 (because es3ify doesn't work on
+	// strings and we still have code like something.default which breaks IE8).
+	// When we drop support for IE8 then we can revert to just using eval sourcemaps.
+	devtool: HOT ? "eval" : false,
 
 	devServer: {
 		port: process.env.PORT || 8080,
@@ -136,6 +159,14 @@ module.exports = {
 		// hot: false and inline: false to support IE8 in dev mode.
 		// These can be set to true when we add IE8 support
 		hot: HOT,
-		inline: HOT
+		inline: HOT,
+		proxy: {
+			// For mimicking niceorg autocomplete endpoint
+			"/autocomplete": {
+				target: "https://www.nice.org.uk",
+				secure: false,
+				changeOrigin: true
+			}
+		}
 	}
 };

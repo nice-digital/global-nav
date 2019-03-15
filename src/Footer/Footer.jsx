@@ -7,13 +7,13 @@ import styles from "./Footer.module.scss";
 
 export default class Footer extends Component {
 	render() {
+		if (!this.props.enabled) return null;
+
 		return (
-			this.props.enabled && (
-				<footer className={styles.footer}>
-					<Social />
-					<Copyright />
-				</footer>
-			)
+			<footer className={styles.footer}>
+				<Social />
+				<Copyright />
+			</footer>
 		);
 	}
 }

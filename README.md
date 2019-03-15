@@ -31,11 +31,16 @@
 	- [How to use](#how-to-use)
 		- [React](#react)
 			- [Props](#props)
+				- [Header props](#header-props)
+					- [Header.service](#headerservice)
+					- [Header.search](#headersearch)
+					- [Header.search.url](#headersearchurl)
+					- [Header.search.autocomplete](#headersearchautocomplete)
+					- [Header.search.placeholder](#headersearchplaceholder)
 		- [CDN](#cdn)
 			- [Configuration](#configuration)
 				- [service](#service)
 				- [header](#header)
-					- [header.enabled](#headerenabled)
 					- [header.onRendering](#headeronrendering)
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
@@ -89,7 +94,7 @@ The following non-functional requirements apply:
 - [Webpack](https://webpack.js.org/) for module bundling
 - [Babel 7](https://babeljs.io/) for ES6/JSX → ES5 transpilation
 - [js-cookie](https://github.com/js-cookie/js-cookie) for cookie management
-- TODO https://github.com/alphagov/accessible-autocomplete or https://github.com/Pixabay/JavaScript-autoComplete for autocomplete
+- [accessible-autocomplete](https://github.com/alphagov/accessible-autocomplete)
 - [ESLint](https://eslint.org/) for linting our JavaScript
   - with [NICE Digital shared eslint config](https://www.npmjs.com/package/@nice-digital/eslint-config)
 - [Stylelint](https://stylelint.io/) for linting our SCSS
@@ -273,17 +278,92 @@ const page = () => (
 
 #### Props
 
-TODO: Add React component props here
+##### Header props
+
+###### Header.service
+
+- Type: `String | null`
+- Default: `''`
+
+The identifier of the service to highlight in the main menu.
+See [links.json](src/Header/Nav/link.json) for a list of the available service identifiers.
+
+###### Header.search
+
+- Type: `Boolean | Object`
+- Default: `{}`
+
+Search is enabled by default, pass `false` to disable it e.g. `<Header search={false} />`.
+Or pass a set of key/value pairs to configure search and autocomplete:
+
+###### Header.search.url
+
+- Type: `String`
+- Default: `/search`
+
+The url of the search results page that the search form submits a GET request to.
+For example submitting a search term _paracetamol_ with a url of _/search_ will go to _/search?q=paracetamol_.
+
+###### Header.search.autocomplete
+
+- Type: `Boolean | String | Array`
+- Default: `false`
+
+The source for autocomplete (typeahead) suggestions. Set to `false` to disable autocomplete.
+
+Pass an array of objects to use as the source. The objects in the array should have two keys of `Title: string` and `Link: string`. E.g.:
+
+```jsx
+const suggestions = [
+	{ Title: "Achilles tendinopathy", Link: "/achilles-tendinopathy" },
+	{ Title: "Acne vulgaris", Link: "/acne-vulgaris" }
+];
+<Header search={{ autocomplete: suggestions }} />;
+```
+
+Pass a string, not containing a slash, to use a variable with that name on `window` e.g. `<Header search={{ autocomplete: "topics" }} />`. This is useful for when the suggestions are loaded asynchronously after page load.
+
+Or to make a _remote call_ to a URL on demand, if the source name _does_ contain a slash e.g. `<Header search={{ autocomplete: "/autocomplete?ajax=ajax" }} />`.
+
+The response is expected to be JSON in the format `Array<{ Title: string, Link: string }>` e.g.:
+
+```json
+[
+	{
+		"Title": "Paracetamol",
+		"Link": "/search?q=Paracetamol"
+	}
+]
+```
+
+###### Header.search.placeholder
+
+- Type: `String`
+- Default: `Search NICE…`
+
+Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
 ### CDN
 
 TODO: Add CDN usage URLs
 
+TODO: Note HTML5 shiv for IE8
+
 ```js
 <!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="//cdn.nice.org.uk/global-nav/global-nav.ie8.min.js"></script>
 <![endif]-->
 <script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
+```
+
+In the case of a breaking change or for testing you might want to use a specific version of the global nav. You can do so by using a folder name with the build number:
+
+```js
+<!--[if lt IE 9]>
+	<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.ie8.min.js"></script>
+<![endif]-->
+<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.min.js"></script>
 ```
 
 #### Configuration
@@ -299,17 +379,14 @@ The key of the service to highlight on the navigation elements. See [_src/Header
 
 ##### header
 
-- Type: `Object`
+- Type: `Boolean | Object`
 - Default: `null`
 
-Key/value pairs of settings specific to the header
+The header renders by default, set `header` to `false` to stop it from rendering e.g. `global_nav_config = { header: false }`.
+Or, pass an object of key/value pairs of settings specific to the header.
+See the [header props](#header-props) section for available options.
 
-###### header.enabled
-
-- Type: `Boolean`
-- Default: `true`
-
-The header renders by default. Set `header.enabled` to `false` to stop it from rendering.
+In addition to the options from the React props, there are also the following callbacks available when rendering using the CDN embed:
 
 ###### header.onRendering
 

@@ -7,6 +7,13 @@ const baseConfig = require("./webpack.config");
 const pkg = require("./package.json");
 
 const commonConfig = {
+	resolve: {
+		alias: {
+			react: "nervjs",
+			"react-dom": "nervjs"
+		}
+	},
+
 	devtool: "source-map",
 
 	mode: "production",
