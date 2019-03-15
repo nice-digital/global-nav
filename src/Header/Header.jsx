@@ -41,7 +41,7 @@ export class Header extends Component {
 	render() {
 		return (
 			this.props.enabled !== false && (
-				<header className={styles.header}>
+				<header className={styles.header} aria-label="Site header">
 					<div className={styles.container}>
 						<a
 							href="https://www.nice.org.uk/"
