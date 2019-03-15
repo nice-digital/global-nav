@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account Matches snapshot when logged in 1`] = `
+<div
+  className="account"
+>
+  <button
+    aria-controls="my-account"
+    aria-expanded={false}
+    className="button myAccount"
+    onClick={[Function]}
+  >
+    My account
+  </button>
+  <ul
+    aria-hidden={true}
+    className="menu"
+    id="my-account"
+  >
+    <li
+      key="0"
+    >
+      <a
+        data-hj-suppress=""
+        href="https://accounts.nice.org.uk/users/12345/editprofile"
+      >
+        Joe Bloggs
+      </a>
+    </li>
+    <li
+      key="1"
+    >
+      <a
+        data-hj-suppress={null}
+        href="https://accounts.nice.org.uk/signout"
+      >
+        Sign out
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Account Matches snapshot when logged out 1`] = `
+<a
+  className="button"
+  href="https://accounts.nice.org.uk/signin"
+>
+  Sign in
+</a>
+`;

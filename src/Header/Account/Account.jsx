@@ -58,7 +58,16 @@ export default class Account extends Component {
 						Object.keys(accountsData.links).map(function(text, i) {
 							return (
 								<li key={i}>
-									<a href={accountsData.links[text]}>{text}</a>
+									<a
+										href={accountsData.links[text]}
+										data-hj-suppress={
+											accountsData.links[text].indexOf("profile") > -1
+												? ""
+												: null
+										}
+									>
+										{text}
+									</a>
 								</li>
 							);
 						})}
@@ -74,7 +83,7 @@ export default class Account extends Component {
 
 Account.propTypes = {
 	isLoggedIn: PropTypes.bool.isRequired,
-	onLoginStatusChecked: PropTypes.func.isRequired,
+	onLoginStatusChecked: PropTypes.func,
 	accountsData: PropTypes.shape({
 		display_name: PropTypes.string,
 		thumbnail: PropTypes.string,
