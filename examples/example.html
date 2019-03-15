@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title><%= htmlWebpackPlugin.options.title %> | Global nav test site | NICE</title>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, minimal-ui"
+		/>
+		<!--[if lt IE 9]>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<![endif]-->
+	</head>
+	<body class="<%= htmlWebpackPlugin.options.bodyClasses %>">
+		<%= htmlWebpackPlugin.options.body %>
+
+		<div id="footer"></div>
+		<script type="text/javascript">
+			var global_nav_config = <%= JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
+		</script>
+		<!--[if lt IE 9]>
+			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+				<% if ((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
+					<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+				<% } %>
+			<% } %>
+		<![endif]-->
+	</body>
+</html>

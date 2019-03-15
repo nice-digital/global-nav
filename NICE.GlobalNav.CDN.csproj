@@ -9,11 +9,11 @@
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<ItemGroup>
-		<Content Include="dist\**" Exclude="dist/index.html">
+		<Content Include="dist\*" Exclude="dist/*.html">
 			<Pack>true</Pack>
 			<PackagePath>global-nav</PackagePath>
 		</Content>
-		<Content Include="dist\**" Exclude="dist/index.html">
+		<Content Include="dist\*" Exclude="dist/*.html">
 			<Pack>true</Pack>
 			<PackagePath>global-nav/$(Version)</PackagePath>
 		</Content>

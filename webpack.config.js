@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackExcludeAssetsPlugin = require("html-webpack-exclude-assets-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const path = require("path");
+const fs = require("fs");
+
+const examples = require("./examples/examples.json");
 
 const ENV = process.env.NODE_ENV || "development";
 const HOT = process.env.HOT !== "false";
@@ -124,15 +127,43 @@ module.exports = {
 			Promise: "promise-polyfill",
 			fetch: "unfetch"
 		}),
+
 		new HtmlWebpackPlugin({
-			template: "./index.html",
+			template: "./../examples/index.html",
 			minify: { collapseWhitespace: true },
 			// Exlucde the IE8 bundle from outputting in the HTML file.
 			// This is so that we can manually include it in a conditional comment.
-			excludeAssets: [/ie/]
-		}),
-		new HtmlWebpackExcludeAssetsPlugin()
-	],
+			excludeAssets: [/ie/],
+			global_nav_config: {
+				header: {
+					search: false
+				}
+			},
+			examples: examples
+		})
+		//new HtmlWebpackExcludeAssetsPlugin()
+	]
+		.concat(
+			examples.map(example => {
+				const bodyHtml = fs.readFileSync(
+					"./examples/body-html/" + example.filename + ".body.html",
+					"utf8"
+				);
+
+				return new HtmlWebpackPlugin({
+					template: "./../examples/example.html",
+					// Exlucde the IE8 bundle from outputting in the HTML file.
+					// This is so that we can manually include it in a conditional comment.
+					excludeAssets: [/ie/],
+					filename: example.filename + ".html",
+					title: example.title,
+					body: bodyHtml,
+					bodyClasses: example.bodyClasses,
+					global_nav_config: example.global_nav_config
+				});
+			})
+		)
+		.concat([new HtmlWebpackExcludeAssetsPlugin()]),
 
 	cache: true,
 
@@ -151,7 +182,7 @@ module.exports = {
 		port: process.env.PORT || 8080,
 		host: "0.0.0.0",
 		publicPath: "/",
-		contentBase: "./src",
+		contentBase: path.join(__dirname, "examples/assets"),
 		historyApiFallback: true,
 		open: true,
 		openPage: "",
@@ -162,10 +193,32 @@ module.exports = {
 		inline: HOT,
 		proxy: {
 			// For mimicking niceorg autocomplete endpoint
-			"/autocomplete": {
+			"/niceorg": {
 				target: "https://www.nice.org.uk",
 				secure: false,
-				changeOrigin: true
+				changeOrigin: true,
+				pathRewrite: { "^/niceorg": "" }
+			},
+			// For mimicking niceorg autocomplete endpoint
+			"/evidence": {
+				target: "https://www.evidence.nhs.uk/",
+				secure: false,
+				changeOrigin: true,
+				pathRewrite: { "^/evidence": "" }
+			},
+			// For mimicking BNFC autocomplete endpoint
+			"/bnfc": {
+				target: "https://bnfc.nice.org.uk",
+				secure: false,
+				changeOrigin: true,
+				pathRewrite: { "^/bnfc": "" }
+			},
+			// For mimicking BNF autocomplete endpoint
+			"/bnf": {
+				target: "https://bnf.nice.org.uk",
+				secure: false,
+				changeOrigin: true,
+				pathRewrite: { "^/bnf": "" }
 			}
 		}
 	}

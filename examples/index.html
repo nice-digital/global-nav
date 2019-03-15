@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Global Nav Test Site</title>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, minimal-ui"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Lato:400,700,900"
+			rel="stylesheet"
+		/>
+		<link href="//cdn.nice.org.uk/niceorg/css/app.min.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<main class="container">
+			<div class="page-header mt--e">
+				<h1 class="page-header__heading">Global navigation test</h1>
+				<p class="page-header__lead">Test site for the NICE global navigation (header and footer).</p>
+			</div>
+			<p>The following example pages are available for testing:</p>
+			<ul>
+				<% for (var example in htmlWebpackPlugin.options.examples) { %>
+					<li>
+						<a href="<%= htmlWebpackPlugin.options.examples[example].filename %>.html">
+							<%= htmlWebpackPlugin.options.examples[example].title %>
+						</a>
+					</li>
+				<% } %>
+			</ul>
+		</main>
+		<div id="footer"></div>
+		<script type="text/javascript">
+			//var headerRendering = function(element) {
+			//	console.log("Header (callback string) rendering into", element);
+			//};
+//
+			//var headerRendered = function(element) {
+			//	console.log("Header (callback string) rendered into", element);
+			//};
+//
+			//var global_nav_config = {
+			//	service: "guidance",
+			//	header: {
+			//		//search: false
+			//		search: {
+			//			//url: "/search"
+			//			//autocomplete: suggestions,
+			//			autocomplete: "/autocomplete?ajax=ajax",
+			//			query: "diabetes",
+			//			//autocomplete: false,
+			//			//placeholder: "SEARCH"
+			//		},
+			//		//onRendering: "headerRendering",
+			//		//onRendering: (element) => { console.log("Header (callback func) rendering into", element); },
+			//		//onRendered: headerRendered,
+			//		//onRendered: (element) => { console.log("Header (callback func) rendered into", element); }
+			//	},
+			//	//header: false,
+			//	footer: {
+			//		//enabled: true
+			//	}
+			//};
+//
+			var global_nav_config = <%= JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
+		</script>
+		<!--[if lt IE 9]>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<![endif]-->
+		<!--[if lt IE 9]>
+			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+				<% if ((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
+					<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+				<% } %>
+			<% } %>
+		<![endif]-->
+	</body>
+</html>

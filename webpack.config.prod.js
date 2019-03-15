@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const merge = require("webpack-merge");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const baseConfig = require("./webpack.config");
 const pkg = require("./package.json");
@@ -33,7 +34,29 @@ const commonConfig = {
 
 module.exports = [
 	merge(baseConfig, commonConfig, {
-		plugins: [new CleanWebpackPlugin("dist")]
+		plugins: [
+			new CleanWebpackPlugin("dist"),
+			// Fake out autocomplete endpoints so we can have a static site
+			new CopyPlugin([
+				{ from: "../examples/assets/cks-topics.json", to: "js/topics.txt" },
+				{
+					from: "../examples/assets/autocomplete.response.json",
+					to: "niceorg/autocomplete/index.html"
+				},
+				{
+					from: "../examples/assets/autocomplete.response.json",
+					to: "evidence/autocomplete/index.html"
+				},
+				{
+					from: "../examples/assets/autocomplete.response.json",
+					to: "bnf/typeahead/index.html"
+				},
+				{
+					from: "../examples/assets/autocomplete.response.json",
+					to: "bnfc/typeahead/index.html"
+				}
+			])
+		]
 	}),
 	merge(baseConfig, commonConfig, {
 		output: {
