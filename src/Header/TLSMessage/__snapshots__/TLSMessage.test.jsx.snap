@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TLSMessage Matches snapshot in old IE 1`] = `
+<aside
+  className="container"
+>
+  <div
+    className="alert"
+  >
+    <h2>
+      TLS upgrade warning - your browser is out of date
+    </h2>
+    <p>
+      Your version of Internet Explorer (version 
+      8
+      ) is outdated and insecure.
+    </p>
+    <p>
+      NICE will be upgrading websites to latest security standards (TLS 1.2) from
+       
+      <strong>
+        <time
+          dateTime="2019-08-01"
+        >
+          1 August 2019
+        </time>
+      </strong>
+      .
+    </p>
+    <p>
+      After this date, NICE websites may stop working in Internet Explorer versions 8, 9 and 10.
+    </p>
+    <p>
+      Please upgrade your browser to continue accessing NICE services after this date.
+    </p>
+    <p
+      className="lastP"
+    >
+      <a
+        href="https://www.nice.org.uk/tls-upgrades"
+      >
+        Find out how to upgrade your browser
+      </a>
+    </p>
+  </div>
+</aside>
+`;
