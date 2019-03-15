@@ -45,6 +45,10 @@
     outline: 3px solid $colour-focus; // TODO: Replace with design system mixin
   }
 
+  &:visited {
+    color: $colour-true-black;
+  }
+
   svg {
     height: 100%;
   }

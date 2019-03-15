@@ -27,11 +27,33 @@ $colour-nav-text: $colour-text-inverse;
     border-top-width: 0;
     color: $colour-nav-text;
     display: block;
+    font-weight: normal;
     padding: rem($spacing-small $spacing-medium);
     text-decoration: none;
 
     span {
       text-decoration: inherit;
+    }
+
+    &:focus {
+      outline: rem($spacing-x-small) solid $colour-focus-inverse;
+      outline-offset: rem(-$spacing-small);
+      z-index: 1; // Push above the adjacent nav items
+    }
+
+    &:visited {
+      color: $colour-nav-text;
+    }
+
+    &:active {
+      background: #acadad;
+      color: $colour-text;
+    }
+
+    &:hover {
+      background: #d6d6d6;
+      color: $colour-text;
+      text-decoration: underline;
     }
 
     &[aria-current='true'],
@@ -46,26 +68,11 @@ $colour-nav-text: $colour-text-inverse;
         outline-offset: rem(-$spacing-x-small);
       }
     }
-
-    &:focus {
-      outline: rem($spacing-x-small) solid $colour-focus-inverse;
-      outline-offset: rem(-$spacing-small);
-      z-index: 1; // Push above the adjacent nav items
-    }
-
-    &:active {
-      background: #acadad;
-      color: $colour-text;
-    }
-
-    &:hover {
-      background: #d6d6d6;
-      color: $colour-text;
-      text-decoration: underline;
-    }
   }
 
-  abbr {
+  abbr[title] {
+    border-bottom: 0;
+    cursor: help;
     text-decoration: none;
   }
 
@@ -146,6 +153,10 @@ $colour-nav-text: $colour-text-inverse;
   list-style: none;
   margin: auto;
   padding: 0;
+
+  li {
+    margin: 0;
+  }
 
   @include mq($from: md) {
     // Fallback for non flexbox browsers that support media queries e.g. IE9

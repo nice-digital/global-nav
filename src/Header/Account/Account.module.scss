@@ -25,6 +25,14 @@
   &:focus {
     outline: 3px solid $colour-focus; // TODO: Replace with design system mixin
   }
+
+  &:visited {
+    color: $colour-text;
+  }
+
+  &:hover {
+    border: 1px solid $colour-text; // NICE.bootstrap removes border on hover by default
+  }
 }
 
 .myAccount {
