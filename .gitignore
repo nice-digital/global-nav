@@ -96,3 +96,5 @@ bld/
 [Ll]og/
 
 dist
+
+*.stackdump
