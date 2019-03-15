@@ -3,6 +3,7 @@
 @import 'mq';
 
 .header {
+  background: $colour-nice-white;
   border-bottom: rem($spacing-xx-small) solid $colour-nice-teal;
   box-sizing: border-box;
   font-family: unquote($nice-font-family-sans);
