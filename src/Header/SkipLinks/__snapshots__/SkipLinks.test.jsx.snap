@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipLinks Matches snapshot 1`] = `
+<ul
+  aria-label="Accessibility links"
+  className="list"
+>
+  <li>
+    <a
+      className="link"
+      href="#test"
+      onClick={[Function]}
+    >
+      Skip to content
+    </a>
+  </li>
+  <li>
+    <a
+      className="link"
+      href="https://www.nice.org.uk/accessibility"
+    >
+      Accessibility help
+    </a>
+  </li>
+</ul>
+`;

@@ -14,6 +14,11 @@ describe("Header", () => {
 		expect(wrapper).toHaveLength(1);
 	});
 
+	it("Matches snapshot", () => {
+		const wrapper = shallow(<Header {...defaultProps} />);
+		expect(toJson(wrapper)).toMatchSnapshot();
+	});
+
 	describe("Mobile menu button", () => {
 		it("Mobile menu button is collapsed by default", () => {
 			const wrapper = shallow(<Header {...defaultProps} />);
@@ -65,6 +70,31 @@ describe("Header", () => {
 		it("Nav is collapsed by default", () => {
 			const wrapper = shallow(<Header {...defaultProps} />);
 			expect(wrapper.find("Nav").props().isExpanded).toEqual(false);
+		});
+	});
+
+	describe("Skip link target", () => {
+		it("Doesn't render skip link target when it already exists on the page", () => {
+			const contentDiv = document.createElement("div");
+			contentDiv.id = "content-start";
+			document.body.append(contentDiv);
+
+			const wrapper = shallow(<Header {...defaultProps} />);
+			expect(wrapper.find("#content-start").length).toEqual(0);
+
+			contentDiv.parentNode.removeChild(contentDiv);
+		});
+
+		it("Render skip link target when it doesn't already exist on the page", () => {
+			const wrapper = shallow(<Header {...defaultProps} />);
+			expect(wrapper.find("#content-start").length).toEqual(1);
+		});
+
+		it("Render skip link target with custom skip link id", () => {
+			const wrapper = shallow(
+				<Header {...defaultProps} skipLinkId="test-skip-link" />
+			);
+			expect(wrapper.find("#test-skip-link").length).toEqual(1);
 		});
 	});
 });
