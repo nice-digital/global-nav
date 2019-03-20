@@ -20,6 +20,7 @@ exports[`Account Matches snapshot when logged in 1`] = `
     aria-labelledby="my-account-button"
     className="menu"
     id="my-account"
+    onKeyDown={[Function]}
     role="menu"
   >
     <li

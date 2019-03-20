@@ -87,6 +87,7 @@ export default class Account extends Component {
 					aria-hidden={!this.state.isExpanded}
 					aria-labelledby="my-account-button"
 					ref={this.accountMenuRef}
+					onKeyDown={this.handleKeyDown}
 				>
 					{accountsData.links &&
 						Object.keys(accountsData.links).map(
