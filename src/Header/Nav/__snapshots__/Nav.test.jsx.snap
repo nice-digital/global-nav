@@ -44,14 +44,18 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
     className="nav"
   >
     <ul
+      aria-labelledby="header-menu-button"
       className="menu"
+      role="menu"
     >
       <li
         key="link1"
+        role="presentation"
       >
         <a
           aria-current={null}
           href="https://url1/"
+          role="menuitem"
         >
           <span>
             First link
@@ -60,10 +64,12 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
       </li>
       <li
         key="link2"
+        role="presentation"
       >
         <a
           aria-current={null}
           href="https://url2/"
+          role="menuitem"
         >
           <span>
             <abbr

@@ -63,9 +63,12 @@ export class Header extends Component {
 							</div>
 							<button
 								className={styles.mobileMenuBtn}
+								id="header-menu-button"
 								type="button"
 								aria-controls="header-menu"
 								aria-expanded={this.state.isExpanded}
+								aria-haspopup="menu"
+								aria-label="Site menu"
 								onClick={this.handleClick}
 							>
 								{this.state.isExpanded ? "Close" : "Menu"}

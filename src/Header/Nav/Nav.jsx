@@ -25,7 +25,11 @@ export default class Nav extends Component {
 				})}
 			>
 				<nav className={classnames(styles.nav)}>
-					<ul className={styles.menu}>
+					<ul
+						className={styles.menu}
+						role="menu"
+						aria-labelledby="header-menu-button"
+					>
 						{links.map(({ href, id, text, abbreviation, title }) => {
 							let ariaCurrent = null;
 
@@ -42,8 +46,8 @@ export default class Nav extends Component {
 							}
 
 							return (
-								<li key={id}>
-									<a href={href} aria-current={ariaCurrent}>
+								<li key={id} role="presentation">
+									<a href={href} aria-current={ariaCurrent} role="menuitem">
 										<span>
 											{abbreviation ? <abbr title={title}>{text}</abbr> : text}
 										</span>
