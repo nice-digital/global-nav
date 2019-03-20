@@ -63,7 +63,13 @@
   position: absolute;
   right: 0;
   top: 100%;
-  z-index: 1;
+  z-index: 2;
+
+  // We move focus when we expand via keyboard navigation
+  &:focus {
+    // TODO: Use design system mixin
+    outline: 3px solid $colour-focus;
+  }
 
   &[aria-hidden='true'] {
     display: none;
@@ -102,14 +108,20 @@
   }
 
   a {
+    color: $colour-link;
     display: block;
     padding: rem($spacing-small $spacing-medium);
+    text-decoration: none;
     white-space: nowrap;
-  }
-}
 
-button.menu {
-  &:after {
-    content: 'a';
+    &:focus {
+      // TODO: Use design system mixin
+      outline: 3px solid $colour-focus;
+    }
+
+    &:hover {
+      background: $colour-nice-grey-3;
+      text-decoration: underline;
+    }
   }
 }

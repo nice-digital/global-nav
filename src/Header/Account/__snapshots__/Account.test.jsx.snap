@@ -7,32 +7,43 @@ exports[`Account Matches snapshot when logged in 1`] = `
   <button
     aria-controls="my-account"
     aria-expanded={false}
+    aria-haspopup="menu"
     className="button myAccount"
+    id="my-account-button"
     onClick={[Function]}
+    onKeyDown={[Function]}
   >
     My account
   </button>
   <ul
     aria-hidden={true}
+    aria-labelledby="my-account-button"
     className="menu"
     id="my-account"
+    role="menu"
   >
     <li
       key="0"
+      role="presentation"
     >
       <a
         data-hj-suppress=""
         href="https://accounts.nice.org.uk/users/12345/editprofile"
+        onKeyDown={[Function]}
+        role="menuitem"
       >
         Joe Bloggs
       </a>
     </li>
     <li
       key="1"
+      role="presentation"
     >
       <a
         data-hj-suppress={null}
         href="https://accounts.nice.org.uk/signout"
+        onKeyDown={[Function]}
+        role="menuitem"
       >
         Sign out
       </a>
