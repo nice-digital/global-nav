@@ -219,6 +219,12 @@ module.exports = {
 				secure: false,
 				changeOrigin: true,
 				pathRewrite: { "^/bnf": "" }
+			},
+			// For mimicking CKS autocomplete topics
+			"/js/topics.txt": {
+				target: "https://cks.nice.org.uk",
+				secure: false,
+				changeOrigin: true
 			}
 		}
 	}
