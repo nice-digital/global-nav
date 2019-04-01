@@ -286,7 +286,15 @@ const page = () => (
 - Default: `''`
 
 The identifier of the service to highlight in the main menu.
-See [links.json](src/Header/Nav/link.json) for a list of the available service identifiers.
+See [links.json](src/Header/Nav/links.json) for a list of the available service identifiers.
+
+###### Header.skipLinkId
+
+- Type: `String | null`
+- Default: `'content-start'`
+
+The identifier of the skip link target.
+An empty div with this id will be created at the end of the header, if it doesn't already exist on the page.
 
 ###### Header.search
 

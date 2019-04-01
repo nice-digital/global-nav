@@ -9,6 +9,7 @@ import Search from "./Search";
 import Account from "./Account";
 
 import styles from "./Header.module.scss";
+import SkipLinks from "./SkipLinks";
 
 export class Header extends Component {
 	constructor(props) {
@@ -17,7 +18,8 @@ export class Header extends Component {
 		this.state = {
 			isExpanded: false,
 			isLoggedIn: false,
-			accountsData: null
+			accountsData: null,
+			needsSkipLinkTarget: !document.getElementById(this.props.skipLinkId)
 		};
 
 		this.handleClick = this.handleClick.bind(this);
@@ -42,6 +44,7 @@ export class Header extends Component {
 		return (
 			this.props.enabled !== false && (
 				<header className={styles.header} aria-label="Site header">
+					<SkipLinks skipLinkId={this.props.skipLinkId} />
 					<div className={styles.container}>
 						<a
 							href="https://www.nice.org.uk/"
@@ -90,6 +93,9 @@ export class Header extends Component {
 						}
 					/>
 					<TLSMessage />
+					{this.state.needsSkipLinkTarget && (
+						<div id={this.props.skipLinkId} aria-label="Start of content" />
+					)}
 				</header>
 			)
 		);
@@ -98,6 +104,7 @@ export class Header extends Component {
 
 Header.propTypes = {
 	service: PropTypes.string,
+	skipLinkId: PropTypes.string,
 	enabled: PropTypes.bool,
 	search: PropTypes.oneOfType([
 		PropTypes.bool,
@@ -106,7 +113,8 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-	search: {}
+	search: {},
+	skipLinkId: "content-start"
 };
 
 export default hot(Header);
