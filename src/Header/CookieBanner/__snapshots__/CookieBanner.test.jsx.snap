@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CookieBanner Matches snapshot for new visitor 1`] = `
+<div
+  aria-describedby="cookie-banner-description"
+  aria-labelledby="cookie-banner-title"
+  className="banner"
+  role="dialog"
+>
+  <div
+    className="container"
+  >
+    <h2
+      className="heading"
+      id="cookie-banner-title"
+    >
+      Your privacy
+    </h2>
+    <p
+      className="message"
+      id="cookie-banner-description"
+    >
+      We have placed cookies on your device to help make this website better. 
+      You can find out more information and how to change some cookie settings in our
+       
+      <a
+        href="https://www.nice.org.uk/terms-and-conditions#cookies"
+      >
+        cookie policy
+      </a>
+      .
+    </p>
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Accept and close
+    </button>
+  </div>
+</div>
+`;
+
+exports[`CookieBanner Matches snapshot for old cookie value 1`] = `
+<div
+  aria-describedby="cookie-banner-description"
+  aria-labelledby="cookie-banner-title"
+  className="banner"
+  role="dialog"
+>
+  <div
+    className="container"
+  >
+    <h2
+      className="heading"
+      id="cookie-banner-title"
+    >
+      Your privacy
+    </h2>
+    <p
+      className="message"
+      id="cookie-banner-description"
+    >
+      We have placed cookies on your device to help make this website better. 
+      You can find out more information and how to change some cookie settings in our
+       
+      <a
+        href="https://www.nice.org.uk/terms-and-conditions#cookies"
+      >
+        cookie policy
+      </a>
+      .
+    </p>
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Accept and close
+    </button>
+  </div>
+</div>
+`;
+
+exports[`CookieBanner Matches snapshot when seen old message version 1`] = `
+<div
+  aria-describedby="cookie-banner-description"
+  aria-labelledby="cookie-banner-title"
+  className="banner"
+  role="dialog"
+>
+  <div
+    className="container"
+  >
+    <h2
+      className="heading"
+      id="cookie-banner-title"
+    >
+      Your privacy
+    </h2>
+    <p
+      className="message"
+      id="cookie-banner-description"
+    >
+      Our cookie policy has changed since you last accepted it. 
+      You can find out more information and how to change some cookie settings in our
+       
+      <a
+        href="https://www.nice.org.uk/terms-and-conditions#cookies"
+      >
+        cookie policy
+      </a>
+      .
+    </p>
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Accept and close
+    </button>
+  </div>
+</div>
+`;

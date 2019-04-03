@@ -7,6 +7,7 @@ import TLSMessage from "./TLSMessage";
 import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
+import CookieBanner from "./CookieBanner";
 
 import styles from "./Header.module.scss";
 import SkipLinks from "./SkipLinks";
@@ -45,6 +46,7 @@ export class Header extends Component {
 			this.props.enabled !== false && (
 				<header className={styles.header} aria-label="Site header">
 					<SkipLinks skipLinkId={this.props.skipLinkId} />
+					{this.props.cookie && <CookieBanner />}
 					<div className={styles.container}>
 						<a
 							href="https://www.nice.org.uk/"
@@ -109,11 +111,13 @@ Header.propTypes = {
 	search: PropTypes.oneOfType([
 		PropTypes.bool,
 		PropTypes.shape({ url: PropTypes.string })
-	])
+	]),
+	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
 };
 
 Header.defaultProps = {
 	search: {},
+	cookie: {},
 	skipLinkId: "content-start"
 };
 

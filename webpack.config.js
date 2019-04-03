@@ -136,7 +136,8 @@ module.exports = {
 			excludeAssets: [/ie/],
 			global_nav_config: {
 				header: {
-					search: false
+					search: false,
+					cookie: false
 				}
 			},
 			examples: examples
