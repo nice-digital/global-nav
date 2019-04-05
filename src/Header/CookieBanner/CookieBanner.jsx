@@ -14,7 +14,7 @@ export default class CookieBanner extends Component {
 
 		const cookieValue = Cookies.getJSON(CookieName);
 
-		// "yes" was used for the previous versoin of TopHat
+		// "yes" was used for the previous version of TopHat
 		if (!cookieValue || cookieValue === "yes") {
 			this.state = {
 				hasSeenPreviousVersion: false,
