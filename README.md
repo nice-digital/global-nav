@@ -396,6 +396,18 @@ See the [header props](#header-props) section for available options.
 
 In addition to the options from the React props, there are also the following callbacks available when rendering using the CDN embed:
 
+###### Authentication configuration
+
+- Type: `Boolean | Object`
+- Default: `"auth": { "environment": "live", "provider": "niceAccounts" } }`
+- Evironment options: `"live", "test", "beta", "local"`
+- Provider options: `niceAccounts`
+
+The authentication enviroment and provider are configured in the `global_nav_config` as properties of the header. By default it renders live nice-accounts. To change the authentication enviroment and/or provider set `header:auth:environment` and set `header:auth:provider` in the `global_nav_config` as follows. 
+```
+global_nav_config = { "header": {"auth": { "environment": "beta", "provider": "niceAccounts" } }
+```
+
 ###### header.onRendering
 
 - Type: `Function | String` signature: `function(element)`
