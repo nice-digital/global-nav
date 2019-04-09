@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-import { checkIsLoggedIn } from "./nice-accounts";
+import { checkIsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
 import styles from "./Account.module.scss";
 
 const escapeKeyCode = 27;
@@ -48,7 +48,7 @@ export default class Account extends Component {
 	}
 
 	componentDidMount() {
-		checkIsLoggedIn()
+		checkIsLoggedIn(this.props.environment)
 			.then(
 				function(data) {
 					if (this.props.onLoginStatusChecked) {
@@ -64,7 +64,8 @@ export default class Account extends Component {
 	}
 
 	render() {
-		const { accountsData } = this.props;
+		const { accountsData, environment } = this.props;
+		const signinUrl = getDomainBaseUrl(environment) + "signin";
 
 		return this.props.isLoggedIn ? (
 			<div className={styles.account}>
@@ -113,7 +114,7 @@ export default class Account extends Component {
 				</ul>
 			</div>
 		) : (
-			<a href="https://accounts.nice.org.uk/signin" className={styles.button}>
+			<a href={signinUrl} className={styles.button}>
 				Sign in
 			</a>
 		);
@@ -127,5 +128,12 @@ Account.propTypes = {
 		display_name: PropTypes.string,
 		thumbnail: PropTypes.string,
 		links: PropTypes.object
-	})
+	}),
+	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
+	provider: PropTypes.oneOf(["niceAccounts"])
+};
+
+Account.defaultProps = {
+	environment: "live",
+	provider: "niceAccounts"
 };

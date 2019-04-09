@@ -1,9 +1,9 @@
 // Checks if you are logged in via NICE Accounts
 // Returns a promise that resolves with the data from NICE Accounts.
 // Returns a promise that rejects if the data could not be loaded.
-const checkIsLoggedIn = function() {
+export const checkIsLoggedIn = function(environment) {
 	return new Promise(function(resolve, reject) {
-		const url = "https://accounts.nice.org.uk/tophat";
+		const url = getDomainBaseUrl(environment) + "tophat";
 
 		var body = document.body;
 		var script = document.createElement("script");
@@ -37,4 +37,10 @@ const checkIsLoggedIn = function() {
 	});
 };
 
-export { checkIsLoggedIn };
+export const getDomainBaseUrl = function(environment) {
+	return (
+		"https://" +
+		(environment !== "live" ? environment + "-" : "") +
+		"accounts.nice.org.uk/"
+	);
+};
