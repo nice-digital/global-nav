@@ -36,6 +36,7 @@ $colour-nav-text: $colour-text-inverse;
     }
 
     &:focus {
+      color: $colour-nav-text;
       outline: rem($spacing-x-small) solid $colour-focus-inverse;
       outline-offset: rem(-$spacing-small);
       z-index: 1; // Push above the adjacent nav items
