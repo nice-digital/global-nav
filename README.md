@@ -33,10 +33,14 @@
 			- [Props](#props)
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
+					- [Header.skipLinkId](#headerskiplinkid)
 					- [Header.search](#headersearch)
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
 					- [Header.search.placeholder](#headersearchplaceholder)
+					- [Header.auth](#headerauth)
+					- [Header.auth.environment](#headerauthenvironment)
+					- [Header.auth.provider](#headerauthprovider)
 		- [CDN](#cdn)
 			- [Configuration](#configuration)
 				- [service](#service)
@@ -351,6 +355,34 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
+###### Header.auth
+
+- Type: `Boolean | Object`
+- Default: `{}`
+
+Auth is enabled by default.
+Pass a set of key/value pairs to configure authentication:
+
+```
+<header auth={ environment: "live", provider: "niceAccounts"} />
+```
+
+###### Header.auth.environment
+
+- Type: `String`
+- Default: `live`
+- Values: `live`, `test`, `beta`, `local`
+
+This value is the authentication environment eg `beta` would be beta-accounts.nice.org.uk.
+
+###### Header.auth.provider
+
+- Type: `String`
+- Default: `niceAccounts`
+- Values: `niceAccounts`
+
+The authentication provider allows the provider to be changed. At the moment we do not currently support any other authentication providers but we anticipate this changing in the future.
+
 ### CDN
 
 TODO: Add CDN usage URLs
@@ -378,6 +410,21 @@ In the case of a breaking change or for testing you might want to use a specific
 
 Global Nav configuration is loaded from a global JavaScript variable on the window object called `global_nav_config`. The following config options apply:
 
+```
+"global_nav_config": {
+			"service": "guidance",
+			"header": {
+				"auth": {
+					"environment": "beta",
+			 		"provider": "niceAccounts"
+				 },
+				"search": {
+					"autocomplete": "/niceorg/autocomplete?ajax=ajax"
+				}
+			}
+		}
+```
+
 ##### service
 
 - Type: `String`
@@ -395,18 +442,6 @@ Or, pass an object of key/value pairs of settings specific to the header.
 See the [header props](#header-props) section for available options.
 
 In addition to the options from the React props, there are also the following callbacks available when rendering using the CDN embed:
-
-###### Authentication configuration
-
-- Type: `Boolean | Object`
-- Default: `"auth": { "environment": "live", "provider": "niceAccounts" } }`
-- Evironment options: `"live", "test", "beta", "local"`
-- Provider options: `niceAccounts`
-
-The authentication enviroment and provider are configured in the `global_nav_config` as properties of the header. By default it renders live nice-accounts. To change the authentication enviroment and/or provider set `header:auth:environment` and set `header:auth:provider` in the `global_nav_config` as follows. 
-```
-global_nav_config = { "header": {"auth": { "environment": "beta", "provider": "niceAccounts" } }
-```
 
 ###### header.onRendering
 
