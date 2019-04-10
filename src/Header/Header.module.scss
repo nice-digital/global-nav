@@ -7,7 +7,6 @@
   border-bottom: rem($spacing-xx-small) solid $colour-nice-teal;
   box-sizing: border-box;
   font-family: unquote($nice-font-family-sans);
-  padding: rem($spacing-medium 0 0 0);
 
   *,
   *:before,
@@ -24,6 +23,7 @@
 .container {
   margin: auto;
   max-width: rem($nice-container-max-width);
+  padding: rem($spacing-medium 0 0 0);
   // TODO Replace with mixin from nice design system
   width: 96%;
   width: calc(100% - #{rem($spacing-large)});

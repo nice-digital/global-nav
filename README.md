@@ -34,6 +34,7 @@
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
 					- [Header.skipLinkId](#headerskiplinkid)
+					- [Header.cookie](#headercookie)
 					- [Header.search](#headersearch)
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
@@ -299,6 +300,13 @@ See [links.json](src/Header/Nav/links.json) for a list of the available service 
 
 The identifier of the skip link target.
 An empty div with this id will be created at the end of the header, if it doesn't already exist on the page.
+
+###### Header.cookie
+
+- Type: `Boolean`
+- Default: `true`
+
+The cookie banner is enabled by default, pass `false` to disable it e.g. `<Header cookie={false} />`.
 
 ###### Header.search
 
