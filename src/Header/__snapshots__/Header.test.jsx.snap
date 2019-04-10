@@ -51,8 +51,10 @@ exports[`Header Matches snapshot 1`] = `
       >
         <Account
           accountsData={null}
+          environment="live"
           isLoggedIn={false}
           onLoginStatusChecked={[Function]}
+          provider="niceAccounts"
         />
       </div>
     </div>

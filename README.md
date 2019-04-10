@@ -39,6 +39,9 @@
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
 					- [Header.search.placeholder](#headersearchplaceholder)
+					- [Header.auth](#headerauth)
+					- [Header.auth.environment](#headerauthenvironment)
+					- [Header.auth.provider](#headerauthprovider)
 		- [CDN](#cdn)
 			- [Configuration](#configuration)
 				- [service](#service)
@@ -360,6 +363,34 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
+###### Header.auth
+
+- Type: `Boolean | Object`
+- Default: `{}`
+
+Auth is enabled by default.
+Pass a set of key/value pairs to configure authentication:
+
+```js
+<header auth={{environment: "live", provider: "niceAccounts"}} />
+```
+
+###### Header.auth.environment
+
+- Type: `String`
+- Default: `live`
+- Values: `live`, `test`, `beta`, `local`
+
+This value is the authentication environment eg `beta` would be *beta-accounts.nice.org.uk*.
+
+###### Header.auth.provider
+
+- Type: `String`
+- Default: `niceAccounts`
+- Values: `niceAccounts`
+
+The authentication provider allows the provider to be changed. At the moment we do not currently support any other authentication providers but we anticipate this changing in the future, for example NICE Identity/Auth0 or OpenAthens.
+
 ### CDN
 
 TODO: Add CDN usage URLs
@@ -385,7 +416,31 @@ In the case of a breaking change or for testing you might want to use a specific
 
 #### Configuration
 
-Global Nav configuration is loaded from a global JavaScript variable on the window object called `global_nav_config`. The following config options apply:
+Global Nav configuration is loaded from a global JavaScript variable on the window object called `global_nav_config`. Include this variable before the [cdn script include](#cdn). Here's a fulle example of all the available config options:
+
+```js
+var global_nav_config = {
+		service: "guidance",
+		header: {
+			skipLinkId: "content-start",
+			cookie: true,
+			auth: {
+				environment: "beta",
+				provider: "niceAccounts"
+			},
+			search: {
+				autocomplete: "/autocomplete?ajax=ajax",
+				url: "/search",
+				placeholder: "Search NICE…"
+			}
+		},
+		footer: {
+			// TODO
+		}
+	};
+```
+
+The following config options apply:
 
 ##### service
 

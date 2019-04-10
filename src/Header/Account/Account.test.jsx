@@ -3,7 +3,7 @@ import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import { checkIsLoggedIn } from "./nice-accounts";
+import { checkIsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
 
 const escapeKeyCode = 27;
 
@@ -12,7 +12,8 @@ jest.mock("./nice-accounts", () => ({
 		Promise.resolve({
 			test: true
 		})
-	)
+	),
+	getDomainBaseUrl: jest.requireActual("./nice-accounts.js").getDomainBaseUrl
 }));
 
 describe("Account", () => {
@@ -41,6 +42,13 @@ describe("Account", () => {
 		);
 
 		expect(toJson(wrapper)).toMatchSnapshot();
+	});
+
+	it("Is the correct authentication environment when supplied", () => {
+		const wrapper = shallow(<Account isLoggedIn={false} environment="beta" />);
+		expect(wrapper.find(".button").props().href).toBe(
+			"https://beta-accounts.nice.org.uk/signin"
+		);
 	});
 
 	it("Calls onLoginStatusChecked callback prop when mounted", done => {

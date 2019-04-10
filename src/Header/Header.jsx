@@ -83,6 +83,7 @@ export class Header extends Component {
 									onLoginStatusChecked={this.handleLoginStatusChecked}
 									isLoggedIn={this.state.isLoggedIn}
 									accountsData={this.state.accountsData}
+									{...this.props.auth}
 								/>
 							</div>
 						</div>
@@ -112,7 +113,11 @@ Header.propTypes = {
 		PropTypes.bool,
 		PropTypes.shape({ url: PropTypes.string })
 	]),
-	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
+	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+	auth: PropTypes.shape({
+		provider: PropTypes.string,
+		environment: PropTypes.string
+	})
 };
 
 Header.defaultProps = {
