@@ -1,13 +1,14 @@
 @import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
 @import 'mq';
 
+/* stylelint-disable no-descending-specificity */
+
 $colour-nav-background: $colour-nice-teal;
 $colour-nav-text: $colour-text-inverse;
 
 .wrapper {
-  background: $colour-nav-background;
-  color: $colour-nav-text;
   display: none;
+  position: relative;
 
   @include mq($from: md) {
     display: block;
@@ -19,7 +20,42 @@ $colour-nav-text: $colour-text-inverse;
 }
 
 .nav {
+  abbr[title] {
+    border-bottom: 0;
+    cursor: help;
+    text-decoration: none;
+  }
+}
+
+.myAccount {
+  border-top: 1px solid $colour-nice-white;
+
+  @include mq($from: md) {
+    display: none;
+  }
+}
+
+.myAccountHeading {
+  border: rem($spacing-x-small) solid $colour-nav-background;
+  font-size: 100%;
+  margin: 0;
+  padding: rem($spacing-small $spacing-medium);
+}
+
+.menuWrapper {
+  background: $colour-nav-background;
+  color: $colour-nav-text;
   padding: rem($spacing-x-small 0);
+}
+
+.menuList {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+
+  li {
+    margin: 0;
+  }
 
   a {
     border: rem($spacing-x-small) solid $colour-nav-background;
@@ -62,7 +98,7 @@ $colour-nav-text: $colour-text-inverse;
       background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
       color: $colour-text;
       font-weight: bold;
-      margin: rem($spacing-x-small 0);
+      //margin: rem($spacing-x-small 0);
 
       &:focus {
         outline-color: $colour-focus;
@@ -70,14 +106,65 @@ $colour-nav-text: $colour-text-inverse;
       }
     }
   }
+}
 
-  abbr[title] {
-    border-bottom: 0;
-    cursor: help;
-    text-decoration: none;
+.subMenuWrapper {
+  background: #fff;
+  color: black;
+  display: block;
+}
+
+.subMenuList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    color: $colour-text;
+    padding-left: rem($spacing-large);
+
+    &:focus {
+      color: $colour-text;
+      outline: rem($spacing-x-small) solid $colour-focus;
+    }
+
+    &:visited {
+      color: $colour-text;
+    }
+  }
+}
+
+@include mq($from: md) {
+  // TODO: Can we not use a magic number?
+  $sub-nav-height: 58;
+
+  .wrapperWithSubLinks {
+    padding-bottom: rem($sub-nav-height);
   }
 
-  @include mq($from: md) {
+  .menuList {
+    // Fallback for non flexbox browsers that support media queries e.g. IE9
+    display: table;
+    max-width: rem($nice-container-max-width);
+    // TODO Replace with mixin from nice design system
+    width: 96%;
+    width: calc(100% - #{rem($spacing-large)});
+
+    li {
+      display: table-cell;
+    }
+
+    @supports (display: flex) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      li {
+        flex-grow: 1;
+      }
+    }
+
     a {
       border-left-width: 0;
       border-right-width: 0;
@@ -133,52 +220,44 @@ $colour-nav-text: $colour-text-inverse;
       }
     }
   }
-}
 
-.myAccount {
-  border-top: 1px solid $colour-nice-white;
-
-  @include mq($from: md) {
-    display: none;
-  }
-}
-
-.myAccountHeading {
-  border: rem($spacing-x-small) solid $colour-nav-background;
-  font-size: 100%;
-  margin: 0;
-  padding: rem($spacing-small $spacing-medium);
-}
-
-.menu {
-  list-style: none;
-  margin: auto;
-  padding: 0;
-
-  li {
-    margin: 0;
+  .subMenuWrapper {
+    border-bottom: rem($spacing-xx-small) solid $colour-nav-background;
+    bottom: 0;
+    height: rem($sub-nav-height);
+    left: 0;
+    position: absolute;
+    width: 100%;
   }
 
-  @include mq($from: md) {
-    // Fallback for non flexbox browsers that support media queries e.g. IE9
-    display: table;
+  .subMenuList {
+    height: 100%;
+    margin: auto;
     max-width: rem($nice-container-max-width);
     // TODO Replace with mixin from nice design system
     width: 96%;
     width: calc(100% - #{rem($spacing-large)});
 
     li {
-      display: table-cell;
+      display: inline-block;
+      height: 100%;
     }
 
-    @supports (display: flex) {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: space-between;
+    /* stylelint-disable */
+    a {
+      /* stylelint-enable */
+      display: block;
+      height: 100%;
+      padding-bottom: 0;
+      padding-top: 0;
 
-      li {
-        flex-grow: 1;
+      &[aria-current='true'],
+      &[aria-current='page'] {
+        background: transparent;
+
+        &:after {
+          display: none;
+        }
       }
     }
   }

@@ -24,21 +24,83 @@
 		"text": "BNF",
 		"abbreviation": true,
 		"title": "British National Formulary",
-		"id": "bnf"
+		"id": "bnf",
+		"links": [
+			{
+				"text": "Drugs",
+				"href": "/drug/"
+			},
+			{
+				"text": "Interactions",
+				"href": "/interaction/"
+			},
+			{
+				"text": "Treatment summaries",
+				"href": "/treatment-summary/"
+			},
+			{
+				"text": "What's changed?",
+				"href": "/about/changes.html"
+			},
+			{
+				"text": "About BNF",
+				"href": "/about/"
+			}
+		]
 	},
 	{
 		"href": "https://bnfc.nice.org.uk/",
 		"text": "BNFC",
 		"abbreviation": true,
 		"title": "British National Formulary for Children",
-		"id": "bnfc"
+		"id": "bnfc",
+		"links": [
+			{
+				"text": "Drugs",
+				"href": "/drug/"
+			},
+			{
+				"text": "Interactions",
+				"href": "/interaction/"
+			},
+			{
+				"text": "Treatment summaries",
+				"href": "/treatment-summary/"
+			},
+			{
+				"text": "What's changed?",
+				"href": "/about/changes.html"
+			},
+			{
+				"text": "About BNFC",
+				"href": "/about/"
+			}
+		]
 	},
 	{
 		"href": "https://cks.nice.org.uk/",
 		"text": "CKS",
 		"abbreviation": true,
 		"title": "Clinical Knowledge Summaries",
-		"id": "cks"
+		"id": "cks",
+		"links": [
+			{
+				"text": "Topics",
+				"href": "/"
+			},
+			{
+				"text": "Specialities",
+				"href": "/clinicalspeciality"
+			},
+			{
+				"text": "What's new",
+				"href": "/whatsnew"
+			},
+			{
+				"text": "About CKS",
+				"href": "/about"
+			}
+		]
 	},
 	{
 		"href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",

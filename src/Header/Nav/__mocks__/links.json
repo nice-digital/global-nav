@@ -9,6 +9,16 @@
 		"text": "Second link",
 		"id": "link2",
 		"abbreviation": true,
-		"title": "Abbreviation title"
+		"title": "Abbreviation title",
+		"links": [
+			{
+				"text": "Sub link 1",
+				"href": "/"
+			},
+			{
+				"text": "Sub link 2",
+				"href": "/test"
+			}
+		]
 	}
 ]
