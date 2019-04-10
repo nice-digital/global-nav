@@ -1,0 +1,68 @@
+// TODO: Remove these mixins when we migrate to v1 of the Design System properly
+@mixin default-focus-style {
+  outline: 3px solid $colour-focus;
+}
+
+@mixin inverse-focus-style {
+  outline: 3px solid $colour-focus-inverse;
+}
+
+@import '~@nice-digital/design-system/src/stylesheets/settings/settings';
+@import '~@nice-digital/design-system/src/stylesheets/helpers/helpers-utils';
+@import '~@nice-digital/design-system/src/stylesheets/typography/typography-settings';
+@import '~@nice-digital/design-system/src/stylesheets/typography/typography-helpers';
+@import '~@nice-digital/design-system/src/stylesheets/typography/typography-links';
+@import '../../scss/mq';
+
+.banner {
+  background: $colour-nice-grey-3;
+  border-bottom: 1px solid $colour-border;
+  padding: rem($spacing-medium 0);
+}
+
+.container {
+  margin: auto;
+  max-width: rem($nice-container-max-width);
+  // TODO Replace with mixin from nice design system
+  width: 96%;
+  width: calc(100% - #{rem($spacing-large)});
+}
+
+.heading {
+  @include font(h5);
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.message {
+  @include p;
+
+  a {
+    @include link-default;
+    //text-decoration: underline;
+  }
+}
+
+.button {
+  appearance: none;
+  background: $colour-btn-primary;
+  border: em(1) solid $colour-btn-primary-text;
+  border-radius: 0;
+  color: $colour-btn-primary-text;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: em($spacing-small $spacing-medium);
+  position: relative;
+  text-align: left;
+  text-decoration: none !important; // sass-lint:disable-line no-important
+  vertical-align: top;
+  white-space: nowrap;
+
+  &:focus {
+    background: $colour-btn-primary;
+    border-color: $colour-focus-inverse;
+    color: $colour-btn-primary-text;
+    outline: 3px solid $colour-focus;
+  }
+}
