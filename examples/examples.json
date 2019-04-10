@@ -15,7 +15,9 @@
 		"global_nav_config": {
 			"service": "guidance",
 			"header": {
-				"auth": { "environment": "beta" },
+				"auth": {
+					"environment": "beta"
+				},
 				"search": {
 					"autocomplete": "/niceorg/autocomplete?ajax=ajax"
 				}
@@ -28,6 +30,9 @@
 		"global_nav_config": {
 			"service": "standards",
 			"header": {
+				"auth": {
+					"environment": "test"
+				},
 				"search": {
 					"autocomplete": "/niceorg/autocomplete?ajax=ajax"
 				}
