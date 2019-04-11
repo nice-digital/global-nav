@@ -216,11 +216,13 @@ npm run-script test:unit -- -t aria
 
 #### Production build
 
-Run `npm run build` to create a production build. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
+Run `npm run build -- --env.version=1.2.3` to create a production build, where 1.2.3 is any version you want. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
+
+> We pass in a version argument (`--env.version=X`), because we assume this step will be run by TeamCity. TC (and the NuGet packages we push to Octo) have different versioning schemes from npm packages - build numbers produced by TeamCity aren't valid version numbers that can be used in package.json e.g. a build number of 1.2.3.4-r2a3d4f.
 
 ### IDE
 
-We recommend using VS Code as the IDE. TODO: why and any more detail?
+We recommend using VS Code as the IDE. It's free, used consistently across NICE Digital Services because of the .NET integration and is extensible with high quality, useful extensions:
 
 #### Extensions
 
@@ -236,11 +238,13 @@ The following VS Code extensions are **strongly** recommended, but not required:
 ### Gotchas
 
 - Check you have the right version of Node installed
-- Make sure have LF line endings as this is a cross-platform project. This _should_ happen automatically because of settings in _.gitattributes_ and _.editorconfig_
+- Make sure have LF line endings as this is a cross-platform project. This _should_ happen automatically because of settings in _.gitattributes_ and _.editorconfig_.
+- Use normal functions, rather than arrow functions because of support for IE8
+- Watch out for features of React that Nerv doesn't support, for example refs.
 
 ## How to use
 
-We support 2 main methods for using the Global Nav in your projects: in [React](#react) or via the [CDN](#cdn).
+We support 2 main methods for using the Global Nav in your projects: as a [React component](#react) installed from npm or via the [CDN](#cdn).
 
 ### React
 
