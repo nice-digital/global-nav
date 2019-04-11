@@ -25,6 +25,10 @@ describe("Account", () => {
 		}
 	};
 
+	afterEach(() => {
+		document.body.innerHTML = "";
+	});
+
 	it("Renders without crashing", () => {
 		const wrapper = shallow(<Account isLoggedIn={false} />);
 		expect(wrapper).toHaveLength(1);
@@ -65,8 +69,12 @@ describe("Account", () => {
 	});
 
 	it("Expands account menu when button is clicked", () => {
+		var appContainer = document.createElement("div");
+		document.body.appendChild(appContainer);
+
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />
+			<Account isLoggedIn={true} accountsData={accountsData} />,
+			{ attachTo: appContainer }
 		);
 
 		wrapper.find("#my-account-button").simulate("click", { pageX: 99 });
@@ -82,8 +90,12 @@ describe("Account", () => {
 	});
 
 	it("Moved focus to menu when enter key is pressed on collapsed button", () => {
+		var appContainer = document.createElement("div");
+		document.body.appendChild(appContainer);
+
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />
+			<Account isLoggedIn={true} accountsData={accountsData} />,
+			{ attachTo: appContainer }
 		);
 
 		wrapper.find("#my-account-button").simulate("click");
@@ -95,8 +107,12 @@ describe("Account", () => {
 	});
 
 	it("Collapses menu when escape key is pressed on button", () => {
+		var appContainer = document.createElement("div");
+		document.body.appendChild(appContainer);
+
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />
+			<Account isLoggedIn={true} accountsData={accountsData} />,
+			{ attachTo: appContainer }
 		);
 
 		wrapper.find("#my-account-button").simulate("click", {});
@@ -113,8 +129,12 @@ describe("Account", () => {
 	});
 
 	it("Collapses menu when escape key is pressed on link", () => {
+		var appContainer = document.createElement("div");
+		document.body.appendChild(appContainer);
+
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />
+			<Account isLoggedIn={true} accountsData={accountsData} />,
+			{ attachTo: appContainer }
 		);
 
 		wrapper.find("#my-account-button").simulate("click", {});

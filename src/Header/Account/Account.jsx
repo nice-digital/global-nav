@@ -17,9 +17,6 @@ export default class Account extends Component {
 
 		this.handleClick = this.handleClick.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
-
-		this.buttonRef = React.createRef();
-		this.accountMenuRef = React.createRef();
 	}
 
 	handleClick(e) {
@@ -30,8 +27,9 @@ export default class Account extends Component {
 			},
 			function() {
 				if (this.state.isExpanded && isKeyboardEvent) {
-					this.accountMenuRef.current.setAttribute("tabIndex", -1);
-					this.accountMenuRef.current.focus();
+					const accountMenu = document.getElementById("my-account");
+					accountMenu.setAttribute("tabIndex", -1);
+					accountMenu.focus();
 				}
 			}.bind(this)
 		);
@@ -43,7 +41,7 @@ export default class Account extends Component {
 			this.setState({
 				isExpanded: false
 			});
-			this.buttonRef.current.focus();
+			document.getElementById("my-account-button").focus();
 		}
 	}
 
@@ -77,7 +75,6 @@ export default class Account extends Component {
 					aria-expanded={this.state.isExpanded}
 					onClick={this.handleClick}
 					onKeyDown={this.handleKeyDown}
-					ref={this.buttonRef}
 				>
 					My account
 				</button>
@@ -87,7 +84,6 @@ export default class Account extends Component {
 					role="menu"
 					aria-hidden={!this.state.isExpanded}
 					aria-labelledby="my-account-button"
-					ref={this.accountMenuRef}
 					onKeyDown={this.handleKeyDown}
 				>
 					{accountsData.links &&
