@@ -100,7 +100,8 @@
 				"search": {
 					"placeholder": "Search CKS…",
 					"autocomplete": "topics"
-				}
+				},
+				"skipLinkId": "test-skip-link"
 			}
 		}
 	},
