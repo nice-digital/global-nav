@@ -73,7 +73,8 @@
 			"header": {
 				"search": {
 					"placeholder": "Search BNF…",
-					"autocomplete": "/bnf/typeahead?ajax=ajax"
+					"autocomplete": "/bnf/typeahead?ajax=ajax",
+					"onSearching": "onSearching"
 				}
 			}
 		}

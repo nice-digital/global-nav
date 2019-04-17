@@ -7,9 +7,34 @@ import Autocomplete from "./Autocomplete";
 import styles from "./Search.module.scss";
 
 export default class Search extends Component {
+	constructor(props) {
+		super(props);
+
+		this.searchSubmitHandler = this.searchSubmitHandler.bind(this);
+	}
+
+	searchSubmitHandler(e) {
+		const { onSearching } = this.props;
+		if (onSearching) {
+			const onSearchingCallback =
+				typeof onSearching === "function" ? onSearching : window[onSearching];
+
+			if (typeof onSearchingCallback === "function") {
+				e.preventDefault();
+				const query = document.getElementById("autocomplete").value;
+				onSearchingCallback({ query: query });
+			}
+		}
+	}
+
 	render() {
 		return (
-			<form role="search" action={this.props.url} className={styles.search}>
+			<form
+				role="search"
+				action={this.props.url}
+				className={styles.search}
+				onSubmit={this.searchSubmitHandler}
+			>
 				{/* eslint jsx-a11y/label-has-for: 0 */}
 				<label className={styles.label} htmlFor="autocomplete">
 					{this.props.placeholder}
@@ -48,7 +73,8 @@ Search.propTypes = {
 		)
 	]),
 	placeholder: PropTypes.string,
-	query: PropTypes.string
+	query: PropTypes.string,
+	onSearching: PropTypes.string
 };
 
 Search.defaultProps = {

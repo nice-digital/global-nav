@@ -22,6 +22,7 @@ const templates = {
 };
 
 const onConfirm = function(suggestion) {
+	console.log(suggestion);
 	if (suggestion) window.location.href = suggestion.Link;
 };
 
