@@ -2,7 +2,25 @@
 	{
 		"href": "https://pathways.nice.org.uk/",
 		"text": "NICE Pathways",
-		"id": "pathways"
+		"id": "pathways",
+		"links": [
+			{
+				"text": "Browse",
+				"href": "/#browse"
+			},
+			{
+				"text": "Recently viewed",
+				"href": "/#recently-viewed"
+			},
+			{
+				"text": "Help",
+				"href": "/#help"
+			},
+			{
+				"text": "Leave feedback",
+				"href": "https://www.nice.org.uk/NICE-Pathways-feedback"
+			}
+		]
 	},
 	{
 		"href": "https://www.nice.org.uk/guidance",
