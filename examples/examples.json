@@ -5,7 +5,10 @@
 		"global_nav_config": {
 			"service": "pathways",
 			"header": {
-				"search": false
+				"search": {
+					"placeholder": "Search NICE's interactive flowcharts…",
+					"autocomplete": "topics"
+				}
 			}
 		}
 	},
