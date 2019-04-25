@@ -199,9 +199,6 @@
 			});
 		});
 	})(jQuery);
-	window.onSearching = function(searchArgs) {
-		console.log(searchArgs.query);
-	};
 </script>
 
 <!-- Test for touch device -->
@@ -219,4 +216,10 @@
 		settings.url =
 			settings.url + (~settings.url.indexOf("?") ? "&" : "?") + "ajax=ajax";
 	});
+</script>
+
+<script type="text/javascript">
+	window.onSearching = function(searchArgs) {
+		window.location.hash = "Search?q=" + encodeURIComponent(searchArgs.query);
+	};
 </script>

@@ -87,7 +87,8 @@
 			"header": {
 				"search": {
 					"placeholder": "Search BNFC…",
-					"autocomplete": "/bnfc/typeahead?ajax=ajax"
+					"autocomplete": "/bnfc/typeahead?ajax=ajax",
+					"onSearching": "onSearching"
 				}
 			}
 		}
@@ -100,7 +101,8 @@
 			"header": {
 				"search": {
 					"placeholder": "Search CKS…",
-					"autocomplete": "topics"
+					"autocomplete": "topics",
+					"onSearching": "onSearching"
 				}
 			}
 		}
