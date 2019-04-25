@@ -4,6 +4,7 @@ exports[`Search Rendering Matches snapshot 1`] = `
 <form
   action="/search"
   className="search"
+  onSubmit={[Function]}
   role="search"
 >
   <label
