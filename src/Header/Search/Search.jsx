@@ -74,7 +74,7 @@ Search.propTypes = {
 	]),
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
-	onSearching: PropTypes.string
+	onSearching: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
 };
 
 Search.defaultProps = {
