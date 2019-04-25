@@ -104,8 +104,8 @@
 		"webpack-merge": "^4.2.1"
 	},
 	"dependencies": {
-		"@nice-digital/design-system": "^0.5.3",
-		"@nice-digital/icons": "^2.0.0",
+		"@nice-digital/icons": "^2.0.1",
+		"@nice-digital/nds-core": "1.0.4-alpha.0",
 		"accessible-autocomplete": "^1.6.2",
 		"classnames": "^2.2.6",
 		"es5-polyfill": "0.0.6",
@@ -113,7 +113,6 @@
 		"nervjs": "^1.3.9",
 		"prop-types": "^15.6.2",
 		"react-hot-loader": "^4.7.1",
-		"sass-mq": "^5.0.0",
 		"unfetch": "^4.1.0"
 	}
 }
