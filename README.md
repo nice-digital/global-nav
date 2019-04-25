@@ -39,6 +39,7 @@
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
 					- [Header.search.placeholder](#headersearchplaceholder)
+					- [Header.search.onSearching](#headersearchonsearching)
 					- [Header.auth](#headerauth)
 					- [Header.auth.environment](#headerauthenvironment)
 					- [Header.auth.provider](#headerauthprovider)
@@ -367,6 +368,30 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
+###### Header.search.onSearching
+
+- Type: `String`, `Function`
+- Default: `null`
+
+The search form by default submits a GET request to `/search?q=XYZ`.
+Disable this and provide your own implementation by passing an `onSearching` property.
+Pass either a function, or the name of a function defined on `window`. E.g.:
+
+```js
+window.onSearchingHandler = function(e) {
+	// Define your implementation here e.g.:
+	window.location.href = "/search?q=" +  encodeURIComponent(e.query);
+};
+
+var global_nav_config = {
+	header: {
+		search: {
+			onSearching: "onSearchingHandler"
+		}
+	}
+};
+```
+
 ###### Header.auth
 
 - Type: `Boolean | Object`
@@ -435,7 +460,10 @@ var global_nav_config = {
 			search: {
 				autocomplete: "/autocomplete?ajax=ajax",
 				url: "/search",
-				placeholder: "Search NICE…"
+				placeholder: "Search NICE…",
+				onSearching: function(e) {
+					// Use e.query
+				}
 			}
 		},
 		footer: {
