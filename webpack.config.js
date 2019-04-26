@@ -5,7 +5,7 @@ const StyleLintPlugin = require("stylelint-webpack-plugin");
 const path = require("path");
 const fs = require("fs");
 
-const examples = require("./examples/examples.json");
+const examples = require("./examples/examples.js");
 
 const ENV = process.env.NODE_ENV || "development";
 const HOT = process.env.HOT !== "false";
@@ -138,7 +138,8 @@ module.exports = {
 				header: {
 					search: false,
 					cookie: false
-				}
+				},
+				footer: false
 			},
 			examples: examples
 		})

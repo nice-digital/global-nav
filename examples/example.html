@@ -36,7 +36,7 @@
 
 		<div id="footer"></div>
 		<script type="text/javascript">
-			var global_nav_config = <%= JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
+			var global_nav_config = <%= typeof htmlWebpackPlugin.options.global_nav_config === "string"? htmlWebpackPlugin.options.global_nav_config : JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
 		</script>
 		<!--[if lt IE 9]>
 			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %> <% if
