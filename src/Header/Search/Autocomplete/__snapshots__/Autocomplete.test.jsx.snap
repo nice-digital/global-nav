@@ -6,7 +6,7 @@ exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
 >
   <e
     autoselect={false}
-    confirmOnBlur={true}
+    confirmOnBlur={false}
     cssNamespace="autocomplete"
     defaultValue="test"
     displayMenu="overlay"

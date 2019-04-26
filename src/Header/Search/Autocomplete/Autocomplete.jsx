@@ -98,6 +98,7 @@ export default class Autocomplete extends Component {
 						}.bind(this)}
 						templates={templates}
 						onConfirm={onConfirm}
+						confirmOnBlur={false}
 						showNoOptionsFound={false}
 						defaultValue={this.props.query}
 						ref={function(acElement) {
