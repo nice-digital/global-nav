@@ -27,7 +27,12 @@ const onConfirm = function(suggestion) {
 
 export default class Autocomplete extends Component {
 	suggest(query, populateResults) {
-		if (this.props.source === false) return;
+		if (
+			this.props.source === false ||
+			query === "" ||
+			query === this.props.placeholder
+		)
+			return;
 
 		let source;
 
