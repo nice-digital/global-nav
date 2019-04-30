@@ -3,6 +3,11 @@ import { hot } from "react-hot-loader/root";
 import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";
 
+import {
+	defaultEventCategory,
+	headerClickEventAction,
+	trackEvent
+} from "./../tracker";
 import TLSMessage from "./TLSMessage";
 import Nav from "./Nav";
 import Search from "./Search";
@@ -23,14 +28,31 @@ export class Header extends Component {
 			needsSkipLinkTarget: !document.getElementById(this.props.skipLinkId)
 		};
 
-		this.handleClick = this.handleClick.bind(this);
+		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
 		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
+		this.handleLogoClick = this.handleLogoClick.bind(this);
 	}
 
-	handleClick() {
+	handleMobileMenuBtnClick() {
 		this.setState(prevState => ({
 			isExpanded: !prevState.isExpanded
 		}));
+	}
+
+	handleLogoClick(e) {
+		e.preventDefault();
+
+		const href = e.currentTarget.getAttribute("href");
+
+		trackEvent(
+			defaultEventCategory,
+			headerClickEventAction,
+			"Logo",
+			null,
+			function() {
+				window.location.href = href;
+			}
+		);
 	}
 
 	handleLoginStatusChecked(accountsData) {
@@ -52,6 +74,7 @@ export class Header extends Component {
 							href="https://www.nice.org.uk/"
 							aria-label="Home"
 							className={styles.home}
+							onClick={this.handleLogoClick}
 						>
 							{typeof SVGRect !== "undefined" ? (
 								<LogoIcon width={null} height="50px" />
@@ -74,7 +97,7 @@ export class Header extends Component {
 								aria-expanded={this.state.isExpanded}
 								aria-haspopup="menu"
 								aria-label="Site menu"
-								onClick={this.handleClick}
+								onClick={this.handleMobileMenuBtnClick}
 							>
 								{this.state.isExpanded ? "Close" : "Menu"}
 							</button>

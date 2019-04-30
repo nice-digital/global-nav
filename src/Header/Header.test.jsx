@@ -3,6 +3,13 @@ import Header from "./Header";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
+import {
+	eventName,
+	defaultEventCategory,
+	headerClickEventAction,
+	eventTimeout
+} from "./../tracker";
+
 describe("Header", () => {
 	const defaultProps = {
 		service: null,
@@ -107,6 +114,59 @@ describe("Header", () => {
 				<Header {...defaultProps} skipLinkId="test-skip-link" />
 			);
 			expect(wrapper.find("#test-skip-link").length).toEqual(1);
+		});
+	});
+
+	describe("Tracking", () => {
+		beforeEach(() => {
+			window.dataLayer = [];
+		});
+
+		afterAll(() => {
+			// Cleanup
+			delete window.dataLayer;
+		});
+
+		it("should track logo click and prevent default", () => {
+			const wrapper = shallow(<Header {...defaultProps} />);
+
+			wrapper.find("a[className='home']").simulate("click", {
+				preventDefault: () => {},
+				currentTarget: {
+					// Mock e.currentTarget.getAttribute("href")
+					getAttribute: () => ""
+				}
+			});
+
+			expect(window.dataLayer).toEqual([
+				{
+					event: eventName,
+					eventCategory: defaultEventCategory,
+					eventAction: headerClickEventAction,
+					eventLabel: "Logo",
+					eventCallback: expect.any(Function),
+					eventTimeout: eventTimeout
+				}
+			]);
+		});
+
+		it("should prevent default and navigate in event callback on logo click", () => {
+			const wrapper = shallow(<Header {...defaultProps} />);
+
+			const preventDefault = jest.fn();
+
+			wrapper.find("a[className='home']").simulate("click", {
+				preventDefault: preventDefault,
+				currentTarget: {
+					// Mock e.currentTarget.getAttribute("href")
+					getAttribute: () => "http://test-url/"
+				}
+			});
+
+			expect(preventDefault).toHaveBeenCalled();
+
+			window.dataLayer[0].eventCallback();
+			expect(window.location.href).toEqual("http://test-url/");
 		});
 	});
 });
