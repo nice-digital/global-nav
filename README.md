@@ -39,6 +39,7 @@
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
 					- [Header.search.placeholder](#headersearchplaceholder)
+					- [Header.search.query](#headersearchquery)
 					- [Header.auth](#headerauth)
 					- [Header.auth.environment](#headerauthenvironment)
 					- [Header.auth.provider](#headerauthprovider)
@@ -367,6 +368,13 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
+###### Header.search.query
+
+- Type: `String`
+- Default: `""`
+
+The current query term. Usually passed in from the querystring value *q*.
+
 ###### Header.auth
 
 - Type: `Boolean | Object`
@@ -435,7 +443,8 @@ var global_nav_config = {
 			search: {
 				autocomplete: "/autocomplete?ajax=ajax",
 				url: "/search",
-				placeholder: "Search NICE…"
+				placeholder: "Search NICE…",
+				query: "diabetes"
 			}
 		},
 		footer: {
