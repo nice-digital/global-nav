@@ -4,6 +4,12 @@ import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
 import { checkIsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
+import {
+	eventName,
+	defaultEventCategory,
+	headerClickEventAction,
+	eventTimeout
+} from "../../tracker";
 
 const escapeKeyCode = 27;
 
@@ -148,5 +154,104 @@ describe("Account", () => {
 			wrapper.find("[aria-controls='my-account']").props()["aria-expanded"]
 		).toBe(false);
 		expect(wrapper.find("#my-account").props()["aria-hidden"]).toBe(true);
+	});
+
+	describe("tracking", () => {
+		beforeEach(() => {
+			window.dataLayer = [];
+		});
+
+		afterAll(() => {
+			// Cleanup
+			delete window.dataLayer;
+		});
+
+		const trackingTest = (accountsData, linkText, eventLabel, href) => {
+			const wrapper = shallow(
+				<Account
+					isLoggedIn={accountsData != null}
+					accountsData={accountsData}
+				/>
+			);
+
+			const preventDefault = jest.fn();
+
+			wrapper.find(`a[children="${linkText}"]`).simulate("click", {
+				preventDefault: preventDefault,
+				currentTarget: {
+					getAttribute: () => href
+				}
+			});
+
+			expect(window.dataLayer).toEqual([
+				{
+					event: eventName,
+					eventCategory: defaultEventCategory,
+					eventAction: headerClickEventAction,
+					eventLabel: eventLabel,
+					eventCallback: expect.any(Function),
+					eventTimeout: eventTimeout
+				}
+			]);
+
+			expect(preventDefault).toHaveBeenCalled();
+
+			window.dataLayer[0].eventCallback();
+			expect(window.location.href).toEqual(href);
+		};
+
+		it("should not send dataLayer event or prevent default for admin link click", () => {
+			const wrapper = shallow(
+				<Account
+					isLoggedIn={true}
+					accountsData={{
+						display_name: "Joe Bloggs",
+						links: {
+							Admin: "https://accounts.nice.org.uk/admin"
+						}
+					}}
+				/>
+			);
+
+			const preventDefault = jest.fn();
+
+			wrapper.find(`a[children="Admin"]`).simulate("click", {
+				preventDefault: preventDefault,
+				currentTarget: {
+					getAttribute: () => "https://accounts.nice.org.uk/admin"
+				}
+			});
+
+			expect(preventDefault).not.toHaveBeenCalled();
+
+			expect(window.dataLayer).toHaveLength(0);
+		});
+
+		it("should send event to the dataLayer with navigating event callback for sign in button click", () => {
+			trackingTest(
+				null,
+				"Sign in",
+				"Sign in",
+				"https://beta-accounts.nice.org.uk/signin"
+			);
+		});
+
+		it("should send event to the dataLayer with navigating event callback for edit profile link click", () => {
+			trackingTest(
+				accountsData,
+				"Joe Bloggs",
+				"Edit profile",
+				"https://accounts.nice.org.uk/users/12345/editprofile"
+			);
+		});
+
+		it("should send event to the dataLayer with navigating event callback for sign out link click", () => {
+			trackingTest(
+				accountsData,
+				"Sign out",
+				"Sign out",
+				"https://beta-accounts.nice.org.uk/signout"
+			);
+		});
 	});
 });
