@@ -43,6 +43,7 @@
 					- [Header.auth](#headerauth)
 					- [Header.auth.environment](#headerauthenvironment)
 					- [Header.auth.provider](#headerauthprovider)
+				- [Footer props](#footer-props)
 		- [CDN](#cdn)
 			- [Configuration](#configuration)
 				- [service](#service)
@@ -50,7 +51,6 @@
 					- [header.onRendering](#headeronrendering)
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
-					- [footer.enabled](#footerenabled)
 	- [Deployments](#deployments)
 
 <!-- END doctoc -->
@@ -403,6 +403,10 @@ This value is the authentication environment eg `beta` would be *beta-accounts.n
 
 The authentication provider allows the provider to be changed. At the moment we do not currently support any other authentication providers but we anticipate this changing in the future, for example NICE Identity/Auth0 or OpenAthens.
 
+##### Footer props
+
+TODO
+
 ### CDN
 
 TODO: Add CDN usage URLs
@@ -497,17 +501,12 @@ A callback function, called just after the header has been rendered. If it is a 
 
 ##### footer
 
-- Type: `Object`
+- Type: `Boolean | Object`
 - Default: `null`
 
-Key/value pairs of settings specific to the footer
-
-###### footer.enabled
-
-- Type: `Boolean`
-- Default: `false`
-
-The is disabled by default. Set `footer.enabled` to `true` render it.
+The footer renders by default, set `footer` to `false` to stop it from rendering e.g. `global_nav_config = { footer: false }`.
+Or, pass an object of key/value pairs of settings specific to the footer.
+See the [footer props](#footer-props) section for available options.
 
 ## Deployments
 
