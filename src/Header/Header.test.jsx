@@ -16,6 +16,15 @@ describe("Header", () => {
 		enabled: null
 	};
 
+	beforeEach(() => {
+		window.dataLayer = [];
+	});
+
+	afterAll(() => {
+		// Cleanup
+		delete window.dataLayer;
+	});
+
 	it("Renders without crashing", () => {
 		const wrapper = shallow(<Header {...defaultProps} />);
 		expect(wrapper).toHaveLength(1);
@@ -46,6 +55,21 @@ describe("Header", () => {
 
 			wrapper.find("button").simulate("click");
 			expect(wrapper.find("Nav").props().isExpanded).toEqual(false);
+		});
+
+		it("should track mobile menu button click", () => {
+			const wrapper = shallow(<Header {...defaultProps} />);
+
+			wrapper.find("button").simulate("click");
+
+			expect(window.dataLayer).toEqual([
+				{
+					event: eventName,
+					eventCategory: defaultEventCategory,
+					eventAction: headerClickEventAction,
+					eventLabel: "Menu"
+				}
+			]);
 		});
 	});
 
@@ -117,16 +141,7 @@ describe("Header", () => {
 		});
 	});
 
-	describe("Tracking", () => {
-		beforeEach(() => {
-			window.dataLayer = [];
-		});
-
-		afterAll(() => {
-			// Cleanup
-			delete window.dataLayer;
-		});
-
+	describe("Logo tracking", () => {
 		it("should track logo click and prevent default", () => {
 			const wrapper = shallow(<Header {...defaultProps} />);
 

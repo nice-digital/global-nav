@@ -34,6 +34,8 @@ export class Header extends Component {
 	}
 
 	handleMobileMenuBtnClick() {
+		trackEvent(defaultEventCategory, headerClickEventAction, "Menu");
+
 		this.setState(prevState => ({
 			isExpanded: !prevState.isExpanded
 		}));
