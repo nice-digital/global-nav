@@ -4,8 +4,37 @@ import classnames from "classnames";
 
 import styles from "./Nav.module.scss";
 import links from "./links.json";
+import {
+	trackEvent,
+	defaultEventCategory,
+	headerClickEventAction
+} from "../../tracker";
 
 export default class Nav extends Component {
+	constructor(props) {
+		super(props);
+
+		this.handleNavItemClick = this.handleNavItemClick.bind(this);
+	}
+
+	handleNavItemClick(e) {
+		e.preventDefault();
+
+		// To support IE8
+		const text = e.currentTarget.textContent || e.currentTarget.innerText,
+			href = e.currentTarget.getAttribute("href");
+
+		trackEvent(
+			defaultEventCategory,
+			headerClickEventAction,
+			text,
+			null,
+			function() {
+				window.location.href = href;
+			}
+		);
+	}
+
 	render() {
 		const { accountsLinks } = this.props;
 
@@ -47,7 +76,12 @@ export default class Nav extends Component {
 
 							return (
 								<li key={id} role="presentation">
-									<a href={href} aria-current={ariaCurrent} role="menuitem">
+									<a
+										href={href}
+										aria-current={ariaCurrent}
+										role="menuitem"
+										onClick={this.handleNavItemClick}
+									>
 										<span>
 											{abbreviation ? <abbr title={title}>{text}</abbr> : text}
 										</span>

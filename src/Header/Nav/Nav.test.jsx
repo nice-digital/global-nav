@@ -4,6 +4,12 @@ import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
 import links from "./__mocks__/links.json";
+import {
+	eventName,
+	defaultEventCategory,
+	headerClickEventAction,
+	eventTimeout
+} from "../../tracker";
 
 jest.mock("./links.json", () => require("./__mocks__/links.json"));
 
@@ -77,5 +83,59 @@ describe("Nav", () => {
 		expect(wrapper.props().className).not.toContain("wrapperExpanded");
 		wrapper.setProps({ isExpanded: true });
 		expect(wrapper.props().className).toContain("wrapperExpanded");
+	});
+
+	describe("tracking", () => {
+		beforeEach(() => {
+			window.dataLayer = [];
+		});
+
+		afterAll(() => {
+			// Cleanup
+			delete window.dataLayer;
+		});
+
+		it("should push dataLayer event for nav item click", () => {
+			const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
+
+			wrapper.find("a[href='https://url1/']").simulate("click", {
+				preventDefault: () => {},
+				currentTarget: {
+					// Mock e.currentTarget.getAttribute("href")
+					getAttribute: () => "",
+					textContent: "First link"
+				}
+			});
+
+			expect(window.dataLayer).toEqual([
+				{
+					event: eventName,
+					eventCategory: defaultEventCategory,
+					eventAction: headerClickEventAction,
+					eventLabel: "First link",
+					eventCallback: expect.any(Function),
+					eventTimeout: eventTimeout
+				}
+			]);
+		});
+
+		it("should prevent default and navigate in event callback on logo click", () => {
+			const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
+
+			const preventDefault = jest.fn();
+
+			wrapper.find("a[href='https://url1/']").simulate("click", {
+				preventDefault: preventDefault,
+				currentTarget: {
+					// Mock e.currentTarget.getAttribute("href")
+					getAttribute: () => "https://url1/"
+				}
+			});
+
+			expect(preventDefault).toHaveBeenCalled();
+
+			window.dataLayer[0].eventCallback();
+			expect(window.location.href).toEqual("https://url1/");
+		});
 	});
 });

@@ -55,6 +55,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
         <a
           aria-current={null}
           href="https://url1/"
+          onClick={[Function]}
           role="menuitem"
         >
           <span>
@@ -69,6 +70,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
         <a
           aria-current={null}
           href="https://url2/"
+          onClick={[Function]}
           role="menuitem"
         >
           <span>
