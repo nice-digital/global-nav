@@ -41,7 +41,7 @@ const guidanceConfig = {
 				environment: "beta"
 			},
 			search: {
-				autocomplete: "/niceorg/autocomplete?ajax=ajax"
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
 			}
 		},
 		footer: false
@@ -58,7 +58,7 @@ const standardsConfig = {
 				environment: "test"
 			},
 			search: {
-				autocomplete: "/niceorg/autocomplete?ajax=ajax"
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
 			}
 		},
 		footer: false
@@ -88,7 +88,7 @@ const evidenceSerpConfig = {
 			search: {
 				placeholder: "Search evidence…",
 				query: "diabetes",
-				autocomplete: "/evidence/autocomplete?ajax=ajax"
+				autocomplete: "/evidence/autocomplete/?ajax=ajax"
 			}
 		},
 		footer: false
@@ -103,7 +103,7 @@ const bnfConfig = {
 		header: {
 			search: {
 				placeholder: "Search BNF…",
-				autocomplete: "/bnf/typeahead?ajax=ajax",
+				autocomplete: "/bnf/typeahead/?ajax=ajax",
 				onSearching: function(searchArgs) {
 					window.location.hash = "Search?q=" + encodeURIComponent(searchArgs.query);
 				}
@@ -121,7 +121,7 @@ const bnfcConfig = {
 		header: {
 			search: {
 				placeholder: "Search BNFC…",
-				autocomplete: "/bnfc/typeahead?ajax=ajax",
+				autocomplete: "/bnfc/typeahead/?ajax=ajax",
 				onSearching: "onSearching"
 			}
 		},
@@ -152,7 +152,7 @@ const journalsConfig = {
 		service: "journals",
 		header: {
 			search: {
-				autocomplete: "/niceorg/autocomplete?ajax=ajax"
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
 			}
 		},
 		footer: false
