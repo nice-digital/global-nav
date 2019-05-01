@@ -6,9 +6,9 @@ exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
 >
   <e
     autoselect={false}
-    confirmOnBlur={true}
+    confirmOnBlur={false}
     cssNamespace="autocomplete"
-    defaultValue=""
+    defaultValue="test"
     displayMenu="overlay"
     dropdownArrow={[Function]}
     id="autocomplete"

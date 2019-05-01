@@ -96,3 +96,9 @@
 	src="//cdn.nice.org.uk/V3.1/Scripts/nice/NICE.EventTracking.js"
 	defer
 ></script>
+
+<script type="text/javascript">
+	window.onSearching = function(searchArgs) {
+		window.location.hash = "Search?q=" + encodeURIComponent(searchArgs.query);
+	};
+</script>

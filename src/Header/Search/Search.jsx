@@ -7,9 +7,75 @@ import Autocomplete from "./Autocomplete";
 import styles from "./Search.module.scss";
 
 export default class Search extends Component {
+	constructor(props) {
+		super(props);
+
+		this.searchSubmitHandler = this.searchSubmitHandler.bind(this);
+		this.keyDownHandler = this.keyDownHandler.bind(this);
+	}
+
+	componentDidMount() {
+		// Submit the form when we press enter to allow the enter key functionality:
+		// The accessible-autocomplete doesn't let you use enter by default
+		const autocomplete = document.getElementById("autocomplete");
+
+		if (autocomplete)
+			autocomplete.addEventListener("keydown", this.keyDownHandler);
+	}
+
+	componentWillUnmount() {
+		const autocomplete = document.getElementById("autocomplete");
+
+		if (autocomplete)
+			autocomplete.removeEventListener("keydown", this.keyDownHandler);
+	}
+
+	keyDownHandler(e) {
+		if (e.key === "Enter") {
+			const wasSearchActionOverridden = this.searchSubmitHandler(e);
+
+			if (!wasSearchActionOverridden) {
+				const searchForm = document.getElementById("global-nav-search-form");
+				if (searchForm) searchForm.submit();
+			}
+		}
+	}
+
+	/**
+	 * Event handler for the form submit action
+	 *
+	 * @param {*} e The event argument
+	 * @returns true if the search action was overridden; otherwise false
+	 * @memberof Search
+	 */
+	searchSubmitHandler(e) {
+		// If we've got an onSearching prop then cancel the default search behaviour
+		// and call the onSearcing callback with the query value.
+		const { onSearching } = this.props;
+		if (onSearching) {
+			const onSearchingCallback =
+				typeof onSearching === "function" ? onSearching : window[onSearching];
+
+			if (typeof onSearchingCallback === "function") {
+				e.preventDefault();
+				const query = document.getElementById("autocomplete").value;
+				onSearchingCallback({ query: query });
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	render() {
 		return (
-			<form role="search" action={this.props.url} className={styles.search}>
+			<form
+				id="global-nav-search-form"
+				role="search"
+				action={this.props.url}
+				className={styles.search}
+				onSubmit={this.searchSubmitHandler}
+			>
 				{/* eslint jsx-a11y/label-has-for: 0 */}
 				<label className={styles.label} htmlFor="autocomplete">
 					{this.props.placeholder}
@@ -48,7 +114,8 @@ Search.propTypes = {
 		)
 	]),
 	placeholder: PropTypes.string,
-	query: PropTypes.string
+	query: PropTypes.string,
+	onSearching: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
 };
 
 Search.defaultProps = {

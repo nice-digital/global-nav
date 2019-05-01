@@ -4,6 +4,8 @@ exports[`Search Rendering Matches snapshot 1`] = `
 <form
   action="/search"
   className="search"
+  id="global-nav-search-form"
+  onSubmit={[Function]}
   role="search"
 >
   <label
@@ -14,7 +16,7 @@ exports[`Search Rendering Matches snapshot 1`] = `
   </label>
   <Autocomplete
     placeholder="Search NICE…"
-    query=""
+    query="test"
     source={false}
   />
   <button
