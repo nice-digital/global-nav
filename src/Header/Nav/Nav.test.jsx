@@ -119,7 +119,7 @@ describe("Nav", () => {
 			]);
 		});
 
-		it("should prevent default and navigate in event callback on logo click", () => {
+		it("should prevent default and navigate in event callback on nav item click", () => {
 			const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
 
 			const preventDefault = jest.fn();
@@ -136,6 +136,104 @@ describe("Nav", () => {
 
 			window.dataLayer[0].eventCallback();
 			expect(window.location.href).toEqual("https://url1/");
+		});
+
+		describe("Accounts links", () => {
+			const accountsLinks = {
+				"Joe Bloggs": "https://accounts.nice.org.uk/users/12345/editprofile",
+				"Sign out": "https://accounts.nice.org.uk/signout",
+				Admin: "https://accounts.nice.org.uk/admin"
+			};
+
+			it("should track edit profile link", () => {
+				const wrapper = shallow(
+					<Nav
+						{...defaultProps}
+						isExpanded={true}
+						accountsLinks={accountsLinks}
+					/>
+				);
+
+				wrapper
+					.find(
+						"a[href='https://accounts.nice.org.uk/users/12345/editprofile']"
+					)
+					.simulate("click", {
+						preventDefault: () => {},
+						currentTarget: {
+							// Mock e.currentTarget.getAttribute("href")
+							getAttribute: () =>
+								"https://accounts.nice.org.uk/users/12345/editprofile",
+							textContent: "Joe Bloggs"
+						}
+					});
+
+				expect(window.dataLayer).toEqual([
+					{
+						event: eventName,
+						eventCategory: defaultEventCategory,
+						eventAction: headerClickEventAction,
+						eventLabel: "Edit profile",
+						eventCallback: expect.any(Function),
+						eventTimeout: eventTimeout
+					}
+				]);
+			});
+
+			it("should track sign out link", () => {
+				const wrapper = shallow(
+					<Nav
+						{...defaultProps}
+						isExpanded={true}
+						accountsLinks={accountsLinks}
+					/>
+				);
+
+				wrapper
+					.find("a[href='https://accounts.nice.org.uk/signout']")
+					.simulate("click", {
+						preventDefault: () => {},
+						currentTarget: {
+							// Mock e.currentTarget.getAttribute("href")
+							getAttribute: () => "https://accounts.nice.org.uk/signout",
+							textContent: "Some log out text"
+						}
+					});
+
+				expect(window.dataLayer).toEqual([
+					{
+						event: eventName,
+						eventCategory: defaultEventCategory,
+						eventAction: headerClickEventAction,
+						eventLabel: "Sign out",
+						eventCallback: expect.any(Function),
+						eventTimeout: eventTimeout
+					}
+				]);
+			});
+
+			it("should not track admin link", () => {
+				const wrapper = shallow(
+					<Nav
+						{...defaultProps}
+						isExpanded={true}
+						accountsLinks={accountsLinks}
+					/>
+				);
+
+				wrapper
+					.find("a[href='https://accounts.nice.org.uk/admin']")
+					.simulate("click", {
+						preventDefault: () => {},
+						currentTarget: {
+							// Mock e.currentTarget.getAttribute("href")
+							getAttribute: () => "https://accounts.nice.org.uk/admin",
+							textContent: "Admin"
+						}
+					});
+
+				expect(window.dataLayer).toEqual([]);
+			});
 		});
 	});
 });

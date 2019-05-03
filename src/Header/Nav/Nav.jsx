@@ -15,24 +15,51 @@ export default class Nav extends Component {
 		super(props);
 
 		this.handleNavItemClick = this.handleNavItemClick.bind(this);
+		this.handleAccountNavItemClick = this.handleAccountNavItemClick.bind(this);
 	}
 
 	handleNavItemClick(e) {
 		e.preventDefault();
 
+		const href = e.currentTarget.getAttribute("href");
+
 		// To support IE8
-		const text = e.currentTarget.textContent || e.currentTarget.innerText,
-			href = e.currentTarget.getAttribute("href");
+		const eventLabel = e.currentTarget.textContent || e.currentTarget.innerText;
 
 		trackEvent(
 			defaultEventCategory,
 			headerClickEventAction,
-			text,
+			eventLabel,
 			null,
 			function() {
 				window.location.href = href;
 			}
 		);
+	}
+
+	handleAccountNavItemClick(e) {
+		e.preventDefault();
+
+		const href = e.currentTarget.getAttribute("href");
+
+		let eventLabel;
+
+		if (href.indexOf("editprofile") > -1) {
+			eventLabel = "Edit profile";
+		} else if (href.indexOf("signout") > -1) {
+			eventLabel = "Sign out";
+		}
+
+		if (eventLabel)
+			trackEvent(
+				defaultEventCategory,
+				headerClickEventAction,
+				eventLabel,
+				null,
+				function() {
+					window.location.href = href;
+				}
+			);
 	}
 
 	render() {
@@ -102,7 +129,9 @@ export default class Nav extends Component {
 						<ul className={styles.menu}>
 							{accountsLinksArray.map(({ href, text }) => (
 								<li key={href}>
-									<a href={href}>{text}</a>
+									<a href={href} onClick={this.handleAccountNavItemClick}>
+										{text}
+									</a>
 								</li>
 							))}
 						</ul>
