@@ -2,34 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
+import SubNav from "./SubNav";
 import styles from "./Nav.module.scss";
 import rootLinks from "./links.json";
-
-const SubMenu = function(props) {
-	return (
-		<div className={styles.subMenuWrapper}>
-			<ul className={styles.subMenuList} aria-label={`${props.text} links`}>
-				{props.links.map(function(subLink, i) {
-					const ariaCurrent =
-						window && window.location.pathname === subLink.href ? "page" : null;
-
-					return (
-						<li key={i}>
-							<a href={subLink.href} role="menuitem" aria-current={ariaCurrent}>
-								{subLink.text}
-							</a>
-						</li>
-					);
-				})}
-			</ul>
-		</div>
-	);
-};
-
-SubMenu.propTypes = {
-	text: PropTypes.string,
-	links: PropTypes.array
-};
 
 export default class Nav extends Component {
 	render() {
@@ -90,7 +65,12 @@ export default class Nav extends Component {
 
 								return (
 									<li key={id} role="presentation">
-										<a href={href} aria-current={ariaCurrent} role="menuitem">
+										<a
+											href={href}
+											aria-current={ariaCurrent}
+											role="menuitem"
+											className={styles.link}
+										>
 											<span>
 												{abbreviation ? (
 													<abbr title={title}>{text}</abbr>
@@ -100,7 +80,7 @@ export default class Nav extends Component {
 											</span>
 										</a>
 										{ariaCurrent && subLinks && (
-											<SubMenu links={subLinks} text={text} />
+											<SubNav links={subLinks} text={text} />
 										)}
 									</li>
 								);
@@ -120,7 +100,7 @@ export default class Nav extends Component {
 							<ul className={styles.menuList} role="menu">
 								{accountsLinksArray.map(({ href, text }) => (
 									<li key={href} role="presentation">
-										<a href={href} role="menuitem">
+										<a href={href} role="menuitem" className={styles.link}>
 											{text}
 										</a>
 									</li>

@@ -1,7 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 
-$colour-nav-background: $colour-nice-teal;
-$colour-nav-text: $colour-text-inverse;
+@import 'nav-settings';
 
 .wrapper {
   display: none;
@@ -50,91 +49,62 @@ $colour-nav-text: $colour-text-inverse;
   margin: auto;
   padding: 0;
 
-  li {
+  > li {
     margin: 0;
   }
-
-  a {
-    border: rem($spacing-x-small) solid $colour-nav-background;
-    border-bottom-width: 0;
-    border-top-width: 0;
-    color: $colour-nav-text;
-    display: block;
-    font-weight: normal;
-    padding: rem($spacing-small $spacing-medium);
-    text-decoration: none;
-
-    span {
-      text-decoration: inherit;
-    }
-
-    &:focus {
-      color: $colour-nav-text;
-      outline: rem($spacing-x-small) solid $colour-focus-inverse;
-      outline-offset: rem(-$spacing-small);
-      z-index: 1; // Push above the adjacent nav items
-    }
-
-    &:visited {
-      color: $colour-nav-text;
-    }
-
-    &:active {
-      background: #acadad;
-      color: $colour-text;
-    }
-
-    &:hover {
-      background: #d6d6d6;
-      color: $colour-text;
-      text-decoration: underline;
-    }
-
-    &[aria-current='true'],
-    &[aria-current='page'] {
-      background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
-      color: $colour-text;
-      font-weight: bold;
-      //margin: rem($spacing-x-small 0);
-
-      &:focus {
-        outline-color: $colour-focus;
-        outline-offset: rem(-$spacing-x-small);
-      }
-    }
-  }
 }
 
-.subMenuWrapper {
-  background: #fff;
-  color: black;
+.link {
+  border: rem($spacing-x-small) solid $colour-nav-background;
+  border-bottom-width: 0;
+  border-top-width: 0;
+  color: $colour-nav-text;
   display: block;
-}
+  font-weight: normal;
+  padding: rem($spacing-small $spacing-medium);
+  text-decoration: none;
 
-.subMenuList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  span {
+    text-decoration: inherit;
+  }
 
-  a {
+  &:focus {
+    color: $colour-nav-text;
+    outline: rem($spacing-x-small) solid $colour-focus-inverse;
+    outline-offset: rem(-$spacing-small);
+    z-index: 1; // Push above the adjacent nav items
+  }
+
+  &:visited {
+    color: $colour-nav-text;
+  }
+
+  &:active {
+    background: #acadad;
     color: $colour-text;
-    padding-left: rem($spacing-large);
+  }
+
+  &:hover {
+    background: #d6d6d6;
+    color: $colour-text;
+    text-decoration: underline;
+  }
+
+  &[aria-current='true'],
+  &[aria-current='page'] {
+    background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
+    color: $colour-text;
+    font-weight: bold;
+    //margin: rem($spacing-x-small 0);
 
     &:focus {
-      color: $colour-text;
-      outline: rem($spacing-x-small) solid $colour-focus;
-    }
-
-    &:visited {
-      color: $colour-text;
+      outline-color: $colour-focus;
+      outline-offset: rem(-$spacing-x-small);
     }
   }
 }
 
 @include mq($from: md) {
-  // TODO: Can we not use a magic number?
-  $sub-nav-height: 58;
-
   .wrapperWithSubLinks {
     padding-bottom: rem($sub-nav-height);
   }
@@ -147,7 +117,7 @@ $colour-nav-text: $colour-text-inverse;
     width: 96%;
     width: calc(100% - #{rem($spacing-large)});
 
-    li {
+    > li {
       display: table-cell;
     }
 
@@ -157,104 +127,63 @@ $colour-nav-text: $colour-text-inverse;
       flex-wrap: nowrap;
       justify-content: space-between;
 
-      li {
+      > li {
         flex-grow: 1;
       }
     }
-
-    a {
-      border-left-width: 0;
-      border-right-width: 0;
-      height: 100%;
-      margin: 0;
-      padding: rem($spacing-medium $spacing-medium);
-      position: relative;
-      text-align: center;
-      white-space: nowrap;
-
-      &:focus {
-        outline-offset: rem(-$spacing-x-small);
-      }
-
-      span {
-        display: inline-block;
-        vertical-align: middle;
-        white-space: normal;
-      }
-
-      // Use pseudo to centrally align text
-      &:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-      }
-
-      &[aria-current='true'],
-      &[aria-current='page'] {
-        // Create space between selected item, and adjacent hover states
-        margin: rem(0 $spacing-x-small);
-
-        &:focus {
-          outline-offset: rem(-$spacing-small);
-        }
-
-        // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
-        &:after {
-          background: #fff;
-          content: '';
-          display: block;
-          height: rem($spacing-x-small);
-          left: 0;
-          position: absolute;
-          top: 100%;
-          width: 100%;
-        }
-
-        &:hover:after {
-          background: #d6d6d6;
-        }
-      }
-    }
   }
 
-  .subMenuWrapper {
-    border-bottom: rem($spacing-xx-small) solid $colour-nav-background;
-    bottom: 0;
-    height: rem($sub-nav-height);
-    left: 0;
-    position: absolute;
-    width: 100%;
-  }
-
-  .subMenuList {
+  .link {
+    border-left-width: 0;
+    border-right-width: 0;
     height: 100%;
-    margin: auto;
-    max-width: rem($nice-container-max-width);
-    // TODO Replace with mixin from nice design system
-    width: 96%;
-    width: calc(100% - #{rem($spacing-large)});
+    margin: 0;
+    padding: rem($spacing-medium $spacing-medium);
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
 
-    li {
+    &:focus {
+      outline-offset: rem(-$spacing-x-small);
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      white-space: normal;
+    }
+
+    // Use pseudo to centrally align text
+    &:before {
+      content: '';
       display: inline-block;
       height: 100%;
+      vertical-align: middle;
     }
 
-    /* stylelint-disable */
-    a {
-      /* stylelint-enable */
-      display: block;
-      height: 100%;
-      padding-bottom: 0;
-      padding-top: 0;
+    &[aria-current='true'],
+    &[aria-current='page'] {
+      // Create space between selected item, and adjacent hover states
+      margin: rem(0 $spacing-x-small);
 
-      &[aria-current='true'],
-      &[aria-current='page'] {
-        background: transparent;
+      &:focus {
+        outline-offset: rem(-$spacing-small);
+      }
 
-        &:after {
-          display: none;
-        }
+      // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
+      &:after {
+        background: #fff;
+        content: '';
+        display: block;
+        height: rem($spacing-x-small);
+        left: 0;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+      }
+
+      &:hover:after {
+        background: #d6d6d6;
       }
     }
   }

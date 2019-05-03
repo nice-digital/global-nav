@@ -19,3 +19,9 @@ Object.defineProperty(
 		};
 	})(window.navigator.userAgent)
 );
+
+// Need to redefine window location to be able to set the href property
+(oldURL => {
+	delete global.window.location;
+	global.window.location = new URL(oldURL);
+})(window.location.href);
