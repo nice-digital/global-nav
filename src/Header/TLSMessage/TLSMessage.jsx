@@ -46,7 +46,7 @@ export default class TLSMessage extends Component {
 						after this date.
 					</p>
 					<p className={styles.lastP}>
-						<a href="https://www.nice.org.uk/tls-upgrades">
+						<a href="https://www.nice.org.uk/tls">
 							Find out how to upgrade your browser
 						</a>
 					</p>

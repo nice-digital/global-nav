@@ -20,7 +20,9 @@ describe("Autocomplete", () => {
 
 	describe("Autocomplete", () => {
 		it("should render autocomplete component", () => {
-			const wrapper = shallow(<Autocomplete {...defaultProps} source="/url" />);
+			const wrapper = shallow(
+				<Autocomplete {...defaultProps} source="/url" query="test" />
+			);
 			expect(toJson(wrapper)).toMatchSnapshot();
 		});
 

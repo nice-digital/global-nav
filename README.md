@@ -39,9 +39,11 @@
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
 					- [Header.search.placeholder](#headersearchplaceholder)
+					- [Header.search.onSearching](#headersearchonsearching)
 					- [Header.auth](#headerauth)
 					- [Header.auth.environment](#headerauthenvironment)
 					- [Header.auth.provider](#headerauthprovider)
+				- [Footer props](#footer-props)
 		- [CDN](#cdn)
 			- [Configuration](#configuration)
 				- [service](#service)
@@ -49,7 +51,6 @@
 					- [header.onRendering](#headeronrendering)
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
-					- [footer.enabled](#footerenabled)
 	- [Deployments](#deployments)
 
 <!-- END doctoc -->
@@ -216,11 +217,13 @@ npm run-script test:unit -- -t aria
 
 #### Production build
 
-Run `npm run build` to create a production build. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
+Run `npm run build -- --env.version=1.2.3` to create a production build, where 1.2.3 is any version you want. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
+
+> We pass in a version argument (`--env.version=X`), because we assume this step will be run by TeamCity. TC (and the NuGet packages we push to Octo) have different versioning schemes from npm packages - build numbers produced by TeamCity aren't valid version numbers that can be used in package.json e.g. a build number of 1.2.3.4-r2a3d4f.
 
 ### IDE
 
-We recommend using VS Code as the IDE. TODO: why and any more detail?
+We recommend using VS Code as the IDE. It's free, used consistently across NICE Digital Services because of the .NET integration and is extensible with high quality, useful extensions:
 
 #### Extensions
 
@@ -236,11 +239,13 @@ The following VS Code extensions are **strongly** recommended, but not required:
 ### Gotchas
 
 - Check you have the right version of Node installed
-- Make sure have LF line endings as this is a cross-platform project. This _should_ happen automatically because of settings in _.gitattributes_ and _.editorconfig_
+- Make sure have LF line endings as this is a cross-platform project. This _should_ happen automatically because of settings in _.gitattributes_ and _.editorconfig_.
+- Use normal functions, rather than arrow functions because of support for IE8
+- Watch out for features of React that Nerv doesn't support, for example refs.
 
 ## How to use
 
-We support 2 main methods for using the Global Nav in your projects: in [React](#react) or via the [CDN](#cdn).
+We support 2 main methods for using the Global Nav in your projects: as a [React component](#react) installed from npm or via the [CDN](#cdn).
 
 ### React
 
@@ -363,6 +368,32 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
+
+###### Header.search.onSearching
+
+- Type: `String`, `Function`
+- Default: `null`
+
+The search form by default submits a GET request to `/search?q=XYZ`.
+Disable this and provide your own implementation by passing an `onSearching` property.
+Pass either a function, or the name of a function defined on `window`. E.g.:
+
+```js
+window.onSearchingHandler = function(e) {
+	// Define your implementation here e.g.:
+	window.location.href = "/search?q=" +  encodeURIComponent(e.query);
+};
+
+var global_nav_config = {
+	header: {
+		search: {
+			onSearching: "onSearchingHandler"
+		}
+	}
+};
+```
+
+
 ###### Header.auth
 
 - Type: `Boolean | Object`
@@ -390,6 +421,10 @@ This value is the authentication environment eg `beta` would be *beta-accounts.n
 - Values: `niceAccounts`
 
 The authentication provider allows the provider to be changed. At the moment we do not currently support any other authentication providers but we anticipate this changing in the future, for example NICE Identity/Auth0 or OpenAthens.
+
+##### Footer props
+
+TODO
 
 ### CDN
 
@@ -431,7 +466,11 @@ var global_nav_config = {
 			search: {
 				autocomplete: "/autocomplete?ajax=ajax",
 				url: "/search",
-				placeholder: "Search NICE…"
+				placeholder: "Search NICE…",
+				onSearching: function(e) {
+					// Use e.query
+				}
+
 			}
 		},
 		footer: {
@@ -484,17 +523,12 @@ A callback function, called just after the header has been rendered. If it is a 
 
 ##### footer
 
-- Type: `Object`
+- Type: `Boolean | Object`
 - Default: `null`
 
-Key/value pairs of settings specific to the footer
-
-###### footer.enabled
-
-- Type: `Boolean`
-- Default: `false`
-
-The is disabled by default. Set `footer.enabled` to `true` render it.
+The footer renders by default, set `footer` to `false` to stop it from rendering e.g. `global_nav_config = { footer: false }`.
+Or, pass an object of key/value pairs of settings specific to the footer.
+See the [footer props](#footer-props) section for available options.
 
 ## Deployments
 

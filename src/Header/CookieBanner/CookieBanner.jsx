@@ -71,8 +71,8 @@ export default class CookieBanner extends Component {
 						{this.state.hasSeenPreviousVersion
 							? "Our cookie policy has changed since you last accepted it. "
 							: "We have placed cookies on your device to help make this website better. "}
-						You can find out more information and how to change some cookie
-						settings in our{" "}
+						By continuing to use our website, you agree to this. You can find
+						out more information and how to change some cookie settings in our{" "}
 						<a href="https://www.nice.org.uk/terms-and-conditions#cookies">
 							cookie&nbsp;policy
 						</a>

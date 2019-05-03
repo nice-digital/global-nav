@@ -12,74 +12,56 @@
 			href="https://fonts.googleapis.com/css?family=Lato:400,700,900"
 			rel="stylesheet"
 		/>
-		<link href="//cdn.nice.org.uk/niceorg/css/app.min.css" rel="stylesheet" type="text/css" />
+		<link
+			href="//cdn.nice.org.uk/niceorg/css/app.min.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<!--[if lt IE 9]>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<![endif]-->
 	</head>
 	<body>
 		<main class="container">
 			<div class="page-header mt--e">
 				<h1 class="page-header__heading">Global navigation test</h1>
-				<p class="page-header__lead">Test site for the NICE global navigation (header and footer).</p>
+				<p class="page-header__lead">
+					Test site for the NICE global navigation (header and footer).
+				</p>
 			</div>
 			<p>The following example pages are available for testing:</p>
 			<ul>
 				<% for (var example in htmlWebpackPlugin.options.examples) { %>
-					<li>
-						<a href="<%= htmlWebpackPlugin.options.examples[example].filename %>.html">
-							<%= htmlWebpackPlugin.options.examples[example].title %>
-						</a>
-					</li>
+				<li>
+					<a
+						href="<%= htmlWebpackPlugin.options.examples[example].filename %>.html"
+					>
+						<%= htmlWebpackPlugin.options.examples[example].title %>
+					</a>
+				</li>
 				<% } %>
 			</ul>
 			<h2>Cookie</h2>
-			<p>Use the following button to clear the <em>seen_cookie_message</em> message:</p>
-			<button type="button" onclick="document.cookie = 'seen_cookie_message= ; expires = Thu, 01 Jan 1970 00:00:00 GMT'">
+			<p>
+				Use the following button to clear the
+				<em>seen_cookie_message</em> message:
+			</p>
+			<button
+				type="button"
+				onclick="document.cookie = 'seen_cookie_message=; expires=Thu, 01 Jan 1970 00:00:00 GMT;domain=' + (window.location.hostname.indexOf('nice.org.uk') > 0 ? 'nice.org.uk' : window.location.hostname)"
+			>
 				Delete cookie
 			</button>
 		</main>
 		<div id="footer"></div>
 		<script type="text/javascript">
-			//var headerRendering = function(element) {
-			//	console.log("Header (callback string) rendering into", element);
-			//};
-//
-			//var headerRendered = function(element) {
-			//	console.log("Header (callback string) rendered into", element);
-			//};
-//
-			//var global_nav_config = {
-			//	service: "guidance",
-			//	header: {
-			//		//search: false
-			//		search: {
-			//			//url: "/search"
-			//			//autocomplete: suggestions,
-			//			autocomplete: "/autocomplete?ajax=ajax",
-			//			query: "diabetes",
-			//			//autocomplete: false,
-			//			//placeholder: "SEARCH"
-			//		},
-			//		//onRendering: "headerRendering",
-			//		//onRendering: (element) => { console.log("Header (callback func) rendering into", element); },
-			//		//onRendered: headerRendered,
-			//		//onRendered: (element) => { console.log("Header (callback func) rendered into", element); }
-			//	},
-			//	//header: false,
-			//	footer: {
-			//		//enabled: true
-			//	}
-			//};
-//
 			var global_nav_config = <%= JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
 		</script>
 		<!--[if lt IE 9]>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-		<![endif]-->
-		<!--[if lt IE 9]>
-			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-				<% if ((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
-					<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-				<% } %>
-			<% } %>
+			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %> <% if
+			((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
+			<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+			<% } %> <% } %>
 		<![endif]-->
 	</body>
 </html>

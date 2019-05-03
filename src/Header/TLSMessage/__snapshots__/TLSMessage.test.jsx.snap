@@ -37,7 +37,7 @@ exports[`TLSMessage Matches snapshot in old IE 1`] = `
       className="lastP"
     >
       <a
-        href="https://www.nice.org.uk/tls-upgrades"
+        href="https://www.nice.org.uk/tls"
       >
         Find out how to upgrade your browser
       </a>

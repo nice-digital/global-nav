@@ -109,10 +109,7 @@ Header.propTypes = {
 	service: PropTypes.string,
 	skipLinkId: PropTypes.string,
 	enabled: PropTypes.bool,
-	search: PropTypes.oneOfType([
-		PropTypes.bool,
-		PropTypes.shape({ url: PropTypes.string })
-	]),
+	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	auth: PropTypes.shape({
 		provider: PropTypes.string,
