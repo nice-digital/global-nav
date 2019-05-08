@@ -38,19 +38,19 @@ export default class Nav extends Component {
 	}
 
 	handleAccountNavItemClick(e) {
-		e.preventDefault();
-
 		const href = e.currentTarget.getAttribute("href");
 
 		let eventLabel;
-
 		if (href.indexOf("editprofile") > -1) {
 			eventLabel = "Edit profile";
 		} else if (href.indexOf("signout") > -1) {
 			eventLabel = "Sign out";
+		} else if (href.indexOf("signin") > -1) {
+			eventLabel = "Sign in";
 		}
 
-		if (eventLabel)
+		if (eventLabel) {
+			e.preventDefault();
 			trackEvent(
 				defaultEventCategory,
 				headerClickEventAction,
@@ -60,6 +60,7 @@ export default class Nav extends Component {
 					window.location.href = href;
 				}
 			);
+		}
 	}
 
 	render() {

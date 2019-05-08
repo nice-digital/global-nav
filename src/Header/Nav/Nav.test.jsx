@@ -146,6 +146,7 @@ describe("Nav", () => {
 			};
 
 			it("should track edit profile link", () => {
+				const preventDefault = jest.fn();
 				const wrapper = shallow(
 					<Nav
 						{...defaultProps}
@@ -159,7 +160,7 @@ describe("Nav", () => {
 						"a[href='https://accounts.nice.org.uk/users/12345/editprofile']"
 					)
 					.simulate("click", {
-						preventDefault: () => {},
+						preventDefault: preventDefault,
 						currentTarget: {
 							// Mock e.currentTarget.getAttribute("href")
 							getAttribute: () =>
@@ -168,6 +169,7 @@ describe("Nav", () => {
 						}
 					});
 
+				expect(preventDefault).toHaveBeenCalled();
 				expect(window.dataLayer).toEqual([
 					{
 						event: eventName,
@@ -181,6 +183,7 @@ describe("Nav", () => {
 			});
 
 			it("should track sign out link", () => {
+				const preventDefault = jest.fn();
 				const wrapper = shallow(
 					<Nav
 						{...defaultProps}
@@ -192,7 +195,7 @@ describe("Nav", () => {
 				wrapper
 					.find("a[href='https://accounts.nice.org.uk/signout']")
 					.simulate("click", {
-						preventDefault: () => {},
+						preventDefault: preventDefault,
 						currentTarget: {
 							// Mock e.currentTarget.getAttribute("href")
 							getAttribute: () => "https://accounts.nice.org.uk/signout",
@@ -200,6 +203,7 @@ describe("Nav", () => {
 						}
 					});
 
+				expect(preventDefault).toHaveBeenCalled();
 				expect(window.dataLayer).toEqual([
 					{
 						event: eventName,
@@ -213,6 +217,7 @@ describe("Nav", () => {
 			});
 
 			it("should not track admin link", () => {
+				const preventDefault = jest.fn();
 				const wrapper = shallow(
 					<Nav
 						{...defaultProps}
@@ -224,7 +229,7 @@ describe("Nav", () => {
 				wrapper
 					.find("a[href='https://accounts.nice.org.uk/admin']")
 					.simulate("click", {
-						preventDefault: () => {},
+						preventDefault: preventDefault,
 						currentTarget: {
 							// Mock e.currentTarget.getAttribute("href")
 							getAttribute: () => "https://accounts.nice.org.uk/admin",
@@ -232,6 +237,7 @@ describe("Nav", () => {
 						}
 					});
 
+				expect(preventDefault).not.toHaveBeenCalled();
 				expect(window.dataLayer).toEqual([]);
 			});
 		});
