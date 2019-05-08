@@ -9642,27 +9642,4 @@
 	</div>
 </div>
 
-
 <script src="//cdn.nice.org.uk/jquery-1.11.1.min.js"></script>
-<script src="https://pathways.nice.org.uk/Scripts/pathwaysui/56afe7c5.build.min.js"></script>
-
-<script defer src="//cdn.nice.org.uk/V2/Scripts/twitter.bootstrap.min.js"></script>
-<script async src="//cdn.nice.org.uk/V3/Scripts/nice/NICE.EventTracking.js"></script>
-
-<script type="text/javascript">
-new PATHWAYS.Application({});
-</script>
-
-<script>
-	// Move this to core Pathways code
-	$(document).ready(function() {
-		window.topics = $.map($('#atozlist a'),
-                function (element) {
-                    return {
-											Title: $(element).text(),
-											Link: $(element).attr('href')
-										};
-                }
-            )
-	});
-</script>
