@@ -12,6 +12,18 @@ exports[`SubNav Matches snapshot 1`] = `
       key="0"
     >
       <a
+        aria-current="page"
+        className="link"
+        href="/"
+        role="menuitem"
+      >
+        Home
+      </a>
+    </li>
+    <li
+      key="1"
+    >
+      <a
         aria-current={null}
         className="link"
         href="/drug/"
@@ -21,7 +33,7 @@ exports[`SubNav Matches snapshot 1`] = `
       </a>
     </li>
     <li
-      key="1"
+      key="2"
     >
       <a
         aria-current={null}

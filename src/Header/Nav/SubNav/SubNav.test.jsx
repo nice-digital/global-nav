@@ -36,7 +36,7 @@ describe("SubNav", () => {
 		expect(
 			wrapper
 				.find("a")
-				.at(0)
+				.at(1)
 				.props()["aria-current"]
 		).toEqual("page");
 	});
