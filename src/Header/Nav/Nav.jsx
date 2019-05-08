@@ -5,8 +5,65 @@ import classnames from "classnames";
 import SubNav from "./SubNav";
 import styles from "./Nav.module.scss";
 import rootLinks from "./links.json";
+import {
+	trackEvent,
+	defaultEventCategory,
+	headerClickEventAction
+} from "../../tracker";
 
 export default class Nav extends Component {
+	constructor(props) {
+		super(props);
+
+		this.handleNavItemClick = this.handleNavItemClick.bind(this);
+		this.handleAccountNavItemClick = this.handleAccountNavItemClick.bind(this);
+	}
+
+	handleNavItemClick(e) {
+		e.preventDefault();
+
+		const href = e.currentTarget.getAttribute("href");
+
+		// To support IE8
+		const eventLabel = e.currentTarget.textContent || e.currentTarget.innerText;
+
+		trackEvent(
+			defaultEventCategory,
+			headerClickEventAction,
+			eventLabel,
+			null,
+			function() {
+				window.location.href = href;
+			}
+		);
+	}
+
+	handleAccountNavItemClick(e) {
+		const href = e.currentTarget.getAttribute("href");
+
+		let eventLabel;
+		if (href.indexOf("editprofile") > -1) {
+			eventLabel = "Edit profile";
+		} else if (href.indexOf("signout") > -1) {
+			eventLabel = "Sign out";
+		} else if (href.indexOf("signin") > -1) {
+			eventLabel = "Sign in";
+		}
+
+		if (eventLabel) {
+			e.preventDefault();
+			trackEvent(
+				defaultEventCategory,
+				headerClickEventAction,
+				eventLabel,
+				null,
+				function() {
+					window.location.href = href;
+				}
+			);
+		}
+	}
+
 	render() {
 		const { accountsLinks } = this.props;
 
@@ -75,6 +132,7 @@ export default class Nav extends Component {
 											aria-current={ariaCurrent}
 											role="menuitem"
 											className={styles.link}
+											onClick={this.handleNavItemClick}
 										>
 											<span>
 												{abbreviation ? (
@@ -105,7 +163,12 @@ export default class Nav extends Component {
 							<ul className={styles.menuList} role="menu">
 								{accountsLinksArray.map(({ href, text }) => (
 									<li key={href} role="presentation">
-										<a href={href} role="menuitem" className={styles.link}>
+										<a
+											href={href}
+											role="menuitem"
+											className={styles.link}
+											onClick={this.handleAccountNavItemClick}
+										>
 											{text}
 										</a>
 									</li>

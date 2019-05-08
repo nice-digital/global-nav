@@ -4,6 +4,11 @@ import classnames from "classnames";
 
 import { checkIsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
 import styles from "./Account.module.scss";
+import {
+	trackEvent,
+	defaultEventCategory,
+	headerClickEventAction
+} from "../../tracker";
 
 const escapeKeyCode = 27;
 
@@ -15,11 +20,14 @@ export default class Account extends Component {
 			isExpanded: false
 		};
 
-		this.handleClick = this.handleClick.bind(this);
+		this.handleMyAccountButtonClick = this.handleMyAccountButtonClick.bind(
+			this
+		);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
 	}
 
-	handleClick(e) {
+	handleMyAccountButtonClick(e) {
 		const isKeyboardEvent = !e.pageX;
 		this.setState(
 			function(prevState) {
@@ -42,6 +50,34 @@ export default class Account extends Component {
 				isExpanded: false
 			});
 			document.getElementById("my-account-button").focus();
+		}
+	}
+
+	handleMenuItemClick(e) {
+		const href = e.currentTarget.getAttribute("href");
+
+		let eventLabel;
+
+		if (href.indexOf("editprofile") > -1) {
+			eventLabel = "Edit profile";
+		} else if (href.indexOf("signout") > -1) {
+			eventLabel = "Sign out";
+		} else if (href.indexOf("signin") > -1) {
+			eventLabel = "Sign in";
+		}
+
+		if (eventLabel) {
+			e.preventDefault();
+
+			trackEvent(
+				defaultEventCategory,
+				headerClickEventAction,
+				eventLabel,
+				null,
+				function() {
+					window.location.href = href;
+				}
+			);
 		}
 	}
 
@@ -73,7 +109,7 @@ export default class Account extends Component {
 					aria-controls="my-account"
 					aria-haspopup="menu"
 					aria-expanded={this.state.isExpanded}
-					onClick={this.handleClick}
+					onClick={this.handleMyAccountButtonClick}
 					onKeyDown={this.handleKeyDown}
 				>
 					My account
@@ -94,6 +130,7 @@ export default class Account extends Component {
 										<a
 											href={accountsData.links[text]}
 											role="menuitem"
+											onClick={this.handleMenuItemClick}
 											onKeyDown={this.handleKeyDown}
 											data-hj-suppress={
 												accountsData.links[text].indexOf("profile") > -1
@@ -110,7 +147,11 @@ export default class Account extends Component {
 				</ul>
 			</div>
 		) : (
-			<a href={signinUrl} className={styles.button}>
+			<a
+				href={signinUrl}
+				className={styles.button}
+				onClick={this.handleMenuItemClick}
+			>
 				Sign in
 			</a>
 		);

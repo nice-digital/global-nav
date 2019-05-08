@@ -30,6 +30,7 @@ exports[`Account Matches snapshot when logged in 1`] = `
       <a
         data-hj-suppress=""
         href="https://accounts.nice.org.uk/users/12345/editprofile"
+        onClick={[Function]}
         onKeyDown={[Function]}
         role="menuitem"
       >
@@ -43,6 +44,7 @@ exports[`Account Matches snapshot when logged in 1`] = `
       <a
         data-hj-suppress={null}
         href="https://accounts.nice.org.uk/signout"
+        onClick={[Function]}
         onKeyDown={[Function]}
         role="menuitem"
       >
@@ -57,6 +59,7 @@ exports[`Account Matches snapshot when logged out 1`] = `
 <a
   className="button"
   href="https://accounts.nice.org.uk/signin"
+  onClick={[Function]}
 >
   Sign in
 </a>

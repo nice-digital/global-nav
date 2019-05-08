@@ -16,6 +16,7 @@ exports[`Header Matches snapshot 1`] = `
       aria-label="Home"
       className="home"
       href="https://www.nice.org.uk/"
+      onClick={[Function]}
     >
       <img
         alt=""
