@@ -5,6 +5,8 @@ import styles from "./Autocomplete.module.scss";
 
 import { suggester } from "./suggester";
 
+import { trackEvent } from "./../../../tracker";
+
 // The maximum number of autocomplete results to return
 const maxResults = 5;
 
@@ -22,7 +24,19 @@ const templates = {
 };
 
 const onConfirm = function(suggestion) {
-	if (suggestion) window.location.href = suggestion.Link;
+	if (suggestion) {
+		const eventCallback = function() {
+			window.location.href = suggestion.Link;
+		};
+
+		trackEvent(
+			"Search",
+			"Typeahead select",
+			suggestion.Title + " | " + document.getElementById("autocomplete").value,
+			null,
+			eventCallback
+		);
+	}
 };
 
 export default class Autocomplete extends Component {

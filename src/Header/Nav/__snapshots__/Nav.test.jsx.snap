@@ -18,6 +18,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
     >
       <a
         href="https://accounts.nice.org.uk/profile"
+        onClick={[Function]}
       >
         Joe Bloggs
       </a>
@@ -27,6 +28,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
     >
       <a
         href="https://accounts.nice.org.uk/signout"
+        onClick={[Function]}
       >
         Sign out
       </a>
@@ -55,6 +57,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
         <a
           aria-current={null}
           href="https://url1/"
+          onClick={[Function]}
           role="menuitem"
         >
           <span>
@@ -69,6 +72,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
         <a
           aria-current={null}
           href="https://url2/"
+          onClick={[Function]}
           role="menuitem"
         >
           <span>
@@ -98,6 +102,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
     >
       <a
         href="https://accounts.nice.org.uk/"
+        onClick={[Function]}
       >
         Sign in
       </a>
