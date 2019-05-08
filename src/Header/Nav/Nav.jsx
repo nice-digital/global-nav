@@ -18,11 +18,16 @@ export default class Nav extends Component {
 				href: accountsLinks[text]
 			}));
 
-		const activeService = rootLinks.find(
-			function(link) {
-				return this.props.service && link.id === this.props.service;
-			}.bind(this)
-		);
+		// Would need to polyfill Array.prototype.find to rewrite this loop, whilst we support IE
+		// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for support
+		let activeService = null;
+		for (let i = 0; i < rootLinks.length; i++) {
+			const rootLink = rootLinks[i];
+			if (this.props.service && rootLink.id === this.props.service) {
+				activeService = rootLink;
+				break;
+			}
+		}
 
 		const subLinks = activeService && activeService.links;
 
