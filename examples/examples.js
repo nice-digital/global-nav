@@ -7,6 +7,13 @@ const pathwaysConfig = {
 	global_nav_config: `{
 		service: "pathways",
 		header: {
+			onNavigating: function(e) {
+				if(e.href === "/#browse") {
+					alert("You clicked browse!");
+				} else {
+					window.location.href = e.href;
+				}
+			},
 			search: {
 				autocomplete: $.map(
 					$('#atozlist a'),

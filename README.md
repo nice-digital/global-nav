@@ -35,6 +35,7 @@
 					- [Header.service](#headerservice)
 					- [Header.skipLinkId](#headerskiplinkid)
 					- [Header.cookie](#headercookie)
+					- [Header.onNavigating](#headeronnavigating)
 					- [Header.search](#headersearch)
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
@@ -313,6 +314,40 @@ An empty div with this id will be created at the end of the header, if it doesn'
 
 The cookie banner is enabled by default, pass `false` to disable it e.g. `<Header cookie={false} />`.
 
+
+###### Header.onNavigating
+
+- Type: `String | Function`
+- Default: `null`
+
+Function parameters:
+
+- `element` (`HTMLAnchorElement`) the HTML anchor element that was clicked to trigger the navigation
+- `href` (`String`) the href of the link that was clicked
+
+Currently `onNavigating` *only* applies to the sub navigation.
+
+Pass `onNavigating` to prevent default of the default navigation behaviour and
+provide your own implementation. Pass either a function, or the name of a
+function defined on `window`. E.g.:
+
+```js
+window.onNavigatingHandler = function(e) {
+	// Define your implementation here e.g.:
+
+	if(e.href === "/#browse") {
+		// Trigger some custom behaviour
+	} else
+		window.location.href = e.href; // Fallback to navigation as normal
+};
+
+var global_nav_config = {
+	header: {
+		onNavigating: "onNavigatingHandler"
+	}
+};
+```
+
 ###### Header.search
 
 - Type: `Boolean | Object`
@@ -368,11 +403,14 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
-
 ###### Header.search.onSearching
 
 - Type: `String`, `Function`
 - Default: `null`
+
+Function parameters:
+
+- `query` (`String`) the query term used in the search
 
 The search form by default submits a GET request to `/search?q=XYZ`.
 Disable this and provide your own implementation by passing an `onSearching` property.
@@ -392,7 +430,6 @@ var global_nav_config = {
 	}
 };
 ```
-
 
 ###### Header.auth
 
@@ -459,6 +496,9 @@ var global_nav_config = {
 		header: {
 			skipLinkId: "content-start",
 			cookie: true,
+			onNavigating: function(e) {
+				// Use e.href
+			},
 			auth: {
 				environment: "beta",
 				provider: "niceAccounts"
@@ -506,7 +546,7 @@ In addition to the options from the React props, there are also the following ca
 
 Function parameters:
 
-- `element` (`HTMLElement`) the HTML the header will be rendered in to
+- `element` (`HTMLElement`) the HTML element the header will be rendered in to
 
 A callback function, called just before the header is rendered. If it is a string, then a function with that name will be looked for on `window`.
 

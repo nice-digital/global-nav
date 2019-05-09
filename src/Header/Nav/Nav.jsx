@@ -143,7 +143,11 @@ export default class Nav extends Component {
 											</span>
 										</a>
 										{ariaCurrent && subLinks && (
-											<SubNav links={subLinks} text={text} />
+											<SubNav
+												links={subLinks}
+												text={text}
+												onNavigating={this.props.onNavigating}
+											/>
 										)}
 									</li>
 								);
@@ -185,5 +189,6 @@ export default class Nav extends Component {
 Nav.propTypes = {
 	service: PropTypes.string,
 	isExpanded: PropTypes.bool,
-	accountsLinks: PropTypes.object
+	accountsLinks: PropTypes.object,
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };

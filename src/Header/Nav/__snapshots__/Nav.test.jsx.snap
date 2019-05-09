@@ -24,6 +24,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
         <a
           className="link"
           href="https://accounts.nice.org.uk/profile"
+          onClick={[Function]}
           role="menuitem"
         >
           Joe Bloggs
@@ -36,6 +37,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
         <a
           className="link"
           href="https://accounts.nice.org.uk/signout"
+          onClick={[Function]}
           role="menuitem"
         >
           Sign out
@@ -70,6 +72,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
             aria-current={null}
             className="link"
             href="https://url1/"
+            onClick={[Function]}
             role="menuitem"
           >
             <span>
@@ -85,6 +88,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
             aria-current={null}
             className="link"
             href="https://url2/"
+            onClick={[Function]}
             role="menuitem"
           >
             <span>
@@ -121,6 +125,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
         <a
           className="link"
           href="https://accounts.nice.org.uk/"
+          onClick={[Function]}
           role="menuitem"
         >
           Sign in
@@ -160,6 +165,7 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
               aria-current={null}
               className="link"
               href="https://url1/"
+              onClick={[Function]}
               role="menuitem"
             >
               <span>
@@ -175,6 +181,7 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
               aria-current={true}
               className="link"
               href="https://url2/"
+              onClick={[Function]}
               role="menuitem"
             >
               <span>
@@ -214,6 +221,7 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
                       aria-current="page"
                       className="link"
                       href="/"
+                      onClick={[Function]}
                       role="menuitem"
                     >
                       Sub link 1
@@ -226,6 +234,7 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
                       aria-current={null}
                       className="link"
                       href="/test"
+                      onClick={[Function]}
                       role="menuitem"
                     >
                       Sub link 2
