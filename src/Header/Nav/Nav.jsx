@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
+import SubNav from "./SubNav";
 import styles from "./Nav.module.scss";
-import links from "./links.json";
+import rootLinks from "./links.json";
 import {
 	trackEvent,
 	defaultEventCategory,
@@ -74,50 +75,85 @@ export default class Nav extends Component {
 				href: accountsLinks[text]
 			}));
 
+		// Would need to polyfill Array.prototype.find to rewrite this loop, whilst we support IE
+		// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for support
+		let activeService = null;
+		for (let i = 0; i < rootLinks.length; i++) {
+			const rootLink = rootLinks[i];
+			if (this.props.service && rootLink.id === this.props.service) {
+				activeService = rootLink;
+				break;
+			}
+		}
+
+		const subLinks = activeService && activeService.links;
+
 		return (
 			<div
 				id="header-menu"
-				className={classnames(styles.wrapper, {
-					[styles.wrapperExpanded]: this.props.isExpanded
-				})}
+				className={classnames(
+					styles.wrapper,
+					{
+						[styles.wrapperExpanded]: this.props.isExpanded
+					},
+					{
+						[styles.wrapperWithSubLinks]: subLinks
+					}
+				)}
 			>
-				<nav className={classnames(styles.nav)}>
-					<ul
-						className={styles.menu}
-						role="menu"
-						aria-labelledby="header-menu-button"
-					>
-						{links.map(({ href, id, text, abbreviation, title }) => {
-							let ariaCurrent = null;
+				<nav className={styles.nav}>
+					<div className={styles.menuWrapper}>
+						<ul
+							className={styles.menuList}
+							role="menu"
+							aria-labelledby="header-menu-button"
+						>
+							{rootLinks.map(({ href, id, text, abbreviation, title }) => {
+								let ariaCurrent = null;
 
-							if (this.props.service && id === this.props.service) {
-								ariaCurrent = true;
+								if (this.props.service && id === this.props.service) {
+									ariaCurrent = true;
 
-								if (
-									location &&
-									href ===
-										`${location.protocol}//${location.host}${location.pathname}`
-								) {
-									ariaCurrent = "page";
+									if (
+										location &&
+										href ===
+											`${location.protocol}//${location.host}${
+												location.pathname
+											}`
+									) {
+										ariaCurrent = "page";
+									}
 								}
-							}
 
-							return (
-								<li key={id} role="presentation">
-									<a
-										href={href}
-										aria-current={ariaCurrent}
-										role="menuitem"
-										onClick={this.handleNavItemClick}
-									>
-										<span>
-											{abbreviation ? <abbr title={title}>{text}</abbr> : text}
-										</span>
-									</a>
-								</li>
-							);
-						})}
-					</ul>
+								return (
+									<li key={id} role="presentation">
+										<a
+											href={href}
+											aria-current={ariaCurrent}
+											role="menuitem"
+											className={styles.link}
+											onClick={this.handleNavItemClick}
+										>
+											<span>
+												{abbreviation ? (
+													<abbr title={title}>{text}</abbr>
+												) : (
+													text
+												)}
+											</span>
+										</a>
+										{ariaCurrent && subLinks && (
+											<SubNav
+												links={subLinks}
+												text={text}
+												onNavigating={this.props.onNavigating}
+											/>
+										)}
+									</li>
+								);
+							})}
+						</ul>
+					</div>
 				</nav>
 				{accountsLinksArray && (
 					<nav
@@ -127,15 +163,22 @@ export default class Nav extends Component {
 						{accountsLinksArray.length > 1 && (
 							<h2 className={styles.myAccountHeading}>My account</h2>
 						)}
-						<ul className={styles.menu}>
-							{accountsLinksArray.map(({ href, text }) => (
-								<li key={href}>
-									<a href={href} onClick={this.handleAccountNavItemClick}>
-										{text}
-									</a>
-								</li>
-							))}
-						</ul>
+						<div className={styles.menuWrapper}>
+							<ul className={styles.menuList} role="menu">
+								{accountsLinksArray.map(({ href, text }) => (
+									<li key={href} role="presentation">
+										<a
+											href={href}
+											role="menuitem"
+											className={styles.link}
+											onClick={this.handleAccountNavItemClick}
+										>
+											{text}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
 					</nav>
 				)}
 			</div>
@@ -146,5 +189,6 @@ export default class Nav extends Component {
 Nav.propTypes = {
 	service: PropTypes.string,
 	isExpanded: PropTypes.bool,
-	accountsLinks: PropTypes.object
+	accountsLinks: PropTypes.object,
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };

@@ -98,7 +98,7 @@ module.exports = {
 							// See https://medium.com/@toolmantim/getting-started-with-css-sourcemaps-and-in-browser-sass-editing-b4daab987fb0
 							// if you want to edit SASS in Chrome DevTools
 							sourceMap: ENV === "development",
-							includePaths: ["./src/scss"],
+							outputStyle: "compressed",
 							data: "@import '~@nice-digital/nds-core/scss/core';"
 						}
 					}

@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "./Nav";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
 import links from "./__mocks__/links.json";
@@ -49,6 +49,11 @@ describe("Nav", () => {
 			<Nav {...defaultProps} accountsLinks={accountsLinks} />
 		);
 		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
+	});
+
+	it("Matches snapshot with sub links for selected service", () => {
+		const wrapper = mount(<Nav {...defaultProps} service={links[1].id} />);
+		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Adds aria-current=true attribute for selected service", () => {

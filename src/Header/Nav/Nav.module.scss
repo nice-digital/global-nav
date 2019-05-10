@@ -1,10 +1,10 @@
-$colour-nav-background: $colour-nice-teal;
-$colour-nav-text: $colour-text-inverse;
+/* stylelint-disable no-descending-specificity */
+
+@import 'nav-settings';
 
 .wrapper {
-  background: $colour-nav-background;
-  color: $colour-nav-text;
   display: none;
+  position: relative;
 
   @include mq($from: md) {
     display: block;
@@ -16,119 +16,10 @@ $colour-nav-text: $colour-text-inverse;
 }
 
 .nav {
-  padding: rem($spacing-x-small 0);
-
-  a {
-    border: rem($spacing-x-small) solid $colour-nav-background;
-    border-bottom-width: 0;
-    border-top-width: 0;
-    color: $colour-nav-text;
-    display: block;
-    font-weight: normal;
-    padding: rem($spacing-small $spacing-medium);
-    text-decoration: none;
-
-    span {
-      text-decoration: inherit;
-    }
-
-    &:focus {
-      color: $colour-nav-text;
-      outline: rem($spacing-x-small) solid $colour-focus-inverse;
-      outline-offset: rem(-$spacing-small);
-      z-index: 1; // Push above the adjacent nav items
-    }
-
-    &:visited {
-      color: $colour-nav-text;
-    }
-
-    &:active {
-      background: #acadad;
-      color: $colour-text;
-    }
-
-    &:hover {
-      background: #d6d6d6;
-      color: $colour-text;
-      text-decoration: underline;
-    }
-
-    &[aria-current='true'],
-    &[aria-current='page'] {
-      background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
-      color: $colour-text;
-      font-weight: bold;
-      margin: rem($spacing-x-small 0);
-
-      &:focus {
-        outline-color: $colour-focus;
-        outline-offset: rem(-$spacing-x-small);
-      }
-    }
-  }
-
   abbr[title] {
     border-bottom: 0;
     cursor: help;
     text-decoration: none;
-  }
-
-  @include mq($from: md) {
-    a {
-      border-left-width: 0;
-      border-right-width: 0;
-      height: 100%;
-      margin: 0;
-      padding: rem($spacing-medium $spacing-medium);
-      position: relative;
-      text-align: center;
-      white-space: nowrap;
-
-      &:focus {
-        outline-offset: rem(-$spacing-x-small);
-      }
-
-      span {
-        display: inline-block;
-        vertical-align: middle;
-        white-space: normal;
-      }
-
-      // Use pseudo to centrally align text
-      &:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-      }
-
-      &[aria-current='true'],
-      &[aria-current='page'] {
-        // Create space between selected item, and adjacent hover states
-        margin: rem(0 $spacing-x-small);
-
-        &:focus {
-          outline-offset: rem(-$spacing-small);
-        }
-
-        // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
-        &:after {
-          background: #fff;
-          content: '';
-          display: block;
-          height: rem($spacing-x-small);
-          left: 0;
-          position: absolute;
-          top: 100%;
-          width: 100%;
-        }
-
-        &:hover:after {
-          background: #d6d6d6;
-        }
-      }
-    }
   }
 }
 
@@ -147,16 +38,78 @@ $colour-nav-text: $colour-text-inverse;
   padding: rem($spacing-small $spacing-medium);
 }
 
-.menu {
+.menuWrapper {
+  background: $colour-nav-background;
+  color: $colour-nav-text;
+  padding: rem($spacing-x-small 0);
+}
+
+.menuList {
   list-style: none;
   margin: auto;
   padding: 0;
 
-  li {
+  > li {
     margin: 0;
   }
+}
 
-  @include mq($from: md) {
+.link {
+  border: rem($spacing-x-small) solid $colour-nav-background;
+  border-bottom-width: 0;
+  border-top-width: 0;
+  color: $colour-nav-text;
+  display: block;
+  font-weight: normal;
+  padding: rem($spacing-small $spacing-medium);
+  text-decoration: none;
+
+  span {
+    text-decoration: inherit;
+  }
+
+  &:focus {
+    color: $colour-nav-text;
+    outline: rem($spacing-x-small) solid $colour-focus-inverse;
+    outline-offset: rem(-$spacing-small);
+    z-index: 1; // Push above the adjacent nav items
+  }
+
+  &:visited {
+    color: $colour-nav-text;
+  }
+
+  &:active {
+    background: #acadad;
+    color: $colour-text;
+  }
+
+  &:hover {
+    background: #d6d6d6;
+    color: $colour-text;
+    text-decoration: underline;
+  }
+
+  &[aria-current='true'],
+  &[aria-current='page'] {
+    background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
+    color: $colour-text;
+    font-weight: bold;
+    //margin: rem($spacing-x-small 0);
+
+    &:focus {
+      outline-color: $colour-focus;
+      outline-offset: rem(-$spacing-x-small);
+    }
+  }
+}
+
+@include mq($from: md) {
+  .wrapperWithSubLinks {
+    padding-bottom: rem($sub-nav-height);
+  }
+
+  .menuList {
     // Fallback for non flexbox browsers that support media queries e.g. IE9
     display: table;
     max-width: rem($nice-container-max-width);
@@ -164,7 +117,7 @@ $colour-nav-text: $colour-text-inverse;
     width: 96%;
     width: calc(100% - #{rem($spacing-large)});
 
-    li {
+    > li {
       display: table-cell;
     }
 
@@ -174,8 +127,63 @@ $colour-nav-text: $colour-text-inverse;
       flex-wrap: nowrap;
       justify-content: space-between;
 
-      li {
+      > li {
         flex-grow: 1;
+      }
+    }
+  }
+
+  .link {
+    border-left-width: 0;
+    border-right-width: 0;
+    height: 100%;
+    margin: 0;
+    padding: rem($spacing-medium $spacing-medium);
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+
+    &:focus {
+      outline-offset: rem(-$spacing-x-small);
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      white-space: normal;
+    }
+
+    // Use pseudo to centrally align text
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+
+    &[aria-current='true'],
+    &[aria-current='page'] {
+      // Create space between selected item, and adjacent hover states
+      margin: rem(0 $spacing-x-small);
+
+      &:focus {
+        outline-offset: rem(-$spacing-small);
+      }
+
+      // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
+      &:after {
+        background: #fff;
+        content: '';
+        display: block;
+        height: rem($spacing-x-small);
+        left: 0;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+      }
+
+      &:hover:after {
+        background: #d6d6d6;
       }
     }
   }

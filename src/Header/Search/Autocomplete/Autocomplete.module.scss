@@ -101,11 +101,13 @@
       color: $colour-link;
       cursor: pointer;
       display: block;
+      margin: 0;
       position: relative;
 
       a {
         color: inherit;
         display: block;
+        font-weight: normal;
         padding: rem($spacing-small);
         text-decoration: none;
       }

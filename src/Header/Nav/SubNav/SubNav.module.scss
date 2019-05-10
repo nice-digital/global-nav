@@ -1,0 +1,104 @@
+@import '../nav-settings';
+
+.wrapper {
+  background: #fff;
+  color: black;
+  display: block;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin: 0;
+  }
+}
+
+.link {
+  border: rem($spacing-x-small) solid $colour-nav-background;
+  border-bottom-width: 0;
+  border-top-width: 0;
+  color: $colour-text;
+  display: block;
+  font-weight: normal;
+  padding: rem($spacing-small $spacing-medium $spacing-small $spacing-large);
+  text-decoration: none;
+
+  &:focus {
+    color: $colour-text;
+    outline: rem($spacing-x-small) solid $colour-focus;
+    outline-offset: rem(-$spacing-small);
+  }
+
+  &:visited,
+  &:hover,
+  &:active {
+    border: rem($spacing-x-small) solid $colour-nav-background;
+    border-bottom-width: 0;
+    border-top-width: 0;
+    color: $colour-text;
+  }
+
+  &:hover {
+    background: #d6d6d6;
+    color: $colour-text;
+    text-decoration: underline;
+  }
+}
+
+@include mq($from: md) {
+  .wrapper {
+    border-bottom: rem($spacing-xx-small) solid $colour-nav-background;
+    bottom: 0;
+    height: rem($sub-nav-height);
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  .list {
+    height: 100%;
+    margin: auto;
+    max-width: rem($nice-container-max-width);
+    // TODO Replace with mixin from nice design system
+    width: 96%;
+    width: calc(100% - #{rem($spacing-large)});
+
+    li {
+      display: inline-block;
+      height: 100%;
+    }
+  }
+
+  .link {
+    border: 0;
+    display: block;
+    height: 100%;
+    padding: rem(0 $spacing-medium);
+
+    &[aria-current='true'],
+    &[aria-current='page'] {
+      background: transparent;
+
+      &:after {
+        display: none;
+      }
+    }
+
+    // Use pseudo to centrally align text
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+
+    &:visited,
+    &:hover,
+    &:active {
+      border: 0;
+    }
+  }
+}
