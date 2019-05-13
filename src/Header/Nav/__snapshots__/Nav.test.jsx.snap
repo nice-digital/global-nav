@@ -10,30 +10,41 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
   >
     My account
   </h2>
-  <ul
-    className="menu"
+  <div
+    className="menuWrapper"
   >
-    <li
-      key="https://accounts.nice.org.uk/profile"
+    <ul
+      className="menuList"
+      role="menu"
     >
-      <a
-        href="https://accounts.nice.org.uk/profile"
-        onClick={[Function]}
+      <li
+        key="https://accounts.nice.org.uk/profile"
+        role="presentation"
       >
-        Joe Bloggs
-      </a>
-    </li>
-    <li
-      key="https://accounts.nice.org.uk/signout"
-    >
-      <a
-        href="https://accounts.nice.org.uk/signout"
-        onClick={[Function]}
+        <a
+          className="link"
+          href="https://accounts.nice.org.uk/profile"
+          onClick={[Function]}
+          role="menuitem"
+        >
+          Joe Bloggs
+        </a>
+      </li>
+      <li
+        key="https://accounts.nice.org.uk/signout"
+        role="presentation"
       >
-        Sign out
-      </a>
-    </li>
-  </ul>
+        <a
+          className="link"
+          href="https://accounts.nice.org.uk/signout"
+          onClick={[Function]}
+          role="menuitem"
+        >
+          Sign out
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
 `;
 
@@ -45,46 +56,52 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
   <nav
     className="nav"
   >
-    <ul
-      aria-labelledby="header-menu-button"
-      className="menu"
-      role="menu"
+    <div
+      className="menuWrapper"
     >
-      <li
-        key="link1"
-        role="presentation"
+      <ul
+        aria-labelledby="header-menu-button"
+        className="menuList"
+        role="menu"
       >
-        <a
-          aria-current={null}
-          href="https://url1/"
-          onClick={[Function]}
-          role="menuitem"
+        <li
+          key="link1"
+          role="presentation"
         >
-          <span>
-            First link
-          </span>
-        </a>
-      </li>
-      <li
-        key="link2"
-        role="presentation"
-      >
-        <a
-          aria-current={null}
-          href="https://url2/"
-          onClick={[Function]}
-          role="menuitem"
+          <a
+            aria-current={null}
+            className="link"
+            href="https://url1/"
+            onClick={[Function]}
+            role="menuitem"
+          >
+            <span>
+              First link
+            </span>
+          </a>
+        </li>
+        <li
+          key="link2"
+          role="presentation"
         >
-          <span>
-            <abbr
-              title="Abbreviation title"
-            >
-              Second link
-            </abbr>
-          </span>
-        </a>
-      </li>
-    </ul>
+          <a
+            aria-current={null}
+            className="link"
+            href="https://url2/"
+            onClick={[Function]}
+            role="menuitem"
+          >
+            <span>
+              <abbr
+                title="Abbreviation title"
+              >
+                Second link
+              </abbr>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </div>
 `;
@@ -94,19 +111,142 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
   aria-label="My account"
   className="nav myAccount"
 >
-  <ul
-    className="menu"
+  <div
+    className="menuWrapper"
   >
-    <li
-      key="https://accounts.nice.org.uk/"
+    <ul
+      className="menuList"
+      role="menu"
     >
-      <a
-        href="https://accounts.nice.org.uk/"
-        onClick={[Function]}
+      <li
+        key="https://accounts.nice.org.uk/"
+        role="presentation"
       >
-        Sign in
-      </a>
-    </li>
-  </ul>
+        <a
+          className="link"
+          href="https://accounts.nice.org.uk/"
+          onClick={[Function]}
+          role="menuitem"
+        >
+          Sign in
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
+`;
+
+exports[`Nav Matches snapshot with sub links for selected service 1`] = `
+<Nav
+  accountsData={null}
+  isExpanded={false}
+  service="link2"
+>
+  <div
+    className="wrapper wrapperWithSubLinks"
+    id="header-menu"
+  >
+    <nav
+      className="nav"
+    >
+      <div
+        className="menuWrapper"
+      >
+        <ul
+          aria-labelledby="header-menu-button"
+          className="menuList"
+          role="menu"
+        >
+          <li
+            key="link1"
+            role="presentation"
+          >
+            <a
+              aria-current={null}
+              className="link"
+              href="https://url1/"
+              onClick={[Function]}
+              role="menuitem"
+            >
+              <span>
+                First link
+              </span>
+            </a>
+          </li>
+          <li
+            key="link2"
+            role="presentation"
+          >
+            <a
+              aria-current={true}
+              className="link"
+              href="https://url2/"
+              onClick={[Function]}
+              role="menuitem"
+            >
+              <span>
+                <abbr
+                  title="Abbreviation title"
+                >
+                  Second link
+                </abbr>
+              </span>
+            </a>
+            <SubNav
+              links={
+                Array [
+                  Object {
+                    "href": "/",
+                    "text": "Sub link 1",
+                  },
+                  Object {
+                    "href": "/test",
+                    "text": "Sub link 2",
+                  },
+                ]
+              }
+              text="Second link"
+            >
+              <div
+                className="wrapper"
+              >
+                <ul
+                  aria-label="Second link links"
+                  className="list"
+                >
+                  <li
+                    key="0"
+                  >
+                    <a
+                      aria-current="page"
+                      className="link"
+                      href="/"
+                      onClick={[Function]}
+                      role="menuitem"
+                    >
+                      Sub link 1
+                    </a>
+                  </li>
+                  <li
+                    key="1"
+                  >
+                    <a
+                      aria-current={null}
+                      className="link"
+                      href="/test"
+                      onClick={[Function]}
+                      role="menuitem"
+                    >
+                      Sub link 2
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </SubNav>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</Nav>
 `;

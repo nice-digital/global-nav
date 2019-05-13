@@ -4,52 +4,6 @@
 		<link rel="stylesheet" type="text/css" href="https://pathways.nice.org.uk/media/stylesheets/ie/ie.css" />
 <![endif]-->
 
-<div id="fullwidth">
-	<div class="mainheader">
-			<div class="global-search environmentheader">
-					<form action="/Search" class="form-search" method="get" id="frmSearch">
-							<input id="publicsearchbox" type="search" autocomplete="off" spellcheck="false" name="q" placeholder="Search NICE's interactive flowcharts ..." maxlength="250" class="input-large search-query" />
-							<input type="hidden" id="pwbu" name="pwbu" value="" />
-							<div id="applicationModeLive"></div>
-							<button type="submit" value="go" title="Search" id="btnSearch">
-									<span class="icon-nice-search"></span>
-							</button>
-					</form>
-			</div>
-
-			<div class="pathwaycontrols">
-					<ul>
-
-							<li>
-									<div id="helpmenu" title="Help">
-											<a href="/">Help</a>
-									</div>
-							</li>
-							<li>
-									<div id="leavefeedback" title="Leave feedback">
-											<a href="https://www.nice.org.uk/NICE-Pathways-feedback" target="_blank">Leave feedback</a>
-									</div>
-							</li>
-
-							<li>
-									<div id="recentlyviewedmenu" title="Recently viewed" style="display:none;">
-											<a rel="rels/view-recently-viewed" href="#recently-viewed">Recently viewed</a>
-									</div>
-							</li>
-
-							<li>
-									<div id="activatepathwayselection" title="Browse">
-											<a href="/">Browse</a>
-									</div>
-							</li>
-
-					</ul>
-			</div>
-	</div>
-
-	<div class="clear"></div>
-</div>
-
 <div id="container">
 	<div id="content">
 			<div id="controlsheader">
@@ -9635,7 +9589,7 @@
 							</div>
 
 					</div>
-					<div class="homepage-help rowhead">
+					<div class="homepage-help rowhead" id="help">
 							<h3>How to use NICE Pathways</h3>
 							<div class="video">
 									<iframe title="A video explaining how to use NICE Pathways" width="965" height="500" src="https://www.youtube.com/embed/NxFwWICaVSc?enablejsapi=1&rel=0" frameborder="0" allowfullscreen></iframe>
@@ -9688,13 +9642,4 @@
 	</div>
 </div>
 
-
 <script src="//cdn.nice.org.uk/jquery-1.11.1.min.js"></script>
-<script src="https://pathways.nice.org.uk/Scripts/pathwaysui/56afe7c5.build.min.js"></script>
-
-<script defer src="//cdn.nice.org.uk/V2/Scripts/twitter.bootstrap.min.js"></script>
-<script async src="//cdn.nice.org.uk/V3/Scripts/nice/NICE.EventTracking.js"></script>
-
-<script type="text/javascript">
-new PATHWAYS.Application({});
-</script>

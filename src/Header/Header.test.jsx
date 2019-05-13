@@ -31,7 +31,9 @@ describe("Header", () => {
 	});
 
 	it("Matches snapshot", () => {
-		const wrapper = shallow(<Header {...defaultProps} />);
+		const wrapper = shallow(
+			<Header {...defaultProps} onNavigating="onNavigatingHandler" />
+		);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 

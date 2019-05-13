@@ -63,6 +63,7 @@ exports[`Header Matches snapshot 1`] = `
   <Nav
     accountsLinks={null}
     isExpanded={false}
+    onNavigating="onNavigatingHandler"
     service={null}
   />
   <TLSMessage />

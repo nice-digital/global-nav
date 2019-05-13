@@ -119,6 +119,7 @@ export class Header extends Component {
 						accountsLinks={
 							this.state.accountsData && this.state.accountsData.links
 						}
+						onNavigating={this.props.onNavigating}
 					/>
 					<TLSMessage />
 					{this.state.needsSkipLinkTarget && (
@@ -139,7 +140,8 @@ Header.propTypes = {
 	auth: PropTypes.shape({
 		provider: PropTypes.string,
 		environment: PropTypes.string
-	})
+	}),
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 Header.defaultProps = {

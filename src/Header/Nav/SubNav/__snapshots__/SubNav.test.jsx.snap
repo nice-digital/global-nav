@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubNav Matches snapshot 1`] = `
+<div
+  className="wrapper"
+>
+  <ul
+    aria-label="BNF links"
+    className="list"
+  >
+    <li
+      key="0"
+    >
+      <a
+        aria-current="page"
+        className="link"
+        href="/"
+        onClick={[Function]}
+        role="menuitem"
+      >
+        Home
+      </a>
+    </li>
+    <li
+      key="1"
+    >
+      <a
+        aria-current={null}
+        className="link"
+        href="/drug/"
+        onClick={[Function]}
+        role="menuitem"
+      >
+        Drugs
+      </a>
+    </li>
+    <li
+      key="2"
+    >
+      <a
+        aria-current={null}
+        className="link"
+        href="/interaction/"
+        onClick={[Function]}
+        role="menuitem"
+      >
+        Interactions
+      </a>
+    </li>
+  </ul>
+</div>
+`;
