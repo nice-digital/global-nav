@@ -2,13 +2,15 @@
 	"name": "@nice-digital/global-nav",
 	"version": "1.0.0",
 	"description": "Global header and footer components for NICE digital services",
-	"main": "src/index.js",
+	"main": "lib/index.js",
 	"scripts": {
 		"// LOCAL DEV": "",
 		"start": "cross-env NODE_ENV=development webpack-dev-server --hot --inline",
 		"start:nohot": "cross-env HOT=false NODE_ENV=development webpack-dev-server",
 		"// PRODUCTION BUILDS": "",
 		"build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+		"es5ify": "babel src -d lib --ignore \"src/*.test.js\",\"src/setupTests.js\"",
+		"copy": "copyfiles --up 1 src/**/*.{scss,json} lib",
 		"// TESTS": "",
 		"test": "npm run lint && npm run test:unit",
 		"test:unit": "jest --notify",
@@ -19,7 +21,9 @@
 		"lint:js": "eslint \"**/*.{js,jsx}\"",
 		"lint:js:fix": "npm run lint:js -- --fix",
 		"lint:scss": "stylelint **/*.scss",
-		"lint:scss:fix": "npm run lint:scss -- --fix"
+		"lint:scss:fix": "npm run lint:scss -- --fix",
+		"// LIFECYCLE HOOKS": "",
+		"postinstall": "npm run es5ify && npm run copy"
 	},
 	"author": "NICE Digital Services (https://github.com/nhsevidence/global-nav/graphs/contributors)",
 	"contributors": [
@@ -32,9 +36,6 @@
 		"url": "git+https://github.com/nhsevidence/global-nav.git"
 	},
 	"license": "MIT",
-	"browserslist": [
-		"extends @nice-digital/browserslist-config"
-	],
 	"publishConfig": {
 		"registry": "http://registry.npmjs.org/",
 		"access": "public"
@@ -53,9 +54,7 @@
 		"@babel/plugin-transform-runtime": "^7.2.0",
 		"@babel/preset-env": "^7.2.3",
 		"@babel/preset-react": "^7.0.0",
-		"@babel/runtime": "^7.3.4",
 		"@hot-loader/react-dom": "^16.7.0",
-		"@nice-digital/browserslist-config": "^1.0.0",
 		"@nice-digital/eslint-config": "^1.0.3",
 		"autoprefixer": "^9.4.4",
 		"babel-eslint": "^10.0.1",
@@ -63,6 +62,7 @@
 		"babel-loader": "^8.0.4",
 		"clean-webpack-plugin": "^1.0.0",
 		"copy-webpack-plugin": "^5.0.1",
+		"copyfiles": "^2.1.0",
 		"core-js": "^2.6.1",
 		"cross-env": "^5.2.0",
 		"css-loader": "^2.1.0",
@@ -104,6 +104,8 @@
 		"webpack-merge": "^4.2.1"
 	},
 	"dependencies": {
+		"@babel/runtime": "^7.3.4",
+		"@nice-digital/browserslist-config": "^1.0.0",
 		"@nice-digital/icons": "^2.0.1",
 		"@nice-digital/nds-core": "1.0.4-alpha.0",
 		"accessible-autocomplete": "^1.6.2",

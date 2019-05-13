@@ -30,6 +30,8 @@
 		- [Gotchas](#gotchas)
 	- [How to use](#how-to-use)
 		- [React](#react)
+			- [Installation](#installation)
+			- [Usage](#usage)
 			- [Props](#props)
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
@@ -245,46 +247,59 @@ The following VS Code extensions are **strongly** recommended, but not required:
 
 ## How to use
 
-We support 2 main methods for using the Global Nav in your projects: as a [React component](#react) installed from npm or via the [CDN](#cdn).
+We support 2 main methods for using the Global Nav in your projects:
+
+- as a [React component](#react) installed directly into your app
+- or externally to your app, loaded via the [CDN](#cdn).
 
 ### React
 
-Global nav is published as an npm package in the @nice-digital org on npm. This means you can install the package and require the `Header` and `Footer` React components into your application, just as you would for any other 3rd party component.
+Install and use Global Nav as a dependency in a React application to include it as part of your application bundle.
 
-This is a good option if you're rendering you're app via React, either client side or server side. For example, if you're using [Create React App](https://facebook.github.io/create-react-app/), [Gatsby](https://www.gatsbyjs.org/) or [Next.js](https://nextjs.org/).
+This is a good option if you're rendering you're app's interface via React, either client side or server side, or both. For example, if you're using [Create React App](https://facebook.github.io/create-react-app/), [Gatsby](https://www.gatsbyjs.org/) or [Next.js](https://nextjs.org/).
 
-First, install the [_@nice-digital/global-nav_ package](https://www.npmjs.com/package/@nice-digital/global-nav) into your project:
+> Note if you're using Create React App you'll need to use v2+ because we use CSS modules
+
+Install the package and require the `Header` and `Footer` React components into your application, just as you would for any other 3rd party component:
+
+#### Installation
+
+First, install the _@nice-digital/global-nav_ package into your project, directly from GitHub:
+
+> Note: we currently don't publish the Global Nav to npm but we plan to in the future.
 
 ```sh
-npm install @nice-digital/global-nav --save
+npm install nhsevidence/global-nav --save
 ```
 
-> Or, if you're using npm 5+ use the shorthand `npm i @nice-digital/global-nav`.
+Then, require the header and/or footer into your application:
 
-Then, require the header and/or footer into your application. If you're using ES6, do it like this:
+#### Usage
+
+Import the header and footer like this:
 
 ```js
 import { Header, Footer } from "@nice-digital/global-nav";
 ```
 
-Or if you're using ES5, do:
+> Note: we've used ES6 module imports for this examples as we've assumed all React apps will be using ES6.
 
-```js
-var globalNav = require("@nice-digital/global-nav"),
-	Header = globalNav.Header,
-	Footer = globalNav.Footer;
-```
-
-These header and footer components that can be be used like any other React component and configured via [props](#props), e.g.:
+These header and footer components that can be be used like any other React component and configured via [props](#props), for example:
 
 ```jsx
+const search = {
+	autocomplete: "/autocomplete"
+};
+
 const page = () => (
 	<div>
-		<Header service="pathways" />
+		<Header service="pathways" search={search} />
 		<Footer />
 	</div>
 );
 ```
+
+For a full list of all the available props, see the [props section](#props) below:
 
 #### Props
 

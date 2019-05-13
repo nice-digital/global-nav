@@ -1,5 +1,4 @@
-import { renderHeader, renderFooter } from "./renderer";
+import Header from "./Header";
+import Footer from "./Footer";
 
-renderHeader();
-
-renderFooter();
+export { Header, Footer };
