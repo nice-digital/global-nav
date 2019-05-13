@@ -36,6 +36,9 @@
 		"url": "git+https://github.com/nhsevidence/global-nav.git"
 	},
 	"license": "MIT",
+	"browserslist": [
+		"extends @nice-digital/browserslist-config"
+	],
 	"publishConfig": {
 		"registry": "http://registry.npmjs.org/",
 		"access": "public"
