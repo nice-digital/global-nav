@@ -99,7 +99,7 @@ module.exports = {
 							// if you want to edit SASS in Chrome DevTools
 							sourceMap: ENV === "development",
 							includePaths: ["./src/scss"],
-              outputStyle: "compressed"
+							outputStyle: "compressed"
 						}
 					}
 				]
