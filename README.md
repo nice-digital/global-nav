@@ -46,6 +46,9 @@
 					- [Header.auth.provider](#headerauthprovider)
 				- [Footer props](#footer-props)
 		- [CDN](#cdn)
+			- [Container IDs](#container-ids)
+			- [Overrides](#overrides)
+			- [Supporting IE8](#supporting-ie8)
 			- [Configuration](#configuration)
 				- [service](#service)
 				- [header](#header)
@@ -105,13 +108,10 @@ The following non-functional requirements apply:
 - [ESLint](https://eslint.org/) for linting our JavaScript
   - with [NICE Digital shared eslint config](https://www.npmjs.com/package/@nice-digital/eslint-config)
 - [Stylelint](https://stylelint.io/) for linting our SCSS
-  - TODO with NICE Digital shared stylelint config
 - [Prettier](https://prettier.io/) for code formatting
 - [Jest](https://jestjs.io/) for JS unit tests and snapshot tests
 - [NICE Design System](https://nhsevidence.github.io/nice-design-system/) core for SASS mixins, functions and colour/spacing variables
 - [NICE Icons](https://github.com/nhsevidence/nice-icons)
-
-TODO: add wdio etc here when we add browser based tests
 
 ### Principles
 
@@ -156,7 +156,16 @@ We may consider replacing Nerv with Preact in the future if we drop support for 
 
 ### CSS Modules
 
-TODO: Explain why and benefits
+We use SCSS modules for a few reasons:
+
+- local scoping of SCSS avoids accidental cascades:
+  - within global nav
+  - polluting out of global nav into the global scope
+- obfuscated class names discourages overriding CSS styles in your app. This is by design to keep the header consistent across all services.
+
+Using SCSS allows us to use mixins, functions and variables from the NICE Design System.
+
+> If you *really* need to override styles, see the [overrides documentation](#overrides).
 
 ## Set up
 
@@ -465,26 +474,74 @@ TODO
 
 ### CDN
 
-TODO: Add CDN usage URLs
+Reference the Global Nav bundle directly from the NICE CDN to render the Global Nav. We recommend including this before the closing `</body>` tag but before your application's scripts:
 
-TODO: Note HTML5 shiv for IE8
+```html
+<script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
+```
+
+This renders with the default configuration. See [the configuration section below](#configuration) for how to pass options into the Global Nav.
+
+> Note: you can reference the non-minified version by removing *.min* from the filename.
+
+Reference a specific version of the global nav by including the build number as a sub folder. This is useful for testing, or in case of a breaking change, for example:
+
+```html
+<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.min.js"></script>
+```
+
+> See the [IE8](#supporting-ie8) section below if you're supporting IE8.
+
+#### Container IDs
+
+The CDN version of Global Nav creates its own containers for the header and footer if they don't already exist on the page. These containers use the ids:
+
+- `global-nav-header` for the header
+- `global-nav-footer` for the footer.
+
+Include empty elements with these ids on the page and Global Nav will render into these instead of creating its own:
+
+```html
+<body>
+	<div id="global-nav-header"></div>
+	<main>
+		<!-- Your page content here -->
+	</main>
+	<div id="global-nav-footer"></div>
+	<script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
+</body>
+```
+
+#### Overrides
+
+Where possible, we recommend using the [provided configuration hooks](#configuration) like [`onSearching`](#headersearchonsearching), [`onNavigating`](#headeronnavigating), [`onRendering`](#headeronrendering), [`onRendered`](#headeronrendered) etc for hooking into or overriding default Global Nav behaviours, rather than using unsupported CSS selectors.
+
+Use the `global-nav-header` and `global-nav-footer` ids to target the Global Nav for more bespoke behaviours - these are the only officially supported selector hooks.
+
+> Please don't rely on inner implementations for hooks or overrides.
+
+For example, if you're targeting the search form via jQuery, use the robust `$("#global-nav-header form[role='search']")` selector rather than `$("#global-nav-search-form")` as this is an inner implementation and might change.
+
+Try not to override Global Nav styles in your app: the Global Nav exists to give consistency across NICE digital services. If you *really* have to, then same rules as apply as above. For example in CSS:
+
+```css
+#global-nav-header {
+  position: relative;
+}
+```
+
+#### Supporting IE8
+
+Include the Global Nav polyfills before Global Nav itself to support IE8, for example:
 
 ```js
 <!--[if lt IE 9]>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="//cdn.nice.org.uk/global-nav/global-nav.ie8.min.js"></script>
 <![endif]-->
 <script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
 ```
 
-In the case of a breaking change or for testing you might want to use a specific version of the global nav. You can do so by using a folder name with the build number:
-
-```js
-<!--[if lt IE 9]>
-	<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.ie8.min.js"></script>
-<![endif]-->
-<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.min.js"></script>
-```
+> Note: if you're supporting IE8 then you'll also need to include [html5shiv](https://github.com/aFarkas/html5shiv) in the `head` because we use HTML5 semantic elements like `header` and `footer`.
 
 #### Configuration
 
