@@ -2,7 +2,7 @@
 
 > Global header and footer used across all NICE digital services
 
-[**:rocket: Jump straight to getting started**](#set-up)
+[**:rocket: Jump straight to getting started**](#rocket-set-up)
 
 [![GitHub release](https://img.shields.io/github/release/nhsevidence/global-nav/all.svg)](https://github.com/nhsevidence/global-nav)
 [![GitHub license](https://img.shields.io/github/license/nhsevidence/global-nav.svg)](https://github.com/nhsevidence/global-nav/blob/master/LICENSE)
@@ -22,7 +22,7 @@
 		- [Why Nerv?](#why-nerv)
 			- [Why not Preact?](#why-not-preact)
 		- [CSS Modules](#css-modules)
-	- [Set up](#set-up)
+	- [Set up](#rocket-set-up)
 		- [Other commands](#other-commands)
 			- [Tests](#tests)
 				- [Run individual files](#run-individual-files)
