@@ -22,7 +22,7 @@
 		- [Why Nerv?](#why-nerv)
 			- [Why not Preact?](#why-not-preact)
 		- [CSS Modules](#css-modules)
-	- [Set up](#rocket-set-up)
+	- [:rocket: Set up](#rocket-set-up)
 		- [Other commands](#other-commands)
 			- [Tests](#tests)
 				- [Run individual files](#run-individual-files)
@@ -44,6 +44,7 @@
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
 					- [Header.search.placeholder](#headersearchplaceholder)
+					- [Header.search.query](#headersearchquery)
 					- [Header.search.onSearching](#headersearchonsearching)
 					- [Header.auth](#headerauth)
 					- [Header.auth.environment](#headerauthenvironment)
@@ -416,6 +417,17 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
+###### Header.search.query
+
+- - Type: `String`
+- Default: `""`
+
+The search query term, usually taken from the q value of the querstring.
+
+> If you're using .NET, use [HttpUtility.JavaScriptStringEncode](https://docs.microsoft.com/en-us/dotnet/api/system.web.httputility.javascriptstringencode) to avoid XSS attacks and make sure [Request Validation](https://docs.microsoft.com/en-us/aspnet/whitepapers/request-validation) is enabled.
+
+> Note: old TopHat looked for the q querystring value itself, but with Global Nav it's the responsibility of each application to pass in the search term.
+
 ###### Header.search.onSearching
 
 - Type: `String`, `Function`
@@ -568,6 +580,7 @@ var global_nav_config = {
 				autocomplete: "/autocomplete?ajax=ajax",
 				url: "/search",
 				placeholder: "Search NICE…",
+				query: "\"diabetes in pregnancy\"",
 				onSearching: function(e) {
 					// Use e.query
 				}
