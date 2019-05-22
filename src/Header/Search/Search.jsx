@@ -31,7 +31,8 @@ export default class Search extends Component {
 	}
 
 	keyDownHandler(e) {
-		if (e.key === "Enter") {
+		// Need to use e.keyCode for IE8, unfortunately
+		if (e.key === "Enter" || e.keyCode === 13) {
 			const wasSearchActionOverridden = this.searchSubmitHandler(e);
 
 			if (!wasSearchActionOverridden) {
@@ -89,6 +90,7 @@ export default class Search extends Component {
 					className={styles.button}
 					type="submit"
 					aria-label="Perform search"
+					onClick={this.searchSubmitHandler}
 				>
 					{!window || typeof window.SVGRect !== "undefined" ? (
 						<SearchIcon className={styles.icon} />
