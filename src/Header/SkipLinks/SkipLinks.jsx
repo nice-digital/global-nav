@@ -32,7 +32,7 @@ export default class SkipLinks extends Component {
 
 	// See https://stackoverflow.com/a/442474/486434
 	getYOffset(el) {
-		var _y = 0;
+		let _y = 0;
 		while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
 			_y += el.offsetTop - el.scrollTop;
 			el = el.offsetParent;

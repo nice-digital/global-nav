@@ -91,7 +91,7 @@ describe("SkipLinks", () => {
 		it("should get offset top relative to window", () => {
 			const wrapper = shallow(<SkipLinks skipLinkId="test" />);
 
-			var element = {
+			const element = {
 				offsetLeft: 0,
 				offsetTop: 99,
 				scrollTop: 9,
