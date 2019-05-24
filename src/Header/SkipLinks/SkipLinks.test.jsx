@@ -8,12 +8,6 @@ describe("SkipLinks", () => {
 	let contentDiv;
 
 	beforeEach(() => {
-		Object.defineProperties(window.HTMLElement.prototype, {
-			offsetTop: {
-				get: () => 99
-			}
-		});
-
 		// Create the skip target
 		contentDiv = document.createElement("div");
 		contentDiv.id = skipLinkId;
@@ -75,6 +69,8 @@ describe("SkipLinks", () => {
 
 		const preventDefault = jest.fn();
 
+		wrapper.instance().getYOffset = jest.fn(() => 99);
+
 		wrapper
 			.find("a")
 			.at(0)
@@ -89,5 +85,24 @@ describe("SkipLinks", () => {
 		expect(contentDiv.getAttribute("tabIndex")).toEqual("-1");
 		expect(document.activeElement).toBe(contentDiv);
 		expect(window.scrollTo).toHaveBeenCalledWith(0, 99);
+	});
+
+	describe("getYOffset", () => {
+		it("should get offset top relative to window", () => {
+			const wrapper = shallow(<SkipLinks skipLinkId="test" />);
+
+			const element = {
+				offsetLeft: 0,
+				offsetTop: 99,
+				scrollTop: 9,
+				offsetParent: {
+					offsetLeft: 0,
+					offsetTop: 98,
+					scrollTop: 8
+				}
+			};
+
+			expect(wrapper.instance().getYOffset(element)).toBe(180);
+		});
 	});
 });
