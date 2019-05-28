@@ -54,6 +54,7 @@
   // We can remove this when we drop support for IE8
   img {
     border: 0;
+    max-width: none;
   }
 }
 

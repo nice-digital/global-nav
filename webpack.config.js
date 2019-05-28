@@ -16,7 +16,7 @@ module.exports = {
 		"global-nav": "./index.js",
 		// To polyfill for ES3 browsers e.g. IE8
 		// We can remove this when we drop IE8 support
-		"global-nav.ie8": "es5-polyfill"
+		"global-nav.ie8": "./polyfill"
 	},
 
 	output: {
