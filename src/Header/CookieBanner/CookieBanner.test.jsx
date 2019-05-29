@@ -87,12 +87,12 @@ describe("CookieBanner", () => {
 			.at(0)
 			.simulate("click");
 
-		expect(cookieSet).toHaveBeenCalledTimes(1);
+		expect(cookieSet).toHaveBeenCalledTimes(2);
 
 		const date = new Date();
 		date.setDate(date.getDate() + 365);
 
-		expect(cookieSet.mock.calls[0][0]).toEqual(
+		expect(cookieSet.mock.calls[1][0]).toEqual(
 			`${CookieName}=${CookieMessageVersion}; path=/; expires=${date.toUTCString()}; domain=nice.org.uk`
 		);
 	});
@@ -120,7 +120,7 @@ describe("CookieBanner", () => {
 		const date = new Date();
 		date.setDate(date.getDate() + 365);
 
-		expect(cookieSet.mock.calls[0][0]).toEqual(
+		expect(cookieSet.mock.calls[1][0]).toEqual(
 			`${CookieName}=${CookieMessageVersion}; path=/; expires=${date.toUTCString()}; domain=www.evidence.nhs.uk`
 		);
 
