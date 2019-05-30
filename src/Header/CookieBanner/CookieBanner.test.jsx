@@ -95,6 +95,13 @@ describe("CookieBanner", () => {
 		expect(cookieSet.mock.calls[1][0]).toEqual(
 			`${CookieName}=${CookieMessageVersion}; path=/; expires=${date.toUTCString()}; domain=nice.org.uk`
 		);
+
+		const pastDate = new Date();
+		pastDate.setDate(pastDate.getDate() - 1);
+
+		expect(cookieSet.mock.calls[0][0]).toEqual(
+			`${CookieName}=; path=/; expires=${pastDate.toUTCString()}`
+		);
 	});
 
 	it("Stores cookie on evidence domain on button click", () => {
