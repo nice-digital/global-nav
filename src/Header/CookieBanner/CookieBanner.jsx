@@ -16,6 +16,7 @@ export default class CookieBanner extends Component {
 
 		// "yes" was used for the previous version of TopHat
 		if (!cookieValue || cookieValue === "yes") {
+			Cookies.remove(CookieName);
 			this.state = {
 				hasSeenPreviousVersion: false,
 				isClosed: false
