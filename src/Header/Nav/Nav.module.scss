@@ -54,7 +54,8 @@
   }
 }
 
-.link {
+a.link {
+  //qualified this with a to add specificity to avoid overrides from application css (NW-1253)
   border: rem($spacing-x-small) solid $colour-nav-background;
   border-bottom-width: 0;
   border-top-width: 0;
@@ -133,7 +134,7 @@
     }
   }
 
-  .link {
+  a.link {
     border-left-width: 0;
     border-right-width: 0;
     height: 100%;
