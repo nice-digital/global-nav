@@ -1,8 +1,14 @@
-.social {
-  color: turquoise;
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-  ul {
-    margin: auto;
-    max-width: rem($nice-container-max-width);
+  li {
+    margin: rem(0 0 $spacing-x-small);
+  }
+
+  svg {
+    margin: rem(0 $spacing-small 0 0);
+    vertical-align: middle;
   }
 }

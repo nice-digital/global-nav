@@ -6,10 +6,12 @@ import Footer from "./Footer/Footer";
 export const headerId = "global-nav-header";
 export const footerId = "global-nav-footer";
 
-const createAndAttachDiv = function(id) {
+const createAndAttachDiv = function(id, attachAtStart) {
 	const divElement = document.createElement("div");
 	divElement.setAttribute("id", id);
-	document.body.insertBefore(divElement, document.body.firstChild);
+	if (attachAtStart)
+		document.body.insertBefore(divElement, document.body.firstChild);
+	else document.body.appendChild(divElement);
 	return divElement;
 };
 
@@ -31,7 +33,7 @@ export const renderHeader = function() {
 		config.header = config.header || {};
 
 		const headerElement =
-			document.getElementById(headerId) || createAndAttachDiv(headerId);
+			document.getElementById(headerId) || createAndAttachDiv(headerId, true);
 
 		let onRendering = ensureCallback(config.header.onRendering);
 		if (onRendering) {
@@ -54,7 +56,7 @@ export const renderFooter = function() {
 	config.footer = config.footer || {};
 
 	const footerElement =
-		document.getElementById(footerId) || createAndAttachDiv(footerId);
+		document.getElementById(footerId) || createAndAttachDiv(footerId, false);
 
-	render(<Footer {...config.footer} />, footerElement);
+	render(<Footer service={config.service} {...config.footer} />, footerElement);
 };

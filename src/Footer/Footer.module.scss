@@ -1,10 +1,12 @@
 @import 'settings';
 
 .footer {
+  @include links-inverse;
   background: $colour-footer-background;
   box-sizing: border-box;
   color: $colour-footer-text;
   font-family: unquote($nice-font-family-sans);
+  margin: rem($spacing-large 0 0 0);
 
   *,
   *:before,
@@ -13,6 +15,33 @@
   }
 
   a {
-    color: $colour-footer-text;
+    font-weight: normal; // To override Pathways global anchor style
+  }
+}
+
+.container {
+  @include container;
+  @include clearfix;
+  padding: rem($spacing-medium 0);
+}
+
+.logo {
+  $logo-width: 80px;
+  $logo-aspect-ratio: 512 / 1410;
+  display: block;
+  height: 0;
+  margin: rem(0 0 $spacing-medium 0);
+  padding: 0;
+  padding-bottom: $logo-width * $logo-aspect-ratio; // Aspect ratio of NICE logo SVG
+  position: relative;
+  width: $logo-width;
+
+  svg {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 }

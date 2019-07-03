@@ -139,8 +139,7 @@ module.exports = {
 				header: {
 					search: false,
 					cookie: false
-				},
-				footer: false
+				}
 			},
 			examples: examples
 		})

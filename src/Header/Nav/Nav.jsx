@@ -4,7 +4,7 @@ import classnames from "classnames";
 
 import SubNav from "./SubNav";
 import styles from "./Nav.module.scss";
-import rootLinks from "./links.json";
+import rootLinks from "./../../services.json";
 import {
 	trackEvent,
 	defaultEventCategory,

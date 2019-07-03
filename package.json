@@ -104,7 +104,7 @@
 		"webpack-merge": "^4.2.1"
 	},
 	"dependencies": {
-		"@nice-digital/icons": "^2.0.1",
+		"@nice-digital/icons": "^2.1.1",
 		"@nice-digital/nds-core": "1.0.4-alpha.0",
 		"accessible-autocomplete": "^1.6.2",
 		"classnames": "^2.2.6",

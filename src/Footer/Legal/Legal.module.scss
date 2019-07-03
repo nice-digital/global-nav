@@ -1,0 +1,68 @@
+@import '../settings';
+
+.wrapper {
+  background: $colour-nice-dark-grey;
+  padding: rem($spacing-medium 0);
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.menu {
+  margin: rem(0 0 $spacing-medium);
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+.copyright {
+  margin: 0;
+}
+
+@include mq($from: md) {
+  .wrapper {
+    @include clearfix;
+  }
+
+  .menu {
+    float: left;
+    margin: 0;
+  }
+
+  .copyright {
+    float: right;
+  }
+}
+
+@include mq($from: lg) {
+  .menu {
+    li {
+      display: inline-block;
+      margin-right: rem($spacing-small);
+    }
+  }
+}
+
+@include mq($from: xl) {
+  .menu {
+    li {
+      margin-right: rem($spacing-medium);
+    }
+  }
+}
