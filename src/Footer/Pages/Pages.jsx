@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import styles from "./Pages.module.scss";
 
-import pages from "./pages.json";
+import pages from "./links.json";
 import TrackedLink from "../../TrackedLink";
 import { footerClickEventAction } from "../../tracker";
 
