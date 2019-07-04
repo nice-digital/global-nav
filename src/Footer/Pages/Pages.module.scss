@@ -1,5 +1,5 @@
 .wrapper {
-  margin: rem(0 0 $spacing-medium);
+  margin: rem(0 0 $spacing-large);
 }
 
 .list {
@@ -16,6 +16,15 @@
   .list {
     column-count: 2;
     column-gap: rem($spacing-medium);
+  }
+}
+
+@include mq($from: sm) {
+  .wrapper {
+    float: left;
+    margin: 0;
+    padding: rem(0 0 0 $spacing-large);
+    width: percentage(2 / 3);
   }
 }
 

@@ -30,7 +30,7 @@
   $logo-aspect-ratio: 512 / 1410;
   display: block;
   height: 0;
-  margin: rem(0 0 $spacing-medium 0);
+  margin: rem(0 0 $spacing-large 0);
   padding: 0;
   padding-bottom: $logo-width * $logo-aspect-ratio; // Aspect ratio of NICE logo SVG
   position: relative;
@@ -43,5 +43,11 @@
     position: absolute;
     top: 0;
     width: 100%;
+  }
+}
+
+@include mq($from: md) {
+  .logo {
+    margin-bottom: rem($spacing-medium);
   }
 }

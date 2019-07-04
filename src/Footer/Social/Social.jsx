@@ -12,7 +12,7 @@ import { footerClickEventAction } from "../../tracker";
 export default class Social extends Component {
 	render() {
 		return (
-			<div className={styles.social}>
+			<div className={styles.wrapper}>
 				<ul className={styles.list} aria-label="NICE on social media">
 					<li>
 						<TrackedLink

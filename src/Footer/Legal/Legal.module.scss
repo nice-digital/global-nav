@@ -1,6 +1,7 @@
 @import '../settings';
 
 .wrapper {
+  @include font-size(-1);
   background: $colour-nice-dark-grey;
   padding: rem($spacing-medium 0);
 
@@ -32,10 +33,20 @@
 }
 
 .copyright {
+  @include font-size(-1);
   margin: 0;
 }
 
-@include mq($from: md) {
+@include mq($from: sm) {
+  .menu {
+    li {
+      display: inline-block;
+      margin-right: rem($spacing-medium);
+    }
+  }
+}
+
+@include mq($from: lg) {
   .wrapper {
     @include clearfix;
   }
@@ -47,22 +58,5 @@
 
   .copyright {
     float: right;
-  }
-}
-
-@include mq($from: lg) {
-  .menu {
-    li {
-      display: inline-block;
-      margin-right: rem($spacing-small);
-    }
-  }
-}
-
-@include mq($from: xl) {
-  .menu {
-    li {
-      margin-right: rem($spacing-medium);
-    }
   }
 }

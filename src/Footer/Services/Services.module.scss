@@ -1,5 +1,5 @@
 .wrapper {
-  margin: rem(0 0 $spacing-medium);
+  margin: rem(0 0 $spacing-large);
 }
 
 .list {
@@ -9,6 +9,14 @@
 
   li {
     margin: rem(0 0 $spacing-x-small);
+  }
+}
+
+@include mq($from: sm) {
+  .wrapper {
+    border-right: 2px solid $colour-nice-dark-grey;
+    float: left;
+    width: percentage(1 / 3);
   }
 }
 

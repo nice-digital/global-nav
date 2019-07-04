@@ -1,3 +1,7 @@
+.wrapper {
+  clear: left;
+}
+
 .list {
   list-style: none;
   margin: 0;
@@ -8,7 +12,27 @@
   }
 
   svg {
-    margin: rem(0 $spacing-small 0 0);
+    margin: rem(-$spacing-xx-small $spacing-x-small 0 0);
     vertical-align: middle;
+  }
+}
+
+@include mq($from: sm) {
+  .list {
+    li {
+      float: left;
+      margin: rem(0 $spacing-medium 0 0);
+    }
+  }
+}
+
+@include mq($from: md) {
+  .wrapper {
+    clear: none;
+
+    li {
+      float: none;
+      margin: rem(0 0 $spacing-x-small);
+    }
   }
 }
