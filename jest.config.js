@@ -6,6 +6,7 @@ module.exports = {
 	testResultsProcessor: "jest-teamcity-reporter",
 	collectCoverageFrom: [
 		"<rootDir>/src/**/*.{js,jsx}",
+		"!<rootDir>/src/polyfill/**/*.{js,jsx}",
 		"!<rootDir>/src/setupTests.js",
 		"!**/node_modules/**"
 	],
