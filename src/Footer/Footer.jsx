@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { hot } from "react-hot-loader/root";
 import PropTypes from "prop-types";
 
 import NiceLogo from "@nice-digital/icons/lib/Logo";
@@ -11,7 +12,7 @@ import styles from "./Footer.module.scss";
 import TrackedLink from "../TrackedLink";
 import { footerClickEventAction } from "../tracker";
 
-export default class Footer extends Component {
+export class Footer extends Component {
 	render() {
 		return (
 			<footer className={styles.footer}>
@@ -38,3 +39,5 @@ export default class Footer extends Component {
 Footer.propTypes = {
 	service: PropTypes.string
 };
+
+export default hot(Footer);

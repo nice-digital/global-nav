@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import Header from "./Header";
-import Footer from "./Footer/Footer";
+import Footer from "./Footer";
 
 export const headerId = "global-nav-header";
 export const footerId = "global-nav-footer";
