@@ -1,4 +1,7 @@
 /* stylelint-disable */
+
+@import '../../header-settings';
+
 .ac {
   :global {
     .autocomplete__wrapper {
@@ -17,7 +20,7 @@
 
     .autocomplete__input {
       background-color: $colour-nice-grey-3;
-      height: rem(40);
+      height: rem($search-height);
       position: relative;
       z-index: 101;
 
