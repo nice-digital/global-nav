@@ -13,54 +13,55 @@
 
 <!-- START doctoc -->
 
-- [Global navigation](#global-navigation)
-	- [What is it?](#what-is-it)
-		- [Functionality](#functionality)
-		- [Non-functional](#non-functional)
-	- [Stack](#stack)
-		- [Principles](#principles)
-		- [Why Nerv?](#why-nerv)
-			- [Why not Preact?](#why-not-preact)
-		- [CSS Modules](#css-modules)
-	- [:rocket: Set up](#rocket-set-up)
-		- [Other commands](#other-commands)
-			- [Tests](#tests)
-				- [Run individual files](#run-individual-files)
-				- [Run individual tests](#run-individual-tests)
-			- [Linting](#linting)
-			- [Production build](#production-build)
-		- [IDE](#ide)
-			- [Extensions](#extensions)
-		- [Gotchas](#gotchas)
-	- [How to use](#how-to-use)
-		- [React](#react)
-			- [Props](#props)
-				- [Header props](#header-props)
-					- [Header.service](#headerservice)
-					- [Header.skipLinkId](#headerskiplinkid)
-					- [Header.cookie](#headercookie)
-					- [Header.onNavigating](#headeronnavigating)
-					- [Header.search](#headersearch)
-					- [Header.search.url](#headersearchurl)
-					- [Header.search.autocomplete](#headersearchautocomplete)
-					- [Header.search.placeholder](#headersearchplaceholder)
-					- [Header.search.query](#headersearchquery)
-					- [Header.search.onSearching](#headersearchonsearching)
-					- [Header.auth](#headerauth)
-					- [Header.auth.environment](#headerauthenvironment)
-					- [Header.auth.provider](#headerauthprovider)
-				- [Footer props](#footer-props)
-		- [CDN](#cdn)
-			- [Container IDs](#container-ids)
-			- [Overrides](#overrides)
-			- [Supporting IE8](#supporting-ie8)
-			- [Configuration](#configuration)
+- [Global navigation](#Global-navigation)
+	- [What is it?](#What-is-it)
+		- [Functionality](#Functionality)
+		- [Non-functional](#Non-functional)
+	- [Stack](#Stack)
+		- [Principles](#Principles)
+		- [Why Nerv?](#Why-Nerv)
+			- [Why not Preact?](#Why-not-Preact)
+		- [CSS Modules](#CSS-Modules)
+	- [:rocket: Set up](#rocket-Set-up)
+		- [Other commands](#Other-commands)
+			- [Tests](#Tests)
+				- [Run individual files](#Run-individual-files)
+				- [Run individual tests](#Run-individual-tests)
+			- [Linting](#Linting)
+			- [Production build](#Production-build)
+		- [IDE](#IDE)
+			- [Extensions](#Extensions)
+		- [Gotchas](#Gotchas)
+	- [How to use](#How-to-use)
+		- [React](#React)
+			- [Props](#Props)
+				- [Header props](#Header-props)
+					- [Header.service](#Headerservice)
+					- [Header.skipLinkId](#HeaderskipLinkId)
+					- [Header.cookie](#Headercookie)
+					- [Header.onNavigating](#HeaderonNavigating)
+					- [Header.search](#Headersearch)
+					- [Header.search.url](#Headersearchurl)
+					- [Header.search.autocomplete](#Headersearchautocomplete)
+					- [Header.search.placeholder](#Headersearchplaceholder)
+					- [Header.search.query](#Headersearchquery)
+					- [Header.search.onSearching](#HeadersearchonSearching)
+					- [Header.auth](#Headerauth)
+					- [Header.auth.environment](#Headerauthenvironment)
+					- [Header.auth.provider](#Headerauthprovider)
+				- [Footer props](#Footer-props)
+					- [Footer.service](#Footerservice)
+		- [CDN](#CDN)
+			- [Container IDs](#Container-IDs)
+			- [Overrides](#Overrides)
+			- [Supporting IE8](#Supporting-IE8)
+			- [Configuration](#Configuration)
 				- [service](#service)
 				- [header](#header)
-					- [header.onRendering](#headeronrendering)
-					- [header.onRendered](#headeronrendered)
+					- [header.onRendering](#headeronRendering)
+					- [header.onRendered](#headeronRendered)
 				- [footer](#footer)
-	- [Deployments](#deployments)
+	- [Deployments](#Deployments)
 
 <!-- END doctoc -->
 </details>
@@ -309,9 +310,10 @@ const page = () => (
 
 - Type: `String | null`
 - Default: `''`
+- Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
 
 The identifier of the service to highlight in the main menu.
-See [links.json](src/Header/Nav/links.json) for a list of the available service identifiers.
+See [links.json](src/services.json) for a list of the available service identifiers.
 
 ###### Header.skipLinkId
 
@@ -486,7 +488,14 @@ The authentication provider allows the provider to be changed. At the moment we 
 
 ##### Footer props
 
-TODO
+###### Footer.service
+
+- Type: `String | null`
+- Default: `''`
+- Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
+
+The identifier of the currently active service.
+See [links.json](src/services.json) for a list of the available service identifiers.
 
 ### CDN
 
@@ -587,9 +596,7 @@ var global_nav_config = {
 
 			}
 		},
-		footer: {
-			// TODO
-		}
+		footer: false
 	};
 ```
 
