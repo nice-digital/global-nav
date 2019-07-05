@@ -53,10 +53,16 @@ export const renderHeader = function() {
 
 export const renderFooter = function() {
 	const config = window.global_nav_config || {};
-	config.footer = config.footer || {};
 
-	const footerElement =
-		document.getElementById(footerId) || createAndAttachDiv(footerId, false);
+	if (config.footer !== false) {
+		config.footer = config.footer || {};
 
-	render(<Footer service={config.service} {...config.footer} />, footerElement);
+		const footerElement =
+			document.getElementById(footerId) || createAndAttachDiv(footerId, false);
+
+		render(
+			<Footer service={config.service} {...config.footer} />,
+			footerElement
+		);
+	}
 };
