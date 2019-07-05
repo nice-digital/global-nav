@@ -208,10 +208,6 @@
 			? "touch-screen-device"
 			: "non-touch-screen-device"
 	);
-</script>
-
-<!-- TODO: What is this doing? -->
-<script type="text/javascript">
 	$(document).ajaxSend(function(event, jqxhr, settings) {
 		settings.url =
 			settings.url + (~settings.url.indexOf("?") ? "&" : "?") + "ajax=ajax";

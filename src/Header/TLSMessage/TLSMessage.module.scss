@@ -1,9 +1,6 @@
 .container {
-  margin: 0 auto rem($spacing-medium) auto;
-  max-width: rem($nice-container-max-width);
-  // TODO Replace with mixin from nice design system
-  width: 96%;
-  width: calc(100% - #{rem($spacing-large)});
+  @include container;
+  margin-bottom: rem($spacing-medium);
 }
 
 .alert {

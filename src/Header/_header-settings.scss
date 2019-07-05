@@ -1,5 +1,10 @@
+// TODO: Remove this override when the design system is rolled out everywhere
+$colour-body: $colour-true-white;
+
 // TODO: Can we not use a magic number?
 $sub-nav-height: 58;
 
 $colour-nav-background: $colour-nice-teal;
 $colour-nav-text: $colour-text-inverse;
+
+$search-height: 40;

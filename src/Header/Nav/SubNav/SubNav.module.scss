@@ -1,4 +1,4 @@
-@import '../nav-settings';
+@import '../../header-settings';
 
 .wrapper {
   background: #fff;
@@ -59,12 +59,8 @@
   }
 
   .list {
+    @include container;
     height: 100%;
-    margin: auto;
-    max-width: rem($nice-container-max-width);
-    // TODO Replace with mixin from nice design system
-    width: 96%;
-    width: calc(100% - #{rem($spacing-large)});
 
     li {
       display: inline-block;
