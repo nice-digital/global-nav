@@ -3,7 +3,7 @@ import Nav from "./Nav";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import links from "./__mocks__/links.json";
+import services from "./__mocks__/services.json";
 import {
 	eventName,
 	defaultEventCategory,
@@ -11,7 +11,7 @@ import {
 	eventTimeout
 } from "../../tracker";
 
-jest.mock("./links.json", () => require("./__mocks__/links.json"));
+jest.mock("./../../services.json", () => require("./__mocks__/services.json"));
 
 describe("Nav", () => {
 	const defaultProps = {
@@ -52,12 +52,12 @@ describe("Nav", () => {
 	});
 
 	it("Matches snapshot with sub links for selected service", () => {
-		const wrapper = mount(<Nav {...defaultProps} service={links[1].id} />);
+		const wrapper = mount(<Nav {...defaultProps} service={services[1].id} />);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Adds aria-current=true attribute for selected service", () => {
-		const wrapper = shallow(<Nav {...defaultProps} service={links[1].id} />);
+		const wrapper = shallow(<Nav {...defaultProps} service={services[1].id} />);
 		expect(
 			wrapper
 				.find("a")
@@ -69,9 +69,9 @@ describe("Nav", () => {
 	it("Adds aria-current=page attribute for selected service when matches current URL", () => {
 		const oldLocation = global.window.location;
 		delete global.window.location;
-		global.window.location = new URL(links[1].href);
+		global.window.location = new URL(services[1].href);
 
-		const wrapper = shallow(<Nav {...defaultProps} service={links[1].id} />);
+		const wrapper = shallow(<Nav {...defaultProps} service={services[1].id} />);
 		expect(
 			wrapper
 				.find("a")

@@ -1,3 +1,5 @@
+@import '../header-settings';
+
 .account {
   position: relative;
 }
@@ -11,15 +13,15 @@
   font-family: inherit;
   font-size: inherit;
   font-weight: normal;
-  height: rem(40); // TODO: Share a variable with search for height
-  line-height: rem(40);
+  height: rem($search-height);
+  line-height: rem($search-height);
   padding: rem(0 $spacing-small);
   text-decoration: none;
   vertical-align: middle;
   white-space: nowrap;
 
   &:focus {
-    outline: 3px solid $colour-focus; // TODO: Replace with design system mixin
+    @include default-focus-style;
   }
 
   &:visited {
@@ -63,8 +65,7 @@
 
   // We move focus when we expand via keyboard navigation
   &:focus {
-    // TODO: Use design system mixin
-    outline: 3px solid $colour-focus;
+    @include default-focus-style;
   }
 
   &[aria-hidden='true'] {
@@ -112,8 +113,7 @@
     white-space: nowrap;
 
     &:focus {
-      // TODO: Use design system mixin
-      outline: 3px solid $colour-focus;
+      @include default-focus-style;
     }
 
     &:hover {

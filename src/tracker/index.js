@@ -3,6 +3,7 @@ export const eventTimeout = 2000;
 export const eventName = "GlobalNav";
 export const defaultEventCategory = "TopHat and footer";
 export const headerClickEventAction = "Tophat click";
+export const footerClickEventAction = "Footer click";
 
 export const ensureDataLayer = function() {
 	window.dataLayer = window.dataLayer || [];

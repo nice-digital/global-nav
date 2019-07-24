@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Legal Matches snapshot with SVG support 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="container"
+  >
+    <TrackedLink
+      aria-label="Go to NICE home page"
+      className="logo"
+      eventAction="Footer click"
+      eventCategory="TopHat and footer"
+      eventLabel="Logo"
+      href="https://www.nice.org.uk/"
+    >
+      <SvgLogo />
+    </TrackedLink>
+    <Services
+      service="cks"
+    />
+    <Pages
+      service="cks"
+    />
+    <Social />
+  </div>
+  <Legal />
+</footer>
+`;
+
+exports[`Legal Matches snapshot with no SVG support 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="container"
+  >
+    <TrackedLink
+      aria-label="Go to NICE home page"
+      className="logo"
+      eventAction="Footer click"
+      eventCategory="TopHat and footer"
+      eventLabel="Logo"
+      href="https://www.nice.org.uk/"
+    />
+    <Services
+      service="cks"
+    />
+    <Pages
+      service="cks"
+    />
+    <Social />
+  </div>
+  <Legal />
+</footer>
+`;

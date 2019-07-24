@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Legal Matches snapshot 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="container"
+  >
+    <nav
+      aria-label="Legal menu"
+      className="menu"
+    >
+      <ul>
+        <li>
+          <TrackedLink
+            eventAction="Footer click"
+            eventCategory="TopHat and footer"
+            eventLabel="Accessibility"
+            href="https://www.nice.org.uk/accessibility"
+          >
+            Accessibility
+          </TrackedLink>
+        </li>
+        <li>
+          <TrackedLink
+            eventAction="Footer click"
+            eventCategory="TopHat and footer"
+            eventLabel="Freedom of information"
+            href="https://www.nice.org.uk/freedom-of-information"
+          >
+            Freedom of information
+          </TrackedLink>
+        </li>
+        <li>
+          <TrackedLink
+            eventAction="Footer click"
+            eventCategory="TopHat and footer"
+            eventLabel="Glossary"
+            href="https://www.nice.org.uk/glossary"
+          >
+            Glossary
+          </TrackedLink>
+        </li>
+        <li>
+          <TrackedLink
+            eventAction="Footer click"
+            eventCategory="TopHat and footer"
+            eventLabel="Terms and conditions"
+            href="https://www.nice.org.uk/terms-and-conditions"
+          >
+            Terms and conditions
+          </TrackedLink>
+        </li>
+        <li>
+          <TrackedLink
+            eventAction="Footer click"
+            eventCategory="TopHat and footer"
+            eventLabel="Privacy notice"
+            href="https://www.nice.org.uk/privacy-notice"
+          >
+            Privacy notice
+          </TrackedLink>
+        </li>
+      </ul>
+    </nav>
+    <p
+      className="copyright"
+    >
+      ©
+       
+      <abbr
+        title="National Institute for Health and Care Excellence"
+      >
+        NICE
+      </abbr>
+       
+      2000
+      . All rights reserved. Subject to
+       
+      <TrackedLink
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="Notice of rights"
+        href="https://www.nice.org.uk/terms-and-conditions#notice-of-rights"
+      >
+        Notice of rights
+      </TrackedLink>
+      .
+    </p>
+  </div>
+</div>
+`;
