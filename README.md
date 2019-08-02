@@ -2,10 +2,14 @@
 
 > Global header and footer used across all NICE digital services
 
-[**:rocket: Jump straight to getting started**](#set-up)
+[**:rocket: Jump straight to getting started**](#rocket-set-up)
+
+[![GitHub release](https://img.shields.io/github/release/nhsevidence/global-nav/all.svg)](https://github.com/nhsevidence/global-nav)
+[![GitHub license](https://img.shields.io/github/license/nhsevidence/global-nav.svg)](https://github.com/nhsevidence/global-nav/blob/master/LICENSE)
+[![NICE Design System](https://img.shields.io/static/v1.svg?logoWidth=40&label=&message=DESIGN%20SYSTEM&color=004650&labelColor=393939&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDEwIiBoZWlnaHQ9IjUxMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQxMi4wOTYgNDU0LjA3YzAgMTYuMTQ2LTYuNzkgMTkuMjQtMTcuOTQgMTkuMjRoLTUyLjYyNGMtMTEuMTQ5IDAtMjAuNDA5LTQuMzUxLTI3LjI1Ny0xMy42NTJMMTI5LjgyMSAyMTMuMzE1aC0xLjI1NHYyNDEuMzc0YzAgMTMuNjUxLTYuMTkyIDE4LjYwMS0xOC41NTcgMTguNjAxSDUyLjQyODRDMzguMTkyMiA0NzMuMjkgMzIgNDcwLjE5NyAzMiA0NTUuMjg4VjYxLjkxMzFjMC0xNi4xMjY0IDcuNDI2OC0xOS4yMzk1IDIwLjQyODQtMTkuMjM5NWg1MS45ODc2YzEyLjM2NSAwIDE4LjU1NyAzLjczMTkgMjUuMzY3IDEzLjAzMjZMMzE0LjIzNyAzMDMuOTA1aDEuMjM0VjYwLjY1NjJjMC0xMy42MzIgNi44MS0xNy45ODI2IDE5LjE5NC0xNy45ODI2aDYwLjA1MWMxNi4wODggMCAxNy4zMjMgOC42ODE5IDE3LjMyMyAxOS4yMzk1VjQ1NC4wNTFoLjAzOGwuMDE5LjAxOXptMTk3LjMwMiAzLjU3N2MwIDcuNDQ1LTQuOTM5IDE0LjI5LTEzLjYgMTQuMjloLTcxLjIwMWMtOS4yNTkgMC0xMy41OTktNi44NDUtMTMuNTk5LTEzLjY1MVY1NS41NTE1YzAtNy40NDQ1IDQuOTU3LTE0LjI1MDggMTMuNTk5LTE0LjI1MDhoNzEuMjAxYzkuMjc5IDAgMTMuNiA2LjgwNjMgMTMuNiAxMy42NTE0VjQ1Ny42NDd6TTEwMjUuNDEgNzcuOTA0MWwtMTcuOTYgNTIuMTI5OWMtMi40NSA2LjIwNy00LjkzIDkuMzAxLTkuMjU2IDkuMzAxLTIuNDY5IDAtNC45MzgtMS4yMzctOC4wNDQtMi40OTQtMzIuODEzLTE1LjQ4OC01OC4xOTktMjEuMDk2LTg3LjI2OS0yMS4wOTYtNjQuMzkxIDAtMTA1Ljg0NiA0OS42MzYtMTA1Ljg0NiAxNDAuMjI2IDAgOTguMDU0IDQ3LjAxIDE0MC4yMDcgMTA3LjcxNyAxNDAuMjA3IDI5LjA5IDAgNTQuNDc2LTUuNTMgODMuNTQ2LTE3LjMyNiAzLjcwNC0xLjI3NiA2LjgyOS0yLjQ5NCA5LjI3OS0yLjQ5NCA1LjU3MyAwIDguNjYzIDIuNDk0IDExLjEzMyA5LjkybDE1LjQ5IDQ1Ljk0MmMxLjIzIDMuNzEzIDEuODUgNi44MDcgMS44NSA5LjkyIDAgNi4yMDctMi40NyAxMC41NTctMTEuMTUgMTMuNjUxQzk3Mi4xOTEgNDcxLjkzNyA5MzYuODg5IDQ4MCA4ODkuMjQyIDQ4MGMtMTMxLjIzMiAwLTE5Ny40NTUtODcuNDk2LTE5Ny40NTUtMjIwLjg5N0M2OTEuNzg3IDEyNS4wNjUgNzcyLjg2NCAzMiA4OTcuMjg2IDMyYzQ0LjU4IDAgODIuMzUxIDguNzAxMyAxMTguMjM0IDI0LjgyNzcgOC42OCAzLjcxMjUgMTEuNzggOC4wNjMyIDExLjc4IDEyLjM5NDUuMDIgMi40OTQzLS42MSA1LjU4ODEtMS44NyA4LjcwMTJsLS4wMi0uMDE5M3ptMzM3LjA2LTM2LjYyMjdjMTIuMzkgMCAxNi4wNyA2LjIwNjkgMTUuNDcgMTQuMjUwN2wtNS41NyA1MC4yNzM5Yy0xLjI0IDEzLjAzMy05LjI4IDE1LjUyNy0yNC4xMyAxNS41MjdoLTE0OS44M3Y5Mi40MjdoMTQwLjUzYzEzLjY0IDAgMTguNTcgNi44MjYgMTguNTcgMTYuNzQ1djQ1LjI4NmMwIDEyLjQzMy02LjE5IDE4LjAwMi0xNy45NCAxOC4wMDJoLTE0MS4xNHY5OC4wNzNIMTM2MGMxMS4xMyAwIDE3Ljk2IDQuOTMgMTcuOTYgMTYuNzI2djQ1Ljk0MmMwIDExLjc3Ni01LjU3IDE3LjM2NC0xNy4zMiAxNy4zNjRoLTI0MC4yMmMtMTQuMjQgMC0yMC40MS0zLjczMi0yMC40MS0xOS4yMzlWNTguNjQ1M2MwLTEwLjU1NzYgNS41Ny0xNy4zNjM5IDE2LjA5LTE3LjM2MzlsMjQ2LjM3LS4wMTk0di4wMTk0eiIvPjwvc3ZnPg==)](https://github.com/nhsevidence/nice-design-system)
 
 <details>
-<summary><strong>Table of contents</strong></summary>
+<summary><strong>:bookmark_tabs: Table of contents (click to expand)</strong></summary>
 
 <!-- START doctoc -->
 
@@ -51,10 +55,10 @@
 			- [Configuration](#configuration)
 				- [service](#service)
 				- [header](#header)
-					- [header.onRendering](#headeronrendering)
-					- [header.onRendered](#headeronrendered)
+					- [header.onRendering](#headeronRendering)
+					- [header.onRendered](#headeronRendered)
 				- [footer](#footer)
-	- [Deployments](#deployments)
+	- [Deployments](#Deployments)
 
 <!-- END doctoc -->
 </details>
@@ -107,13 +111,10 @@ The following non-functional requirements apply:
 - [ESLint](https://eslint.org/) for linting our JavaScript
   - with [NICE Digital shared eslint config](https://www.npmjs.com/package/@nice-digital/eslint-config)
 - [Stylelint](https://stylelint.io/) for linting our SCSS
-  - TODO with NICE Digital shared stylelint config
 - [Prettier](https://prettier.io/) for code formatting
 - [Jest](https://jestjs.io/) for JS unit tests and snapshot tests
 - [NICE Design System](https://nhsevidence.github.io/nice-design-system/) core for SASS mixins, functions and colour/spacing variables
 - [NICE Icons](https://github.com/nhsevidence/nice-icons)
-
-TODO: add wdio etc here when we add browser based tests
 
 ### Principles
 
@@ -158,9 +159,18 @@ We may consider replacing Nerv with Preact in the future if we drop support for 
 
 ### CSS Modules
 
-TODO: Explain why and benefits
+We use SCSS modules for a few reasons:
 
-## Set up
+- local scoping of SCSS avoids accidental cascades:
+  - within global nav
+  - polluting out of global nav into the global scope
+- obfuscated class names discourages overriding CSS styles in your app. This is by design to keep the header consistent across all services.
+
+Using SCSS allows us to use mixins, functions and variables from the NICE Design System.
+
+> If you *really* need to override styles, see the [overrides documentation](#overrides).
+
+## :rocket: Set up
 
 **TL;DR;** to run the project locally, do the following:
 
@@ -310,9 +320,10 @@ For a full list of all the available props, see the [props section](#props) belo
 
 - Type: `String | null`
 - Default: `''`
+- Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
 
 The identifier of the service to highlight in the main menu.
-See [links.json](src/Header/Nav/links.json) for a list of the available service identifiers.
+See [links.json](src/services.json) for a list of the available service identifiers.
 
 ###### Header.skipLinkId
 
@@ -418,6 +429,17 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 Override the placeholder (and label) of the search input box, for example change to _Search BNF…_ for the BNF microsite.
 
+###### Header.search.query
+
+- - Type: `String`
+- Default: `""`
+
+The search query term, usually taken from the q value of the querstring.
+
+> If you're using .NET, use [HttpUtility.JavaScriptStringEncode](https://docs.microsoft.com/en-us/dotnet/api/system.web.httputility.javascriptstringencode) to avoid XSS attacks and make sure [Request Validation](https://docs.microsoft.com/en-us/aspnet/whitepapers/request-validation) is enabled.
+
+> Note: old TopHat looked for the q querystring value itself, but with Global Nav it's the responsibility of each application to pass in the search term.
+
 ###### Header.search.onSearching
 
 - Type: `String`, `Function`
@@ -476,30 +498,85 @@ The authentication provider allows the provider to be changed. At the moment we 
 
 ##### Footer props
 
-TODO
+###### Footer.service
+
+- Type: `String | null`
+- Default: `''`
+- Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
+
+The identifier of the currently active service.
+See [links.json](src/services.json) for a list of the available service identifiers.
 
 ### CDN
 
-TODO: Add CDN usage URLs
+Reference the Global Nav bundle directly from the NICE CDN to render the Global Nav. We recommend including this before the closing `</body>` tag but before your application's scripts:
 
-TODO: Note HTML5 shiv for IE8
+```html
+<script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
+```
+
+This renders with the default configuration. See [the configuration section below](#configuration) for how to pass options into the Global Nav.
+
+> Note: you can reference the non-minified version by removing *.min* from the filename.
+
+Reference a specific version of the global nav by including the build number as a sub folder. This is useful for testing, or in case of a breaking change, for example:
+
+```html
+<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.min.js"></script>
+```
+
+> See the [IE8](#supporting-ie8) section below if you're supporting IE8.
+
+#### Container IDs
+
+The CDN version of Global Nav creates its own containers for the header and footer if they don't already exist on the page. These containers use the ids:
+
+- `global-nav-header` for the header
+- `global-nav-footer` for the footer.
+
+Include empty elements with these ids on the page and Global Nav will render into these instead of creating its own:
+
+```html
+<body>
+	<div id="global-nav-header"></div>
+	<main>
+		<!-- Your page content here -->
+	</main>
+	<div id="global-nav-footer"></div>
+	<script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
+</body>
+```
+
+#### Overrides
+
+Where possible, we recommend using the [provided configuration hooks](#configuration) like [`onSearching`](#headersearchonsearching), [`onNavigating`](#headeronnavigating), [`onRendering`](#headeronrendering), [`onRendered`](#headeronrendered) etc for hooking into or overriding default Global Nav behaviours, rather than using unsupported CSS selectors.
+
+Use the `global-nav-header` and `global-nav-footer` ids to target the Global Nav for more bespoke behaviours - these are the only officially supported selector hooks.
+
+> Please don't rely on inner implementations for hooks or overrides.
+
+For example, if you're targeting the search form via jQuery, use the robust `$("#global-nav-header form[role='search']")` selector rather than `$("#global-nav-search-form")` as this is an inner implementation and might change.
+
+Try not to override Global Nav styles in your app: the Global Nav exists to give consistency across NICE digital services. If you *really* have to, then same rules as apply as above. For example in CSS:
+
+```css
+#global-nav-header {
+  position: relative;
+}
+```
+
+#### Supporting IE8
+
+Include the Global Nav polyfills before Global Nav itself to support IE8, for example:
 
 ```js
 <!--[if lt IE 9]>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="//cdn.nice.org.uk/global-nav/global-nav.ie8.min.js"></script>
 <![endif]-->
 <script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
 ```
 
-In the case of a breaking change or for testing you might want to use a specific version of the global nav. You can do so by using a folder name with the build number:
-
-```js
-<!--[if lt IE 9]>
-	<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.ie8.min.js"></script>
-<![endif]-->
-<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.min.js"></script>
-```
+> Note: if you're supporting IE8 then you'll also need to include [html5shiv](https://github.com/aFarkas/html5shiv) in the `head` because we use HTML5 semantic elements like `header` and `footer`.
 
 #### Configuration
 
@@ -522,15 +599,14 @@ var global_nav_config = {
 				autocomplete: "/autocomplete?ajax=ajax",
 				url: "/search",
 				placeholder: "Search NICE…",
+				query: "\"diabetes in pregnancy\"",
 				onSearching: function(e) {
 					// Use e.query
 				}
 
 			}
 		},
-		footer: {
-			// TODO
-		}
+		footer: false
 	};
 ```
 

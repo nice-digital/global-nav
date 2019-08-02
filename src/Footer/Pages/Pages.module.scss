@@ -1,0 +1,45 @@
+@import '~@nice-digital/nds-core/scss/core';
+
+.wrapper {
+  margin: rem(0 0 $spacing-large);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: rem(0 0 $spacing-x-small);
+  }
+}
+
+@include mq($from: xs) {
+  .list {
+    column-count: 2;
+    column-gap: rem($spacing-medium);
+  }
+}
+
+@include mq($from: sm) {
+  .wrapper {
+    float: left;
+    margin: 0;
+    padding: rem(0 0 0 $spacing-large);
+    width: percentage(2 / 3);
+  }
+}
+
+@include mq($from: md) {
+  .wrapper {
+    float: left;
+    margin: 0;
+    padding: rem(0 $spacing-large);
+    width: 50%;
+  }
+
+  .list {
+    column-count: 2;
+    column-gap: rem($spacing-medium);
+  }
+}

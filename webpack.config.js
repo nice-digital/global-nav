@@ -16,7 +16,7 @@ module.exports = {
 		"global-nav": "./cdn.js",
 		// To polyfill for ES3 browsers e.g. IE8
 		// We can remove this when we drop IE8 support
-		"global-nav.ie8": "es5-polyfill"
+		"global-nav.ie8": "./polyfill"
 	},
 
 	output: {
@@ -139,8 +139,7 @@ module.exports = {
 				header: {
 					search: false,
 					cookie: false
-				},
-				footer: false
+				}
 			},
 			examples: examples
 		})

@@ -1,5 +1,6 @@
-@import '~@nice-digital/nds-core/scss/core';
-@import 'nav-settings';
+/* stylelint-disable no-descending-specificity */
+
+@import '../header-settings';
 
 .wrapper {
   display: none;
@@ -53,7 +54,8 @@
   }
 }
 
-.link {
+a.link {
+  //qualified this with a to add specificity to avoid overrides from application css (NW-1253)
   border: rem($spacing-x-small) solid $colour-nav-background;
   border-bottom-width: 0;
   border-top-width: 0;
@@ -91,10 +93,9 @@
 
   &[aria-current='true'],
   &[aria-current='page'] {
-    background: $colour-nice-white; // TODO: Update to $colour-body when the Design System is used everywhere
+    background: $colour-body;
     color: $colour-text;
     font-weight: bold;
-    //margin: rem($spacing-x-small 0);
 
     &:focus {
       outline-color: $colour-focus;
@@ -109,12 +110,9 @@
   }
 
   .menuList {
+    @include container;
     // Fallback for non flexbox browsers that support media queries e.g. IE9
     display: table;
-    max-width: rem($nice-container-max-width);
-    // TODO Replace with mixin from nice design system
-    width: 96%;
-    width: calc(100% - #{rem($spacing-large)});
 
     > li {
       display: table-cell;
@@ -132,7 +130,7 @@
     }
   }
 
-  .link {
+  a.link {
     border-left-width: 0;
     border-right-width: 0;
     height: 100%;

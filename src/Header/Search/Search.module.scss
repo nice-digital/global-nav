@@ -1,10 +1,8 @@
-@import '~@nice-digital/nds-core/scss/core';
-
-$size: rem(40);
+@import '../header-settings';
 
 .search {
   margin: 0;
-  padding-right: $size;
+  padding-right: rem($search-height);
   position: relative;
 }
 
@@ -24,8 +22,8 @@ $size: rem(40);
   border: 0;
   color: $colour-text-inverse;
   cursor: pointer;
-  height: $size;
-  min-width: $size;
+  height: rem($search-height);
+  min-width: rem($search-height);
   padding: rem(0 $spacing-small);
   position: absolute;
   right: 0;
@@ -34,8 +32,7 @@ $size: rem(40);
   z-index: 101; // To sit above the search box so the focus outline surrounds the button
 
   &:focus {
-    // TODO:  Replace with design system mixin
-    outline: 3px solid $colour-focus;
+    @include default-focus-style;
   }
 
   .icon {

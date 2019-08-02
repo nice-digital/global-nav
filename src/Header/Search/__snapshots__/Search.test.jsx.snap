@@ -22,6 +22,7 @@ exports[`Search Rendering Matches snapshot 1`] = `
   <button
     aria-label="Perform search"
     className="button"
+    onClick={[Function]}
     type="submit"
   >
     <span

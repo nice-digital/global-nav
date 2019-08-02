@@ -1,4 +1,4 @@
-@import '~@nice-digital/nds-core/scss/core';
+@import 'header-settings';
 
 .header {
   background: $colour-nice-white;
@@ -19,12 +19,8 @@
 }
 
 .container {
-  margin: auto;
-  max-width: rem($nice-container-max-width);
+  @include container;
   padding: rem($spacing-medium 0 0 0);
-  // TODO Replace with mixin from nice design system
-  width: 96%;
-  width: calc(100% - #{rem($spacing-large)});
 
   &:after {
     clear: both;
@@ -41,7 +37,7 @@
   margin-bottom: rem($spacing-medium);
 
   &:focus {
-    outline: 3px solid $colour-focus; // TODO: Replace with design system mixin
+    @include default-focus-style;
   }
 
   &:visited {
@@ -50,12 +46,14 @@
 
   svg {
     height: 100%;
+    width: auto;
   }
 
   // Fallback image used for Ie8 - IE8 adds a black border round images
   // We can remove this when we drop support for IE8
   img {
     border: 0;
+    max-width: none;
   }
 }
 
@@ -88,7 +86,7 @@
   float: right;
   font-family: inherit;
   font-size: 110%;
-  height: rem(40); // TODO: Share a variable with search for height
+  height: rem($search-height);
   min-width: rem(75); // Stops width changing when button text changes
   white-space: nowrap;
 
@@ -130,7 +128,7 @@
 
 @include mq($from: md) {
   .header {
-    border-bottom: rem($spacing-x-small) solid $colour-nice-white; // TODO: Replace with $colour-page when Design System is rolled out everywhere
+    border-bottom: rem($spacing-x-small) solid $colour-body;
   }
 
   .container {
@@ -139,7 +137,7 @@
   }
 
   .home {
-    height: rem(40); // TODO Use shared size variable
+    height: rem($search-height);
     margin-right: rem($spacing-large);
   }
 

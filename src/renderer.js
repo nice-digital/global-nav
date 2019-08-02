@@ -1,15 +1,17 @@
 import React from "react";
 import { render } from "react-dom";
 import Header from "./Header";
-import Footer from "./Footer/Footer";
+import Footer from "./Footer";
 
 export const headerId = "global-nav-header";
 export const footerId = "global-nav-footer";
 
-const createAndAttachDiv = function(id) {
+const createAndAttachDiv = function(id, attachAtStart) {
 	const divElement = document.createElement("div");
 	divElement.setAttribute("id", id);
-	document.body.insertBefore(divElement, document.body.firstChild);
+	if (attachAtStart)
+		document.body.insertBefore(divElement, document.body.firstChild);
+	else document.body.appendChild(divElement);
 	return divElement;
 };
 
@@ -31,7 +33,7 @@ export const renderHeader = function() {
 		config.header = config.header || {};
 
 		const headerElement =
-			document.getElementById(headerId) || createAndAttachDiv(headerId);
+			document.getElementById(headerId) || createAndAttachDiv(headerId, true);
 
 		let onRendering = ensureCallback(config.header.onRendering);
 		if (onRendering) {
@@ -51,10 +53,16 @@ export const renderHeader = function() {
 
 export const renderFooter = function() {
 	const config = window.global_nav_config || {};
-	config.footer = config.footer || {};
 
-	const footerElement =
-		document.getElementById(footerId) || createAndAttachDiv(footerId);
+	if (config.footer !== false) {
+		config.footer = config.footer || {};
 
-	render(<Footer {...config.footer} />, footerElement);
+		const footerElement =
+			document.getElementById(footerId) || createAndAttachDiv(footerId, false);
+
+		render(
+			<Footer service={config.service} {...config.footer} />,
+			footerElement
+		);
+	}
 };

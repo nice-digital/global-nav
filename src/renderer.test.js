@@ -1,39 +1,45 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./Header";
-import { headerId, renderHeader } from "./renderer";
+import Footer from "./Footer";
+import { headerId, footerId, renderHeader, renderFooter } from "./renderer";
 
 describe("renderer", () => {
-	describe("Header", () => {
-		let headerContainer;
-		let reactDOMRenderMock;
+	let headerContainer, footerContainer, reactDOMRenderMock;
 
-		beforeEach(() => {
-			reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
+	beforeEach(() => {
+		reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
 
-			window.global_nav_config = null;
+		window.global_nav_config = null;
 
-			headerContainer = document.getElementById(headerId);
-			headerContainer &&
-				headerContainer.parentElement.removeChild(headerContainer);
-			headerContainer = document.createElement("div");
-			headerContainer.setAttribute("id", headerId);
-			document.body.insertBefore(headerContainer, document.body.firstChild);
-		});
+		// Create some dummy body copy so we can test creating the header above/footer below
+		const bodyContent = document.createElement("div");
+		bodyContent.innerText = "Test";
+		document.body.appendChild(bodyContent);
 
-		afterEach(() => {
-			reactDOMRenderMock.mockClear();
-		});
-
-		it("Creates header root div if it doesn't exist", () => {
+		// Create a header div placeholder
+		headerContainer = document.getElementById(headerId);
+		headerContainer &&
 			headerContainer.parentElement.removeChild(headerContainer);
+		headerContainer = document.createElement("div");
+		headerContainer.setAttribute("id", headerId);
+		document.body.insertBefore(headerContainer, document.body.firstChild);
 
-			renderHeader();
+		// And a footer div placeholder
+		footerContainer = document.getElementById(footerId);
+		footerContainer &&
+			footerContainer.parentElement.removeChild(footerContainer);
+		footerContainer = document.createElement("div");
+		footerContainer.setAttribute("id", footerId);
+		document.body.appendChild(footerContainer);
+	});
 
-			expect(document.getElementById(headerId)).not.toBeNull();
-		});
+	afterEach(() => {
+		reactDOMRenderMock.mockClear();
+	});
 
-		it("Adds global nav id attribute to created container div", () => {
+	describe("Header", () => {
+		it("Creates header root div if it doesn't exist", () => {
 			headerContainer.parentElement.removeChild(headerContainer);
 
 			renderHeader();
@@ -50,6 +56,15 @@ describe("renderer", () => {
 		});
 
 		describe("react-dom rendering", () => {
+			it("Doesn't call ReactDOM.render if header is disabled", () => {
+				window.global_nav_config = {
+					service: "test-service",
+					header: false
+				};
+				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
+				renderHeader();
+				expect(reactDOMRenderMock).not.toHaveBeenCalled();
+			});
 			it("Calls ReactDOM.render once", () => {
 				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
 				renderHeader();
@@ -143,6 +158,63 @@ describe("renderer", () => {
 				);
 
 				delete window.headerRenderedCallback;
+			});
+		});
+	});
+
+	describe("Footer", () => {
+		it("Creates footer root div if it doesn't exist", () => {
+			footerContainer.parentElement.removeChild(footerContainer);
+
+			renderFooter();
+
+			expect(document.getElementById(footerId)).not.toBeNull();
+		});
+
+		it("Renders footer into existing header container div", () => {
+			expect(footerContainer.textContent).toEqual("");
+
+			renderFooter();
+
+			expect(footerContainer.textContent.length).toBeGreaterThan(0);
+		});
+
+		describe("react-dom rendering", () => {
+			it("Doesn't call ReactDOM.render if footer is disabled", () => {
+				window.global_nav_config = {
+					service: "test-service",
+					footer: false
+				};
+				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
+				renderFooter();
+				expect(reactDOMRenderMock).not.toHaveBeenCalled();
+			});
+
+			it("Calls ReactDOM.render once", () => {
+				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
+				renderFooter();
+				expect(reactDOMRenderMock).toHaveBeenCalledTimes(1);
+			});
+
+			it("Calls ReactDOM.render with footer component with correct props", () => {
+				window.global_nav_config = {
+					service: "test-service",
+					footer: {
+						test: true
+					}
+				};
+
+				renderFooter();
+				expect(reactDOMRenderMock.mock.calls[0][0]).toEqual(
+					<Footer service="test-service" {...{ test: true }} />
+				);
+			});
+
+			it("Calls ReactDOM.render with container div", () => {
+				renderFooter();
+				expect(reactDOMRenderMock.mock.calls[0][1]).toEqual(
+					document.getElementById(footerId)
+				);
 			});
 		});
 	});

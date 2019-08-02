@@ -30,6 +30,12 @@
 				a.appendChild(r);
 			})(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
 		</script>
+		<!--[if lt IE 9]>
+			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %> <% if
+			((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
+			<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+			<% } %> <% } %>
+		<![endif]-->
 	</head>
 	<body class="<%= htmlWebpackPlugin.options.bodyClasses %>">
 		<%= htmlWebpackPlugin.options.body %>
@@ -38,11 +44,5 @@
 		<script type="text/javascript">
 			var global_nav_config = <%= typeof htmlWebpackPlugin.options.global_nav_config === "string"? htmlWebpackPlugin.options.global_nav_config : JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
 		</script>
-		<!--[if lt IE 9]>
-			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %> <% if
-			((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
-			<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-			<% } %> <% } %>
-		<![endif]-->
 	</body>
 </html>

@@ -1,0 +1,63 @@
+@import '~@nice-digital/nds-core/scss/core';
+@import '../footer-settings';
+
+.wrapper {
+  @include font-size(-1);
+  background: $colour-nice-dark-grey;
+  padding: rem($spacing-medium 0);
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.menu {
+  margin: rem(0 0 $spacing-medium);
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+.copyright {
+  @include font-size(-1);
+  margin: 0;
+}
+
+@include mq($from: sm) {
+  .menu {
+    li {
+      display: inline-block;
+      margin-right: rem($spacing-medium);
+    }
+  }
+}
+
+@include mq($from: lg) {
+  .wrapper {
+    @include clearfix;
+  }
+
+  .menu {
+    float: left;
+    margin: 0;
+  }
+
+  .copyright {
+    float: right;
+  }
+}

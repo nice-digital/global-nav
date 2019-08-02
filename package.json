@@ -40,7 +40,7 @@
 		"extends @nice-digital/browserslist-config"
 	],
 	"publishConfig": {
-		"registry": "http://registry.npmjs.org/",
+		"registry": "https://registry.npmjs.org/",
 		"access": "public"
 	},
 	"engines": {
@@ -84,6 +84,7 @@
 		"identity-obj-proxy": "^3.0.0",
 		"jest": "^24.0.0",
 		"jest-teamcity-reporter": "^0.9.0",
+		"mockdate": "^2.0.3",
 		"nerv-devtools": "^1.3.9",
 		"node-sass": "^4.11.0",
 		"pixrem": "^5.0.0",
@@ -109,7 +110,7 @@
 	"dependencies": {
 		"@babel/runtime": "^7.3.4",
 		"@nice-digital/browserslist-config": "^1.0.0",
-		"@nice-digital/icons": "^2.0.1",
+		"@nice-digital/icons": "^2.1.1",
 		"@nice-digital/nds-core": "1.0.4-alpha.0",
 		"accessible-autocomplete": "^1.6.2",
 		"classnames": "^2.2.6",

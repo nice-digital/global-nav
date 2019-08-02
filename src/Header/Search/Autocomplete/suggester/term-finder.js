@@ -12,11 +12,16 @@ export function findTerms(queryTokens, suggestionTokens) {
 			});
 		});
 
-		const firstMatchedSuggestionToken = unusedSuggestionTokens.find(function(
-			suggestionToken
-		) {
-			return suggestionToken.str.indexOf(queryToken.str) === 0;
-		});
+		// We use a for loop here because Array.prototype.find isn't supported in IE9
+		// And we didn't want to pollute the global scope with a polyfill
+		let firstMatchedSuggestionToken = null;
+		for (let i = 0; i < unusedSuggestionTokens.length; i++) {
+			const suggestionToken = unusedSuggestionTokens[i];
+			if (suggestionToken.str.indexOf(queryToken.str) === 0) {
+				firstMatchedSuggestionToken = suggestionToken;
+				break;
+			}
+		}
 
 		termMatches.push({
 			suggestionToken: firstMatchedSuggestionToken,
@@ -24,29 +29,7 @@ export function findTerms(queryTokens, suggestionTokens) {
 		});
 	}
 
-	// const termMatches = queryTokens.map(function(queryToken) {
-	// 	const firstMatchedSuggestionToken = suggestionTokens.find(function(
-	// 		suggestionToken
-	// 	) {
-	// 		return suggestionToken.str.indexOf(queryToken.str) === 0;
-	// 	});
-	// 	return {
-	// 		suggestionToken: firstMatchedSuggestionToken,
-	// 		queryToken: queryToken
-	// 	};
-	// });
-
 	const deDupedTermMatches = termMatches;
-
-	// const deDupedTermMatches = termMatches.filter(function(termMatch, index) {
-	// 	const prevMatches = termMatches.slice(0, index);
-
-	// 	const tokenHasAlreadyBeenUsed = prevMatches.some(function(prevMatch) {
-	// 		return prevMatch.suggestionToken === termMatch.suggestionToken;
-	// 	});
-
-	// 	return !tokenHasAlreadyBeenUsed;
-	// });
 
 	// Only consider term matches if we match *every* token in the query
 	return deDupedTermMatches.every(function(match) {

@@ -33,8 +33,7 @@ const pathwaysConfig = {
 					console.log("Header has rendered", element);
 				}
 			}
-		},
-		footer: false
+		}
 	}`
 };
 
@@ -50,8 +49,7 @@ const guidanceConfig = {
 			search: {
 				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
 			}
-		},
-		footer: false
+		}
 	}
 };
 
@@ -67,8 +65,7 @@ const standardsConfig = {
 			search: {
 				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
 			}
-		},
-		footer: false
+		}
 	}
 };
 
@@ -80,8 +77,7 @@ const evidenceHomeConfig = {
 		service: "evidence",
 		header: {
 			search: false
-		},
-		footer: false
+		}
 	}
 };
 
@@ -97,8 +93,7 @@ const evidenceSerpConfig = {
 				query: "diabetes",
 				autocomplete: "/evidence/autocomplete/?ajax=ajax"
 			}
-		},
-		footer: false
+		}
 	}
 };
 
@@ -115,8 +110,7 @@ const bnfConfig = {
 					window.location.hash = "Search?q=" + encodeURIComponent(searchArgs.query);
 				}
 			}
-		},
-		footer: false
+		}
 	}`
 };
 
@@ -131,8 +125,7 @@ const bnfcConfig = {
 				autocomplete: "/bnfc/typeahead/?ajax=ajax",
 				onSearching: "onSearching"
 			}
-		},
-		footer: false
+		}
 	}
 };
 
@@ -147,8 +140,7 @@ const cksConfig = {
 				autocomplete: "topics",
 				onSearching: "onSearching"
 			}
-		},
-		footer: false
+		}
 	}
 };
 
@@ -161,8 +153,7 @@ const journalsConfig = {
 			search: {
 				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
 			}
-		},
-		footer: false
+		}
 	}
 };
 
