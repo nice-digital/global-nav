@@ -31,7 +31,6 @@ declare module "@nice-digital/global-nav" {
 	) => void;
 
 	type HeaderProps = {
-		test: true;
 		service?: Service;
 		skipLinkId?: string;
 		search?: false | SearchProps;
