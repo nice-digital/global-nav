@@ -92,14 +92,7 @@ export default class Search extends Component {
 					aria-label="Perform search"
 					onClick={this.searchSubmitHandler}
 				>
-					{!window || typeof window.SVGRect !== "undefined" ? (
-						<SearchIcon className={styles.icon} />
-					) : (
-						// We can remove this fallback when we drop support for IE8
-						<span className={styles.icon} aria-hidden="true">
-							search
-						</span>
-					)}
+					<SearchIcon className={styles.icon} />
 				</button>
 			</form>
 		);

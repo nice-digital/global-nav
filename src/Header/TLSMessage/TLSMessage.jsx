@@ -5,6 +5,7 @@ import styles from "./TLSMessage.module.scss";
 export default class TLSMessage extends Component {
 	// See https://gist.github.com/padolsey/527683#gistcomment-768383
 	getIEVersion() {
+		if (typeof document === "undefined") return void 0;
 		let tmp = (document["documentMode"] || document.attachEvent) && "ev",
 			msie =
 				tmp &&

@@ -12,25 +12,37 @@ export default class CookieBanner extends Component {
 	constructor(props) {
 		super(props);
 
+		this.state = {
+			hasSeenPreviousVersion: false,
+			isClosed: false,
+			canUseDOM: false
+		};
+
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	componentDidMount() {
+		this.setState({
+			canUseDOM: true
+		});
+
 		const cookieValue = Cookies.getJSON(CookieName);
 
 		// "yes" was used for the previous version of TopHat
 		if (!cookieValue || cookieValue === "yes") {
 			Cookies.remove(CookieName);
-			this.state = {
+			this.setState({
 				hasSeenPreviousVersion: false,
-				isClosed: false
-			};
+				isClosed: true // Hide by default on the assumption that if JS doesn't work then we won't be setting cookies anyway
+			});
 		} else {
 			const seenVersion = cookieValue;
 
-			this.state = {
+			this.setState({
 				hasSeenPreviousVersion: seenVersion < CookieMessageVersion,
 				isClosed: seenVersion === CookieMessageVersion
-			};
+			});
 		}
-
-		this.handleClick = this.handleClick.bind(this);
 	}
 
 	getCookieDomain(host) {
@@ -79,13 +91,15 @@ export default class CookieBanner extends Component {
 						</a>
 						.
 					</p>
-					<button
-						className={styles.button}
-						type="button"
-						onClick={this.handleClick}
-					>
-						Accept and close
-					</button>
+					{this.state.canUseDOM && (
+						<button
+							className={styles.button}
+							type="button"
+							onClick={this.handleClick}
+						>
+							Accept and close
+						</button>
+					)}
 				</div>
 			</div>
 		);
