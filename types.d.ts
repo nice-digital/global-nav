@@ -46,8 +46,8 @@ declare module "@nice-digital/global-nav" {
 		service?: Service;
 	};
 
-	const Header: (props: HeaderProps) => React.FC<HeaderProps>;
-	const Footer: (props: FooterProps) => React.FC<FooterProps>;
+	const Header: React.FC<HeaderProps>;
+	const Footer: React.FC<FooterProps>;
 
 	export { Header, Footer };
 }
