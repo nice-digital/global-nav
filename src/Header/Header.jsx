@@ -86,7 +86,7 @@ export class Header extends Component {
 							onClick={this.handleLogoClick}
 						>
 							{typeof SVGRect !== "undefined" ? (
-								<LogoIcon width={null} height="50px" />
+								<LogoIcon className={styles.icon} width={null} height={null} />
 							) : (
 								<img
 									alt=""
