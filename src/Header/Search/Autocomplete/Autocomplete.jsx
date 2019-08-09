@@ -93,7 +93,7 @@ export default class Autocomplete extends Component {
 
 		return (
 			<div className={styles.ac}>
-				{!this.props.source || isIE8() ? (
+				{!this.props.source || isIE8() || typeof window === "undefined" ? (
 					<div className="autocomplete__wrapper">
 						<input
 							type="search"
