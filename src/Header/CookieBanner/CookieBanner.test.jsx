@@ -18,8 +18,26 @@ describe("CookieBanner", () => {
 		expect(wrapper).toHaveLength(1);
 	});
 
+	it("Doesn't render by default/on the server", () => {
+		const wrapper = shallow(<CookieBanner />, {
+			disableLifecycleMethods: true
+		});
+
+		expect(wrapper.isEmptyRender()).toBe(true);
+	});
+
+	it("Renders after rehydration on the client", () => {
+		const wrapper = shallow(<CookieBanner />);
+
+		wrapper.update();
+
+		expect(wrapper.isEmptyRender()).toBe(false);
+	});
+
 	it("Matches snapshot for new visitor", () => {
 		const wrapper = shallow(<CookieBanner />);
+
+		wrapper.update();
 
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
@@ -29,6 +47,8 @@ describe("CookieBanner", () => {
 
 		const wrapper = shallow(<CookieBanner />);
 
+		wrapper.update();
+
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
@@ -36,6 +56,8 @@ describe("CookieBanner", () => {
 		Cookies.set(CookieName, CookieMessageVersion);
 
 		const wrapper = shallow(<CookieBanner />);
+
+		wrapper.update();
 
 		expect(wrapper.isEmptyRender()).toBe(true);
 	});
@@ -45,12 +67,16 @@ describe("CookieBanner", () => {
 
 		const wrapper = shallow(<CookieBanner />);
 
+		wrapper.update();
+
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Triggers click handler on close button click", () => {
 		const handleClick = jest.spyOn(CookieBanner.prototype, "handleClick");
 		const wrapper = shallow(<CookieBanner />);
+
+		wrapper.update();
 
 		wrapper
 			.find("button")
@@ -62,6 +88,8 @@ describe("CookieBanner", () => {
 
 	it("Hides banner on close button click", () => {
 		const wrapper = shallow(<CookieBanner />);
+
+		wrapper.update();
 
 		wrapper
 			.find("button")
@@ -81,6 +109,8 @@ describe("CookieBanner", () => {
 		});
 
 		const wrapper = shallow(<CookieBanner />);
+
+		wrapper.update();
 
 		wrapper
 			.find("button")
@@ -118,6 +148,8 @@ describe("CookieBanner", () => {
 		});
 
 		const wrapper = shallow(<CookieBanner />);
+
+		wrapper.update();
 
 		wrapper
 			.find("button")

@@ -14,7 +14,7 @@ export default class CookieBanner extends Component {
 
 		this.state = {
 			hasSeenPreviousVersion: false,
-			isClosed: false,
+			isClosed: true,
 			canUseDOM: false
 		};
 
@@ -33,7 +33,7 @@ export default class CookieBanner extends Component {
 			Cookies.remove(CookieName);
 			this.setState({
 				hasSeenPreviousVersion: false,
-				isClosed: true // Hide by default on the assumption that if JS doesn't work then we won't be setting cookies anyway
+				isClosed: false // Hide by default on the assumption that if JS doesn't work then we won't be setting cookies anyway
 			});
 		} else {
 			const seenVersion = cookieValue;
@@ -91,15 +91,13 @@ export default class CookieBanner extends Component {
 						</a>
 						.
 					</p>
-					{this.state.canUseDOM && (
-						<button
-							className={styles.button}
-							type="button"
-							onClick={this.handleClick}
-						>
-							Accept and close
-						</button>
-					)}
+					<button
+						className={styles.button}
+						type="button"
+						onClick={this.handleClick}
+					>
+						Accept and close
+					</button>
 				</div>
 			</div>
 		);
