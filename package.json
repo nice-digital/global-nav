@@ -121,5 +121,9 @@
 		"prop-types": "^15.6.2",
 		"react-hot-loader": "^4.7.1",
 		"unfetch": "^4.1.0"
-	}
+	},
+	"files": [
+		"lib",
+		"*.d.ts"
+	]
 }
