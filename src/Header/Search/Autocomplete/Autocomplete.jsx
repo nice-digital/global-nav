@@ -81,7 +81,7 @@ export default class Autocomplete extends Component {
 
 	render() {
 		const isIE8 = function() {
-			if (!navigator) return false; // For server rendering
+			if (typeof navigator === "undefined") return false; // For server rendering
 			const ua = navigator.userAgent;
 			var msie = ua.indexOf("MSIE ");
 			if (msie > 0) {
@@ -93,7 +93,7 @@ export default class Autocomplete extends Component {
 
 		return (
 			<div className={styles.ac}>
-				{!this.props.source || isIE8() ? (
+				{!this.props.source || isIE8() || typeof window === "undefined" ? (
 					<div className="autocomplete__wrapper">
 						<input
 							type="search"

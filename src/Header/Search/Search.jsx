@@ -10,11 +10,19 @@ export default class Search extends Component {
 	constructor(props) {
 		super(props);
 
+		this.state = {
+			canUseDOM: false
+		};
+
 		this.searchSubmitHandler = this.searchSubmitHandler.bind(this);
 		this.keyDownHandler = this.keyDownHandler.bind(this);
 	}
 
 	componentDidMount() {
+		this.setState({
+			canUseDOM: true
+		});
+
 		// Submit the form when we press enter to allow the enter key functionality:
 		// The accessible-autocomplete doesn't let you use enter by default
 		const autocomplete = document.getElementById("autocomplete");
@@ -92,7 +100,7 @@ export default class Search extends Component {
 					aria-label="Perform search"
 					onClick={this.searchSubmitHandler}
 				>
-					{!window || typeof window.SVGRect !== "undefined" ? (
+					{!this.state.canUseDOM || typeof window.SVGRect !== "undefined" ? (
 						<SearchIcon className={styles.icon} />
 					) : (
 						// We can remove this fallback when we drop support for IE8

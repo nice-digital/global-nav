@@ -1,7 +1,10 @@
+@import '~@nice-digital/nds-core/scss/core';
+
 .banner {
   background: $colour-nice-grey-3;
   border-bottom: 1px solid $colour-border;
   padding: rem($spacing-medium 0);
+  text-align: left;
 }
 
 .container {

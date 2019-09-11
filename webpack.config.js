@@ -13,7 +13,7 @@ const HOT = process.env.HOT !== "false";
 module.exports = {
 	context: path.resolve(__dirname, "src"),
 	entry: {
-		"global-nav": "./index.js",
+		"global-nav": "./cdn.js",
 		// To polyfill for ES3 browsers e.g. IE8
 		// We can remove this when we drop IE8 support
 		"global-nav.ie8": "./polyfill"
@@ -98,8 +98,8 @@ module.exports = {
 							// See https://medium.com/@toolmantim/getting-started-with-css-sourcemaps-and-in-browser-sass-editing-b4daab987fb0
 							// if you want to edit SASS in Chrome DevTools
 							sourceMap: ENV === "development",
-							outputStyle: "compressed",
-							data: "@import '~@nice-digital/nds-core/scss/core';"
+							includePaths: ["./src/scss"],
+							outputStyle: "compressed"
 						}
 					}
 				]

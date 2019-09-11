@@ -44,8 +44,9 @@
     color: $colour-true-black;
   }
 
-  svg {
+  .icon {
     height: 100%;
+    width: auto;
   }
 
   // Fallback image used for Ie8 - IE8 adds a black border round images

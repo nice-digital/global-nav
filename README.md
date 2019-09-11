@@ -13,55 +13,57 @@
 
 <!-- START doctoc -->
 
-- [Global navigation](#Global-navigation)
-	- [What is it?](#What-is-it)
-		- [Functionality](#Functionality)
-		- [Non-functional](#Non-functional)
-	- [Stack](#Stack)
-		- [Principles](#Principles)
-		- [Why Nerv?](#Why-Nerv)
-			- [Why not Preact?](#Why-not-Preact)
-		- [CSS Modules](#CSS-Modules)
-	- [:rocket: Set up](#rocket-Set-up)
-		- [Other commands](#Other-commands)
-			- [Tests](#Tests)
-				- [Run individual files](#Run-individual-files)
-				- [Run individual tests](#Run-individual-tests)
-			- [Linting](#Linting)
-			- [Production build](#Production-build)
-		- [IDE](#IDE)
-			- [Extensions](#Extensions)
-		- [Gotchas](#Gotchas)
-	- [How to use](#How-to-use)
-		- [React](#React)
-			- [Props](#Props)
-				- [Header props](#Header-props)
-					- [Header.service](#Headerservice)
-					- [Header.skipLinkId](#HeaderskipLinkId)
-					- [Header.cookie](#Headercookie)
-					- [Header.onNavigating](#HeaderonNavigating)
-					- [Header.search](#Headersearch)
-					- [Header.search.url](#Headersearchurl)
-					- [Header.search.autocomplete](#Headersearchautocomplete)
-					- [Header.search.placeholder](#Headersearchplaceholder)
-					- [Header.search.query](#Headersearchquery)
-					- [Header.search.onSearching](#HeadersearchonSearching)
-					- [Header.auth](#Headerauth)
-					- [Header.auth.environment](#Headerauthenvironment)
-					- [Header.auth.provider](#Headerauthprovider)
-				- [Footer props](#Footer-props)
-					- [Footer.service](#Footerservice)
-		- [CDN](#CDN)
-			- [Container IDs](#Container-IDs)
-			- [Overrides](#Overrides)
-			- [Supporting IE8](#Supporting-IE8)
-			- [Configuration](#Configuration)
+- [Global navigation](#global-navigation)
+	- [What is it?](#what-is-it)
+		- [Functionality](#functionality)
+		- [Non-functional](#non-functional)
+	- [Stack](#stack)
+		- [Principles](#principles)
+		- [Why Nerv?](#why-nerv)
+			- [Why not Preact?](#why-not-preact)
+		- [CSS Modules](#css-modules)
+	- [:rocket: Set up](#rocket-set-up)
+		- [Other commands](#other-commands)
+			- [Tests](#tests)
+				- [Run individual files](#run-individual-files)
+				- [Run individual tests](#run-individual-tests)
+			- [Linting](#linting)
+			- [Production build](#production-build)
+		- [IDE](#ide)
+			- [Extensions](#extensions)
+		- [Gotchas](#gotchas)
+	- [How to use](#how-to-use)
+		- [React](#react)
+			- [Installation](#installation)
+			- [Usage](#usage)
+			- [Props](#props)
+				- [Header props](#header-props)
+					- [Header.service](#headerservice)
+					- [Header.skipLinkId](#headerskiplinkid)
+					- [Header.cookie](#headercookie)
+					- [Header.onNavigating](#headeronnavigating)
+					- [Header.search](#headersearch)
+					- [Header.search.url](#headersearchurl)
+					- [Header.search.autocomplete](#headersearchautocomplete)
+					- [Header.search.placeholder](#headersearchplaceholder)
+					- [Header.search.query](#headersearchquery)
+					- [Header.search.onSearching](#headersearchonsearching)
+					- [Header.auth](#headerauth)
+					- [Header.auth.environment](#headerauthenvironment)
+					- [Header.auth.provider](#headerauthprovider)
+				- [Footer props](#footer-props)
+					- [Footer.service](#footerservice)
+		- [CDN](#cdn)
+			- [Container IDs](#container-ids)
+			- [Overrides](#overrides)
+			- [Supporting IE8](#supporting-ie8)
+			- [Configuration](#configuration)
 				- [service](#service)
 				- [header](#header)
-					- [header.onRendering](#headeronRendering)
-					- [header.onRendered](#headeronRendered)
+					- [header.onRendering](#headeronrendering)
+					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
-	- [Deployments](#Deployments)
+	- [Deployments](#deployments)
 
 <!-- END doctoc -->
 </details>
@@ -261,46 +263,59 @@ The following VS Code extensions are **strongly** recommended, but not required:
 
 ## How to use
 
-We support 2 main methods for using the Global Nav in your projects: as a [React component](#react) installed from npm or via the [CDN](#cdn).
+We support 2 main methods for using the Global Nav in your projects:
+
+- as a [React component](#react) installed directly into your app
+- or externally to your app, loaded via the [CDN](#cdn).
 
 ### React
 
-Global nav is published as an npm package in the @nice-digital org on npm. This means you can install the package and require the `Header` and `Footer` React components into your application, just as you would for any other 3rd party component.
+Install and use Global Nav as a dependency in a React application to include it as part of your application bundle.
 
-This is a good option if you're rendering you're app via React, either client side or server side. For example, if you're using [Create React App](https://facebook.github.io/create-react-app/), [Gatsby](https://www.gatsbyjs.org/) or [Next.js](https://nextjs.org/).
+This is a good option if you're rendering you're app's interface via React, either client side or server side, or both. For example, if you're using [Create React App](https://facebook.github.io/create-react-app/), [Gatsby](https://www.gatsbyjs.org/) or [Next.js](https://nextjs.org/).
 
-First, install the [_@nice-digital/global-nav_ package](https://www.npmjs.com/package/@nice-digital/global-nav) into your project:
+> Note if you're using Create React App you'll need to use v2+ because we use CSS modules
+
+Install the package and require the `Header` and `Footer` React components into your application, just as you would for any other 3rd party component:
+
+#### Installation
+
+First, install the _@nice-digital/global-nav_ package into your project, directly from GitHub:
+
+> Note: we currently don't publish the Global Nav to npm but we plan to in the future.
 
 ```sh
-npm install @nice-digital/global-nav --save
+npm install nhsevidence/global-nav --save
 ```
 
-> Or, if you're using npm 5+ use the shorthand `npm i @nice-digital/global-nav`.
+Then, require the header and/or footer into your application:
 
-Then, require the header and/or footer into your application. If you're using ES6, do it like this:
+#### Usage
+
+Import the header and footer like this:
 
 ```js
 import { Header, Footer } from "@nice-digital/global-nav";
 ```
 
-Or if you're using ES5, do:
+> Note: we've used ES6 module imports for this examples as we've assumed all React apps will be using ES6.
 
-```js
-var globalNav = require("@nice-digital/global-nav"),
-	Header = globalNav.Header,
-	Footer = globalNav.Footer;
-```
-
-These header and footer components that can be be used like any other React component and configured via [props](#props), e.g.:
+These header and footer components that can be be used like any other React component and configured via [props](#props), for example:
 
 ```jsx
+const search = {
+	autocomplete: "/autocomplete"
+};
+
 const page = () => (
 	<div>
-		<Header service="pathways" />
+		<Header service="pathways" search={search} />
 		<Footer />
 	</div>
 );
 ```
+
+For a full list of all the available props, see the [props section](#props) below:
 
 #### Props
 

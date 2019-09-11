@@ -17,6 +17,7 @@
 		"bin": true,
 		"publish": true,
 		"coverage": true,
-		"dist": true
+		"dist": true,
+		"lib": true
 	}
 }

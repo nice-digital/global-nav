@@ -57,7 +57,7 @@ export class SubNav extends Component {
 						function(subLink, i) {
 							let ariaCurrent = null;
 
-							if (window) {
+							if (typeof window !== "undefined") {
 								if (window.location.pathname === subLink.href) {
 									ariaCurrent = "page";
 								} else if (window.location.pathname.indexOf(subLink.href) === 0)

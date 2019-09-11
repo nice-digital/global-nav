@@ -25,12 +25,19 @@ export class Header extends Component {
 			isExpanded: false,
 			isLoggedIn: false,
 			accountsData: null,
-			needsSkipLinkTarget: !document.getElementById(this.props.skipLinkId)
+			needsSkipLinkTarget: false
 		};
 
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
 		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
 		this.handleLogoClick = this.handleLogoClick.bind(this);
+	}
+
+	componentDidMount() {
+		this.setState({
+			needsSkipLinkTarget:
+				document.getElementById(this.props.skipLinkId) == null
+		});
 	}
 
 	handleMobileMenuBtnClick() {
@@ -79,7 +86,7 @@ export class Header extends Component {
 							onClick={this.handleLogoClick}
 						>
 							{typeof SVGRect !== "undefined" ? (
-								<LogoIcon width={null} height="50px" />
+								<LogoIcon className={styles.icon} width={null} height={null} />
 							) : (
 								<img
 									alt=""
