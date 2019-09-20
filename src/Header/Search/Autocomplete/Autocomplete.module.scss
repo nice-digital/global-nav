@@ -21,8 +21,10 @@
     }
 
     .autocomplete__input {
-      background-color: $colour-nice-grey-3;
-      height: rem($search-height);
+      // The importants here are to override conflicting global styles in niceorg
+      background-color: $colour-nice-grey-3 !important;
+      height: rem($search-height) !important;
+      max-width: 100% !important;
       position: relative;
       z-index: 101;
 
