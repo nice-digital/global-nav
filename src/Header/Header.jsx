@@ -8,7 +8,7 @@ import {
 	headerClickEventAction,
 	trackEvent
 } from "./../tracker";
-import TLSMessage from "./TLSMessage";
+import OldIEMessage from "./OldIEMessage";
 import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
@@ -128,7 +128,7 @@ export class Header extends Component {
 						}
 						onNavigating={this.props.onNavigating}
 					/>
-					<TLSMessage />
+					<OldIEMessage />
 					{this.state.needsSkipLinkTarget && (
 						<div id={this.props.skipLinkId} aria-label="Start of content" />
 					)}

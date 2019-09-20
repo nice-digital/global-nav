@@ -1,16 +1,16 @@
 import React from "react";
-import TLSMessage from "./TLSMessage";
+import OldIEMessage from "./OldIEMessage";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
-describe("TLSMessage", () => {
+describe("OldIEMessage", () => {
 	it("Renders without crashing", () => {
-		const wrapper = shallow(<TLSMessage />);
+		const wrapper = shallow(<OldIEMessage />);
 		expect(wrapper).toHaveLength(1);
 	});
 
 	it("Doesn't render in IE11", () => {
-		const wrapper = shallow(<TLSMessage />);
+		const wrapper = shallow(<OldIEMessage />);
 
 		wrapper.instance().getIEVersion = jest.fn(() => 11);
 		wrapper.instance().forceUpdate();
@@ -19,7 +19,7 @@ describe("TLSMessage", () => {
 	});
 
 	it("Doesn't render in modern browsers", () => {
-		const wrapper = shallow(<TLSMessage />);
+		const wrapper = shallow(<OldIEMessage />);
 
 		wrapper.instance().getIEVersion = jest.fn(() => null);
 		wrapper.instance().forceUpdate();
@@ -27,10 +27,19 @@ describe("TLSMessage", () => {
 		expect(wrapper.get(0)).toBeNull();
 	});
 
-	it("Matches snapshot in old IE", () => {
-		const wrapper = shallow(<TLSMessage />);
+	it("Matches snapshot in IE 10", () => {
+		const wrapper = shallow(<OldIEMessage />);
 
-		wrapper.instance().getIEVersion = jest.fn(() => 8);
+		wrapper.instance().getIEVersion = jest.fn(() => 10);
+		wrapper.instance().forceUpdate();
+
+		expect(toJson(wrapper)).toMatchSnapshot();
+	});
+
+	it("Matches snapshot in IE 8/9", () => {
+		const wrapper = shallow(<OldIEMessage />);
+
+		wrapper.instance().getIEVersion = jest.fn(() => 9);
 		wrapper.instance().forceUpdate();
 
 		expect(toJson(wrapper)).toMatchSnapshot();
