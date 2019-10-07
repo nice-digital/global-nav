@@ -54,7 +54,9 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
   id="header-menu"
 >
   <nav
+    aria-label="primary navigation"
     className="nav"
+    role="navigation"
   >
     <div
       className="menuWrapper"
@@ -147,7 +149,9 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
     id="header-menu"
   >
     <nav
+      aria-label="primary navigation"
       className="nav"
+      role="navigation"
     >
       <div
         className="menuWrapper"
