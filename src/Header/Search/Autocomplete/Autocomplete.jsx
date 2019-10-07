@@ -7,8 +7,45 @@ import { suggester } from "./suggester";
 
 import { trackEvent } from "./../../../tracker";
 
+/**
+ * Debounce
+ * See http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
+ *
+ * @param      {Function}  func       The function to debounce
+ * @param      {Integer}  execAsap   Whether to execute the function now
+ * @param      {Integer}  threshold  The detection period, in milliseconds
+ * @param      {Object}  scope  The context for the debounced function
+ * @return     {Function}  { The debounced function }
+ */
+const debounce = function(
+	func,
+	execAsap = false,
+	threshold = 100,
+	scope = null
+) {
+	let timeout;
+
+	return function debounced() {
+		let context = scope || this,
+			args = arguments;
+
+		function delayed() {
+			if (!execAsap) func.apply(context, args);
+			timeout = null;
+		}
+
+		if (timeout) clearTimeout(timeout);
+		else if (execAsap) func.apply(context, args);
+
+		timeout = setTimeout(delayed, threshold);
+	};
+};
+
 // The maximum number of autocomplete results to return
 const maxResults = 5;
+
+/** Delay in millieconds before loading results */
+export const rateLimitWait = 100;
 
 const templates = {
 	inputValue: function(suggestion) {
@@ -112,9 +149,7 @@ export default class Autocomplete extends Component {
 						placeholder={this.props.placeholder}
 						displayMenu="overlay"
 						minLength={3}
-						source={function(q, s) {
-							this.suggest(q, s);
-						}.bind(this)}
+						source={debounce(this.suggest, false, rateLimitWait, this)}
 						templates={templates}
 						onConfirm={onConfirm}
 						confirmOnBlur={false}
