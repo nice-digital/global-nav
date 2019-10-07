@@ -35,7 +35,7 @@ export default class OldIEMessage extends Component {
 								<strong>
 									<time dateTime="2020-01-31">January 31, 2020</time>
 								</strong>
-								. Mirosoft will no longer issue security patches from this date
+								. Microsoft will no longer issue security patches from this date
 								and your browser may become insecure. You can learn more about
 								this in Microsoft’s{" "}
 								<a href="https://support.microsoft.com/en-gb/help/17454/lifecycle-faq-internet-explorer">
@@ -47,7 +47,7 @@ export default class OldIEMessage extends Component {
 								NICE will also stop supporting{" "}
 								<abbr title="Internet Explorer">IE</abbr> 10 from{" "}
 								<time dateTime="2020-01-31">January 31, 2020</time>. This means
-								NICE websites and services may stop functioning properly in{" "}
+								NICE websites and services may stop functioning correctly in{" "}
 								<abbr title="Internet Explorer">IE</abbr> 10 after this date.
 							</p>
 						</div>
@@ -56,8 +56,8 @@ export default class OldIEMessage extends Component {
 							<p>
 								Your web browser, Internet Explorer (
 								<abbr title="Internet Explorer">IE</abbr>) {ieVersion}, is out
-								of date. For the the best experience, please update your browser
-								to the latest version.
+								of date. For the best experience, please update your browser to
+								the latest version.
 							</p>
 						</div>
 					)}

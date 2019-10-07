@@ -20,7 +20,7 @@ exports[`OldIEMessage Matches snapshot in IE 8/9 1`] = `
         </abbr>
         ) 
         9
-        , is out of date. For the the best experience, please update your browser to the latest version.
+        , is out of date. For the best experience, please update your browser to the latest version.
       </p>
     </div>
     <p>
@@ -77,7 +77,7 @@ exports[`OldIEMessage Matches snapshot in IE 10 1`] = `
             January 31, 2020
           </time>
         </strong>
-        . Mirosoft will no longer issue security patches from this date and your browser may become insecure. You can learn more about this in Microsoft’s
+        . Microsoft will no longer issue security patches from this date and your browser may become insecure. You can learn more about this in Microsoft’s
          
         <a
           href="https://support.microsoft.com/en-gb/help/17454/lifecycle-faq-internet-explorer"
@@ -101,7 +101,7 @@ exports[`OldIEMessage Matches snapshot in IE 10 1`] = `
         >
           January 31, 2020
         </time>
-        . This means NICE websites and services may stop functioning properly in
+        . This means NICE websites and services may stop functioning correctly in
          
         <abbr
           title="Internet Explorer"
