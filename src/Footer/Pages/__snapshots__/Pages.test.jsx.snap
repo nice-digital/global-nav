@@ -116,15 +116,15 @@ exports[`Pages Matches snapshot 1`] = `
       </TrackedLink>
     </li>
     <li
-      key="NICE UK Open Content License"
+      key="NICE UK Open Content Licence"
     >
       <TrackedLink
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="NICE UK Open Content License"
+        eventLabel="NICE UK Open Content Licence"
         href="https://www.nice.org.uk/re-using-our-content/uk-open-content-licence"
       >
-        NICE UK Open Content License
+        NICE UK Open Content Licence
       </TrackedLink>
     </li>
     <li

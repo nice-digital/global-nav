@@ -6,20 +6,23 @@
 }
 
 .alert {
-  background: $colour-error-background;
-  border: 1px solid $colour-error;
-  color: $colour-error;
+  background: $colour-caution-background;
+  border: 1px solid $colour-caution;
   margin: rem($spacing-medium) auto 0 auto;
   max-width: rem($nice-container-max-width);
   padding: rem($spacing-medium);
 
   a {
     @include link-default;
-    color: #005799; // Slightly darker link colour for sufficient contrast
   }
 
-  > :first-child {
+  h2 {
     margin-top: 0;
+  }
+
+  h2,
+  p {
+    max-width: 600px;
   }
 }
 
