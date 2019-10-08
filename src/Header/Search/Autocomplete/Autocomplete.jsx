@@ -45,7 +45,7 @@ const debounce = function(
 const maxResults = 5;
 
 /** Delay in millieconds before loading results */
-export const rateLimitWait = 100;
+export const rateLimitWait = 300;
 
 const templates = {
 	inputValue: function(suggestion) {
