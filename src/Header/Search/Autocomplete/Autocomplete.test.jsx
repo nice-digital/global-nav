@@ -1,7 +1,7 @@
 import React from "react";
 import AccessibleAutocomplete from "accessible-autocomplete/react";
 
-import Autocomplete from "./Autocomplete";
+import Autocomplete, { rateLimitWait } from "./Autocomplete";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
@@ -108,6 +108,48 @@ describe("Autocomplete", () => {
 			expect(window.location.href).toEqual(
 				"https://www.nice.org.uk/diabetes1.html"
 			);
+		});
+
+		it("should not load suggestions within the reate limit threshold", () => {
+			jest.useFakeTimers();
+			const callback = () => {};
+			const wrapper = shallow(
+				<Autocomplete {...defaultProps} source="/url" query="test" />
+			);
+			const suggestSpy = jest
+				.spyOn(wrapper.instance(), "suggest")
+				.mockImplementation(() => {});
+			wrapper.instance().forceUpdate();
+			const source = wrapper.find("#autocomplete").props().source;
+
+			source("que", () => {});
+			jest.advanceTimersByTime(rateLimitWait - 1);
+			source("quer", () => {});
+
+			expect(suggestSpy).not.toBeCalled();
+		});
+
+		it("should load the suggestions only once after the rate limit threshold", () => {
+			jest.useFakeTimers();
+			const callback = () => {};
+			const wrapper = shallow(
+				<Autocomplete {...defaultProps} source="/url" query="test" />
+			);
+			const suggestSpy = jest
+				.spyOn(wrapper.instance(), "suggest")
+				.mockImplementation(() => {});
+			wrapper.instance().forceUpdate();
+			const source = wrapper.find("#autocomplete").props().source;
+
+			source("que", callback);
+			jest.advanceTimersByTime(rateLimitWait - 10);
+			source("quer", callback);
+			jest.advanceTimersByTime(rateLimitWait - 5);
+			source("query", callback);
+
+			jest.advanceTimersByTime(rateLimitWait);
+			expect(suggestSpy).toBeCalledTimes(1);
+			expect(suggestSpy).toBeCalledWith("query", callback);
 		});
 	});
 
