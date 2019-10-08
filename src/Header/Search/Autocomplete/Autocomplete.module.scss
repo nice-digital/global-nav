@@ -35,8 +35,10 @@
       }
 
       &::placeholder {
+        color: #666 !important;
         font-size: 100%;
         font-weight: normal;
+        opacity: 1; // Chrome uses a semi-transparent placeholder by default
       }
     }
 
