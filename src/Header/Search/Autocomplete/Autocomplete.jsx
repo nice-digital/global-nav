@@ -41,7 +41,7 @@ const debounce = function(
 	};
 };
 
-// The maximum number of autocomplete results to return
+/** The maximum number of autocomplete results to return */
 const maxResults = 5;
 
 /** Delay in millieconds before loading results */
