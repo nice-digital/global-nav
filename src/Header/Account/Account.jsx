@@ -82,7 +82,7 @@ export default class Account extends Component {
 	}
 
 	componentDidMount() {
-		checkIsLoggedIn(this.props.environment)
+		checkIsLoggedIn(this.props.environment, this.props.provider)
 			.then(
 				function(data) {
 					if (this.props.onLoginStatusChecked) {
@@ -167,7 +167,7 @@ Account.propTypes = {
 		links: PropTypes.object
 	}),
 	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
-	provider: PropTypes.oneOf(["niceAccounts"])
+	provider: PropTypes.oneOf(["niceAccounts", "idam"])
 };
 
 Account.defaultProps = {
