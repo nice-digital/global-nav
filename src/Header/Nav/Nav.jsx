@@ -101,7 +101,11 @@ export default class Nav extends Component {
 					}
 				)}
 			>
-				<nav className={styles.nav}>
+				<nav
+					className={styles.nav}
+					role="navigation"
+					aria-label="primary navigation"
+				>
 					<div className={styles.menuWrapper}>
 						<ul
 							className={styles.menuList}
