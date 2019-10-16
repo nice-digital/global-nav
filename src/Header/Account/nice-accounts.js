@@ -3,7 +3,11 @@
 // Returns a promise that rejects if the data could not be loaded.
 export const checkIsLoggedIn = function(environment, provider) {
 	return new Promise(function(resolve, reject) {
-		const url = getDomainBaseUrl(environment) + "tophat";
+		let url = getDomainBaseUrl(environment) + "tophat";
+
+		if (provider == "idam") {
+			url = "http://test-identityapi.nice.org.uk/api/status";
+		}
 
 		var body = document.body;
 		var script = document.createElement("script");
