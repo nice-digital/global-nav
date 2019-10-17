@@ -65,6 +65,8 @@ export class Header extends Component {
 	}
 
 	handleLoginStatusChecked(accountsData) {
+		console.log(accountsData);
+
 		if (accountsData.display_name) {
 			this.setState({ isLoggedIn: false, accountsData: accountsData });
 		} else {
