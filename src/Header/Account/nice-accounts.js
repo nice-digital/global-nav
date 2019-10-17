@@ -29,17 +29,17 @@ export const checkIsLoggedIn = function(environment, provider) {
 				// Handle memory leak in IE
 				script.onload = script.onreadystatechange = null;
 
-				var windowNA = window._na;
-
-				if (!windowNA) {
-					windowNA = script.innerHTML;
+				if (!window._na) {
+					window._na = script.innerHTML;
 				}
 
 				if (body && script.parentNode) {
 					body.removeChild(script);
 				}
 
-				resolve(windowNA);
+				console.log(window._na);
+
+				resolve(window._na);
 			}
 		};
 		script.onerror = reject;
