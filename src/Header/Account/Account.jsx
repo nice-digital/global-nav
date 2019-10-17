@@ -84,6 +84,8 @@ export default class Account extends Component {
 	componentDidMount() {
 		checkIsLoggedIn(this.props.environment, this.props.provider)
 			.then(
+				console.log(data);
+
 				function(data) {
 					if (this.props.onLoginStatusChecked) {
 						this.props.onLoginStatusChecked(data);
