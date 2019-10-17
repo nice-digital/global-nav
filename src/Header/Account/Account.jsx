@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-import { checkIsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
+import {
+	idamLoggedIn,
+	niceAccountsLoggedIn,
+	getDomainBaseUrl
+} from "./nice-accounts";
 import styles from "./Account.module.scss";
 import {
 	trackEvent,
@@ -81,27 +85,43 @@ export default class Account extends Component {
 		}
 	}
 
-	componentDidMount() {
-		checkIsLoggedIn(this.props.environment, this.props.provider)
-			.then(
-				console.log(data);
+	async componentDidMount() {
+		if (this.props.provider === "idam") {
+			let data = await idamLoggedIn(this.props.providerStatusPath);
 
-				function(data) {
-					if (this.props.onLoginStatusChecked) {
-						this.props.onLoginStatusChecked(data);
-					}
-				}.bind(this)
-			)
-			.catch(
-				function(e) {
-					console.warn("Couldn't load account data", e);
-				}.bind(this)
-			);
+			let links = {};
+			data.links.forEach(function(link) {
+				links[link["key"]] = link["value"];
+			});
+			var convertedData = { display_name: data.displayName, links: links };
+
+			if (this.props.onLoginStatusChecked) {
+				this.props.onLoginStatusChecked(convertedData);
+			}
+		} else {
+			//NICE accounts
+			niceAccountsLoggedIn(this.props.environment)
+				.then(
+					function(data) {
+						if (this.props.onLoginStatusChecked) {
+							this.props.onLoginStatusChecked(data);
+						}
+					}.bind(this)
+				)
+				.catch(
+					function(e) {
+						console.warn("Couldn't load account data from NICE accounts", e);
+					}.bind(this)
+				);
+		}
 	}
 
 	render() {
-		const { accountsData, environment } = this.props;
-		const signinUrl = getDomainBaseUrl(environment) + "signin";
+		const { accountsData, environment, provider } = this.props;
+		let signinUrl =
+			provider === "idam"
+				? "/account/login"
+				: getDomainBaseUrl(environment) + "signin";
 
 		return this.props.isLoggedIn ? (
 			<div className={styles.account}>
@@ -169,10 +189,12 @@ Account.propTypes = {
 		links: PropTypes.object
 	}),
 	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
-	provider: PropTypes.oneOf(["niceAccounts", "idam"])
+	provider: PropTypes.oneOf(["niceAccounts", "idam"]),
+	providerStatusPath: PropTypes.string
 };
 
 Account.defaultProps = {
 	environment: "live",
-	provider: "niceAccounts"
+	provider: "niceAccounts",
+	providerStatusPath: "/account/status"
 };

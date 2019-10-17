@@ -1,13 +1,10 @@
 // Checks if you are logged in via NICE Accounts
 // Returns a promise that resolves with the data from NICE Accounts.
 // Returns a promise that rejects if the data could not be loaded.
-export const checkIsLoggedIn = function(environment, provider) {
-	return new Promise(function(resolve, reject) {
-		let url = getDomainBaseUrl(environment) + "tophat";
 
-		if (provider == "idam") {
-			url = "http://test-identityapi.nice.org.uk/api/status";
-		}
+export const niceAccountsLoggedIn = environment => {
+	return new Promise(function(resolve, reject) {
+		const url = getDomainBaseUrl(environment) + "tophat";
 
 		var body = document.body;
 		var script = document.createElement("script");
@@ -28,16 +25,9 @@ export const checkIsLoggedIn = function(environment, provider) {
 				done = true;
 				// Handle memory leak in IE
 				script.onload = script.onreadystatechange = null;
-
-				if (!window._na) {
-					window._na = script.innerHTML;
-				}
-
 				if (body && script.parentNode) {
 					body.removeChild(script);
 				}
-
-				console.log(window._na);
 
 				resolve(window._na);
 			}
@@ -48,10 +38,17 @@ export const checkIsLoggedIn = function(environment, provider) {
 	});
 };
 
+export const idamLoggedIn = async function(providerStatusPath) {
+	const url = providerStatusPath;
+
+	let response = await fetch(url);
+	let data = await response.json();
+
+	return data;
+};
+
 export const getDomainBaseUrl = function(environment) {
-	return (
-		"https://" +
-		(environment !== "live" ? environment + "-" : "") +
-		"accounts.nice.org.uk/"
-	);
+	return `https://${
+		environment !== "live" ? environment + "-" : ""
+	}accounts.nice.org.uk/`;
 };

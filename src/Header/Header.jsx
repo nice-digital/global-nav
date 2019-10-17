@@ -65,12 +65,10 @@ export class Header extends Component {
 	}
 
 	handleLoginStatusChecked(accountsData) {
-		console.log(accountsData);
-
 		if (accountsData.display_name) {
-			this.setState({ isLoggedIn: false, accountsData: accountsData });
-		} else {
 			this.setState({ isLoggedIn: true, accountsData: accountsData });
+		} else {
+			this.setState({ isLoggedIn: false, accountsData: accountsData });
 		}
 	}
 
@@ -148,7 +146,8 @@ Header.propTypes = {
 	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	auth: PropTypes.shape({
 		provider: PropTypes.string,
-		environment: PropTypes.string
+		environment: PropTypes.string,
+		providerStatusPath: PropTypes.string
 	}),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };

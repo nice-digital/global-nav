@@ -157,6 +157,40 @@ const journalsConfig = {
 	}
 };
 
+const identityAdminConfig = {
+	filename: "identityadmin-loggedout",
+	title: "Identity Admin Logged out",
+	global_nav_config: {
+		service: "identitymanagement",
+		header: {
+			auth: {
+				provider: "idam"
+			},
+			search: {
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
+			}
+		}
+	}
+};
+
+const identityAdminLoggedInConfig = {
+	filename: "identityadmin-loggedin",
+	title: "Identity Admin Logged in",
+	global_nav_config: {
+		service: "identitymanagement",
+		header: {
+			auth: {
+				provider: "idam",
+				providerStatusPath:
+					"https://next.json-generator.com/api/json/get/N1XDcDWKw"
+			},
+			search: {
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
+			}
+		}
+	}
+};
+
 module.exports = [
 	pathwaysConfig,
 	guidanceConfig,
@@ -166,5 +200,7 @@ module.exports = [
 	bnfConfig,
 	bnfcConfig,
 	cksConfig,
-	journalsConfig
+	journalsConfig,
+	identityAdminConfig,
+	identityAdminLoggedInConfig
 ];
