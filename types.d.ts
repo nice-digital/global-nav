@@ -26,6 +26,11 @@ declare module "@nice-digital/global-nav" {
 		| "cks"
 		| "journals";
 
+	type Links = {
+		key: string;
+		value: string;
+	};
+
 	type OnNavigatingCallback = (
 		e: { element: HTMLAnchorElement; href: string }
 	) => void;
@@ -36,8 +41,10 @@ declare module "@nice-digital/global-nav" {
 		search?: false | SearchProps;
 		cookie?: boolean;
 		auth?: {
-			provider?: "niceAccounts";
+			provider?: "niceAccounts" | "idam";
 			environment?: "live" | "beta" | "test" | "local";
+			links?: Array<Links>;
+			displayName?: string;
 		};
 		onNavigating?: string | OnNavigatingCallback;
 	};
