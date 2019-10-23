@@ -3,7 +3,6 @@ import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import { checkIsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
 import {
 	eventName,
 	defaultEventCategory,
@@ -14,7 +13,7 @@ import {
 const escapeKeyCode = 27;
 
 jest.mock("./nice-accounts", () => ({
-	checkIsLoggedIn: jest.fn(() =>
+	niceAccountsLoggedIn: jest.fn(() =>
 		Promise.resolve({
 			test: true
 		})

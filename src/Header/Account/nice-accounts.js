@@ -38,15 +38,6 @@ export const niceAccountsLoggedIn = environment => {
 	});
 };
 
-export const idamLoggedIn = async function(providerStatusPath) {
-	const url = providerStatusPath;
-
-	let response = await fetch(url);
-	let data = await response.json();
-
-	return data;
-};
-
 export const getDomainBaseUrl = function(environment) {
 	return `https://${
 		environment !== "live" ? environment + "-" : ""

@@ -164,7 +164,8 @@ const identityAdminConfig = {
 		service: "identitymanagement",
 		header: {
 			auth: {
-				provider: "idam"
+				provider: "idam",
+				links: [{ key: "Sign in", value: "/Account/Login" }]
 			},
 			search: {
 				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
@@ -181,8 +182,11 @@ const identityAdminLoggedInConfig = {
 		header: {
 			auth: {
 				provider: "idam",
-				providerStatusPath:
-					"https://next.json-generator.com/api/json/get/N1XDcDWKw"
+				links: [
+					{ key: "My profile", value: "/Account/todo" },
+					{ key: "Sign out", value: "/Account/Logout" }
+				],
+				displayName: "John Holland"
 			},
 			search: {
 				autocomplete: "/niceorg/autocomplete/?ajax=ajax"

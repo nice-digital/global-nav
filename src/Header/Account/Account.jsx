@@ -13,6 +13,7 @@ import {
 	defaultEventCategory,
 	headerClickEventAction
 } from "../../tracker";
+import { Array } from "core-js";
 
 const escapeKeyCode = 27;
 
@@ -87,13 +88,14 @@ export default class Account extends Component {
 
 	async componentDidMount() {
 		if (this.props.provider === "idam") {
-			let data = await idamLoggedIn(this.props.providerStatusPath);
-
 			let links = {};
-			data.links.forEach(function(link) {
+			this.props.links.forEach(function(link) {
 				links[link["key"]] = link["value"];
 			});
-			var convertedData = { display_name: data.displayName, links: links };
+			var convertedData = {
+				display_name: this.props.displayName,
+				links: links
+			};
 
 			if (this.props.onLoginStatusChecked) {
 				this.props.onLoginStatusChecked(convertedData);
@@ -190,11 +192,13 @@ Account.propTypes = {
 	}),
 	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
 	provider: PropTypes.oneOf(["niceAccounts", "idam"]),
-	providerStatusPath: PropTypes.string
+	links: PropTypes.arrayOf(
+		PropTypes.shape({ name: PropTypes.string, value: PropTypes.string })
+	),
+	displayName: PropTypes.string
 };
 
 Account.defaultProps = {
 	environment: "live",
-	provider: "niceAccounts",
-	providerStatusPath: "/account/status"
+	provider: "niceAccounts"
 };
