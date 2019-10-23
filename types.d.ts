@@ -41,8 +41,8 @@ declare module "@nice-digital/global-nav" {
 		search?: false | SearchProps;
 		cookie?: boolean;
 		auth?: {
-			provider?: "niceAccounts" | "idam";
-			environment?: "live" | "beta" | "test" | "local";
+			provider?: string;
+			environment?: string;
 			links?: Array<Links>;
 			displayName?: string;
 		};
