@@ -84,6 +84,9 @@ export default class Account extends Component {
 
 	componentDidMount() {
 		if (this.state.useIdAM) {
+			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
+			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
+			//the following just converts the idam format to the nice accounts format.
 			let links = {};
 			this.props.links.forEach(function(link) {
 				links[link["key"]] = link["value"];
@@ -116,11 +119,14 @@ export default class Account extends Component {
 
 	render() {
 		const { accountsData, environment } = this.props;
-		const idamLink = this.props.links[0];
 
-		let signinUrl = this.state.useIdAM
-			? idamLink.value
-			: getDomainBaseUrl(environment) + "signin";
+		let signInLink = {};
+		if (this.state.useIdAM) {
+			signInLink = this.props.links[0];
+		} else {
+			signInLink["key"] = "Sign in";
+			signInLink["value"] = getDomainBaseUrl(environment) + "signin";
+		}
 
 		return this.props.isLoggedIn ? (
 			<div className={styles.account}>
@@ -169,11 +175,11 @@ export default class Account extends Component {
 			</div>
 		) : (
 			<a
-				href={signinUrl}
+				href={signInLink.value}
 				className={styles.button}
 				onClick={this.handleMenuItemClick}
 			>
-				{this.state.useIdAM ? idamLink.key : "Sign in"}
+				{signInLink.key}
 			</a>
 		);
 	}

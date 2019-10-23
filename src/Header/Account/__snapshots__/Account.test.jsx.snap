@@ -1,5 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Account Matches snapshot when logged in  using IDAM 1`] = `
+<div
+  className="account"
+>
+  <button
+    aria-controls="my-account"
+    aria-expanded={false}
+    aria-haspopup="menu"
+    className="button myAccount"
+    id="my-account-button"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+  >
+    My account
+  </button>
+  <ul
+    aria-hidden={true}
+    aria-labelledby="my-account-button"
+    className="menu"
+    id="my-account"
+    onKeyDown={[Function]}
+    role="menu"
+  >
+    <li
+      key="0"
+      role="presentation"
+    >
+      <a
+        data-hj-suppress=""
+        href="https://accounts.nice.org.uk/users/12345/editprofile"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="menuitem"
+      >
+        Joe Bloggs
+      </a>
+    </li>
+    <li
+      key="1"
+      role="presentation"
+    >
+      <a
+        data-hj-suppress={null}
+        href="https://accounts.nice.org.uk/signout"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="menuitem"
+      >
+        Sign out
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
 exports[`Account Matches snapshot when logged in 1`] = `
 <div
   className="account"
@@ -62,5 +117,15 @@ exports[`Account Matches snapshot when logged out 1`] = `
   onClick={[Function]}
 >
   Sign in
+</a>
+`;
+
+exports[`Account Matches snapshot when logged out using IDAM 1`] = `
+<a
+  className="button"
+  href="/signin"
+  onClick={[Function]}
+>
+  sign in
 </a>
 `;

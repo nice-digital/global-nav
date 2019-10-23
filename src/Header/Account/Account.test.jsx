@@ -21,6 +21,11 @@ jest.mock("./nice-accounts", () => ({
 	getDomainBaseUrl: jest.requireActual("./nice-accounts.js").getDomainBaseUrl
 }));
 
+const idamProps = {
+	provider: "idam",
+	links: [{ key: "sign in", value: "/signin" }]
+};
+
 describe("Account", () => {
 	const accountsData = {
 		display_name: "Joe Bloggs",
@@ -48,6 +53,20 @@ describe("Account", () => {
 	it("Matches snapshot when logged in", () => {
 		const wrapper = shallow(
 			<Account isLoggedIn={true} accountsData={accountsData} />
+		);
+
+		expect(toJson(wrapper)).toMatchSnapshot();
+	});
+
+	it("Matches snapshot when logged out using IDAM", () => {
+		const wrapper = shallow(<Account isLoggedIn={false} {...idamProps} />);
+
+		expect(toJson(wrapper)).toMatchSnapshot();
+	});
+
+	it("Matches snapshot when logged in  using IDAM", () => {
+		const wrapper = shallow(
+			<Account isLoggedIn={true} accountsData={accountsData} {...idamProps} />
 		);
 
 		expect(toJson(wrapper)).toMatchSnapshot();
