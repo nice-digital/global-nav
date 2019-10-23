@@ -2,18 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-import {
-	idamLoggedIn,
-	niceAccountsLoggedIn,
-	getDomainBaseUrl
-} from "./nice-accounts";
+import { niceAccountsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
 import styles from "./Account.module.scss";
 import {
 	trackEvent,
 	defaultEventCategory,
 	headerClickEventAction
 } from "../../tracker";
-import { Array } from "core-js";
 
 const escapeKeyCode = 27;
 
@@ -22,7 +17,8 @@ export default class Account extends Component {
 		super(props);
 
 		this.state = {
-			isExpanded: false
+			isExpanded: false,
+			useIdAM: this.props.provider == Account.idamProvider
 		};
 
 		this.handleMyAccountButtonClick = this.handleMyAccountButtonClick.bind(
@@ -86,8 +82,8 @@ export default class Account extends Component {
 		}
 	}
 
-	async componentDidMount() {
-		if (this.props.provider === "idam") {
+	componentDidMount() {
+		if (this.state.useIdAM) {
 			let links = {};
 			this.props.links.forEach(function(link) {
 				links[link["key"]] = link["value"];
@@ -120,10 +116,11 @@ export default class Account extends Component {
 
 	render() {
 		const { accountsData, environment, provider } = this.props;
-		let signinUrl =
-			provider === "idam"
-				? "/account/login"
-				: getDomainBaseUrl(environment) + "signin";
+		const idamLink = this.props.links[0];
+
+		let signinUrl = this.state.useIdAM
+			? idamLink.value
+			: getDomainBaseUrl(environment) + "signin";
 
 		return this.props.isLoggedIn ? (
 			<div className={styles.account}>
@@ -176,11 +173,13 @@ export default class Account extends Component {
 				className={styles.button}
 				onClick={this.handleMenuItemClick}
 			>
-				Sign in
+				{this.state.useIdAM ? idamLink.key : "Sign in"}
 			</a>
 		);
 	}
 }
+
+Account.idamProvider = "idam";
 
 Account.propTypes = {
 	isLoggedIn: PropTypes.bool.isRequired,
@@ -191,7 +190,7 @@ Account.propTypes = {
 		links: PropTypes.object
 	}),
 	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
-	provider: PropTypes.oneOf(["niceAccounts", "idam"]),
+	provider: PropTypes.oneOf(["niceAccounts", Account.idamProvider]),
 	links: PropTypes.arrayOf(
 		PropTypes.shape({ name: PropTypes.string, value: PropTypes.string })
 	),

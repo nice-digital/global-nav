@@ -147,7 +147,10 @@ Header.propTypes = {
 	auth: PropTypes.shape({
 		provider: PropTypes.string,
 		environment: PropTypes.string,
-		providerStatusPath: PropTypes.string
+		links: PropTypes.arrayOf(
+			PropTypes.shape({ name: PropTypes.string, value: PropTypes.string })
+		),
+		displayName: PropTypes.string
 	}),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };

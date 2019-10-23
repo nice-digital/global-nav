@@ -157,7 +157,7 @@ const journalsConfig = {
 	}
 };
 
-const identityAdminConfig = {
+const identityAdminLoggedOutConfig = {
 	filename: "identityadmin-loggedout",
 	title: "Identity Admin Logged out",
 	global_nav_config: {
@@ -205,6 +205,6 @@ module.exports = [
 	bnfcConfig,
 	cksConfig,
 	journalsConfig,
-	identityAdminConfig,
+	identityAdminLoggedOutConfig,
 	identityAdminLoggedInConfig
 ];
