@@ -115,7 +115,7 @@ export default class Account extends Component {
 	}
 
 	render() {
-		const { accountsData, environment, provider } = this.props;
+		const { accountsData, environment } = this.props;
 		const idamLink = this.props.links[0];
 
 		let signinUrl = this.state.useIdAM
