@@ -35,17 +35,23 @@ declare module "@nice-digital/global-nav" {
 		e: { element: HTMLAnchorElement; href: string }
 	) => void;
 
+	type idamProviderProps = {
+		provider: "idam";
+		links?: Array<Links>;
+		displayName?: string;
+	};
+
+	type niceAccountsProviderProps = {
+		provider?: "niceAccounts";
+		environment?: "live" | "beta" | "test" | "local";
+	};
+
 	type HeaderProps = {
 		service?: Service;
 		skipLinkId?: string;
 		search?: false | SearchProps;
 		cookie?: boolean;
-		auth?: {
-			provider?: string;
-			environment?: string;
-			links?: Array<Links>;
-			displayName?: string;
-		};
+		auth?: niceAccountsProviderProps | idamProviderProps;
 		onNavigating?: string | OnNavigatingCallback;
 	};
 

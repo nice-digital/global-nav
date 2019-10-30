@@ -2,7 +2,7 @@
 // Returns a promise that resolves with the data from NICE Accounts.
 // Returns a promise that rejects if the data could not be loaded.
 
-export const niceAccountsLoggedIn = environment => {
+export const checkIsLoggedIn = environment => {
 	return new Promise(function(resolve, reject) {
 		const url = getDomainBaseUrl(environment) + "tophat";
 

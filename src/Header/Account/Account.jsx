@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-import { niceAccountsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
+import {
+	checkIsLoggedIn as niceAccountsLoggedIn,
+	getDomainBaseUrl
+} from "./nice-accounts";
 import styles from "./Account.module.scss";
 import {
 	trackEvent,
@@ -18,7 +21,7 @@ export default class Account extends Component {
 
 		this.state = {
 			isExpanded: false,
-			useIdAM: this.props.provider == Account.idamProvider
+			useIdAM: this.props.provider == Account.providers.idam
 		};
 
 		this.handleMyAccountButtonClick = this.handleMyAccountButtonClick.bind(
@@ -87,11 +90,14 @@ export default class Account extends Component {
 			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
 			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
 			//the following just converts the idam format to the nice accounts format.
-			let links = {};
-			this.props.links.forEach(function(link) {
-				links[link["key"]] = link["value"];
-			});
-			var convertedData = {
+			const links = this.props.links.reduce(
+				(links, link) => ({
+					...links,
+					...{ [link.text]: link.url }
+				}),
+				{}
+			);
+			const convertedData = {
 				display_name: this.props.displayName,
 				links: links
 			};
@@ -124,8 +130,8 @@ export default class Account extends Component {
 		if (this.state.useIdAM) {
 			signInLink = this.props.links[0];
 		} else {
-			signInLink["key"] = "Sign in";
-			signInLink["value"] = getDomainBaseUrl(environment) + "signin";
+			signInLink["text"] = "Sign in";
+			signInLink["url"] = getDomainBaseUrl(environment) + "signin";
 		}
 
 		return this.props.isLoggedIn ? (
@@ -175,17 +181,20 @@ export default class Account extends Component {
 			</div>
 		) : (
 			<a
-				href={signInLink.value}
+				href={signInLink.url}
 				className={styles.button}
 				onClick={this.handleMenuItemClick}
 			>
-				{signInLink.key}
+				{signInLink.text}
 			</a>
 		);
 	}
 }
 
-Account.idamProvider = "idam";
+Account.providers = {
+	idam: "idam",
+	niceAccounts: "niceAccounts"
+};
 
 Account.propTypes = {
 	isLoggedIn: PropTypes.bool.isRequired,
@@ -196,9 +205,15 @@ Account.propTypes = {
 		links: PropTypes.object
 	}),
 	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
-	provider: PropTypes.oneOf(["niceAccounts", Account.idamProvider]),
+	provider: PropTypes.oneOf([
+		Account.providers.niceAccounts,
+		Account.providers.idam
+	]),
 	links: PropTypes.arrayOf(
-		PropTypes.shape({ name: PropTypes.string, value: PropTypes.string })
+		PropTypes.shape({
+			text: PropTypes.string.isRequired,
+			url: PropTypes.string.isRequired
+		})
 	),
 	displayName: PropTypes.string
 };

@@ -148,7 +148,10 @@ Header.propTypes = {
 		provider: PropTypes.string,
 		environment: PropTypes.string,
 		links: PropTypes.arrayOf(
-			PropTypes.shape({ name: PropTypes.string, value: PropTypes.string })
+			PropTypes.shape({
+				text: PropTypes.string.isRequired,
+				url: PropTypes.string.isRequired
+			})
 		),
 		displayName: PropTypes.string
 	}),

@@ -499,7 +499,7 @@ This value is the authentication environment eg `beta` would be *beta-accounts.n
 - Default: `niceAccounts`
 - Values: `niceAccounts`, `idam`
 
-The authentication provider allows the provider to be changed.
+The authentication provider allows the provider to be changed. If the provider is set to niceAccounts then an environment be defined. If the provider is set to idam the links and displayName must be defined.
 
 ###### Header.auth.links
 
@@ -507,16 +507,15 @@ The authentication provider allows the provider to be changed.
 - Default: `null`
 - Values: `[{ key: "Sign in", value: "/Account/Login" }]`, `[{ key: "My profile", value: "/Account/profile" },{ key: "Sign out", value: "/Account/Logout" }]`
 
-If the authentication provider has been set to "idam", then an array of links must be provided. If the user is logged out then a "Sign in" link should be provided with an appropriate url supplied. If the user is logged in, then a number of links are supported, with a "Sign out" link normally last in the list, also a displayName must be supplied.
+If the authentication provider has been set to "idam", then an array of links must be provided. If the user is logged out then a "Sign in" link should be provided with an appropriate url supplied - this should be the first in the list. If the user is logged in, then a number of links are supported, with a "Sign out" link normally last in the list, also a displayName must be supplied.
 
 
 ###### Header.auth.displayName
 
 - Type: `String | null`
 - Default: `null`
-- Values: `Alice`, `Bob`
 
-The display name must be provided if the "idam" provider is used and the user is logged in.
+The displayName is the user's name and must be provided if the "idam" provider is used and the user is logged in.
 
 ##### Footer props
 

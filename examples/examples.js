@@ -161,7 +161,6 @@ const identityAdminLoggedOutConfig = {
 	filename: "identityadmin-loggedout",
 	title: "Identity Admin Logged out",
 	global_nav_config: {
-		service: "identitymanagement",
 		header: {
 			auth: {
 				provider: "idam",
@@ -178,13 +177,12 @@ const identityAdminLoggedInConfig = {
 	filename: "identityadmin-loggedin",
 	title: "Identity Admin Logged in",
 	global_nav_config: {
-		service: "identitymanagement",
 		header: {
 			auth: {
 				provider: "idam",
 				links: [
-					{ key: "My profile", value: "/Account/todo" },
-					{ key: "Sign out", value: "/Account/Logout" }
+					{ text: "My profile", url: "/Account/todo" },
+					{ text: "Sign out", url: "/Account/Logout" }
 				],
 				displayName: "John Holland"
 			},
