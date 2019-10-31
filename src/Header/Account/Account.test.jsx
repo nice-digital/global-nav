@@ -13,7 +13,7 @@ import {
 const escapeKeyCode = 27;
 
 jest.mock("./nice-accounts", () => ({
-	niceAccountsLoggedIn: jest.fn(() =>
+	checkIsLoggedIn: jest.fn(() =>
 		Promise.resolve({
 			test: true
 		})
@@ -23,7 +23,7 @@ jest.mock("./nice-accounts", () => ({
 
 const idamProps = {
 	provider: "idam",
-	links: [{ key: "sign in", value: "/signin" }]
+	links: [{ text: "sign in", url: "/signin" }]
 };
 
 describe("Account", () => {
