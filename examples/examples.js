@@ -164,7 +164,7 @@ const identityAdminLoggedOutConfig = {
 		header: {
 			auth: {
 				provider: "idam",
-				links: [{ key: "Sign in", value: "/Account/Login" }]
+				links: [{ text: "Sign in", url: "/Account/Login" }]
 			},
 			search: {
 				autocomplete: "/niceorg/autocomplete/?ajax=ajax"

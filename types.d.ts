@@ -26,23 +26,23 @@ declare module "@nice-digital/global-nav" {
 		| "cks"
 		| "journals";
 
-	type Links = {
-		key: string;
-		value: string;
+	type Link = {
+		text: string;
+		url: string;
 	};
 
 	type OnNavigatingCallback = (
 		e: { element: HTMLAnchorElement; href: string }
 	) => void;
 
-	type idamProviderProps = {
-		provider?: string;
-		links?: Array<Links>;
-		displayName?: string;
+	export type IdamProviderProps = {
+		provider: "idam";
+		links: Array<Link>;
+		displayName: string;
 	};
 
-	type niceAccountsProviderProps = {
-		provider?: string;
+	export type NiceAccountsProviderProps = {
+		provider: "niceAccounts";
 		environment?: "live" | "beta" | "test" | "local";
 	};
 
@@ -51,7 +51,7 @@ declare module "@nice-digital/global-nav" {
 		skipLinkId?: string;
 		search?: false | SearchProps;
 		cookie?: boolean;
-		auth?: niceAccountsProviderProps | idamProviderProps;
+		auth?: NiceAccountsProviderProps | IdamProviderProps;
 		onNavigating?: string | OnNavigatingCallback;
 	};
 
