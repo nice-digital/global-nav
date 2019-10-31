@@ -36,13 +36,13 @@ declare module "@nice-digital/global-nav" {
 	) => void;
 
 	type idamProviderProps = {
-		provider: "idam";
+		provider?: string;
 		links?: Array<Links>;
 		displayName?: string;
 	};
 
 	type niceAccountsProviderProps = {
-		provider?: "niceAccounts";
+		provider?: string;
 		environment?: "live" | "beta" | "test" | "local";
 	};
 
