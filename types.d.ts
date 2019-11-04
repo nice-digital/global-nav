@@ -38,7 +38,7 @@ declare module "@nice-digital/global-nav" {
 	export type IdamProviderProps = {
 		provider: "idam";
 		links: Array<Link>;
-		displayName: string;
+		displayName?: string;
 	};
 
 	export type NiceAccountsProviderProps = {

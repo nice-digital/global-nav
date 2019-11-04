@@ -144,22 +144,7 @@ Header.propTypes = {
 	enabled: PropTypes.bool,
 	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-	auth: PropTypes.oneOfType([
-		PropTypes.shape({
-			provider: PropTypes.oneOf(["niceAccounts"]).isRequired,
-			environment: PropTypes.oneOf(["live", "beta", "test", "local"])
-		}),
-		PropTypes.shape({
-			provider: PropTypes.oneOf(["idam"]).isRequired,
-			links: PropTypes.arrayOf(
-				PropTypes.shape({
-					text: PropTypes.string.isRequired,
-					url: PropTypes.string.isRequired
-				})
-			).isRequired,
-			displayName: PropTypes.string
-		})
-	]),
+	auth: PropTypes.object,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
