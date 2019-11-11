@@ -144,10 +144,7 @@ Header.propTypes = {
 	enabled: PropTypes.bool,
 	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-	auth: PropTypes.shape({
-		provider: PropTypes.string,
-		environment: PropTypes.string
-	}),
+	auth: PropTypes.object,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 

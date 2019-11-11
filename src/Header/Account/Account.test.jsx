@@ -3,7 +3,6 @@ import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import { checkIsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
 import {
 	eventName,
 	defaultEventCategory,
@@ -21,6 +20,11 @@ jest.mock("./nice-accounts", () => ({
 	),
 	getDomainBaseUrl: jest.requireActual("./nice-accounts.js").getDomainBaseUrl
 }));
+
+const idamProps = {
+	provider: "idam",
+	links: [{ text: "sign in", url: "/signin" }]
+};
 
 describe("Account", () => {
 	const accountsData = {
@@ -49,6 +53,20 @@ describe("Account", () => {
 	it("Matches snapshot when logged in", () => {
 		const wrapper = shallow(
 			<Account isLoggedIn={true} accountsData={accountsData} />
+		);
+
+		expect(toJson(wrapper)).toMatchSnapshot();
+	});
+
+	it("Matches snapshot when logged out using IDAM", () => {
+		const wrapper = shallow(<Account isLoggedIn={false} {...idamProps} />);
+
+		expect(toJson(wrapper)).toMatchSnapshot();
+	});
+
+	it("Matches snapshot when logged in  using IDAM", () => {
+		const wrapper = shallow(
+			<Account isLoggedIn={true} accountsData={accountsData} {...idamProps} />
 		);
 
 		expect(toJson(wrapper)).toMatchSnapshot();

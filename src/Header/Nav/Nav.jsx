@@ -85,7 +85,6 @@ export default class Nav extends Component {
 				break;
 			}
 		}
-
 		const subLinks = activeService && activeService.links;
 
 		return (

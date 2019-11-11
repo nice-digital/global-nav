@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-import { checkIsLoggedIn, getDomainBaseUrl } from "./nice-accounts";
+import {
+	checkIsLoggedIn as niceAccountsLoggedIn,
+	getDomainBaseUrl
+} from "./nice-accounts";
 import styles from "./Account.module.scss";
 import {
 	trackEvent,
@@ -17,7 +20,8 @@ export default class Account extends Component {
 		super(props);
 
 		this.state = {
-			isExpanded: false
+			isExpanded: false,
+			useIdAM: this.props.provider == Account.providers.idam
 		};
 
 		this.handleMyAccountButtonClick = this.handleMyAccountButtonClick.bind(
@@ -82,24 +86,50 @@ export default class Account extends Component {
 	}
 
 	componentDidMount() {
-		checkIsLoggedIn(this.props.environment)
-			.then(
-				function(data) {
-					if (this.props.onLoginStatusChecked) {
-						this.props.onLoginStatusChecked(data);
-					}
-				}.bind(this)
-			)
-			.catch(
-				function(e) {
-					console.warn("Couldn't load account data", e);
-				}.bind(this)
-			);
+		if (this.state.useIdAM) {
+			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
+			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
+			//the following just converts the idam format to the nice accounts format.
+			const links = this.props.links.reduce(function(links, link) {
+				links[link.text] = link.url;
+				return links;
+			}, {});
+			const convertedData = {
+				display_name: this.props.displayName,
+				links: links
+			};
+
+			if (this.props.onLoginStatusChecked) {
+				this.props.onLoginStatusChecked(convertedData);
+			}
+		} else {
+			//NICE accounts
+			niceAccountsLoggedIn(this.props.environment)
+				.then(
+					function(data) {
+						if (this.props.onLoginStatusChecked) {
+							this.props.onLoginStatusChecked(data);
+						}
+					}.bind(this)
+				)
+				.catch(
+					function(e) {
+						console.warn("Couldn't load account data from NICE accounts", e);
+					}.bind(this)
+				);
+		}
 	}
 
 	render() {
 		const { accountsData, environment } = this.props;
-		const signinUrl = getDomainBaseUrl(environment) + "signin";
+
+		let signInLink = {};
+		if (this.state.useIdAM) {
+			signInLink = this.props.links[0];
+		} else {
+			signInLink["text"] = "Sign in";
+			signInLink["url"] = getDomainBaseUrl(environment) + "signin";
+		}
 
 		return this.props.isLoggedIn ? (
 			<div className={styles.account}>
@@ -148,15 +178,20 @@ export default class Account extends Component {
 			</div>
 		) : (
 			<a
-				href={signinUrl}
+				href={signInLink.url}
 				className={styles.button}
 				onClick={this.handleMenuItemClick}
 			>
-				Sign in
+				{signInLink.text}
 			</a>
 		);
 	}
 }
+
+Account.providers = {
+	idam: "idam",
+	niceAccounts: "niceAccounts"
+};
 
 Account.propTypes = {
 	isLoggedIn: PropTypes.bool.isRequired,
@@ -167,7 +202,17 @@ Account.propTypes = {
 		links: PropTypes.object
 	}),
 	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
-	provider: PropTypes.oneOf(["niceAccounts"])
+	provider: PropTypes.oneOf([
+		Account.providers.niceAccounts,
+		Account.providers.idam
+	]),
+	links: PropTypes.arrayOf(
+		PropTypes.shape({
+			text: PropTypes.string.isRequired,
+			url: PropTypes.string.isRequired
+		})
+	),
+	displayName: PropTypes.string
 };
 
 Account.defaultProps = {
