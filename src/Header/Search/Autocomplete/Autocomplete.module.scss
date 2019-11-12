@@ -81,7 +81,11 @@
       //overflow-x: hidden;
       padding: 0;
       text-align: left;
-      width: 100%;
+      width: calc(100vw - 2rem);
+      @include mq($from: sm) {
+        width: 100%;
+        background: none;
+      }
     }
 
     .autocomplete__menu--visible {
