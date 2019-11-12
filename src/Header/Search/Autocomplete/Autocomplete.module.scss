@@ -84,7 +84,6 @@
       width: calc(100vw - 2rem);
       @include mq($from: sm) {
         width: 100%;
-        background: none;
       }
     }
 
