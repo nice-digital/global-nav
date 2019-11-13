@@ -2,7 +2,7 @@
 @import '../footer-settings';
 
 .wrapper {
-  @include font-size(-1);
+  @include nds-font-size(-1);
   background: $nds-colour-nice-dark-grey;
   padding: rem($nds-spacing-medium 0);
 
@@ -34,7 +34,7 @@
 }
 
 .copyright {
-  @include font-size(-1);
+  @include nds-font-size(-1);
   margin: 0;
 }
 
@@ -49,7 +49,7 @@
 
 @include mq($from: lg) {
   .wrapper {
-    @include clearfix;
+    @include nds-clearfix;
   }
 
   .menu {

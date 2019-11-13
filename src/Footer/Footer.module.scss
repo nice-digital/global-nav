@@ -2,11 +2,11 @@
 @import 'footer-settings';
 
 .footer {
-  @include links-inverse;
-  background: $nds-colour-footer-background;
+  @include nds-links-inverse;
+  background: $colour-footer-background;
   box-sizing: border-box;
-  color: $nds-colour-footer-text;
-  font-family: unquote($nice-font-family-sans);
+  color: $colour-footer-text;
+  font-family: unquote($nds-font-family-sans);
   margin: rem($nds-spacing-large 0 0 0);
 
   *,
@@ -22,7 +22,7 @@
 
 .container {
   @include nds-container;
-  @include clearfix;
+  @include nds-clearfix;
   padding: rem($nds-spacing-medium 0);
 }
 
