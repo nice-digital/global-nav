@@ -1,14 +1,14 @@
 @import '~@nice-digital/nds-core/scss/core';
 
 .banner {
-  background: $colour-nice-grey-3;
-  border-bottom: 1px solid $colour-border;
-  padding: rem($spacing-medium 0);
+  background: $nds-colour-nice-grey-3;
+  border-bottom: 1px solid $nds-colour-border;
+  padding: rem($nds-spacing-medium 0);
   text-align: left;
 }
 
 .container {
-  @include container;
+  @include nds-container;
 }
 
 .heading {
@@ -27,14 +27,14 @@
 
 .button {
   appearance: none;
-  background: $colour-btn-primary;
-  border: em(1) solid $colour-btn-primary-text;
+  background: $nds-colour-btn-primary;
+  border: em(1) solid $nds-colour-btn-primary-text;
   border-radius: 0;
-  color: $colour-btn-primary-text;
+  color: $nds-colour-btn-primary-text;
   cursor: pointer;
   display: inline-block;
   margin: 0;
-  padding: em($spacing-small $spacing-medium);
+  padding: em($nds-spacing-small $nds-spacing-medium);
   position: relative;
   text-align: left;
   text-decoration: none !important; // sass-lint:disable-line no-important
@@ -42,9 +42,9 @@
   white-space: nowrap;
 
   &:focus {
-    background: $colour-btn-primary;
-    border-color: $colour-focus-inverse;
-    color: $colour-btn-primary-text;
-    outline: 3px solid $colour-focus;
+    background: $nds-colour-btn-primary;
+    border-color: $nds-colour-focus-inverse;
+    color: $nds-colour-btn-primary-text;
+    outline: 3px solid $nds-colour-focus;
   }
 }

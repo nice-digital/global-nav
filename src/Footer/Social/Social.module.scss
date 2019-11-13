@@ -10,11 +10,11 @@
   padding: 0;
 
   li {
-    margin: rem(0 0 $spacing-x-small);
+    margin: rem(0 0 $nds-spacing-x-small);
   }
 
   svg {
-    margin: rem(-$spacing-xx-small $spacing-x-small 0 0);
+    margin: rem(-$nds-spacing-xx-small $nds-spacing-x-small 0 0);
     vertical-align: middle;
   }
 }
@@ -23,7 +23,7 @@
   .list {
     li {
       float: left;
-      margin: rem(0 $spacing-medium 0 0);
+      margin: rem(0 $nds-spacing-medium 0 0);
     }
   }
 }
@@ -34,7 +34,7 @@
 
     li {
       float: none;
-      margin: rem(0 0 $spacing-x-small);
+      margin: rem(0 0 $nds-spacing-x-small);
     }
   }
 }

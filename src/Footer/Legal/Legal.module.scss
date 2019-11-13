@@ -3,8 +3,8 @@
 
 .wrapper {
   @include font-size(-1);
-  background: $colour-nice-dark-grey;
-  padding: rem($spacing-medium 0);
+  background: $nds-colour-nice-dark-grey;
+  padding: rem($nds-spacing-medium 0);
 
   a {
     text-decoration: underline;
@@ -12,11 +12,11 @@
 }
 
 .container {
-  @include container;
+  @include nds-container;
 }
 
 .menu {
-  margin: rem(0 0 $spacing-medium);
+  margin: rem(0 0 $nds-spacing-medium);
 
   ul {
     list-style: none;
@@ -42,7 +42,7 @@
   .menu {
     li {
       display: inline-block;
-      margin-right: rem($spacing-medium);
+      margin-right: rem($nds-spacing-medium);
     }
   }
 }

@@ -1,7 +1,7 @@
 @import '~@nice-digital/nds-core/scss/core';
 
 .wrapper {
-  margin: rem(0 0 $spacing-large);
+  margin: rem(0 0 $nds-spacing-large);
 }
 
 .list {
@@ -10,13 +10,13 @@
   padding: 0;
 
   li {
-    margin: rem(0 0 $spacing-x-small);
+    margin: rem(0 0 $nds-spacing-x-small);
   }
 }
 
 @include mq($from: sm) {
   .wrapper {
-    border-right: 2px solid $colour-nice-dark-grey;
+    border-right: 2px solid $nds-colour-nice-dark-grey;
     float: left;
     width: percentage(1 / 3);
   }
@@ -24,7 +24,7 @@
 
 @include mq($from: md) {
   .wrapper {
-    border-right: 2px solid $colour-nice-dark-grey;
+    border-right: 2px solid $nds-colour-nice-dark-grey;
     float: left;
     margin: 0;
     width: 25%;

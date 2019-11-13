@@ -3,11 +3,11 @@
 
 .footer {
   @include links-inverse;
-  background: $colour-footer-background;
+  background: $nds-colour-footer-background;
   box-sizing: border-box;
-  color: $colour-footer-text;
+  color: $nds-colour-footer-text;
   font-family: unquote($nice-font-family-sans);
-  margin: rem($spacing-large 0 0 0);
+  margin: rem($nds-spacing-large 0 0 0);
 
   *,
   *:before,
@@ -21,9 +21,9 @@
 }
 
 .container {
-  @include container;
+  @include nds-container;
   @include clearfix;
-  padding: rem($spacing-medium 0);
+  padding: rem($nds-spacing-medium 0);
 }
 
 .logo {
@@ -31,7 +31,7 @@
   $logo-aspect-ratio: 512 / 1410;
   display: block;
   height: 0;
-  margin: rem(0 0 $spacing-large 0);
+  margin: rem(0 0 $nds-spacing-large 0);
   padding: 0;
   padding-bottom: $logo-width * $logo-aspect-ratio; // Aspect ratio of NICE logo SVG
   position: relative;
@@ -49,6 +49,6 @@
 
 @include mq($from: md) {
   .logo {
-    margin-bottom: rem($spacing-medium);
+    margin-bottom: rem($nds-spacing-medium);
   }
 }
