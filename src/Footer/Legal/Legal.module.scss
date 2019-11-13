@@ -2,9 +2,9 @@
 @import '../footer-settings';
 
 .wrapper {
-  @include font-size(-1);
-  background: $colour-nice-dark-grey;
-  padding: rem($spacing-medium 0);
+  @include nds-font-size(-1);
+  background: $nds-colour-nice-dark-grey;
+  padding: rem($nds-spacing-medium 0);
 
   a {
     text-decoration: underline;
@@ -12,11 +12,11 @@
 }
 
 .container {
-  @include container;
+  @include nds-container;
 }
 
 .menu {
-  margin: rem(0 0 $spacing-medium);
+  margin: rem(0 0 $nds-spacing-medium);
 
   ul {
     list-style: none;
@@ -34,7 +34,7 @@
 }
 
 .copyright {
-  @include font-size(-1);
+  @include nds-font-size(-1);
   margin: 0;
 }
 
@@ -42,14 +42,14 @@
   .menu {
     li {
       display: inline-block;
-      margin-right: rem($spacing-medium);
+      margin-right: rem($nds-spacing-medium);
     }
   }
 }
 
 @include mq($from: lg) {
   .wrapper {
-    @include clearfix;
+    @include nds-clearfix;
   }
 
   .menu {

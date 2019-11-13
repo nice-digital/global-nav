@@ -1,7 +1,8 @@
 {
 	"editor.formatOnSave": true,
-	"editor.rulers": [80],
-	"prettier.endOfLine": "lf",
+	"editor.rulers": [
+		80
+	],
 	"files.eol": "\n",
 	"sasslint.enable": false,
 	"css.validate": false,

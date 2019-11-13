@@ -1,19 +1,19 @@
 @import '~@nice-digital/nds-core/scss/core';
 
 .container {
-  @include container;
-  margin-bottom: rem($spacing-medium);
+  @include nds-container;
+  margin-bottom: rem($nds-spacing-medium);
 }
 
 .alert {
-  background: $colour-caution-background;
-  border: 1px solid $colour-caution;
-  margin: rem($spacing-medium) auto 0 auto;
-  max-width: rem($nice-container-max-width);
-  padding: rem($spacing-medium);
+  background: $nds-colour-caution-background;
+  border: 1px solid $nds-colour-caution;
+  margin: rem($nds-spacing-medium) auto 0 auto;
+  max-width: rem($nds-container-max-width);
+  padding: rem($nds-spacing-medium);
 
   a {
-    @include link-default;
+    @include nds-link-default;
   }
 
   h2 {

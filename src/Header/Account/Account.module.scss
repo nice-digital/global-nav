@@ -7,8 +7,8 @@
 
 .button {
   background: #fff;
-  border: 1px solid $colour-text;
-  color: $colour-text;
+  border: 1px solid $nds-colour-text;
+  color: $nds-colour-text;
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
@@ -16,48 +16,48 @@
   font-weight: normal;
   height: rem($search-height);
   line-height: rem($search-height);
-  padding: rem(0 $spacing-small);
+  padding: rem(0 $nds-spacing-small);
   text-decoration: none;
   vertical-align: middle;
   white-space: nowrap;
 
   &:focus {
-    @include default-focus-style;
+    @include nds-default-focus-style;
   }
 
   &:visited {
-    color: $colour-text;
+    color: $nds-colour-text;
   }
 
   &:hover {
-    border: 1px solid $colour-text; // NICE.bootstrap removes border on hover by default
+    border: 1px solid $nds-colour-text; // NICE.bootstrap removes border on hover by default
   }
 }
 
 .myAccount {
   &:after {
-    border-left: rem($spacing-x-small) solid transparent;
-    border-right: rem($spacing-x-small) solid transparent;
-    border-top: rem($spacing-small) solid $colour-nice-dark-grey;
+    border-left: rem($nds-spacing-x-small) solid transparent;
+    border-right: rem($nds-spacing-x-small) solid transparent;
+    border-top: rem($nds-spacing-small) solid $nds-colour-nice-dark-grey;
     content: '';
     display: inline-block;
     height: 0;
-    margin-left: rem($spacing-small);
+    margin-left: rem($nds-spacing-small);
     vertical-align: middle;
     width: 0;
   }
 
   &[aria-expanded='true']:after {
-    border-bottom: rem($spacing-small) solid $colour-text;
+    border-bottom: rem($nds-spacing-small) solid $nds-colour-text;
     border-top: 0;
   }
 }
 
 .menu {
-  background: $colour-true-white;
-  border: 1px solid $colour-nice-dark-grey;
+  background: $nds-colour-true-white;
+  border: 1px solid $nds-colour-nice-dark-grey;
   list-style: none;
-  margin: rem($spacing-small + 2px 0 0 0);
+  margin: rem($nds-spacing-small + 2px 0 0 0);
   padding: 0;
   position: absolute;
   right: 0;
@@ -66,7 +66,7 @@
 
   // We move focus when we expand via keyboard navigation
   &:focus {
-    @include default-focus-style;
+    @include nds-default-focus-style;
   }
 
   &[aria-hidden='true'] {
@@ -74,51 +74,51 @@
   }
 
   &:before {
-    border-bottom: rem($spacing-small) solid $colour-nice-dark-grey;
-    border-left: rem($spacing-x-small) solid transparent;
-    border-right: rem($spacing-x-small) solid transparent;
+    border-bottom: rem($nds-spacing-small) solid $nds-colour-nice-dark-grey;
+    border-left: rem($nds-spacing-x-small) solid transparent;
+    border-right: rem($nds-spacing-x-small) solid transparent;
     bottom: 100%;
     content: '';
     display: block;
     height: 0;
     position: absolute;
-    right: rem($spacing-medium);
+    right: rem($nds-spacing-medium);
     width: 0;
   }
 
   &:after {
-    border-bottom: rem($spacing-small / 1.25) solid $colour-true-white;
-    border-left: rem($spacing-x-small / 1.25) solid transparent;
-    border-right: rem($spacing-x-small / 1.25) solid transparent;
+    border-bottom: rem($nds-spacing-small / 1.25) solid $nds-colour-true-white;
+    border-left: rem($nds-spacing-x-small / 1.25) solid transparent;
+    border-right: rem($nds-spacing-x-small / 1.25) solid transparent;
     bottom: 100%;
     content: '';
     display: block;
     height: 0;
     margin-right: 1px;
     position: absolute;
-    right: rem($spacing-medium);
+    right: rem($nds-spacing-medium);
     width: 0;
   }
 
   li {
-    border-top: 1px solid $colour-nice-grey-2;
+    border-top: 1px solid $nds-colour-nice-grey-2;
     list-style: none;
     margin: 0;
   }
 
   a {
-    color: $colour-link;
+    color: $nds-colour-link;
     display: block;
-    padding: rem($spacing-small $spacing-medium);
+    padding: rem($nds-spacing-small $nds-spacing-medium);
     text-decoration: none;
     white-space: nowrap;
 
     &:focus {
-      @include default-focus-style;
+      @include nds-default-focus-style;
     }
 
     &:hover {
-      background: $colour-nice-grey-3;
+      background: $nds-colour-nice-grey-3;
       text-decoration: underline;
     }
   }

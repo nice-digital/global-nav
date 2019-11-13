@@ -18,13 +18,13 @@
 }
 
 .button {
-  background: $colour-nice-dark-grey;
+  background: $nds-colour-nice-dark-grey;
   border: 0;
-  color: $colour-text-inverse;
+  color: $nds-colour-text-inverse;
   cursor: pointer;
   height: rem($search-height);
   min-width: rem($search-height);
-  padding: rem(0 $spacing-small);
+  padding: rem(0 $nds-spacing-small);
   position: absolute;
   right: 0;
   text-align: center;
@@ -32,7 +32,7 @@
   z-index: 101; // To sit above the search box so the focus outline surrounds the button
 
   &:focus {
-    @include default-focus-style;
+    @include nds-default-focus-style;
   }
 
   .icon {

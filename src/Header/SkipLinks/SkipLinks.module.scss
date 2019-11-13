@@ -22,15 +22,15 @@
   &:focus {
     background: #fff;
     clip: auto;
-    color: $colour-link;
+    color: $nds-colour-link;
     display: block;
     height: auto;
-    left: rem($spacing-x-small);
-    outline: 3px solid $colour-focus;
+    left: rem($nds-spacing-x-small);
+    outline: 3px solid $nds-colour-focus;
     overflow: visible;
-    padding: rem($spacing-small $spacing-medium);
+    padding: rem($nds-spacing-small $nds-spacing-medium);
     position: absolute;
-    top: rem($spacing-x-small);
+    top: rem($nds-spacing-x-small);
     white-space: nowrap;
     width: auto;
     z-index: 1;
