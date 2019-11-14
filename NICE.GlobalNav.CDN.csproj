@@ -5,7 +5,7 @@
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<Title>Global Nav CDN</Title>
 		<Description>Global Nav deployment package for the NICE CDN</Description>
-		<RepositoryUrl>https://github.com/nhsevidence/global-nav</RepositoryUrl>
+		<RepositoryUrl>https://github.com/nice-digital/global-nav</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<ItemGroup>

@@ -4,9 +4,9 @@
 
 [**:rocket: Jump straight to getting started**](#rocket-set-up)
 
-[![GitHub release](https://img.shields.io/github/release/nhsevidence/global-nav/all.svg)](https://github.com/nhsevidence/global-nav)
-[![GitHub license](https://img.shields.io/github/license/nhsevidence/global-nav.svg)](https://github.com/nhsevidence/global-nav/blob/master/LICENSE)
-[![NICE Design System](https://img.shields.io/static/v1.svg?logoWidth=40&label=&message=DESIGN%20SYSTEM&color=004650&labelColor=393939&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDEwIiBoZWlnaHQ9IjUxMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQxMi4wOTYgNDU0LjA3YzAgMTYuMTQ2LTYuNzkgMTkuMjQtMTcuOTQgMTkuMjRoLTUyLjYyNGMtMTEuMTQ5IDAtMjAuNDA5LTQuMzUxLTI3LjI1Ny0xMy42NTJMMTI5LjgyMSAyMTMuMzE1aC0xLjI1NHYyNDEuMzc0YzAgMTMuNjUxLTYuMTkyIDE4LjYwMS0xOC41NTcgMTguNjAxSDUyLjQyODRDMzguMTkyMiA0NzMuMjkgMzIgNDcwLjE5NyAzMiA0NTUuMjg4VjYxLjkxMzFjMC0xNi4xMjY0IDcuNDI2OC0xOS4yMzk1IDIwLjQyODQtMTkuMjM5NWg1MS45ODc2YzEyLjM2NSAwIDE4LjU1NyAzLjczMTkgMjUuMzY3IDEzLjAzMjZMMzE0LjIzNyAzMDMuOTA1aDEuMjM0VjYwLjY1NjJjMC0xMy42MzIgNi44MS0xNy45ODI2IDE5LjE5NC0xNy45ODI2aDYwLjA1MWMxNi4wODggMCAxNy4zMjMgOC42ODE5IDE3LjMyMyAxOS4yMzk1VjQ1NC4wNTFoLjAzOGwuMDE5LjAxOXptMTk3LjMwMiAzLjU3N2MwIDcuNDQ1LTQuOTM5IDE0LjI5LTEzLjYgMTQuMjloLTcxLjIwMWMtOS4yNTkgMC0xMy41OTktNi44NDUtMTMuNTk5LTEzLjY1MVY1NS41NTE1YzAtNy40NDQ1IDQuOTU3LTE0LjI1MDggMTMuNTk5LTE0LjI1MDhoNzEuMjAxYzkuMjc5IDAgMTMuNiA2LjgwNjMgMTMuNiAxMy42NTE0VjQ1Ny42NDd6TTEwMjUuNDEgNzcuOTA0MWwtMTcuOTYgNTIuMTI5OWMtMi40NSA2LjIwNy00LjkzIDkuMzAxLTkuMjU2IDkuMzAxLTIuNDY5IDAtNC45MzgtMS4yMzctOC4wNDQtMi40OTQtMzIuODEzLTE1LjQ4OC01OC4xOTktMjEuMDk2LTg3LjI2OS0yMS4wOTYtNjQuMzkxIDAtMTA1Ljg0NiA0OS42MzYtMTA1Ljg0NiAxNDAuMjI2IDAgOTguMDU0IDQ3LjAxIDE0MC4yMDcgMTA3LjcxNyAxNDAuMjA3IDI5LjA5IDAgNTQuNDc2LTUuNTMgODMuNTQ2LTE3LjMyNiAzLjcwNC0xLjI3NiA2LjgyOS0yLjQ5NCA5LjI3OS0yLjQ5NCA1LjU3MyAwIDguNjYzIDIuNDk0IDExLjEzMyA5LjkybDE1LjQ5IDQ1Ljk0MmMxLjIzIDMuNzEzIDEuODUgNi44MDcgMS44NSA5LjkyIDAgNi4yMDctMi40NyAxMC41NTctMTEuMTUgMTMuNjUxQzk3Mi4xOTEgNDcxLjkzNyA5MzYuODg5IDQ4MCA4ODkuMjQyIDQ4MGMtMTMxLjIzMiAwLTE5Ny40NTUtODcuNDk2LTE5Ny40NTUtMjIwLjg5N0M2OTEuNzg3IDEyNS4wNjUgNzcyLjg2NCAzMiA4OTcuMjg2IDMyYzQ0LjU4IDAgODIuMzUxIDguNzAxMyAxMTguMjM0IDI0LjgyNzcgOC42OCAzLjcxMjUgMTEuNzggOC4wNjMyIDExLjc4IDEyLjM5NDUuMDIgMi40OTQzLS42MSA1LjU4ODEtMS44NyA4LjcwMTJsLS4wMi0uMDE5M3ptMzM3LjA2LTM2LjYyMjdjMTIuMzkgMCAxNi4wNyA2LjIwNjkgMTUuNDcgMTQuMjUwN2wtNS41NyA1MC4yNzM5Yy0xLjI0IDEzLjAzMy05LjI4IDE1LjUyNy0yNC4xMyAxNS41MjdoLTE0OS44M3Y5Mi40MjdoMTQwLjUzYzEzLjY0IDAgMTguNTcgNi44MjYgMTguNTcgMTYuNzQ1djQ1LjI4NmMwIDEyLjQzMy02LjE5IDE4LjAwMi0xNy45NCAxOC4wMDJoLTE0MS4xNHY5OC4wNzNIMTM2MGMxMS4xMyAwIDE3Ljk2IDQuOTMgMTcuOTYgMTYuNzI2djQ1Ljk0MmMwIDExLjc3Ni01LjU3IDE3LjM2NC0xNy4zMiAxNy4zNjRoLTI0MC4yMmMtMTQuMjQgMC0yMC40MS0zLjczMi0yMC40MS0xOS4yMzlWNTguNjQ1M2MwLTEwLjU1NzYgNS41Ny0xNy4zNjM5IDE2LjA5LTE3LjM2MzlsMjQ2LjM3LS4wMTk0di4wMTk0eiIvPjwvc3ZnPg==)](https://github.com/nhsevidence/nice-design-system)
+[![GitHub release](https://img.shields.io/github/release/nice-digital/global-nav/all.svg)](https://github.com/nice-digital/global-nav)
+[![GitHub license](https://img.shields.io/github/license/nice-digital/global-nav.svg)](https://github.com/nice-digital/global-nav/blob/master/LICENSE)
+[![NICE Design System](https://img.shields.io/static/v1.svg?logoWidth=40&label=&message=DESIGN%20SYSTEM&color=004650&labelColor=393939&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDEwIiBoZWlnaHQ9IjUxMiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQxMi4wOTYgNDU0LjA3YzAgMTYuMTQ2LTYuNzkgMTkuMjQtMTcuOTQgMTkuMjRoLTUyLjYyNGMtMTEuMTQ5IDAtMjAuNDA5LTQuMzUxLTI3LjI1Ny0xMy42NTJMMTI5LjgyMSAyMTMuMzE1aC0xLjI1NHYyNDEuMzc0YzAgMTMuNjUxLTYuMTkyIDE4LjYwMS0xOC41NTcgMTguNjAxSDUyLjQyODRDMzguMTkyMiA0NzMuMjkgMzIgNDcwLjE5NyAzMiA0NTUuMjg4VjYxLjkxMzFjMC0xNi4xMjY0IDcuNDI2OC0xOS4yMzk1IDIwLjQyODQtMTkuMjM5NWg1MS45ODc2YzEyLjM2NSAwIDE4LjU1NyAzLjczMTkgMjUuMzY3IDEzLjAzMjZMMzE0LjIzNyAzMDMuOTA1aDEuMjM0VjYwLjY1NjJjMC0xMy42MzIgNi44MS0xNy45ODI2IDE5LjE5NC0xNy45ODI2aDYwLjA1MWMxNi4wODggMCAxNy4zMjMgOC42ODE5IDE3LjMyMyAxOS4yMzk1VjQ1NC4wNTFoLjAzOGwuMDE5LjAxOXptMTk3LjMwMiAzLjU3N2MwIDcuNDQ1LTQuOTM5IDE0LjI5LTEzLjYgMTQuMjloLTcxLjIwMWMtOS4yNTkgMC0xMy41OTktNi44NDUtMTMuNTk5LTEzLjY1MVY1NS41NTE1YzAtNy40NDQ1IDQuOTU3LTE0LjI1MDggMTMuNTk5LTE0LjI1MDhoNzEuMjAxYzkuMjc5IDAgMTMuNiA2LjgwNjMgMTMuNiAxMy42NTE0VjQ1Ny42NDd6TTEwMjUuNDEgNzcuOTA0MWwtMTcuOTYgNTIuMTI5OWMtMi40NSA2LjIwNy00LjkzIDkuMzAxLTkuMjU2IDkuMzAxLTIuNDY5IDAtNC45MzgtMS4yMzctOC4wNDQtMi40OTQtMzIuODEzLTE1LjQ4OC01OC4xOTktMjEuMDk2LTg3LjI2OS0yMS4wOTYtNjQuMzkxIDAtMTA1Ljg0NiA0OS42MzYtMTA1Ljg0NiAxNDAuMjI2IDAgOTguMDU0IDQ3LjAxIDE0MC4yMDcgMTA3LjcxNyAxNDAuMjA3IDI5LjA5IDAgNTQuNDc2LTUuNTMgODMuNTQ2LTE3LjMyNiAzLjcwNC0xLjI3NiA2LjgyOS0yLjQ5NCA5LjI3OS0yLjQ5NCA1LjU3MyAwIDguNjYzIDIuNDk0IDExLjEzMyA5LjkybDE1LjQ5IDQ1Ljk0MmMxLjIzIDMuNzEzIDEuODUgNi44MDcgMS44NSA5LjkyIDAgNi4yMDctMi40NyAxMC41NTctMTEuMTUgMTMuNjUxQzk3Mi4xOTEgNDcxLjkzNyA5MzYuODg5IDQ4MCA4ODkuMjQyIDQ4MGMtMTMxLjIzMiAwLTE5Ny40NTUtODcuNDk2LTE5Ny40NTUtMjIwLjg5N0M2OTEuNzg3IDEyNS4wNjUgNzcyLjg2NCAzMiA4OTcuMjg2IDMyYzQ0LjU4IDAgODIuMzUxIDguNzAxMyAxMTguMjM0IDI0LjgyNzcgOC42OCAzLjcxMjUgMTEuNzggOC4wNjMyIDExLjc4IDEyLjM5NDUuMDIgMi40OTQzLS42MSA1LjU4ODEtMS44NyA4LjcwMTJsLS4wMi0uMDE5M3ptMzM3LjA2LTM2LjYyMjdjMTIuMzkgMCAxNi4wNyA2LjIwNjkgMTUuNDcgMTQuMjUwN2wtNS41NyA1MC4yNzM5Yy0xLjI0IDEzLjAzMy05LjI4IDE1LjUyNy0yNC4xMyAxNS41MjdoLTE0OS44M3Y5Mi40MjdoMTQwLjUzYzEzLjY0IDAgMTguNTcgNi44MjYgMTguNTcgMTYuNzQ1djQ1LjI4NmMwIDEyLjQzMy02LjE5IDE4LjAwMi0xNy45NCAxOC4wMDJoLTE0MS4xNHY5OC4wNzNIMTM2MGMxMS4xMyAwIDE3Ljk2IDQuOTMgMTcuOTYgMTYuNzI2djQ1Ljk0MmMwIDExLjc3Ni01LjU3IDE3LjM2NC0xNy4zMiAxNy4zNjRoLTI0MC4yMmMtMTQuMjQgMC0yMC40MS0zLjczMi0yMC40MS0xOS4yMzlWNTguNjQ1M2MwLTEwLjU1NzYgNS41Ny0xNy4zNjM5IDE2LjA5LTE3LjM2MzlsMjQ2LjM3LS4wMTk0di4wMTk0eiIvPjwvc3ZnPg==)](https://github.com/nice-digital/nice-design-system)
 
 <details>
 <summary><strong>:bookmark_tabs: Table of contents (click to expand)</strong></summary>
@@ -70,7 +70,7 @@
   
 ## What is it?
 
-Global Nav consists common header and footer to be used across all NICE digital services. It is designed to be used across any NICE branded, externally facing web application. This includes all externally facing services that sit under the nice.org.uk domain. It also includes other NICE branded sites like Evidence Search that sit on non-NICE domains. It is a replacement for [NICE.TopHat](https://github.com/nhsevidence/NICE.TopHat).
+Global Nav consists common header and footer to be used across all NICE digital services. It is designed to be used across any NICE branded, externally facing web application. This includes all externally facing services that sit under the nice.org.uk domain. It also includes other NICE branded sites like Evidence Search that sit on non-NICE domains. It is a replacement for [NICE.TopHat](https://github.com/nice-digital/NICE.TopHat).
 
 ### Functionality
 
@@ -108,7 +108,7 @@ The following non-functional requirements apply:
 - [PostCSS](https://postcss.org/) for transforming CSS with plugins:
   - [autoprefixer](https://autoprefixer.github.io/) for automatically adding vendor prefixes in CSS
   - [pixrem](https://github.com/robwierzbowski/node-pixrem) for adding pixel fallbacks to rem values to support IE8+
-  - and [NICE Digital shared browserslist config](https://github.com/nhsevidence/browserslist-config#readme)
+  - and [NICE Digital shared browserslist config](https://github.com/nice-digital/browserslist-config#readme)
 - [Webpack](https://webpack.js.org/) for module bundling
 - [Babel 7](https://babeljs.io/) for ES6/JSX → ES5 transpilation
 - [js-cookie](https://github.com/js-cookie/js-cookie) for cookie management
@@ -118,8 +118,8 @@ The following non-functional requirements apply:
 - [Stylelint](https://stylelint.io/) for linting our SCSS
 - [Prettier](https://prettier.io/) for code formatting
 - [Jest](https://jestjs.io/) for JS unit tests and snapshot tests
-- [NICE Design System](https://nhsevidence.github.io/nice-design-system/) core for SASS mixins, functions and colour/spacing variables
-- [NICE Icons](https://github.com/nhsevidence/nice-icons)
+- [NICE Design System](https://nice-digital.github.io/nice-design-system/) core for SASS mixins, functions and colour/spacing variables
+- [NICE Icons](https://github.com/nice-digital/nice-icons)
 
 ### Principles
 
@@ -285,7 +285,7 @@ First, install the _@nice-digital/global-nav_ package into your project, directl
 > Note: we currently don't publish the Global Nav to npm but we plan to in the future.
 
 ```sh
-npm install nhsevidence/global-nav --save
+npm install nice-digital/global-nav --save
 ```
 
 Then, require the header and/or footer into your application:

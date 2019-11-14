@@ -27,7 +27,7 @@ module.exports = function(env) {
 						new Date().toISOString().split("T")[0]
 					}`,
 					`© Copyright NICE 2015-${new Date().getFullYear()}`,
-					"Licensed under MIT (https://github.com/nhsevidence/global-nav/blob/master/LICENSE)"
+					"Licensed under MIT (https://github.com/nice-digital/global-nav/blob/master/LICENSE)"
 				].join("\n")
 			})
 		]

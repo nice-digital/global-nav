@@ -26,15 +26,15 @@
     "// LIFECYCLE HOOKS": "",
     "prepare": "npm run es5ify && npm run copy"
   },
-  "author": "NICE Digital Services (https://github.com/nhsevidence/global-nav/graphs/contributors)",
+  "author": "NICE Digital Services (https://github.com/nice-digital/global-nav/graphs/contributors)",
   "contributors": [
     "NICE Digital Services (https://www.nice.org.uk/)",
     "Ian Routledge (https://www.ediblecode.com)"
   ],
-  "homepage": "https://github.com/nhsevidence/global-nav",
+  "homepage": "https://github.com/nice-digital/global-nav",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nhsevidence/global-nav.git"
+    "url": "git+https://github.com/nice-digital/global-nav.git"
   },
   "license": "MIT",
   "browserslist": [
