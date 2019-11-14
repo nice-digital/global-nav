@@ -32,15 +32,15 @@
 }
 
 .myAccountHeading {
-  border: rem($nds-spacing-x-small) solid $nds-colour-nav-background;
+  border: rem($nds-spacing-x-small) solid $colour-nav-background;
   font-size: 100%;
   margin: 0;
   padding: rem($nds-spacing-small $nds-spacing-medium);
 }
 
 .menuWrapper {
-  background: $nds-colour-nav-background;
-  color: $nds-colour-nav-text;
+  background: $colour-nav-background;
+  color: $colour-nav-text;
   padding: rem($nds-spacing-x-small 0);
 }
 
@@ -56,10 +56,10 @@
 
 a.link {
   //qualified this with a to add specificity to avoid overrides from application css (NW-1253)
-  border: rem($nds-spacing-x-small) solid $nds-colour-nav-background;
+  border: rem($nds-spacing-x-small) solid $colour-nav-background;
   border-bottom-width: 0;
   border-top-width: 0;
-  color: $nds-colour-nav-text;
+  color: $colour-nav-text;
   display: block;
   font-weight: normal;
   padding: rem($nds-spacing-small $nds-spacing-medium);
@@ -70,14 +70,14 @@ a.link {
   }
 
   &:focus {
-    color: $nds-colour-nav-text;
+    color: $colour-nav-text;
     outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
     outline-offset: rem(-$nds-spacing-small);
     z-index: 1; // Push above the adjacent nav items
   }
 
   &:visited {
-    color: $nds-colour-nav-text;
+    color: $colour-nav-text;
   }
 
   &:active {

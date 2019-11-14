@@ -17,7 +17,7 @@
 }
 
 .link {
-  border: rem($nds-spacing-x-small) solid $nds-colour-nav-background;
+  border: rem($nds-spacing-x-small) solid $colour-nav-background;
   border-bottom-width: 0;
   border-top-width: 0;
   color: $nds-colour-text;
@@ -37,7 +37,7 @@
   &:visited,
   &:hover,
   &:active {
-    border: rem($nds-spacing-x-small) solid $nds-colour-nav-background;
+    border: rem($nds-spacing-x-small) solid $colour-nav-background;
     border-bottom-width: 0;
     border-top-width: 0;
     color: $nds-colour-text;
@@ -52,7 +52,7 @@
 
 @include mq($from: md) {
   .wrapper {
-    border-bottom: rem($nds-spacing-xx-small) solid $nds-colour-nav-background;
+    border-bottom: rem($nds-spacing-xx-small) solid $colour-nav-background;
     bottom: 0;
     height: rem($sub-nav-height);
     left: 0;
