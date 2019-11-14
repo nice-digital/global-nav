@@ -12,16 +12,16 @@
 }
 
 .heading {
-  @include font(h5);
+  @include nds-font(h5);
   font-weight: bold;
   margin-top: 0;
 }
 
 .message {
-  @include p;
+  @include nds-p;
 
   a {
-    @include link-default;
+    @include nds-link-default;
   }
 }
 

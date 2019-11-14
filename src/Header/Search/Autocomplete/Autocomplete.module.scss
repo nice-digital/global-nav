@@ -81,7 +81,7 @@
       //overflow-x: hidden;
       padding: 0;
       text-align: left;
-      width: calc(100vw - $nds-container-margin);
+      width: calc(100vw - #{2 * rem($nds-container-gutter)});
       @include mq($from: sm) {
         width: 100%;
       }
@@ -96,7 +96,9 @@
     }
 
     .autocomplete__menu--overlay {
-      box-shadow: rem(0 $nds-spacing-x-small $nds-spacing-medium $nds-spacing-x-small)
+      box-shadow: rem(
+          0 $nds-spacing-x-small $nds-spacing-medium $nds-spacing-x-small
+        )
         rgba(0, 0, 0, 0.1);
       left: 0;
       position: absolute;

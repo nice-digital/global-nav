@@ -37,7 +37,7 @@
   margin-bottom: rem($nds-spacing-medium);
 
   &:focus {
-    @include default-focus-style;
+    @include nds-default-focus-style;
   }
 
   &:visited {
