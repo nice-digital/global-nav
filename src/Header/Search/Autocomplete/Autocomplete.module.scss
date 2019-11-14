@@ -81,7 +81,7 @@
       //overflow-x: hidden;
       padding: 0;
       text-align: left;
-      width: calc(100vw - #{rem($nds-container-gutter)});
+      width: calc(100vw - #{2 * rem($nds-container-gutter)});
       @include mq($from: sm) {
         width: 100%;
       }
