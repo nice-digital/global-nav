@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 const baseConfig = require("./webpack.config");
@@ -36,7 +36,7 @@ module.exports = function(env) {
 	return [
 		merge(baseConfig, commonConfig, {
 			plugins: [
-				new CleanWebpackPlugin("dist"),
+				new CleanWebpackPlugin(),
 				// Fake out autocomplete endpoints so we can have a static site
 				new CopyPlugin([
 					{ from: "../examples/assets/cks-topics.json", to: "js/topics.txt" },
