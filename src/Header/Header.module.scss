@@ -4,7 +4,7 @@
   background: $nds-colour-nice-white;
   border-bottom: rem($nds-spacing-xx-small) solid $nds-colour-nice-teal;
   box-sizing: border-box;
-  font-family: unquote(nice-font-family-sans);
+  font-family: unquote($nds-font-family-sans);
 
   *,
   *:before,
