@@ -45,7 +45,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">= 6.9.0"
+    "node": ">= 8.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
