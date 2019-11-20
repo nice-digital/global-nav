@@ -121,9 +121,7 @@ export default class Nav extends Component {
 										typeof location !== "undefined" &&
 										location &&
 										href ===
-											`${location.protocol}//${location.host}${
-												location.pathname
-											}`
+											`${location.protocol}//${location.host}${location.pathname}`
 									) {
 										ariaCurrent = "page";
 									}

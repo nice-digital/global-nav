@@ -1,10 +1,10 @@
 @import 'header-settings';
 
 .header {
-  background: $colour-nice-white;
-  border-bottom: rem($spacing-xx-small) solid $colour-nice-teal;
+  background: $nds-colour-nice-white;
+  border-bottom: rem($nds-spacing-xx-small) solid $nds-colour-nice-teal;
   box-sizing: border-box;
-  font-family: unquote($nice-font-family-sans);
+  font-family: unquote($nds-font-family-sans);
 
   *,
   *:before,
@@ -19,8 +19,8 @@
 }
 
 .container {
-  @include container;
-  padding: rem($spacing-medium 0 0 0);
+  @include nds-container;
+  padding: rem($nds-spacing-medium 0 0 0);
 
   &:after {
     clear: both;
@@ -30,18 +30,18 @@
 }
 
 .home {
-  color: $colour-true-black;
+  color: $nds-colour-true-black;
   display: inline-block;
   float: left;
   height: rem(30);
-  margin-bottom: rem($spacing-medium);
+  margin-bottom: rem($nds-spacing-medium);
 
   &:focus {
-    @include default-focus-style;
+    @include nds-default-focus-style;
   }
 
   &:visited {
-    color: $colour-true-black;
+    color: $nds-colour-true-black;
   }
 
   .icon {
@@ -62,7 +62,7 @@
   flex-grow: 1;
   float: right;
   justify-content: space-between;
-  margin-bottom: rem($spacing-medium);
+  margin-bottom: rem($nds-spacing-medium);
   width: 50%;
 
   &:after {
@@ -75,14 +75,14 @@
 .search {
   flex-grow: 1;
   float: left;
-  margin-right: rem($spacing-medium);
+  margin-right: rem($nds-spacing-medium);
   min-width: percentage(2 / 3);
 }
 
 .mobileMenuBtn {
   appearance: none;
   background: none;
-  border: 1px solid $colour-text;
+  border: 1px solid $nds-colour-text;
   float: right;
   font-family: inherit;
   font-size: 110%;
@@ -91,22 +91,22 @@
   white-space: nowrap;
 
   &:after {
-    border-left: rem($spacing-x-small) solid transparent;
-    border-right: rem($spacing-x-small) solid transparent;
-    border-top: rem($spacing-small) solid $colour-nice-dark-grey;
-    //border-color: $colour-text transparent transparent transparent;
+    border-left: rem($nds-spacing-x-small) solid transparent;
+    border-right: rem($nds-spacing-x-small) solid transparent;
+    border-top: rem($nds-spacing-small) solid $nds-colour-nice-dark-grey;
+    //border-color: $nds-colour-text transparent transparent transparent;
     //border-style: solid;
     //border-width: 8px 5px 0 5px;
     content: '';
     display: inline-block;
     height: 0;
-    margin-left: rem($spacing-small);
+    margin-left: rem($nds-spacing-small);
     vertical-align: middle;
     width: 0;
   }
 
   &[aria-expanded='true']:after {
-    border-bottom: rem($spacing-small) solid $colour-text;
+    border-bottom: rem($nds-spacing-small) solid $nds-colour-text;
     border-top: 0;
   }
 }
@@ -128,7 +128,7 @@
 
 @include mq($from: md) {
   .header {
-    border-bottom: rem($spacing-x-small) solid $colour-body;
+    border-bottom: rem($nds-spacing-x-small) solid $nds-colour-body;
   }
 
   .container {
@@ -138,7 +138,7 @@
 
   .home {
     height: rem($search-height);
-    margin-right: rem($spacing-large);
+    margin-right: rem($nds-spacing-large);
   }
 
   .wrapper {
@@ -146,7 +146,7 @@
   }
 
   .search {
-    margin-right: rem($spacing-large);
+    margin-right: rem($nds-spacing-large);
   }
 
   .mobileMenuBtn {

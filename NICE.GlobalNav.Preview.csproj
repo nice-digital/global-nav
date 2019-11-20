@@ -5,7 +5,7 @@
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<Title>Global Nav preview site</Title>
 		<Description>Global Nav preview site deployment package</Description>
-		<RepositoryUrl>https://github.com/nhsevidence/global-nav</RepositoryUrl>
+		<RepositoryUrl>https://github.com/nice-digital/global-nav</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<ItemGroup>

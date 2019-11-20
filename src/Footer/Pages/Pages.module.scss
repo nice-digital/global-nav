@@ -1,7 +1,7 @@
 @import '~@nice-digital/nds-core/scss/core';
 
 .wrapper {
-  margin: rem(0 0 $spacing-large);
+  margin: rem(0 0 $nds-spacing-large);
 }
 
 .list {
@@ -10,14 +10,14 @@
   padding: 0;
 
   li {
-    margin: rem(0 0 $spacing-x-small);
+    margin: rem(0 0 $nds-spacing-x-small);
   }
 }
 
 @include mq($from: xs) {
   .list {
     column-count: 2;
-    column-gap: rem($spacing-medium);
+    column-gap: rem($nds-spacing-medium);
   }
 }
 
@@ -25,7 +25,7 @@
   .wrapper {
     float: left;
     margin: 0;
-    padding: rem(0 0 0 $spacing-large);
+    padding: rem(0 0 0 $nds-spacing-large);
     width: percentage(2 / 3);
   }
 }
@@ -34,12 +34,12 @@
   .wrapper {
     float: left;
     margin: 0;
-    padding: rem(0 $spacing-large);
+    padding: rem(0 $nds-spacing-large);
     width: 50%;
   }
 
   .list {
     column-count: 2;
-    column-gap: rem($spacing-medium);
+    column-gap: rem($nds-spacing-medium);
   }
 }
