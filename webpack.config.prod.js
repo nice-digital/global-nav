@@ -23,7 +23,7 @@ module.exports = function(env) {
 		plugins: [
 			new webpack.BannerPlugin({
 				banner: [
-					`NICE Global Nav ${env.version || pkg.version} | ${
+					`NICE Global Nav ${pkg.version} | ${
 						new Date().toISOString().split("T")[0]
 					}`,
 					`© Copyright NICE 2015-${new Date().getFullYear()}`,

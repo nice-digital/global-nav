@@ -23,6 +23,7 @@
 .container {
   @include nds-container;
   @include nds-clearfix;
+  @include nds-hide-print;
   padding: rem($nds-spacing-medium 0);
 }
 

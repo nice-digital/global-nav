@@ -1,6 +1,11 @@
 // The global_nav_config property can be either a string or an object.
 // Use a backtick string for multiline and for defining functions
 
+const blankConfig = {
+	filename: "blank",
+	title: "Blank"
+};
+
 const pathwaysConfig = {
 	filename: "pathways",
 	title: "Pathways",
@@ -194,6 +199,7 @@ const identityAdminLoggedInConfig = {
 };
 
 module.exports = [
+	blankConfig,
 	pathwaysConfig,
 	guidanceConfig,
 	standardsConfig,
