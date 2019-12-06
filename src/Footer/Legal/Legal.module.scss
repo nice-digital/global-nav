@@ -37,7 +37,7 @@
 .copyright {
   @include nds-font-size(-1);
   margin: 0;
-  @include nds-print {
+  @media print {
     float: none !important;
     max-width: 100%;
   }
