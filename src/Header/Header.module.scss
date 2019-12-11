@@ -30,7 +30,7 @@
 }
 
 .home {
-  @include nds-no-appended-print-link;
+  @include nds-remove-appended-print-link;
   color: $nds-colour-true-black;
   display: inline-block;
   float: left;
