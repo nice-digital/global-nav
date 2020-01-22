@@ -193,6 +193,17 @@ const identityAdminLoggedInConfig = {
 	}
 };
 
+const noAuthNoSearchConfig = {
+	filename: "noauth-nosearch",
+	title: "No auth and no search",
+	global_nav_config: {
+		header: {
+			auth: false,
+			search: false
+		}
+	}
+};
+
 module.exports = [
 	pathwaysConfig,
 	guidanceConfig,
@@ -204,5 +215,6 @@ module.exports = [
 	cksConfig,
 	journalsConfig,
 	identityAdminLoggedOutConfig,
-	identityAdminLoggedInConfig
+	identityAdminLoggedInConfig,
+	noAuthNoSearchConfig
 ];
