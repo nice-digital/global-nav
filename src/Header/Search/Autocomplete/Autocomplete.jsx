@@ -67,8 +67,8 @@ const onConfirm = function(suggestion) {
 		};
 
 		trackEvent(
-			"Search",
-			"Typeahead select",
+			"Search - Typeahead select",
+			"Selected:" + suggestion.TypeAheadType,
 			suggestion.Title + " | " + document.getElementById("autocomplete").value,
 			null,
 			eventCallback
