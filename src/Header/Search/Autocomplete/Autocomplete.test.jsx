@@ -57,6 +57,7 @@ describe("Autocomplete", () => {
 
 			const option = {
 				Title: "diabetes type 1",
+				TypeAheadType: "keyword",
 				Link: "https://www.nice.org.uk/diabetes1.html"
 			};
 
@@ -74,8 +75,8 @@ describe("Autocomplete", () => {
 			expect(window.dataLayer).toEqual([
 				{
 					event: eventName,
-					eventCategory: "Search",
-					eventAction: "Typeahead select",
+					eventCategory: "Search - Typeahead select",
+					eventAction: "Selected: keyword",
 					eventLabel: option.Title + " | diab",
 					eventCallback: expect.any(Function),
 					eventTimeout: eventTimeout
