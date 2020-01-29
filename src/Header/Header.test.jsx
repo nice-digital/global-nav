@@ -186,4 +186,11 @@ describe("Header", () => {
 			expect(window.location.href).toEqual("http://test-url/");
 		});
 	});
+
+	describe("Sign in button", () => {
+		it("Should not render sign in button if false is supplied to auth prop", () => {
+			const wrapper = shallow(<Header {...defaultProps} auth={false} />);
+			expect(wrapper.find("Account").length).toEqual(0);
+		});
+	});
 });

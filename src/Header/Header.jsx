@@ -110,14 +110,16 @@ export class Header extends Component {
 							>
 								{this.state.isExpanded ? "Close" : "Menu"}
 							</button>
-							<div className={styles.account}>
-								<Account
-									onLoginStatusChecked={this.handleLoginStatusChecked}
-									isLoggedIn={this.state.isLoggedIn}
-									accountsData={this.state.accountsData}
-									{...this.props.auth}
-								/>
-							</div>
+							{this.props.auth !== false && (
+								<div className={styles.account}>
+									<Account
+										onLoginStatusChecked={this.handleLoginStatusChecked}
+										isLoggedIn={this.state.isLoggedIn}
+										accountsData={this.state.accountsData}
+										{...this.props.auth}
+									/>
+								</div>
+							)}
 						</div>
 					</div>
 					<Nav
