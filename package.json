@@ -6,7 +6,7 @@
   "types": "./types.d.ts",
   "scripts": {
     "// LOCAL DEV": "",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --inline",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --https --hot --inline",
     "start:nohot": "cross-env HOT=false NODE_ENV=development webpack-dev-server",
     "// PRODUCTION BUILDS": "",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
@@ -109,6 +109,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.3",
     "@babel/runtime": "^7.7.2",
     "@nice-digital/browserslist-config": "^1.0.0",
     "@nice-digital/icons": "^2.1.1",

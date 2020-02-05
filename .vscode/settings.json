@@ -1,6 +1,6 @@
 {
 	"editor.formatOnSave": true,
-	"editor.rulers": [80],
+	"editor.rulers": [],
 	"files.eol": "\n",
 	"sasslint.enable": false,
 	"css.validate": false,

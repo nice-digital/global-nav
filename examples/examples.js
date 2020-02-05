@@ -204,6 +204,20 @@ const noAuthNoSearchConfig = {
 	}
 };
 
+const identityPopupConfig = {
+	filename: "identity-popup",
+	title: "Identity Popup signin",
+	global_nav_config: {
+		header: {
+			auth: {
+				provider: "idam",
+				mode: "popup"
+			},
+			search: false
+		}
+	}
+};
+
 module.exports = [
 	pathwaysConfig,
 	guidanceConfig,
@@ -216,5 +230,6 @@ module.exports = [
 	journalsConfig,
 	identityAdminLoggedOutConfig,
 	identityAdminLoggedInConfig,
-	noAuthNoSearchConfig
+	noAuthNoSearchConfig,
+	identityPopupConfig
 ];
