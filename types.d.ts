@@ -51,7 +51,7 @@ declare module "@nice-digital/global-nav" {
 		skipLinkId?: string;
 		search?: false | SearchProps;
 		cookie?: boolean;
-		auth?: NiceAccountsProviderProps | IdamProviderProps;
+		auth?: false | NiceAccountsProviderProps | IdamProviderProps;
 		onNavigating?: string | OnNavigatingCallback;
 	};
 

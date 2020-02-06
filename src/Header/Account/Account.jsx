@@ -64,9 +64,9 @@ export default class Account extends Component {
 
 		if (href.indexOf("editprofile") > -1) {
 			eventLabel = "Edit profile";
-		} else if (href.indexOf("signout") > -1) {
+		} else if (href.indexOf("signout") > -1 || href.indexOf("logout") > -1) {
 			eventLabel = "Sign out";
-		} else if (href.indexOf("signin") > -1) {
+		} else if (href.indexOf("signin") > -1 || href.indexOf("login") > -1) {
 			eventLabel = "Sign in";
 		}
 
