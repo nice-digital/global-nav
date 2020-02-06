@@ -192,5 +192,8 @@ Nav.propTypes = {
 	service: PropTypes.string,
 	isExpanded: PropTypes.bool,
 	accountsLinks: PropTypes.object,
-	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	useIdamPopupLogin: PropTypes.bool,
+	onIdAMLoginClick: PropTypes.func,
+	onIdAMLogoutClick: PropTypes.func
 };

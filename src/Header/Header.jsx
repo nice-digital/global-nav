@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { hot } from "react-hot-loader/root";
 import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";
+import createAuth0Client from "@auth0/auth0-spa-js";
 
+import config from "../../auth_config.json";
 import {
 	defaultEventCategory,
 	headerClickEventAction,
@@ -25,19 +27,49 @@ export class Header extends Component {
 			isExpanded: false,
 			isLoggedIn: false,
 			accountsData: null,
-			needsSkipLinkTarget: false
+			needsSkipLinkTarget: false,
+			auth0Client: null,
+			popupOpen: false,
+			useIdamPopupLogin:
+				this.props.auth &&
+				this.props.auth.provider === "idam" &&
+				this.props.auth.mode === "popup"
 		};
 
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
 		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
 		this.handleLogoClick = this.handleLogoClick.bind(this);
+		this.handleIdamLogin = this.handleIdamLogin.bind(this);
+		this.handleIdamLogout = this.handleIdamLogout.bind(this);
+		this.getIdAMToken = this.getIdAMToken.bind(this);
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		this.setState({
 			needsSkipLinkTarget:
 				document.getElementById(this.props.skipLinkId) == null
 		});
+		if (this.state.useIdamPopupLogin) {
+			this.setState(
+				{
+					auth0Client: await createAuth0Client({
+						domain: config.domain,
+						client_id: config.clientId,
+						redirect_uri: window.location.origin
+					})
+				},
+				async () => {
+					this.setState(
+						{
+							isLoggedIn: await this.state.auth0Client.isAuthenticated()
+						},
+						() => {
+							window.idamIsAuthenticated = this.state.isLoggedIn;
+						}
+					);
+				}
+			);
+		}
 	}
 
 	handleMobileMenuBtnClick() {
@@ -70,6 +102,36 @@ export class Header extends Component {
 		} else {
 			this.setState({ isLoggedIn: false, accountsData: accountsData });
 		}
+	}
+
+	async getIdAMToken() {
+		return await this.state.auth0Client.getTokenSilently();
+	}
+
+	async handleIdamLogin() {
+		this.setState({
+			popupOpen: true
+		});
+		try {
+			await this.state.auth0Client.loginWithPopup({});
+			this.handleLoginStatusChecked({ display_name: "signed in" });
+
+			window.idamUser = await this.state.auth0Client.getUser();
+			window.idamGetToken = this.getIdAMToken;
+			window.idamIsAuthenticated = true;
+		} catch (error) {
+			console.error(error);
+		} finally {
+			this.setState({
+				popupOpen: false
+			});
+		}
+	}
+
+	async handleIdamLogout() {
+		await this.state.auth0Client.logout({ returnTo: window.location.href });
+		this.handleLoginStatusChecked({ display_name: null });
+		window.idamIsAuthenticated = false;
 	}
 
 	render() {
@@ -116,6 +178,9 @@ export class Header extends Component {
 										onLoginStatusChecked={this.handleLoginStatusChecked}
 										isLoggedIn={this.state.isLoggedIn}
 										accountsData={this.state.accountsData}
+										useIdamPopupLogin={this.state.useIdamPopupLogin}
+										onIdAMLoginClick={this.handleIdamLogin}
+										onIdAMLogoutClick={this.handleIdamLogout}
 										{...this.props.auth}
 									/>
 								</div>
@@ -125,6 +190,9 @@ export class Header extends Component {
 					<Nav
 						service={this.props.service}
 						isExpanded={this.state.isExpanded}
+						useIdamPopupLogin={this.state.useIdamPopupLogin}
+						onIdAMLoginClick={this.handleIdamLogin}
+						onIdAMLogoutClick={this.handleIdamLogout}
 						accountsLinks={
 							this.state.accountsData && this.state.accountsData.links
 						}
