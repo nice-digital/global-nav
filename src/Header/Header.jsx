@@ -3,6 +3,7 @@ import { hot } from "react-hot-loader/root";
 import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";
 import createAuth0Client from "@auth0/auth0-spa-js";
+import auth0 from "auth0-js";
 
 import config from "../../auth_config.json";
 import {
@@ -33,7 +34,11 @@ export class Header extends Component {
 			useIdamPopupLogin:
 				this.props.auth &&
 				this.props.auth.provider === "idam" &&
-				this.props.auth.mode === "popup"
+				this.props.auth.mode === "popup",
+			useIdamInlineLogin:
+				this.props.auth &&
+				this.props.auth.provider === "idam" &&
+				this.props.auth.mode === "inline"
 		};
 
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
@@ -42,6 +47,22 @@ export class Header extends Component {
 		this.handleIdamLogin = this.handleIdamLogin.bind(this);
 		this.handleIdamLogout = this.handleIdamLogout.bind(this);
 		this.getIdAMToken = this.getIdAMToken.bind(this);
+		this.getAuth0Client = this.getAuth0Client.bind(this);
+	}
+
+	async getAuth0Client() {
+		if (this.useIdamPopupLogin) {
+			return await createAuth0Client({
+				domain: config.domain,
+				client_id: config.clientId,
+				redirect_uri: window.location.origin
+			});
+		}
+		return new auth0.WebAuth({
+			domain: config.domain,
+			clientID: config.clientId,
+			redirectUri: window.location.origin
+		});
 	}
 
 	async componentDidMount() {
@@ -52,11 +73,7 @@ export class Header extends Component {
 		if (this.state.useIdamPopupLogin) {
 			this.setState(
 				{
-					auth0Client: await createAuth0Client({
-						domain: config.domain,
-						client_id: config.clientId,
-						redirect_uri: window.location.origin
-					})
+					auth0Client: await this.getAuth0Client()
 				},
 				async () => {
 					this.setState(

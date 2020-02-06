@@ -218,6 +218,20 @@ const identityPopupConfig = {
 	}
 };
 
+const identityInlineConfig = {
+	filename: "identity-inline",
+	title: "Identity Inline signin",
+	global_nav_config: {
+		header: {
+			auth: {
+				provider: "idam",
+				mode: "inline"
+			},
+			search: false
+		}
+	}
+};
+
 module.exports = [
 	pathwaysConfig,
 	guidanceConfig,
@@ -231,5 +245,6 @@ module.exports = [
 	identityAdminLoggedOutConfig,
 	identityAdminLoggedInConfig,
 	noAuthNoSearchConfig,
-	identityPopupConfig
+	identityPopupConfig,
+	identityInlineConfig
 ];
