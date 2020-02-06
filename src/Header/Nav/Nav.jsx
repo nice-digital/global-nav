@@ -183,6 +183,36 @@ export default class Nav extends Component {
 						</div>
 					</nav>
 				)}
+				{this.props.useIdamPopupLogin && (
+					<nav
+						aria-label="My account"
+						className={classnames(styles.nav, styles.myAccount)}
+					>
+						<div className={styles.menuWrapper}>
+							<ul className={styles.menuList} role="menu">
+								<li key="idamSigninOrout" role="presentation">
+									{this.props.isAuthenticated ? (
+										<button
+											role="menuitem"
+											className={styles.link}
+											onClick={this.props.onIdAMLogoutClick}
+										>
+											Sign out
+										</button>
+									) : (
+										<button
+											role="menuitem"
+											className={styles.link}
+											onClick={this.props.onIdAMLoginClick}
+										>
+											Sign in
+										</button>
+									)}
+								</li>
+							</ul>
+						</div>
+					</nav>
+				)}
 			</div>
 		);
 	}
@@ -195,5 +225,6 @@ Nav.propTypes = {
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	useIdamPopupLogin: PropTypes.bool,
 	onIdAMLoginClick: PropTypes.func,
-	onIdAMLogoutClick: PropTypes.func
+	onIdAMLogoutClick: PropTypes.func,
+	isAuthenticated: PropTypes.bool
 };

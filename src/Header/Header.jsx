@@ -193,6 +193,7 @@ export class Header extends Component {
 						useIdamPopupLogin={this.state.useIdamPopupLogin}
 						onIdAMLoginClick={this.handleIdamLogin}
 						onIdAMLogoutClick={this.handleIdamLogout}
+						isAuthenticated={this.state.isLoggedIn}
 						accountsLinks={
 							this.state.accountsData && this.state.accountsData.links
 						}
