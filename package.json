@@ -109,6 +109,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.3",
     "@babel/runtime": "^7.7.2",
     "@nice-digital/browserslist-config": "^1.0.0",
     "@nice-digital/icons": "^2.1.1",

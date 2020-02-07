@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -21,9 +21,7 @@ export default class Account extends Component {
 
 		this.state = {
 			isExpanded: false,
-			useIdAM: this.props.provider == Account.providers.idam,
-			auth0Client: null,
-			popupOpen: false
+			useIdAM: this.props.provider == Account.providers.idam
 		};
 
 		this.handleMyAccountButtonClick = this.handleMyAccountButtonClick.bind(
@@ -89,7 +87,7 @@ export default class Account extends Component {
 
 	componentDidMount() {
 		if (this.state.useIdAM) {
-			if (!this.props.useIdamPopupLogin) {
+			if (!this.props.useIdamPopupLogin && !this.props.useIdamInlineLogin) {
 				//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
 				//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
 				//the following just converts the idam format to the nice accounts format.
@@ -129,7 +127,7 @@ export default class Account extends Component {
 
 		let signInLink = {};
 		if (this.state.useIdAM) {
-			if (!this.props.useIdamPopupLogin) {
+			if (!this.props.useIdamPopupLogin && !this.props.useIdamInlineLogin) {
 				signInLink = this.props.links[0];
 			}
 		} else {
@@ -158,7 +156,7 @@ export default class Account extends Component {
 					aria-labelledby="my-account-button"
 					onKeyDown={this.handleKeyDown}
 				>
-					{this.props.useIdamPopupLogin ? (
+					{this.props.useIdamPopupLogin || this.props.useIdamInlineLogin ? (
 						<li key={"idamSignout"} role="presentation">
 							<button
 								onClick={this.props.onIdAMLogoutClick}
@@ -193,10 +191,31 @@ export default class Account extends Component {
 					)}
 				</ul>
 			</div>
-		) : this.state.useIdAM && this.props.mode === "popup" ? (
-			<button onClick={this.props.onIdAMLoginClick} className={styles.button}>
-				Sign in
-			</button>
+		) : this.state.useIdAM &&
+		  (this.props.useIdamPopupLogin || this.props.useIdamInlineLogin) ? (
+			<Fragment>
+				{this.props.useIdamInlineLogin && (
+					<Fragment>
+						<span>Email: </span>
+						<input
+							type="text"
+							onChange={e =>
+								this.props.onSignInDetailsChange(true, e.target.value)
+							}
+						/>
+						<span>Password: </span>
+						<input
+							type="password"
+							onChange={e =>
+								this.props.onSignInDetailsChange(false, e.target.value)
+							}
+						/>
+					</Fragment>
+				)}
+				<button onClick={this.props.onIdAMLoginClick} className={styles.button}>
+					Sign in
+				</button>
+			</Fragment>
 		) : (
 			<a
 				href={signInLink.url}
@@ -236,8 +255,10 @@ Account.propTypes = {
 	displayName: PropTypes.string,
 	mode: PropTypes.oneOf(["links", "popup", "inline"]),
 	useIdamPopupLogin: PropTypes.bool,
+	useIdamInlineLogin: PropTypes.bool,
 	onIdAMLoginClick: PropTypes.func,
-	onIdAMLogoutClick: PropTypes.func
+	onIdAMLogoutClick: PropTypes.func,
+	onSignInDetailsChange: PropTypes.func
 };
 
 Account.defaultProps = {

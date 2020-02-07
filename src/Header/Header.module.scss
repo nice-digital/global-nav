@@ -115,6 +115,14 @@
   display: none;
 }
 
+.account_inline {
+  @extend .account;
+
+  input:not([type=submit]):not([type=button]):not([type=checkbox]):not([type=radio]) { //todo: this needs fixing.
+    width: 15rem;
+  }
+}
+
 @include mq($until: md) {
   .home {
     float: none;
@@ -155,5 +163,9 @@
 
   .account {
     display: block;
+  }
+
+  .account_inline {
+    display: inline-flex;
   }
 }

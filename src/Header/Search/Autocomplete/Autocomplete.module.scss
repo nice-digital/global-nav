@@ -57,18 +57,18 @@
     }
 
     .autocomplete__input--show-all-values {
-      padding: 4px 34px 4px 4px;
       cursor: pointer;
+      padding: 4px 34px 4px 4px;
     }
 
     .autocomplete__dropdown-arrow-down {
-      z-index: -1;
       display: inline-block;
+      height: 24px;
       position: absolute;
       right: 8px;
-      width: 24px;
-      height: 24px;
       top: 10px;
+      width: 24px;
+      z-index: -1;
     }
 
     .autocomplete__menu {
@@ -95,9 +95,9 @@
 
     .autocomplete__menu--overlay {
       box-shadow: rem(
-          0 $nds-spacing-x-small $nds-spacing-medium $nds-spacing-x-small
-        )
-        rgba(0, 0, 0, 0.1);
+        0 $nds-spacing-x-small $nds-spacing-medium $nds-spacing-x-small
+      )
+        rgba(0, 0, 0, .1);
       left: 0;
       position: absolute;
       top: 100%;
