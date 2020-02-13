@@ -20,8 +20,9 @@
 		"lib": true
 	},
 	"workbench.colorCustomizations": {
-		"activityBar.background": "#5F0034",
-		"titleBar.activeBackground": "#850049",
-		"titleBar.activeForeground": "#FFFAFD"
+		"activityBar.background": "#493657",
+		"activityBar.foreground": "#FFFFFF",
+		"titleBar.activeBackground": "#493657",
+		"titleBar.activeForeground": "#FFFFFF"
 	}
 }
