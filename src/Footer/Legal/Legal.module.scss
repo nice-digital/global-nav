@@ -16,6 +16,7 @@
 }
 
 .menu {
+  @include nds-hide-print;
   margin: rem(0 0 $nds-spacing-medium);
 
   ul {
@@ -36,6 +37,10 @@
 .copyright {
   @include nds-font-size(-1);
   margin: 0;
+  @media print {
+    float: none !important;
+    max-width: 100%;
+  }
 }
 
 @include mq($from: sm) {
