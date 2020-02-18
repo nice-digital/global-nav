@@ -65,18 +65,29 @@ const onConfirm = function(suggestion) {
 		const eventCallback = function() {
 			window.location.href = suggestion.Link;
 		};
-
-		trackEvent(
-			"Search - Typeahead select",
-			"Selected: " + suggestion.TypeAheadType,
-			(
+		if (suggestion.TypeAheadType != undefined) {
+			trackEvent(
+				"Search - Typeahead select",
+				"Selected: " + suggestion.TypeAheadType,
+				(
+					suggestion.Title +
+					" | " +
+					document.getElementById("autocomplete").value
+				).toLowerCase(),
+				null,
+				eventCallback
+			);
+		} else {
+			trackEvent(
+				"Search",
+				"Typeahead select",
 				suggestion.Title +
-				" | " +
-				document.getElementById("autocomplete").value
-			).toLowerCase(),
-			null,
-			eventCallback
-		);
+					" | " +
+					document.getElementById("autocomplete").value,
+				null,
+				eventCallback
+			);
+		}
 	}
 };
 

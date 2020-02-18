@@ -57,6 +57,40 @@ describe("Autocomplete", () => {
 
 			const option = {
 				Title: "diabetes type 1",
+				Link: "https://www.nice.org.uk/diabetes1.html"
+			};
+
+			const wrapper = mount(
+				<Autocomplete {...defaultProps} source={[option]} query="diab" />,
+				{ attachTo: appContainer }
+			);
+
+			wrapper
+				.find("#autocomplete")
+				.first()
+				.props()
+				.onConfirm(option);
+
+			expect(window.dataLayer).toEqual([
+				{
+					event: eventName,
+					eventCategory: "Search",
+					eventAction: "Typeahead select",
+					eventLabel: option.Title + " | diab",
+					eventCallback: expect.any(Function),
+					eventTimeout: eventTimeout
+				}
+			]);
+		});
+
+		it("should push autocomplete select event to the dataLayer using TypeAheadType property", () => {
+			window.dataLayer = null;
+			document.body.innerHTML = "";
+			var appContainer = document.createElement("div");
+			document.body.appendChild(appContainer);
+
+			const option = {
+				Title: "diabetes type 1",
 				TypeAheadType: "keyword",
 				Link: "https://www.nice.org.uk/diabetes1.html"
 			};
