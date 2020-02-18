@@ -13,6 +13,10 @@ const IE8UserAgent =
 describe("Autocomplete", () => {
 	const defaultProps = {};
 
+	beforeEach(() => {
+		window.dataLayer = [];
+	});
+
 	describe("Rendering", () => {
 		it("Renders without crashing", () => {
 			const wrapper = shallow(<Autocomplete {...defaultProps} />);
@@ -84,7 +88,6 @@ describe("Autocomplete", () => {
 		});
 
 		it("should push autocomplete select event to the dataLayer using TypeAheadType property", () => {
-			window.dataLayer = null;
 			document.body.innerHTML = "";
 			var appContainer = document.createElement("div");
 			document.body.appendChild(appContainer);

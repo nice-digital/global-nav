@@ -65,6 +65,7 @@ const onConfirm = function(suggestion) {
 		const eventCallback = function() {
 			window.location.href = suggestion.Link;
 		};
+
 		if (suggestion.TypeAheadType != undefined) {
 			trackEvent(
 				"Search - Typeahead select",
