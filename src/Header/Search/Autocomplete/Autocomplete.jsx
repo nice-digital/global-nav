@@ -66,13 +66,29 @@ const onConfirm = function(suggestion) {
 			window.location.href = suggestion.Link;
 		};
 
-		trackEvent(
-			"Search",
-			"Typeahead select",
-			suggestion.Title + " | " + document.getElementById("autocomplete").value,
-			null,
-			eventCallback
-		);
+		if (suggestion.TypeAheadType) {
+			trackEvent(
+				"Search - Typeahead select",
+				"Selected: " + suggestion.TypeAheadType,
+				(
+					suggestion.Title +
+					" | " +
+					document.getElementById("autocomplete").value
+				).toLowerCase(),
+				null,
+				eventCallback
+			);
+		} else {
+			trackEvent(
+				"Search",
+				"Typeahead select",
+				suggestion.Title +
+					" | " +
+					document.getElementById("autocomplete").value,
+				null,
+				eventCallback
+			);
+		}
 	}
 };
 
