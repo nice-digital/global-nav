@@ -3,6 +3,7 @@
 @import '../header-settings';
 
 .wrapper {
+  @include nds-hide-print;
   display: none;
   position: relative;
 

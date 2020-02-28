@@ -14,7 +14,7 @@
   }
 
   @media print {
-    display: none;
+    border-bottom: none;
   }
 }
 
@@ -30,6 +30,7 @@
 }
 
 .home {
+  @include nds-remove-appended-print-link;
   color: $nds-colour-true-black;
   display: inline-block;
   float: left;
@@ -48,16 +49,10 @@
     height: 100%;
     width: auto;
   }
-
-  // Fallback image used for Ie8 - IE8 adds a black border round images
-  // We can remove this when we drop support for IE8
-  img {
-    border: 0;
-    max-width: none;
-  }
 }
 
 .wrapper {
+  @include nds-hide-print;
   display: flex;
   flex-grow: 1;
   float: right;

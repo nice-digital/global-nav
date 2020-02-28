@@ -18,5 +18,11 @@
 		"coverage": true,
 		"dist": true,
 		"lib": true
+	},
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#493657",
+		"activityBar.foreground": "#FFFFFF",
+		"titleBar.activeBackground": "#493657",
+		"titleBar.activeForeground": "#FFFFFF"
 	}
 }

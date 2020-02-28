@@ -1,6 +1,7 @@
 @import '~@nice-digital/nds-core/scss/core';
 
 .banner {
+  @include nds-hide-print;
   background: $nds-colour-nice-grey-3;
   border-bottom: 1px solid $nds-colour-border;
   padding: rem($nds-spacing-medium 0);
