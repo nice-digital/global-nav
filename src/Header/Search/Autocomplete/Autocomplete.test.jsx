@@ -150,7 +150,7 @@ describe("Autocomplete", () => {
 
 		it("should not load suggestions within the reate limit threshold", () => {
 			jest.useFakeTimers();
-			const callback = () => {};
+			//const callback = () => {};
 			const wrapper = shallow(
 				<Autocomplete {...defaultProps} source="/url" query="test" />
 			);

@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { hot } from "react-hot-loader/root";
 import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";
+import createAuth0Client from "@auth0/auth0-spa-js";
+import auth0 from "auth0-js";
 
+import config from "../../auth_config.json";
 import {
 	defaultEventCategory,
 	headerClickEventAction,
@@ -25,19 +28,94 @@ export class Header extends Component {
 			isExpanded: false,
 			isLoggedIn: false,
 			accountsData: null,
-			needsSkipLinkTarget: false
+			needsSkipLinkTarget: false,
+			auth0Client: null,
+			popupOpen: false,
+			useIdamPopupLogin:
+				this.props.auth &&
+				this.props.auth.provider === "idam" &&
+				this.props.auth.mode === "popup",
+			useIdamInlineLogin:
+				this.props.auth &&
+				this.props.auth.provider === "idam" &&
+				this.props.auth.mode === "inline",
+			idamAccessToken: null,
+			email: null,
+			password: null
 		};
 
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
 		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
 		this.handleLogoClick = this.handleLogoClick.bind(this);
+		this.handleIdamLogin = this.handleIdamLogin.bind(this);
+		this.handleIdamLogout = this.handleIdamLogout.bind(this);
+		this.getIdAMToken = this.getIdAMToken.bind(this);
+		this.getAuth0Client = this.getAuth0Client.bind(this);
+		this.handleSignInDetailsChange = this.handleSignInDetailsChange.bind(this);
 	}
 
-	componentDidMount() {
+	async getAuth0Client() {
+		if (this.state.useIdamPopupLogin) {
+			return await createAuth0Client({
+				domain: config.domain,
+				client_id: config.clientId,
+				redirect_uri: window.location.origin
+			});
+		}
+		return new auth0.WebAuth({
+			domain: config.domain,
+			clientID: config.clientId,
+			redirectUri: window.location.href,
+			responseType: "code token id_token"
+		});
+	}
+
+	async componentDidMount() {
 		this.setState({
 			needsSkipLinkTarget:
 				document.getElementById(this.props.skipLinkId) == null
 		});
+		if (this.state.useIdamPopupLogin || this.state.useIdamInlineLogin) {
+			this.setState(
+				{
+					auth0Client: await this.getAuth0Client()
+				},
+				async () => {
+					if (this.state.useIdamPopupLogin) {
+						this.setState(
+							{
+								isLoggedIn: await this.state.auth0Client.isAuthenticated()
+							},
+							() => {
+								window.idamIsAuthenticated = this.state.isLoggedIn;
+							}
+						);
+					} else {
+						//inline
+						await this.state.auth0Client.checkSession(
+							{},
+							checkSessionResponse => {
+								console.log(
+									"check session callback:" +
+										JSON.stringify(checkSessionResponse)
+								);
+								const isLoggedIn =
+									checkSessionResponse == null ||
+									checkSessionResponse.error == null;
+								this.setState(
+									{
+										isLoggedIn: isLoggedIn
+									},
+									() => {
+										window.idamIsAuthenticated = this.state.isLoggedIn;
+									}
+								);
+							}
+						);
+					}
+				}
+			);
+		}
 	}
 
 	handleMobileMenuBtnClick() {
@@ -70,6 +148,81 @@ export class Header extends Component {
 		} else {
 			this.setState({ isLoggedIn: false, accountsData: accountsData });
 		}
+	}
+
+	handleSignInDetailsChange(isEmail, text) {
+		if (isEmail) {
+			this.setState({ email: text });
+		} else {
+			this.setState({ password: text });
+		}
+	}
+
+	async getIdAMToken() {
+		if (this.state.useIdamPopupLogin)
+			return await this.state.auth0Client.getTokenSilently();
+		else return this.state.idamAccessToken;
+	}
+
+	async handleIdamLogin() {
+		if (this.state.useIdamPopupLogin) {
+			this.setState({
+				popupOpen: true
+			});
+			try {
+				await this.state.auth0Client.loginWithPopup({});
+				this.handleLoginStatusChecked({ display_name: "signed in" });
+
+				window.idamUser = await this.state.auth0Client.getUser();
+				window.idamGetToken = this.getIdAMToken;
+				window.idamIsAuthenticated = true;
+			} catch (error) {
+				console.error(error);
+			} finally {
+				this.setState({
+					popupOpen: false
+				});
+			}
+		} else {
+			//inline
+			this.state.auth0Client.client.login(
+				{
+					realm: "Identity",
+					username: this.state.email,
+					password: this.state.password
+				},
+				(err, authResult) => {
+					if (err) {
+						console.log("login callback with error :" + JSON.stringify(err));
+						return;
+					}
+					const that = this;
+					this.state.auth0Client.client.userInfo(
+						authResult.accessToken,
+						function(err, user) {
+							if (err) {
+								console.log(
+									"userInfo callback with error :" + JSON.stringify(err)
+								);
+								return;
+							}
+							console.log("user:" + JSON.stringify(user));
+							that.handleLoginStatusChecked({ display_name: user.name });
+							window.idamUser = user;
+							window.idamIsAuthenticated = true;
+							window.idamGetToken = that.getIdAMToken;
+							that.setState({ idamAccessToken: authResult.accessToken });
+						}
+					);
+				}
+			);
+		}
+	}
+
+	async handleIdamLogout() {
+		await this.state.auth0Client.logout({ returnTo: window.location.href });
+		this.handleLoginStatusChecked({ display_name: null });
+		window.idamIsAuthenticated = false;
 	}
 
 	render() {
@@ -111,11 +264,22 @@ export class Header extends Component {
 								{this.state.isExpanded ? "Close" : "Menu"}
 							</button>
 							{this.props.auth !== false && (
-								<div className={styles.account}>
+								<div
+									className={
+										this.state.useIdamInlineLogin
+											? styles.account_inline
+											: styles.account
+									}
+								>
 									<Account
 										onLoginStatusChecked={this.handleLoginStatusChecked}
 										isLoggedIn={this.state.isLoggedIn}
 										accountsData={this.state.accountsData}
+										useIdamPopupLogin={this.state.useIdamPopupLogin}
+										useIdamInlineLogin={this.state.useIdamInlineLogin}
+										onIdAMLoginClick={this.handleIdamLogin}
+										onIdAMLogoutClick={this.handleIdamLogout}
+										onSignInDetailsChange={this.handleSignInDetailsChange}
 										{...this.props.auth}
 									/>
 								</div>
@@ -125,6 +289,10 @@ export class Header extends Component {
 					<Nav
 						service={this.props.service}
 						isExpanded={this.state.isExpanded}
+						useIdamPopupLogin={this.state.useIdamPopupLogin}
+						onIdAMLoginClick={this.handleIdamLogin}
+						onIdAMLogoutClick={this.handleIdamLogout}
+						isAuthenticated={this.state.isLoggedIn}
 						accountsLinks={
 							this.state.accountsData && this.state.accountsData.links
 						}
@@ -146,7 +314,7 @@ Header.propTypes = {
 	enabled: PropTypes.bool,
 	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-	auth: PropTypes.object,
+	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 

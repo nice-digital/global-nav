@@ -209,6 +209,34 @@ const noAuthNoSearchConfig = {
 	}
 };
 
+const identityPopupConfig = {
+	filename: "identity-popup",
+	title: "Identity Popup signin",
+	global_nav_config: {
+		header: {
+			auth: {
+				provider: "idam",
+				mode: "popup"
+			},
+			search: false
+		}
+	}
+};
+
+const identityInlineConfig = {
+	filename: "identity-inline",
+	title: "Identity Inline signin",
+	global_nav_config: {
+		header: {
+			auth: {
+				provider: "idam",
+				mode: "inline"
+			},
+			search: false
+		}
+	}
+};
+
 module.exports = [
 	blankConfig,
 	pathwaysConfig,
@@ -222,5 +250,7 @@ module.exports = [
 	journalsConfig,
 	identityAdminLoggedOutConfig,
 	identityAdminLoggedInConfig,
-	noAuthNoSearchConfig
+	noAuthNoSearchConfig,
+	identityPopupConfig,
+	identityInlineConfig
 ];

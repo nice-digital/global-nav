@@ -54,7 +54,10 @@ exports[`Header Matches snapshot 1`] = `
           accountsData={null}
           environment="live"
           isLoggedIn={false}
+          onIdAMLoginClick={[Function]}
+          onIdAMLogoutClick={[Function]}
           onLoginStatusChecked={[Function]}
+          onSignInDetailsChange={[Function]}
           provider="niceAccounts"
         />
       </div>
@@ -62,7 +65,10 @@ exports[`Header Matches snapshot 1`] = `
   </div>
   <Nav
     accountsLinks={null}
+    isAuthenticated={false}
     isExpanded={false}
+    onIdAMLoginClick={[Function]}
+    onIdAMLogoutClick={[Function]}
     onNavigating="onNavigatingHandler"
     service={null}
   />

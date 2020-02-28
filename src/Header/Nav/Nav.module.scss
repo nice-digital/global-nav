@@ -55,8 +55,10 @@
   }
 }
 
-a.link {
+a.link,
+button.link {
   //qualified this with a to add specificity to avoid overrides from application css (NW-1253)
+  background-color: transparent;
   border: rem($nds-spacing-x-small) solid $colour-nav-background;
   border-bottom-width: 0;
   border-top-width: 0;

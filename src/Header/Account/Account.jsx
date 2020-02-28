@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -87,20 +87,22 @@ export default class Account extends Component {
 
 	componentDidMount() {
 		if (this.state.useIdAM) {
-			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
-			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
-			//the following just converts the idam format to the nice accounts format.
-			const links = this.props.links.reduce(function(links, link) {
-				links[link.text] = link.url;
-				return links;
-			}, {});
-			const convertedData = {
-				display_name: this.props.displayName,
-				links: links
-			};
+			if (!this.props.useIdamPopupLogin && !this.props.useIdamInlineLogin) {
+				//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
+				//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
+				//the following just converts the idam format to the nice accounts format.
+				const links = this.props.links.reduce(function(links, link) {
+					links[link.text] = link.url;
+					return links;
+				}, {});
+				const convertedData = {
+					display_name: this.props.displayName,
+					links: links
+				};
 
-			if (this.props.onLoginStatusChecked) {
-				this.props.onLoginStatusChecked(convertedData);
+				if (this.props.onLoginStatusChecked) {
+					this.props.onLoginStatusChecked(convertedData);
+				}
 			}
 		} else {
 			//NICE accounts
@@ -125,7 +127,9 @@ export default class Account extends Component {
 
 		let signInLink = {};
 		if (this.state.useIdAM) {
-			signInLink = this.props.links[0];
+			if (!this.props.useIdamPopupLogin && !this.props.useIdamInlineLogin) {
+				signInLink = this.props.links[0];
+			}
 		} else {
 			signInLink["text"] = "Sign in";
 			signInLink["url"] = getDomainBaseUrl(environment) + "signin";
@@ -152,7 +156,17 @@ export default class Account extends Component {
 					aria-labelledby="my-account-button"
 					onKeyDown={this.handleKeyDown}
 				>
-					{accountsData.links &&
+					{this.props.useIdamPopupLogin || this.props.useIdamInlineLogin ? (
+						<li key={"idamSignout"} role="presentation">
+							<button
+								onClick={this.props.onIdAMLogoutClick}
+								className={styles.button}
+							>
+								Sign out
+							</button>
+						</li>
+					) : (
+						accountsData.links &&
 						Object.keys(accountsData.links).map(
 							function(text, i) {
 								return (
@@ -173,9 +187,35 @@ export default class Account extends Component {
 									</li>
 								);
 							}.bind(this)
-						)}
+						)
+					)}
 				</ul>
 			</div>
+		) : this.state.useIdAM &&
+		  (this.props.useIdamPopupLogin || this.props.useIdamInlineLogin) ? (
+			<Fragment>
+				{this.props.useIdamInlineLogin && (
+					<Fragment>
+						<span>Email: </span>
+						<input
+							type="text"
+							onChange={e =>
+								this.props.onSignInDetailsChange(true, e.target.value)
+							}
+						/>
+						<span>Password: </span>
+						<input
+							type="password"
+							onChange={e =>
+								this.props.onSignInDetailsChange(false, e.target.value)
+							}
+						/>
+					</Fragment>
+				)}
+				<button onClick={this.props.onIdAMLoginClick} className={styles.button}>
+					Sign in
+				</button>
+			</Fragment>
 		) : (
 			<a
 				href={signInLink.url}
@@ -212,7 +252,13 @@ Account.propTypes = {
 			url: PropTypes.string.isRequired
 		})
 	),
-	displayName: PropTypes.string
+	displayName: PropTypes.string,
+	mode: PropTypes.oneOf(["links", "popup", "inline"]),
+	useIdamPopupLogin: PropTypes.bool,
+	useIdamInlineLogin: PropTypes.bool,
+	onIdAMLoginClick: PropTypes.func,
+	onIdAMLogoutClick: PropTypes.func,
+	onSignInDetailsChange: PropTypes.func
 };
 
 Account.defaultProps = {
