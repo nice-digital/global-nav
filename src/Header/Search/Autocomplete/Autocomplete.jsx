@@ -49,14 +49,13 @@ export const rateLimitWait = 300;
 
 const templates = {
 	inputValue: function(suggestion) {
+		if (!suggestion || !suggestion.Title) return "";
 		return suggestion && suggestion.Title;
 	},
 	suggestion: function(suggestion) {
-		return (
-			suggestion &&
-			`<a href="${suggestion.Link}">${suggestion.TitleHtml ||
-				suggestion.Title}</a>`
-		);
+		if (!suggestion || !suggestion.Link) return "";
+		return `<a href="${suggestion.Link}">${suggestion.TitleHtml ||
+			suggestion.Title}</a>`;
 	}
 };
 
