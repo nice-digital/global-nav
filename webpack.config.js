@@ -70,13 +70,14 @@ module.exports = {
 					{
 						loader: "css-loader",
 						options: {
-							modules: true,
 							importLoaders: 1,
-							hashPrefix: "global-nav",
-							localIdentName:
-								ENV === "development"
-									? "[name]__[local]--[hash:base64]"
-									: "gn_[hash:base64:5]",
+							modules: {
+								hashPrefix: "global-nav",
+								localIdentName:
+									ENV === "development"
+										? "[name]__[local]--[hash:base64]"
+										: "gn_[hash:base64:5]"
+							},
 							sourceMap: ENV === "development"
 						}
 					},
@@ -98,8 +99,10 @@ module.exports = {
 							// See https://medium.com/@toolmantim/getting-started-with-css-sourcemaps-and-in-browser-sass-editing-b4daab987fb0
 							// if you want to edit SASS in Chrome DevTools
 							sourceMap: ENV === "development",
-							includePaths: ["./src/scss"],
-							outputStyle: "compressed"
+							sassOptions: {
+								includePaths: ["./src/scss"],
+								outputStyle: "compressed"
+							}
 						}
 					}
 				]
