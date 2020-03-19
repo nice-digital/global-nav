@@ -9,6 +9,7 @@ import {
 	trackEvent
 } from "./../tracker";
 import OldIEMessage from "./OldIEMessage";
+import CoronaMessage from "./CoronaMessage";
 import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
@@ -130,6 +131,7 @@ export class Header extends Component {
 						}
 						onNavigating={this.props.onNavigating}
 					/>
+					<CoronaMessage />
 					<OldIEMessage />
 					{this.state.needsSkipLinkTarget && (
 						<div id={this.props.skipLinkId} aria-label="Start of content" />
