@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoronaMessage Matches snapshot 1`] = `
+<aside
+  className="wrapper"
+>
+  <div
+    className="container"
+  >
+    <h2>
+      Coronavirus (COVID-19)
+    </h2>
+    <p>
+      For information on how NICE is supporting the NHS and social care, view our new
+       
+      <a
+        href="https://www.nice.org.uk/coronavirus"
+      >
+        rapid guidelines and evidence reviews
+      </a>
+      . Learn about the
+       
+      <a
+        href="https://gov.uk/coronavirus"
+      >
+        government response to coronavirus on GOV.UK
+      </a>
+      .
+    </p>
+  </div>
+</aside>
+`;

@@ -66,6 +66,7 @@ exports[`Header Matches snapshot 1`] = `
     onNavigating="onNavigatingHandler"
     service={null}
   />
+  <bound CoronaMessage />
   <OldIEMessage />
   <div
     aria-label="Start of content"
