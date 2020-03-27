@@ -10,7 +10,7 @@ const CoronaMessage = () => (
 				For information on how NICE is supporting the NHS and social care, view
 				our new{" "}
 				<a href="https://www.nice.org.uk/coronavirus">
-					rapid guidelines and evidence&nbsp;reviews
+					rapid guidelines and evidence&nbsp;summaries
 				</a>
 				. Learn about the{" "}
 				<a href="https://gov.uk/coronavirus">
