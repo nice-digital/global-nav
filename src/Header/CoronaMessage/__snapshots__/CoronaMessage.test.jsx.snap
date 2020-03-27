@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CoronaMessage Matches snapshot 1`] = `
+exports[`CoronaMessage Matches snapshot for new visitor 1`] = `
 <aside
   className="wrapper"
 >
@@ -27,6 +27,13 @@ exports[`CoronaMessage Matches snapshot 1`] = `
       </a>
       .
     </p>
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Close
+    </button>
   </div>
 </aside>
 `;
