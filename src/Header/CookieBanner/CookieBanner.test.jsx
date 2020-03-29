@@ -128,6 +128,7 @@ describe("CookieBanner", () => {
 
 		const pastDate = new Date();
 		pastDate.setDate(pastDate.getDate() - 1);
+		pastDate.setHours(pastDate.getHours() - 1); // TODO: revisit this for BST!
 
 		expect(cookieSet.mock.calls[0][0]).toEqual(
 			`${CookieName}=; path=/; expires=${pastDate.toUTCString()}`

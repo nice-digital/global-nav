@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
+import classNames from "classnames";
 
 import styles from "./CoronaMessage.module.scss";
 
@@ -14,7 +15,7 @@ class CoronaMessage extends Component {
 
 		this.state = {
 			hasSeenPreviousVersion: false,
-			isClosed: true,
+			isMinimised: true,
 			canUseDOM: false
 		};
 
@@ -32,14 +33,14 @@ class CoronaMessage extends Component {
 			Cookies.remove(CookieName);
 			this.setState({
 				hasSeenPreviousVersion: false,
-				isClosed: false // Hide by default on the assumption that if JS doesn't work then we won't be setting cookies anyway
+				isMinimised: false // Hide by default on the assumption that if JS doesn't work then we won't be setting cookies anyway
 			});
 		} else {
 			const seenVersion = cookieValue;
 
 			this.setState({
 				hasSeenPreviousVersion: seenVersion < CookieMessageVersion,
-				isClosed: seenVersion === CookieMessageVersion
+				isMinimised: seenVersion === CookieMessageVersion
 			});
 		}
 	}
@@ -61,35 +62,50 @@ class CoronaMessage extends Component {
 		Cookies.set(CookieName, CookieMessageVersion, cookieOptions);
 
 		this.setState({
-			isClosed: true
+			isMinimised: true
 		});
 	}
 
 	render() {
-		if (this.state.isClosed) return null;
+		const classes = classNames(
+			styles.wrapper,
+			this.state.isMinimised && styles.minimised
+		);
+
 		return (
-			<aside className={styles.wrapper}>
+			<aside className={classes}>
 				<div className={styles.container}>
-					<h2>Coronavirus (COVID-19)</h2>
-					<p>
-						For information on how NICE is supporting the NHS and social care,
-						view our new{" "}
-						<a href="https://www.nice.org.uk/coronavirus">
-							rapid guidelines and evidence&nbsp;reviews
-						</a>
-						. Learn about the{" "}
-						<a href="https://gov.uk/coronavirus">
-							government response to coronavirus on&nbsp;GOV.UK
-						</a>
-						.
-					</p>
-					<button
-						className={styles.button}
-						type="button"
-						onClick={this.handleClick}
-					>
-						Close
-					</button>
+					{this.state.isMinimised ? (
+						<p className={styles.minimised}>
+							Read about the{" "}
+							<a href="https://www.nice.org.uk/covid-19">
+								NICE response to Coronavirus (COVID-19)
+							</a>
+						</p>
+					) : (
+						<>
+							<h2>Coronavirus (COVID-19)</h2>
+							<p>
+								For information on how NICE is supporting the NHS and social
+								care, view our new{" "}
+								<a href="https://www.nice.org.uk/coronavirus">
+									rapid guidelines and evidence&nbsp;reviews
+								</a>
+								. Learn about the{" "}
+								<a href="https://gov.uk/coronavirus">
+									government response to coronavirus on&nbsp;GOV.UK
+								</a>
+								.
+							</p>
+							<button
+								className={styles.button}
+								type="button"
+								onClick={this.handleClick}
+							>
+								Close
+							</button>
+						</>
+					)}
 				</div>
 			</aside>
 		);

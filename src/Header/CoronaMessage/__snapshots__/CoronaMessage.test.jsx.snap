@@ -37,3 +37,25 @@ exports[`CoronaMessage Matches snapshot for new visitor 1`] = `
   </div>
 </aside>
 `;
+
+exports[`CoronaMessage Renders only thin link by default/on the server 1`] = `
+<aside
+  className="wrapper minimised"
+>
+  <div
+    className="container"
+  >
+    <p
+      className="minimised"
+    >
+      Read about the
+       
+      <a
+        href="https://www.nice.org.uk/covid-19"
+      >
+        NICE response to Coronavirus (COVID-19)
+      </a>
+    </p>
+  </div>
+</aside>
+`;

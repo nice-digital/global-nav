@@ -14,8 +14,15 @@
   }
 
   p {
-    @include nds-lead;
     max-width: 66ch;
+  }
+
+  &.minimised {
+    padding: rem($nds-spacing-small 0);
+
+    p {
+      margin-top: 0;
+    }
   }
 }
 
@@ -25,27 +32,6 @@
   > :last-child {
     margin-bottom: 0;
   }
-}
-
-.alert {
-  background: $nds-colour-caution-background;
-  border: 1px solid $nds-colour-caution;
-  margin: rem($nds-spacing-medium) auto 0 auto;
-  max-width: rem($nds-container-max-width);
-  padding: rem($nds-spacing-medium);
-
-  h2 {
-    margin-top: 0;
-  }
-
-  h2,
-  p {
-    max-width: 600px;
-  }
-}
-
-.lastP {
-  margin-bottom: 0;
 }
 
 .button {

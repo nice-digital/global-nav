@@ -22,12 +22,12 @@ describe("CoronaMessage", () => {
 		expect(wrapper).toHaveLength(1);
 	});
 
-	it("Doesn't render by default/on the server", () => {
+	it("Renders only thin link by default/on the server", () => {
 		const wrapper = shallow(<CoronaMessage />, {
 			disableLifecycleMethods: true
 		});
 
-		expect(wrapper.isEmptyRender()).toBe(true);
+		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Renders after rehydration on the client", () => {
@@ -46,14 +46,16 @@ describe("CoronaMessage", () => {
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
-	it("Hides cookie message when seen correct message version", () => {
+	it("Hides full notice when seen correct message version", () => {
 		Cookies.set(CookieName, CookieMessageVersion);
 
 		const wrapper = shallow(<CoronaMessage />);
 
 		wrapper.update();
 
-		expect(wrapper.isEmptyRender()).toBe(true);
+		expect(wrapper.find("p").text()).toEqual(
+			"Read about the NICE response to Coronavirus (COVID-19)"
+		);
 	});
 
 	it("Triggers click handler on close button click", () => {
@@ -80,7 +82,11 @@ describe("CoronaMessage", () => {
 			.at(0)
 			.simulate("click");
 
-		expect(wrapper.isEmptyRender()).toBe(true);
+		wrapper.update();
+
+		expect(wrapper.find("p").text()).toEqual(
+			"Read about the NICE response to Coronavirus (COVID-19)"
+		);
 	});
 
 	it("Stores cookie on evidence domain on button click", () => {
