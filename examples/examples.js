@@ -12,6 +12,9 @@ const pathwaysConfig = {
 	global_nav_config: `{
 		service: "pathways",
 		header: {
+			onResize: function() {
+				console.log("Resize!");
+			},
 			onNavigating: function(e) {
 				if(e.href === "/#browse") {
 					alert("You clicked browse!");

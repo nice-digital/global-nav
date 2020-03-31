@@ -78,7 +78,7 @@ export class Header extends Component {
 			this.props.enabled !== false && (
 				<header className={styles.header} aria-label="Site header">
 					<SkipLinks skipLinkId={this.props.skipLinkId} />
-					{this.props.cookie && <CookieBanner />}
+					{this.props.cookie && <CookieBanner onResize={this.props.onResize} />}
 					<div className={styles.container}>
 						<a
 							href="https://www.nice.org.uk/"
@@ -131,7 +131,7 @@ export class Header extends Component {
 						}
 						onNavigating={this.props.onNavigating}
 					/>
-					<CoronaMessage />
+					<CoronaMessage onResize={this.props.onResize} />
 					<OldIEMessage />
 					{this.state.needsSkipLinkTarget && (
 						<div id={this.props.skipLinkId} aria-label="Start of content" />
@@ -149,7 +149,8 @@ Header.propTypes = {
 	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	auth: PropTypes.object,
-	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 Header.defaultProps = {

@@ -8,12 +8,15 @@ declare module "@nice-digital/global-nav" {
 
 	type OnSearchingCallback = (args: { query: string }) => void;
 
+	type OnResizeCallback = () => void;
+
 	type SearchProps = {
 		url?: string;
 		autocomplete?: false | string | AutoCompleteSuggestion[];
 		placeholder?: string;
 		query?: string;
 		onSearching?: string | OnSearchingCallback;
+		onResize?: string | OnResizeCallback;
 	};
 
 	type Service =
@@ -31,9 +34,10 @@ declare module "@nice-digital/global-nav" {
 		url: string;
 	};
 
-	type OnNavigatingCallback = (
-		e: { element: HTMLAnchorElement; href: string }
-	) => void;
+	type OnNavigatingCallback = (e: {
+		element: HTMLAnchorElement;
+		href: string;
+	}) => void;
 
 	export type IdamProviderProps = {
 		provider: "idam";

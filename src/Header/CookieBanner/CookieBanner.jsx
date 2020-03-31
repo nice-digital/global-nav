@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
+import PropTypes from "prop-types";
 
 import styles from "./CookieBanner.module.scss";
 
@@ -64,6 +65,16 @@ export default class CookieBanner extends Component {
 		this.setState({
 			isClosed: true
 		});
+
+		const { onResize } = this.props;
+		if (onResize) {
+			const onResizeCallback =
+				typeof onResize === "function" ? onResize : window[onResize];
+
+			if (typeof onResizeCallback === "function") {
+				onResizeCallback();
+			}
+		}
 	}
 
 	render() {
@@ -103,3 +114,7 @@ export default class CookieBanner extends Component {
 		);
 	}
 }
+
+CookieBanner.propTypes = {
+	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+};
