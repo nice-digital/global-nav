@@ -42,6 +42,7 @@
 					- [Header.skipLinkId](#headerskiplinkid)
 					- [Header.cookie](#headercookie)
 					- [Header.onNavigating](#headeronnavigating)
+					- [Header.onResize](#headeronresize)
 					- [Header.search](#headersearch)
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
@@ -51,6 +52,8 @@
 					- [Header.auth](#headerauth)
 					- [Header.auth.environment](#headerauthenvironment)
 					- [Header.auth.provider](#headerauthprovider)
+					- [Header.auth.links](#headerauthlinks)
+					- [Header.auth.displayName](#headerauthdisplayname)
 				- [Footer props](#footer-props)
 					- [Footer.service](#footerservice)
 		- [CDN](#cdn)
@@ -375,6 +378,37 @@ window.onNavigatingHandler = function(e) {
 var global_nav_config = {
 	header: {
 		onNavigating: "onNavigatingHandler"
+	}
+};
+```
+
+###### Header.onResize
+
+- Type: `String | Function`
+- Default: `null`
+
+Pass an `onResize` function to handle when the header is resized. This includes banners being closed/collapsed:
+
+```js
+var global_nav_config = {
+	header: {
+		onResize: function() {
+			// Define your resize implementation here
+		}
+	}
+};
+```
+
+Or the name of a function defined on `window`. E.g.:
+
+```js
+window.onResizeHandler = function() {
+	// Define your resize implementation here
+};
+
+var global_nav_config = {
+	header: {
+		onResize: "onResizeHandler"
 	}
 };
 ```

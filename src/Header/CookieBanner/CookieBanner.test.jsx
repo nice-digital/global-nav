@@ -166,4 +166,30 @@ describe("CookieBanner", () => {
 		// Tidy up
 		global.window.location = oldLocation;
 	});
+
+	it("Calls resize handler function when cookie banner is closed", () => {
+		const onResize = jest.fn();
+		const wrapper = shallow(<CookieBanner onResize={onResize} />);
+
+		wrapper
+			.find("button")
+			.at(0)
+			.simulate("click");
+
+		expect(onResize).toHaveBeenCalled();
+	});
+
+	it("Calls named global resize handler function when cookie banner is closed", () => {
+		const onResize = jest.fn();
+		window.onResizeHandler = onResize;
+
+		const wrapper = shallow(<CookieBanner onResize="onResizeHandler" />);
+
+		wrapper
+			.find("button")
+			.at(0)
+			.simulate("click");
+
+		expect(onResize).toHaveBeenCalled();
+	});
 });
