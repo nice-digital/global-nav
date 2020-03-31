@@ -14,8 +14,15 @@
   }
 
   p {
-    @include nds-lead;
     max-width: 66ch;
+  }
+
+  &.minimised {
+    padding: rem($nds-spacing-small 0);
+
+    p {
+      margin-top: 0;
+    }
   }
 }
 
@@ -27,23 +34,26 @@
   }
 }
 
-.alert {
-  background: $nds-colour-caution-background;
-  border: 1px solid $nds-colour-caution;
-  margin: rem($nds-spacing-medium) auto 0 auto;
-  max-width: rem($nds-container-max-width);
-  padding: rem($nds-spacing-medium);
+.button {
+  appearance: none;
+  background: $nds-colour-btn-primary;
+  border: em(1) solid $nds-colour-btn-primary-text;
+  border-radius: 0;
+  color: $nds-colour-btn-primary-text;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: em($nds-spacing-small $nds-spacing-medium);
+  position: relative;
+  text-align: left;
+  text-decoration: none !important; // sass-lint:disable-line no-important
+  vertical-align: top;
+  white-space: nowrap;
 
-  h2 {
-    margin-top: 0;
+  &:focus {
+    background: $nds-colour-btn-primary;
+    border-color: $nds-colour-focus-inverse;
+    color: $nds-colour-btn-primary-text;
+    outline: 3px solid $nds-colour-focus;
   }
-
-  h2,
-  p {
-    max-width: 600px;
-  }
-}
-
-.lastP {
-  margin-bottom: 0;
 }
