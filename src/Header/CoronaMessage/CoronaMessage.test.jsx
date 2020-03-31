@@ -121,4 +121,30 @@ describe("CoronaMessage", () => {
 		// Tidy up
 		global.window.location = oldLocation;
 	});
+
+	it("Calls resize handler function when corona banner is closed", () => {
+		const onResize = jest.fn();
+		const wrapper = shallow(<CoronaMessage onResize={onResize} />);
+
+		wrapper
+			.find("button")
+			.at(0)
+			.simulate("click");
+
+		expect(onResize).toHaveBeenCalled();
+	});
+
+	it("Calls named global resize handler function when corona banner is closed", () => {
+		const onResize = jest.fn();
+		window.onResizeHandler = onResize;
+
+		const wrapper = shallow(<CoronaMessage onResize="onResizeHandler" />);
+
+		wrapper
+			.find("button")
+			.at(0)
+			.simulate("click");
+
+		expect(onResize).toHaveBeenCalled();
+	});
 });

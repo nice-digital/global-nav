@@ -85,6 +85,20 @@ describe("Header", () => {
 			const wrapper = shallow(<Header {...defaultProps} cookie={false} />);
 			expect(wrapper.find("CookieBanner").length).toEqual(0);
 		});
+
+		it("Passes onResize handler to cookie banner component", () => {
+			const onResize = jest.fn();
+			const wrapper = shallow(<Header {...defaultProps} onResize={onResize} />);
+			expect(wrapper.find("CookieBanner").props().onResize).toEqual(onResize);
+		});
+	});
+
+	describe("Cookie banner", () => {
+		it("Passes onResize handler to corona message component", () => {
+			const onResize = jest.fn();
+			const wrapper = shallow(<Header {...defaultProps} onResize={onResize} />);
+			expect(wrapper.find("CoronaMessage").props().onResize).toEqual(onResize);
+		});
 	});
 
 	describe("Search", () => {
