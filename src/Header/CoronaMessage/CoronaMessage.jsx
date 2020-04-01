@@ -88,9 +88,9 @@ class CoronaMessage extends Component {
 				<div className={styles.container}>
 					{this.state.isMinimised ? (
 						<p className={styles.minimised}>
-							Read about the{" "}
+							Read about{" "}
 							<a href="https://www.nice.org.uk/covid-19">
-								NICE response to Coronavirus (COVID-19)
+								our approach to COVID-19
 							</a>
 						</p>
 					) : (
