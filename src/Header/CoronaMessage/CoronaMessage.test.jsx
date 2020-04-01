@@ -54,7 +54,7 @@ describe("CoronaMessage", () => {
 		wrapper.update();
 
 		expect(wrapper.find("p").text()).toEqual(
-			"Read about the NICE response to Coronavirus (COVID-19)"
+			"Read about our approach to COVID-19"
 		);
 	});
 
@@ -85,7 +85,7 @@ describe("CoronaMessage", () => {
 		wrapper.update();
 
 		expect(wrapper.find("p").text()).toEqual(
-			"Read about the NICE response to Coronavirus (COVID-19)"
+			"Read about our approach to COVID-19"
 		);
 	});
 
