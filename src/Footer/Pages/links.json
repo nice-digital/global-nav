@@ -30,7 +30,6 @@
 	{
 		"href": "https://www.nice.org.uk/leave-feedback",
 		"hrefOverrides": {
-			"cks": "https://www.nice.org.uk/cks-feedback",
 			"pathways": "https://www.nice.org.uk/NICE-Pathways-feedback"
 		},
 		"text": "Leave feedback"
