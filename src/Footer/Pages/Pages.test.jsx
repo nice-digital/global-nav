@@ -16,9 +16,9 @@ describe("Pages", () => {
 	});
 
 	it("Uses overridden feedback URL as href for site with custom feedback URL", () => {
-		const wrapper = shallow(<Pages service="cks" />);
+		const wrapper = shallow(<Pages service="pathways" />);
 		expect(
 			wrapper.find("TrackedLink[children='Leave feedback']").prop("href")
-		).toEqual("https://www.nice.org.uk/cks-feedback");
+		).toEqual("https://www.nice.org.uk/NICE-Pathways-feedback");
 	});
 });
