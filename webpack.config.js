@@ -13,7 +13,7 @@ const HOT = process.env.HOT !== "false";
 module.exports = {
 	context: path.resolve(__dirname, "src"),
 	entry: {
-		"global-nav": "./cdn.js",
+		"global-nav": (HOT ? ["react-hot-loader/patch"] : []).concat("./cdn.js"),
 		// To polyfill for ES3 browsers e.g. IE8
 		// We can remove this when we drop IE8 support
 		"global-nav.ie8": "./polyfill"
