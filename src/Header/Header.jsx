@@ -156,7 +156,7 @@ Header.propTypes = {
 	enabled: PropTypes.bool,
 	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-	auth: PropTypes.object,
+	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
