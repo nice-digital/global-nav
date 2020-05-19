@@ -100,3 +100,6 @@ dist
 *.stackdump
 
 lib
+
+# Platform specific
+.DS_Store

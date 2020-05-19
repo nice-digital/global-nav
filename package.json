@@ -11,7 +11,7 @@
     "// PRODUCTION BUILDS": "",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "es5ify": "cross-env NODE_ENV=production babel src -d lib --ignore \"src/**/*.test.js\",\"src/**/*.test.jsx\",\"src/setupTests.js\",\"src/polyfill/**/*.js\"",
-    "copy": "copyfiles --up 1 src/**/*.{scss,json} lib",
+    "copy": "copyfiles --up 1 \"src/**/*.{scss,json}\" lib",
     "// TESTS": "",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --notify",
