@@ -24,9 +24,25 @@ const templates = {
 };
 
 const onConfirm = function(suggestion) {
-	if (suggestion) {
+		var selectedEl = document.querySelectorAll(
+				".autocomplete__option a[href='" + suggestion.Link + "']"
+			);
+
 		const eventCallback = function() {
-			window.location.href = suggestion.Link;
+			const { onNavigating } = this.props;
+
+			const onNavigatingCallback =
+				onNavigating &&
+				(typeof onNavigating === "function"
+					? onNavigating
+					: window[onNavigating]);
+
+			if (typeof onNavigatingCallback === "function") {
+				onNavigatingCallback({
+					element: selectedEl,
+					href: suggestion.Link
+				});
+			} else window.location.href = suggestion.Link;
 		};
 
 		trackEvent(
