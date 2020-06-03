@@ -104,19 +104,19 @@
 		"links": [
 			{
 				"text": "Topics",
-				"href": "/"
+				"href": "/topics/"
 			},
 			{
 				"text": "Specialities",
-				"href": "/clinicalspeciality"
+				"href": "/specialities/"
 			},
 			{
 				"text": "What's new",
-				"href": "/whatsnew"
+				"href": "/what-new/"
 			},
 			{
 				"text": "About CKS",
-				"href": "/about"
+				"href": "/about/"
 			}
 		]
 	},
