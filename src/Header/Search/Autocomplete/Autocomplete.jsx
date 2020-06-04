@@ -24,9 +24,10 @@ const templates = {
 };
 
 const onConfirm = function(suggestion) {
+	if (suggestion) {
 		var selectedEl = document.querySelectorAll(
-				".autocomplete__option a[href='" + suggestion.Link + "']"
-			);
+			".autocomplete__option a[href='" + suggestion.Link + "']"
+		);
 
 		const eventCallback = function() {
 			const { onNavigating } = this.props;
