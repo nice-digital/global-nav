@@ -23,40 +23,42 @@ const templates = {
 	}
 };
 
-const onConfirm = function(suggestion) {
-	if (suggestion) {
-		var selectedEl = document.querySelectorAll(
-			".autocomplete__option a[href='" + suggestion.Link + "']"
-		);
-
-		const eventCallback = function() {
-			const { onNavigating } = this.props;
-
-			const onNavigatingCallback =
-				onNavigating &&
-				(typeof onNavigating === "function"
-					? onNavigating
-					: window[onNavigating]);
-
-			if (typeof onNavigatingCallback === "function") {
-				onNavigatingCallback({
-					element: selectedEl,
-					href: suggestion.Link
-				});
-			} else window.location.href = suggestion.Link;
-		};
-
-		trackEvent(
-			"Search",
-			"Typeahead select",
-			suggestion.Title + " | " + document.getElementById("autocomplete").value,
-			null,
-			eventCallback
-		);
-	}
-};
-
 export default class Autocomplete extends Component {
+	onConfirm(suggestion) {
+		if (suggestion) {
+			var selectedEl = document.querySelectorAll(
+				".autocomplete__option a[href='" + suggestion.Link + "']"
+			);
+
+			// eslint-disable-next-line react/prop-types
+			const { onNavigating } = this.props;
+			const eventCallback = function() {
+				const onNavigatingCallback =
+					onNavigating &&
+					(typeof onNavigating === "function"
+						? onNavigating
+						: window[onNavigating]);
+
+				if (typeof onNavigatingCallback === "function") {
+					onNavigatingCallback({
+						element: selectedEl,
+						href: suggestion.Link
+					});
+				} else window.location.href = suggestion.Link;
+			};
+
+			trackEvent(
+				"Search",
+				"Typeahead select",
+				suggestion.Title +
+					" | " +
+					document.getElementById("autocomplete").value,
+				null,
+				eventCallback
+			);
+		}
+	}
+
 	suggest(query, populateResults) {
 		if (
 			this.props.source === false ||
@@ -133,7 +135,9 @@ export default class Autocomplete extends Component {
 							this.suggest(q, s);
 						}.bind(this)}
 						templates={templates}
-						onConfirm={onConfirm}
+						onConfirm={function(s) {
+							this.onConfirm(s);
+						}.bind(this)}
 						confirmOnBlur={false}
 						showNoOptionsFound={false}
 						defaultValue={this.props.query}
