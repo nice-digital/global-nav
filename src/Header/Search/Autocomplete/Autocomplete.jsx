@@ -59,39 +59,58 @@ const templates = {
 	}
 };
 
-const onConfirm = function(suggestion) {
-	if (suggestion) {
-		const eventCallback = function() {
-			window.location.href = suggestion.Link;
-		};
+export default class Autocomplete extends Component {
+	onConfirm(suggestion) {
+		if (suggestion) {
+			var selectedEl = document.querySelectorAll(
+				".autocomplete__option a[href='" + suggestion.Link + "']"
+			);
 
-		if (suggestion.TypeAheadType) {
-			trackEvent(
-				"Search - Typeahead select",
-				"Selected: " + suggestion.TypeAheadType,
-				(
+			//This var is declared outside the eventcallback function to avoid
+			//loosing the component scope hoisting
+			// eslint-disable-next-line react/prop-types
+			const { onNavigating } = this.props;
+			const eventCallback = function() {
+				const onNavigatingCallback =
+					onNavigating &&
+					(typeof onNavigating === "function"
+						? onNavigating
+						: window[onNavigating]);
+
+				if (typeof onNavigatingCallback === "function") {
+					onNavigatingCallback({
+						element: selectedEl,
+						href: suggestion.Link
+					});
+				} else window.location.href = suggestion.Link;
+			};
+
+			if (suggestion.TypeAheadType) {
+				trackEvent(
+					"Search - Typeahead select",
+					"Selected: " + suggestion.TypeAheadType,
+					(
+						suggestion.Title +
+						" | " +
+						document.getElementById("autocomplete").value
+					).toLowerCase(),
+					null,
+					eventCallback
+				);
+			} else {
+				trackEvent(
+					"Search",
+					"Typeahead select",
 					suggestion.Title +
-					" | " +
-					document.getElementById("autocomplete").value
-				).toLowerCase(),
-				null,
-				eventCallback
-			);
-		} else {
-			trackEvent(
-				"Search",
-				"Typeahead select",
-				suggestion.Title +
-					" | " +
-					document.getElementById("autocomplete").value,
-				null,
-				eventCallback
-			);
+						" | " +
+						document.getElementById("autocomplete").value,
+					null,
+					eventCallback
+				);
+			}
 		}
 	}
-};
 
-export default class Autocomplete extends Component {
 	suggest(query, populateResults) {
 		if (
 			this.props.source === false ||
@@ -166,7 +185,9 @@ export default class Autocomplete extends Component {
 						minLength={3}
 						source={debounce(this.suggest, false, rateLimitWait, this)}
 						templates={templates}
-						onConfirm={onConfirm}
+						onConfirm={function(s) {
+							this.onConfirm(s);
+						}.bind(this)}
 						confirmOnBlur={false}
 						showNoOptionsFound={false}
 						defaultValue={this.props.query}

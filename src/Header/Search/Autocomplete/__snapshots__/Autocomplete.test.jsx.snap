@@ -20,7 +20,6 @@ exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
     showAllValues={false}
     showNoOptionsFound={false}
     source={[Function]}
-    tAssistiveHint={[Function]}
     tNoResults={[Function]}
     templates={
       Object {
