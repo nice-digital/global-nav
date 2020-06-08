@@ -104,7 +104,12 @@ export class Header extends Component {
 							</a>
 							<div className={styles.wrapper}>
 								<div className={styles.search}>
-									{this.props.search && <Search {...this.props.search} />}
+									{this.props.search && (
+										<Search
+											{...this.props.search}
+											onNavigating={this.props.onNavigating}
+										/>
+									)}
 								</div>
 								<button
 									className={styles.mobileMenuBtn}

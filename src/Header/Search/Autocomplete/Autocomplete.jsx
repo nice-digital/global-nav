@@ -67,7 +67,7 @@ export default class Autocomplete extends Component {
 			);
 
 			//This var is declared outside the eventcallback function to avoid
-			//loosing the component scope hoisting
+			//loosing the component scope due to hoisting
 			// eslint-disable-next-line react/prop-types
 			const { onNavigating } = this.props;
 			const eventCallback = function() {
