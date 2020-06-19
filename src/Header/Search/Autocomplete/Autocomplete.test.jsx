@@ -148,6 +148,41 @@ describe("Autocomplete", () => {
 			);
 		});
 
+		it("should call onNavigating prop function with selected option in event callback", () => {
+			document.body.innerHTML = "";
+			var appContainer = document.createElement("div");
+			document.body.appendChild(appContainer);
+
+			const option = {
+				Title: "diabetes type 1",
+				Link: "/diabetes1.html"
+			};
+
+			const onNavigating = jest.fn();
+
+			const wrapper = mount(
+				<Autocomplete
+					{...defaultProps}
+					source={[option]}
+					query="diab"
+					onNavigating={onNavigating}
+				/>,
+				{ attachTo: appContainer }
+			);
+
+			wrapper
+				.find("#autocomplete")
+				.first()
+				.props()
+				.onConfirm(option);
+
+			window.dataLayer[0].eventCallback();
+			expect(onNavigating).toHaveBeenCalledWith({
+				href: "/diabetes1.html",
+				element: expect.anything()
+			});
+		});
+
 		it("should not load suggestions within the reate limit threshold", () => {
 			jest.useFakeTimers();
 			const callback = () => {};

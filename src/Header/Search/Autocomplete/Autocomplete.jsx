@@ -217,7 +217,8 @@ Autocomplete.propTypes = {
 		)
 	]),
 	placeholder: PropTypes.string,
-	query: PropTypes.string
+	query: PropTypes.string,
+	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
 };
 
 Autocomplete.defaultProps = {
