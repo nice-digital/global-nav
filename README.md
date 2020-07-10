@@ -13,60 +13,7 @@
 
 <!-- START doctoc -->
 
-- [Global navigation](#global-navigation)
-	- [What is it?](#what-is-it)
-		- [Functionality](#functionality)
-		- [Non-functional](#non-functional)
-	- [Stack](#stack)
-		- [Principles](#principles)
-		- [Why Nerv?](#why-nerv)
-			- [Why not Preact?](#why-not-preact)
-		- [CSS Modules](#css-modules)
-	- [:rocket: Set up](#rocket-set-up)
-		- [Other commands](#other-commands)
-			- [Tests](#tests)
-				- [Run individual files](#run-individual-files)
-				- [Run individual tests](#run-individual-tests)
-			- [Linting](#linting)
-			- [Production build](#production-build)
-		- [IDE](#ide)
-			- [Extensions](#extensions)
-		- [Gotchas](#gotchas)
-	- [How to use](#how-to-use)
-		- [React](#react)
-			- [Installation](#installation)
-			- [Usage](#usage)
-			- [Props](#props)
-				- [Header props](#header-props)
-					- [Header.service](#headerservice)
-					- [Header.skipLinkId](#headerskiplinkid)
-					- [Header.cookie](#headercookie)
-					- [Header.onNavigating](#headeronnavigating)
-					- [Header.onResize](#headeronresize)
-					- [Header.search](#headersearch)
-					- [Header.search.url](#headersearchurl)
-					- [Header.search.autocomplete](#headersearchautocomplete)
-					- [Header.search.placeholder](#headersearchplaceholder)
-					- [Header.search.query](#headersearchquery)
-					- [Header.search.onSearching](#headersearchonsearching)
-					- [Header.auth](#headerauth)
-					- [Header.auth.environment](#headerauthenvironment)
-					- [Header.auth.provider](#headerauthprovider)
-					- [Header.auth.links](#headerauthlinks)
-					- [Header.auth.displayName](#headerauthdisplayname)
-				- [Footer props](#footer-props)
-					- [Footer.service](#footerservice)
-		- [CDN](#cdn)
-			- [Container IDs](#container-ids)
-			- [Overrides](#overrides)
-			- [Supporting IE8](#supporting-ie8)
-			- [Configuration](#configuration)
-				- [service](#service)
-				- [header](#header)
-					- [header.onRendering](#headeronrendering)
-					- [header.onRendered](#headeronrendered)
-				- [footer](#footer)
-	- [Deployments](#deployments)
+- [Global navigation](#global-navigation) - [What is it?](#what-is-it) - [Functionality](#functionality) - [Non-functional](#non-functional) - [Stack](#stack) - [Principles](#principles) - [Why Nerv?](#why-nerv) - [Why not Preact?](#why-not-preact) - [CSS Modules](#css-modules) - [:rocket: Set up](#rocket-set-up) - [Other commands](#other-commands) - [Tests](#tests) - [Run individual files](#run-individual-files) - [Run individual tests](#run-individual-tests) - [Linting](#linting) - [Production build](#production-build) - [IDE](#ide) - [Extensions](#extensions) - [Gotchas](#gotchas) - [How to use](#how-to-use) - [React](#react) - [Installation](#installation) - [Usage](#usage) - [Props](#props) - [Header props](#header-props) - [Header.service](#headerservice) - [Header.skipLinkId](#headerskiplinkid) - [Header.cookie](#headercookie) - [Header.onNavigating](#headeronnavigating) - [Header.onResize](#headeronresize) - [Header.search](#headersearch) - [Header.search.url](#headersearchurl) - [Header.search.autocomplete](#headersearchautocomplete) - [Header.search.placeholder](#headersearchplaceholder) - [Header.search.query](#headersearchquery) - [Header.search.onSearching](#headersearchonsearching) - [Header.auth](#headerauth) - [Header.auth.environment](#headerauthenvironment) - [Header.auth.provider](#headerauthprovider) - [Header.auth.links](#headerauthlinks) - [Header.auth.displayName](#headerauthdisplayname) - [Footer props](#footer-props) - [Footer.service](#footerservice) - [CDN](#cdn) - [Container IDs](#container-ids) - [Overrides](#overrides) - [Supporting IE8](#supporting-ie8) - [Configuration](#configuration) - [service](#service) - [header](#header) - [header.onRendering](#headeronrendering) - [header.onRendered](#headeronrendered) - [footer](#footer) - [Deployments](#deployments)
 
 <!-- END doctoc -->
 </details>
@@ -176,7 +123,7 @@ We use SCSS modules for a few reasons:
 
 Using SCSS allows us to use mixins, functions and variables from the NICE Design System.
 
-> If you *really* need to override styles, see the [overrides documentation](#overrides).
+> If you _really_ need to override styles, see the [overrides documentation](#overrides).
 
 ## :rocket: Set up
 
@@ -348,7 +295,6 @@ An empty div with this id will be created at the end of the header, if it doesn'
 
 The cookie banner is enabled by default, pass `false` to disable it e.g. `<Header cookie={false} />`.
 
-
 ###### Header.onNavigating
 
 - Type: `String | Function`
@@ -359,7 +305,7 @@ Function parameters:
 - `element` (`HTMLAnchorElement`) the HTML anchor element that was clicked to trigger the navigation
 - `href` (`String`) the href of the link that was clicked
 
-Currently `onNavigating` *only* applies to the sub navigation.
+Currently `onNavigating` _only_ applies to the sub navigation.
 
 Pass `onNavigating` to prevent default of the default navigation behaviour and
 provide your own implementation. Pass either a function, or the name of a
@@ -369,10 +315,9 @@ function defined on `window`. E.g.:
 window.onNavigatingHandler = function(e) {
 	// Define your implementation here e.g.:
 
-	if(e.href === "/#browse") {
+	if (e.href === "/#browse") {
 		// Trigger some custom behaviour
-	} else
-		window.location.href = e.href; // Fallback to navigation as normal
+	} else window.location.href = e.href; // Fallback to navigation as normal
 };
 
 var global_nav_config = {
@@ -495,7 +440,7 @@ Pass either a function, or the name of a function defined on `window`. E.g.:
 ```js
 window.onSearchingHandler = function(e) {
 	// Define your implementation here e.g.:
-	window.location.href = "/search?q=" +  encodeURIComponent(e.query);
+	window.location.href = "/search?q=" + encodeURIComponent(e.query);
 };
 
 var global_nav_config = {
@@ -516,7 +461,7 @@ Auth is enabled by default.
 Pass a set of key/value pairs to configure authentication:
 
 ```js
-<header auth={{environment: "live", provider: "niceAccounts"}} />
+<header auth={{ environment: "live", provider: "niceAccounts" }} />
 ```
 
 ###### Header.auth.environment
@@ -525,7 +470,7 @@ Pass a set of key/value pairs to configure authentication:
 - Default: `live`
 - Values: `live`, `test`, `beta`, `local`
 
-This value is the authentication environment eg `beta` would be *beta-accounts.nice.org.uk*.
+This value is the authentication environment eg `beta` would be _beta-accounts.nice.org.uk_.
 
 ###### Header.auth.provider
 
@@ -535,6 +480,13 @@ This value is the authentication environment eg `beta` would be *beta-accounts.n
 
 The authentication provider allows the provider to be changed. If the provider is set to niceAccounts then an environment be defined. If the provider is set to idam the links and displayName must be defined.
 
+###### Header.auth.hideConsultationsLink
+
+- Type: `Boolean`
+- Default: `false`
+
+The hideConsultationsLink controls whether the "See all consultations" link is shown when the user is logged in.
+
 ###### Header.auth.links
 
 - Type: `Array | null`
@@ -542,7 +494,6 @@ The authentication provider allows the provider to be changed. If the provider i
 - Values: `[{ key: "Sign in", value: "/Account/Login" }]`, `[{ key: "My profile", value: "/Account/profile" },{ key: "Sign out", value: "/Account/Logout" }]`
 
 If the authentication provider has been set to "idam", then an array of links must be provided. If the user is logged out then a "Sign in" link should be provided with an appropriate url supplied - this should be the first in the list. If the user is logged in, then a number of links are supported, with a "Sign out" link normally last in the list, also a displayName must be supplied.
-
 
 ###### Header.auth.displayName
 
@@ -572,7 +523,7 @@ Reference the Global Nav bundle directly from the NICE CDN to render the Global 
 
 This renders with the default configuration. See [the configuration section below](#configuration) for how to pass options into the Global Nav.
 
-> Note: you can reference the non-minified version by removing *.min* from the filename.
+> Note: you can reference the non-minified version by removing _.min_ from the filename.
 
 Reference a specific version of the global nav by including the build number as a sub folder. This is useful for testing, or in case of a breaking change, for example:
 
@@ -612,11 +563,11 @@ Use the `global-nav-header` and `global-nav-footer` ids to target the Global Nav
 
 For example, if you're targeting the search form via jQuery, use the robust `$("#global-nav-header form[role='search']")` selector rather than `$("#global-nav-search-form")` as this is an inner implementation and might change.
 
-Try not to override Global Nav styles in your app: the Global Nav exists to give consistency across NICE digital services. If you *really* have to, then same rules as apply as above. For example in CSS:
+Try not to override Global Nav styles in your app: the Global Nav exists to give consistency across NICE digital services. If you _really_ have to, then same rules as apply as above. For example in CSS:
 
 ```css
 #global-nav-header {
-  position: relative;
+	position: relative;
 }
 ```
 
@@ -639,30 +590,29 @@ Global Nav configuration is loaded from a global JavaScript variable on the wind
 
 ```js
 var global_nav_config = {
-		service: "guidance",
-		header: {
-			skipLinkId: "content-start",
-			cookie: true,
-			onNavigating: function(e) {
-				// Use e.href
-			},
-			auth: {
-				environment: "beta",
-				provider: "niceAccounts"
-			},
-			search: {
-				autocomplete: "/autocomplete?ajax=ajax",
-				url: "/search",
-				placeholder: "Search NICE…",
-				query: "\"diabetes in pregnancy\"",
-				onSearching: function(e) {
-					// Use e.query
-				}
-
-			}
+	service: "guidance",
+	header: {
+		skipLinkId: "content-start",
+		cookie: true,
+		onNavigating: function(e) {
+			// Use e.href
 		},
-		footer: false
-	};
+		auth: {
+			environment: "beta",
+			provider: "niceAccounts"
+		},
+		search: {
+			autocomplete: "/autocomplete?ajax=ajax",
+			url: "/search",
+			placeholder: "Search NICE…",
+			query: '"diabetes in pregnancy"',
+			onSearching: function(e) {
+				// Use e.query
+			}
+		}
+	},
+	footer: false
+};
 ```
 
 The following config options apply:
