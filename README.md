@@ -480,13 +480,6 @@ This value is the authentication environment eg `beta` would be _beta-accounts.n
 
 The authentication provider allows the provider to be changed. If the provider is set to niceAccounts then an environment be defined. If the provider is set to idam the links and displayName must be defined.
 
-###### Header.auth.hideConsultationsLink
-
-- Type: `Boolean`
-- Default: `false`
-
-The hideConsultationsLink controls whether the "See all consultations" link is shown when the user is logged in.
-
 ###### Header.auth.links
 
 - Type: `Array | null`
