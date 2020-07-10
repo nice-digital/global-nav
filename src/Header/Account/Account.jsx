@@ -95,17 +95,20 @@ export default class Account extends Component {
 			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
 			//the following just converts the idam format to the nice accounts format.
 
+			const { displayName } = this.props;
+			const isLoggedIn = !!displayName;
+
 			let links = this.props.links.reduce(function(links, link) {
 				links[link.text] = link.url;
 				return links;
 			}, {});
 
-			if (this.props.displayName) {
+			if (isLoggedIn) {
 				links = { ...seeAllConsultationsLink, ...links };
 			}
 
 			const convertedData = {
-				display_name: this.props.displayName,
+				display_name: displayName,
 				links: links
 			};
 
