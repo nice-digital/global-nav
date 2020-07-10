@@ -55,7 +55,6 @@ exports[`Header Matches snapshot 1`] = `
           <Account
             accountsData={null}
             environment="live"
-            hideConsultationsLink={false}
             isLoggedIn={false}
             onLoginStatusChecked={[Function]}
             provider="niceAccounts"

@@ -86,24 +86,23 @@ export default class Account extends Component {
 	}
 
 	componentDidMount() {
+		const seeAllConsultationsLink = {
+			"See all consultations": "https://www.nice.org.uk/guidance/inconsultation"
+		};
+
 		if (this.state.useIdAM) {
 			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
 			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
 			//the following just converts the idam format to the nice accounts format.
 
-			let links = this.props.links;
-
-			if (this.props.displayName && !this.props.hideConsultationsLink) {
-				links.unshift({
-					text: "See all consultations",
-					url: "/guidance/inconsultation"
-				});
-			}
-
-			links = links.reduce(function(links, link) {
+			let links = this.props.links.reduce(function(links, link) {
 				links[link.text] = link.url;
 				return links;
 			}, {});
+
+			if (this.props.displayName) {
+				links = { ...seeAllConsultationsLink, ...links };
+			}
 
 			const convertedData = {
 				display_name: this.props.displayName,
@@ -119,15 +118,7 @@ export default class Account extends Component {
 				.then(
 					function(data) {
 						if (this.props.onLoginStatusChecked) {
-							let links = {
-								"See all consultations": "/guidance/inconsultation"
-							};
-
-							links = { ...links, ...data.links };
-
-							data.links = links;
-
-							//links don't exist in test object
+							data.links = { ...seeAllConsultationsLink, ...data.links };
 
 							this.props.onLoginStatusChecked(data);
 						}
@@ -233,12 +224,10 @@ Account.propTypes = {
 			url: PropTypes.string.isRequired
 		})
 	),
-	displayName: PropTypes.string,
-	hideConsultationsLink: PropTypes.bool
+	displayName: PropTypes.string
 };
 
 Account.defaultProps = {
 	environment: "live",
-	provider: "niceAccounts",
-	hideConsultationsLink: false
+	provider: "niceAccounts"
 };

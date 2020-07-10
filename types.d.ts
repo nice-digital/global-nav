@@ -43,7 +43,6 @@ declare module "@nice-digital/global-nav" {
 		provider: "idam";
 		links: Array<Link>;
 		displayName?: string;
-		hideConsultationsLink?: boolean;
 	};
 
 	export type NiceAccountsProviderProps = {
