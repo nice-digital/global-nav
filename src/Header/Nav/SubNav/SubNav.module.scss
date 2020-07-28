@@ -67,6 +67,7 @@
     li {
       display: inline-block;
       height: 100%;
+      vertical-align: middle;
     }
   }
 
@@ -98,5 +99,11 @@
     &:active {
       border: 0;
     }
+  }
+}
+
+.svgContainer {
+  svg {
+    width: 100px;
   }
 }

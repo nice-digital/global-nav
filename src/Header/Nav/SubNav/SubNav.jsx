@@ -55,6 +55,10 @@ export class SubNav extends Component {
 				<ul className={styles.list} aria-label={`${this.props.text} links`}>
 					{this.props.links.map(
 						function(subLink, i) {
+							const image = subLink.image
+								? decodeURIComponent(subLink.image)
+								: null;
+
 							let ariaCurrent = null;
 
 							if (typeof window !== "undefined") {
@@ -73,7 +77,15 @@ export class SubNav extends Component {
 										className={styles.link}
 										onClick={this.handleClick}
 									>
-										{subLink.text}
+										{image ? (
+											<span
+												aria-label={subLink.text}
+												className={styles.svgContainer}
+												dangerouslySetInnerHTML={{ __html: image }}
+											/>
+										) : (
+											subLink.text
+										)}
 									</a>
 								</li>
 							);
