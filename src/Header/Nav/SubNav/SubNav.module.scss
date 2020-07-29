@@ -50,6 +50,10 @@
   }
 }
 
+.imageLink {
+  display: none;
+}
+
 @include mq($from: md) {
   .wrapper {
     border-bottom: rem($nds-spacing-xx-small) solid $colour-nav-background;

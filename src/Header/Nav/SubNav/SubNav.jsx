@@ -69,7 +69,7 @@ export class SubNav extends Component {
 							}
 
 							return (
-								<li key={i}>
+								<li key={i} className={image && styles.imageLink}>
 									<a
 										href={subLink.href}
 										role="menuitem"
