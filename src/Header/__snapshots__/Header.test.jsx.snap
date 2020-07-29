@@ -32,6 +32,7 @@ exports[`Header Matches snapshot 1`] = `
           className="search"
         >
           <Search
+            onNavigating="onNavigatingHandler"
             placeholder="Search NICE…"
             query=""
             url="/search"
