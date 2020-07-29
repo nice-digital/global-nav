@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import cksIcon from "./images/cks.svg";
+
+const images = {
+	cks: cksIcon
+};
 
 import {
 	trackEvent,
@@ -55,10 +60,6 @@ export class SubNav extends Component {
 				<ul className={styles.list} aria-label={`${this.props.text} links`}>
 					{this.props.links.map(
 						function(subLink, i) {
-							const image = subLink.image
-								? decodeURIComponent(subLink.image)
-								: null;
-
 							let ariaCurrent = null;
 
 							if (typeof window !== "undefined") {
@@ -69,7 +70,7 @@ export class SubNav extends Component {
 							}
 
 							return (
-								<li key={i} className={image && styles.imageLink}>
+								<li key={i} className={subLink.image && styles.imageLink}>
 									<a
 										href={subLink.href}
 										role="menuitem"
@@ -77,11 +78,12 @@ export class SubNav extends Component {
 										className={styles.link}
 										onClick={this.handleClick}
 									>
-										{image ? (
-											<span
+										{subLink.image ? (
+											<img
 												aria-label={subLink.text}
-												className={styles.svgContainer}
-												dangerouslySetInnerHTML={{ __html: image }}
+												src={images[subLink.image]}
+												className={styles.image}
+												alt=""
 											/>
 										) : (
 											subLink.text

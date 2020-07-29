@@ -64,6 +64,10 @@
     width: 100%;
   }
 
+  .imageLink {
+    display: inline-block;
+  }
+
   .list {
     @include nds-container;
     height: 100%;
@@ -106,8 +110,6 @@
   }
 }
 
-.svgContainer {
-  svg {
-    width: 100px;
-  }
+.image {
+  width: 90px;
 }
