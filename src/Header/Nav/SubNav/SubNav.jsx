@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import cksIcon from "./images/cks.svg";
+
+const images = {
+	cks: cksIcon
+};
 
 import {
 	trackEvent,
@@ -65,7 +70,7 @@ export class SubNav extends Component {
 							}
 
 							return (
-								<li key={i}>
+								<li key={i} className={subLink.image && styles.imageLink}>
 									<a
 										href={subLink.href}
 										role="menuitem"
@@ -73,7 +78,16 @@ export class SubNav extends Component {
 										className={styles.link}
 										onClick={this.handleClick}
 									>
-										{subLink.text}
+										{subLink.image ? (
+											<img
+												aria-label={subLink.text}
+												src={images[subLink.image]}
+												className={styles.image}
+												alt=""
+											/>
+										) : (
+											subLink.text
+										)}
 									</a>
 								</li>
 							);

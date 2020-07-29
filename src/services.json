@@ -103,6 +103,11 @@
 		"id": "cks",
 		"links": [
 			{
+				"image": "cks",
+				"text": "CKS",
+				"href": "/"
+			},
+			{
 				"text": "Topics A to Z",
 				"href": "/topics/"
 			},
