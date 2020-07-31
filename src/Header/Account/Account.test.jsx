@@ -92,8 +92,7 @@ describe("Account", () => {
 		setImmediate(() => {
 			expect(onLoginStatusChecked).toHaveBeenCalledWith({
 				links: {
-					"See all consultations":
-						"https://www.nice.org.uk/guidance/inconsultation",
+					"Consultation responses": "https://www.nice.org.uk/consultations/",
 					test: true
 				},
 				test: true

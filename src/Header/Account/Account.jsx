@@ -86,8 +86,8 @@ export default class Account extends Component {
 	}
 
 	componentDidMount() {
-		const seeAllConsultationsLink = {
-			"See all consultations": "https://www.nice.org.uk/guidance/inconsultation"
+		const consultationsResponsesLink = {
+			"Consultation responses": "https://www.nice.org.uk/consultations/"
 		};
 
 		if (this.state.useIdAM) {
@@ -104,7 +104,7 @@ export default class Account extends Component {
 			}, {});
 
 			if (isLoggedIn) {
-				links = { ...seeAllConsultationsLink, ...links };
+				links = { ...consultationsResponsesLink, ...links };
 			}
 
 			const convertedData = {
@@ -121,7 +121,7 @@ export default class Account extends Component {
 				.then(
 					function(data) {
 						if (this.props.onLoginStatusChecked) {
-							data.links = { ...seeAllConsultationsLink, ...data.links };
+							data.links = { ...consultationsResponsesLink, ...data.links };
 
 							this.props.onLoginStatusChecked(data);
 						}
