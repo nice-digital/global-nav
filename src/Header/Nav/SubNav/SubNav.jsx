@@ -28,7 +28,10 @@ export class SubNav extends Component {
 		const href = currentTarget.getAttribute("href");
 
 		// To support IE8
-		const eventLabel = currentTarget.textContent || currentTarget.innerText;
+		const eventLabel =
+			currentTarget.textContent ||
+			currentTarget.innerText ||
+			currentTarget.ariaLabel;
 
 		trackEvent(
 			defaultEventCategory,
