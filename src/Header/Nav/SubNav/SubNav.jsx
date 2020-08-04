@@ -80,10 +80,10 @@ export class SubNav extends Component {
 										aria-current={ariaCurrent}
 										className={styles.link}
 										onClick={this.handleClick}
+										aria-label={subLink.text}
 									>
 										{subLink.image ? (
 											<img
-												aria-label={subLink.text}
 												src={images[subLink.image]}
 												className={styles.image}
 												alt=""
