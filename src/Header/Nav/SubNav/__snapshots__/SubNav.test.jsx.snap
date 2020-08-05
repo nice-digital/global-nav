@@ -13,6 +13,7 @@ exports[`SubNav Matches snapshot 1`] = `
     >
       <a
         aria-current="page"
+        aria-label="Home"
         className="link"
         href="/"
         onClick={[Function]}
@@ -26,6 +27,7 @@ exports[`SubNav Matches snapshot 1`] = `
     >
       <a
         aria-current={null}
+        aria-label="Drugs"
         className="link"
         href="/drug/"
         onClick={[Function]}
@@ -39,6 +41,7 @@ exports[`SubNav Matches snapshot 1`] = `
     >
       <a
         aria-current={null}
+        aria-label="Interactions"
         className="link"
         href="/interaction/"
         onClick={[Function]}
