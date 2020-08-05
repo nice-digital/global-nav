@@ -28,7 +28,10 @@ export class SubNav extends Component {
 		const href = currentTarget.getAttribute("href");
 
 		// To support IE8
-		const eventLabel = currentTarget.textContent || currentTarget.innerText;
+		const eventLabel =
+			currentTarget.textContent ||
+			currentTarget.innerText ||
+			currentTarget.ariaLabel;
 
 		trackEvent(
 			defaultEventCategory,
@@ -77,10 +80,10 @@ export class SubNav extends Component {
 										aria-current={ariaCurrent}
 										className={styles.link}
 										onClick={this.handleClick}
+										aria-label={subLink.text}
 									>
 										{subLink.image ? (
 											<img
-												aria-label={subLink.text}
 												src={images[subLink.image]}
 												className={styles.image}
 												alt=""
