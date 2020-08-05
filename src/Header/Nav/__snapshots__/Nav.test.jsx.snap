@@ -223,6 +223,7 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
                   >
                     <a
                       aria-current="page"
+                      aria-label="Sub link 1"
                       className="link"
                       href="/"
                       onClick={[Function]}
@@ -236,6 +237,7 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
                   >
                     <a
                       aria-current={null}
+                      aria-label="Sub link 2"
                       className="link"
                       href="/test"
                       onClick={[Function]}
