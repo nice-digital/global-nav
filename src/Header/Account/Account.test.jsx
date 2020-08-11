@@ -15,6 +15,9 @@ const escapeKeyCode = 27;
 jest.mock("./nice-accounts", () => ({
 	checkIsLoggedIn: jest.fn(() =>
 		Promise.resolve({
+			links: {
+				test: true
+			},
 			test: true
 		})
 	),
@@ -87,7 +90,13 @@ describe("Account", () => {
 		);
 
 		setImmediate(() => {
-			expect(onLoginStatusChecked).toHaveBeenCalledWith({ test: true });
+			expect(onLoginStatusChecked).toHaveBeenCalledWith({
+				links: {
+					"Consultation responses": "https://www.nice.org.uk/consultations/",
+					test: true
+				},
+				test: true
+			});
 			done();
 		});
 	});

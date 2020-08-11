@@ -86,16 +86,29 @@ export default class Account extends Component {
 	}
 
 	componentDidMount() {
+		const consultationsResponsesLink = {
+			"Consultation responses": "https://www.nice.org.uk/consultations/"
+		};
+
 		if (this.state.useIdAM) {
 			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
 			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
 			//the following just converts the idam format to the nice accounts format.
-			const links = this.props.links.reduce(function(links, link) {
+
+			const { displayName } = this.props;
+			const isLoggedIn = !!displayName;
+
+			let links = this.props.links.reduce(function(links, link) {
 				links[link.text] = link.url;
 				return links;
 			}, {});
+
+			if (isLoggedIn) {
+				links = { ...consultationsResponsesLink, ...links };
+			}
+
 			const convertedData = {
-				display_name: this.props.displayName,
+				display_name: displayName,
 				links: links
 			};
 
@@ -108,6 +121,8 @@ export default class Account extends Component {
 				.then(
 					function(data) {
 						if (this.props.onLoginStatusChecked) {
+							data.links = { ...consultationsResponsesLink, ...data.links };
+
 							this.props.onLoginStatusChecked(data);
 						}
 					}.bind(this)
