@@ -103,20 +103,25 @@
 		"id": "cks",
 		"links": [
 			{
-				"text": "Topics",
+				"image": "cks",
+				"text": "CKS - Home",
 				"href": "/"
 			},
 			{
+				"text": "Topics A to Z",
+				"href": "/topics/"
+			},
+			{
 				"text": "Specialities",
-				"href": "/clinicalspeciality"
+				"href": "/specialities/"
 			},
 			{
 				"text": "What's new",
-				"href": "/whatsnew"
+				"href": "/whats-new/"
 			},
 			{
 				"text": "About CKS",
-				"href": "/about"
+				"href": "/about/"
 			}
 		]
 	},

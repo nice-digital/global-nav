@@ -93,6 +93,7 @@ export default class Search extends Component {
 					source={this.props.autocomplete}
 					placeholder={this.props.placeholder}
 					query={this.props.query}
+					onNavigating={this.props.onNavigating}
 				/>
 				<button
 					className={styles.button}
@@ -125,7 +126,8 @@ Search.propTypes = {
 	]),
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
-	onSearching: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+	onSearching: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
 };
 
 Search.defaultProps = {

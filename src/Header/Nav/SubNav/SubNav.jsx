@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import cksIcon from "./images/cks.svg";
+
+const images = {
+	cks: cksIcon
+};
 
 import {
 	trackEvent,
@@ -23,7 +28,10 @@ export class SubNav extends Component {
 		const href = currentTarget.getAttribute("href");
 
 		// To support IE8
-		const eventLabel = currentTarget.textContent || currentTarget.innerText;
+		const eventLabel =
+			currentTarget.textContent ||
+			currentTarget.innerText ||
+			currentTarget.ariaLabel;
 
 		trackEvent(
 			defaultEventCategory,
@@ -65,15 +73,24 @@ export class SubNav extends Component {
 							}
 
 							return (
-								<li key={i}>
+								<li key={i} className={subLink.image && styles.imageLink}>
 									<a
 										href={subLink.href}
 										role="menuitem"
 										aria-current={ariaCurrent}
 										className={styles.link}
 										onClick={this.handleClick}
+										aria-label={subLink.text}
 									>
-										{subLink.text}
+										{subLink.image ? (
+											<img
+												src={images[subLink.image]}
+												className={styles.image}
+												alt=""
+											/>
+										) : (
+											subLink.text
+										)}
 									</a>
 								</li>
 							);

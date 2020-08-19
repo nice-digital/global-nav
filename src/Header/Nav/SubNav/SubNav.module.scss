@@ -50,6 +50,10 @@
   }
 }
 
+.imageLink {
+  display: none;
+}
+
 @include mq($from: md) {
   .wrapper {
     border-bottom: rem($nds-spacing-xx-small) solid $colour-nav-background;
@@ -60,6 +64,10 @@
     width: 100%;
   }
 
+  .imageLink {
+    display: inline-block;
+  }
+
   .list {
     @include nds-container;
     height: 100%;
@@ -67,6 +75,7 @@
     li {
       display: inline-block;
       height: 100%;
+      vertical-align: middle;
     }
   }
 
@@ -99,4 +108,8 @@
       border: 0;
     }
   }
+}
+
+.image {
+  height: 100%;
 }

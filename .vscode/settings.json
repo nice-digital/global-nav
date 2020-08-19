@@ -24,5 +24,6 @@
 		"activityBar.foreground": "#FFFFFF",
 		"titleBar.activeBackground": "#493657",
 		"titleBar.activeForeground": "#FFFFFF"
-	}
+	},
+	"omnisharp.autoStart": false
 }
