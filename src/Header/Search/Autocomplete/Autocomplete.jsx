@@ -154,7 +154,7 @@ export default class Autocomplete extends Component {
 							className="autocomplete__input autocomplete__input--default"
 							placeholder={this.props.placeholder}
 							defaultValue={this.props.query}
-							data-hj-whitelist=""
+							data-hj-allow=""
 						/>
 					</div>
 				) : (
@@ -176,7 +176,7 @@ export default class Autocomplete extends Component {
 								acElement.elementReferences &&
 								acElement.elementReferences[-1] &&
 								acElement.elementReferences[-1].setAttribute(
-									"data-hj-whitelist",
+									"data-hj-allow",
 									""
 								);
 						}}

@@ -50,7 +50,7 @@ describe("Autocomplete", () => {
 				wrapper
 					.getDOMNode()
 					.querySelector("input#autocomplete")
-					.getAttribute("data-hj-whitelist")
+					.getAttribute("data-hj-allow")
 			).toEqual("");
 		});
 
