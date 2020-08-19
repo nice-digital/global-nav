@@ -24,6 +24,7 @@
       // The importants here are to override conflicting global styles in niceorg
       background-color: $nds-colour-nice-grey-3 !important;
       height: rem($search-height) !important;
+      margin: 0 !important;
       max-width: 100% !important;
       position: relative;
       z-index: 101;
@@ -77,6 +78,7 @@
       border-top: 0;
       color: #34384b;
       margin: 0;
+      max-width: 100%;
       padding: 0;
       text-align: left;
       width: calc(100vw - #{2 * rem($nds-container-gutter)});
