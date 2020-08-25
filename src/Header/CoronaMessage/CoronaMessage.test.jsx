@@ -1,19 +1,15 @@
 import React from "react";
-import Cookies from "js-cookie";
 import toJson from "enzyme-to-json";
-import CoronaMessage, {
-	CookieMessageVersion,
-	CookieName
-} from "./CoronaMessage";
+import CoronaMessage from "./CoronaMessage";
 import { shallow } from "enzyme";
 
 describe("CoronaMessage", () => {
-	const oldCookie = document.cookie;
+	it("Renders correctly", () => {
+		const wrapper = shallow(<CoronaMessage />, {
+			disableLifecycleMethods: true
+		});
 
-	beforeEach(() => {
-		// Reset overridden cookie property
-		document.cookie = oldCookie;
-		Cookies.set(CookieName, null);
+		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Renders without crashing", () => {
