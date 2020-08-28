@@ -11,6 +11,10 @@
   a {
     @include nds-link-default;
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 .container {
