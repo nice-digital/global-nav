@@ -2,27 +2,18 @@
 
 .wrapper {
   background: #ffeb3b;
-  padding: rem($nds-spacing-medium 0);
+  padding: rem($nds-spacing-small 0);
+
+  p {
+    margin-top: 0;
+  }
 
   a {
     @include nds-link-default;
   }
 
-  h2 {
-    @include nds-h3;
-    margin-top: 0;
-  }
-
-  p {
-    max-width: 66ch;
-  }
-
-  &.minimised {
-    padding: rem($nds-spacing-small 0);
-
-    p {
-      margin-top: 0;
-    }
+  @media print {
+    display: none;
   }
 }
 
@@ -31,29 +22,5 @@
 
   > :last-child {
     margin-bottom: 0;
-  }
-}
-
-.button {
-  appearance: none;
-  background: $nds-colour-btn-primary;
-  border: em(1) solid $nds-colour-btn-primary-text;
-  border-radius: 0;
-  color: $nds-colour-btn-primary-text;
-  cursor: pointer;
-  display: inline-block;
-  margin: 0;
-  padding: em($nds-spacing-small $nds-spacing-medium);
-  position: relative;
-  text-align: left;
-  text-decoration: none !important; // sass-lint:disable-line no-important
-  vertical-align: top;
-  white-space: nowrap;
-
-  &:focus {
-    background: $nds-colour-btn-primary;
-    border-color: $nds-colour-focus-inverse;
-    color: $nds-colour-btn-primary-text;
-    outline: 3px solid $nds-colour-focus;
   }
 }
