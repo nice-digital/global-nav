@@ -107,7 +107,11 @@ export class Header extends Component {
 									aria-controls="header-menu"
 									aria-expanded={this.state.isExpanded}
 									aria-haspopup="menu"
-									aria-label="Site menu"
+									aria-label={
+										this.state.isExpanded
+											? "Close site menu"
+											: "Expand site menu"
+									}
 									onClick={this.handleMobileMenuBtnClick}
 								>
 									{this.state.isExpanded ? "Close" : "Menu"}
