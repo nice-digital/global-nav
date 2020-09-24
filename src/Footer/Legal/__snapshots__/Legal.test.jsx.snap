@@ -62,6 +62,16 @@ exports[`Legal Matches snapshot 1`] = `
             Privacy notice
           </TrackedLink>
         </li>
+        <li>
+          <TrackedLink
+            eventAction="Footer click"
+            eventCategory="TopHat and footer"
+            eventLabel="Cookies"
+            href="https://www.nice.org.uk/cookies"
+          >
+            Cookies
+          </TrackedLink>
+        </li>
       </ul>
     </nav>
     <p
