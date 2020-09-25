@@ -56,6 +56,15 @@ export default class Legal extends Component {
 									Privacy notice
 								</TrackedLink>
 							</li>
+							<li>
+								<TrackedLink
+									href="https://www.nice.org.uk/cookies"
+									eventAction={footerClickEventAction}
+									eventLabel="Cookies"
+								>
+									Cookies
+								</TrackedLink>
+							</li>
 						</ul>
 					</nav>
 					<p className={styles.copyright}>
