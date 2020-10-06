@@ -8,7 +8,7 @@ class CoronaMessage extends Component {
 		const classes = classNames(styles.wrapper);
 
 		return (
-			<aside className={classes}>
+			<aside className={classes} aria-label="COVID-19 Notice">
 				<div className={styles.container}>
 					<p>
 						Read about{" "}

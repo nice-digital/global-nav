@@ -25,8 +25,7 @@ export class Header extends Component {
 		this.state = {
 			isExpanded: false,
 			isLoggedIn: false,
-			accountsData: null,
-			needsSkipLinkTarget: false
+			accountsData: null
 		};
 
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
@@ -35,10 +34,16 @@ export class Header extends Component {
 	}
 
 	componentDidMount() {
-		this.setState({
-			needsSkipLinkTarget:
-				document.getElementById(this.props.skipLinkId) == null
-		});
+		if (!document.getElementById(this.props.skipLinkId)) {
+			const firstH1OnPage = document.getElementsByTagName("h1")[0];
+			if (firstH1OnPage) {
+				firstH1OnPage.setAttribute("id", this.props.skipLinkId);
+			} else {
+				console.warn(
+					`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
+				);
+			}
+		}
 	}
 
 	handleMobileMenuBtnClick() {
@@ -139,9 +144,6 @@ export class Header extends Component {
 					</header>
 					<CoronaMessage onResize={this.props.onResize} />
 					<OldIEMessage />
-					{this.state.needsSkipLinkTarget && (
-						<div id={this.props.skipLinkId} aria-label="Start of content" />
-					)}
 				</div>
 			)
 		);

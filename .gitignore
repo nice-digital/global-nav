@@ -103,3 +103,5 @@ lib
 
 # Platform specific
 .DS_Store
+.idea
+.idea/Global Nav.iml
