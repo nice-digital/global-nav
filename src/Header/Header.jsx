@@ -13,7 +13,6 @@ import CoronaMessage from "./CoronaMessage";
 import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
-import CookieBanner from "./CookieBanner";
 
 import styles from "./Header.module.scss";
 import SkipLinks from "./SkipLinks";
@@ -79,9 +78,6 @@ export class Header extends Component {
 				<div className={styles.header}>
 					<header aria-label="Site header">
 						<SkipLinks skipLinkId={this.props.skipLinkId} />
-						{this.props.cookie && (
-							<CookieBanner onResize={this.props.onResize} />
-						)}
 						<div className={styles.container}>
 							<a
 								href="https://www.nice.org.uk/"
@@ -153,7 +149,6 @@ Header.propTypes = {
 	skipLinkId: PropTypes.string,
 	enabled: PropTypes.bool,
 	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
@@ -161,7 +156,6 @@ Header.propTypes = {
 
 Header.defaultProps = {
 	search: {},
-	cookie: {},
 	skipLinkId: "content-start"
 };
 

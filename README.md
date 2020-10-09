@@ -40,7 +40,6 @@
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
 					- [Header.skipLinkId](#headerskiplinkid)
-					- [Header.cookie](#headercookie)
 					- [Header.onNavigating](#headeronnavigating)
 					- [Header.onResize](#headeronresize)
 					- [Header.search](#headersearch)
@@ -67,6 +66,7 @@
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
 	- [Deployments](#deployments)
+	- [Upgrading from v1 to v2](#upgrading-from-v1-to-v2)
 
 <!-- END doctoc -->
 </details>
@@ -82,7 +82,7 @@ The header covers the following high-level functionality:
 - main navigation
 - skip links
 - search and autocomplete
-- cookie message
+- COVID-19 message
 - TLS warning message for old IE
 - sign in and account management via NICE Accounts
   - In the future will support Auth0
@@ -114,7 +114,6 @@ The following non-functional requirements apply:
   - and [NICE Digital shared browserslist config](https://github.com/nice-digital/browserslist-config#readme)
 - [Webpack](https://webpack.js.org/) for module bundling
 - [Babel 7](https://babeljs.io/) for ES6/JSX → ES5 transpilation
-- [js-cookie](https://github.com/js-cookie/js-cookie) for cookie management
 - [accessible-autocomplete](https://github.com/alphagov/accessible-autocomplete)
 - [ESLint](https://eslint.org/) for linting our JavaScript
   - with [NICE Digital shared eslint config](https://www.npmjs.com/package/@nice-digital/eslint-config)
@@ -340,14 +339,6 @@ See [links.json](src/services.json) for a list of the available service identifi
 
 The identifier of the skip link target.
 An empty div with this id will be created at the end of the header, if it doesn't already exist on the page.
-
-###### Header.cookie
-
-- Type: `Boolean`
-- Default: `true`
-
-The cookie banner is enabled by default, pass `false` to disable it e.g. `<Header cookie={false} />`.
-
 
 ###### Header.onNavigating
 
@@ -642,7 +633,6 @@ var global_nav_config = {
 		service: "guidance",
 		header: {
 			skipLinkId: "content-start",
-			cookie: true,
 			onNavigating: function(e) {
 				// Use e.href
 			},
@@ -730,3 +720,11 @@ dotnet pack NICE.GlobalNav.CDN.csproj -o publish /p:Version=1.2.3-r1a2b3c
 Where the version number can be any valid [SemVer build number](https://octopus.com/blog/semver2) compatible with Octopus Deploy. Note: this version number will be the build number when TeamCity creates this build artifact.
 
 > Note: you'll need the DotNet Core SDK installed. We don't use NuGet.exe to build so we can run on both Windows and Linux
+
+## Upgrading from v1 to v2
+
+Version 2 is a breaking change, because we removed the cookie banner and associated `cookie` option.
+
+If you were already using `cookie: false` in the header config, then the upgrade is easy - the `cookie: false` will no longer do anything so can safely be removed.
+
+If you were using `cookie: true` (or not setting the `cookie` option and leaving the default value of `true`) then you will need to include the [cookie banner](https://github.com/nice-digital/cookie-banner#usage) separately from Global Nav.
