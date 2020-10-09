@@ -133,17 +133,6 @@ describe("Header", () => {
 	});
 
 	describe("Skip link target", () => {
-		it("Doesn't create a skip-link target if there's already one in the document", () => {
-			const contentDiv = document.createElement("div");
-			contentDiv.id = "content-start";
-			document.body.append(contentDiv);
-
-			const wrapper = shallow(<Header {...defaultProps} />);
-			expect(wrapper.find("#content-start").length).toEqual(0);
-
-			contentDiv.parentNode.removeChild(contentDiv);
-		});
-
 		it(`If skip link doesn't exist, create a link to the first <h1> in the document`, () => {
 			const heading1 = document.createElement("h1");
 			document.body.append(heading1);
