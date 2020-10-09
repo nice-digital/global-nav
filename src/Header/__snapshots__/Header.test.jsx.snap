@@ -10,7 +10,6 @@ exports[`Header Matches snapshot 1`] = `
     <SkipLinks
       skipLinkId="content-start"
     />
-    <CookieBanner />
     <div
       className="container"
     >
