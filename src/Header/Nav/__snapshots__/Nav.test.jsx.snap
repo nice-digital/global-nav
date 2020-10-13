@@ -217,9 +217,11 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
                 <ul
                   aria-label="Second link links"
                   className="list"
+                  role="menu"
                 >
                   <li
                     key="0"
+                    role="presentation"
                   >
                     <a
                       aria-current="page"
@@ -234,6 +236,7 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
                   </li>
                   <li
                     key="1"
+                    role="presentation"
                   >
                     <a
                       aria-current={null}

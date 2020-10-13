@@ -73,9 +73,5 @@ exports[`Header Matches snapshot 1`] = `
   </header>
   <CoronaMessage />
   <OldIEMessage />
-  <div
-    aria-label="Start of content"
-    id="content-start"
-  />
 </div>
 `;

@@ -133,27 +133,20 @@ describe("Header", () => {
 	});
 
 	describe("Skip link target", () => {
-		it("Doesn't render skip link target when it already exists on the page", () => {
-			const contentDiv = document.createElement("div");
-			contentDiv.id = "content-start";
-			document.body.append(contentDiv);
-
-			const wrapper = shallow(<Header {...defaultProps} />);
-			expect(wrapper.find("#content-start").length).toEqual(0);
-
-			contentDiv.parentNode.removeChild(contentDiv);
+		it(`If skip link doesn't exist, create a link to the first <h1> in the document`, () => {
+			const heading1 = document.createElement("h1");
+			document.body.append(heading1);
+			shallow(<Header {...defaultProps} />);
+			expect(document.querySelector("h1#content-start")).toBeTruthy();
+			heading1.parentNode.removeChild(heading1);
 		});
 
-		it("Render skip link target when it doesn't already exist on the page", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
-			expect(wrapper.find("#content-start").length).toEqual(1);
-		});
-
-		it("Render skip link target with custom skip link id", () => {
-			const wrapper = shallow(
-				<Header {...defaultProps} skipLinkId="test-skip-link" />
-			);
-			expect(wrapper.find("#test-skip-link").length).toEqual(1);
+		it("Renders a skip link which targets the custom skipLinkId property", () => {
+			const heading1 = document.createElement("h1");
+			document.body.append(heading1);
+			shallow(<Header {...defaultProps} skipLinkId="super-skip-link" />);
+			expect(document.querySelector("h1#super-skip-link")).toBeTruthy();
+			heading1.parentNode.removeChild(heading1);
 		});
 	});
 

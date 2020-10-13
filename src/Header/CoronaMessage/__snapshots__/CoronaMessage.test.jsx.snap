@@ -2,6 +2,7 @@
 
 exports[`CoronaMessage Renders correctly 1`] = `
 <aside
+  aria-label="COVID-19 Notice"
   className="wrapper"
 >
   <div
