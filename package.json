@@ -18,7 +18,7 @@
     "test:unit:watch": "jest --watch",
     "test:unit:coverage": "npm run test:unit -- --coverage",
     "// LINTING": "",
-    "lint": "npm run lint:js && npm run lint:scss",
+    "lint": "npm run prettier && npm run lint:js && npm run lint:scss",
     "prettier": "prettier --check .",
     "prettier:fix": "npm run prettier -- --write",
     "lint:js": "eslint .",
