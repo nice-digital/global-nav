@@ -4,10 +4,10 @@ export function findTerms(queryTokens, suggestionTokens) {
 	for (let index = 0; index < queryTokens.length; index++) {
 		const queryToken = queryTokens[index];
 
-		const unusedSuggestionTokens = suggestionTokens.filter(function(
+		const unusedSuggestionTokens = suggestionTokens.filter(function (
 			suggestionToken
 		) {
-			return termMatches.every(function(prevMatch) {
+			return termMatches.every(function (prevMatch) {
 				return prevMatch.suggestionToken !== suggestionToken;
 			});
 		});
@@ -25,14 +25,14 @@ export function findTerms(queryTokens, suggestionTokens) {
 
 		termMatches.push({
 			suggestionToken: firstMatchedSuggestionToken,
-			queryToken: queryToken
+			queryToken: queryToken,
 		});
 	}
 
 	const deDupedTermMatches = termMatches;
 
 	// Only consider term matches if we match *every* token in the query
-	return deDupedTermMatches.every(function(match) {
+	return deDupedTermMatches.every(function (match) {
 		return !!match.suggestionToken;
 	})
 		? deDupedTermMatches

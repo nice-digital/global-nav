@@ -2,18 +2,18 @@ import { tokenize } from "./tokenizer";
 import { findPhrase, highlightPhrase } from "./phrase-finder";
 import { findTerms, highlightTerm } from "./term-finder";
 
-const isValidSuggestion = function(suggestion) {
+const isValidSuggestion = function (suggestion) {
 	return suggestion.phraseMatch != null || suggestion.termMatches.length > 0;
 };
 
-const tokenizeSuggestion = function(suggestion) {
+const tokenizeSuggestion = function (suggestion) {
 	// TODO: Cache tokenized suggestions for performance
 	return Object.assign({}, suggestion, {
-		tokens: tokenize(suggestion.Title)
+		tokens: tokenize(suggestion.Title),
 	});
 };
 
-const highlightSuggestion = function(suggestion) {
+const highlightSuggestion = function (suggestion) {
 	let titleHtml;
 
 	// Only highlight phrases, or individual terms, not both
@@ -21,22 +21,22 @@ const highlightSuggestion = function(suggestion) {
 		titleHtml = highlightPhrase(suggestion.Title, suggestion.phraseMatch);
 	else
 		titleHtml = suggestion.termMatches
-			.sort(function(a, b) {
+			.sort(function (a, b) {
 				return (
 					// Order by later matches first so we can replace highlight matched terms
 					b.suggestionToken.originalIndex - a.suggestionToken.originalIndex
 				);
 			})
-			.reduce(function(titleHtml, termMatch) {
+			.reduce(function (titleHtml, termMatch) {
 				return highlightTerm(titleHtml, termMatch);
 			}, suggestion.Title);
 
 	return Object.assign({}, suggestion, {
-		titleHtml: titleHtml
+		titleHtml: titleHtml,
 	});
 };
 
-const sortSuggestions = function(a, b) {
+const sortSuggestions = function (a, b) {
 	// Show phrases first, and phrases closer to the start of the string first
 	if (a.phraseMatch && b.phraseMatch) {
 		return (
@@ -62,10 +62,10 @@ const sortSuggestions = function(a, b) {
  * @param {String} query The search query
  * @param {Number} maxResults The maximum number of results to show
  */
-export const suggester = function(suggestions, query, maxResults = 5) {
+export const suggester = function (suggestions, query, maxResults = 5) {
 	const queryTokens = tokenize(query ? query.trim() : "");
 
-	const findPhrasesAndTerms = function(suggestion) {
+	const findPhrasesAndTerms = function (suggestion) {
 		const phraseMatch = findPhrase(queryTokens, suggestion.tokens),
 			// Only look for individual tokens if there are no phrases
 			termMatches = phraseMatch
@@ -74,7 +74,7 @@ export const suggester = function(suggestions, query, maxResults = 5) {
 
 		return Object.assign({}, suggestion, {
 			phraseMatch: phraseMatch,
-			termMatches: termMatches
+			termMatches: termMatches,
 		});
 	};
 
@@ -85,12 +85,12 @@ export const suggester = function(suggestions, query, maxResults = 5) {
 		.map(highlightSuggestion)
 		.sort(sortSuggestions)
 		.slice(0, maxResults)
-		.map(function({ Title, Link, titleHtml }) {
+		.map(function ({ Title, Link, titleHtml }) {
 			// keep only the properties we care about
 			return {
 				Title: Title,
 				Link: Link,
-				TitleHtml: titleHtml
+				TitleHtml: titleHtml,
 			};
 		});
 };

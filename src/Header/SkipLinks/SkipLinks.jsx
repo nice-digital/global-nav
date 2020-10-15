@@ -66,5 +66,5 @@ export default class SkipLinks extends Component {
 }
 
 SkipLinks.propTypes = {
-	skipLinkId: PropTypes.string.isRequired
+	skipLinkId: PropTypes.string.isRequired,
 };

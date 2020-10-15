@@ -176,7 +176,7 @@ We use SCSS modules for a few reasons:
 
 Using SCSS allows us to use mixins, functions and variables from the NICE Design System.
 
-> If you *really* need to override styles, see the [overrides documentation](#overrides).
+> If you _really_ need to override styles, see the [overrides documentation](#overrides).
 
 ## :rocket: Set up
 
@@ -238,9 +238,9 @@ npm run-script test:unit -- -t aria
 
 #### Production build
 
-Run `npm run build -- --env.version=1.2.3` to create a production build, where 1.2.3 is any version you want. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
+Run `npm run build -- --env version=1.2.3` to create a production build, where 1.2.3 is any version you want. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
 
-> We pass in a version argument (`--env.version=X`), because we assume this step will be run by TeamCity. TC (and the NuGet packages we push to Octo) have different versioning schemes from npm packages - build numbers produced by TeamCity aren't valid version numbers that can be used in package.json e.g. a build number of 1.2.3.4-r2a3d4f.
+> We pass in a version argument (`--env version=X`), because we assume this step will be run by TeamCity. TC (and the NuGet packages we push to Octo) have different versioning schemes from npm packages - build numbers produced by TeamCity aren't valid version numbers that can be used in package.json e.g. a build number of 1.2.3.4-r2a3d4f.
 
 ### IDE
 
@@ -298,7 +298,7 @@ Then, require the header and/or footer into your application:
 Import the header and footer like this:
 
 ```js
-import { Header, Footer } from "@nice-digital/global-nav";
+import { Header, Footer } from '@nice-digital/global-nav';
 ```
 
 > Note: we've used ES6 module imports for this examples as we've assumed all React apps will be using ES6.
@@ -307,14 +307,14 @@ These header and footer components that can be be used like any other React comp
 
 ```jsx
 const search = {
-	autocomplete: "/autocomplete"
+  autocomplete: '/autocomplete',
 };
 
 const page = () => (
-	<div>
-		<Header service="pathways" search={search} />
-		<Footer />
-	</div>
+  <div>
+    <Header service="pathways" search={search} />
+    <Footer />
+  </div>
 );
 ```
 
@@ -348,7 +348,6 @@ An empty div with this id will be created at the end of the header, if it doesn'
 
 The cookie banner is enabled by default, pass `false` to disable it e.g. `<Header cookie={false} />`.
 
-
 ###### Header.onNavigating
 
 - Type: `String | Function`
@@ -359,26 +358,25 @@ Function parameters:
 - `element` (`HTMLAnchorElement`) the HTML anchor element that was clicked to trigger the navigation
 - `href` (`String`) the href of the link that was clicked
 
-Currently `onNavigating` *only* applies to the sub navigation.
+Currently `onNavigating` _only_ applies to the sub navigation.
 
 Pass `onNavigating` to prevent default of the default navigation behaviour and
 provide your own implementation. Pass either a function, or the name of a
 function defined on `window`. E.g.:
 
 ```js
-window.onNavigatingHandler = function(e) {
-	// Define your implementation here e.g.:
+window.onNavigatingHandler = function (e) {
+  // Define your implementation here e.g.:
 
-	if(e.href === "/#browse") {
-		// Trigger some custom behaviour
-	} else
-		window.location.href = e.href; // Fallback to navigation as normal
+  if (e.href === '/#browse') {
+    // Trigger some custom behaviour
+  } else window.location.href = e.href; // Fallback to navigation as normal
 };
 
 var global_nav_config = {
-	header: {
-		onNavigating: "onNavigatingHandler"
-	}
+  header: {
+    onNavigating: 'onNavigatingHandler',
+  },
 };
 ```
 
@@ -391,25 +389,25 @@ Pass an `onResize` function to handle when the header is resized. This includes 
 
 ```js
 var global_nav_config = {
-	header: {
-		onResize: function() {
-			// Define your resize implementation here
-		}
-	}
+  header: {
+    onResize: function () {
+      // Define your resize implementation here
+    },
+  },
 };
 ```
 
 Or the name of a function defined on `window`. E.g.:
 
 ```js
-window.onResizeHandler = function() {
-	// Define your resize implementation here
+window.onResizeHandler = function () {
+  // Define your resize implementation here
 };
 
 var global_nav_config = {
-	header: {
-		onResize: "onResizeHandler"
-	}
+  header: {
+    onResize: 'onResizeHandler',
+  },
 };
 ```
 
@@ -440,8 +438,8 @@ Pass an array of objects to use as the source. The objects in the array should h
 
 ```jsx
 const suggestions = [
-	{ Title: "Achilles tendinopathy", Link: "/achilles-tendinopathy" },
-	{ Title: "Acne vulgaris", Link: "/acne-vulgaris" }
+  { Title: 'Achilles tendinopathy', Link: '/achilles-tendinopathy' },
+  { Title: 'Acne vulgaris', Link: '/acne-vulgaris' },
 ];
 <Header search={{ autocomplete: suggestions }} />;
 ```
@@ -454,10 +452,10 @@ The response is expected to be JSON in the format `Array<{ Title: string, Link: 
 
 ```json
 [
-	{
-		"Title": "Paracetamol",
-		"Link": "/search?q=Paracetamol"
-	}
+  {
+    "Title": "Paracetamol",
+    "Link": "/search?q=Paracetamol"
+  }
 ]
 ```
 
@@ -493,17 +491,17 @@ Disable this and provide your own implementation by passing an `onSearching` pro
 Pass either a function, or the name of a function defined on `window`. E.g.:
 
 ```js
-window.onSearchingHandler = function(e) {
-	// Define your implementation here e.g.:
-	window.location.href = "/search?q=" +  encodeURIComponent(e.query);
+window.onSearchingHandler = function (e) {
+  // Define your implementation here e.g.:
+  window.location.href = '/search?q=' + encodeURIComponent(e.query);
 };
 
 var global_nav_config = {
-	header: {
-		search: {
-			onSearching: "onSearchingHandler"
-		}
-	}
+  header: {
+    search: {
+      onSearching: 'onSearchingHandler',
+    },
+  },
 };
 ```
 
@@ -516,7 +514,7 @@ Auth is enabled by default.
 Pass a set of key/value pairs to configure authentication:
 
 ```js
-<header auth={{environment: "live", provider: "niceAccounts"}} />
+<header auth={{ environment: 'live', provider: 'niceAccounts' }} />
 ```
 
 ###### Header.auth.environment
@@ -525,7 +523,7 @@ Pass a set of key/value pairs to configure authentication:
 - Default: `live`
 - Values: `live`, `test`, `beta`, `local`
 
-This value is the authentication environment eg `beta` would be *beta-accounts.nice.org.uk*.
+This value is the authentication environment eg `beta` would be _beta-accounts.nice.org.uk_.
 
 ###### Header.auth.provider
 
@@ -542,7 +540,6 @@ The authentication provider allows the provider to be changed. If the provider i
 - Values: `[{ key: "Sign in", value: "/Account/Login" }]`, `[{ key: "My profile", value: "/Account/profile" },{ key: "Sign out", value: "/Account/Logout" }]`
 
 If the authentication provider has been set to "idam", then an array of links must be provided. If the user is logged out then a "Sign in" link should be provided with an appropriate url supplied - this should be the first in the list. If the user is logged in, then a number of links are supported, with a "Sign out" link normally last in the list, also a displayName must be supplied.
-
 
 ###### Header.auth.displayName
 
@@ -572,7 +569,7 @@ Reference the Global Nav bundle directly from the NICE CDN to render the Global 
 
 This renders with the default configuration. See [the configuration section below](#configuration) for how to pass options into the Global Nav.
 
-> Note: you can reference the non-minified version by removing *.min* from the filename.
+> Note: you can reference the non-minified version by removing _.min_ from the filename.
 
 Reference a specific version of the global nav by including the build number as a sub folder. This is useful for testing, or in case of a breaking change, for example:
 
@@ -593,12 +590,12 @@ Include empty elements with these ids on the page and Global Nav will render int
 
 ```html
 <body>
-	<div id="global-nav-header"></div>
-	<main>
-		<!-- Your page content here -->
-	</main>
-	<div id="global-nav-footer"></div>
-	<script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
+  <div id="global-nav-header"></div>
+  <main>
+    <!-- Your page content here -->
+  </main>
+  <div id="global-nav-footer"></div>
+  <script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
 </body>
 ```
 
@@ -612,7 +609,7 @@ Use the `global-nav-header` and `global-nav-footer` ids to target the Global Nav
 
 For example, if you're targeting the search form via jQuery, use the robust `$("#global-nav-header form[role='search']")` selector rather than `$("#global-nav-search-form")` as this is an inner implementation and might change.
 
-Try not to override Global Nav styles in your app: the Global Nav exists to give consistency across NICE digital services. If you *really* have to, then same rules as apply as above. For example in CSS:
+Try not to override Global Nav styles in your app: the Global Nav exists to give consistency across NICE digital services. If you _really_ have to, then same rules as apply as above. For example in CSS:
 
 ```css
 #global-nav-header {
@@ -639,30 +636,29 @@ Global Nav configuration is loaded from a global JavaScript variable on the wind
 
 ```js
 var global_nav_config = {
-		service: "guidance",
-		header: {
-			skipLinkId: "content-start",
-			cookie: true,
-			onNavigating: function(e) {
-				// Use e.href
-			},
-			auth: {
-				environment: "beta",
-				provider: "niceAccounts"
-			},
-			search: {
-				autocomplete: "/autocomplete?ajax=ajax",
-				url: "/search",
-				placeholder: "Search NICE…",
-				query: "\"diabetes in pregnancy\"",
-				onSearching: function(e) {
-					// Use e.query
-				}
-
-			}
-		},
-		footer: false
-	};
+  service: 'guidance',
+  header: {
+    skipLinkId: 'content-start',
+    cookie: true,
+    onNavigating: function (e) {
+      // Use e.href
+    },
+    auth: {
+      environment: 'beta',
+      provider: 'niceAccounts',
+    },
+    search: {
+      autocomplete: '/autocomplete?ajax=ajax',
+      url: '/search',
+      placeholder: 'Search NICE…',
+      query: '"diabetes in pregnancy"',
+      onSearching: function (e) {
+        // Use e.query
+      },
+    },
+  },
+  footer: false,
+};
 ```
 
 The following config options apply:

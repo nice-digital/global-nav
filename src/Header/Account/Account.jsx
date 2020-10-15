@@ -4,13 +4,13 @@ import classnames from "classnames";
 
 import {
 	checkIsLoggedIn as niceAccountsLoggedIn,
-	getDomainBaseUrl
+	getDomainBaseUrl,
 } from "./nice-accounts";
 import styles from "./Account.module.scss";
 import {
 	trackEvent,
 	defaultEventCategory,
-	headerClickEventAction
+	headerClickEventAction,
 } from "../../tracker";
 
 const escapeKeyCode = 27;
@@ -21,7 +21,7 @@ export default class Account extends Component {
 
 		this.state = {
 			isExpanded: false,
-			useIdAM: this.props.provider == Account.providers.idam
+			useIdAM: this.props.provider == Account.providers.idam,
 		};
 
 		this.handleMyAccountButtonClick = this.handleMyAccountButtonClick.bind(
@@ -34,10 +34,10 @@ export default class Account extends Component {
 	handleMyAccountButtonClick(e) {
 		const isKeyboardEvent = !e.pageX;
 		this.setState(
-			function(prevState) {
+			function (prevState) {
 				return { isExpanded: !prevState.isExpanded };
 			},
-			function() {
+			function () {
 				if (this.state.isExpanded && isKeyboardEvent) {
 					const accountMenu = document.getElementById("my-account");
 					accountMenu.setAttribute("tabIndex", -1);
@@ -51,7 +51,7 @@ export default class Account extends Component {
 		if (event.keyCode === escapeKeyCode) {
 			event.preventDefault();
 			this.setState({
-				isExpanded: false
+				isExpanded: false,
 			});
 			document.getElementById("my-account-button").focus();
 		}
@@ -78,7 +78,7 @@ export default class Account extends Component {
 				headerClickEventAction,
 				eventLabel,
 				null,
-				function() {
+				function () {
 					window.location.href = href;
 				}
 			);
@@ -87,7 +87,7 @@ export default class Account extends Component {
 
 	componentDidMount() {
 		const consultationsResponsesLink = {
-			"Consultation responses": "https://www.nice.org.uk/consultations/"
+			"Consultation responses": "https://www.nice.org.uk/consultations/",
 		};
 
 		if (this.state.useIdAM) {
@@ -98,7 +98,7 @@ export default class Account extends Component {
 			const { displayName } = this.props;
 			const isLoggedIn = !!displayName;
 
-			let links = this.props.links.reduce(function(links, link) {
+			let links = this.props.links.reduce(function (links, link) {
 				links[link.text] = link.url;
 				return links;
 			}, {});
@@ -109,7 +109,7 @@ export default class Account extends Component {
 
 			const convertedData = {
 				display_name: displayName,
-				links: links
+				links: links,
 			};
 
 			if (this.props.onLoginStatusChecked) {
@@ -119,7 +119,7 @@ export default class Account extends Component {
 			//NICE accounts
 			niceAccountsLoggedIn(this.props.environment)
 				.then(
-					function(data) {
+					function (data) {
 						if (this.props.onLoginStatusChecked) {
 							data.links = { ...consultationsResponsesLink, ...data.links };
 
@@ -128,7 +128,7 @@ export default class Account extends Component {
 					}.bind(this)
 				)
 				.catch(
-					function(e) {
+					function (e) {
 						console.warn("Couldn't load account data from NICE accounts", e);
 					}.bind(this)
 				);
@@ -169,7 +169,7 @@ export default class Account extends Component {
 				>
 					{accountsData.links &&
 						Object.keys(accountsData.links).map(
-							function(text, i) {
+							function (text, i) {
 								return (
 									<li key={i} role="presentation">
 										<a
@@ -205,7 +205,7 @@ export default class Account extends Component {
 
 Account.providers = {
 	idam: "idam",
-	niceAccounts: "niceAccounts"
+	niceAccounts: "niceAccounts",
 };
 
 Account.propTypes = {
@@ -214,23 +214,23 @@ Account.propTypes = {
 	accountsData: PropTypes.shape({
 		display_name: PropTypes.string,
 		thumbnail: PropTypes.string,
-		links: PropTypes.object
+		links: PropTypes.object,
 	}),
 	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
 	provider: PropTypes.oneOf([
 		Account.providers.niceAccounts,
-		Account.providers.idam
+		Account.providers.idam,
 	]),
 	links: PropTypes.arrayOf(
 		PropTypes.shape({
 			text: PropTypes.string.isRequired,
-			url: PropTypes.string.isRequired
+			url: PropTypes.string.isRequired,
 		})
 	),
-	displayName: PropTypes.string
+	displayName: PropTypes.string,
 };
 
 Account.defaultProps = {
 	environment: "live",
-	provider: "niceAccounts"
+	provider: "niceAccounts",
 };

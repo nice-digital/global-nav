@@ -23,7 +23,7 @@ export function whitespaceTokenizer(str) {
 			if (!currentToken) {
 				currentToken = {
 					originalIndex: index,
-					str: ""
+					str: "",
 				};
 			}
 			currentToken.str += char;
@@ -53,17 +53,17 @@ export function whitespaceTokenizer(str) {
  */
 export function normalizeTokens(tokens) {
 	return tokens
-		.map(function(token) {
+		.map(function (token) {
 			return {
 				originalIndex: token.originalIndex,
 				originalStr: token.str,
 				str: token.str
 					.toLowerCase()
 					// Trim non-alphanumeric characters
-					.replace(/^[^a-z\d]*|[^a-z\d]*$/gi, "")
+					.replace(/^[^a-z\d]*|[^a-z\d]*$/gi, ""),
 			};
 		})
-		.filter(function(token) {
+		.filter(function (token) {
 			return !!token.str;
 		});
 }

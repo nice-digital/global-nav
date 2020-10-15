@@ -20,8 +20,13 @@
 		<!--[if lt IE 9]>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<![endif]-->
+
+		<!--[if lt IE 9]>
+			<script src="/<%= htmlWebpackPlugin.options.excludeChunks[0] %>.js"></script>
+		<![endif]-->
 	</head>
 	<body>
+		<div id="global-nav-header"></div>
 		<main class="container">
 			<div class="page-header mt--e">
 				<h1 class="page-header__heading">Global navigation test</h1>
@@ -31,37 +36,19 @@
 			</div>
 			<p>The following example pages are available for testing:</p>
 			<ul>
-				<% for (var example in htmlWebpackPlugin.options.examples) { %>
+				<% for (var example in examples) { %>
 				<li>
-					<a
-						href="<%= htmlWebpackPlugin.options.examples[example].filename %>.html"
-					>
-						<%= htmlWebpackPlugin.options.examples[example].title %>
+					<a href="<%= examples[example].filename %>.html">
+						<%= examples[example].title %>
 					</a>
 				</li>
 				<% } %>
 			</ul>
-			<h2>Cookie</h2>
-			<p>
-				Use the following button to clear the
-				<em>seen_cookie_message</em> message:
-			</p>
-			<button
-				type="button"
-				onclick="document.cookie = 'seen_cookie_message=; expires=Thu, 01 Jan 1970 00:00:00 GMT;domain=' + (window.location.hostname.indexOf('nice.org.uk') > 0 ? 'nice.org.uk' : window.location.hostname)"
-			>
-				Delete cookie
-			</button>
 		</main>
-		<div id="footer"></div>
+		<script src="//cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"></script>
+		<div id="global-nav-footer"></div>
 		<script type="text/javascript">
-			var global_nav_config = <%= JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
+			var global_nav_config = <%= JSON.stringify(global_nav_config) %>;
 		</script>
-		<!--[if lt IE 9]>
-			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %> <% if
-			((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
-			<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-			<% } %> <% } %>
-		<![endif]-->
 	</body>
 </html>

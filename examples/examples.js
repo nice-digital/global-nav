@@ -3,7 +3,7 @@
 
 const blankConfig = {
 	filename: "blank",
-	title: "Blank"
+	title: "Blank",
 };
 
 const pathwaysConfig = {
@@ -42,7 +42,7 @@ const pathwaysConfig = {
 				}
 			}
 		}
-	}`
+	}`,
 };
 
 const guidanceConfig = {
@@ -52,13 +52,13 @@ const guidanceConfig = {
 		service: "guidance",
 		header: {
 			auth: {
-				environment: "beta"
+				environment: "beta",
 			},
 			search: {
-				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
-			}
-		}
-	}
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax",
+			},
+		},
+	},
 };
 
 const standardsConfig = {
@@ -68,13 +68,13 @@ const standardsConfig = {
 		service: "standards",
 		header: {
 			auth: {
-				environment: "test"
+				environment: "test",
 			},
 			search: {
-				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
-			}
-		}
-	}
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax",
+			},
+		},
+	},
 };
 
 const evidenceHomeConfig = {
@@ -84,9 +84,9 @@ const evidenceHomeConfig = {
 	global_nav_config: {
 		service: "evidence",
 		header: {
-			search: false
-		}
-	}
+			search: false,
+		},
+	},
 };
 
 const evidenceSerpConfig = {
@@ -99,10 +99,10 @@ const evidenceSerpConfig = {
 			search: {
 				placeholder: "Search evidence…",
 				query: "diabetes",
-				autocomplete: "/evidence/autocomplete/?ajax=ajax"
-			}
-		}
-	}
+				autocomplete: "/evidence/autocomplete/?ajax=ajax",
+			},
+		},
+	},
 };
 
 const bnfConfig = {
@@ -119,7 +119,7 @@ const bnfConfig = {
 				}
 			}
 		}
-	}`
+	}`,
 };
 
 const bnfcConfig = {
@@ -131,10 +131,10 @@ const bnfcConfig = {
 			search: {
 				placeholder: "Search BNFC…",
 				autocomplete: "/bnfc/typeahead/?ajax=ajax",
-				onSearching: "onSearching"
-			}
-		}
-	}
+				onSearching: "onSearching",
+			},
+		},
+	},
 };
 
 const cksConfig = {
@@ -146,10 +146,10 @@ const cksConfig = {
 			search: {
 				placeholder: "Search CKS…",
 				autocomplete: "topics",
-				onSearching: "onSearching"
-			}
-		}
-	}
+				onSearching: "onSearching",
+			},
+		},
+	},
 };
 
 const journalsConfig = {
@@ -159,10 +159,10 @@ const journalsConfig = {
 		service: "journals",
 		header: {
 			search: {
-				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
-			}
-		}
-	}
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax",
+			},
+		},
+	},
 };
 
 const identityAdminLoggedOutConfig = {
@@ -172,13 +172,13 @@ const identityAdminLoggedOutConfig = {
 		header: {
 			auth: {
 				provider: "idam",
-				links: [{ text: "Sign in", url: "/Account/Login" }]
+				links: [{ text: "Sign in", url: "/Account/Login" }],
 			},
 			search: {
-				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
-			}
-		}
-	}
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax",
+			},
+		},
+	},
 };
 
 const identityAdminLoggedInConfig = {
@@ -190,15 +190,15 @@ const identityAdminLoggedInConfig = {
 				provider: "idam",
 				links: [
 					{ text: "My profile", url: "/Account/todo" },
-					{ text: "Sign out", url: "/Account/Logout" }
+					{ text: "Sign out", url: "/Account/Logout" },
 				],
-				displayName: "John Holland"
+				displayName: "John Holland",
 			},
 			search: {
-				autocomplete: "/niceorg/autocomplete/?ajax=ajax"
-			}
-		}
-	}
+				autocomplete: "/niceorg/autocomplete/?ajax=ajax",
+			},
+		},
+	},
 };
 
 const noAuthNoSearchConfig = {
@@ -207,9 +207,9 @@ const noAuthNoSearchConfig = {
 	global_nav_config: {
 		header: {
 			auth: false,
-			search: false
-		}
-	}
+			search: false,
+		},
+	},
 };
 
 module.exports = [
@@ -225,5 +225,5 @@ module.exports = [
 	journalsConfig,
 	identityAdminLoggedOutConfig,
 	identityAdminLoggedInConfig,
-	noAuthNoSearchConfig
+	noAuthNoSearchConfig,
 ];

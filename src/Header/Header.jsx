@@ -6,7 +6,7 @@ import LogoIcon from "@nice-digital/icons/lib/LogoFull";
 import {
 	defaultEventCategory,
 	headerClickEventAction,
-	trackEvent
+	trackEvent,
 } from "./../tracker";
 import OldIEMessage from "./OldIEMessage";
 import CoronaMessage from "./CoronaMessage";
@@ -25,7 +25,7 @@ export class Header extends Component {
 		this.state = {
 			isExpanded: false,
 			isLoggedIn: false,
-			accountsData: null
+			accountsData: null,
 		};
 
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
@@ -49,8 +49,8 @@ export class Header extends Component {
 	handleMobileMenuBtnClick() {
 		trackEvent(defaultEventCategory, headerClickEventAction, "Menu");
 
-		this.setState(prevState => ({
-			isExpanded: !prevState.isExpanded
+		this.setState((prevState) => ({
+			isExpanded: !prevState.isExpanded,
 		}));
 	}
 
@@ -64,7 +64,7 @@ export class Header extends Component {
 			headerClickEventAction,
 			"Logo",
 			null,
-			function() {
+			function () {
 				window.location.href = href;
 			}
 		);
@@ -158,13 +158,13 @@ Header.propTypes = {
 	cookie: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 Header.defaultProps = {
 	search: {},
 	cookie: {},
-	skipLinkId: "content-start"
+	skipLinkId: "content-start",
 };
 
 export default hot(Header);

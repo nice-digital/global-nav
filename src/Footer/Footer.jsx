@@ -37,7 +37,7 @@ export class Footer extends Component {
 }
 
 Footer.propTypes = {
-	service: PropTypes.string
+	service: PropTypes.string,
 };
 
 export default hot(Footer);

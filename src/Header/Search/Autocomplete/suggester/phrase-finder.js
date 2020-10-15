@@ -11,7 +11,7 @@ export function findPhrase(queryTokens, suggestionTokens) {
 
 		const isPhraseMatch =
 			nextSuggestionTokens.length === queryTokens.length &&
-			nextSuggestionTokens.every(function(token, i) {
+			nextSuggestionTokens.every(function (token, i) {
 				// Only use partial matching for the last query token
 				return i === queryTokens.length - 1
 					? token.str.indexOf(queryTokens[i].str) === 0
@@ -21,7 +21,7 @@ export function findPhrase(queryTokens, suggestionTokens) {
 		if (isPhraseMatch)
 			return {
 				queryTokens: queryTokens,
-				suggestionTokens: nextSuggestionTokens
+				suggestionTokens: nextSuggestionTokens,
 			};
 	}
 

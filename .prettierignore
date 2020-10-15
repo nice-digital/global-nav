@@ -1,1 +1,9 @@
 package.json
+
+examples/assets
+
+dist
+lib
+coverage
+bin
+obj

@@ -2,7 +2,7 @@
 
 // https://raw.githubusercontent.com/Financial-Times/polyfill-library/master/polyfills/Event/polyfill.js
 
-(function() {
+(function () {
 	var unlistenableWindowEvents = {
 		click: 1,
 		dblclick: 1,
@@ -18,7 +18,7 @@
 		mouseout: 1,
 		storage: 1,
 		storagecommit: 1,
-		textinput: 1
+		textinput: 1,
 	};
 
 	// This polyfill depends on availability of `document` so will not run in a worker
@@ -87,7 +87,7 @@
 			configurable: false,
 			enumerable: false,
 			writable: true,
-			value: existingProto
+			value: existingProto,
 		});
 	}
 
@@ -110,7 +110,7 @@
 			}
 
 			if (!element._events[type]) {
-				element._events[type] = function(event) {
+				element._events[type] = function (event) {
 					var list = element._events[event.type].list,
 						events = list.slice(),
 						index = -1,
@@ -210,7 +210,7 @@
 				if (!event.bubbles) {
 					event.cancelBubble = true;
 
-					var cancelBubbleEvent = function(event) {
+					var cancelBubbleEvent = function (event) {
 						event.cancelBubble = true;
 
 						(element || window).detachEvent("on" + type, cancelBubbleEvent);
@@ -246,11 +246,11 @@
 		};
 
 		// Add the DOMContentLoaded Event
-		document.attachEvent("onreadystatechange", function() {
+		document.attachEvent("onreadystatechange", function () {
 			if (document.readyState === "complete") {
 				document.dispatchEvent(
 					new Event("DOMContentLoaded", {
-						bubbles: true
+						bubbles: true,
 					})
 				);
 			}

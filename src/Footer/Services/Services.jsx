@@ -12,7 +12,7 @@ export default class Services extends Component {
 			<nav className={styles.wrapper} aria-label="Our services">
 				<ul className={styles.list}>
 					{links.map(
-						function({ href, id, text, abbreviation, title }) {
+						function ({ href, id, text, abbreviation, title }) {
 							return (
 								<li key={id}>
 									<TrackedLink
@@ -34,5 +34,5 @@ export default class Services extends Component {
 }
 
 Services.propTypes = {
-	service: PropTypes.string
+	service: PropTypes.string,
 };

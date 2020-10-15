@@ -7,7 +7,7 @@ import {
 	eventName,
 	defaultEventCategory,
 	headerClickEventAction,
-	eventTimeout
+	eventTimeout,
 } from "../../tracker";
 
 const escapeKeyCode = 27;
@@ -16,17 +16,17 @@ jest.mock("./nice-accounts", () => ({
 	checkIsLoggedIn: jest.fn(() =>
 		Promise.resolve({
 			links: {
-				test: true
+				test: true,
 			},
-			test: true
+			test: true,
 		})
 	),
-	getDomainBaseUrl: jest.requireActual("./nice-accounts.js").getDomainBaseUrl
+	getDomainBaseUrl: jest.requireActual("./nice-accounts.js").getDomainBaseUrl,
 }));
 
 const idamProps = {
 	provider: "idam",
-	links: [{ text: "sign in", url: "/signin" }]
+	links: [{ text: "sign in", url: "/signin" }],
 };
 
 describe("Account", () => {
@@ -34,8 +34,8 @@ describe("Account", () => {
 		display_name: "Joe Bloggs",
 		links: {
 			"Joe Bloggs": "https://accounts.nice.org.uk/users/12345/editprofile",
-			"Sign out": "https://accounts.nice.org.uk/signout"
-		}
+			"Sign out": "https://accounts.nice.org.uk/signout",
+		},
 	};
 
 	afterEach(() => {
@@ -82,7 +82,7 @@ describe("Account", () => {
 		);
 	});
 
-	it("Calls onLoginStatusChecked callback prop when mounted", done => {
+	it("Calls onLoginStatusChecked callback prop when mounted", (done) => {
 		const onLoginStatusChecked = jest.fn();
 
 		shallow(
@@ -93,9 +93,9 @@ describe("Account", () => {
 			expect(onLoginStatusChecked).toHaveBeenCalledWith({
 				links: {
 					"Consultation responses": "https://www.nice.org.uk/consultations/",
-					test: true
+					test: true,
 				},
-				test: true
+				test: true,
 			});
 			done();
 		});
@@ -206,8 +206,8 @@ describe("Account", () => {
 			wrapper.find(`a[children="${linkText}"]`).simulate("click", {
 				preventDefault: preventDefault,
 				currentTarget: {
-					getAttribute: () => href
-				}
+					getAttribute: () => href,
+				},
 			});
 
 			expect(window.dataLayer).toEqual([
@@ -217,8 +217,8 @@ describe("Account", () => {
 					eventAction: headerClickEventAction,
 					eventLabel: eventLabel,
 					eventCallback: expect.any(Function),
-					eventTimeout: eventTimeout
-				}
+					eventTimeout: eventTimeout,
+				},
 			]);
 
 			expect(preventDefault).toHaveBeenCalled();
@@ -234,8 +234,8 @@ describe("Account", () => {
 					accountsData={{
 						display_name: "Joe Bloggs",
 						links: {
-							Admin: "https://accounts.nice.org.uk/admin"
-						}
+							Admin: "https://accounts.nice.org.uk/admin",
+						},
 					}}
 				/>
 			);
@@ -245,8 +245,8 @@ describe("Account", () => {
 			wrapper.find(`a[children="Admin"]`).simulate("click", {
 				preventDefault: preventDefault,
 				currentTarget: {
-					getAttribute: () => "https://accounts.nice.org.uk/admin"
-				}
+					getAttribute: () => "https://accounts.nice.org.uk/admin",
+				},
 			});
 
 			expect(preventDefault).not.toHaveBeenCalled();

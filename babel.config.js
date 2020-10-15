@@ -1,4 +1,4 @@
-module.exports = function(api) {
+module.exports = function (api) {
 	api.cache.using(() => process.env.NODE_ENV);
 
 	return {
@@ -9,10 +9,10 @@ module.exports = function(api) {
 					spec: true,
 					useBuiltIns: false,
 					loose: true,
-					modules: "commonjs"
-				}
+					modules: "commonjs",
+				},
 			],
-			"@babel/preset-react"
+			"@babel/preset-react",
 		],
 		plugins: [
 			// Plugins to support ES3 syntax for IE8. These can be removed when we drop IE8 support.
@@ -20,7 +20,7 @@ module.exports = function(api) {
 			"@babel/plugin-transform-property-literals",
 			"@babel/plugin-transform-reserved-words",
 			// Including helpers from plugin-transform-runtime saves ~3Kb from minified bundle size
-			"@babel/plugin-transform-runtime"
-		]
+			"@babel/plugin-transform-runtime",
+		],
 	};
 };

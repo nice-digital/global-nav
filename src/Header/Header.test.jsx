@@ -7,13 +7,13 @@ import {
 	eventName,
 	defaultEventCategory,
 	headerClickEventAction,
-	eventTimeout
+	eventTimeout,
 } from "./../tracker";
 
 describe("Header", () => {
 	const defaultProps = {
 		service: null,
-		enabled: null
+		enabled: null,
 	};
 
 	beforeEach(() => {
@@ -69,8 +69,8 @@ describe("Header", () => {
 					event: eventName,
 					eventCategory: defaultEventCategory,
 					eventAction: headerClickEventAction,
-					eventLabel: "Menu"
-				}
+					eventLabel: "Menu",
+				},
 			]);
 		});
 	});
@@ -116,7 +116,7 @@ describe("Header", () => {
 			const searchOptions = {
 				url: "/test",
 				placeholder: "Test placeholder",
-				query: ""
+				query: "",
 			};
 			const wrapper = shallow(
 				<Header {...defaultProps} search={searchOptions} />
@@ -158,8 +158,8 @@ describe("Header", () => {
 				preventDefault: () => {},
 				currentTarget: {
 					// Mock e.currentTarget.getAttribute("href")
-					getAttribute: () => ""
-				}
+					getAttribute: () => "",
+				},
 			});
 
 			expect(window.dataLayer).toEqual([
@@ -169,8 +169,8 @@ describe("Header", () => {
 					eventAction: headerClickEventAction,
 					eventLabel: "Logo",
 					eventCallback: expect.any(Function),
-					eventTimeout: eventTimeout
-				}
+					eventTimeout: eventTimeout,
+				},
 			]);
 		});
 
@@ -183,8 +183,8 @@ describe("Header", () => {
 				preventDefault: preventDefault,
 				currentTarget: {
 					// Mock e.currentTarget.getAttribute("href")
-					getAttribute: () => "http://test-url/"
-				}
+					getAttribute: () => "http://test-url/",
+				},
 			});
 
 			expect(preventDefault).toHaveBeenCalled();

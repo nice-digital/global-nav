@@ -5,6 +5,6 @@
 //
 //	import { hot } from "react-hot-loader/root";
 // 	export default hot(Header);
-export const hot = function(component) {
+export const hot = function (component) {
 	return component;
 };

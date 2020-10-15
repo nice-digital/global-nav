@@ -61,7 +61,7 @@ describe("Autocomplete", () => {
 
 			const option = {
 				Title: "diabetes type 1",
-				Link: "https://www.nice.org.uk/diabetes1.html"
+				Link: "https://www.nice.org.uk/diabetes1.html",
 			};
 
 			const wrapper = mount(
@@ -69,11 +69,7 @@ describe("Autocomplete", () => {
 				{ attachTo: appContainer }
 			);
 
-			wrapper
-				.find("#autocomplete")
-				.first()
-				.props()
-				.onConfirm(option);
+			wrapper.find("#autocomplete").first().props().onConfirm(option);
 
 			expect(window.dataLayer).toEqual([
 				{
@@ -82,8 +78,8 @@ describe("Autocomplete", () => {
 					eventAction: "Typeahead select",
 					eventLabel: option.Title + " | diab",
 					eventCallback: expect.any(Function),
-					eventTimeout: eventTimeout
-				}
+					eventTimeout: eventTimeout,
+				},
 			]);
 		});
 
@@ -95,7 +91,7 @@ describe("Autocomplete", () => {
 			const option = {
 				Title: "diabetes type 1",
 				TypeAheadType: "keyword",
-				Link: "https://www.nice.org.uk/diabetes1.html"
+				Link: "https://www.nice.org.uk/diabetes1.html",
 			};
 
 			const wrapper = mount(
@@ -103,11 +99,7 @@ describe("Autocomplete", () => {
 				{ attachTo: appContainer }
 			);
 
-			wrapper
-				.find("#autocomplete")
-				.first()
-				.props()
-				.onConfirm(option);
+			wrapper.find("#autocomplete").first().props().onConfirm(option);
 
 			expect(window.dataLayer).toEqual([
 				{
@@ -116,8 +108,8 @@ describe("Autocomplete", () => {
 					eventAction: "Selected: keyword",
 					eventLabel: option.Title + " | diab",
 					eventCallback: expect.any(Function),
-					eventTimeout: eventTimeout
-				}
+					eventTimeout: eventTimeout,
+				},
 			]);
 		});
 
@@ -128,7 +120,7 @@ describe("Autocomplete", () => {
 
 			const option = {
 				Title: "diabetes type 1",
-				Link: "https://www.nice.org.uk/diabetes1.html"
+				Link: "https://www.nice.org.uk/diabetes1.html",
 			};
 
 			const wrapper = mount(
@@ -136,11 +128,7 @@ describe("Autocomplete", () => {
 				{ attachTo: appContainer }
 			);
 
-			wrapper
-				.find("#autocomplete")
-				.first()
-				.props()
-				.onConfirm(option);
+			wrapper.find("#autocomplete").first().props().onConfirm(option);
 
 			window.dataLayer[0].eventCallback();
 			expect(window.location.href).toEqual(
@@ -155,7 +143,7 @@ describe("Autocomplete", () => {
 
 			const option = {
 				Title: "diabetes type 1",
-				Link: "/diabetes1.html"
+				Link: "/diabetes1.html",
 			};
 
 			const onNavigating = jest.fn();
@@ -170,22 +158,17 @@ describe("Autocomplete", () => {
 				{ attachTo: appContainer }
 			);
 
-			wrapper
-				.find("#autocomplete")
-				.first()
-				.props()
-				.onConfirm(option);
+			wrapper.find("#autocomplete").first().props().onConfirm(option);
 
 			window.dataLayer[0].eventCallback();
 			expect(onNavigating).toHaveBeenCalledWith({
 				href: "/diabetes1.html",
-				element: expect.anything()
+				element: expect.anything(),
 			});
 		});
 
 		it("should not load suggestions within the reate limit threshold", () => {
 			jest.useFakeTimers();
-			const callback = () => {};
 			const wrapper = shallow(
 				<Autocomplete {...defaultProps} source="/url" query="test" />
 			);

@@ -1,6 +1,6 @@
 // From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 if (!Object.keys) {
-	Object.keys = (function() {
+	Object.keys = (function () {
 		"use strict";
 		var hasOwnProperty = Object.prototype.hasOwnProperty,
 			hasDontEnumBug = !{ toString: null }.propertyIsEnumerable("toString"),
@@ -11,11 +11,11 @@ if (!Object.keys) {
 				"hasOwnProperty",
 				"isPrototypeOf",
 				"propertyIsEnumerable",
-				"constructor"
+				"constructor",
 			],
 			dontEnumsLength = dontEnums.length;
 
-		return function(obj) {
+		return function (obj) {
 			if (
 				typeof obj !== "function" &&
 				(typeof obj !== "object" || obj === null)

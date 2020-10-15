@@ -20,7 +20,7 @@ describe("CookieBanner", () => {
 
 	it("Doesn't render by default/on the server", () => {
 		const wrapper = shallow(<CookieBanner />, {
-			disableLifecycleMethods: true
+			disableLifecycleMethods: true,
 		});
 
 		expect(wrapper.isEmptyRender()).toBe(true);
@@ -78,10 +78,7 @@ describe("CookieBanner", () => {
 
 		wrapper.update();
 
-		wrapper
-			.find("button")
-			.at(0)
-			.simulate("click");
+		wrapper.find("button").at(0).simulate("click");
 
 		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
@@ -91,10 +88,7 @@ describe("CookieBanner", () => {
 
 		wrapper.update();
 
-		wrapper
-			.find("button")
-			.at(0)
-			.simulate("click");
+		wrapper.find("button").at(0).simulate("click");
 
 		expect(wrapper.isEmptyRender()).toBe(true);
 	});
@@ -105,17 +99,14 @@ describe("CookieBanner", () => {
 		Object.defineProperty(document, "cookie", {
 			get: jest.fn().mockImplementation(() => null),
 			set: cookieSet,
-			configurable: true
+			configurable: true,
 		});
 
 		const wrapper = shallow(<CookieBanner />);
 
 		wrapper.update();
 
-		wrapper
-			.find("button")
-			.at(0)
-			.simulate("click");
+		wrapper.find("button").at(0).simulate("click");
 
 		expect(cookieSet).toHaveBeenCalledTimes(2);
 
@@ -144,17 +135,14 @@ describe("CookieBanner", () => {
 		Object.defineProperty(document, "cookie", {
 			get: jest.fn().mockImplementation(() => null),
 			set: cookieSet,
-			configurable: true
+			configurable: true,
 		});
 
 		const wrapper = shallow(<CookieBanner />);
 
 		wrapper.update();
 
-		wrapper
-			.find("button")
-			.at(0)
-			.simulate("click");
+		wrapper.find("button").at(0).simulate("click");
 
 		const date = new Date();
 		date.setDate(date.getDate() + 365);
@@ -171,10 +159,7 @@ describe("CookieBanner", () => {
 		const onResize = jest.fn();
 		const wrapper = shallow(<CookieBanner onResize={onResize} />);
 
-		wrapper
-			.find("button")
-			.at(0)
-			.simulate("click");
+		wrapper.find("button").at(0).simulate("click");
 
 		expect(onResize).toHaveBeenCalled();
 	});
@@ -185,10 +170,7 @@ describe("CookieBanner", () => {
 
 		const wrapper = shallow(<CookieBanner onResize="onResizeHandler" />);
 
-		wrapper
-			.find("button")
-			.at(0)
-			.simulate("click");
+		wrapper.find("button").at(0).simulate("click");
 
 		expect(onResize).toHaveBeenCalled();
 	});

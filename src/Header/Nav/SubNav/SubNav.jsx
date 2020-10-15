@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import cksIcon from "./images/cks.svg";
 
 const images = {
-	cks: cksIcon
+	cks: cksIcon,
 };
 
 import {
 	trackEvent,
 	defaultEventCategory,
-	headerClickEventAction
+	headerClickEventAction,
 } from "../../../tracker";
 
 import styles from "./SubNav.module.scss";
@@ -38,7 +38,7 @@ export class SubNav extends Component {
 			headerClickEventAction,
 			eventLabel,
 			null,
-			function() {
+			function () {
 				const { onNavigating } = this.props;
 
 				const onNavigatingCallback =
@@ -50,7 +50,7 @@ export class SubNav extends Component {
 				if (typeof onNavigatingCallback === "function") {
 					onNavigatingCallback({
 						element: currentTarget,
-						href: href
+						href: href,
 					});
 				} else window.location.href = href;
 			}.bind(this)
@@ -66,7 +66,7 @@ export class SubNav extends Component {
 					role="menu"
 				>
 					{this.props.links.map(
-						function(subLink, i) {
+						function (subLink, i) {
 							let ariaCurrent = null;
 
 							if (typeof window !== "undefined") {
@@ -117,8 +117,8 @@ SubNav.propTypes = {
 	links: PropTypes.arrayOf(
 		PropTypes.shape({
 			href: PropTypes.string.isRequired,
-			text: PropTypes.string.isRequired
+			text: PropTypes.string.isRequired,
 		})
 	),
-	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };

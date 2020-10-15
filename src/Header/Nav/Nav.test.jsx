@@ -8,7 +8,7 @@ import {
 	eventName,
 	defaultEventCategory,
 	headerClickEventAction,
-	eventTimeout
+	eventTimeout,
 } from "../../tracker";
 
 jest.mock("./../../services.json", () => require("./__mocks__/services.json"));
@@ -17,7 +17,7 @@ describe("Nav", () => {
 	const defaultProps = {
 		isExpanded: false,
 		accountsData: null,
-		service: null
+		service: null,
 	};
 
 	it("Renders without crashing", () => {
@@ -32,7 +32,7 @@ describe("Nav", () => {
 
 	it("Matches snapshot with single accounts link", () => {
 		const accountsLinks = {
-			"Sign in": "https://accounts.nice.org.uk/"
+			"Sign in": "https://accounts.nice.org.uk/",
 		};
 		const wrapper = shallow(
 			<Nav {...defaultProps} accountsLinks={accountsLinks} />
@@ -43,7 +43,7 @@ describe("Nav", () => {
 	it("Matches snapshot with multiple accounts links", () => {
 		const accountsLinks = {
 			"Joe Bloggs": "https://accounts.nice.org.uk/profile",
-			"Sign out": "https://accounts.nice.org.uk/signout"
+			"Sign out": "https://accounts.nice.org.uk/signout",
 		};
 		const wrapper = shallow(
 			<Nav {...defaultProps} accountsLinks={accountsLinks} />
@@ -58,12 +58,7 @@ describe("Nav", () => {
 
 	it("Adds aria-current=true attribute for selected service", () => {
 		const wrapper = shallow(<Nav {...defaultProps} service={services[1].id} />);
-		expect(
-			wrapper
-				.find("a")
-				.at(1)
-				.props()["aria-current"]
-		).toEqual(true);
+		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual(true);
 	});
 
 	it("Adds aria-current=page attribute for selected service when matches current URL", () => {
@@ -72,12 +67,7 @@ describe("Nav", () => {
 		global.window.location = new URL(services[1].href);
 
 		const wrapper = shallow(<Nav {...defaultProps} service={services[1].id} />);
-		expect(
-			wrapper
-				.find("a")
-				.at(1)
-				.props()["aria-current"]
-		).toEqual("page");
+		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
 
 		// Tidy up
 		global.window.location = oldLocation;
@@ -108,8 +98,8 @@ describe("Nav", () => {
 				currentTarget: {
 					// Mock e.currentTarget.getAttribute("href")
 					getAttribute: () => "",
-					textContent: "First link"
-				}
+					textContent: "First link",
+				},
 			});
 
 			expect(window.dataLayer).toEqual([
@@ -119,8 +109,8 @@ describe("Nav", () => {
 					eventAction: headerClickEventAction,
 					eventLabel: "First link",
 					eventCallback: expect.any(Function),
-					eventTimeout: eventTimeout
-				}
+					eventTimeout: eventTimeout,
+				},
 			]);
 		});
 
@@ -133,8 +123,8 @@ describe("Nav", () => {
 				preventDefault: preventDefault,
 				currentTarget: {
 					// Mock e.currentTarget.getAttribute("href")
-					getAttribute: () => "https://url1/"
-				}
+					getAttribute: () => "https://url1/",
+				},
 			});
 
 			expect(preventDefault).toHaveBeenCalled();
@@ -147,7 +137,7 @@ describe("Nav", () => {
 			const accountsLinks = {
 				"Joe Bloggs": "https://accounts.nice.org.uk/users/12345/editprofile",
 				"Sign out": "https://accounts.nice.org.uk/signout",
-				Admin: "https://accounts.nice.org.uk/admin"
+				Admin: "https://accounts.nice.org.uk/admin",
 			};
 
 			it("should track edit profile link", () => {
@@ -170,8 +160,8 @@ describe("Nav", () => {
 							// Mock e.currentTarget.getAttribute("href")
 							getAttribute: () =>
 								"https://accounts.nice.org.uk/users/12345/editprofile",
-							textContent: "Joe Bloggs"
-						}
+							textContent: "Joe Bloggs",
+						},
 					});
 
 				expect(preventDefault).toHaveBeenCalled();
@@ -182,8 +172,8 @@ describe("Nav", () => {
 						eventAction: headerClickEventAction,
 						eventLabel: "Edit profile",
 						eventCallback: expect.any(Function),
-						eventTimeout: eventTimeout
-					}
+						eventTimeout: eventTimeout,
+					},
 				]);
 			});
 
@@ -204,8 +194,8 @@ describe("Nav", () => {
 						currentTarget: {
 							// Mock e.currentTarget.getAttribute("href")
 							getAttribute: () => "https://accounts.nice.org.uk/signout",
-							textContent: "Some log out text"
-						}
+							textContent: "Some log out text",
+						},
 					});
 
 				expect(preventDefault).toHaveBeenCalled();
@@ -216,8 +206,8 @@ describe("Nav", () => {
 						eventAction: headerClickEventAction,
 						eventLabel: "Sign out",
 						eventCallback: expect.any(Function),
-						eventTimeout: eventTimeout
-					}
+						eventTimeout: eventTimeout,
+					},
 				]);
 			});
 
@@ -238,8 +228,8 @@ describe("Nav", () => {
 						currentTarget: {
 							// Mock e.currentTarget.getAttribute("href")
 							getAttribute: () => "https://accounts.nice.org.uk/admin",
-							textContent: "Admin"
-						}
+							textContent: "Admin",
+						},
 					});
 
 				expect(preventDefault).not.toHaveBeenCalled();

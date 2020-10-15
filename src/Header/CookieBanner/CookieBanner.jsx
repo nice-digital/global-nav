@@ -16,7 +16,7 @@ export default class CookieBanner extends Component {
 		this.state = {
 			hasSeenPreviousVersion: false,
 			isClosed: true,
-			canUseDOM: false
+			canUseDOM: false,
 		};
 
 		this.handleClick = this.handleClick.bind(this);
@@ -24,7 +24,7 @@ export default class CookieBanner extends Component {
 
 	componentDidMount() {
 		this.setState({
-			canUseDOM: true
+			canUseDOM: true,
 		});
 
 		const cookieValue = Cookies.getJSON(CookieName);
@@ -34,14 +34,14 @@ export default class CookieBanner extends Component {
 			Cookies.remove(CookieName);
 			this.setState({
 				hasSeenPreviousVersion: false,
-				isClosed: false // Hide by default on the assumption that if JS doesn't work then we won't be setting cookies anyway
+				isClosed: false, // Hide by default on the assumption that if JS doesn't work then we won't be setting cookies anyway
 			});
 		} else {
 			const seenVersion = cookieValue;
 
 			this.setState({
 				hasSeenPreviousVersion: seenVersion < CookieMessageVersion,
-				isClosed: seenVersion === CookieMessageVersion
+				isClosed: seenVersion === CookieMessageVersion,
 			});
 		}
 	}
@@ -53,7 +53,7 @@ export default class CookieBanner extends Component {
 	handleClick() {
 		const cookieOptions = {
 			secure: false,
-			expires: 365 // In days
+			expires: 365, // In days
 		};
 
 		if (window.location.hostname !== "localhost") {
@@ -63,7 +63,7 @@ export default class CookieBanner extends Component {
 		Cookies.set(CookieName, CookieMessageVersion, cookieOptions);
 
 		this.setState({
-			isClosed: true
+			isClosed: true,
 		});
 
 		const { onResize } = this.props;
@@ -116,5 +116,5 @@ export default class CookieBanner extends Component {
 }
 
 CookieBanner.propTypes = {
-	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
