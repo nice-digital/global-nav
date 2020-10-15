@@ -67,6 +67,7 @@
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
 	- [Deployments](#deployments)
+	- [Upgrading to v2](#upgrading-to-v2)
 
 <!-- END doctoc -->
 </details>
@@ -728,3 +729,7 @@ dotnet pack NICE.GlobalNav.CDN.csproj -o publish /p:Version=1.2.3-r1a2b3c
 Where the version number can be any valid [SemVer build number](https://octopus.com/blog/semver2) compatible with Octopus Deploy. Note: this version number will be the build number when TeamCity creates this build artifact.
 
 > Note: you'll need the DotNet Core SDK installed. We don't use NuGet.exe to build so we can run on both Windows and Linux
+
+## Upgrading to v2
+
+V2 involved updating a lot of dependencies. Mostly this was internal implementation details. However, the one external facing change was the build command changing from `npm run build -- --env.version=1.2.3` to `npm run build -- --env version=1.2.3`. Notice the space instead of the dot. This is a result of the `--env` parameter in webpack 4.
