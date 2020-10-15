@@ -182,7 +182,7 @@ Using SCSS allows us to use mixins, functions and variables from the NICE Design
 
 **TL;DR;** to run the project locally, do the following:
 
-- install [Node 6+](https://nodejs.org/en/download/) or latest LTS version
+- install [Node 10+](https://nodejs.org/en/download/) or latest LTS version
 - run `npm i` on the command line to install dependencies
 - run `npm start` on the command line
 - navigate to http://localhost:8080/ in a browser.
@@ -230,7 +230,9 @@ npm run-script test:unit -- -t aria
 
 #### Linting
 
-- `npm run lint` Lists both JavaScript and SCSS
+- `npm run lint` Lints both JavaScript and SCSS
+- `npm run prettier` Checks files for Prettier code style
+- `npm run prettier:fix` Fixes Prettier code style issues
 - `npm run lint:js` Lints just JavaScript files
 - `npm run lint:js:fix` Fixes linting issues automatically in JavaScript files
 - `npm run lint:scss` Lints just SCSS files
