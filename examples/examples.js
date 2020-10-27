@@ -6,6 +6,12 @@ const blankConfig = {
 	title: "Blank"
 };
 
+const syndicationConfig = {
+	filename: "syndication",
+	title: "Syndication",
+	global_nav_config: `{ service: "syndication", header: { search: false, cookie: false, auth: { environment: "beta" } }, footer: true };`
+};
+
 const pathwaysConfig = {
 	filename: "pathways",
 	title: "Pathways",
@@ -214,6 +220,7 @@ const noAuthNoSearchConfig = {
 
 module.exports = [
 	blankConfig,
+	syndicationConfig,
 	pathwaysConfig,
 	guidanceConfig,
 	standardsConfig,

@@ -102,6 +102,10 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
             </span>
           </a>
         </li>
+        <li
+          key="link3"
+          role="presentation"
+        />
       </ul>
     </div>
   </nav>
@@ -253,6 +257,10 @@ exports[`Nav Matches snapshot with sub links for selected service 1`] = `
               </div>
             </SubNav>
           </li>
+          <li
+            key="link3"
+            role="presentation"
+          />
         </ul>
       </div>
     </nav>

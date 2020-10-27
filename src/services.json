@@ -129,5 +129,25 @@
 		"href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
 		"text": "Journals and databases",
 		"id": "journals"
+	},
+	{
+		"href": "https://api.nice.org.uk",
+		"text": "NICE Syndication",
+		"id": "syndication",
+		"hideFromNav": true,
+		"links": [
+			{
+				"text": "Home",
+				"href": "/"
+			},
+			{
+				"text": "Your Syndication Account",
+				"href": "/account"
+			},
+			{
+				"text": "Help",
+				"href": "/help"
+			}
+		]
 	}
 ]

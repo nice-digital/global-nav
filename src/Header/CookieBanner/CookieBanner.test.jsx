@@ -120,14 +120,14 @@ describe("CookieBanner", () => {
 		expect(cookieSet).toHaveBeenCalledTimes(2);
 
 		const date = new Date();
-		date.setDate(date.getDate() + 365);
+		date.setUTCDate(date.getUTCDate() + 365);
 
 		expect(cookieSet.mock.calls[1][0]).toEqual(
 			`${CookieName}=${CookieMessageVersion}; path=/; expires=${date.toUTCString()}; domain=nice.org.uk`
 		);
 
 		const pastDate = new Date();
-		pastDate.setDate(pastDate.getDate() - 1);
+		pastDate.setUTCDate(pastDate.getUTCDate() - 1);
 
 		expect(cookieSet.mock.calls[0][0]).toEqual(
 			`${CookieName}=; path=/; expires=${pastDate.toUTCString()}`
@@ -157,7 +157,7 @@ describe("CookieBanner", () => {
 			.simulate("click");
 
 		const date = new Date();
-		date.setDate(date.getDate() + 365);
+		date.setUTCDate(date.getUTCDate() + 365);
 
 		expect(cookieSet.mock.calls[1][0]).toEqual(
 			`${CookieName}=${CookieMessageVersion}; path=/; expires=${date.toUTCString()}; domain=www.evidence.nhs.uk`

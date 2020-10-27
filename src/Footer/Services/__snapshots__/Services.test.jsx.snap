@@ -124,6 +124,19 @@ exports[`Services Matches snapshot 1`] = `
         Journals and databases
       </TrackedLink>
     </li>
+    <li
+      key="syndication"
+    >
+      <TrackedLink
+        aria-current={null}
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="NICE Syndication"
+        href="https://api.nice.org.uk"
+      >
+        NICE Syndication
+      </TrackedLink>
+    </li>
   </ul>
 </nav>
 `;

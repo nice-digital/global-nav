@@ -20,5 +20,21 @@
 				"href": "/test"
 			}
 		]
+	},
+	{
+		"href": "https://url3/",
+		"text": "Third",
+		"id": "link3",
+		"hideFromNav": true,
+		"links": [
+			{
+				"text": "Sub link 1",
+				"href": "/"
+			},
+			{
+				"text": "Sub link 2",
+				"href": "/test"
+			}
+		]
 	}
 ]

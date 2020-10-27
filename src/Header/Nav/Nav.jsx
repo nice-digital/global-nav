@@ -111,49 +111,53 @@ export default class Nav extends Component {
 							role="menu"
 							aria-labelledby="header-menu-button"
 						>
-							{rootLinks.map(({ href, id, text, abbreviation, title }) => {
-								let ariaCurrent = null;
+							{rootLinks.map(
+								({ href, id, text, abbreviation, title, hideFromNav }) => {
+									let ariaCurrent = null;
 
-								if (this.props.service && id === this.props.service) {
-									ariaCurrent = true;
+									if (this.props.service && id === this.props.service) {
+										ariaCurrent = true;
 
-									if (
-										typeof location !== "undefined" &&
-										location &&
-										href ===
-											`${location.protocol}//${location.host}${location.pathname}`
-									) {
-										ariaCurrent = "page";
+										if (
+											typeof location !== "undefined" &&
+											location &&
+											href ===
+												`${location.protocol}//${location.host}${location.pathname}`
+										) {
+											ariaCurrent = "page";
+										}
 									}
-								}
 
-								return (
-									<li key={id} role="presentation">
-										<a
-											href={href}
-											aria-current={ariaCurrent}
-											role="menuitem"
-											className={styles.link}
-											onClick={this.handleNavItemClick}
-										>
-											<span>
-												{abbreviation ? (
-													<abbr title={title}>{text}</abbr>
-												) : (
-													text
-												)}
-											</span>
-										</a>
-										{ariaCurrent && subLinks && (
-											<SubNav
-												links={subLinks}
-												text={text}
-												onNavigating={this.props.onNavigating}
-											/>
-										)}
-									</li>
-								);
-							})}
+									return (
+										<li key={id} role="presentation">
+											{!hideFromNav && (
+												<a
+													href={href}
+													aria-current={ariaCurrent}
+													role="menuitem"
+													className={styles.link}
+													onClick={this.handleNavItemClick}
+												>
+													<span>
+														{abbreviation ? (
+															<abbr title={title}>{text}</abbr>
+														) : (
+															text
+														)}
+													</span>
+												</a>
+											)}
+											{ariaCurrent && subLinks && (
+												<SubNav
+													links={subLinks}
+													text={text}
+													onNavigating={this.props.onNavigating}
+												/>
+											)}
+										</li>
+									);
+								}
+							)}
 						</ul>
 					</div>
 				</nav>
@@ -189,6 +193,7 @@ export default class Nav extends Component {
 }
 
 Nav.propTypes = {
+	hideFromNav: PropTypes.bool,
 	service: PropTypes.string,
 	isExpanded: PropTypes.bool,
 	accountsLinks: PropTypes.object,
