@@ -44,16 +44,21 @@
 			<h2>Cookie</h2>
 			<p>
 				Use the following button to clear the
-				<em>seen_cookie_message</em> message:
+				<em>CookieControl</em> message:
 			</p>
 			<button
 				type="button"
-				onclick="document.cookie = 'seen_cookie_message=; expires=Thu, 01 Jan 1970 00:00:00 GMT;domain=' + (window.location.hostname.indexOf('nice.org.uk') > 0 ? 'nice.org.uk' : window.location.hostname)"
+				class="btn"
+				onclick="document.cookie = 'CookieControl=; expires=Thu, 01 Jan 1970 00:00:00 GMT;domain=' + (window.location.hostname.indexOf('nice.org.uk') > 0 ? 'nice.org.uk' : window.location.hostname)"
 			>
-				Delete cookie
+				Delete CookieControl cookie
 			</button>
 		</main>
 		<div id="footer"></div>
+		<script
+			src="https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"
+			type="text/javascript"
+		></script>
 		<script type="text/javascript">
 			var global_nav_config = <%= JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
 		</script>
