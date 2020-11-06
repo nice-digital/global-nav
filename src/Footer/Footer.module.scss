@@ -6,6 +6,8 @@
   background: $colour-footer-background;
   box-sizing: border-box;
   color: $colour-footer-text;
+  contain-intrinsic-size: 350px; /* stylelint-disable-line */
+  content-visibility: auto; /* stylelint-disable-line */
   font-family: unquote($nds-font-family-sans);
   margin: rem($nds-spacing-large 0 0 0);
 
