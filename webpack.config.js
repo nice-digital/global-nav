@@ -9,7 +9,7 @@ const fs = require("fs");
 const examples = require("./examples/examples.js");
 
 const ENV = process.env.NODE_ENV || "development";
-const HOT = ENV === "development" ? process.env.HOT !== "false" : false;
+const HOT = ENV === "development" && process.env.HOT !== "false";
 
 module.exports = {
 	context: path.resolve(__dirname, "src"),
