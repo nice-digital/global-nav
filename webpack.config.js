@@ -2,18 +2,19 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackExcludeAssetsPlugin = require("html-webpack-exclude-assets-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const path = require("path");
 const fs = require("fs");
 
 const examples = require("./examples/examples.js");
 
 const ENV = process.env.NODE_ENV || "development";
-const HOT = process.env.HOT !== "false";
+const HOT = ENV === "development" ? process.env.HOT !== "false" : false;
 
 module.exports = {
 	context: path.resolve(__dirname, "src"),
 	entry: {
-		"global-nav": (HOT ? ["react-hot-loader/patch"] : []).concat("./cdn.js"),
+		"global-nav": "./cdn.js",
 		// To polyfill for ES3 browsers e.g. IE8
 		// We can remove this when we drop IE8 support
 		"global-nav.ie8": "./polyfill"
@@ -36,10 +37,7 @@ module.exports = {
 		],
 		alias: {
 			react: HOT ? "react" : "nervjs",
-			"react-dom": HOT ? "@hot-loader/react-dom" : "nervjs",
-			"react-hot-loader": HOT
-				? "react-hot-loader"
-				: path.resolve(__dirname, "./fake-react-hot-loader")
+			"react-dom": HOT ? "react-dom" : "nervjs"
 		}
 	},
 
@@ -60,7 +58,14 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				use: "babel-loader",
+				use: [
+					{
+						loader: require.resolve("babel-loader"),
+						options: {
+							plugins: HOT ? [require.resolve("react-refresh/babel")] : []
+						}
+					}
+				],
 				resolve: { extensions: [".js", ".jsx"] }
 			},
 			{
@@ -125,6 +130,7 @@ module.exports = {
 	},
 
 	plugins: [
+		HOT && new ReactRefreshWebpackPlugin(),
 		new StyleLintPlugin(),
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(ENV)
@@ -172,7 +178,8 @@ module.exports = {
 				});
 			})
 		)
-		.concat([new HtmlWebpackExcludeAssetsPlugin()]),
+		.concat([new HtmlWebpackExcludeAssetsPlugin()])
+		.filter(Boolean),
 
 	cache: true,
 

@@ -7,7 +7,6 @@ bin
 coverage
 dist
 examples
-fake-react-hot-loader
 obj
 publish
 src
