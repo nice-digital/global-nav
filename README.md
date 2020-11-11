@@ -732,4 +732,8 @@ If you were using `cookie: true` (or not setting the `cookie` option and leaving
 
 ## Upgrading to v3
 
-V3 involved updating a lot of dependencies. Mostly this was internal implementation details. However, the one external facing change was the build command changing from `npm run build -- --env.version=1.2.3` to `npm run build -- --env version=1.2.3`. Notice the space instead of the dot. This is a result of the `--env` parameter in webpack 4.
+Version 3 removes react hot loader, replacing it with fast refresh. Although this is mostly internal implmenentation, _react-hot-loader_ was a production dependency, and the `Header` and `Footer` components were both exported wrapped in `hot`. So this _could_ affect services using Global Nav as an npm dependency (installed from GitHub).
+
+## Upgrading to v4
+
+V4 involved updating a lot of dependencies. Mostly this was internal implementation details. However, the one external facing change was the build command changing from `npm run build -- --env.version=1.2.3` to `npm run build -- --env version=1.2.3`. Notice the space instead of the dot. This is a result of the `--env` parameter in webpack 4.

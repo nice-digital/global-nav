@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { hot } from "react-hot-loader/root";
 import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";
 
@@ -161,4 +160,4 @@ Header.defaultProps = {
 	skipLinkId: "content-start",
 };
 
-export default hot(Header);
+export default Header;

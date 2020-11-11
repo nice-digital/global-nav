@@ -2,12 +2,14 @@ const webpack = require("webpack"),
 	HtmlWebpackPlugin = require("html-webpack-plugin"),
 	ESLintPlugin = require("eslint-webpack-plugin"),
 	StyleLintPlugin = require("stylelint-webpack-plugin"),
+	ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"),
 	path = require("path"),
 	fs = require("fs");
 
 const examples = require("./examples/examples.js");
 
-const HOT = process.env.HOT !== "false";
+const ENV = process.env.NODE_ENV || "development",
+	HOT = ENV === "development" && process.env.HOT !== "false";
 
 module.exports = function (env, argv) {
 	const mode = argv.mode,
@@ -16,7 +18,7 @@ module.exports = function (env, argv) {
 	return {
 		context: path.resolve(__dirname, "src"),
 		entry: {
-			"global-nav": (HOT ? ["react-hot-loader/patch"] : []).concat("./cdn.js"),
+			"global-nav": "./cdn.js",
 			// To polyfill for ES3 browsers e.g. IE8
 			// We can remove this when we drop IE8 support
 			"global-nav.ie8": "./polyfill",
@@ -39,10 +41,7 @@ module.exports = function (env, argv) {
 			],
 			alias: {
 				react: HOT ? "react" : "nervjs",
-				"react-dom": HOT ? "@hot-loader/react-dom" : "nervjs",
-				"react-hot-loader": HOT
-					? "react-hot-loader"
-					: path.resolve(__dirname, "./fake-react-hot-loader"),
+				"react-dom": HOT ? "react-dom" : "nervjs",
 			},
 		},
 
@@ -56,7 +55,14 @@ module.exports = function (env, argv) {
 				{
 					test: /\.jsx?$/,
 					exclude: /node_modules/,
-					use: "babel-loader",
+					use: [
+						{
+							loader: require.resolve("babel-loader"),
+							options: {
+								plugins: HOT ? [require.resolve("react-refresh/babel")] : [],
+							},
+						},
+					],
 					resolve: { extensions: [".js", ".jsx"] },
 				},
 				{
@@ -125,6 +131,7 @@ module.exports = function (env, argv) {
 		},
 
 		plugins: [
+			HOT && new ReactRefreshWebpackPlugin(),
 			new ESLintPlugin(),
 			new StyleLintPlugin(),
 			// Add a ponyfill for Promise/fetch implementation in IE 8/9+
@@ -150,28 +157,30 @@ module.exports = function (env, argv) {
 					examples: examples,
 				},
 			}),
-		].concat(
-			examples.map(({ filename, title, bodyClasses, global_nav_config }) => {
-				const body = fs.readFileSync(
-					`./examples/body-html/${filename}.body.html`,
-					"utf8"
-				);
+		]
+			.concat(
+				examples.map(({ filename, title, bodyClasses, global_nav_config }) => {
+					const body = fs.readFileSync(
+						`./examples/body-html/${filename}.body.html`,
+						"utf8"
+					);
 
-				return new HtmlWebpackPlugin({
-					template: "./../examples/example.html",
-					// Exlucde the IE8 bundle from outputting in the HTML file.
-					// This is so that we can manually include it in a conditional comment.
-					excludeChunks: ["global-nav.ie8"],
-					filename: filename + ".html",
-					title,
-					templateParameters: {
-						body,
-						bodyClasses,
-						global_nav_config,
-					},
-				});
-			})
-		),
+					return new HtmlWebpackPlugin({
+						template: "./../examples/example.html",
+						// Exlucde the IE8 bundle from outputting in the HTML file.
+						// This is so that we can manually include it in a conditional comment.
+						excludeChunks: ["global-nav.ie8"],
+						filename: filename + ".html",
+						title,
+						templateParameters: {
+							body,
+							bodyClasses,
+							global_nav_config,
+						},
+					});
+				})
+			)
+			.filter(Boolean),
 
 		cache: true,
 
