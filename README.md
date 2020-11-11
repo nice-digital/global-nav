@@ -66,7 +66,8 @@
 					- [header.onRendered](#headeronrendered)
 				- [footer](#footer)
 	- [Deployments](#deployments)
-	- [Upgrading from v1 to v2](#upgrading-from-v1-to-v2)
+	- [Upgrading to v2](#upgrading-to-v2)
+	- [Upgrading to v3](#upgrading-to-v3)
 
 <!-- END doctoc -->
 </details>
@@ -721,10 +722,14 @@ Where the version number can be any valid [SemVer build number](https://octopus.
 
 > Note: you'll need the DotNet Core SDK installed. We don't use NuGet.exe to build so we can run on both Windows and Linux
 
-## Upgrading from v1 to v2
+## Upgrading to v2
 
 Version 2 is a breaking change, because we removed the cookie banner and associated `cookie` option.
 
 If you were already using `cookie: false` in the header config, then the upgrade is easy - the `cookie: false` will no longer do anything so can safely be removed.
 
 If you were using `cookie: true` (or not setting the `cookie` option and leaving the default value of `true`) then you will need to include the [cookie banner](https://github.com/nice-digital/cookie-banner#usage) separately from Global Nav.
+
+## Upgrading to v3
+
+Version 3 removes react hot loader, replacing it with fast refresh. Although this is mostly internal implmenentation, _react-hot-loader_ was a production dependency, and the `Header` and `Footer` components were both exported wrapped in `hot`. So this _could_ affect services using Global Nav as an npm dependency (installed from GitHub).
