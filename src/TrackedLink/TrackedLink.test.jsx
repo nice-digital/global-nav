@@ -55,8 +55,8 @@ describe("TrackedLink", () => {
 		wrapper.simulate("click", {
 			preventDefault: preventDefault,
 			currentTarget: {
-				getAttribute: () => href
-			}
+				getAttribute: () => href,
+			},
 		});
 
 		expect(window.dataLayer).toEqual([
@@ -66,8 +66,8 @@ describe("TrackedLink", () => {
 				eventAction: eventAction,
 				eventLabel: eventLabel,
 				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout
-			}
+				eventTimeout: eventTimeout,
+			},
 		]);
 
 		expect(preventDefault).toHaveBeenCalled();
@@ -95,8 +95,8 @@ describe("TrackedLink", () => {
 		wrapper.simulate("click", {
 			preventDefault: preventDefault,
 			currentTarget: {
-				getAttribute: () => ""
-			}
+				getAttribute: () => "",
+			},
 		});
 
 		expect(window.dataLayer).toEqual([
@@ -106,8 +106,8 @@ describe("TrackedLink", () => {
 				eventAction: eventAction,
 				eventLabel: eventLabel,
 				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout
-			}
+				eventTimeout: eventTimeout,
+			},
 		]);
 	});
 
@@ -127,8 +127,8 @@ describe("TrackedLink", () => {
 			preventDefault: preventDefault,
 			currentTarget: {
 				getAttribute: () => "",
-				textContent: eventLabel
-			}
+				textContent: eventLabel,
+			},
 		});
 
 		expect(window.dataLayer).toEqual([
@@ -138,8 +138,8 @@ describe("TrackedLink", () => {
 				eventAction: eventAction,
 				eventLabel: eventLabel,
 				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout
-			}
+				eventTimeout: eventTimeout,
+			},
 		]);
 	});
 });

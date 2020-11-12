@@ -1,350 +1,155 @@
-<!--[if lt IE 9]>
-	<script src="//cdn.nice.org.uk/V3.1/Scripts/html5shiv/html5shiv.js"></script>
-<![endif]-->
 <link
-	href="//fonts.googleapis.com/css?family=Lato:400normal,400italic,700normal,700italic"
 	rel="stylesheet"
-	media="screen"
-/>
-<link
-	href="//cdn.nice.org.uk/V3.1/Content/NICE.bootstrap.css"
-	rel="stylesheet"
-/>
-<!--[if IE 7]>
-	<link
-		href="//cdn.nice.org.uk/V3.1/Content/NICE.glyphs-ie7.css"
-		rel="stylesheet"
-	/>
-<![endif]-->
-
-<link
-	href="https://www.evidence.nhs.uk/content/nice.evidence.css?2"
-	rel="stylesheet"
-/>
-<link
-	href="https://www.evidence.nhs.uk/content/nice.evidence.home.css?1"
-	rel="stylesheet"
+	href="https://www.evidence.nhs.uk/content/compiled/bundle.css"
 />
 
-<link
-	href="https://www.evidence.nhs.uk/content/nice.glyphs.css"
-	rel="stylesheet"
-	type="text/css"
-/>
-<style type="text/css">
-	.linkbtn {
-		display: block;
-		height: 25px;
-		width: 100px;
-		background: #ccc;
-	}
+<script>
+	WebFontConfig = {
+		google: {
+			families: ["Lato:400normal,700normal,900normal"],
+		},
+	};
+	(function (d) {
+		var wf = d.createElement("script"),
+			s = d.scripts[0];
+		wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js";
+		wf.async = true;
+		s.parentNode.insertBefore(wf, s);
+	})(document);
+</script>
 
-	#navigators {
-		padding-left: 16px;
-	}
-
-	#navigators .filters h3 {
-		font-size: 20px;
-		margin-bottom: 20px;
-		font-weight: 700;
-		color: #0e0e0e;
-	}
-
-	#navigators .accordion-group {
-		background: none;
-	}
-
-	#navigators .filter-fixed {
-		font-weight: bold;
-		color: #000;
-		padding-bottom: 0px;
-		padding-left: 0px;
-	}
-
-	#navigators .filter-toggle {
-		font-weight: bold;
-		color: #0e0e0e;
-		padding-bottom: 0px;
-		padding-left: 0px;
-	}
-
-	#navigators-select .control {
-		padding-left: 0px;
-	}
-
-	#navigators-select #options_Areas_of_interest {
-		margin-top: 10px;
-	}
-
-	#navigators-select #options_Areas_of_interest .control {
-		padding-left: 20px;
-		margin-bottom: 12px;
-	}
-
-	#navigators-select .control .filter-fixed {
-		padding-left: 0px;
-		margin-bottom: 0px;
-	}
-
-	#navigators-select .control i {
-		color: #0093c9;
-		font-style: normal;
-	}
-
-	#navigators-select .indent-1 {
-		margin-left: 28px;
-		padding-left: 20px !important;
-		padding-top: 2px;
-		margin-bottom: 12px;
-	}
-
-	#navigators-select .indent-0 {
-		padding-left: 20px !important;
-		margin-bottom: 12px;
-		margin-top: 24px;
-	}
-
-	#navigators-select .options-list > li > a {
-		padding-top: 0px;
-		padding-bottom: 0px;
-		color: #0e0e0e;
-	}
-
-	#navigators-select .options-list .indent-1 a {
-		color: #0e0e0e;
-	}
-
-	#navigators-select .options-list .active a {
-		color: #fff !important;
-	}
-
-	#navigators-select .options-list .active a:focus {
-		background-color: #4f7d83;
-	}
-
-	#navigators-select .options-list > li:first-child {
-		margin-top: 0px;
-	}
-
-	#navigators .filter-options {
-		padding: 0px;
-	}
-
-	#navigators .filter-options .control {
-		padding-left: 20px;
-	}
-
-	#navigators .filter-options > .options-list > li > a {
-		padding-left: 12px;
-	}
-
-	#navigators .filter-options .options-search {
-		border: 1px solid #ccc;
-		margin-bottom: 10px;
-		margin-top: 6px;
-		width: 85%;
-	}
-
-	#navigators .date-range-form {
-		padding-left: 0px;
-	}
-
-	#navigators .filter-options .input-small {
-		border: 1px solid #ccc;
-		margin-bottom: 10px;
-		margin-top: 6px;
-		width: 85%;
-		float: left;
-	}
-
-	#navigators .filter-options .date-range-form .control-label {
-		width: 200px;
-		clear: both;
-		float: left;
-		margin-bottom: 0px;
-		padding-top: 0px;
-	}
-
-	#navigators .filter-options .date-range-form .controls {
-		margin-left: 0px;
-	}
-
-	#navigators .filter-options .date-range-form .control-group {
-		margin-bottom: 0px;
-	}
-
-	#navigators .filter-options #options_Date.options-list {
-		height: auto;
-	}
-
-	.filter-options .controls button.btn.btn-mini {
-		background-color: #666;
-		color: white;
-		width: 92%;
-		padding: 0.5em 0;
-		font-size: 1em;
-		margin-top: 7px;
-	}
-
-	.filter-options .controls button.btn.btn-mini:hover {
-		background-color: #333;
-	}
-
-	#navigators .filter-toggle.collapsed:before {
-		font-family: "NICE.Glyphs";
-		content: "\e03c";
-		color: #004650;
-	}
-
-	#navigators .filter-toggle:before {
-		font-family: "NICE.Glyphs";
-		content: "\e039";
-		color: #004650;
-		position: inherit;
-		left: 0%;
-	}
-
-	.submits-mobile {
-		margin: 10px 0px;
-	}
-
-	.clear-filter {
-		width: 100%;
-		padding: 0.5em;
-		margin-bottom: 30px;
-	}
-
-	.apply-filter {
-		display: none;
-		background-color: #4ba3dd;
-		color: white;
-		border: 1px solid #ebebeb;
-		width: 50%;
-		padding: 0.5em 0;
-		display: block;
-		display: none;
-	}
-
-	.options-list > li > a:hover {
-		background-color: #fff;
-	}
-
-	.toggle-offcanvas-open {
-		display: none;
-		visibility: hidden;
-	}
-
-	@media screen and (max-width: 979px) {
-		.layout-offcanvas-in .content-secondary {
-			width: 90%;
-			background-color: #ffffff !important;
-			top: 0px;
-			transform: none;
-			margin-top: 10px;
-		}
-
-		.search-header {
-			width: 100%;
-			margin: 0px;
-		}
-
-		.search-aside {
-			width: 0% !important;
-		}
-
-		.apply-filter {
-			display: block;
-		}
-
-		.clear-filter {
-			width: 100%;
-			float: left;
-		}
-
-		.toggle-offcanvas,
-		.toggle-offcanvas:hover,
-		.toggle-offcanvas-open,
-		.toggle-offcanvas-open:hover {
-			display: block;
-			width: 100%;
-			border: 1px solid #ebebeb;
-			float: none;
-			margin: 0px;
-			padding: 4px 0px;
-			background-color: #fff;
-			color: #005ea5;
-			text-align: left;
-			font-size: 1em;
-			text-indent: 10px;
-			text-decoration: none;
-		}
-
-		.toggle-offcanvas:after {
-			font-family: "NICE.Glyphs";
-			content: "\e03c";
-			color: #004650;
-			position: inherit;
-			right: 0%;
-			padding-left: 8px;
-		}
-
-		.toggle-offcanvas-open {
-			visibility: visible;
-			display: block;
-		}
-
-		.toggle-offcanvas-open:after {
-			font-family: "NICE.Glyphs";
-			content: "\e039";
-			color: #4ba3dd;
-			position: inherit;
-			right: 0%;
-		}
-
-		.search-header .search-heading {
-			padding-left: 10px;
-		}
-	}
-</style>
-
-<div
-	class="evidence-hero"
-	data-rotate="images"
-	data-images="molecules,bike,care,lab,playing,surgery,table"
->
-	<div class="hero-inner">
-		<form
-			action="/search"
-			method="get"
-			data-track="search"
-			class="evidence-search clearfix"
-		>
-			<h1>Evidence search</h1>
-
-			<div class="nice-search">
-				<div class="controls">
-					<input
-						name="q"
-						type="text"
-						value=""
-						autocomplete="off"
-						spellcheck="false"
-						placeholder="Search..."
-						maxlength="250"
-						class="search-query"
-						data-provide="typeahead"
-						data-source="/autocomplete?%query"
-					/>
+<main>
+	<div class="hero home-hero-banner">
+		<div class="hero__container">
+			<nav aria-label="Breadcrumbs">
+				<ol
+					class="breadcrumbs"
+					itemscope=""
+					itemtype="http://schema.org/BreadcrumbList"
+				>
+					<li
+						class="breadcrumbs__crumb"
+						itemprop="itemListElement"
+						itemscope=""
+						itemtype="http://schema.org/ListItem"
+					>
+						<a href="https://www.nice.org.uk/" itemprop="name">NICE</a>
+					</li>
+					<li
+						class="breadcrumbs__crumb"
+						itemprop="itemListElement"
+						itemscope=""
+						itemtype="http://schema.org/ListItem"
+					>
+						<span itemprop="name">Evidence search</span>
+					</li>
+				</ol>
+			</nav>
+			<div class="hero__body">
+				<div class="hero__copy">
+					<h1 id="content-start" class="hero__title">Evidence search</h1>
+					<p class="hero__intro">
+						Evidence search helps you make
+						<b>better, faster evidence-based decisions</b>. It includes high
+						quality resources from over 800 organisations - like searching your
+						trusted work favourites in one go.
+					</p>
 				</div>
-				<button type="submit">
-					<i class="icon-search"></i> <span class="menu-label">Search</span>
-				</button>
+				<div class="hero__extra">
+					<h2 class="h4 mt--0-md">About evidence search</h2>
+					<ul class="list--unstyled">
+						<li>
+							<a
+								href="https://www.nice.org.uk/about/what-we-do/evidence-services/evidence-search"
+								target="_blank"
+								rel="noreferrer noopener"
+								>About the service</a
+							>
+						</li>
+						<li>
+							<a
+								href="https://www.nice.org.uk/about/what-we-do/evidence-services/evidence-search/how-to-search"
+								target="_blank"
+								rel="noreferrer noopener"
+								>How to search</a
+							>
+						</li>
+						<li>
+							<a
+								href="https://www.nice.org.uk/get-involved/student-champions"
+								target="_blank"
+								rel="nofollow noreferrer"
+								>Student Champions Scheme</a
+							>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<p class="strap-top">Make better, faster, evidence based decisions.</p>
-			<p class="strap">
-				NICE Evidence search finds selected, authoritative evidence in health,
-				social care and public health.
-			</p>
-		</form>
+
+			<div class="grid mb--e">
+				<div data-g="12 sm:9 md:7 lg:6">
+					<form
+						id="homepage-search-form"
+						role="search"
+						action="/search"
+						class="search"
+					>
+						<label class="visually-hidden" for="search"> Search now </label>
+						<div id="search-container">
+							<input
+								type="text"
+								id="search"
+								name="q"
+								autocomplete="off"
+								class="autocomplete__input autocomplete__input--default"
+							/>
+						</div>
+						<button class="button" type="submit" aria-label="Perform search">
+							Search
+							<span class="icon icon--search" aria-hidden="true"></span>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
+
+	<div class="container">
+		<p class="lead">
+			We bring together evidence on health, drugs and technologies, public
+			health, social care, and healthcare management and commissioning in one
+			place.
+		</p>
+
+		<div class="grid grid--loose">
+			<div data-g="12 sm:6">
+				<h3 class="mt--d">Trusted sources</h3>
+				<p>
+					Sources include the British National Formulary, Clinical Knowledge
+					Summaries, SIGN, the Cochrane Library and Royal Colleges, Social Care
+					Online and GOV.UK. Find out more about
+					<a
+						href="https://www.nice.org.uk/about/what-we-do/evidence-services/evidence-search/evidence-search-content"
+						>how we source and review our content</a
+					>.
+				</p>
+			</div>
+
+			<div data-g="12 sm:6">
+				<h3 class="mt--d">Professional and student audiences</h3>
+				<p>
+					Evidence search helps to answer health and social care questions from
+					both qualified professionals and students. We promote it to students
+					through our Student Champions Scheme. We work with academic teaching,
+					library staff and student leads in universities to recruit
+					<a
+						target="_blank"
+						rel="noreferrer noopener"
+						href="https://www.nice.org.uk/get-involved/student-champions"
+						>Evidence Search Student Champions</a
+					>.
+				</p>
+			</div>
+		</div>
+	</div>
+</main>

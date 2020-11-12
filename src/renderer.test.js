@@ -59,7 +59,7 @@ describe("renderer", () => {
 			it("Doesn't call ReactDOM.render if header is disabled", () => {
 				window.global_nav_config = {
 					service: "test-service",
-					header: false
+					header: false,
 				};
 				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
 				renderHeader();
@@ -75,8 +75,8 @@ describe("renderer", () => {
 				window.global_nav_config = {
 					service: "test-service",
 					header: {
-						test: true
-					}
+						test: true,
+					},
 				};
 
 				renderHeader();
@@ -99,8 +99,8 @@ describe("renderer", () => {
 
 				window.global_nav_config = {
 					header: {
-						onRendering: onRendering
-					}
+						onRendering: onRendering,
+					},
 				};
 
 				renderHeader();
@@ -115,8 +115,8 @@ describe("renderer", () => {
 				window.headerRenderingCallback = onRendering;
 				window.global_nav_config = {
 					header: {
-						onRendering: "headerRenderingCallback"
-					}
+						onRendering: "headerRenderingCallback",
+					},
 				};
 
 				renderHeader();
@@ -132,8 +132,8 @@ describe("renderer", () => {
 
 				window.global_nav_config = {
 					header: {
-						onRendered: onRendered
-					}
+						onRendered: onRendered,
+					},
 				};
 
 				renderHeader();
@@ -148,8 +148,8 @@ describe("renderer", () => {
 				window.headerRenderedCallback = onRendered;
 				window.global_nav_config = {
 					header: {
-						onRendered: "headerRenderedCallback"
-					}
+						onRendered: "headerRenderedCallback",
+					},
 				};
 
 				renderHeader();
@@ -183,7 +183,7 @@ describe("renderer", () => {
 			it("Doesn't call ReactDOM.render if footer is disabled", () => {
 				window.global_nav_config = {
 					service: "test-service",
-					footer: false
+					footer: false,
 				};
 				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
 				renderFooter();
@@ -200,8 +200,8 @@ describe("renderer", () => {
 				window.global_nav_config = {
 					service: "test-service",
 					footer: {
-						test: true
-					}
+						test: true,
+					},
 				};
 
 				renderFooter();

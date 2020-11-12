@@ -2,8 +2,8 @@
 // Returns a promise that resolves with the data from NICE Accounts.
 // Returns a promise that rejects if the data could not be loaded.
 
-export const checkIsLoggedIn = function(environment) {
-	return new Promise(function(resolve, reject) {
+export const checkIsLoggedIn = function (environment) {
+	return new Promise(function (resolve, reject) {
 		const url = getDomainBaseUrl(environment) + "tophat";
 
 		var body = document.body;
@@ -15,7 +15,7 @@ export const checkIsLoggedIn = function(environment) {
 
 		let done = false;
 
-		script.onload = script.onreadystatechange = function() {
+		script.onload = script.onreadystatechange = function () {
 			if (
 				!done &&
 				(!script.readyState ||
@@ -38,7 +38,7 @@ export const checkIsLoggedIn = function(environment) {
 	});
 };
 
-export const getDomainBaseUrl = function(environment) {
+export const getDomainBaseUrl = function (environment) {
 	return `https://${
 		environment !== "live" ? environment + "-" : ""
 	}accounts.nice.org.uk/`;

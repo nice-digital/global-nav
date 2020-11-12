@@ -1,29 +1,30 @@
 {
-	"editor.formatOnSave": true,
-	"editor.rulers": [80],
-	"files.eol": "\n",
-	"sasslint.enable": false,
-	"css.validate": false,
-	"less.validate": false,
-	"scss.validate": false,
-	"files.exclude": {
-		"**/.git": true,
-		"**/.svn": true,
-		"**/.hg": true,
-		"**/CVS": true,
-		"**/.DS_Store": true,
-		"obj": true,
-		"bin": true,
-		"publish": true,
-		"coverage": true,
-		"dist": true,
-		"lib": true
-	},
-	"workbench.colorCustomizations": {
-		"activityBar.background": "#493657",
-		"activityBar.foreground": "#FFFFFF",
-		"titleBar.activeBackground": "#493657",
-		"titleBar.activeForeground": "#FFFFFF"
-	},
-	"omnisharp.autoStart": false
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.rulers": [80, 120],
+  "files.eol": "\n",
+  "sasslint.enable": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "obj": true,
+    "bin": true,
+    "publish": true,
+    "coverage": true,
+    "dist": true,
+    "lib": true
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#493657",
+    "activityBar.foreground": "#FFFFFF",
+    "titleBar.activeBackground": "#493657",
+    "titleBar.activeForeground": "#FFFFFF"
+  },
+  "omnisharp.autoStart": false
 }

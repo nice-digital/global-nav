@@ -23,7 +23,7 @@ export default class TrackedLink extends Component {
 			// Support IE8 with innerText
 			eventLabel || e.currentTarget.textContent || e.currentTarget.innerText,
 			null,
-			function() {
+			function () {
 				window.location.href = href;
 			}
 		);
@@ -54,14 +54,14 @@ TrackedLink.propTypes = {
 	href: PropTypes.string.isRequired,
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
-		PropTypes.node
+		PropTypes.node,
 	]).isRequired,
 	eventCategory: PropTypes.string,
 	eventAction: PropTypes.string.isRequired,
 	eventLabel: PropTypes.string,
-	eventValue: PropTypes.number
+	eventValue: PropTypes.number,
 };
 
 TrackedLink.defaultProps = {
-	eventCategory: defaultEventCategory
+	eventCategory: defaultEventCategory,
 };

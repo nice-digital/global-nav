@@ -55,7 +55,7 @@
 		<span class="span12"> <div class="metadata"></div> </span>
 	</div>
 
-	<div class="row" style="border-bottom: 1px;">
+	<div class="row" style="border-bottom: 1px">
 		<span class="span4">
 			<img
 				src="https://bnf.nice.org.uk/images/bnf-logo.png"
@@ -180,19 +180,19 @@
 <script src="https://bnf.nice.org.uk/scripts/NICE.asyoutype.js"></script>
 <script src="https://bnf.nice.org.uk/scripts/NICE.bnf.js"></script>
 <script>
-	(function($) {
-		$(function() {
+	(function ($) {
+		$(function () {
 			var $backToTop = $("#backToTop");
 			var $win = $(window);
 			var opt = { min: 500, fadeSpeed: 100, scrollSpeed: 300 };
 
-			$(document.body).on("click", "#backToTop", function(ev) {
+			$(document.body).on("click", "#backToTop", function (ev) {
 				ev.preventDefault();
 
 				$("html, body").animate({ scrollTop: 0 }, opt.scrollSpeed);
 			});
 
-			$win.on("scroll", function() {
+			$win.on("scroll", function () {
 				$backToTop["fade" + ($win.scrollTop() >= opt.min ? "In" : "Out")](
 					opt.fadeSpeed
 				);
@@ -208,7 +208,7 @@
 			? "touch-screen-device"
 			: "non-touch-screen-device"
 	);
-	$(document).ajaxSend(function(event, jqxhr, settings) {
+	$(document).ajaxSend(function (event, jqxhr, settings) {
 		settings.url =
 			settings.url + (~settings.url.indexOf("?") ? "&" : "?") + "ajax=ajax";
 	});

@@ -6,7 +6,7 @@ import Footer from "./Footer";
 export const headerId = "global-nav-header";
 export const footerId = "global-nav-footer";
 
-const createAndAttachDiv = function(id, attachAtStart) {
+const createAndAttachDiv = function (id, attachAtStart) {
 	const divElement = document.createElement("div");
 	divElement.setAttribute("id", id);
 	if (attachAtStart)
@@ -16,7 +16,7 @@ const createAndAttachDiv = function(id, attachAtStart) {
 };
 
 // Callback can either be a reference to a function or a string name of a global function
-const ensureCallback = function(callback) {
+const ensureCallback = function (callback) {
 	if (callback) {
 		callback = typeof callback === "function" ? callback : window[callback];
 		if (typeof callback === "function") {
@@ -26,7 +26,7 @@ const ensureCallback = function(callback) {
 	return null;
 };
 
-export const renderHeader = function() {
+export const renderHeader = function () {
 	const config = window.global_nav_config || {};
 
 	if (config.header !== false) {
@@ -43,7 +43,7 @@ export const renderHeader = function() {
 		render(
 			<Header service={config.service} {...config.header} />,
 			headerElement,
-			function() {
+			function () {
 				const onRendered = ensureCallback(config.header.onRendered);
 				onRendered && onRendered.call(window, headerElement);
 			}
@@ -51,7 +51,7 @@ export const renderHeader = function() {
 	}
 };
 
-export const renderFooter = function() {
+export const renderFooter = function () {
 	const config = window.global_nav_config || {};
 
 	if (config.footer !== false) {

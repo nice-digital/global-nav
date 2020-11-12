@@ -35,5 +35,5 @@ export {
 	defineGetter,
 	defineSetter,
 	lookupGetter,
-	lookupSetter
+	lookupSetter,
 };
