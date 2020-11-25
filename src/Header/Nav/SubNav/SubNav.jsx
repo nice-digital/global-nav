@@ -60,11 +60,7 @@ export class SubNav extends Component {
 	render() {
 		return (
 			<div className={styles.wrapper}>
-				<ul
-					className={styles.list}
-					aria-label={`${this.props.text} links`}
-					role="menu"
-				>
+				<ul className={styles.list} aria-label={`${this.props.text} links`}>
 					{this.props.links.map(
 						function (subLink, i) {
 							let ariaCurrent = null;
@@ -77,14 +73,9 @@ export class SubNav extends Component {
 							}
 
 							return (
-								<li
-									key={i}
-									className={subLink.image && styles.imageLink}
-									role="presentation"
-								>
+								<li key={i} className={subLink.image && styles.imageLink}>
 									<a
 										href={subLink.href}
-										role="menuitem"
 										aria-current={ariaCurrent}
 										className={styles.link}
 										onClick={this.handleClick}

@@ -186,3 +186,30 @@ a.link {
     }
   }
 }
+
+.link .tooltip {
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+.link:focus-visible .tooltip {
+  background: #fff;
+  clip: auto;
+  color: $nds-colour-link;
+  display: block;
+  height: auto;
+  outline: 1px solid $nds-colour-focus;
+  overflow: visible;
+  padding: rem(0 $nds-spacing-x-small);
+  position: absolute;
+  width: auto;
+  z-index: 1;
+}
+
+.visuallyHidden {
+  @include nds-invisible;
+}
