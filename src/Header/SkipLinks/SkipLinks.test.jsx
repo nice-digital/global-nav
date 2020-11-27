@@ -20,8 +20,8 @@ describe("SkipLinks", () => {
 	afterEach(() => {
 		Object.defineProperties(window.HTMLElement.prototype, {
 			offsetTop: {
-				get: () => 0
-			}
+				get: () => 0,
+			},
 		});
 
 		contentDiv.parentNode.removeChild(contentDiv);
@@ -39,12 +39,7 @@ describe("SkipLinks", () => {
 
 	it("Renders skip link id href from prop", () => {
 		const wrapper = shallow(<SkipLinks skipLinkId="test" />);
-		expect(
-			wrapper
-				.find("a")
-				.at(0)
-				.props().href
-		).toEqual("#test");
+		expect(wrapper.find("a").at(0).props().href).toEqual("#test");
 	});
 
 	it("Triggers click handler on skip to content click", () => {
@@ -56,9 +51,9 @@ describe("SkipLinks", () => {
 			.at(0)
 			.simulate("click", {
 				currentTarget: {
-					getAttribute: () => "#" + skipLinkId
+					getAttribute: () => "#" + skipLinkId,
 				},
-				preventDefault: () => {}
+				preventDefault: () => {},
 			});
 
 		expect(handleClick).toHaveBeenCalledTimes(1);
@@ -76,9 +71,9 @@ describe("SkipLinks", () => {
 			.at(0)
 			.simulate("click", {
 				currentTarget: {
-					getAttribute: () => "#" + skipLinkId
+					getAttribute: () => "#" + skipLinkId,
 				},
-				preventDefault: preventDefault
+				preventDefault: preventDefault,
 			});
 
 		expect(preventDefault).toHaveBeenCalledTimes(1);
@@ -98,8 +93,8 @@ describe("SkipLinks", () => {
 				offsetParent: {
 					offsetLeft: 0,
 					offsetTop: 98,
-					scrollTop: 8
-				}
+					scrollTop: 8,
+				},
 			};
 
 			expect(wrapper.instance().getYOffset(element)).toBe(180);

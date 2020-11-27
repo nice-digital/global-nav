@@ -13,7 +13,7 @@ export default class Pages extends Component {
 			<nav className={styles.wrapper}>
 				<ul className={styles.list}>
 					{pages.map(
-						function(link) {
+						function (link) {
 							let href = link.href;
 							if (link.hrefOverrides && this.props.service) {
 								href = link.hrefOverrides[this.props.service] || href;
@@ -38,5 +38,5 @@ export default class Pages extends Component {
 }
 
 Pages.propTypes = {
-	service: PropTypes.string
+	service: PropTypes.string,
 };

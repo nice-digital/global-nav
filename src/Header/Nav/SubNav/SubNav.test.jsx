@@ -7,23 +7,23 @@ import {
 	eventName,
 	defaultEventCategory,
 	headerClickEventAction,
-	eventTimeout
+	eventTimeout,
 } from "../../../tracker";
 
 describe("SubNav", () => {
 	const links = [
 		{
 			text: "Home",
-			href: "/"
+			href: "/",
 		},
 		{
 			text: "Drugs",
-			href: "/drug/"
+			href: "/drug/",
 		},
 		{
 			text: "Interactions",
-			href: "/interaction/"
-		}
+			href: "/interaction/",
+		},
 	];
 
 	it("Renders without crashing", () => {
@@ -40,24 +40,14 @@ describe("SubNav", () => {
 		window.location.pathname = links[1].href;
 		const wrapper = shallow(<SubNav text="BNF" links={links} />);
 
-		expect(
-			wrapper
-				.find("a")
-				.at(1)
-				.props()["aria-current"]
-		).toEqual("page");
+		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
 	});
 
 	it("Adds aria-current=true attribute to link when partially matches current URL", () => {
 		window.location.pathname = links[1].href + "abacavir.html";
 		const wrapper = shallow(<SubNav text="BNF" links={links} />);
 
-		expect(
-			wrapper
-				.find("a")
-				.at(0)
-				.props()["aria-current"]
-		).toEqual(true);
+		expect(wrapper.find("a").at(0).props()["aria-current"]).toEqual(true);
 	});
 
 	describe("Tracking", () => {
@@ -83,8 +73,8 @@ describe("SubNav", () => {
 				.simulate("click", {
 					preventDefault: () => {},
 					currentTarget: {
-						getAttribute: () => ""
-					}
+						getAttribute: () => "",
+					},
 				});
 
 			expect(handleClick).toHaveBeenCalled();
@@ -101,8 +91,8 @@ describe("SubNav", () => {
 				.simulate("click", {
 					preventDefault: preventDefault,
 					currentTarget: {
-						getAttribute: () => ""
-					}
+						getAttribute: () => "",
+					},
 				});
 
 			expect(preventDefault).toHaveBeenCalled();
@@ -120,8 +110,8 @@ describe("SubNav", () => {
 					preventDefault: () => {},
 					currentTarget: {
 						innerText: eventLabel,
-						getAttribute: () => ""
-					}
+						getAttribute: () => "",
+					},
 				});
 
 			expect(window.dataLayer).toEqual([
@@ -131,8 +121,8 @@ describe("SubNav", () => {
 					eventAction: headerClickEventAction,
 					eventLabel: eventLabel,
 					eventCallback: expect.any(Function),
-					eventTimeout: eventTimeout
-				}
+					eventTimeout: eventTimeout,
+				},
 			]);
 		});
 
@@ -148,8 +138,8 @@ describe("SubNav", () => {
 					preventDefault: () => {},
 					currentTarget: {
 						innerText: "",
-						getAttribute: () => href
-					}
+						getAttribute: () => href,
+					},
 				});
 
 			window.dataLayer[0].eventCallback();
@@ -170,8 +160,8 @@ describe("SubNav", () => {
 					preventDefault: () => {},
 					currentTarget: {
 						innerText: "",
-						getAttribute: () => href
-					}
+						getAttribute: () => href,
+					},
 				});
 
 			window.dataLayer[0].eventCallback();
@@ -189,7 +179,7 @@ describe("SubNav", () => {
 
 			const currentTarget = {
 				innerText: "",
-				getAttribute: () => href
+				getAttribute: () => href,
 			};
 
 			wrapper
@@ -197,13 +187,13 @@ describe("SubNav", () => {
 				.at(0)
 				.simulate("click", {
 					preventDefault: () => {},
-					currentTarget: currentTarget
+					currentTarget: currentTarget,
 				});
 
 			window.dataLayer[0].eventCallback();
 			expect(onNavigating).toHaveBeenCalledWith({
 				element: currentTarget,
-				href: href
+				href: href,
 			});
 		});
 
@@ -220,7 +210,7 @@ describe("SubNav", () => {
 
 			const currentTarget = {
 				innerText: "",
-				getAttribute: () => href
+				getAttribute: () => href,
 			};
 
 			wrapper
@@ -228,13 +218,13 @@ describe("SubNav", () => {
 				.at(0)
 				.simulate("click", {
 					preventDefault: () => {},
-					currentTarget: currentTarget
+					currentTarget: currentTarget,
 				});
 
 			window.dataLayer[0].eventCallback();
 			expect(onNavigating).toHaveBeenCalledWith({
 				element: currentTarget,
-				href: href
+				href: href,
 			});
 		});
 	});

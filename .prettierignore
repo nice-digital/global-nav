@@ -1,1 +1,10 @@
 package.json
+README.md
+
+examples/assets
+
+dist
+lib
+coverage
+bin
+obj

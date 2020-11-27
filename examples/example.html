@@ -14,35 +14,17 @@
 			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<![endif]-->
 
-		<!-- Hotjar Tracking Code for https://test-global-nav.nice.org.uk -->
-		<script>
-			(function(h, o, t, j, a, r) {
-				h.hj =
-					h.hj ||
-					function() {
-						(h.hj.q = h.hj.q || []).push(arguments);
-					};
-				h._hjSettings = { hjid: 1278393, hjsv: 6 };
-				a = o.getElementsByTagName("head")[0];
-				r = o.createElement("script");
-				r.async = 1;
-				r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-				a.appendChild(r);
-			})(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-		</script>
 		<!--[if lt IE 9]>
-			<% for (var chunk in htmlWebpackPlugin.files.chunks) { %> <% if
-			((htmlWebpackPlugin.files.chunks[chunk].entry).match('ie')) {%>
-			<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-			<% } %> <% } %>
+			<script src="/<%= htmlWebpackPlugin.options.excludeChunks[0] %>.js"></script>
 		<![endif]-->
 	</head>
-	<body class="<%= htmlWebpackPlugin.options.bodyClasses %>">
-		<%= htmlWebpackPlugin.options.body %>
-
-		<div id="footer"></div>
+	<body class="<%= bodyClasses %>">
+		<div id="global-nav-header"></div>
+		<%= body %>
+		<div id="global-nav-footer"></div>
+		<script src="//cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"></script>
 		<script type="text/javascript">
-			var global_nav_config = <%= typeof htmlWebpackPlugin.options.global_nav_config === "string"? htmlWebpackPlugin.options.global_nav_config : JSON.stringify(htmlWebpackPlugin.options.global_nav_config) %>;
+			var global_nav_config = <%= typeof global_nav_config === "string"? global_nav_config : JSON.stringify(global_nav_config) %>;
 		</script>
 	</body>
 </html>

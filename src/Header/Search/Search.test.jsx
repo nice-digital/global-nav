@@ -54,7 +54,7 @@ describe("Search", () => {
 			expect(wrapper.find("Autocomplete").props()).toEqual({
 				source: "variableName",
 				placeholder: "Test placeholder",
-				query: "diabetes"
+				query: "diabetes",
 			});
 		});
 	});
@@ -70,10 +70,7 @@ describe("Search", () => {
 			// Need to force update for some reason, see https://github.com/airbnb/enzyme/issues/944#issuecomment-322271527
 			wrapper.instance().forceUpdate();
 
-			wrapper
-				.find("form")
-				.at(0)
-				.simulate("submit");
+			wrapper.find("form").at(0).simulate("submit");
 
 			expect(handleSubmit).toHaveBeenCalledTimes(1);
 		});
@@ -88,10 +85,7 @@ describe("Search", () => {
 			// Need to force update for some reason, see https://github.com/airbnb/enzyme/issues/944#issuecomment-322271527
 			wrapper.instance().forceUpdate();
 
-			wrapper
-				.find("button")
-				.at(0)
-				.simulate("click");
+			wrapper.find("button").at(0).simulate("click");
 
 			expect(handleSubmit).toHaveBeenCalledTimes(1);
 		});
@@ -173,24 +167,21 @@ describe("Search", () => {
 			const wrapper = mount(
 				<Search {...defaultProps} onSearching={onSearching} />,
 				{
-					attachTo: appContainer
+					attachTo: appContainer,
 				}
 			);
 
 			const keyDownEvent = new Event("keydown");
 			keyDownEvent.key = "Enter";
 
-			wrapper
-				.find("#autocomplete")
-				.instance()
-				.dispatchEvent(keyDownEvent);
+			wrapper.find("#autocomplete").instance().dispatchEvent(keyDownEvent);
 
 			expect(onSearching).toHaveBeenCalledTimes(1);
 		});
 
 		it("should submit form if the enter key is pressed with no onSearching prop", () => {
 			const wrapper = mount(<Search {...defaultProps} />, {
-				attachTo: appContainer
+				attachTo: appContainer,
 			});
 
 			const formSubmit = jest.fn();
@@ -199,17 +190,14 @@ describe("Search", () => {
 			const keyDownEvent = new Event("keydown");
 			keyDownEvent.key = "Enter";
 
-			wrapper
-				.find("#autocomplete")
-				.instance()
-				.dispatchEvent(keyDownEvent);
+			wrapper.find("#autocomplete").instance().dispatchEvent(keyDownEvent);
 
 			expect(formSubmit).toHaveBeenCalledTimes(1);
 		});
 
 		it("should cleanup keydown event handler when umounted", () => {
 			const wrapper = mount(<Search {...defaultProps} />, {
-				attachTo: appContainer
+				attachTo: appContainer,
 			});
 
 			const removeEventListener = jest.fn();

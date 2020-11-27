@@ -6,7 +6,7 @@ import { shallow } from "enzyme";
 describe("CoronaMessage", () => {
 	it("Renders correctly", () => {
 		const wrapper = shallow(<CoronaMessage />, {
-			disableLifecycleMethods: true
+			disableLifecycleMethods: true,
 		});
 
 		expect(toJson(wrapper)).toMatchSnapshot();

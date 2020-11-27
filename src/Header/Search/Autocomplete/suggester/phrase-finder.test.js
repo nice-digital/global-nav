@@ -25,14 +25,14 @@ describe("phraseFinder", () => {
 					{
 						originalIndex: 0,
 						originalStr: "brown",
-						str: "brown"
+						str: "brown",
 					},
 					{
 						originalIndex: 6,
 						originalStr: "fox",
-						str: "fox"
-					}
-				]
+						str: "fox",
+					},
+				],
 			});
 		});
 
@@ -44,14 +44,14 @@ describe("phraseFinder", () => {
 					{
 						originalIndex: 4,
 						originalStr: "brown",
-						str: "brown"
+						str: "brown",
 					},
 					{
 						originalIndex: 10,
 						originalStr: "fox",
-						str: "fox"
-					}
-				]
+						str: "fox",
+					},
+				],
 			});
 		});
 
@@ -63,14 +63,14 @@ describe("phraseFinder", () => {
 					{
 						originalIndex: 4,
 						originalStr: "brown",
-						str: "brown"
+						str: "brown",
 					},
 					{
 						originalIndex: 10,
 						originalStr: "fox",
-						str: "fox"
-					}
-				]
+						str: "fox",
+					},
+				],
 			});
 		});
 
@@ -82,14 +82,14 @@ describe("phraseFinder", () => {
 					{
 						originalIndex: 5,
 						originalStr: "brown",
-						str: "brown"
+						str: "brown",
 					},
 					{
 						originalIndex: 11,
 						originalStr: "fox",
-						str: "fox"
-					}
-				]
+						str: "fox",
+					},
+				],
 			});
 		});
 	});

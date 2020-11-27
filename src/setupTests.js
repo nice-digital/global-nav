@@ -8,20 +8,20 @@ configure({ adapter: new Adapter() });
 Object.defineProperty(
 	window.navigator,
 	"userAgent",
-	(function(_value) {
+	(function (_value) {
 		return {
 			get: function _get() {
 				return _value;
 			},
 			set: function _set(v) {
 				_value = v;
-			}
+			},
 		};
 	})(window.navigator.userAgent)
 );
 
 // Need to redefine window location to be able to set the href property
-(oldURL => {
+((oldURL) => {
 	delete global.window.location;
 	global.window.location = new URL(oldURL);
 })(window.location.href);

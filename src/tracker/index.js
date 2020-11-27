@@ -5,7 +5,7 @@ export const defaultEventCategory = "TopHat and footer";
 export const headerClickEventAction = "Tophat click";
 export const footerClickEventAction = "Footer click";
 
-export const ensureDataLayer = function() {
+export const ensureDataLayer = function () {
 	window.dataLayer = window.dataLayer || [];
 };
 
@@ -18,7 +18,7 @@ export const ensureDataLayer = function() {
  * @param {Number} value The optional event value
  * @param {Function} callback The callback function to be called when the GTM event has fired
  */
-export const trackEvent = function(
+export const trackEvent = function (
 	category,
 	action,
 	label,
@@ -31,7 +31,7 @@ export const trackEvent = function(
 		event: eventName,
 		eventCategory: category,
 		eventAction: action,
-		eventLabel: label
+		eventLabel: label,
 	};
 
 	if (value) {
@@ -40,7 +40,7 @@ export const trackEvent = function(
 
 	if (callback) {
 		let callbackTimeout;
-		const wrappedCallback = function() {
+		const wrappedCallback = function () {
 			clearTimeout(callbackTimeout);
 			callback();
 		};

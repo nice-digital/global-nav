@@ -17,7 +17,7 @@ import { trackEvent } from "./../../../tracker";
  * @param      {Object}  scope  The context for the debounced function
  * @return     {Function}  { The debounced function }
  */
-const debounce = function(
+const debounce = function (
 	func,
 	execAsap = false,
 	threshold = 100,
@@ -48,15 +48,16 @@ const maxResults = 5;
 export const rateLimitWait = 300;
 
 const templates = {
-	inputValue: function(suggestion) {
+	inputValue: function (suggestion) {
 		if (!suggestion || !suggestion.Title) return "";
 		return suggestion && suggestion.Title;
 	},
-	suggestion: function(suggestion) {
+	suggestion: function (suggestion) {
 		if (!suggestion || !suggestion.Link) return "";
-		return `<a href="${suggestion.Link}">${suggestion.TitleHtml ||
-			suggestion.Title}</a>`;
-	}
+		return `<a href="${suggestion.Link}">${
+			suggestion.TitleHtml || suggestion.Title
+		}</a>`;
+	},
 };
 
 export default class Autocomplete extends Component {
@@ -70,7 +71,7 @@ export default class Autocomplete extends Component {
 			//loosing the component scope due to hoisting
 			// eslint-disable-next-line react/prop-types
 			const { onNavigating } = this.props;
-			const eventCallback = function() {
+			const eventCallback = function () {
 				const onNavigatingCallback =
 					onNavigating &&
 					(typeof onNavigating === "function"
@@ -80,7 +81,7 @@ export default class Autocomplete extends Component {
 				if (typeof onNavigatingCallback === "function") {
 					onNavigatingCallback({
 						element: selectedEl,
-						href: suggestion.Link
+						href: suggestion.Link,
 					});
 				} else window.location.href = suggestion.Link;
 			};
@@ -144,14 +145,14 @@ export default class Autocomplete extends Component {
 				this.props.source.indexOf("?") === -1 ? "?" : "&"
 			}q=${query}`
 		)
-			.then(response => response.json())
-			.then(data => {
+			.then((response) => response.json())
+			.then((data) => {
 				populateResults(data.slice(0, maxResults));
 			});
 	}
 
 	render() {
-		const isIE8 = function() {
+		const isIE8 = function () {
 			if (typeof navigator === "undefined") return false; // For server rendering
 			const ua = navigator.userAgent;
 			var msie = ua.indexOf("MSIE ");
@@ -185,13 +186,13 @@ export default class Autocomplete extends Component {
 						minLength={3}
 						source={debounce(this.suggest, false, rateLimitWait, this)}
 						templates={templates}
-						onConfirm={function(s) {
+						onConfirm={function (s) {
 							this.onConfirm(s);
 						}.bind(this)}
 						confirmOnBlur={false}
 						showNoOptionsFound={false}
 						defaultValue={this.props.query}
-						ref={function(acElement) {
+						ref={function (acElement) {
 							// TODO: This relies on an inner implementation detail of the autocomplete component, can we do this in a better way?
 							acElement &&
 								acElement.elementReferences &&
@@ -214,13 +215,13 @@ Autocomplete.propTypes = {
 		PropTypes.string,
 		PropTypes.arrayOf(
 			PropTypes.shape({ Title: PropTypes.string, Link: PropTypes.string })
-		)
+		),
 	]),
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
-	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 Autocomplete.defaultProps = {
-	source: false
+	source: false,
 };

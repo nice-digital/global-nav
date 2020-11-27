@@ -8,7 +8,7 @@ import rootLinks from "./../../services.json";
 import {
 	trackEvent,
 	defaultEventCategory,
-	headerClickEventAction
+	headerClickEventAction,
 } from "../../tracker";
 
 export default class Nav extends Component {
@@ -32,7 +32,7 @@ export default class Nav extends Component {
 			headerClickEventAction,
 			eventLabel,
 			null,
-			function() {
+			function () {
 				window.location.href = href;
 			}
 		);
@@ -57,7 +57,7 @@ export default class Nav extends Component {
 				headerClickEventAction,
 				eventLabel,
 				null,
-				function() {
+				function () {
 					window.location.href = href;
 				}
 			);
@@ -70,9 +70,9 @@ export default class Nav extends Component {
 		// Links from NICE Accounts is an object so flatten to a loop for easier traversal
 		const accountsLinksArray =
 			accountsLinks &&
-			Object.keys(accountsLinks).map(text => ({
+			Object.keys(accountsLinks).map((text) => ({
 				text: text,
-				href: accountsLinks[text]
+				href: accountsLinks[text],
 			}));
 
 		// Would need to polyfill Array.prototype.find to rewrite this loop, whilst we support IE
@@ -93,10 +93,10 @@ export default class Nav extends Component {
 				className={classnames(
 					styles.wrapper,
 					{
-						[styles.wrapperExpanded]: this.props.isExpanded
+						[styles.wrapperExpanded]: this.props.isExpanded,
 					},
 					{
-						[styles.wrapperWithSubLinks]: subLinks
+						[styles.wrapperWithSubLinks]: subLinks,
 					}
 				)}
 			>
@@ -192,5 +192,5 @@ Nav.propTypes = {
 	service: PropTypes.string,
 	isExpanded: PropTypes.bool,
 	accountsLinks: PropTypes.object,
-	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };

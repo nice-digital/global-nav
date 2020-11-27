@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { hot } from "react-hot-loader/root";
 import PropTypes from "prop-types";
 
 import NiceLogo from "@nice-digital/icons/lib/Logo";
@@ -37,7 +36,7 @@ export class Footer extends Component {
 }
 
 Footer.propTypes = {
-	service: PropTypes.string
+	service: PropTypes.string,
 };
 
-export default hot(Footer);
+export default Footer;

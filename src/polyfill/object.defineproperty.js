@@ -5,7 +5,7 @@ import {
 	lookupGetter,
 	lookupSetter,
 	defineGetter,
-	defineSetter
+	defineSetter,
 } from "./helpers";
 
 // ES5 15.2.3.6
@@ -142,7 +142,7 @@ if (!Object.defineProperties || definePropertiesFallback) {
 			}
 		}
 
-		Object.keys(properties).forEach(function(property) {
+		Object.keys(properties).forEach(function (property) {
 			if (property !== "__proto__") {
 				Object.defineProperty(object, property, properties[property]);
 			}

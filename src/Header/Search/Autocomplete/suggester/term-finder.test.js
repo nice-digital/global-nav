@@ -17,14 +17,14 @@ describe("termFinder", () => {
 					queryToken: {
 						str: "lorem",
 						originalStr: "lorem",
-						originalIndex: 0
+						originalIndex: 0,
 					},
 					suggestionToken: {
 						str: "lorem",
 						originalStr: "lorem",
-						originalIndex: 0
-					}
-				}
+						originalIndex: 0,
+					},
+				},
 			]);
 		});
 
@@ -36,26 +36,26 @@ describe("termFinder", () => {
 					queryToken: {
 						str: "lorem",
 						originalStr: "lorem",
-						originalIndex: 0
+						originalIndex: 0,
 					},
 					suggestionToken: {
 						str: "lorem",
 						originalStr: "lorem",
-						originalIndex: 0
-					}
+						originalIndex: 0,
+					},
 				},
 				{
 					queryToken: {
 						str: "dolor",
 						originalStr: "dolor",
-						originalIndex: 6
+						originalIndex: 6,
 					},
 					suggestionToken: {
 						str: "dolor",
 						originalStr: "dolor",
-						originalIndex: 12
-					}
-				}
+						originalIndex: 12,
+					},
+				},
 			]);
 		});
 
@@ -67,26 +67,26 @@ describe("termFinder", () => {
 					queryToken: {
 						str: "dolor",
 						originalStr: "dolor",
-						originalIndex: 0
+						originalIndex: 0,
 					},
 					suggestionToken: {
 						str: "dolor",
 						originalStr: "dolor",
-						originalIndex: 12
-					}
+						originalIndex: 12,
+					},
 				},
 				{
 					queryToken: {
 						str: "lorem",
 						originalStr: "lorem",
-						originalIndex: 6
+						originalIndex: 6,
 					},
 					suggestionToken: {
 						str: "lorem",
 						originalStr: "lorem",
-						originalIndex: 0
-					}
-				}
+						originalIndex: 0,
+					},
+				},
 			]);
 		});
 
@@ -98,26 +98,26 @@ describe("termFinder", () => {
 					queryToken: {
 						str: "angio",
 						originalStr: "angio",
-						originalIndex: 0
+						originalIndex: 0,
 					},
 					suggestionToken: {
 						str: "angio",
 						originalStr: "Angio",
-						originalIndex: 0
-					}
+						originalIndex: 0,
+					},
 				},
 				{
 					queryToken: {
 						str: "an",
 						originalStr: "an",
-						originalIndex: 6
+						originalIndex: 6,
 					},
 					suggestionToken: {
 						str: "anaphylaxis",
 						originalStr: "anaphylaxis",
-						originalIndex: 13
-					}
-				}
+						originalIndex: 13,
+					},
+				},
 			]);
 		});
 

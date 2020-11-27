@@ -37,8 +37,8 @@ describe("tracker", () => {
 					event: eventName,
 					eventCategory: "test category",
 					eventAction: "test action",
-					eventLabel: "test label"
-				}
+					eventLabel: "test label",
+				},
 			]);
 		});
 
@@ -51,8 +51,8 @@ describe("tracker", () => {
 					eventCategory: "test category",
 					eventAction: "test action",
 					eventLabel: "test label",
-					eventValue: 99
-				}
+					eventValue: 99,
+				},
 			]);
 		});
 

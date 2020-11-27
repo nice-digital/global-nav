@@ -11,7 +11,7 @@ export default class Search extends Component {
 		super(props);
 
 		this.state = {
-			canUseDOM: false
+			canUseDOM: false,
 		};
 
 		this.searchSubmitHandler = this.searchSubmitHandler.bind(this);
@@ -20,7 +20,7 @@ export default class Search extends Component {
 
 	componentDidMount() {
 		this.setState({
-			canUseDOM: true
+			canUseDOM: true,
 		});
 
 		// Submit the form when we press enter to allow the enter key functionality:
@@ -122,16 +122,16 @@ Search.propTypes = {
 		PropTypes.string,
 		PropTypes.arrayOf(
 			PropTypes.shape({ Title: PropTypes.string, Link: PropTypes.string })
-		)
+		),
 	]),
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
 	onSearching: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 Search.defaultProps = {
 	url: "/search",
 	placeholder: "Search NICE…",
-	query: ""
+	query: "",
 };
