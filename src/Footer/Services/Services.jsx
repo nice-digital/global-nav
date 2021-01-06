@@ -20,8 +20,21 @@ export default class Services extends Component {
 										eventAction={footerClickEventAction}
 										eventLabel={text}
 										aria-current={id == this.props.service ? "true" : null}
+										className={styles.link}
 									>
-										{abbreviation ? <abbr title={title}>{text}</abbr> : text}
+										{abbreviation ? (
+											<>
+												<abbr title={title}>
+													{text}{" "}
+													<span className={styles.visuallyHidden}>{title}</span>
+												</abbr>
+												<span aria-hidden="true" className={styles.tooltip}>
+													{title}
+												</span>
+											</>
+										) : (
+											text
+										)}
 									</TrackedLink>
 								</li>
 							);
