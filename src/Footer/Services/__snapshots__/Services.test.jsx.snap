@@ -13,6 +13,7 @@ exports[`Services Matches snapshot 1`] = `
     >
       <TrackedLink
         aria-current="true"
+        className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="NICE Pathways"
@@ -26,6 +27,7 @@ exports[`Services Matches snapshot 1`] = `
     >
       <TrackedLink
         aria-current={null}
+        className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="NICE guidance"
@@ -39,6 +41,7 @@ exports[`Services Matches snapshot 1`] = `
     >
       <TrackedLink
         aria-current={null}
+        className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="Standards and indicators"
@@ -52,6 +55,7 @@ exports[`Services Matches snapshot 1`] = `
     >
       <TrackedLink
         aria-current={null}
+        className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="Evidence search"
@@ -65,6 +69,7 @@ exports[`Services Matches snapshot 1`] = `
     >
       <TrackedLink
         aria-current={null}
+        className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="BNF"
@@ -74,7 +79,19 @@ exports[`Services Matches snapshot 1`] = `
           title="British National Formulary"
         >
           BNF
+           
+          <span
+            className="visuallyHidden"
+          >
+            British National Formulary
+          </span>
         </abbr>
+        <span
+          aria-hidden="true"
+          className="tooltip"
+        >
+          British National Formulary
+        </span>
       </TrackedLink>
     </li>
     <li
@@ -82,6 +99,7 @@ exports[`Services Matches snapshot 1`] = `
     >
       <TrackedLink
         aria-current={null}
+        className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="BNFC"
@@ -91,7 +109,19 @@ exports[`Services Matches snapshot 1`] = `
           title="British National Formulary for Children"
         >
           BNFC
+           
+          <span
+            className="visuallyHidden"
+          >
+            British National Formulary for Children
+          </span>
         </abbr>
+        <span
+          aria-hidden="true"
+          className="tooltip"
+        >
+          British National Formulary for Children
+        </span>
       </TrackedLink>
     </li>
     <li
@@ -99,6 +129,7 @@ exports[`Services Matches snapshot 1`] = `
     >
       <TrackedLink
         aria-current={null}
+        className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="CKS"
@@ -108,7 +139,19 @@ exports[`Services Matches snapshot 1`] = `
           title="Clinical Knowledge Summaries"
         >
           CKS
+           
+          <span
+            className="visuallyHidden"
+          >
+            Clinical Knowledge Summaries
+          </span>
         </abbr>
+        <span
+          aria-hidden="true"
+          className="tooltip"
+        >
+          Clinical Knowledge Summaries
+        </span>
       </TrackedLink>
     </li>
     <li
@@ -116,6 +159,7 @@ exports[`Services Matches snapshot 1`] = `
     >
       <TrackedLink
         aria-current={null}
+        className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="Journals and databases"
