@@ -13,7 +13,7 @@
     .autocomplete__hint,
     .autocomplete__input {
       -webkit-appearance: none;
-      border: 1px solid $nds-colour-nice-grey-2;
+      border: 1px solid $nds-colour-nice-black;
       border-radius: 0; /* Safari 10 on iOS adds implicit border rounding. */
       box-sizing: border-box;
       margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */

@@ -7,11 +7,9 @@ exports[`SubNav Matches snapshot 1`] = `
   <ul
     aria-label="BNF links"
     className="list"
-    role="menu"
   >
     <li
       key="0"
-      role="presentation"
     >
       <a
         aria-current="page"
@@ -19,14 +17,12 @@ exports[`SubNav Matches snapshot 1`] = `
         className="link"
         href="/"
         onClick={[Function]}
-        role="menuitem"
       >
         Home
       </a>
     </li>
     <li
       key="1"
-      role="presentation"
     >
       <a
         aria-current={null}
@@ -34,14 +30,12 @@ exports[`SubNav Matches snapshot 1`] = `
         className="link"
         href="/drug/"
         onClick={[Function]}
-        role="menuitem"
       >
         Drugs
       </a>
     </li>
     <li
       key="2"
-      role="presentation"
     >
       <a
         aria-current={null}
@@ -49,7 +43,6 @@ exports[`SubNav Matches snapshot 1`] = `
         className="link"
         href="/interaction/"
         onClick={[Function]}
-        role="menuitem"
       >
         Interactions
       </a>

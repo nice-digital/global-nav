@@ -1,6 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 
 @import '../header-settings';
+@import '../Common.module.scss';
 
 .wrapper {
   @include nds-hide-print;

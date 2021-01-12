@@ -1,5 +1,6 @@
 @import '~@nice-digital/nds-core/scss/core';
 @import 'footer-settings';
+@import '../Common.module.scss';
 
 .footer {
   @include nds-links-inverse;

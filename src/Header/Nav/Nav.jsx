@@ -100,15 +100,10 @@ export default class Nav extends Component {
 					}
 				)}
 			>
-				<nav
-					className={styles.nav}
-					role="navigation"
-					aria-label="primary navigation"
-				>
+				<nav className={styles.nav} aria-label="primary navigation">
 					<div className={styles.menuWrapper}>
 						<ul
 							className={styles.menuList}
-							role="menu"
 							aria-labelledby="header-menu-button"
 						>
 							{rootLinks.map(({ href, id, text, abbreviation, title }) => {
@@ -128,21 +123,28 @@ export default class Nav extends Component {
 								}
 
 								return (
-									<li key={id} role="presentation">
+									<li key={id}>
 										<a
 											href={href}
 											aria-current={ariaCurrent}
-											role="menuitem"
 											className={styles.link}
 											onClick={this.handleNavItemClick}
 										>
-											<span>
-												{abbreviation ? (
-													<abbr title={title}>{text}</abbr>
-												) : (
-													text
-												)}
-											</span>
+											{abbreviation ? (
+												<>
+													<abbr title={title}>
+														{text}{" "}
+														<span className={styles.visuallyHidden}>
+															{title}
+														</span>
+													</abbr>
+													<span aria-hidden="true" className={styles.tooltip}>
+														{title}
+													</span>
+												</>
+											) : (
+												text
+											)}
 										</a>
 										{ariaCurrent && subLinks && (
 											<SubNav
@@ -166,12 +168,11 @@ export default class Nav extends Component {
 							<h2 className={styles.myAccountHeading}>My account</h2>
 						)}
 						<div className={styles.menuWrapper}>
-							<ul className={styles.menuList} role="menu">
+							<ul className={styles.menuList}>
 								{accountsLinksArray.map(({ href, text }) => (
-									<li key={href} role="presentation">
+									<li key={href}>
 										<a
 											href={href}
-											role="menuitem"
 											className={styles.link}
 											onClick={this.handleAccountNavItemClick}
 										>
