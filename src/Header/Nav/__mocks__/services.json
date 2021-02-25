@@ -30,12 +30,27 @@
             "id": "internal1",
             "links": [
                 {
-                    "text": "sub link 1",
-                    "href": "/sublink1"
+                    "text": "internal1 sub link 1",
+                    "href": "/i1sublink1"
                 },
                 {
-                    "text": "sub link 2",
-                    "href": "/sublink2"
+                    "text": "internal1 sub link 2",
+                    "href": "/i2sublink2"
+                }
+            ]
+        },
+        {
+            "href": "/",
+            "text": "Second internal service",
+            "id": "internal2",
+            "links": [
+                {
+                    "text": "internal2 sub link 1",
+                    "href": "/i2sublink1"
+                },
+                {
+                    "text": "internal2 sub link 2",
+                    "href": "/i2sublink2"
                 }
             ]
         }

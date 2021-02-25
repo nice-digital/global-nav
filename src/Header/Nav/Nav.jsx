@@ -75,14 +75,27 @@ export default class Nav extends Component {
 				href: accountsLinks[text],
 			}));
 
-		// Would need to polyfill Array.prototype.find to rewrite this loop, whilst we support IE
+		// Would need to polyfill Array.prototype.find to rewrite these loops, whilst we support IE
 		// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for support
 		let activeService = null;
-		for (let i = 0; i < rootLinks.external.length; i++) {
-			const rootLink = rootLinks.external[i];
-			if (this.props.service && rootLink.id === this.props.service) {
-				activeService = rootLink;
+		let internalService = false;
+		let servicesToDisplay = rootLinks.external;
+		for (let i = 0; i < rootLinks.internal.length; i++) {
+			const internalRootLink = rootLinks.internal[i];
+			if (this.props.service && internalRootLink.id === this.props.service) {
+				internalService = true;
+				activeService = internalRootLink;
+				servicesToDisplay = [internalRootLink];
 				break;
+			}
+		}
+		if (!internalService){
+			for (let i = 0; i < rootLinks.external.length; i++) {
+				const externalRootLink = rootLinks.external[i];
+				if (this.props.service && externalRootLink.id === this.props.service) {
+					activeService = externalRootLink;
+					break;
+				}
 			}
 		}
 		const subLinks = activeService && activeService.links;
@@ -106,7 +119,7 @@ export default class Nav extends Component {
 							className={styles.menuList}
 							aria-labelledby="header-menu-button"
 						>
-							{rootLinks.external.map(({ href, id, text, abbreviation, title }) => {
+							{servicesToDisplay.map(({ href, id, text, abbreviation, title }) => {
 								let ariaCurrent = null;
 
 								if (this.props.service && id === this.props.service) {

@@ -20,8 +20,7 @@ describe("Nav", () => {
 		service: null,
 	};
 	const externalServices = services.external;
-
-
+	
 	it("Renders without crashing", () => {
 		const wrapper = shallow(<Nav {...defaultProps} />);
 		expect(wrapper).toHaveLength(1);
@@ -53,11 +52,11 @@ describe("Nav", () => {
 		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
 	});
 
-	it("Matches snapshot with sub links for selected service", () => {
+	it("Matches snapshot with sub links for selected external service", () => {
 		const wrapper = mount(<Nav {...defaultProps} service={externalServices[1].id} />);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
-
+	
 	it("Adds aria-current=true attribute for selected service", () => {
 		const wrapper = shallow(<Nav {...defaultProps} service={externalServices[1].id} />);
 		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual(true);
@@ -82,6 +81,7 @@ describe("Nav", () => {
 		expect(wrapper.props().className).toContain("wrapperExpanded");
 	});
 
+	
 	describe("tracking", () => {
 		beforeEach(() => {
 			window.dataLayer = [];
@@ -238,5 +238,20 @@ describe("Nav", () => {
 				expect(window.dataLayer).toEqual([]);
 			});
 		});
+	});
+
+	describe("internalServices", () => {
+		const internalServices = services.internal;
+
+		it("Matches snapshot with sub links for selected internal service", () => {
+			const wrapper = mount(<Nav {...defaultProps} service={internalServices[0].id} />);
+			expect(toJson(wrapper)).toMatchSnapshot();
+		});	
+	
+		it("Internal service 1 only renders itself and no other services", () => {
+			const wrapper = mount(<Nav {...defaultProps} service={internalServices[0].id} />);
+			expect(wrapper.find("a[href='/']").length).toEqual(1);
+		});	
+
 	});
 });
