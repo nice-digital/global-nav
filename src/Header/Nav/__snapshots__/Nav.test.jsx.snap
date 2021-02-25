@@ -135,6 +135,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
 exports[`Nav Matches snapshot with sub links for selected external service 1`] = `
 <Nav
   accountsData={null}
+  additionalSubMenuItems={Array []}
   isExpanded={false}
   service="link2"
 >
@@ -254,6 +255,7 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
 exports[`Nav internalServices Matches snapshot with sub links for selected internal service 1`] = `
 <Nav
   accountsData={null}
+  additionalSubMenuItems={Array []}
   isExpanded={false}
   service="internal1"
 >

@@ -50,12 +50,18 @@ declare module "@nice-digital/global-nav" {
 		environment?: "live" | "beta" | "test" | "local";
 	};
 
+	export type AdditionalSubMenuItem = {
+		service: string;
+		links: Array<Link>;
+	};
+
 	type HeaderProps = {
 		service?: Service;
 		skipLinkId?: string;
 		search?: false | SearchProps;
 		auth?: NiceAccountsProviderProps | IdamProviderProps | false;
 		onNavigating?: string | OnNavigatingCallback;
+		additionalSubMenuItems?: Array<AdditionalSubMenuItem>;
 	};
 
 	type FooterProps = {

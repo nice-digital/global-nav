@@ -79,13 +79,13 @@ export default class Nav extends Component {
 		// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for support
 		let activeService = null;
 		let internalService = false;
-		let servicesToDisplay = rootLinks.external;
+		let servicesToDisplay = rootLinks.external; //default to displaying external services.
 		for (let i = 0; i < rootLinks.internal.length; i++) {
 			const internalRootLink = rootLinks.internal[i];
 			if (this.props.service && internalRootLink.id === this.props.service) {
 				internalService = true;
 				activeService = internalRootLink;
-				servicesToDisplay = [internalRootLink];
+				servicesToDisplay = [internalRootLink]; //unlike external, internal services dosn't display other internal services.
 				break;
 			}
 		}
@@ -98,7 +98,15 @@ export default class Nav extends Component {
 				}
 			}
 		}
-		const subLinks = activeService && activeService.links;
+		let additionalSubMenuLinks = [];
+		for (let i = 0; i < this.props.additionalSubMenuItems.length; i++) {
+			const additionalSubMenuItem = this.props.additionalSubMenuItems[i];
+			if (typeof additionalSubMenuItem !== "undefined" && additionalSubMenuItem.service === this.props.service && 
+				Array.isArray(additionalSubMenuItem.links)){
+				additionalSubMenuLinks = additionalSubMenuItem.links.map((link) => ({ text: link.text, href: link.url }));
+			}
+		}
+		const subLinks = activeService && activeService.links.concat(additionalSubMenuLinks);		
 
 		return (
 			<div
@@ -207,4 +215,9 @@ Nav.propTypes = {
 	isExpanded: PropTypes.bool,
 	accountsLinks: PropTypes.object,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
+};
+
+Nav.defaultProps = {
+	additionalSubMenuItems: [],
 };
