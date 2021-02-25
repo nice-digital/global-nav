@@ -250,7 +250,16 @@ describe("Nav", () => {
 	
 		it("Internal service 1 only renders itself and no other services", () => {
 			const wrapper = mount(<Nav {...defaultProps} service={internalServices[0].id} />);
-			expect(wrapper.find("a[href='/']").length).toEqual(1);
+			const topLinks = wrapper.find("a[href='/']");			
+			expect(topLinks.length).toEqual(1);
+			expect(topLinks.text()).toEqual("First internal service");
+		});	
+
+		it("Internal service 2 only renders itself and no other services", () => {
+			const wrapper = mount(<Nav {...defaultProps} service={internalServices[1].id} />);
+			const topLinks = wrapper.find("a[href='/']");			
+			expect(topLinks.length).toEqual(1);
+			expect(topLinks.text()).toEqual("Second internal service");
 		});	
 
 	});
