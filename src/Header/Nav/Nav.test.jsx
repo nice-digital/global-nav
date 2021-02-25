@@ -19,6 +19,8 @@ describe("Nav", () => {
 		accountsData: null,
 		service: null,
 	};
+	const externalServices = services.external;
+
 
 	it("Renders without crashing", () => {
 		const wrapper = shallow(<Nav {...defaultProps} />);
@@ -52,21 +54,21 @@ describe("Nav", () => {
 	});
 
 	it("Matches snapshot with sub links for selected service", () => {
-		const wrapper = mount(<Nav {...defaultProps} service={services[1].id} />);
+		const wrapper = mount(<Nav {...defaultProps} service={externalServices[1].id} />);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Adds aria-current=true attribute for selected service", () => {
-		const wrapper = shallow(<Nav {...defaultProps} service={services[1].id} />);
+		const wrapper = shallow(<Nav {...defaultProps} service={externalServices[1].id} />);
 		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual(true);
 	});
 
 	it("Adds aria-current=page attribute for selected service when matches current URL", () => {
 		const oldLocation = global.window.location;
 		delete global.window.location;
-		global.window.location = new URL(services[1].href);
+		global.window.location = new URL(externalServices[1].href);
 
-		const wrapper = shallow(<Nav {...defaultProps} service={services[1].id} />);
+		const wrapper = shallow(<Nav {...defaultProps} service={externalServices[1].id} />);
 		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
 
 		// Tidy up

@@ -78,8 +78,8 @@ export default class Nav extends Component {
 		// Would need to polyfill Array.prototype.find to rewrite this loop, whilst we support IE
 		// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for support
 		let activeService = null;
-		for (let i = 0; i < rootLinks.length; i++) {
-			const rootLink = rootLinks[i];
+		for (let i = 0; i < rootLinks.external.length; i++) {
+			const rootLink = rootLinks.external[i];
 			if (this.props.service && rootLink.id === this.props.service) {
 				activeService = rootLink;
 				break;
@@ -106,7 +106,7 @@ export default class Nav extends Component {
 							className={styles.menuList}
 							aria-labelledby="header-menu-button"
 						>
-							{rootLinks.map(({ href, id, text, abbreviation, title }) => {
+							{rootLinks.external.map(({ href, id, text, abbreviation, title }) => {
 								let ariaCurrent = null;
 
 								if (this.props.service && id === this.props.service) {
