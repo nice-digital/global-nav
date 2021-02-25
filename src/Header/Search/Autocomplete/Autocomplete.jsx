@@ -175,6 +175,7 @@ export default class Autocomplete extends Component {
 							placeholder={this.props.placeholder}
 							defaultValue={this.props.query}
 							data-hj-allow=""
+							maxLength={512}
 						/>
 					</div>
 				) : (
@@ -194,13 +195,14 @@ export default class Autocomplete extends Component {
 						defaultValue={this.props.query}
 						ref={function (acElement) {
 							// TODO: This relies on an inner implementation detail of the autocomplete component, can we do this in a better way?
-							acElement &&
+							var inputEl =
+								acElement &&
 								acElement.elementReferences &&
-								acElement.elementReferences[-1] &&
-								acElement.elementReferences[-1].setAttribute(
-									"data-hj-allow",
-									""
-								);
+								acElement.elementReferences[-1];
+							if (inputEl) {
+								inputEl.setAttribute("data-hj-allow", "");
+								inputEl.setAttribute("maxlength", 512);
+							}
 						}}
 					/>
 				)}
