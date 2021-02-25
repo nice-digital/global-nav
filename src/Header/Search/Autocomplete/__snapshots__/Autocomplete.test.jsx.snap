@@ -44,6 +44,7 @@ exports[`Autocomplete Non-autocomplete should render fallback search box in IE8 
       data-hj-allow=""
       defaultValue="diabetes"
       id="autocomplete"
+      maxLength={512}
       name="q"
       type="search"
     />
@@ -63,6 +64,7 @@ exports[`Autocomplete Non-autocomplete should render fallback search box when no
       data-hj-allow=""
       defaultValue="diabetes"
       id="autocomplete"
+      maxLength={512}
       name="q"
       type="search"
     />

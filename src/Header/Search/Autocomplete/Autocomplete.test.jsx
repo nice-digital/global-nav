@@ -54,6 +54,19 @@ describe("Autocomplete", () => {
 			).toEqual("");
 		});
 
+		it("should add 512 character max length", () => {
+			const wrapper = mount(
+				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
+			);
+
+			expect(
+				wrapper
+					.getDOMNode()
+					.querySelector("input#autocomplete")
+					.getAttribute("maxlength")
+			).toEqual("512");
+		});
+
 		it("should push autocomplete select event to the dataLayer", () => {
 			document.body.innerHTML = "";
 			var appContainer = document.createElement("div");
