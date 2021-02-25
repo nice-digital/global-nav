@@ -42,6 +42,7 @@
           - [Header.skipLinkId](#headerskiplinkid)
           - [Header.onNavigating](#headeronnavigating)
           - [Header.onResize](#headeronresize)
+          - [Header.additionalSubMenuItems](#headeradditionalsubmenuitems)
           - [Header.search](#headersearch)
           - [Header.search.url](#headersearchurl)
           - [Header.search.autocomplete](#headersearchautocomplete)
@@ -403,6 +404,32 @@ window.onResizeHandler = function () {
 var global_nav_config = {
   header: {
     onResize: 'onResizeHandler',
+  },
+};
+```
+
+###### Header.additionalSubMenuItems
+
+- Type: `null | Array`
+- Default: `null`
+
+Pass an `additionalSubMenuItems` array to add extra sub menu items for a given service.
+
+The array should be an array of objects, each containing a `service: string` and another array of `links: Array`. 
+The links array should contain an array of `text: string` and `url: string`. E.g:
+
+```js
+const adminMenus = [{
+    service: "indev",
+    links: [{text: "Admin", url: "/admin"}]
+  },{
+    service: "publications",
+    links: [{text: "Admin", url: "/admin"}]
+  }];
+
+var global_nav_config = {
+  header: {
+    additionalSubMenuItems: adminMenus,
   },
 };
 ```
