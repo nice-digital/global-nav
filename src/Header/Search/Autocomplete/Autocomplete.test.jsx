@@ -7,9 +7,6 @@ import toJson from "enzyme-to-json";
 
 import { eventName, eventTimeout } from "./../../../tracker";
 
-const IE8UserAgent =
-	"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)";
-
 describe("Autocomplete", () => {
 	const defaultProps = {};
 
@@ -228,22 +225,6 @@ describe("Autocomplete", () => {
 				<Autocomplete {...defaultProps} source={false} query="diabetes" />
 			);
 			expect(toJson(wrapper)).toMatchSnapshot();
-		});
-
-		it("should render fallback search box in IE8", () => {
-			const oldNavigator = global.navigator;
-			navigator.userAgent = IE8UserAgent;
-
-			const wrapper = shallow(
-				<Autocomplete
-					{...defaultProps}
-					source="/a-valid-source"
-					query="diabetes"
-				/>
-			);
-			expect(toJson(wrapper)).toMatchSnapshot();
-
-			navigator.userAgent = oldNavigator;
 		});
 	});
 });
