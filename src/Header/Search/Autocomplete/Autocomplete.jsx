@@ -61,6 +61,20 @@ const templates = {
 };
 
 export default class Autocomplete extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			canUseDOM: false,
+		};
+	}
+
+	componentDidMount() {
+		this.setState({
+			canUseDOM: true,
+		});
+	}
+
 	onConfirm(suggestion) {
 		if (suggestion) {
 			var selectedEl = document.querySelectorAll(
@@ -152,20 +166,9 @@ export default class Autocomplete extends Component {
 	}
 
 	render() {
-		const isIE8 = function () {
-			if (typeof navigator === "undefined") return false; // For server rendering
-			const ua = navigator.userAgent;
-			var msie = ua.indexOf("MSIE ");
-			if (msie > 0) {
-				return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10) <= 8;
-			}
-
-			return false;
-		};
-
 		return (
 			<div className={styles.ac}>
-				{!this.props.source || isIE8() || typeof window === "undefined" ? (
+				{!this.props.source || !this.state.canUseDOM ? (
 					<div className="autocomplete__wrapper">
 						<input
 							type="search"
