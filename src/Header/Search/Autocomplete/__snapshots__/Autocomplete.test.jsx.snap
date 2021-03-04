@@ -32,25 +32,6 @@ exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
 </div>
 `;
 
-exports[`Autocomplete Non-autocomplete should render fallback search box in IE8 1`] = `
-<div
-  className="ac"
->
-  <div
-    className="autocomplete__wrapper"
-  >
-    <input
-      className="autocomplete__input autocomplete__input--default"
-      data-hj-allow=""
-      defaultValue="diabetes"
-      id="autocomplete"
-      name="q"
-      type="search"
-    />
-  </div>
-</div>
-`;
-
 exports[`Autocomplete Non-autocomplete should render fallback search box when no source 1`] = `
 <div
   className="ac"
@@ -63,6 +44,7 @@ exports[`Autocomplete Non-autocomplete should render fallback search box when no
       data-hj-allow=""
       defaultValue="diabetes"
       id="autocomplete"
+      maxLength={512}
       name="q"
       type="search"
     />
