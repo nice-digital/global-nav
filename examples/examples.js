@@ -221,10 +221,12 @@ const indevConfig = {
 			auth: {
 				environment: "test",
 			},
-			additionalSubMenuItems : [{
-				service: "indev",
-				links: [{text: "Admin", url: "/admin"}]
-			}]
+			additionalSubMenuItems: [
+				{
+					service: "indev",
+					links: [{ text: "Admin", url: "/admin" }],
+				},
+			],
 		},
 	},
 };

@@ -89,7 +89,7 @@ export default class Nav extends Component {
 				break;
 			}
 		}
-		if (!internalService){
+		if (!internalService) {
 			for (let i = 0; i < rootLinks.external.length; i++) {
 				const externalRootLink = rootLinks.external[i];
 				if (this.props.service && externalRootLink.id === this.props.service) {
@@ -101,12 +101,19 @@ export default class Nav extends Component {
 		let additionalSubMenuLinks = [];
 		for (let i = 0; i < this.props.additionalSubMenuItems.length; i++) {
 			const additionalSubMenuItem = this.props.additionalSubMenuItems[i];
-			if (typeof additionalSubMenuItem !== "undefined" && additionalSubMenuItem.service === this.props.service && 
-				Array.isArray(additionalSubMenuItem.links)){
-				additionalSubMenuLinks = additionalSubMenuItem.links.map((link) => ({ text: link.text, href: link.url }));
+			if (
+				typeof additionalSubMenuItem !== "undefined" &&
+				additionalSubMenuItem.service === this.props.service &&
+				Array.isArray(additionalSubMenuItem.links)
+			) {
+				additionalSubMenuLinks = additionalSubMenuItem.links.map((link) => ({
+					text: link.text,
+					href: link.url,
+				}));
 			}
 		}
-		const subLinks = activeService && activeService.links.concat(additionalSubMenuLinks);		
+		const subLinks =
+			activeService && activeService.links.concat(additionalSubMenuLinks);
 
 		return (
 			<div
@@ -127,56 +134,58 @@ export default class Nav extends Component {
 							className={styles.menuList}
 							aria-labelledby="header-menu-button"
 						>
-							{servicesToDisplay.map(({ href, id, text, abbreviation, title }) => {
-								let ariaCurrent = null;
+							{servicesToDisplay.map(
+								({ href, id, text, abbreviation, title }) => {
+									let ariaCurrent = null;
 
-								if (this.props.service && id === this.props.service) {
-									ariaCurrent = true;
+									if (this.props.service && id === this.props.service) {
+										ariaCurrent = true;
 
-									if (
-										typeof location !== "undefined" &&
-										location &&
-										href ===
-											`${location.protocol}//${location.host}${location.pathname}`
-									) {
-										ariaCurrent = "page";
+										if (
+											typeof location !== "undefined" &&
+											location &&
+											href ===
+												`${location.protocol}//${location.host}${location.pathname}`
+										) {
+											ariaCurrent = "page";
+										}
 									}
-								}
 
-								return (
-									<li key={id}>
-										<a
-											href={href}
-											aria-current={ariaCurrent}
-											className={styles.link}
-											onClick={this.handleNavItemClick}
-										>
-											{abbreviation ? (
-												<>
-													<abbr title={title}>
-														{text}{" "}
-														<span className={styles.visuallyHidden}>
+									return (
+										<li key={id}>
+											<a
+												href={href}
+												aria-current={ariaCurrent}
+												className={styles.link}
+												onClick={this.handleNavItemClick}
+											>
+												{abbreviation ? (
+													<>
+														<abbr title={title}>
+															{text}{" "}
+															<span className={styles.visuallyHidden}>
+																{title}
+															</span>
+														</abbr>
+														<span aria-hidden="true" className={styles.tooltip}>
 															{title}
 														</span>
-													</abbr>
-													<span aria-hidden="true" className={styles.tooltip}>
-														{title}
-													</span>
-												</>
-											) : (
-												text
+													</>
+												) : (
+													text
+												)}
+											</a>
+											{ariaCurrent && subLinks && (
+												<SubNav
+													links={subLinks}
+													text={text}
+													onNavigating={this.props.onNavigating}
+												/>
 											)}
-										</a>
-										{ariaCurrent && subLinks && (
-											<SubNav
-												links={subLinks}
-												text={text}
-												onNavigating={this.props.onNavigating}
-											/>
-										)}
-									</li>
-								);
-							})}
+										</li>
+									);
+								}
+							)}
 						</ul>
 					</div>
 				</nav>
