@@ -171,10 +171,7 @@ describe("Search", () => {
 				}
 			);
 
-			const keyDownEvent = new Event("keydown");
-			keyDownEvent.key = "Enter";
-
-			wrapper.find("#autocomplete").instance().dispatchEvent(keyDownEvent);
+			wrapper.find("#autocomplete").at(0).simulate("keyDown", { key: "Enter" });
 
 			expect(onSearching).toHaveBeenCalledTimes(1);
 		});
@@ -187,32 +184,9 @@ describe("Search", () => {
 			const formSubmit = jest.fn();
 			wrapper.find("form").instance().submit = formSubmit;
 
-			const keyDownEvent = new Event("keydown");
-			keyDownEvent.key = "Enter";
-
-			wrapper.find("#autocomplete").instance().dispatchEvent(keyDownEvent);
+			wrapper.find("#autocomplete").at(0).simulate("keyDown", { key: "Enter" });
 
 			expect(formSubmit).toHaveBeenCalledTimes(1);
-		});
-
-		it("should cleanup keydown event handler when umounted", () => {
-			const wrapper = mount(<Search {...defaultProps} />, {
-				attachTo: appContainer,
-			});
-
-			const removeEventListener = jest.fn();
-			document.getElementById(
-				"autocomplete"
-			).removeEventListener = removeEventListener;
-
-			const keyDownHandler = wrapper.instance().keyDownHandler;
-
-			wrapper.unmount();
-
-			expect(removeEventListener).toHaveBeenCalledWith(
-				"keydown",
-				keyDownHandler
-			);
 		});
 	});
 });
