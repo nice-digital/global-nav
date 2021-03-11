@@ -110,7 +110,11 @@ Search.propTypes = {
 		PropTypes.bool,
 		PropTypes.string,
 		PropTypes.arrayOf(
-			PropTypes.shape({ Title: PropTypes.string, Link: PropTypes.string })
+			PropTypes.shape({
+				Title: PropTypes.string.isRequired,
+				TitleHtml: PropTypes.string,
+				Link: PropTypes.string.isRequired,
+			})
 		),
 	]),
 	placeholder: PropTypes.string,

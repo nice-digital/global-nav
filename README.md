@@ -68,6 +68,7 @@
 	- [Deployments](#deployments)
 	- [Upgrading to v2](#upgrading-to-v2)
 	- [Upgrading to v3](#upgrading-to-v3)
+	- [Upgrading to v4](#upgrading-to-v4)
 
 <!-- END doctoc -->
 </details>
@@ -429,12 +430,12 @@ For example submitting a search term _paracetamol_ with a url of _/search_ will 
 
 The source for autocomplete (typeahead) suggestions. Set to `false` to disable autocomplete.
 
-Pass an array of objects to use as the source. The objects in the array should have two keys of `Title: string` and `Link: string`. E.g.:
+Pass an array of objects to use as the source. The objects in the array should have two keys of `Title: string` and `Link: string`, with an optional `TitleHtml: string`. E.g.:
 
 ```jsx
 const suggestions = [
   { Title: 'Achilles tendinopathy', Link: '/achilles-tendinopathy' },
-  { Title: 'Acne vulgaris', Link: '/acne-vulgaris' },
+  { Title: 'Acne vulgaris', Link: '/acne-vulgaris', TitleHtml: '<mark>Acne</mark> vulgaris' },
 ];
 <Header search={{ autocomplete: suggestions }} />;
 ```
@@ -443,12 +444,17 @@ Pass a string, not containing a slash, to use a variable with that name on `wind
 
 Or to make a _remote call_ to a URL on demand, if the source name _does_ contain a slash e.g. `<Header search={{ autocomplete: "/autocomplete?ajax=ajax" }} />`.
 
-The response is expected to be JSON in the format `Array<{ Title: string, Link: string }>` e.g.:
+The response is expected to be JSON in the format `Array<{ Title: string, TitleHtml?: string, Link: string }>` e.g.:
 
 ```json
 [
   {
     "Title": "Paracetamol",
+    "Link": "/search?q=Paracetamol"
+  },
+  {
+    "Title": "Paracetamol",
+    "TitleHtml": "<mark>Para</mark>cetamol",
     "Link": "/search?q=Paracetamol"
   }
 ]
