@@ -113,34 +113,28 @@ a.link {
 
   .menuList {
     @include nds-container;
-    // Fallback for non flexbox browsers that support media queries e.g. IE9
-    display: table;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 
     > li {
-      display: table-cell;
-    }
-
-    @supports (display: flex) {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-
-      > li {
-        flex-grow: 1;
-      }
+      flex-grow: 1;
     }
   }
 
   a.link {
     border-left-width: 0;
     border-right-width: 0;
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    justify-content: center;
+    line-height: 1.25;
     margin: 0;
-    padding: rem($nds-spacing-medium $nds-spacing-medium);
+    padding: rem($nds-spacing-small);
     position: relative;
     text-align: center;
-    white-space: nowrap;
 
     &:focus {
       outline-offset: rem(-$nds-spacing-x-small);
@@ -150,14 +144,6 @@ a.link {
       display: inline-block;
       vertical-align: middle;
       white-space: normal;
-    }
-
-    // Use pseudo to centrally align text
-    &:before {
-      content: '';
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle;
     }
 
     &[aria-current='true'],
@@ -184,6 +170,12 @@ a.link {
       &:hover:after {
         background: #d6d6d6;
       }
+    }
+  }
+
+  @include mq($from: lg) {
+    a.link {
+      padding: rem($nds-spacing-medium);
     }
   }
 }
