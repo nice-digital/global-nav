@@ -511,12 +511,35 @@ var global_nav_config = {
 - Type: `Boolean | Object`
 - Default: `{}`
 
-Auth is enabled by default.
-Pass a set of key/value pairs to configure authentication:
+Authentication is enabled by default. Disable authentication by passing `false`:
 
 ```js
-<header auth={{ environment: 'live', provider: 'niceAccounts' }} />
+// React:
+<Header auth={false} />
+
+// Or config:
+var global_nav_config = {
+  header: {
+    auth: false,
+  },
+};
 ```
+
+Pass a set of key/value pairs to configure authentication, for example:
+
+```js
+// React
+<Header auth={{ environment: 'live', provider: 'niceAccounts' }} />
+
+// Or config:
+var global_nav_config = {
+  header: {
+    auth: { environment: 'live', provider: 'niceAccounts' },
+  },
+};
+```
+
+See the `header.auth` properties below for how to configure authentication providers.
 
 ###### Header.auth.environment
 
