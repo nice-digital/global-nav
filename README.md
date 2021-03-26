@@ -518,6 +518,12 @@ Pass a set of key/value pairs to configure authentication:
 <header auth={{ environment: 'live', provider: 'niceAccounts' }} />
 ```
 
+To disable auth pass `false` into the auth attribute:
+
+```js
+<header auth={false} />
+```
+
 ###### Header.auth.environment
 
 - Type: `String`
@@ -681,6 +687,17 @@ Or, pass an object of key/value pairs of settings specific to the header.
 See the [header props](#header-props) section for available options.
 
 In addition to the options from the React props, there are also the following callbacks available when rendering using the CDN embed:
+
+###### header.auth
+
+- Type: `Boolean | Object`
+- Default: `{}`
+
+Authentication is enabled by default to disable set `header.auth` to `false`:
+
+`auth: false`
+
+See the [header auth props](#headerauth) section for available options.
 
 ###### header.onRendering
 
