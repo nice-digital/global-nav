@@ -693,7 +693,7 @@ In addition to the options from the React props, there are also the following ca
 - Type: `Boolean | Object`
 - Default: `{}`
 
-Authentication is enabled by default to disable set `header.auth` to `false`:
+Authentication is enabled by default to disable it set `header.auth` to `false`:
 
 `auth: false`
 
