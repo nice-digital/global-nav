@@ -3,6 +3,7 @@ declare module "@nice-digital/global-nav" {
 
 	type AutoCompleteSuggestion = {
 		Title: string;
+		TitleHtml?: string;
 		Link: string;
 	};
 

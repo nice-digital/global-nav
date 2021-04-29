@@ -22,25 +22,12 @@ export default class Search extends Component {
 		this.setState({
 			canUseDOM: true,
 		});
-
-		// Submit the form when we press enter to allow the enter key functionality:
-		// The accessible-autocomplete doesn't let you use enter by default
-		const autocomplete = document.getElementById("autocomplete");
-
-		if (autocomplete)
-			autocomplete.addEventListener("keydown", this.keyDownHandler);
-	}
-
-	componentWillUnmount() {
-		const autocomplete = document.getElementById("autocomplete");
-
-		if (autocomplete)
-			autocomplete.removeEventListener("keydown", this.keyDownHandler);
 	}
 
 	keyDownHandler(e) {
-		// Need to use e.keyCode for IE8, unfortunately
-		if (e.key === "Enter" || e.keyCode === 13) {
+		// Submit the form when we press enter to allow the enter key functionality:
+		// The accessible-autocomplete doesn't let you use enter by default
+		if (e.key === "Enter" && e.target.id === "autocomplete") {
 			const wasSearchActionOverridden = this.searchSubmitHandler(e);
 
 			if (!wasSearchActionOverridden) {
@@ -78,12 +65,14 @@ export default class Search extends Component {
 
 	render() {
 		return (
+			// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 			<form
 				id="global-nav-search-form"
 				role="search"
 				action={this.props.url}
 				className={styles.search}
 				onSubmit={this.searchSubmitHandler}
+				onKeyDown={this.keyDownHandler}
 			>
 				{/* eslint jsx-a11y/label-has-for: 0 */}
 				<label className={styles.label} htmlFor="autocomplete">
@@ -121,7 +110,11 @@ Search.propTypes = {
 		PropTypes.bool,
 		PropTypes.string,
 		PropTypes.arrayOf(
-			PropTypes.shape({ Title: PropTypes.string, Link: PropTypes.string })
+			PropTypes.shape({
+				Title: PropTypes.string.isRequired,
+				TitleHtml: PropTypes.string,
+				Link: PropTypes.string.isRequired,
+			})
 		),
 	]),
 	placeholder: PropTypes.string,
