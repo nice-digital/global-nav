@@ -91,7 +91,7 @@
     "nerv-devtools": "^1.5.7",
     "nervjs": "^1.5.7",
     "pixrem": "^5.0.0",
-    "postcss": "^8.1.7",
+    "postcss": "^8.2.10",
     "postcss-loader": "^4.0.4",
     "prettier": "^2.1.2",
     "promise-polyfill": "^8.2.0",
