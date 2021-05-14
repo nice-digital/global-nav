@@ -52,7 +52,6 @@ const inputValueTemplate = function (suggestion) {
 		return suggestion && suggestion.Title;
 	},
 	suggestionTemplateDefault = function (suggestion) {
-		console.log({ suggestion });
 		if (!suggestion || !suggestion.Link) return "";
 		return `<a href="${suggestion.Link}">${
 			suggestion.TitleHtml || suggestion.Title
