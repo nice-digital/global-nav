@@ -42,6 +42,8 @@ module.exports = function (env, argv) {
 
 	return [
 		merge(baseConfig, commonConfig, {
+			mode: "production",
+			devtool: "source-map",
 			plugins: [
 				new CleanWebpackPlugin(),
 				// Fake out autocomplete endpoints so we can have a static site
@@ -69,6 +71,8 @@ module.exports = function (env, argv) {
 			],
 		}),
 		merge(baseConfig, commonConfig, {
+			mode: "production",
+			devtool: "source-map",
 			output: {
 				filename: "[name].min.js",
 			},
@@ -82,7 +86,6 @@ module.exports = function (env, argv) {
 						terserOptions: {
 							ie8: true,
 						},
-						sourceMap: true,
 						include: /\.min\.js$/,
 					}),
 				],

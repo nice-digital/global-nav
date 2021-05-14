@@ -3,6 +3,7 @@ declare module "@nice-digital/global-nav" {
 
 	type AutoCompleteSuggestion = {
 		Title: string;
+		TypeAheadType?: string;
 		TitleHtml?: string;
 		Link: string;
 	};
@@ -11,9 +12,16 @@ declare module "@nice-digital/global-nav" {
 
 	type OnResizeCallback = () => void;
 
+	type AutoCompleteSuggestions = false | string | AutoCompleteSuggestion[];
+
+	type AutoCompleteOptions = {
+		suggestions: AutoCompleteSuggestions;
+		suggestionTemplate: (suggestion: AutoCompleteSuggestion) => string;
+	};
+
 	type SearchProps = {
 		url?: string;
-		autocomplete?: false | string | AutoCompleteSuggestion[];
+		autocomplete?: AutoCompleteSuggestions | AutoCompleteOptions;
 		placeholder?: string;
 		query?: string;
 		onSearching?: string | OnSearchingCallback;

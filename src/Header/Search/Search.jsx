@@ -107,12 +107,24 @@ export default class Search extends Component {
 Search.propTypes = {
 	url: PropTypes.string,
 	autocomplete: PropTypes.oneOfType([
+		PropTypes.shape({
+			suggestions: PropTypes.arrayOf(
+				PropTypes.shape({
+					Title: PropTypes.string.isRequired,
+					TitleHtml: PropTypes.string,
+					TypeAheadType: PropTypes.string,
+					Link: PropTypes.string.isRequired,
+				})
+			).isRequired,
+			suggestionTemplate: PropTypes.func,
+		}),
 		PropTypes.bool,
 		PropTypes.string,
 		PropTypes.arrayOf(
 			PropTypes.shape({
 				Title: PropTypes.string.isRequired,
 				TitleHtml: PropTypes.string,
+				TypeAheadType: PropTypes.string,
 				Link: PropTypes.string.isRequired,
 			})
 		),
