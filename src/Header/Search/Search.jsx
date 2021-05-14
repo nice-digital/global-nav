@@ -79,7 +79,10 @@ export default class Search extends Component {
 					{this.props.placeholder}
 				</label>
 				<Autocomplete
-					source={this.props.autocomplete}
+					source={
+						this.props.autocomplete?.suggestions || this.props.autocomplete
+					}
+					suggestionTemplate={this.props.autocomplete?.suggestionTemplate}
 					placeholder={this.props.placeholder}
 					query={this.props.query}
 					onNavigating={this.props.onNavigating}
