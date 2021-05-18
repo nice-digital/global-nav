@@ -425,17 +425,17 @@ For example submitting a search term _paracetamol_ with a url of _/search_ will 
 
 ###### Header.search.autocomplete
 
-- Type: `Boolean | String | Array`
+- Type: `Boolean | String | Array<AutoCompleteSuggestion> | AutoCompleteOptions`
 - Default: `false`
 
 The source for autocomplete (typeahead) suggestions. Set to `false` to disable autocomplete.
 
-Pass an array of objects to use as the source. The objects in the array should have two keys of `Title: string` and `Link: string`, with an optional `TitleHtml: string`. E.g.:
+Pass an array of objects to use as the source. The objects in the array should have two keys of `Title: string` and `Link: string`, with an optional `TitleHtml: string` and `TypeAheadType: string`. E.g.:
 
 ```jsx
 const suggestions = [
   { Title: 'Achilles tendinopathy', Link: '/achilles-tendinopathy' },
-  { Title: 'Acne vulgaris', Link: '/acne-vulgaris', TitleHtml: '<mark>Acne</mark> vulgaris' },
+  { Title: 'Acne vulgaris', Link: '/acne-vulgaris', TitleHtml: '<mark>Acne</mark> vulgaris', TypeAheadType: 'keyword' },
 ];
 <Header search={{ autocomplete: suggestions }} />;
 ```
@@ -455,9 +455,36 @@ The response is expected to be JSON in the format `Array<{ Title: string, TitleH
   {
     "Title": "Paracetamol",
     "TitleHtml": "<mark>Para</mark>cetamol",
-    "Link": "/search?q=Paracetamol"
+    "Link": "/search?q=Paracetamol",
+		"TypeAheadType": "keyword"
   }
 ]
+```
+
+Or to customise the template for autocomplete suggestions, pass an object with `suggestions` and `suggestionTemplate`, for example:
+
+```jsx
+const autocompleteOptions = {
+		// Suggestions can be either the name of a variable, a remote url starting with a slash or an array
+		suggestions: "/a-remote-url",
+		// Return an HTML string, for example:
+		suggestionTemplate: (suggestion) => {
+			if (!suggestion || !suggestion.Link) return "";
+			return `<a href="${suggestion.Link}">${
+				suggestion.TitleHtml || suggestion.Title
+			}</a>`;
+		}
+	};
+
+<Header search={{
+		autocomplete: autocompleteOptions
+	}} />;
+```
+
+If you're using TypeScript, then you can import types e.g.:
+
+```tsx
+import { AutoCompleteSuggestions, AutoCompleteOptions } from "@nice-digital/global-nav";
 ```
 
 ###### Header.search.placeholder
