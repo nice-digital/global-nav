@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import styles from "./SkipLinks.module.scss";
+import styles from "./SkipLink.module.scss";
 
-export default class SkipLinks extends Component {
+export default class SkipLink extends Component {
 	constructor(props) {
 		super(props);
 
@@ -42,29 +42,22 @@ export default class SkipLinks extends Component {
 
 	render() {
 		return (
-			<ul className={styles.list} aria-label="Accessibility links">
-				<li>
-					<a
-						href={`#${this.props.skipLinkId}`}
-						className={styles.link}
-						onClick={this.handleClick}
-					>
-						Skip to content
-					</a>
-				</li>
-				<li>
-					<a
-						href="https://www.nice.org.uk/accessibility"
-						className={styles.link}
-					>
-						Accessibility help
-					</a>
-				</li>
-			</ul>
+			<a
+				href={this.props.to}
+				className={styles.link}
+				onClick={this.handleClick}
+			>
+				{this.props.children}
+			</a>
 		);
 	}
 }
 
-SkipLinks.propTypes = {
-	skipLinkId: PropTypes.string.isRequired,
+SkipLink.propTypes = {
+	to: PropTypes.string,
+	label: PropTypes.string,
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+	]).isRequired,
 };

@@ -12,9 +12,9 @@ import CoronaMessage from "./CoronaMessage";
 import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
+import SkipLink from "./SkipLink";
 
 import styles from "./Header.module.scss";
-import SkipLinks from "./SkipLinks";
 
 export class Header extends Component {
 	constructor(props) {
@@ -79,7 +79,18 @@ export class Header extends Component {
 			this.props.enabled !== false && (
 				<div className={styles.header}>
 					<header aria-label="Site header">
-						<SkipLinks skipLinkId={this.props.skipLinkId} />
+						<ul className={styles.a11yLinks} aria-label="Accessibility links">
+							<li>
+								<SkipLink to={`#${this.props.skipLinkId}`}>
+									Skip to content
+								</SkipLink>
+							</li>
+							<li>
+								<SkipLink to="https://www.nice.org.uk/accessibility">
+									Accessibility help
+								</SkipLink>
+							</li>
+						</ul>
 						<div className={styles.container}>
 							<a
 								href="https://www.nice.org.uk/"
@@ -94,8 +105,8 @@ export class Header extends Component {
 									{this.props.search && (
 										<Search
 											skipLinkId={this.props.skipLinkId}
-											{...this.props.search}
 											onNavigating={this.props.onNavigating}
+											{...this.props.search}
 										/>
 									)}
 								</div>

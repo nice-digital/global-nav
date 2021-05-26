@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SearchIcon from "@nice-digital/icons/lib/Search";
 
 import Autocomplete from "./Autocomplete";
+import SkipLink from "../SkipLink";
 
 import styles from "./Search.module.scss";
 
@@ -99,13 +100,7 @@ export default class Search extends Component {
 						</span>
 					)}
 				</button>
-				<a
-					href={`#${this.props.skipLinkId}`}
-					className={styles.link}
-					onClick={this.handleClick}
-				>
-					Skip to content
-				</a>
+				<SkipLink to={`#${this.props.skipLinkId}`}>Skip to content</SkipLink>
 			</form>
 		);
 	}

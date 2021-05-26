@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipLinks Matches snapshot with a hash 1`] = `
+<a
+  className="link"
+  href="#test"
+  onClick={[Function]}
+>
+  Skip
+</a>
+`;
+
+exports[`SkipLinks Matches snapshot with an external destination 1`] = `
+<a
+  className="link"
+  href="https://a11y.com"
+  onClick={[Function]}
+>
+  Skip
+</a>
+`;

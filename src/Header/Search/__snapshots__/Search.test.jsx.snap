@@ -33,11 +33,10 @@ exports[`Search Rendering Matches snapshot 1`] = `
       search
     </span>
   </button>
-  <a
-    className="link"
-    href="#undefined"
+  <SkipLink
+    to="#content-start"
   >
     Skip to content
-  </a>
+  </SkipLink>
 </form>
 `;
