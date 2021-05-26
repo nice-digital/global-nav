@@ -34,13 +34,11 @@ export class Header extends Component {
 	componentDidMount() {
 		if (!document.getElementById(this.props.skipLinkId)) {
 			const firstH1OnPage = document.getElementsByTagName("h1")[0];
-			if (firstH1OnPage) {
-				firstH1OnPage.setAttribute("id", this.props.skipLinkId);
-			} else {
-				console.warn(
-					`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
-				);
-			}
+			firstH1OnPage
+				? firstH1OnPage.setAttribute("id", this.props.skipLinkId)
+				: console.warn(
+						`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
+				  );
 		}
 	}
 
@@ -95,6 +93,7 @@ export class Header extends Component {
 								<div className={styles.search}>
 									{this.props.search && (
 										<Search
+											skipLinkId={this.props.skipLinkId}
 											{...this.props.search}
 											onNavigating={this.props.onNavigating}
 										/>

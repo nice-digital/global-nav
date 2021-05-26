@@ -99,6 +99,13 @@ export default class Search extends Component {
 						</span>
 					)}
 				</button>
+				<a
+					href={`#${this.props.skipLinkId}`}
+					className={styles.link}
+					onClick={this.handleClick}
+				>
+					Skip to content
+				</a>
 			</form>
 		);
 	}
@@ -117,6 +124,7 @@ Search.propTypes = {
 			})
 		),
 	]),
+	skipLinkId: PropTypes.string,
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
 	onSearching: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),

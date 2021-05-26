@@ -35,6 +35,7 @@ exports[`Header Matches snapshot 1`] = `
             onNavigating="onNavigatingHandler"
             placeholder="Search NICE…"
             query=""
+            skipLinkId="content-start"
             url="/search"
           />
         </div>
