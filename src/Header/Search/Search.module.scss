@@ -40,29 +40,3 @@
     vertical-align: middle;
   }
 }
-
-.link {
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  width: 1px;
-
-  &:focus {
-    background: #fff;
-    clip: auto;
-    color: $nds-colour-link;
-    display: block;
-    height: auto;
-    outline: 3px solid $nds-colour-focus;
-    overflow: visible;
-    padding: rem($nds-spacing-small $nds-spacing-medium);
-    position: absolute;
-    right: 0;
-    top: -(rem($nds-spacing-xx-small));
-    white-space: nowrap;
-    width: auto;
-    z-index: 101;
-  }
-}
