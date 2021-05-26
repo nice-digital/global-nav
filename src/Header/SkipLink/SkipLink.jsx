@@ -22,7 +22,6 @@ export default class SkipLink extends Component {
 
 				element.setAttribute("tabIndex", "-1");
 				element.focus();
-
 				window.scrollTo(0, this.getYOffset(element));
 			} else {
 				console.warn(`Skip link target with id ${id} doesn't exist`);
@@ -54,8 +53,7 @@ export default class SkipLink extends Component {
 }
 
 SkipLink.propTypes = {
-	to: PropTypes.string,
-	label: PropTypes.string,
+	to: PropTypes.string.isRequired,
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node,
