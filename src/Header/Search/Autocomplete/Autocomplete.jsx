@@ -47,18 +47,16 @@ const maxResults = 5;
 /** Delay in millieconds before loading results */
 export const rateLimitWait = 300;
 
-const templates = {
-	inputValue: function (suggestion) {
+const inputValueTemplate = function (suggestion) {
 		if (!suggestion || !suggestion.Title) return "";
 		return suggestion && suggestion.Title;
 	},
-	suggestion: function (suggestion) {
+	suggestionTemplateDefault = function (suggestion) {
 		if (!suggestion || !suggestion.Link) return "";
 		return `<a href="${suggestion.Link}">${
 			suggestion.TitleHtml || suggestion.Title
 		}</a>`;
-	},
-};
+	};
 
 export default class Autocomplete extends Component {
 	constructor(props) {
@@ -166,6 +164,11 @@ export default class Autocomplete extends Component {
 	}
 
 	render() {
+		const templates = {
+			inputValue: inputValueTemplate,
+			suggestion: this.props.suggestionTemplate || suggestionTemplateDefault,
+		};
+
 		return (
 			<div className={styles.ac}>
 				{!this.props.source || !this.state.canUseDOM ? (
@@ -222,10 +225,12 @@ Autocomplete.propTypes = {
 			PropTypes.shape({
 				Title: PropTypes.string.isRequired,
 				TitleHtml: PropTypes.string,
+				TypeAheadType: PropTypes.string,
 				Link: PropTypes.string.isRequired,
 			})
 		),
 	]),
+	suggestionTemplate: PropTypes.func,
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
 	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),

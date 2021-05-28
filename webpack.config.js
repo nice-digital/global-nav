@@ -84,27 +84,14 @@ module.exports = function (env, argv) {
 						},
 						{
 							loader: "postcss-loader",
-							options: {
-								sourceMap: isDevelopment,
-								postcssOptions: {
-									plugins: [
-										"autoprefixer",
-										[
-											// Generate pixel fallbacks for IE8 (and pseudos in 9/10)
-											// See https://caniuse.com/#feat=rem
-											"pixrem",
-											{ html: false, atrules: true },
-										],
-									],
-								},
-							},
+							options: { sourceMap: true },
 						},
 						{
 							loader: "sass-loader",
 							options: {
 								// See https://medium.com/@toolmantim/getting-started-with-css-sourcemaps-and-in-browser-sass-editing-b4daab987fb0
 								// if you want to edit SASS in Chrome DevTools
-								sourceMap: isDevelopment,
+								sourceMap: true,
 								sassOptions: {
 									includePaths: ["./src/scss"],
 									outputStyle: "compressed",

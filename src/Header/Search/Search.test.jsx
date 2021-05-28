@@ -57,6 +57,24 @@ describe("Search", () => {
 				query: "diabetes",
 			});
 		});
+
+		it("Passes suggestions and template from object to autocomplete component", () => {
+			const suggestionTemplate = jest.fn();
+			const wrapper = shallow(
+				<Search
+					{...defaultProps}
+					autocomplete={{ suggestions: "variableName", suggestionTemplate }}
+					placeholder="Test placeholder"
+					query="diabetes"
+				/>
+			);
+			expect(wrapper.find("Autocomplete").props()).toEqual({
+				source: "variableName",
+				suggestionTemplate,
+				placeholder: "Test placeholder",
+				query: "diabetes",
+			});
+		});
 	});
 
 	describe("onSearching", () => {

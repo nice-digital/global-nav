@@ -1,26 +1,37 @@
 declare module "@nice-digital/global-nav" {
 	import React = require("react");
 
-	type AutoCompleteSuggestion = {
+	export type AutoCompleteSuggestion = {
 		Title: string;
+		TypeAheadType?: string;
 		TitleHtml?: string;
 		Link: string;
 	};
 
-	type OnSearchingCallback = (args: { query: string }) => void;
+	export type OnSearchingCallback = (args: { query: string }) => void;
 
-	type OnResizeCallback = () => void;
+	export type OnResizeCallback = () => void;
 
-	type SearchProps = {
+	export type AutoCompleteSuggestions =
+		| false
+		| string
+		| AutoCompleteSuggestion[];
+
+	export type AutoCompleteOptions = {
+		suggestions: AutoCompleteSuggestions;
+		suggestionTemplate: (suggestion: AutoCompleteSuggestion) => string;
+	};
+
+	export type SearchProps = {
 		url?: string;
-		autocomplete?: false | string | AutoCompleteSuggestion[];
+		autocomplete?: AutoCompleteSuggestions | AutoCompleteOptions;
 		placeholder?: string;
 		query?: string;
 		onSearching?: string | OnSearchingCallback;
 		onResize?: string | OnResizeCallback;
 	};
 
-	type Service =
+	export type Service =
 		| "pathways"
 		| "guidance"
 		| "standards"
@@ -30,12 +41,12 @@ declare module "@nice-digital/global-nav" {
 		| "cks"
 		| "journals";
 
-	type Link = {
+	export type Link = {
 		text: string;
 		url: string;
 	};
 
-	type OnNavigatingCallback = (e: {
+	export type OnNavigatingCallback = (e: {
 		element: HTMLAnchorElement;
 		href: string;
 	}) => void;
@@ -51,7 +62,7 @@ declare module "@nice-digital/global-nav" {
 		environment?: "live" | "beta" | "test" | "local";
 	};
 
-	type HeaderProps = {
+	export type HeaderProps = {
 		service?: Service;
 		skipLinkId?: string;
 		search?: false | SearchProps;
@@ -59,7 +70,7 @@ declare module "@nice-digital/global-nav" {
 		onNavigating?: string | OnNavigatingCallback;
 	};
 
-	type FooterProps = {
+	export type FooterProps = {
 		service?: Service;
 	};
 
