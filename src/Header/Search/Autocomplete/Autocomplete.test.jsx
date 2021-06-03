@@ -64,6 +64,35 @@ describe("Autocomplete", () => {
 			).toEqual("512");
 		});
 
+		it("should use provided suggestion template", async () => {
+			document.body.innerHTML = "";
+			var appContainer = document.createElement("div");
+			document.body.appendChild(appContainer);
+
+			const option = {
+				Title: "diabetes type 1",
+				Link: "https://www.nice.org.uk/diabetes1.html",
+			};
+
+			const suggestionTemplate = jest.fn();
+
+			const wrapper = mount(
+				<Autocomplete
+					{...defaultProps}
+					source={[option]}
+					suggestionTemplate={suggestionTemplate}
+				/>,
+				{ attachTo: appContainer }
+			);
+
+			wrapper
+				.find(AccessibleAutocomplete)
+				.instance()
+				.props.templates.suggestion();
+
+			expect(suggestionTemplate).toHaveBeenCalled();
+		});
+
 		it("should push autocomplete select event to the dataLayer", () => {
 			document.body.innerHTML = "";
 			var appContainer = document.createElement("div");
@@ -177,7 +206,7 @@ describe("Autocomplete", () => {
 			});
 		});
 
-		it("should not load suggestions within the reate limit threshold", () => {
+		it("should not load suggestions within the rate limit threshold", () => {
 			jest.useFakeTimers();
 			const wrapper = shallow(
 				<Autocomplete {...defaultProps} source="/url" query="test" />

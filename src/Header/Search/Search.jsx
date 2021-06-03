@@ -79,7 +79,10 @@ export default class Search extends Component {
 					{this.props.placeholder}
 				</label>
 				<Autocomplete
-					source={this.props.autocomplete}
+					source={
+						this.props.autocomplete?.suggestions || this.props.autocomplete
+					}
+					suggestionTemplate={this.props.autocomplete?.suggestionTemplate}
 					placeholder={this.props.placeholder}
 					query={this.props.query}
 					onNavigating={this.props.onNavigating}
@@ -107,12 +110,24 @@ export default class Search extends Component {
 Search.propTypes = {
 	url: PropTypes.string,
 	autocomplete: PropTypes.oneOfType([
+		PropTypes.shape({
+			suggestions: PropTypes.arrayOf(
+				PropTypes.shape({
+					Title: PropTypes.string.isRequired,
+					TitleHtml: PropTypes.string,
+					TypeAheadType: PropTypes.string,
+					Link: PropTypes.string.isRequired,
+				})
+			).isRequired,
+			suggestionTemplate: PropTypes.func,
+		}),
 		PropTypes.bool,
 		PropTypes.string,
 		PropTypes.arrayOf(
 			PropTypes.shape({
 				Title: PropTypes.string.isRequired,
 				TitleHtml: PropTypes.string,
+				TypeAheadType: PropTypes.string,
 				Link: PropTypes.string.isRequired,
 			})
 		),

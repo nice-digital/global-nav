@@ -8,3 +8,5 @@ lib
 coverage
 bin
 obj
+
+polyfill
