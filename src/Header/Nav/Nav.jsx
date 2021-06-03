@@ -113,7 +113,9 @@ export default class Nav extends Component {
 			}
 		}
 		const subLinks =
-			activeService && activeService.links.concat(additionalSubMenuLinks);
+			activeService &&
+			activeService.links &&
+			activeService.links.concat(additionalSubMenuLinks);
 
 		return (
 			<div
