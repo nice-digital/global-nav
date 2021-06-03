@@ -42,8 +42,9 @@ export function findTerms(queryTokens, suggestionTokens) {
 // Highlights (with a mark tag) a match within a term
 export function highlightTerm(suggestionTitle, termMatch) {
 	const { queryToken, suggestionToken } = termMatch,
-		nonAlphanumericPrefixMatch =
-			suggestionToken.originalStr.match("^[^a-zA-Z0-9]+"),
+		nonAlphanumericPrefixMatch = suggestionToken.originalStr.match(
+			"^[^a-zA-Z0-9]+"
+		),
 		alphanumericPrefixLength = nonAlphanumericPrefixMatch
 			? nonAlphanumericPrefixMatch[0].length
 			: 0,

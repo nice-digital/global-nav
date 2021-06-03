@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styles from "./Autocomplete.module.scss";
 
 import { suggester } from "./suggester";
-
+import { isIosDevice } from "./../../../utils";
 import { trackEvent } from "./../../../tracker";
 
 /**
