@@ -42,6 +42,7 @@
 					- [Header.skipLinkId](#headerskiplinkid)
 					- [Header.onNavigating](#headeronnavigating)
 					- [Header.onResize](#headeronresize)
+					- [Header.additionalSubMenuItems](#headeradditionalsubmenuitems)
 					- [Header.search](#headersearch)
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
@@ -334,7 +335,7 @@ For a full list of all the available props, see the [props section](#props) belo
 - Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
 
 The identifier of the service to highlight in the main menu.
-See [links.json](src/services.json) for a list of the available service identifiers.
+See [services.json](src/services.json) for a list of the available service identifiers.
 
 ###### Header.skipLinkId
 
@@ -403,6 +404,32 @@ window.onResizeHandler = function () {
 var global_nav_config = {
   header: {
     onResize: 'onResizeHandler',
+  },
+};
+```
+
+###### Header.additionalSubMenuItems
+
+- Type: `null | Array`
+- Default: `null`
+
+Pass an `additionalSubMenuItems` array to add extra sub menu items for a given service.
+
+The array should be an array of objects, each containing a `service: string` and another array of `links: Array`. 
+The links array should contain an array of `text: string` and `url: string`. E.g:
+
+```js
+const adminMenus = [{
+    service: "indev",
+    links: [{text: "Admin", url: "/admin"}]
+  },{
+    service: "publications",
+    links: [{text: "Admin", url: "/admin"}]
+  }];
+
+var global_nav_config = {
+  header: {
+    additionalSubMenuItems: adminMenus,
   },
 };
 ```
@@ -608,7 +635,7 @@ The displayName is the user's name and must be provided if the "idam" provider i
 - Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
 
 The identifier of the currently active service.
-See [links.json](src/services.json) for a list of the available service identifiers.
+See [services.json](src/services.json) for a list of the available service identifiers.
 
 ### CDN
 

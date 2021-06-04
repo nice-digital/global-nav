@@ -1,24 +1,58 @@
-[
-  {
-    "href": "https://url1/",
-    "text": "First link",
-    "id": "link1"
-  },
-  {
-    "href": "https://url2/",
-    "text": "Second link",
-    "id": "link2",
-    "abbreviation": true,
-    "title": "Abbreviation title",
-    "links": [
-      {
-        "text": "Sub link 1",
-        "href": "/"
-      },
-      {
-        "text": "Sub link 2",
-        "href": "/test"
-      }
-    ]
-  }
-]
+{
+  "external": [
+    {
+      "href": "https://url1/",
+      "text": "First link",
+      "id": "link1"
+    },
+    {
+      "href": "https://url2/",
+      "text": "Second link",
+      "id": "link2",
+      "abbreviation": true,
+      "title": "Abbreviation title",
+      "links": [
+        {
+          "text": "Sub link 1",
+          "href": "/"
+        },
+        {
+          "text": "Sub link 2",
+          "href": "/test"
+        }
+      ]
+    }
+  ],
+  "internal": [
+    {
+      "href": "/",
+      "text": "First internal service",
+      "id": "internal1",
+      "links": [
+        {
+          "text": "internal1 sub link 1",
+          "href": "/i1sublink1"
+        },
+        {
+          "text": "internal1 sub link 2",
+          "href": "/i2sublink2"
+        }
+      ]
+    },
+    {
+      "href": "/",
+      "text": "Second internal service",
+      "id": "internal2",
+      "links": [
+        {
+          "text": "internal2 sub link 1",
+          "href": "/i2sublink1"
+        },
+        {
+          "text": "internal2 sub link 2",
+          "href": "/i2sublink2"
+        }
+      ]
+    }
+  ]
+}
