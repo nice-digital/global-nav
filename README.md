@@ -42,6 +42,7 @@
 					- [Header.skipLinkId](#headerskiplinkid)
 					- [Header.onNavigating](#headeronnavigating)
 					- [Header.onResize](#headeronresize)
+					- [Header.additionalSubMenuItems](#headeradditionalsubmenuitems)
 					- [Header.search](#headersearch)
 					- [Header.search.url](#headersearchurl)
 					- [Header.search.autocomplete](#headersearchautocomplete)
@@ -334,7 +335,7 @@ For a full list of all the available props, see the [props section](#props) belo
 - Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
 
 The identifier of the service to highlight in the main menu.
-See [links.json](src/services.json) for a list of the available service identifiers.
+See [services.json](src/services.json) for a list of the available service identifiers.
 
 ###### Header.skipLinkId
 
@@ -407,6 +408,32 @@ var global_nav_config = {
 };
 ```
 
+###### Header.additionalSubMenuItems
+
+- Type: `null | Array`
+- Default: `null`
+
+Pass an `additionalSubMenuItems` array to add extra sub menu items for a given service.
+
+The array should be an array of objects, each containing a `service: string` and another array of `links: Array`. 
+The links array should contain an array of `text: string` and `url: string`. E.g:
+
+```js
+const adminMenus = [{
+    service: "indev",
+    links: [{text: "Admin", url: "/admin"}]
+  },{
+    service: "publications",
+    links: [{text: "Admin", url: "/admin"}]
+  }];
+
+var global_nav_config = {
+  header: {
+    additionalSubMenuItems: adminMenus,
+  },
+};
+```
+
 ###### Header.search
 
 - Type: `Boolean | Object`
@@ -425,17 +452,17 @@ For example submitting a search term _paracetamol_ with a url of _/search_ will 
 
 ###### Header.search.autocomplete
 
-- Type: `Boolean | String | Array`
+- Type: `Boolean | String | Array<AutoCompleteSuggestion> | AutoCompleteOptions`
 - Default: `false`
 
 The source for autocomplete (typeahead) suggestions. Set to `false` to disable autocomplete.
 
-Pass an array of objects to use as the source. The objects in the array should have two keys of `Title: string` and `Link: string`, with an optional `TitleHtml: string`. E.g.:
+Pass an array of objects to use as the source. The objects in the array should have two keys of `Title: string` and `Link: string`, with an optional `TitleHtml: string` and `TypeAheadType: string`. E.g.:
 
 ```jsx
 const suggestions = [
   { Title: 'Achilles tendinopathy', Link: '/achilles-tendinopathy' },
-  { Title: 'Acne vulgaris', Link: '/acne-vulgaris', TitleHtml: '<mark>Acne</mark> vulgaris' },
+  { Title: 'Acne vulgaris', Link: '/acne-vulgaris', TitleHtml: '<mark>Acne</mark> vulgaris', TypeAheadType: 'keyword' },
 ];
 <Header search={{ autocomplete: suggestions }} />;
 ```
@@ -455,9 +482,36 @@ The response is expected to be JSON in the format `Array<{ Title: string, TitleH
   {
     "Title": "Paracetamol",
     "TitleHtml": "<mark>Para</mark>cetamol",
-    "Link": "/search?q=Paracetamol"
+    "Link": "/search?q=Paracetamol",
+		"TypeAheadType": "keyword"
   }
 ]
+```
+
+Or to customise the template for autocomplete suggestions, pass an object with `suggestions` and `suggestionTemplate`, for example:
+
+```jsx
+const autocompleteOptions = {
+		// Suggestions can be either the name of a variable, a remote url starting with a slash or an array
+		suggestions: "/a-remote-url",
+		// Return an HTML string, for example:
+		suggestionTemplate: (suggestion) => {
+			if (!suggestion || !suggestion.Link) return "";
+			return `<a href="${suggestion.Link}">${
+				suggestion.TitleHtml || suggestion.Title
+			}</a>`;
+		}
+	};
+
+<Header search={{
+		autocomplete: autocompleteOptions
+	}} />;
+```
+
+If you're using TypeScript, then you can import types e.g.:
+
+```tsx
+import { AutoCompleteSuggestions, AutoCompleteOptions } from "@nice-digital/global-nav";
 ```
 
 ###### Header.search.placeholder
@@ -581,7 +635,7 @@ The displayName is the user's name and must be provided if the "idam" provider i
 - Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
 
 The identifier of the currently active service.
-See [links.json](src/services.json) for a list of the available service identifiers.
+See [services.json](src/services.json) for a list of the available service identifiers.
 
 ### CDN
 

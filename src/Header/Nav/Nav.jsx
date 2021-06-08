@@ -75,17 +75,47 @@ export default class Nav extends Component {
 				href: accountsLinks[text],
 			}));
 
-		// Would need to polyfill Array.prototype.find to rewrite this loop, whilst we support IE
+		// Would need to polyfill Array.prototype.find to rewrite these loops, whilst we support IE
 		// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for support
 		let activeService = null;
-		for (let i = 0; i < rootLinks.length; i++) {
-			const rootLink = rootLinks[i];
-			if (this.props.service && rootLink.id === this.props.service) {
-				activeService = rootLink;
+		let internalService = false;
+		let servicesToDisplay = rootLinks.external; //default to displaying external services.
+		for (let i = 0; i < rootLinks.internal.length; i++) {
+			const internalRootLink = rootLinks.internal[i];
+			if (this.props.service && internalRootLink.id === this.props.service) {
+				internalService = true;
+				activeService = internalRootLink;
+				servicesToDisplay = [internalRootLink]; //unlike external, internal services dosn't display other internal services.
 				break;
 			}
 		}
-		const subLinks = activeService && activeService.links;
+		if (!internalService) {
+			for (let i = 0; i < rootLinks.external.length; i++) {
+				const externalRootLink = rootLinks.external[i];
+				if (this.props.service && externalRootLink.id === this.props.service) {
+					activeService = externalRootLink;
+					break;
+				}
+			}
+		}
+		let additionalSubMenuLinks = [];
+		for (let i = 0; i < this.props.additionalSubMenuItems.length; i++) {
+			const additionalSubMenuItem = this.props.additionalSubMenuItems[i];
+			if (
+				typeof additionalSubMenuItem !== "undefined" &&
+				additionalSubMenuItem.service === this.props.service &&
+				Array.isArray(additionalSubMenuItem.links)
+			) {
+				additionalSubMenuLinks = additionalSubMenuItem.links.map((link) => ({
+					text: link.text,
+					href: link.url,
+				}));
+			}
+		}
+		const subLinks =
+			activeService &&
+			activeService.links &&
+			activeService.links.concat(additionalSubMenuLinks);
 
 		return (
 			<div
@@ -106,56 +136,58 @@ export default class Nav extends Component {
 							className={styles.menuList}
 							aria-labelledby="header-menu-button"
 						>
-							{rootLinks.map(({ href, id, text, abbreviation, title }) => {
-								let ariaCurrent = null;
+							{servicesToDisplay.map(
+								({ href, id, text, abbreviation, title }) => {
+									let ariaCurrent = null;
 
-								if (this.props.service && id === this.props.service) {
-									ariaCurrent = true;
+									if (this.props.service && id === this.props.service) {
+										ariaCurrent = true;
 
-									if (
-										typeof location !== "undefined" &&
-										location &&
-										href ===
-											`${location.protocol}//${location.host}${location.pathname}`
-									) {
-										ariaCurrent = "page";
+										if (
+											typeof location !== "undefined" &&
+											location &&
+											href ===
+												`${location.protocol}//${location.host}${location.pathname}`
+										) {
+											ariaCurrent = "page";
+										}
 									}
-								}
 
-								return (
-									<li key={id}>
-										<a
-											href={href}
-											aria-current={ariaCurrent}
-											className={styles.link}
-											onClick={this.handleNavItemClick}
-										>
-											{abbreviation ? (
-												<>
-													<abbr title={title}>
-														{text}{" "}
-														<span className={styles.visuallyHidden}>
+									return (
+										<li key={id}>
+											<a
+												href={href}
+												aria-current={ariaCurrent}
+												className={styles.link}
+												onClick={this.handleNavItemClick}
+											>
+												{abbreviation ? (
+													<>
+														<abbr title={title}>
+															{text}{" "}
+															<span className={styles.visuallyHidden}>
+																{title}
+															</span>
+														</abbr>
+														<span aria-hidden="true" className={styles.tooltip}>
 															{title}
 														</span>
-													</abbr>
-													<span aria-hidden="true" className={styles.tooltip}>
-														{title}
-													</span>
-												</>
-											) : (
-												text
+													</>
+												) : (
+													text
+												)}
+											</a>
+											{ariaCurrent && subLinks && (
+												<SubNav
+													links={subLinks}
+													text={text}
+													onNavigating={this.props.onNavigating}
+												/>
 											)}
-										</a>
-										{ariaCurrent && subLinks && (
-											<SubNav
-												links={subLinks}
-												text={text}
-												onNavigating={this.props.onNavigating}
-											/>
-										)}
-									</li>
-								);
-							})}
+										</li>
+									);
+								}
+							)}
 						</ul>
 					</div>
 				</nav>
@@ -194,4 +226,9 @@ Nav.propTypes = {
 	isExpanded: PropTypes.bool,
 	accountsLinks: PropTypes.object,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
+};
+
+Nav.defaultProps = {
+	additionalSubMenuItems: [],
 };

@@ -82,6 +82,7 @@ exports[`Header Matches snapshot 1`] = `
     </div>
     <Nav
       accountsLinks={null}
+      additionalSubMenuItems={Array []}
       isExpanded={false}
       onNavigating="onNavigatingHandler"
       service={null}

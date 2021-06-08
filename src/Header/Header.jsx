@@ -145,6 +145,7 @@ export class Header extends Component {
 								this.state.accountsData && this.state.accountsData.links
 							}
 							onNavigating={this.props.onNavigating}
+							additionalSubMenuItems={this.props.additionalSubMenuItems}
 						/>
 					</header>
 					<CoronaMessage onResize={this.props.onResize} />
@@ -163,11 +164,13 @@ Header.propTypes = {
 	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
 };
 
 Header.defaultProps = {
 	search: {},
 	skipLinkId: "content-start",
+	additionalSubMenuItems: [],
 };
 
 export default Header;

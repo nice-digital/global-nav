@@ -11,7 +11,7 @@ export default class Services extends Component {
 		return (
 			<nav className={styles.wrapper} aria-label="Our services">
 				<ul className={styles.list}>
-					{links.map(
+					{links.external.map(
 						function ({ href, id, text, abbreviation, title }) {
 							return (
 								<li key={id}>

@@ -6,7 +6,7 @@
       "request": "launch",
       "name": "Launch via NPM",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": ["run", "start"],
       "timeout": 30000,
       "cwd": "${workspaceFolder}"
     },
@@ -20,7 +20,7 @@
   ],
   "compounds": [
     {
-      "name": "Compound",
+      "name": "Launch Global Nav",
       "configurations": ["Launch via NPM", "Launch Chrome against localhost"]
     }
   ]

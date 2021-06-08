@@ -24,9 +24,8 @@ export default class Account extends Component {
 			useIdAM: this.props.provider == Account.providers.idam,
 		};
 
-		this.handleMyAccountButtonClick = this.handleMyAccountButtonClick.bind(
-			this
-		);
+		this.handleMyAccountButtonClick =
+			this.handleMyAccountButtonClick.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
 	}
