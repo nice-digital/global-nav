@@ -1,5 +1,5 @@
 import React from "react";
-import SkipLinks from "./SkipLinks";
+import SkipLink from "./SkipLink";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
@@ -28,23 +28,33 @@ describe("SkipLinks", () => {
 	});
 
 	it("Renders without crashing", () => {
-		const wrapper = shallow(<SkipLinks skipLinkId="test" />);
+		const wrapper = shallow(<SkipLink to="#test">Skip</SkipLink>);
 		expect(wrapper).toHaveLength(1);
 	});
 
-	it("Matches snapshot", () => {
-		const wrapper = shallow(<SkipLinks skipLinkId="test" />);
+	it("Matches snapshot with a hash", () => {
+		const wrapper = shallow(<SkipLink to="#test">Skip</SkipLink>);
+		expect(toJson(wrapper)).toMatchSnapshot();
+	});
+
+	it("Matches snapshot with an external destination", () => {
+		const wrapper = shallow(<SkipLink to="https://a11y.com">Skip</SkipLink>);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Renders skip link id href from prop", () => {
-		const wrapper = shallow(<SkipLinks skipLinkId="test" />);
+		const wrapper = shallow(<SkipLink to="#test">Skip</SkipLink>);
 		expect(wrapper.find("a").at(0).props().href).toEqual("#test");
 	});
 
+	it("Renders an external link if supplied", () => {
+		const wrapper = shallow(<SkipLink to="https://a11y.com">Skip</SkipLink>);
+		expect(wrapper.find("a").at(0).props().href).toEqual("https://a11y.com");
+	});
+
 	it("Triggers click handler on skip to content click", () => {
-		const handleClick = jest.spyOn(SkipLinks.prototype, "handleClick");
-		const wrapper = shallow(<SkipLinks skipLinkId="test" />);
+		const handleClick = jest.spyOn(SkipLink.prototype, "handleClick");
+		const wrapper = shallow(<SkipLink to="test">Skip</SkipLink>);
 
 		wrapper
 			.find("a")
@@ -60,7 +70,7 @@ describe("SkipLinks", () => {
 	});
 
 	it("Prevents default and moves focus to the skip link target on click", () => {
-		const wrapper = shallow(<SkipLinks skipLinkId="test" />);
+		const wrapper = shallow(<SkipLink to="test">Skip</SkipLink>);
 
 		const preventDefault = jest.fn();
 
@@ -84,7 +94,7 @@ describe("SkipLinks", () => {
 
 	describe("getYOffset", () => {
 		it("should get offset top relative to window", () => {
-			const wrapper = shallow(<SkipLinks skipLinkId="test" />);
+			const wrapper = shallow(<SkipLink to="test">Skip</SkipLink>);
 
 			const element = {
 				offsetLeft: 0,
