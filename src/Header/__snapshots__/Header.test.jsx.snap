@@ -7,9 +7,25 @@ exports[`Header Matches snapshot 1`] = `
   <header
     aria-label="Site header"
   >
-    <SkipLinks
-      skipLinkId="content-start"
-    />
+    <ul
+      aria-label="Accessibility links"
+      className="a11yLinks"
+    >
+      <li>
+        <SkipLink
+          to="#content-start"
+        >
+          Skip to content
+        </SkipLink>
+      </li>
+      <li>
+        <SkipLink
+          to="https://www.nice.org.uk/accessibility"
+        >
+          Accessibility help
+        </SkipLink>
+      </li>
+    </ul>
     <div
       className="container"
     >
@@ -35,6 +51,7 @@ exports[`Header Matches snapshot 1`] = `
             onNavigating="onNavigatingHandler"
             placeholder="Search NICE…"
             query=""
+            skipLinkId="content-start"
             url="/search"
           />
         </div>
@@ -65,6 +82,7 @@ exports[`Header Matches snapshot 1`] = `
     </div>
     <Nav
       accountsLinks={null}
+      additionalSubMenuItems={Array []}
       isExpanded={false}
       onNavigating="onNavigatingHandler"
       service={null}

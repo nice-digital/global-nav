@@ -99,9 +99,14 @@ describe("Header", () => {
 				url: "/test",
 				placeholder: "Test placeholder",
 				query: "",
+				skipLinkId: "content-start",
 			};
 			const wrapper = shallow(
-				<Header {...defaultProps} search={searchOptions} />
+				<Header
+					{...defaultProps}
+					search={searchOptions}
+					skipLinkId="content-start"
+				/>
 			);
 			expect(wrapper.find("Search").props()).toEqual(searchOptions);
 		});

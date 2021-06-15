@@ -203,11 +203,30 @@ const identityAdminLoggedInConfig = {
 
 const noAuthNoSearchConfig = {
 	filename: "noauth-nosearch",
-	title: "No auth and no search",
+	title: "No auth and No search",
 	global_nav_config: {
 		header: {
 			auth: false,
 			search: false,
+		},
+	},
+};
+
+const indevConfig = {
+	filename: "indev",
+	title: "NICE Indevelopment",
+	global_nav_config: {
+		service: "indev",
+		header: {
+			auth: {
+				environment: "test",
+			},
+			additionalSubMenuItems: [
+				{
+					service: "indev",
+					links: [{ text: "Admin", url: "/admin" }],
+				},
+			],
 		},
 	},
 };
@@ -226,4 +245,5 @@ module.exports = [
 	identityAdminLoggedOutConfig,
 	identityAdminLoggedInConfig,
 	noAuthNoSearchConfig,
+	indevConfig,
 ];

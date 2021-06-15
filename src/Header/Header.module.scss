@@ -149,3 +149,15 @@
     display: block;
   }
 }
+
+.a11yLinks {
+  @include nds-hide-print;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin: 0;
+  }
+}

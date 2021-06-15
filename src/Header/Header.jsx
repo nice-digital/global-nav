@@ -12,9 +12,9 @@ import CoronaMessage from "./CoronaMessage";
 import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
+import SkipLink from "./SkipLink";
 
 import styles from "./Header.module.scss";
-import SkipLinks from "./SkipLinks";
 
 export class Header extends Component {
 	constructor(props) {
@@ -34,13 +34,11 @@ export class Header extends Component {
 	componentDidMount() {
 		if (!document.getElementById(this.props.skipLinkId)) {
 			const firstH1OnPage = document.getElementsByTagName("h1")[0];
-			if (firstH1OnPage) {
-				firstH1OnPage.setAttribute("id", this.props.skipLinkId);
-			} else {
-				console.warn(
-					`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
-				);
-			}
+			firstH1OnPage
+				? firstH1OnPage.setAttribute("id", this.props.skipLinkId)
+				: console.warn(
+						`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
+				  );
 		}
 	}
 
@@ -81,7 +79,18 @@ export class Header extends Component {
 			this.props.enabled !== false && (
 				<div className={styles.header}>
 					<header aria-label="Site header">
-						<SkipLinks skipLinkId={this.props.skipLinkId} />
+						<ul className={styles.a11yLinks} aria-label="Accessibility links">
+							<li>
+								<SkipLink to={`#${this.props.skipLinkId}`}>
+									Skip to content
+								</SkipLink>
+							</li>
+							<li>
+								<SkipLink to="https://www.nice.org.uk/accessibility">
+									Accessibility help
+								</SkipLink>
+							</li>
+						</ul>
 						<div className={styles.container}>
 							<a
 								href="https://www.nice.org.uk/"
@@ -95,8 +104,9 @@ export class Header extends Component {
 								<div className={styles.search}>
 									{this.props.search && (
 										<Search
-											{...this.props.search}
+											skipLinkId={this.props.skipLinkId}
 											onNavigating={this.props.onNavigating}
+											{...this.props.search}
 										/>
 									)}
 								</div>
@@ -135,6 +145,7 @@ export class Header extends Component {
 								this.state.accountsData && this.state.accountsData.links
 							}
 							onNavigating={this.props.onNavigating}
+							additionalSubMenuItems={this.props.additionalSubMenuItems}
 						/>
 					</header>
 					<CoronaMessage onResize={this.props.onResize} />
@@ -153,11 +164,13 @@ Header.propTypes = {
 	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
 };
 
 Header.defaultProps = {
 	search: {},
 	skipLinkId: "content-start",
+	additionalSubMenuItems: [],
 };
 
 export default Header;

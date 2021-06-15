@@ -19,6 +19,7 @@ describe("Nav", () => {
 		accountsData: null,
 		service: null,
 	};
+	const externalServices = services.external;
 
 	it("Renders without crashing", () => {
 		const wrapper = shallow(<Nav {...defaultProps} />);
@@ -51,22 +52,28 @@ describe("Nav", () => {
 		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
 	});
 
-	it("Matches snapshot with sub links for selected service", () => {
-		const wrapper = mount(<Nav {...defaultProps} service={services[1].id} />);
+	it("Matches snapshot with sub links for selected external service", () => {
+		const wrapper = mount(
+			<Nav {...defaultProps} service={externalServices[1].id} />
+		);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Adds aria-current=true attribute for selected service", () => {
-		const wrapper = shallow(<Nav {...defaultProps} service={services[1].id} />);
+		const wrapper = shallow(
+			<Nav {...defaultProps} service={externalServices[1].id} />
+		);
 		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual(true);
 	});
 
 	it("Adds aria-current=page attribute for selected service when matches current URL", () => {
 		const oldLocation = global.window.location;
 		delete global.window.location;
-		global.window.location = new URL(services[1].href);
+		global.window.location = new URL(externalServices[1].href);
 
-		const wrapper = shallow(<Nav {...defaultProps} service={services[1].id} />);
+		const wrapper = shallow(
+			<Nav {...defaultProps} service={externalServices[1].id} />
+		);
 		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
 
 		// Tidy up
@@ -235,6 +242,106 @@ describe("Nav", () => {
 				expect(preventDefault).not.toHaveBeenCalled();
 				expect(window.dataLayer).toEqual([]);
 			});
+		});
+	});
+
+	describe("internalServices", () => {
+		const internalServices = services.internal;
+
+		it("Matches snapshot with sub links for selected internal service", () => {
+			const wrapper = mount(
+				<Nav {...defaultProps} service={internalServices[0].id} />
+			);
+			expect(toJson(wrapper)).toMatchSnapshot();
+		});
+
+		it("Internal service 1 only renders itself and no other services", () => {
+			const wrapper = mount(
+				<Nav {...defaultProps} service={internalServices[0].id} />
+			);
+			const links = wrapper.find("a[href='/']");
+			expect(links.length).toEqual(1);
+			expect(links.text()).toEqual("First internal service");
+		});
+
+		it("Internal service 2 only renders itself and no other services", () => {
+			const wrapper = mount(
+				<Nav {...defaultProps} service={internalServices[1].id} />
+			);
+			const links = wrapper.find("a[href='/']");
+			expect(links.length).toEqual(1);
+			expect(links.text()).toEqual("Second internal service");
+		});
+
+		const propsWithAdditionalSubMenuItem = {
+			...defaultProps,
+			additionalSubMenuItems: [
+				{
+					service: internalServices[0].id,
+					links: [{ text: "Admin", url: "/admin" }],
+				},
+			],
+		};
+
+		it("Internal service 1 adds additional sub menu item", () => {
+			const wrapper = mount(
+				<Nav
+					{...propsWithAdditionalSubMenuItem}
+					service={internalServices[0].id}
+				/>
+			);
+			const links = wrapper.find("a[href='/admin']");
+			expect(links.length).toEqual(1);
+			expect(links.text()).toEqual("Admin");
+		});
+
+		it("Internal service 2 doesn't show the additional sub menu item for service 1", () => {
+			const wrapper = mount(
+				<Nav
+					{...propsWithAdditionalSubMenuItem}
+					service={internalServices[1].id}
+				/>
+			);
+			const links = wrapper.find("a[href='/admin']");
+			expect(links.length).toEqual(0);
+		});
+
+		const propsWithAdditionalSubMenuItemForEachService = {
+			...defaultProps,
+			additionalSubMenuItems: [
+				{
+					service: internalServices[0].id,
+					links: [{ text: "Admin 1", url: "/admin1" }],
+				},
+				{
+					service: internalServices[1].id,
+					links: [{ text: "Admin 2", url: "/admin2" }],
+				},
+			],
+		};
+
+		it("Internal service 1 gets additional sub menu items when multiple are passed", () => {
+			const wrapper = mount(
+				<Nav
+					{...propsWithAdditionalSubMenuItemForEachService}
+					service={internalServices[0].id}
+				/>
+			);
+			const links = wrapper.find("a[href='/admin1']");
+			expect(links.length).toEqual(1);
+			expect(links.text()).toEqual("Admin 1");
+		});
+
+		it("Internal service 2 gets additional sub menu items when multiple are passed", () => {
+			const wrapper = mount(
+				<Nav
+					{...propsWithAdditionalSubMenuItemForEachService}
+					service={internalServices[1].id}
+				/>
+			);
+			const links = wrapper.find("a[href='/admin2']");
+			expect(links.length).toEqual(1);
+			expect(links.text()).toEqual("Admin 2");
 		});
 	});
 });

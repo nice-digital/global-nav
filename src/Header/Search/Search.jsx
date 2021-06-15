@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SearchIcon from "@nice-digital/icons/lib/Search";
 
 import Autocomplete from "./Autocomplete";
+import SkipLink from "../SkipLink";
 
 import styles from "./Search.module.scss";
 
@@ -102,6 +103,7 @@ export default class Search extends Component {
 						</span>
 					)}
 				</button>
+				<SkipLink to={`#${this.props.skipLinkId}`}>Skip to content</SkipLink>
 			</form>
 		);
 	}
@@ -132,6 +134,7 @@ Search.propTypes = {
 			})
 		),
 	]),
+	skipLinkId: PropTypes.string,
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
 	onSearching: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),

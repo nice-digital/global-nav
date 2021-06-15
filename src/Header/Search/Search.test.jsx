@@ -23,7 +23,9 @@ describe("Search", () => {
 		});
 
 		it("Matches snapshot", () => {
-			const wrapper = shallow(<Search {...defaultProps} query="test" />);
+			const wrapper = shallow(
+				<Search {...defaultProps} query="test" skipLinkId="content-start" />
+			);
 			expect(toJson(wrapper)).toMatchSnapshot();
 		});
 
