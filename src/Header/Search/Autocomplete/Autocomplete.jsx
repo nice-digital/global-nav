@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styles from "./Autocomplete.module.scss";
 
 import { suggester } from "./suggester";
-
+import { isIosDevice } from "./../../../utils";
 import { trackEvent } from "./../../../tracker";
 
 /**
@@ -189,7 +189,7 @@ export default class Autocomplete extends Component {
 						id="autocomplete"
 						name="q"
 						placeholder={this.props.placeholder}
-						displayMenu="overlay"
+						displayMenu={isIosDevice() ? "inline" : "overlay"}
 						minLength={3}
 						source={debounce(this.suggest, false, rateLimitWait, this)}
 						templates={templates}
