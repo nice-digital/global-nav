@@ -171,4 +171,10 @@ a.link {
       }
     }
   }
+
+  @include mq($from: lg) {
+    a.link {
+      padding: rem($nds-spacing-medium);
+    }
+  }
 }
