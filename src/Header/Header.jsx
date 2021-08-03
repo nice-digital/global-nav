@@ -60,6 +60,7 @@ export class Header extends Component {
 			headerClickEventAction,
 			"Logo",
 			null,
+			href,
 			function () {
 				window.location.href = href;
 			}

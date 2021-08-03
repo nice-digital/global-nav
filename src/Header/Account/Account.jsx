@@ -77,6 +77,7 @@ export default class Account extends Component {
 				headerClickEventAction,
 				eventLabel,
 				null,
+				href,
 				function () {
 					window.location.href = href;
 				}

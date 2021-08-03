@@ -108,6 +108,7 @@ export default class Autocomplete extends Component {
 						document.getElementById("autocomplete").value
 					).toLowerCase(),
 					null,
+					suggestion.Link,
 					eventCallback
 				);
 			} else {
@@ -118,6 +119,7 @@ export default class Autocomplete extends Component {
 						" | " +
 						document.getElementById("autocomplete").value,
 					null,
+					suggestion.Link,
 					eventCallback
 				);
 			}

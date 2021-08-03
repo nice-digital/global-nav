@@ -43,7 +43,7 @@ describe("tracker", () => {
 		});
 
 		it("should push category, action, label and value to the dataLayer", () => {
-			trackEvent("test category", "test action", "test label", 99);
+			trackEvent("test category", "test action", "test label", 99, "test destination url");
 
 			expect(window.dataLayer).toEqual([
 				{
@@ -52,6 +52,7 @@ describe("tracker", () => {
 					eventAction: "test action",
 					eventLabel: "test label",
 					eventValue: 99,
+					destinationUrl: "test destination url",
 				},
 			]);
 		});
@@ -65,6 +66,7 @@ describe("tracker", () => {
 				"test action",
 				"test label",
 				99,
+				"test destination url",
 				eventCallback
 			);
 
@@ -84,6 +86,7 @@ describe("tracker", () => {
 				"test action",
 				"test label",
 				99,
+				"test destination url",
 				eventCallback
 			);
 
