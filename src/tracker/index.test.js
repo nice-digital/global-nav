@@ -43,7 +43,13 @@ describe("tracker", () => {
 		});
 
 		it("should push category, action, label and value to the dataLayer", () => {
-			trackEvent("test category", "test action", "test label", 99, "test destination url");
+			trackEvent(
+				"test category",
+				"test action",
+				"test label",
+				99,
+				"test destination url"
+			);
 
 			expect(window.dataLayer).toEqual([
 				{
