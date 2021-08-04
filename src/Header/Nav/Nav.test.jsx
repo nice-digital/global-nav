@@ -178,6 +178,8 @@ describe("Nav", () => {
 						eventCategory: defaultEventCategory,
 						eventAction: headerClickEventAction,
 						eventLabel: "Edit profile",
+						destinationUrl:
+							"https://accounts.nice.org.uk/users/12345/editprofile",
 						eventCallback: expect.any(Function),
 						eventTimeout: eventTimeout,
 					},
@@ -212,6 +214,7 @@ describe("Nav", () => {
 						eventCategory: defaultEventCategory,
 						eventAction: headerClickEventAction,
 						eventLabel: "Sign out",
+						destinationUrl: "https://accounts.nice.org.uk/signout",
 						eventCallback: expect.any(Function),
 						eventTimeout: eventTimeout,
 					},
