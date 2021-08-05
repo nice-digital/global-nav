@@ -1,0 +1,132 @@
+/* stylelint-disable no-descending-specificity */
+
+@import '../../header-settings';
+@import '../../../Common.module.scss';
+
+.menuList {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+
+  > li {
+    margin: 0;
+  }
+}
+
+a.link {
+  //qualified this with a to add specificity to avoid overrides from application css (NW-1253)
+  border: rem($nds-spacing-x-small) solid $colour-nav-background;
+  border-bottom-width: 0;
+  border-top-width: 0;
+  color: $colour-nav-text;
+  display: block;
+  font-weight: normal;
+  padding: rem($nds-spacing-small);
+  text-decoration: none;
+
+  span {
+    text-decoration: inherit;
+  }
+
+  &:focus {
+    color: $colour-nav-text;
+    outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
+    outline-offset: rem(-$nds-spacing-small);
+    z-index: 1; // Push above the adjacent nav items
+  }
+
+  &:visited {
+    color: $colour-nav-text;
+  }
+
+  &:active {
+    background: #acadad;
+    color: $nds-colour-text;
+  }
+
+  &:hover {
+    background: #d6d6d6;
+    color: $nds-colour-text;
+    text-decoration: underline;
+  }
+
+  &[aria-current='true'],
+  &[aria-current='page'] {
+    background: $nds-colour-body;
+    color: $nds-colour-text;
+    font-weight: bold;
+
+    &:focus {
+      outline-color: $nds-colour-focus;
+      outline-offset: rem(-$nds-spacing-x-small);
+    }
+  }
+}
+@include mq($from: md) {
+  .menuList {
+    @include nds-container;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    > li {
+      flex-grow: 1;
+    }
+  }
+
+  a.link {
+    border-left-width: 0;
+    border-right-width: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    position: relative;
+    text-align: center;
+
+    &:focus {
+      outline-offset: rem(-$nds-spacing-x-small);
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      white-space: normal;
+    }
+
+    &[aria-current='true'],
+    &[aria-current='page'] {
+      // Create space between selected item, and adjacent hover states
+      margin: rem(0 $nds-spacing-x-small);
+
+      &:focus {
+        outline-offset: rem(-$nds-spacing-small);
+      }
+
+      // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
+      &:after {
+        background: #fff;
+        content: '';
+        display: block;
+        height: rem($nds-spacing-x-small);
+        left: 0;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+      }
+
+      &:hover:after {
+        background: #d6d6d6;
+      }
+    }
+  }
+
+  @include mq($from: lg) {
+    a.link {
+      padding: rem($nds-spacing-medium);
+    }
+  }
+}
