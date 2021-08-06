@@ -1,31 +1,9 @@
 /* stylelint-disable no-descending-specificity */
 
-$brand: #0092a6;
+@import '../../SkipLink/SkipLink.module.scss';
 
 .skiplink {
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  width: 1px;
-
-  &:focus {
-    background: #fff;
-    clip: auto;
-    color: black;
-    display: block;
-    height: auto;
-    left: 1rem;
-    outline: 3px solid $brand;
-    overflow: visible;
-    padding: 1rem;
-    position: absolute;
-    top: 1rem;
-    white-space: nowrap;
-    width: auto;
-    z-index: 101;
-  }
+  @extend .link;
 }
 
 .dropdownLeft {

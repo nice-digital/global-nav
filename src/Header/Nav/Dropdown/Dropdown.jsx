@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import { Link } from "@reach/router";
+import SkipLink from "./../../SkipLink";
 import styles from "./Dropdown.module.scss";
 
 export function Dropdown({ text, className, nextNavSlug, toggleDropdown }) {
-	if (!text) return <p>Loading...</p>;
 	return (
 		<div className={className}>
 			<div className={styles.dropdownRight}>
@@ -17,7 +16,7 @@ export function Dropdown({ text, className, nextNavSlug, toggleDropdown }) {
 						Skip {text} submenu
 					</a>
 				)}
-				<h1>{text}</h1>
+				<p>{text}</p>
 			</div>
 			<div>
 				<button onClick={toggleDropdown} className={styles.exit}>
