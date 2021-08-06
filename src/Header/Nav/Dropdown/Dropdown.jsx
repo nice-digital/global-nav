@@ -8,21 +8,13 @@ export function Dropdown({ text, className, nextNavSlug, toggleDropdown }) {
 	return (
 		<div className={className}>
 			<div className={styles.dropdownRight}>
-				{nextNavSlug ? (
+				{nextNavSlug && (
 					<a
 						href={`#${nextNavSlug}`}
 						className={styles.skiplink}
 						onClick={toggleDropdown}
 					>
-						Skip to next nav
-					</a>
-				) : (
-					<a
-						href="#content-start"
-						className={styles.skiplink}
-						onClick={toggleDropdown}
-					>
-						Skip to content
+						Skip {text} submenu
 					</a>
 				)}
 				<h1>{text}</h1>

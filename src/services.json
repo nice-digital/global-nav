@@ -4,6 +4,7 @@
       "href": "https://pathways.nice.org.uk/",
       "text": "NICE Pathways",
       "id": "pathways",
+      "dropdown": false,
       "links": [
         {
           "text": "Browse",
@@ -32,17 +33,20 @@
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
       "text": "Life sciences",
-      "id": "life-sciences"
+      "id": "life-sciences",
+      "dropdown": false
     },
     {
       "href": "https://www.nice.org.uk/standards-and-indicators",
       "text": "Standards and indicators",
-      "id": "standards"
+      "id": "standards",
+      "dropdown": false
     },
     {
       "href": "https://www.evidence.nhs.uk/",
       "text": "Evidence search",
-      "id": "evidence"
+      "id": "evidence",
+      "dropdown": false
     },
     {
       "href": "https://bnf.nice.org.uk/",
@@ -50,6 +54,7 @@
       "abbreviation": true,
       "title": "British National Formulary",
       "id": "bnf",
+      "dropdown": false,
       "links": [
         {
           "text": "Drugs",
@@ -79,6 +84,7 @@
       "abbreviation": true,
       "title": "British National Formulary for Children",
       "id": "bnfc",
+      "dropdown": false,
       "links": [
         {
           "text": "Drugs",
@@ -108,6 +114,7 @@
       "abbreviation": true,
       "title": "Clinical Knowledge Summaries",
       "id": "cks",
+      "dropdown": false,
       "links": [
         {
           "image": "cks",
@@ -135,7 +142,8 @@
     {
       "href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
       "text": "Journals and databases",
-      "id": "journals"
+      "id": "journals",
+      "dropdown": false
     }
   ],
   "internal": [
@@ -143,6 +151,7 @@
       "href": "/",
       "text": "NICE In development",
       "id": "indev",
+      "dropdown": false,
       "links": [
         {
           "text": "Guidance projects",

@@ -10,29 +10,37 @@ import {
 	headerClickEventAction,
 } from "../../../tracker";
 
-function handleNavItemClick(e) {
-	e.preventDefault();
-	const href = e.currentTarget.getAttribute("href");
-	trackEvent(
-		defaultEventCategory,
-		headerClickEventAction,
-		e.currentTarget.textContent,
-		null,
-		function () {
-			window.location.href = href;
-		}
-	);
-}
-
 export function NavLinks({
 	servicesToDisplay,
 	currentService,
 	subLinks,
 	onNavigating,
+	skipLinkId,
 }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 
 	const ESCAPE_KEYS = ["27", "Escape"];
+
+	function handleNavButtonClick(id) {
+		setidOfOpenDropdown(id === idOfOpenDropdown ? null : id);
+		// TODO: Track dropdown opening
+	}
+
+	function handleNavLinkClick(e) {
+		e.preventDefault();
+		setidOfOpenDropdown(null);
+
+		const href = e.currentTarget.getAttribute("href");
+		trackEvent(
+			defaultEventCategory,
+			headerClickEventAction,
+			e.currentTarget.textContent,
+			null,
+			function () {
+				window.location.href = href;
+			}
+		);
+	}
 
 	function escapeDropdown({ key }) {
 		if (ESCAPE_KEYS.includes(String(key))) setidOfOpenDropdown(null);
@@ -66,12 +74,10 @@ export function NavLinks({
 
 					return (
 						<li key={id} id={id}>
-							{/* TODO if it's got a dropdown, do a button */}
-							{dropdown != null ? (
+							{dropdown ? (
 								<button
-									onClick={() =>
-										setidOfOpenDropdown(id === idOfOpenDropdown ? null : id)
-									}
+									onClick={() => handleNavButtonClick(id)}
+									aria-current={ariaCurrent}
 									className={styles.navButton}
 								>
 									<span aria-label={abbreviation && title}>{text}</span>
@@ -81,27 +87,27 @@ export function NavLinks({
 									href={href}
 									aria-current={ariaCurrent}
 									className={styles.link}
-									onClick={handleNavItemClick}
+									onClick={handleNavLinkClick}
 								>
 									<span aria-label={abbreviation && title}>{text}</span>
 								</a>
 							)}
-
-							<Dropdown
-								className={
-									id === idOfOpenDropdown
-										? styles.dropdownShowing
-										: styles.dropdownHidden
-								}
-								text={text}
-								nextNavSlug={
-									servicesToDisplay[index + 1]
-										? servicesToDisplay[index + 1]["id"]
-										: null
-								}
-								toggleDropdown={() => setidOfOpenDropdown(null)}
-							/>
-
+							{dropdown && (
+								<Dropdown
+									className={
+										id === idOfOpenDropdown
+											? styles.dropdownShowing
+											: styles.dropdownHidden
+									}
+									text={text}
+									nextNavSlug={
+										servicesToDisplay[index + 1]
+											? servicesToDisplay[index + 1]["id"]
+											: skipLinkId
+									}
+									toggleDropdown={() => setidOfOpenDropdown(null)}
+								/>
+							)}
 							{ariaCurrent && subLinks && (
 								<SubNav
 									links={subLinks}
@@ -118,6 +124,7 @@ export function NavLinks({
 }
 
 NavLinks.propTypes = {
+	skipLinkId: PropTypes.string,
 	servicesToDisplay: PropTypes.array,
 	currentService: PropTypes.string,
 	subLinks: PropTypes.array,

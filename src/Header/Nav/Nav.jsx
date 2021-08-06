@@ -113,6 +113,7 @@ export default class Nav extends Component {
 				<nav className={styles.nav} aria-label="primary navigation">
 					<div className={styles.menuWrapper}>
 						<NavLinks
+							skipLinkId={this.props.skipLinkId}
 							servicesToDisplay={servicesToDisplay}
 							currentService={this.props.service}
 							subLinks={subLinks}
@@ -151,6 +152,7 @@ export default class Nav extends Component {
 }
 
 Nav.propTypes = {
+	skipLinkId: PropTypes.string,
 	service: PropTypes.string,
 	isExpanded: PropTypes.bool,
 	accountsLinks: PropTypes.object,

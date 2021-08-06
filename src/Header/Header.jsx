@@ -139,6 +139,7 @@ export class Header extends Component {
 							</div>
 						</div>
 						<Nav
+							skipLinkId={this.props.skipLinkId}
 							service={this.props.service}
 							isExpanded={this.state.isExpanded}
 							accountsLinks={
