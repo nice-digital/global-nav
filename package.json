@@ -118,6 +118,7 @@
     "@nice-digital/browserslist-config": "^2.0.1",
     "@nice-digital/icons": "^2.2.3",
     "@nice-digital/nds-core": "^1.2.4",
+    "@use-it/event-listener": "^0.1.6",
     "accessible-autocomplete": "^2.0.3",
     "classnames": "^2.3.1",
     "es5-polyfill": "0.0.6",

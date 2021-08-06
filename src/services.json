@@ -26,7 +26,8 @@
     {
       "href": "https://www.nice.org.uk/guidance",
       "text": "NICE guidance",
-      "id": "guidance"
+      "id": "guidance",
+      "dropdown": true
     },
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",

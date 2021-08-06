@@ -1,0 +1,53 @@
+/* stylelint-disable no-descending-specificity */
+
+$brand: #0092a6;
+
+.skiplink {
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+
+  &:focus {
+    background: #fff;
+    clip: auto;
+    color: black;
+    display: block;
+    height: auto;
+    left: 1rem;
+    outline: 3px solid $brand;
+    overflow: visible;
+    padding: 1rem;
+    position: absolute;
+    top: 1rem;
+    white-space: nowrap;
+    width: auto;
+    z-index: 101;
+  }
+}
+
+.dropdownLeft {
+  border-right: solid 1px grey;
+  flex: 1;
+  padding: 1em;
+}
+
+.dropdownRight {
+  flex: 4;
+  padding: 2em;
+}
+
+.exit {
+  background: none;
+  border: none;
+  padding: 2em;
+}
+
+// .leftNavLinks {
+//   border-bottom: solid 1px grey;
+//   list-style-type: none;
+//   padding-bottom: 0.5em;
+//   padding-top: 0.5em;
+// }

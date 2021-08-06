@@ -130,3 +130,38 @@ a.link {
     }
   }
 }
+
+.dropdownHidden {
+  background-color: $nds-colour-nice-grey-2;
+  display: none;
+  text-align: left;
+}
+
+.dropdownShowing {
+  background-color: $nds-colour-nice-grey-2;
+  display: flex;
+  margin-top: $nds-spacing-small;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+}
+
+.navButton {
+  align-items: center !important;
+  background: none !important;
+  border: none;
+  color: $colour-nav-text;
+  display: flex;
+  height: 100%;
+  line-height: rem($nds-spacing-medium) !important;
+  padding: rem($nds-spacing-small);
+  white-space: normal !important;
+
+  &:hover,
+  &:focus {
+    background-color: $nds-colour-nice-grey-2 !important;
+    color: $nds-colour-nice-black;
+    outline-offset: -3px;
+    text-decoration: underline;
+  }
+}

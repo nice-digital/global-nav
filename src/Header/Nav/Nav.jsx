@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 import NavLinks from "./NavLinks";
-import SubNav from "./SubNav";
 import styles from "./Nav.module.scss";
 import services from "./../../services.json";
 import {
@@ -16,27 +15,7 @@ export default class Nav extends Component {
 	constructor(props) {
 		super(props);
 
-		this.handleNavItemClick = this.handleNavItemClick.bind(this);
 		this.handleAccountNavItemClick = this.handleAccountNavItemClick.bind(this);
-	}
-
-	handleNavItemClick(e) {
-		e.preventDefault();
-
-		const href = e.currentTarget.getAttribute("href");
-
-		// To support IE8
-		const eventLabel = e.currentTarget.textContent || e.currentTarget.innerText;
-
-		trackEvent(
-			defaultEventCategory,
-			headerClickEventAction,
-			eventLabel,
-			null,
-			function () {
-				window.location.href = href;
-			}
-		);
 	}
 
 	handleAccountNavItemClick(e) {
