@@ -78,7 +78,11 @@ export function NavLinks({
 								<button
 									onClick={() => handleNavButtonClick(id)}
 									aria-current={ariaCurrent}
-									className={styles.navButton}
+									className={
+										id === idOfOpenDropdown
+											? styles.navButtonSelected
+											: styles.navButton
+									}
 								>
 									<span aria-label={abbreviation && title}>{text}</span>
 								</button>

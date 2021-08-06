@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SkipLink from "./../../SkipLink";
 import styles from "./Dropdown.module.scss";
 
 export function Dropdown({ text, className, nextNavSlug, toggleDropdown }) {

@@ -45,7 +45,7 @@ a.link {
   }
 
   &:hover {
-    background: #d6d6d6;
+    background: $nds-colour-nice-grey-2;
     color: $nds-colour-text;
     text-decoration: underline;
   }
@@ -108,7 +108,7 @@ a.link {
 
       // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
       &:after {
-        background: #fff;
+        background: $nds-colour-nice-white;
         content: '';
         display: block;
         height: rem($nds-spacing-x-small);
@@ -119,7 +119,7 @@ a.link {
       }
 
       &:hover:after {
-        background: #d6d6d6;
+        background: $nds-colour-nice-grey-2;
       }
     }
   }
@@ -140,28 +140,41 @@ a.link {
 .dropdownShowing {
   background-color: $nds-colour-nice-grey-2;
   display: flex;
+  left: 0;
   margin-top: $nds-spacing-small;
   position: absolute;
   text-align: left;
   width: 100%;
 }
 
-.navButton {
+.navButton,
+.navButtonSelected {
   align-items: center !important;
   background: none !important;
-  border: none;
+  border: rem($nds-spacing-x-small) solid $colour-nav-background;
+  border-bottom-width: 0;
+  border-top-width: 0;
   color: $colour-nav-text;
   display: flex;
   height: 100%;
   line-height: rem($nds-spacing-medium) !important;
   padding: rem($nds-spacing-small);
-  white-space: normal !important;
 
-  &:hover,
   &:focus {
-    background-color: $nds-colour-nice-grey-2 !important;
-    color: $nds-colour-nice-black;
-    outline-offset: -3px;
+    color: $colour-nav-text;
+    outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
+    outline-offset: rem(-$nds-spacing-x-small);
+    z-index: 1; // Push above the adjacent nav items
+  }
+
+  &:hover {
+    background: $nds-colour-nice-grey-2 !important;
+    color: $nds-colour-text;
     text-decoration: underline;
   }
+}
+
+.navButtonSelected {
+  background: $nds-colour-nice-grey-2 !important;
+  color: $nds-colour-text;
 }
