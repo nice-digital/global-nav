@@ -16,6 +16,7 @@ export const ensureDataLayer = function () {
  * @param {string} action The event action
  * @param {string} label The event label
  * @param {Number} value The optional event value
+ * @param {string} destinationUrl The optional link destination
  * @param {Function} callback The callback function to be called when the GTM event has fired
  */
 export const trackEvent = function (
@@ -23,6 +24,7 @@ export const trackEvent = function (
 	action,
 	label,
 	value = null,
+	destinationUrl = null,
 	callback = null
 ) {
 	ensureDataLayer();
@@ -36,6 +38,10 @@ export const trackEvent = function (
 
 	if (value) {
 		dataLayerEvent.eventValue = value;
+	}
+
+	if (destinationUrl) {
+		dataLayerEvent.destinationUrl = destinationUrl;
 	}
 
 	if (callback) {

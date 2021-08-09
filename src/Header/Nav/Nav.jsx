@@ -32,6 +32,7 @@ export default class Nav extends Component {
 			headerClickEventAction,
 			eventLabel,
 			null,
+			href,
 			function () {
 				window.location.href = href;
 			}
@@ -57,6 +58,7 @@ export default class Nav extends Component {
 				headerClickEventAction,
 				eventLabel,
 				null,
+				href,
 				function () {
 					window.location.href = href;
 				}
