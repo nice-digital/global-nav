@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classnames from "classnames";
 import PropTypes from "prop-types";
 import useEventListener from "@use-it/event-listener";
 import SubNav from "../SubNav";
@@ -79,9 +80,11 @@ export function NavLinks({
 									onClick={() => handleNavButtonClick(id)}
 									aria-current={ariaCurrent}
 									className={
-										id === idOfOpenDropdown
-											? styles.navButtonSelected
-											: styles.navButton
+										classnames([styles.link])
+
+										// id === idOfOpenDropdown
+										// 	? styles.navButtonSelected
+										// 	: styles.navButton
 									}
 									aria-controls={`dropdown-${id}`}
 									aria-expanded={id === idOfOpenDropdown ? "true" : "false"}

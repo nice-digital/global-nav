@@ -1,0 +1,9 @@
+- finish styling
+    - chevron ICON
+- maybe relook at main area for closing?
+
+- basic test
+- some content
+    - try data structure rendering?
+    - or if no time, just reference the name of a component?
+- IE11
