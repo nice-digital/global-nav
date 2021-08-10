@@ -160,7 +160,6 @@ a.link {
   padding: rem($nds-spacing-small);
 
   &:focus {
-    color: $colour-nav-text;
     outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
     outline-offset: rem(-$nds-spacing-x-small);
     z-index: 1; // Push above the adjacent nav items
@@ -168,8 +167,14 @@ a.link {
 
   &:hover {
     background: $nds-colour-nice-grey-2 !important;
-    color: $nds-colour-text;
+    color: $nds-colour-text !important;
     text-decoration: underline;
+  }
+}
+
+.navButton {
+  &:focus {
+    color: $colour-nav-text;
   }
 }
 
