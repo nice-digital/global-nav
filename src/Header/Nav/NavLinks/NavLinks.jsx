@@ -83,8 +83,15 @@ export function NavLinks({
 											? styles.navButtonSelected
 											: styles.navButton
 									}
+									aria-controls={`dropdown-${id}`}
+									aria-expanded={id === idOfOpenDropdown ? "true" : "false"}
 								>
-									<span aria-label={abbreviation && title}>{text}</span>
+									<span aria-label={abbreviation && title}>{text}</span>{" "}
+									{id === idOfOpenDropdown ? (
+										<span>&#x25B2;</span>
+									) : (
+										<span>&#x25BC;</span>
+									)}
 								</button>
 							) : (
 								<a
@@ -110,6 +117,7 @@ export function NavLinks({
 											: skipLinkId
 									}
 									toggleDropdown={() => setidOfOpenDropdown(null)}
+									id={`dropdown-${id}`}
 								/>
 							)}
 							{ariaCurrent && subLinks && (

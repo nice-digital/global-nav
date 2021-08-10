@@ -1,31 +1,24 @@
 /* stylelint-disable no-descending-specificity */
 
 @import '../../SkipLink/SkipLink.module.scss';
+@import '~@nice-digital/nds-core/scss/core';
 
 .skiplink {
   @extend .link;
 }
 
-// .dropdownLeft {
-//   // border-right: solid 1px grey;
-//   // flex: 1;
-//   // padding: 1em;
-// }
+.dropdownContainer {
+  @include nds-container;
+  color: black;
+  display: flex;
+  padding-top: rem($nds-spacing-medium);
+}
 
-.dropdownRight {
+.dropdownContent {
   flex: 4;
-  padding: 2em;
 }
 
 .exit {
   background: none;
-  border: none;
-  padding: 2em;
+  flex: 1;
 }
-
-// .leftNavLinks {
-//   border-bottom: solid 1px grey;
-//   list-style-type: none;
-//   padding-bottom: 0.5em;
-//   padding-top: 0.5em;
-// }
