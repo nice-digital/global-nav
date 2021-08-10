@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import useEventListener from "@use-it/event-listener";
+import ChevronDown from "@nice-digital/icons/lib/ChevronDown";
+import ChevronUp from "@nice-digital/icons/lib/ChevronUp";
 import SubNav from "../SubNav";
 import Dropdown from "../Dropdown";
+
 import styles from "./NavLinks.module.scss";
 import {
 	trackEvent,
@@ -30,7 +33,6 @@ export function NavLinks({
 	function handleNavLinkClick(e) {
 		e.preventDefault();
 		setidOfOpenDropdown(null);
-
 		const href = e.currentTarget.getAttribute("href");
 		trackEvent(
 			defaultEventCategory,
@@ -79,22 +81,12 @@ export function NavLinks({
 								<button
 									onClick={() => handleNavButtonClick(id)}
 									aria-current={ariaCurrent}
-									className={
-										classnames([styles.link])
-
-										// id === idOfOpenDropdown
-										// 	? styles.navButtonSelected
-										// 	: styles.navButton
-									}
+									className={styles.link}
 									aria-controls={`dropdown-${id}`}
 									aria-expanded={id === idOfOpenDropdown ? "true" : "false"}
 								>
 									<span aria-label={abbreviation && title}>{text}</span>{" "}
-									{id === idOfOpenDropdown ? (
-										<span>&#x25B2;</span>
-									) : (
-										<span>&#x25BC;</span>
-									)}
+									{id === idOfOpenDropdown ? <ChevronUp /> : <ChevronDown />}
 								</button>
 							) : (
 								<a
@@ -108,11 +100,10 @@ export function NavLinks({
 							)}
 							{dropdown && (
 								<Dropdown
-									className={
-										id === idOfOpenDropdown
-											? styles.dropdownShowing
-											: styles.dropdownHidden
-									}
+									className={classnames([
+										styles.dropdown,
+										id === idOfOpenDropdown && styles.active,
+									])}
 									text={text}
 									nextNavSlug={
 										servicesToDisplay[index + 1]

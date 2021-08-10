@@ -7,19 +7,27 @@
   @extend .link;
 }
 
-.dropdownContainer {
+.container {
   @include nds-container;
-  color: black;
-  display: flex;
+  color: $nds-colour-text;
   padding-bottom: rem($nds-spacing-large);
   padding-top: rem($nds-spacing-large);
-}
-
-.dropdownContent {
-  flex: 4;
+  position: relative;
 }
 
 .exit {
+  align-items: center;
   background: none;
-  flex: 1;
+  border: none;
+  column-gap: rem($nds-spacing-small);
+  cursor: pointer;
+  display: flex;
+  padding: rem($nds-spacing-small);
+  position: absolute;
+  right: rem($nds-spacing-medium);
+  top: rem($nds-spacing-medium);
+
+  &:focus {
+    outline: rem($nds-spacing-x-small) solid $nds-colour-focus;
+  }
 }

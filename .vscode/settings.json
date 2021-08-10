@@ -1,10 +1,12 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.prettierPath": "./node_modules/prettier",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "editor.formatOnSave": true,
   "editor.rulers": [80, 120],
   "files.eol": "\n",
-  "sasslint.enable": false,
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,

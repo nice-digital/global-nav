@@ -1,6 +1,12 @@
 {
   "external": [
     {
+      "href": "https://www.nice.org.uk/guidance",
+      "text": "NICE guidance",
+      "id": "guidance",
+      "dropdown": true
+    },
+    {
       "href": "https://pathways.nice.org.uk/",
       "text": "NICE Pathways",
       "id": "pathways",
@@ -25,27 +31,15 @@
       ]
     },
     {
-      "href": "https://www.nice.org.uk/guidance",
-      "text": "NICE guidance",
-      "id": "guidance",
-      "dropdown": true
-    },
-    {
-      "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
-      "text": "Life sciences",
-      "id": "life-sciences",
-      "dropdown": false
-    },
-    {
       "href": "https://www.nice.org.uk/standards-and-indicators",
       "text": "Standards and indicators",
       "id": "standards",
       "dropdown": false
     },
     {
-      "href": "https://www.evidence.nhs.uk/",
-      "text": "Evidence search",
-      "id": "evidence",
+      "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
+      "text": "Life sciences",
+      "id": "life-sciences",
       "dropdown": false
     },
     {
@@ -143,7 +137,7 @@
       "href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
       "text": "Journals and databases",
       "id": "journals",
-      "dropdown": true
+      "dropdown": false
     }
   ],
   "internal": [

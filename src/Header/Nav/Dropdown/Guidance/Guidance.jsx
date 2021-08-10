@@ -6,7 +6,7 @@ export function Guidance() {
 		<section aria-label="NICE Guidance - dropdown navigation">
 			<h2 className="mt--0">Guidance</h2>
 			<p>
-				Evidence-based recommendations developed by independent committeesp,
+				Evidence-based recommendations developed by independent committees,
 				including professionals and lay members, and consulted on by
 				stakeholder.
 			</p>

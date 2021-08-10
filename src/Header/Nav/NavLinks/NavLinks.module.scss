@@ -6,7 +6,6 @@
 .menuList {
   list-style: none;
   margin: auto;
-  padding: 0;
 
   > li {
     margin: 0;
@@ -25,14 +24,13 @@
 
 a.link,
 button.link {
-  //qualified this with a to add specificity to avoid overrides from application css (NW-1253)
+  //qualified this with 'a' and 'button' to add specificity to avoid overrides from application css (NW-1253)
   align-items: center;
   background: none;
   border: rem($nds-spacing-x-small) solid $colour-nav-background;
-  // border-bottom-width: 0;
-  // border-top-width: 0;
-  // border: none;
+  border-left-width: 0;
   border-radius: 0;
+  border-right-width: 0;
   color: $colour-nav-text;
   cursor: pointer;
   display: flex;
@@ -40,19 +38,15 @@ button.link {
   height: 100%;
   justify-content: left;
   line-height: 1.25;
-  padding: rem($nds-spacing-x-small $nds-spacing-xx-small);
+  padding: rem($nds-spacing-small);
+  position: relative;
   text-align: left;
   text-decoration: none;
   width: 100%;
 
-  span {
-    text-decoration: inherit;
-  }
-
   &:focus {
     color: $colour-nav-text;
     outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
-    // outline: rem($nds-spacing-x-small) solid red;
     outline-offset: rem(-$nds-spacing-small);
     z-index: 1; // Push above the adjacent nav items
   }
@@ -68,134 +62,33 @@ button.link {
   &[aria-current='page'],
   &[aria-expanded='true'] {
     background: $nds-colour-nice-grey-3;
+    border-bottom: rem($nds-spacing-x-small) solid $nds-colour-nice-grey-3;
     color: $nds-colour-text;
 
     &:focus {
       outline-color: $nds-colour-focus;
-      outline-offset: rem(-$nds-spacing-x-small);
+      outline-offset: rem(-$nds-spacing-small);
     }
   }
 
   @include mq($from: md) {
-    justify-content: center;
+    justify-content: space-evenly;
     padding: rem($nds-spacing-medium);
     text-align: center;
   }
-  @include mq($from: lg) {
-    // padding: rem($nds-spacing-medium);
-  }
 }
 
-// @include mq($from: md) {
-//   a.link,
-//   button.link {
-//     border-left-width: 0;
-//     border-right-width: 0;
-//     // display: flex;
-//     flex-direction: column;
-//     height: 100%;
-//     justify-content: center;
-//     line-height: 1.25;
-//     margin: 0;
-//     position: relative;
-//     text-align: center;
-
-//     &:focus {
-//       outline-offset: rem(-$nds-spacing-x-small);
-//     }
-
-//     span {
-//       display: inline-block;
-//       vertical-align: middle;
-//       white-space: normal;
-//     }
-
-//     &[aria-current='true'],
-//     &[aria-current='page'] {
-//       // Create space between selected item, and adjacent hover states
-//       margin: rem(0 $nds-spacing-x-small);
-
-//       &:focus {
-//         outline-offset: rem(-$nds-spacing-small);
-//       }
-
-//       // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
-//       &:after {
-//         background: $nds-colour-nice-white;
-//         content: '';
-//         display: block;
-//         height: rem($nds-spacing-x-small);
-//         left: 0;
-//         position: absolute;
-//         top: 100%;
-//         width: 100%;
-//       }
-
-//       &:hover:after {
-//         background: $nds-colour-nice-grey-2;
-//       }
-//     }
-//   }
-
-//   @include mq($from: lg) {
-//     a.link,
-//     button.link {
-//       padding: rem($nds-spacing-medium);
-//     }
-//   }
-// }
-
-.dropdownHidden {
+.dropdown {
   background-color: $nds-colour-nice-grey-3;
+  box-shadow: 0 rem($nds-spacing-small) rem($nds-spacing-small) 0
+    rgb(0 0 0 / 10%);
   display: none;
-  text-align: left;
-}
-
-.dropdownShowing {
-  background-color: $nds-colour-nice-grey-3;
-  box-shadow: 0 2rem 1rem 0 rgb(0 0 0 / 30%);
   left: 0;
   position: absolute;
-  text-align: left;
   width: 100%;
-}
+  z-index: 1;
 
-// TODO let's have a look at this could refactor a bit
-
-// .navButton,
-// .navButtonSelected {
-//   // align-items: center !important;
-//   appearance: none;
-//   // background: none !important;
-//   // border: rem($nds-spacing-x-small) solid $colour-nav-background;
-//   // border-bottom-width: 0;
-//   // border-top-width: 0;
-//   // color: $colour-nav-text;
-//   // display: flex;
-//   // height: 100%;
-//   // line-height: rem($nds-spacing-medium) !important;
-//   // padding: rem($nds-spacing-small);
-
-//   &:focus {
-//     outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
-//     outline-offset: rem(-$nds-spacing-x-small);
-//     z-index: 1; // Push above the adjacent nav items
-//   }
-
-//   &:hover {
-//     background: $nds-colour-nice-grey-3 !important;
-//     color: $nds-colour-text !important;
-//     text-decoration: underline;
-//   }
-// }
-
-.navButton {
-  &:focus {
-    color: $colour-nav-text;
+  &.active {
+    display: block;
   }
-}
-
-.navButtonSelected {
-  background: $nds-colour-nice-grey-3 !important;
-  color: $nds-colour-text;
 }
