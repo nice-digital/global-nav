@@ -38,6 +38,7 @@ export class SubNav extends Component {
 			headerClickEventAction,
 			eventLabel,
 			null,
+			href,
 			function () {
 				const { onNavigating } = this.props;
 

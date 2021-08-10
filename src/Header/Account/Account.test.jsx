@@ -216,6 +216,7 @@ describe("Account", () => {
 					eventCategory: defaultEventCategory,
 					eventAction: headerClickEventAction,
 					eventLabel: eventLabel,
+					destinationUrl: href,
 					eventCallback: expect.any(Function),
 					eventTimeout: eventTimeout,
 				},

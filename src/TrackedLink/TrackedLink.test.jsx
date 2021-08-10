@@ -65,6 +65,7 @@ describe("TrackedLink", () => {
 				eventCategory: eventCategory,
 				eventAction: eventAction,
 				eventLabel: eventLabel,
+				destinationUrl: href,
 				eventCallback: expect.any(Function),
 				eventTimeout: eventTimeout,
 			},
@@ -78,7 +79,7 @@ describe("TrackedLink", () => {
 
 	it("should use default event category when none provided", () => {
 		const eventAction = "Test action",
-			eventLabel = "Test label";
+			eventLabel = "Some text";
 
 		const wrapper = shallow(
 			<TrackedLink

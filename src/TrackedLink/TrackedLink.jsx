@@ -23,6 +23,7 @@ export default class TrackedLink extends Component {
 			// Support IE8 with innerText
 			eventLabel || e.currentTarget.textContent || e.currentTarget.innerText,
 			null,
+			href,
 			function () {
 				window.location.href = href;
 			}
@@ -38,6 +39,7 @@ export default class TrackedLink extends Component {
 			eventAction,
 			eventLabel,
 			eventValue,
+			destinationUrl,
 			...props
 		} = this.props;
 		/* eslint-enable no-unused-vars */
@@ -60,6 +62,7 @@ TrackedLink.propTypes = {
 	eventAction: PropTypes.string.isRequired,
 	eventLabel: PropTypes.string,
 	eventValue: PropTypes.number,
+	destinationUrl: PropTypes.string,
 };
 
 TrackedLink.defaultProps = {

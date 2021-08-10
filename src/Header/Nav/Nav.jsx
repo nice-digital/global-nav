@@ -18,6 +18,26 @@ export default class Nav extends Component {
 		this.handleAccountNavItemClick = this.handleAccountNavItemClick.bind(this);
 	}
 
+	handleNavItemClick(e) {
+		e.preventDefault();
+
+		const href = e.currentTarget.getAttribute("href");
+
+		// To support IE8
+		const eventLabel = e.currentTarget.textContent || e.currentTarget.innerText;
+
+		trackEvent(
+			defaultEventCategory,
+			headerClickEventAction,
+			eventLabel,
+			null,
+			href,
+			function () {
+				window.location.href = href;
+			}
+		);
+	}
+
 	handleAccountNavItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
 
@@ -37,6 +57,7 @@ export default class Nav extends Component {
 				headerClickEventAction,
 				eventLabel,
 				null,
+				href,
 				function () {
 					window.location.href = href;
 				}
