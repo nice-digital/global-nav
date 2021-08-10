@@ -11,7 +11,8 @@
   @include nds-container;
   color: black;
   display: flex;
-  padding-top: rem($nds-spacing-medium);
+  padding-bottom: rem($nds-spacing-large);
+  padding-top: rem($nds-spacing-large);
 }
 
 .dropdownContent {

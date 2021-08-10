@@ -10,19 +10,40 @@
 
   > li {
     margin: 0;
+    @include mq($from: md) {
+      flex-grow: 1;
+    }
+  }
+  @include mq($from: md) {
+    @include nds-container;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 }
 
-a.link {
+a.link,
+button.link {
   //qualified this with a to add specificity to avoid overrides from application css (NW-1253)
+  align-items: center;
+  background: none;
   border: rem($nds-spacing-x-small) solid $colour-nav-background;
-  border-bottom-width: 0;
-  border-top-width: 0;
+  // border-bottom-width: 0;
+  // border-top-width: 0;
+  // border: none;
+  border-radius: 0;
   color: $colour-nav-text;
-  display: block;
+  cursor: pointer;
+  display: flex;
   font-weight: normal;
-  padding: rem($nds-spacing-small);
+  height: 100%;
+  justify-content: left;
+  line-height: 1.25;
+  padding: rem($nds-spacing-x-small $nds-spacing-xx-small);
+  text-align: left;
   text-decoration: none;
+  width: 100%;
 
   span {
     text-decoration: inherit;
@@ -31,146 +52,142 @@ a.link {
   &:focus {
     color: $colour-nav-text;
     outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
+    // outline: rem($nds-spacing-x-small) solid red;
     outline-offset: rem(-$nds-spacing-small);
     z-index: 1; // Push above the adjacent nav items
   }
 
-  &:visited {
-    color: $colour-nav-text;
-  }
-
-  &:active {
-    background: #acadad;
-    color: $nds-colour-text;
-  }
-
+  &:active,
   &:hover {
-    background: $nds-colour-nice-grey-2;
+    background: $nds-colour-nice-grey-3;
     color: $nds-colour-text;
     text-decoration: underline;
   }
 
   &[aria-current='true'],
-  &[aria-current='page'] {
-    background: $nds-colour-body;
+  &[aria-current='page'],
+  &[aria-expanded='true'] {
+    background: $nds-colour-nice-grey-3;
     color: $nds-colour-text;
-    font-weight: bold;
 
     &:focus {
       outline-color: $nds-colour-focus;
       outline-offset: rem(-$nds-spacing-x-small);
     }
   }
-}
-@include mq($from: md) {
-  .menuList {
-    @include nds-container;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
 
-    > li {
-      flex-grow: 1;
-    }
-  }
-
-  a.link {
-    border-left-width: 0;
-    border-right-width: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  @include mq($from: md) {
     justify-content: center;
-    line-height: 1.25;
-    margin: 0;
-    position: relative;
+    padding: rem($nds-spacing-medium);
     text-align: center;
-
-    &:focus {
-      outline-offset: rem(-$nds-spacing-x-small);
-    }
-
-    span {
-      display: inline-block;
-      vertical-align: middle;
-      white-space: normal;
-    }
-
-    &[aria-current='true'],
-    &[aria-current='page'] {
-      // Create space between selected item, and adjacent hover states
-      margin: rem(0 $nds-spacing-x-small);
-
-      &:focus {
-        outline-offset: rem(-$nds-spacing-small);
-      }
-
-      // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
-      &:after {
-        background: $nds-colour-nice-white;
-        content: '';
-        display: block;
-        height: rem($nds-spacing-x-small);
-        left: 0;
-        position: absolute;
-        top: 100%;
-        width: 100%;
-      }
-
-      &:hover:after {
-        background: $nds-colour-nice-grey-2;
-      }
-    }
   }
-
   @include mq($from: lg) {
-    a.link {
-      padding: rem($nds-spacing-medium);
-    }
+    // padding: rem($nds-spacing-medium);
   }
 }
+
+// @include mq($from: md) {
+//   a.link,
+//   button.link {
+//     border-left-width: 0;
+//     border-right-width: 0;
+//     // display: flex;
+//     flex-direction: column;
+//     height: 100%;
+//     justify-content: center;
+//     line-height: 1.25;
+//     margin: 0;
+//     position: relative;
+//     text-align: center;
+
+//     &:focus {
+//       outline-offset: rem(-$nds-spacing-x-small);
+//     }
+
+//     span {
+//       display: inline-block;
+//       vertical-align: middle;
+//       white-space: normal;
+//     }
+
+//     &[aria-current='true'],
+//     &[aria-current='page'] {
+//       // Create space between selected item, and adjacent hover states
+//       margin: rem(0 $nds-spacing-x-small);
+
+//       &:focus {
+//         outline-offset: rem(-$nds-spacing-small);
+//       }
+
+//       // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
+//       &:after {
+//         background: $nds-colour-nice-white;
+//         content: '';
+//         display: block;
+//         height: rem($nds-spacing-x-small);
+//         left: 0;
+//         position: absolute;
+//         top: 100%;
+//         width: 100%;
+//       }
+
+//       &:hover:after {
+//         background: $nds-colour-nice-grey-2;
+//       }
+//     }
+//   }
+
+//   @include mq($from: lg) {
+//     a.link,
+//     button.link {
+//       padding: rem($nds-spacing-medium);
+//     }
+//   }
+// }
 
 .dropdownHidden {
-  background-color: $nds-colour-nice-grey-2;
+  background-color: $nds-colour-nice-grey-3;
   display: none;
   text-align: left;
 }
 
 .dropdownShowing {
-  background-color: $nds-colour-nice-grey-2;
+  background-color: $nds-colour-nice-grey-3;
+  box-shadow: 0 2rem 1rem 0 rgb(0 0 0 / 30%);
   left: 0;
-  margin-top: $nds-spacing-small;
   position: absolute;
   text-align: left;
   width: 100%;
 }
 
-.navButton,
-.navButtonSelected {
-  align-items: center !important;
-  background: none !important;
-  border: rem($nds-spacing-x-small) solid $colour-nav-background;
-  border-bottom-width: 0;
-  border-top-width: 0;
-  color: $colour-nav-text;
-  display: flex;
-  height: 100%;
-  line-height: rem($nds-spacing-medium) !important;
-  padding: rem($nds-spacing-small);
+// TODO let's have a look at this could refactor a bit
 
-  &:focus {
-    outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
-    outline-offset: rem(-$nds-spacing-x-small);
-    z-index: 1; // Push above the adjacent nav items
-  }
+// .navButton,
+// .navButtonSelected {
+//   // align-items: center !important;
+//   appearance: none;
+//   // background: none !important;
+//   // border: rem($nds-spacing-x-small) solid $colour-nav-background;
+//   // border-bottom-width: 0;
+//   // border-top-width: 0;
+//   // color: $colour-nav-text;
+//   // display: flex;
+//   // height: 100%;
+//   // line-height: rem($nds-spacing-medium) !important;
+//   // padding: rem($nds-spacing-small);
 
-  &:hover {
-    background: $nds-colour-nice-grey-2 !important;
-    color: $nds-colour-text !important;
-    text-decoration: underline;
-  }
-}
+//   &:focus {
+//     outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
+//     outline-offset: rem(-$nds-spacing-x-small);
+//     z-index: 1; // Push above the adjacent nav items
+//   }
+
+//   &:hover {
+//     background: $nds-colour-nice-grey-3 !important;
+//     color: $nds-colour-text !important;
+//     text-decoration: underline;
+//   }
+// }
 
 .navButton {
   &:focus {
@@ -179,6 +196,6 @@ a.link {
 }
 
 .navButtonSelected {
-  background: $nds-colour-nice-grey-2 !important;
+  background: $nds-colour-nice-grey-3 !important;
   color: $nds-colour-text;
 }

@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Dropdown.module.scss";
-
+import { Guidance } from "./Guidance/Guidance";
 export function Dropdown({ text, className, nextNavSlug, toggleDropdown, id }) {
 	return (
 		<div className={className} id={id}>
 			<div className={styles.dropdownContainer}>
 				<div className={styles.dropdownContent}>
+					<button onClick={toggleDropdown} className={styles.exit}>
+						Close menu &#10006;
+					</button>
 					{nextNavSlug && (
 						<a
 							href={`#${nextNavSlug}`}
@@ -16,12 +19,7 @@ export function Dropdown({ text, className, nextNavSlug, toggleDropdown, id }) {
 							Skip {text} submenu
 						</a>
 					)}
-					<p>{text}</p>
-				</div>
-				<div>
-					<button onClick={toggleDropdown} className={styles.exit}>
-						Close menu &#10006;
-					</button>
+					<Guidance />
 				</div>
 			</div>
 		</div>
