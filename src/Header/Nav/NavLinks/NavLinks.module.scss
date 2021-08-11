@@ -2,80 +2,15 @@
 
 @import '../../header-settings';
 @import '../../../Common.module.scss';
+@import '../Nav.module.scss';
 
 .menuList {
-  list-style: none;
-  margin: auto;
-
-  > li {
-    margin: 0;
-    @include mq($from: md) {
-      flex-grow: 1;
-    }
-  }
-  @include mq($from: md) {
-    @include nds-container;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-  }
+  @extend .menuList;
 }
 
 a.link,
 button.link {
-  //qualified this with 'a' and 'button' to add specificity to avoid overrides from application css (NW-1253)
-  align-items: center;
-  background: none;
-  border: rem($nds-spacing-x-small) solid $colour-nav-background;
-  border-left-width: 0;
-  border-radius: 0;
-  border-right-width: 0;
-  color: $colour-nav-text;
-  cursor: pointer;
-  display: flex;
-  font-weight: normal;
-  height: 100%;
-  justify-content: left;
-  line-height: 1.25;
-  padding: rem($nds-spacing-small);
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  width: 100%;
-
-  &:focus {
-    color: $colour-nav-text;
-    outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
-    outline-offset: rem(-$nds-spacing-small);
-    z-index: 1; // Push above the adjacent nav items
-  }
-
-  &:active,
-  &:hover {
-    background: $nds-colour-nice-grey-3;
-    color: $nds-colour-text;
-    text-decoration: underline;
-  }
-
-  &[aria-current='true'],
-  &[aria-current='page'],
-  &[aria-expanded='true'] {
-    background: $nds-colour-nice-grey-3;
-    border-bottom: rem($nds-spacing-x-small) solid $nds-colour-nice-grey-3;
-    color: $nds-colour-text;
-
-    &:focus {
-      outline-color: $nds-colour-focus;
-      outline-offset: rem(-$nds-spacing-small);
-    }
-  }
-
-  @include mq($from: md) {
-    justify-content: space-evenly;
-    padding: rem($nds-spacing-medium);
-    text-align: center;
-  }
+  @extend .linkStyling;
 }
 
 .dropdown {
