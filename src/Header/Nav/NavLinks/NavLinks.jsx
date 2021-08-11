@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import useEventListener from "@use-it/event-listener";
@@ -20,10 +20,19 @@ export function NavLinks({
 	subLinks,
 	onNavigating,
 	skipLinkId,
+	handleScrim,
 }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 
 	const ESCAPE_KEYS = ["27", "Escape"];
+
+	useEffect(() => {
+		if (idOfOpenDropdown === null) {
+			handleScrim(false);
+		} else {
+			handleScrim(true);
+		}
+	}, [idOfOpenDropdown]);
 
 	function handleNavButtonClick(id) {
 		setidOfOpenDropdown(id === idOfOpenDropdown ? null : id);
@@ -33,6 +42,7 @@ export function NavLinks({
 	function handleNavLinkClick(e) {
 		e.preventDefault();
 		setidOfOpenDropdown(null);
+
 		const href = e.currentTarget.getAttribute("href");
 		trackEvent(
 			defaultEventCategory,
@@ -143,6 +153,7 @@ NavLinks.propTypes = {
 	currentService: PropTypes.string,
 	subLinks: PropTypes.array,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	handleScrim: PropTypes.func,
 };
 
 export default NavLinks;
