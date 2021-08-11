@@ -55,51 +55,36 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
     <div
       className="menuWrapper"
     >
-      <ul
-        aria-labelledby="header-menu-button"
-        className="menuList"
-      >
-        <li
-          key="link1"
-        >
-          <a
-            aria-current={null}
-            className="link"
-            href="https://url1/"
-            onClick={[Function]}
-          >
-            First link
-          </a>
-        </li>
-        <li
-          key="link2"
-        >
-          <a
-            aria-current={null}
-            className="link"
-            href="https://url2/"
-            onClick={[Function]}
-          >
-            <abbr
-              title="Abbreviation title"
-            >
-              Second link
-               
-              <span
-                className="visuallyHidden"
-              >
-                Abbreviation title
-              </span>
-            </abbr>
-            <span
-              aria-hidden="true"
-              className="tooltip"
-            >
-              Abbreviation title
-            </span>
-          </a>
-        </li>
-      </ul>
+      <NavLinks
+        currentService={null}
+        servicesToDisplay={
+          Array [
+            Object {
+              "href": "https://url1/",
+              "id": "link1",
+              "text": "First link",
+            },
+            Object {
+              "abbreviation": true,
+              "href": "https://url2/",
+              "id": "link2",
+              "links": Array [
+                Object {
+                  "href": "/",
+                  "text": "Sub link 1",
+                },
+                Object {
+                  "href": "/test",
+                  "text": "Sub link 2",
+                },
+              ],
+              "text": "Second link",
+              "title": "Abbreviation title",
+            },
+          ]
+        }
+        subLinks={null}
+      />
     </div>
   </nav>
 </div>
@@ -150,52 +135,20 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
       <div
         className="menuWrapper"
       >
-        <ul
-          aria-labelledby="header-menu-button"
-          className="menuList"
-        >
-          <li
-            key="link1"
-          >
-            <a
-              aria-current={null}
-              className="link"
-              href="https://url1/"
-              onClick={[Function]}
-            >
-              First link
-            </a>
-          </li>
-          <li
-            key="link2"
-          >
-            <a
-              aria-current={true}
-              className="link"
-              href="https://url2/"
-              onClick={[Function]}
-            >
-              <abbr
-                title="Abbreviation title"
-              >
-                Second link
-                 
-                <span
-                  className="visuallyHidden"
-                >
-                  Abbreviation title
-                </span>
-              </abbr>
-              <span
-                aria-hidden="true"
-                className="tooltip"
-              >
-                Abbreviation title
-              </span>
-            </a>
-            <SubNav
-              links={
-                Array [
+        <NavLinks
+          currentService="link2"
+          servicesToDisplay={
+            Array [
+              Object {
+                "href": "https://url1/",
+                "id": "link1",
+                "text": "First link",
+              },
+              Object {
+                "abbreviation": true,
+                "href": "https://url2/",
+                "id": "link2",
+                "links": Array [
                   Object {
                     "href": "/",
                     "text": "Sub link 1",
@@ -204,48 +157,114 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
                     "href": "/test",
                     "text": "Sub link 2",
                   },
-                ]
-              }
-              text="Second link"
+                ],
+                "text": "Second link",
+                "title": "Abbreviation title",
+              },
+            ]
+          }
+          subLinks={
+            Array [
+              Object {
+                "href": "/",
+                "text": "Sub link 1",
+              },
+              Object {
+                "href": "/test",
+                "text": "Sub link 2",
+              },
+            ]
+          }
+        >
+          <ul
+            aria-labelledby="header-menu-button"
+            className="menuList"
+          >
+            <li
+              id="link1"
+              key="link1"
             >
-              <div
-                className="wrapper"
+              <a
+                aria-current={null}
+                className="link"
+                href="https://url1/"
+                onClick={[Function]}
               >
-                <ul
-                  aria-label="Second link links"
-                  className="list"
+                <span>
+                  First link
+                </span>
+              </a>
+            </li>
+            <li
+              id="link2"
+              key="link2"
+            >
+              <a
+                aria-current={true}
+                className="link"
+                href="https://url2/"
+                onClick={[Function]}
+              >
+                <span
+                  aria-label="Abbreviation title"
                 >
-                  <li
-                    key="0"
+                  Second link
+                </span>
+              </a>
+              <SubNav
+                links={
+                  Array [
+                    Object {
+                      "href": "/",
+                      "text": "Sub link 1",
+                    },
+                    Object {
+                      "href": "/test",
+                      "text": "Sub link 2",
+                    },
+                  ]
+                }
+                text="Second link"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <ul
+                    aria-label="Second link links"
+                    className="list"
                   >
-                    <a
-                      aria-current="page"
-                      aria-label="Sub link 1"
-                      className="link"
-                      href="/"
-                      onClick={[Function]}
+                    <li
+                      key="0"
                     >
-                      Sub link 1
-                    </a>
-                  </li>
-                  <li
-                    key="1"
-                  >
-                    <a
-                      aria-current={null}
-                      aria-label="Sub link 2"
-                      className="link"
-                      href="/test"
-                      onClick={[Function]}
+                      <a
+                        aria-current="page"
+                        aria-label="Sub link 1"
+                        className="link"
+                        href="/"
+                        onClick={[Function]}
+                      >
+                        Sub link 1
+                      </a>
+                    </li>
+                    <li
+                      key="1"
                     >
-                      Sub link 2
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </SubNav>
-          </li>
-        </ul>
+                      <a
+                        aria-current={null}
+                        aria-label="Sub link 2"
+                        className="link"
+                        href="/test"
+                        onClick={[Function]}
+                      >
+                        Sub link 2
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </SubNav>
+            </li>
+          </ul>
+        </NavLinks>
       </div>
     </nav>
   </div>
@@ -270,24 +289,14 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
       <div
         className="menuWrapper"
       >
-        <ul
-          aria-labelledby="header-menu-button"
-          className="menuList"
-        >
-          <li
-            key="internal1"
-          >
-            <a
-              aria-current={true}
-              className="link"
-              href="/"
-              onClick={[Function]}
-            >
-              First internal service
-            </a>
-            <SubNav
-              links={
-                Array [
+        <NavLinks
+          currentService="internal1"
+          servicesToDisplay={
+            Array [
+              Object {
+                "href": "/",
+                "id": "internal1",
+                "links": Array [
                   Object {
                     "href": "/i1sublink1",
                     "text": "internal1 sub link 1",
@@ -296,48 +305,96 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
                     "href": "/i2sublink2",
                     "text": "internal1 sub link 2",
                   },
-                ]
-              }
-              text="First internal service"
+                ],
+                "text": "First internal service",
+              },
+            ]
+          }
+          subLinks={
+            Array [
+              Object {
+                "href": "/i1sublink1",
+                "text": "internal1 sub link 1",
+              },
+              Object {
+                "href": "/i2sublink2",
+                "text": "internal1 sub link 2",
+              },
+            ]
+          }
+        >
+          <ul
+            aria-labelledby="header-menu-button"
+            className="menuList"
+          >
+            <li
+              id="internal1"
+              key="internal1"
             >
-              <div
-                className="wrapper"
+              <a
+                aria-current={true}
+                className="link"
+                href="/"
+                onClick={[Function]}
               >
-                <ul
-                  aria-label="First internal service links"
-                  className="list"
+                <span>
+                  First internal service
+                </span>
+              </a>
+              <SubNav
+                links={
+                  Array [
+                    Object {
+                      "href": "/i1sublink1",
+                      "text": "internal1 sub link 1",
+                    },
+                    Object {
+                      "href": "/i2sublink2",
+                      "text": "internal1 sub link 2",
+                    },
+                  ]
+                }
+                text="First internal service"
+              >
+                <div
+                  className="wrapper"
                 >
-                  <li
-                    key="0"
+                  <ul
+                    aria-label="First internal service links"
+                    className="list"
                   >
-                    <a
-                      aria-current={null}
-                      aria-label="internal1 sub link 1"
-                      className="link"
-                      href="/i1sublink1"
-                      onClick={[Function]}
+                    <li
+                      key="0"
                     >
-                      internal1 sub link 1
-                    </a>
-                  </li>
-                  <li
-                    key="1"
-                  >
-                    <a
-                      aria-current={null}
-                      aria-label="internal1 sub link 2"
-                      className="link"
-                      href="/i2sublink2"
-                      onClick={[Function]}
+                      <a
+                        aria-current={null}
+                        aria-label="internal1 sub link 1"
+                        className="link"
+                        href="/i1sublink1"
+                        onClick={[Function]}
+                      >
+                        internal1 sub link 1
+                      </a>
+                    </li>
+                    <li
+                      key="1"
                     >
-                      internal1 sub link 2
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </SubNav>
-          </li>
-        </ul>
+                      <a
+                        aria-current={null}
+                        aria-label="internal1 sub link 2"
+                        className="link"
+                        href="/i2sublink2"
+                        onClick={[Function]}
+                      >
+                        internal1 sub link 2
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </SubNav>
+            </li>
+          </ul>
+        </NavLinks>
       </div>
     </nav>
   </div>
