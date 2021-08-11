@@ -25,7 +25,6 @@ export default class TrackedLink extends Component {
 			null,
 			href,
 			(function () {
-				console.log("navigating...");
 				window.location.href = href;
 			})()
 		);
