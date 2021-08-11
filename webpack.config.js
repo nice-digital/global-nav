@@ -59,7 +59,9 @@ module.exports = function (env, argv) {
 						{
 							loader: require.resolve("babel-loader"),
 							options: {
-								plugins: HOT ? [require.resolve("react-refresh/babel")] : [],
+								plugins: [isDevelopment && "react-refresh/babel"].filter(
+									Boolean
+								),
 							},
 						},
 					],
