@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classnames from "classnames";
+import FocusTrap from "focus-trap-react";
 import PropTypes from "prop-types";
 import useEventListener from "@use-it/event-listener";
 import ChevronDown from "@nice-digital/icons/lib/ChevronDown";
@@ -57,11 +58,27 @@ export function NavLinks({
 	useEventListener("keydown", escapeDropdown);
 	useEventListener("click", clickOutsideNav, document.querySelector("main"));
 
+	const focusTrapOptions = {
+		clickOutsideDeactivates: true,
+	};
+
 	return (
+		<FocusTrap
+			active={idOfOpenDropdown !== null}
+			focusTrapOptions={focusTrapOptions}
+		>
 		<ul className={styles.menuList} aria-labelledby="header-menu-button">
 			{servicesToDisplay.map(
 				(
-					{ href, id, text, abbreviation, title, dropdown, dropdownComponent },
+						{
+							href,
+							id,
+							text,
+							abbreviation,
+							title,
+							dropdown,
+							dropdownComponent,
+						},
 					index
 				) => {
 					let ariaCurrent = null;
@@ -108,7 +125,6 @@ export function NavLinks({
 							)}
 							{dropdown && (
 								<Dropdown
-									isActive={id === idOfOpenDropdown ? true : false}
 									component={dropdownComponent}
 									className={classnames([
 										styles.dropdown,
@@ -136,6 +152,7 @@ export function NavLinks({
 				}
 			)}
 		</ul>
+		</FocusTrap>
 	);
 }
 

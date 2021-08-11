@@ -1,5 +1,4 @@
 import React from "react";
-import FocusTrap from "focus-trap-react";
 import PropTypes from "prop-types";
 import styles from "./Dropdown.module.scss";
 import { Guidance, More } from "./Components/";
@@ -12,7 +11,6 @@ export function Dropdown({
 	closeDropdown,
 	id,
 	component,
-	isActive,
 }) {
 	const components = {
 		Guidance: Guidance,
@@ -21,7 +19,6 @@ export function Dropdown({
 	const Component = components[component];
 
 	return (
-		<FocusTrap active={isActive}>
 		<div className={className} id={id}>
 			<div className={styles.container}>
 				{nextNavSlug && (
@@ -39,7 +36,6 @@ export function Dropdown({
 				</button>
 			</div>
 		</div>
-		</FocusTrap>
 	);
 }
 
@@ -50,7 +46,6 @@ Dropdown.propTypes = {
 	closeDropdown: PropTypes.func,
 	id: PropTypes.string,
 	component: PropTypes.string,
-	isActive: PropTypes.bool,
 };
 
 export default Dropdown;
