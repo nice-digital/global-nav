@@ -1,10 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Dropdown.module.scss";
-import { Guidance } from "./Guidance/Guidance";
+import { Guidance, More } from "./Components/";
 import Remove from "@nice-digital/icons/lib/Remove";
 
-export function Dropdown({ text, className, nextNavSlug, toggleDropdown, id }) {
+export function Dropdown({
+	text,
+	className,
+	nextNavSlug,
+	closeDropdown,
+	id,
+	component,
+}) {
+	const components = {
+		Guidance: Guidance,
+		More: More,
+	};
+	const Component = components[component];
+
 	return (
 		<div className={className} id={id}>
 			<div className={styles.container}>
@@ -12,13 +25,13 @@ export function Dropdown({ text, className, nextNavSlug, toggleDropdown, id }) {
 					<a
 						href={`#${nextNavSlug}`}
 						className={styles.skiplink}
-						onClick={toggleDropdown}
+						onClick={closeDropdown}
 					>
 						Skip {text} submenu
 					</a>
 				)}
-				<Guidance />
-				<button onClick={toggleDropdown} className={styles.exit}>
+				<Component />
+				<button onClick={closeDropdown} className={styles.exit}>
 					Close menu <Remove />
 				</button>
 			</div>
@@ -30,8 +43,9 @@ Dropdown.propTypes = {
 	text: PropTypes.string,
 	className: PropTypes.string,
 	nextNavSlug: PropTypes.string,
-	toggleDropdown: PropTypes.func,
+	closeDropdown: PropTypes.func,
 	id: PropTypes.string,
+	component: PropTypes.string,
 };
 
 export default Dropdown;

@@ -1,4 +1,3 @@
-// gonna just hard code this content for now
 import React from "react";
 
 export function Guidance() {

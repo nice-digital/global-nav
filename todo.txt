@@ -1,9 +1,7 @@
-- finish styling
-    - chevron ICON
-- maybe relook at main area for closing?
+NOW
+- shadow on main content
 
-- basic test
-- some content
-    - try data structure rendering?
-    - or if no time, just reference the name of a component?
+NEXT
+- maybe relook at main area for closing?
 - IE11
+    - current issue syntax error on GN project

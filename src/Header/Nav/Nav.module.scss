@@ -110,8 +110,8 @@ a.link,
   &[aria-current='true'],
   &[aria-current='page'],
   &[aria-expanded='true'] {
-    background: $nds-colour-nice-grey-3;
-    border-bottom: rem($nds-spacing-x-small) solid $nds-colour-nice-grey-3;
+    background: $nds-colour-body;
+    border-bottom: rem($nds-spacing-x-small) solid $nds-colour-body;
     color: $nds-colour-text;
 
     &:focus {

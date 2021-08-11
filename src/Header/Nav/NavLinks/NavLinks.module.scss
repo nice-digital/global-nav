@@ -14,16 +14,27 @@ button.link {
 }
 
 .dropdown {
-  background-color: $nds-colour-nice-grey-3;
+  background-color: $nds-colour-body;
   box-shadow: 0 rem($nds-spacing-small) rem($nds-spacing-small) 0
     rgb(0 0 0 / 10%);
   display: none;
   left: 0;
-  position: absolute;
+  position: relative;
   width: 100%;
   z-index: 1;
 
   &.active {
     display: block;
+  }
+
+  @include mq($from: md) {
+    position: absolute;
+  }
+}
+
+.icon {
+  margin-left: rem($nds-spacing-small);
+  @include mq($from: md) {
+    margin-left: 0;
   }
 }

@@ -4,7 +4,8 @@
       "href": "https://www.nice.org.uk/guidance",
       "text": "NICE guidance",
       "id": "guidance",
-      "dropdown": true
+      "dropdown": true,
+      "dropdownComponent": "Guidance"
     },
     {
       "href": "https://pathways.nice.org.uk/",
@@ -29,12 +30,6 @@
           "href": "https://www.nice.org.uk/NICE-Pathways-feedback"
         }
       ]
-    },
-    {
-      "href": "https://www.nice.org.uk/standards-and-indicators",
-      "text": "Standards and indicators",
-      "id": "standards",
-      "dropdown": false
     },
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
@@ -74,7 +69,7 @@
     },
     {
       "href": "https://bnfc.nice.org.uk/",
-      "text": "BNFC",
+      "text": "BNF for Children",
       "abbreviation": true,
       "title": "British National Formulary for Children",
       "id": "bnfc",
@@ -104,7 +99,7 @@
     },
     {
       "href": "https://cks.nice.org.uk/",
-      "text": "CKS",
+      "text": "Clinical Knowledge Summaries",
       "abbreviation": true,
       "title": "Clinical Knowledge Summaries",
       "id": "cks",
@@ -134,10 +129,11 @@
       ]
     },
     {
-      "href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
-      "text": "Journals and databases",
-      "id": "journals",
-      "dropdown": false
+      "href": "https://www.nice.org.uk/guidance",
+      "text": "More NICE services",
+      "id": "more-nice-services",
+      "dropdown": true,
+      "dropdownComponent": "More"
     }
   ],
   "internal": [
