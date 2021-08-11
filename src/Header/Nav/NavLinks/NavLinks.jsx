@@ -59,7 +59,10 @@ export function NavLinks({
 	return (
 		<ul className={styles.menuList} aria-labelledby="header-menu-button">
 			{servicesToDisplay.map(
-				({ href, id, text, abbreviation, title, dropdown }, index) => {
+				(
+					{ href, id, text, abbreviation, title, dropdown, dropdownComponent },
+					index
+				) => {
 					let ariaCurrent = null;
 
 					if (currentService && id === currentService) {
@@ -86,7 +89,11 @@ export function NavLinks({
 									aria-expanded={id === idOfOpenDropdown ? "true" : "false"}
 								>
 									<span aria-label={abbreviation && title}>{text}</span>{" "}
-									{id === idOfOpenDropdown ? <ChevronUp /> : <ChevronDown />}
+									{id === idOfOpenDropdown ? (
+										<ChevronUp className={styles.icon} />
+									) : (
+										<ChevronDown className={styles.icon} />
+									)}
 								</button>
 							) : (
 								<a
@@ -100,6 +107,7 @@ export function NavLinks({
 							)}
 							{dropdown && (
 								<Dropdown
+									component={dropdownComponent}
 									className={classnames([
 										styles.dropdown,
 										id === idOfOpenDropdown && styles.active,
@@ -110,7 +118,7 @@ export function NavLinks({
 											? servicesToDisplay[index + 1]["id"]
 											: skipLinkId
 									}
-									toggleDropdown={() => setidOfOpenDropdown(null)}
+									closeDropdown={() => setidOfOpenDropdown(null)}
 									id={`dropdown-${id}`}
 								/>
 							)}
