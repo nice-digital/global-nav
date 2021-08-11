@@ -24,9 +24,10 @@ export default class TrackedLink extends Component {
 			eventLabel || e.currentTarget.textContent || e.currentTarget.innerText,
 			null,
 			href,
-			function () {
+			(function () {
+				console.log("navigating...");
 				window.location.href = href;
-			}
+			})()
 		);
 	}
 

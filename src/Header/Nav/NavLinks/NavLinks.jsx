@@ -39,9 +39,10 @@ export function NavLinks({
 			headerClickEventAction,
 			e.currentTarget.textContent,
 			null,
-			function () {
+			(function () {
+				console.log("navigating...");
 				window.location.href = href;
-			}
+			})()
 		);
 	}
 
@@ -86,7 +87,7 @@ export function NavLinks({
 									aria-current={ariaCurrent}
 									className={styles.link}
 									aria-controls={`dropdown-${id}`}
-									aria-expanded={id === idOfOpenDropdown ? "true" : "false"}
+									aria-expanded={id === idOfOpenDropdown ? true : false}
 								>
 									<span aria-label={abbreviation && title}>{text}</span>{" "}
 									{id === idOfOpenDropdown ? (
@@ -107,6 +108,7 @@ export function NavLinks({
 							)}
 							{dropdown && (
 								<Dropdown
+									isActive={id === idOfOpenDropdown ? true : false}
 									component={dropdownComponent}
 									className={classnames([
 										styles.dropdown,
