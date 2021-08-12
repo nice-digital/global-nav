@@ -57,16 +57,13 @@ export function NavLinks({
 	useEventListener("keydown", escapeDropdown);
 	useEventListener("click", clickOutsideNav, document.querySelector("main"));
 
-	const focusTrapOptions = {
+	const options = {
 		clickOutsideDeactivates: true,
 		initialFocus: false,
 	};
 
 	return (
-		<FocusTrap
-			active={idOfOpenDropdown !== null}
-			focusTrapOptions={focusTrapOptions}
-		>
+		<FocusTrap active={idOfOpenDropdown !== null} focusTrapOptions={options}>
 			<ul className={styles.menuList} aria-labelledby="header-menu-button">
 				{servicesToDisplay.map(
 					(
