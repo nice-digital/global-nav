@@ -59,6 +59,7 @@ export function NavLinks({
 
 	const focusTrapOptions = {
 		clickOutsideDeactivates: true,
+		initialFocus: false,
 	};
 
 	return (
