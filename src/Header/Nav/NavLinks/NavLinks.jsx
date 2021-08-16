@@ -56,6 +56,16 @@ export function NavLinks({
 
 	useEventListener("keydown", escapeDropdown);
 	useEventListener("click", clickOutsideNav, document.querySelector("main"));
+	useEventListener(
+		"click",
+		clickOutsideNav,
+		document.querySelector("#global-nav-search-form")
+	);
+	useEventListener(
+		"click",
+		clickOutsideNav,
+		document.querySelector("#my-account-button")
+	);
 
 	const focusTrapOptions = {
 		clickOutsideDeactivates: true,
