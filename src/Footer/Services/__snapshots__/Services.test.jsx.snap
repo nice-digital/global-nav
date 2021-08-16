@@ -149,7 +149,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="More NICE services"
-        href="https://www.nice.org.uk/guidance"
+        href={null}
       >
         More NICE services
       </TrackedLink>
