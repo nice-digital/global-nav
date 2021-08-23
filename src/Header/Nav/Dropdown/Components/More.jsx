@@ -1,10 +1,12 @@
 import React from "react";
+import { Button } from "@nice-digital/nds-button";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 export function More() {
 	return (
 		<section aria-label="More NICE services">
-			<div className="grid grid--loose">
-				<div data-g="12 md:4">
+			<Grid gutter="loose">
+				<GridItem cols={12} md={4}>
 					<h3>Evidence search</h3>
 					<p>
 						Evidence search helps you make better, faster evidence-based
@@ -13,12 +15,12 @@ export function More() {
 						go.
 					</p>
 					<p>
-						<a className="btn btn--cta" href="https://evidence.nhs.uk">
+						<Button variant="cta" to="https://evidence.nhs.uk">
 							Evidence search
-						</a>
+						</Button>
 					</p>
-				</div>
-				<div data-g="12 md:4">
+				</GridItem>
+				<GridItem cols={12} md={4}>
 					<h3>Standards and indicators</h3>
 					<p>
 						Quality standards set out the priority areas for quality improvement
@@ -30,15 +32,15 @@ export function More() {
 						<li>improve quality information on how to measure progress.</li>
 					</ul>
 					<p>
-						<a
-							className="btn btn--cta"
-							href="https://www.nice.org.uk/standards-and-indicators"
+						<Button
+							variant="cta"
+							to="https://www.nice.org.uk/standards-and-indicators"
 						>
 							Standards and indicators
-						</a>
+						</Button>
 					</p>
-				</div>
-				<div data-g="12 md:4">
+				</GridItem>
+				<GridItem cols={12} md={4}>
 					<h3>Journals and databases</h3>
 					<p>
 						Quick access to a range of journals and other evidence-based
@@ -54,15 +56,15 @@ export function More() {
 						resources.
 					</p>
 					<p>
-						<a
-							className="btn btn--cta"
-							href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
+						<Button
+							variant="cta"
+							to="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
 						>
 							Journals and databases
-						</a>
+						</Button>
 					</p>
-				</div>
-			</div>
+				</GridItem>
+			</Grid>
 		</section>
 	);
 }
