@@ -76,6 +76,7 @@ module.exports = function (env, argv) {
 							options: {
 								importLoaders: 2,
 								modules: {
+									auto: true,
 									localIdentHashPrefix: "global-nav",
 									localIdentName: isDevelopment
 										? "[name]__[local]--[hash:base64]"
