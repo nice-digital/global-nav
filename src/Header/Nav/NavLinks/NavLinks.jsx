@@ -23,6 +23,9 @@ export function NavLinks({
 	skipLinkId,
 }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
+	const [focusTrapActive, setFocusTrapActive] = useState(
+		idOfOpenDropdown !== null
+	);
 
 	const ESCAPE_KEYS = ["27", "Escape"];
 
@@ -73,7 +76,7 @@ export function NavLinks({
 	};
 
 	return (
-		<FocusTrap active={idOfOpenDropdown !== null} focusTrapOptions={options}>
+		<FocusTrap active={focusTrapActive} focusTrapOptions={options}>
 			<ul className={styles.menuList} aria-labelledby="header-menu-button">
 				{servicesToDisplay.map(
 					(
