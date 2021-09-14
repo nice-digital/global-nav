@@ -118,9 +118,12 @@ export function NavLinks({
 									>
 										<span aria-label={abbreviation && title}>{text}</span>{" "}
 										{id === idOfOpenDropdown ? (
-											<ChevronUp className={styles.icon} />
+											<ChevronUp className={styles.icon} pointerEvents="none" />
 										) : (
-											<ChevronDown className={styles.icon} />
+											<ChevronDown
+												className={styles.icon}
+												pointerEvents="none"
+											/>
 										)}
 									</button>
 								) : (
