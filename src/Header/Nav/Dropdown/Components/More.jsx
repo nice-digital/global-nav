@@ -6,7 +6,7 @@ export function More() {
 		<section aria-label="More NICE services">
 			<ReactShadowRoot>
 				<link href="https://nds-css.netlify.app/bundle.css" rel="stylesheet" />
-				<div className="grid">
+				<div className="grid grid--loose">
 					<div data-g="12 md:4">
 						<h3>Evidence search</h3>
 						<p>

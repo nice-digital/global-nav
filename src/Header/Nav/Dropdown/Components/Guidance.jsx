@@ -16,7 +16,7 @@ export function Guidance() {
 					Find NICE Guidance
 				</button>
 
-				<div className="grid">
+				<div className="grid grid--loose">
 					<div data-g="12 md:6">
 						<h3>Most visited guidance topics</h3>
 						<p>Guidance grouped by subject, most visited by other people:</p>
