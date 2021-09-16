@@ -90,7 +90,7 @@ export class Header extends Component {
 			this.props.enabled !== false && (
 				<>
 					{this.state.scrimIsActive && (
-						<span className={styles.scrim} aria-hidden="true" />
+						<span id="scrim" className={styles.scrim} aria-hidden="true" />
 					)}
 					<div className={styles.header}>
 						<header aria-label="Site header">

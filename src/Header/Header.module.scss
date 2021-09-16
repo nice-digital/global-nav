@@ -1,14 +1,5 @@
 @import 'header-settings';
 
-.scrim {
-  background: rgba(0, 0, 0, 40%);
-  display: block;
-  height: 100vh;
-  left: 0;
-  position: absolute;
-  width: 100vw;
-}
-
 .header {
   background: $nds-colour-nice-white;
   border-bottom: rem($nds-spacing-xx-small) solid $nds-colour-nice-teal;
@@ -140,6 +131,16 @@
   .home {
     height: rem($search-height);
     margin-right: rem($nds-spacing-large);
+  }
+
+  .scrim {
+    background: rgba(0, 0, 0, 70%);
+    display: block;
+    height: 100vh;
+    left: 0;
+    margin-top: rem($search-height) + rem($nds-spacing-large);
+    position: absolute;
+    width: 100vw;
   }
 
   .wrapper {

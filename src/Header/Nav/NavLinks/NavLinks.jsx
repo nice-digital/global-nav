@@ -59,12 +59,13 @@ export function NavLinks({
 		if (ESCAPE_KEYS.includes(String(key))) setidOfOpenDropdown(null);
 	}
 
-	function clickOutsideNav() {
-		setidOfOpenDropdown(null);
+	function clickOutsideNav(event) {
+		if (event.target === document.querySelector("#scrim"))
+			setidOfOpenDropdown(null);
 	}
 
 	useEventListener("keydown", escapeDropdown);
-	useEventListener("click", clickOutsideNav, document.querySelector("main"));
+	useEventListener("click", clickOutsideNav);
 
 	return (
 		<ul className={styles.menuList} aria-labelledby="header-menu-button">
