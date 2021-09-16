@@ -86,6 +86,7 @@ exports[`Header Matches snapshot 1`] = `
       isExpanded={false}
       onNavigating="onNavigatingHandler"
       service={null}
+      skipLinkId="content-start"
     />
   </header>
   <CoronaMessage />

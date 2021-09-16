@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "@nice-digital/nds-button";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 export function Guidance() {
 	return (
@@ -9,12 +11,12 @@ export function Guidance() {
 				including professionals and lay members, and consulted on by
 				stakeholder.
 			</p>
-			<a className="btn btn--cta" href="/">
+			<Button variant="cta" to="/">
 				Find NICE Guidance
-			</a>
+			</Button>
 
-			<div className="grid grid--loose">
-				<div data-g="12 md:6">
+			<Grid gutter="loose">
+				<GridItem cols={12} md={6}>
 					<h3>Most visited guidance topics</h3>
 					<p>Guidance grouped by subject, most visited by other people:</p>
 					<ul className="list list--unstyled" style={{ columnCount: 2 }}>
@@ -43,8 +45,8 @@ export function Guidance() {
 							<a href="/">Medicines management</a>
 						</li>
 					</ul>
-				</div>
-				<div data-g="12 md:6">
+				</GridItem>
+				<GridItem cols={12} md={6}>
 					<h3>COVID-19</h3>
 					<p>Latest COVID-19 guidance:</p>
 					<ul className="list list--unstyled">
@@ -61,8 +63,8 @@ export function Guidance() {
 							<a href="/">View all COVID-19 guidance</a>
 						</li>
 					</ul>
-				</div>
-			</div>
+				</GridItem>
+			</Grid>
 		</section>
 	);
 }

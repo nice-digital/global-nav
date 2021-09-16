@@ -9,20 +9,6 @@ exports[`Services Matches snapshot 1`] = `
     className="list"
   >
     <li
-      key="pathways"
-    >
-      <TrackedLink
-        aria-current="true"
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="NICE Pathways"
-        href="https://pathways.nice.org.uk/"
-      >
-        NICE Pathways
-      </TrackedLink>
-    </li>
-    <li
       key="guidance"
     >
       <TrackedLink
@@ -37,6 +23,20 @@ exports[`Services Matches snapshot 1`] = `
       </TrackedLink>
     </li>
     <li
+      key="pathways"
+    >
+      <TrackedLink
+        aria-current="true"
+        className="link"
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="NICE Pathways"
+        href="https://pathways.nice.org.uk/"
+      >
+        NICE Pathways
+      </TrackedLink>
+    </li>
+    <li
       key="life-sciences"
     >
       <TrackedLink
@@ -48,34 +48,6 @@ exports[`Services Matches snapshot 1`] = `
         href="https://www.nice.org.uk/about/what-we-do/life-sciences"
       >
         Life sciences
-      </TrackedLink>
-    </li>
-    <li
-      key="standards"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Standards and indicators"
-        href="https://www.nice.org.uk/standards-and-indicators"
-      >
-        Standards and indicators
-      </TrackedLink>
-    </li>
-    <li
-      key="evidence"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Evidence search"
-        href="https://www.evidence.nhs.uk/"
-      >
-        Evidence search
       </TrackedLink>
     </li>
     <li
@@ -116,13 +88,13 @@ exports[`Services Matches snapshot 1`] = `
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="BNFC"
+        eventLabel="BNF for Children"
         href="https://bnfc.nice.org.uk/"
       >
         <abbr
           title="British National Formulary for Children"
         >
-          BNFC
+          BNF for Children
            
           <span
             className="visuallyHidden"
@@ -146,13 +118,13 @@ exports[`Services Matches snapshot 1`] = `
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="CKS"
+        eventLabel="Clinical Knowledge Summaries"
         href="https://cks.nice.org.uk/"
       >
         <abbr
           title="Clinical Knowledge Summaries"
         >
-          CKS
+          Clinical Knowledge Summaries
            
           <span
             className="visuallyHidden"
@@ -169,17 +141,17 @@ exports[`Services Matches snapshot 1`] = `
       </TrackedLink>
     </li>
     <li
-      key="journals"
+      key="more-nice-services"
     >
       <TrackedLink
         aria-current={null}
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="Journals and databases"
-        href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
+        eventLabel="More NICE services"
+        href={null}
       >
-        Journals and databases
+        More NICE services
       </TrackedLink>
     </li>
   </ul>
