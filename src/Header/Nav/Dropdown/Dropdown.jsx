@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Dropdown.module.scss";
-import { Guidance, More, BNF } from "./Components/";
+import { Guidance, More, BNF, BNFc } from "./Components/";
 import Remove from "@nice-digital/icons/lib/Remove";
 
 export function Dropdown({
@@ -16,6 +16,7 @@ export function Dropdown({
 		Guidance: Guidance,
 		More: More,
 		BNF: BNF,
+		BNFc: BNFc,
 	};
 	const Component = components[component];
 

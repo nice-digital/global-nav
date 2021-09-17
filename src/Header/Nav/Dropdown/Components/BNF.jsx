@@ -35,7 +35,6 @@ const drugsAtoZ = [
 export function BNF() {
 	return (
 		<section aria-label="BNF - dropdown navigation">
-			<link href="https://nds-css.netlify.app/bundle.css" rel="stylesheet" />
 			<h2 className="mt--0">BNF</h2>
 			<p>Everything NICE says on a topic in an interactive flowchart</p>
 			<Button variant="primary" to="https://bnf.nice.org.uk/">
