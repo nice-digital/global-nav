@@ -43,7 +43,8 @@
       "abbreviation": true,
       "title": "British National Formulary",
       "id": "bnf",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "BNF",
       "links": [
         {
           "text": "Drugs",

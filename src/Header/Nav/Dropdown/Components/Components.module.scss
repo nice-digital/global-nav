@@ -7,3 +7,66 @@
   max-width: none; // To override max-width of 66ch set on lists
   padding: 0;
 }
+
+.alphabet {
+  list-style: none;
+  margin: rem(0 0 $nds-spacing-large);
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  @supports (display: grid) {
+    column-gap: rem($nds-spacing-small);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(4ch, 1fr));
+    row-gap: rem($nds-spacing-small);
+
+    @include mq($from: md) {
+      grid-template-columns: repeat(17, minmax(4ch, 1fr));
+    }
+  }
+}
+
+.chunkyLetter {
+  @include nds-font-size(h4);
+  color: $nds-colour-nice-dark-grey;
+
+  span {
+    width: 4.95ch;
+  }
+}
+
+.letter {
+  display: inline-block;
+  font-weight: bold;
+  margin: rem(0 $nds-spacing-small $nds-spacing-small 0);
+
+  a,
+  span {
+    display: block;
+    padding: rem($nds-spacing-small 0);
+    text-align: center;
+    width: 3.95ch;
+  }
+
+  a {
+    background: $nds-colour-true-white;
+    border: 1px solid $nds-colour-border;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @supports (display: grid) {
+    margin: 0;
+
+    a,
+    span {
+      width: auto;
+    }
+  }
+}
