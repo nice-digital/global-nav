@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import FocusTrap from "focus-trap-react";
 import PropTypes from "prop-types";
@@ -21,6 +21,7 @@ export function NavLinks({
 	subLinks,
 	onNavigating,
 	skipLinkId,
+	handleScrim,
 }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 	const [focusTrapActive, setFocusTrapActive] = useState(
@@ -28,6 +29,14 @@ export function NavLinks({
 	);
 
 	const ESCAPE_KEYS = ["27", "Escape"];
+
+	useEffect(() => {
+		if (idOfOpenDropdown === null) {
+			handleScrim(false);
+		} else {
+			handleScrim(true);
+		}
+	}, [idOfOpenDropdown]);
 
 	function handleNavButtonClick(id) {
 		setidOfOpenDropdown(id === idOfOpenDropdown ? null : id);
@@ -37,6 +46,7 @@ export function NavLinks({
 	function handleNavLinkClick(e) {
 		e.preventDefault();
 		setidOfOpenDropdown(null);
+
 		const href = e.currentTarget.getAttribute("href");
 		trackEvent(
 			defaultEventCategory,
@@ -53,12 +63,13 @@ export function NavLinks({
 		if (ESCAPE_KEYS.includes(String(key))) setidOfOpenDropdown(null);
 	}
 
-	function clickOutsideNav() {
-		setidOfOpenDropdown(null);
+	function clickOutsideNav(event) {
+		if (event.target === document.querySelector("#scrim"))
+			setidOfOpenDropdown(null);
 	}
 
 	useEventListener("keydown", escapeDropdown);
-	useEventListener("click", clickOutsideNav, document.querySelector("main"));
+	useEventListener("click", clickOutsideNav);
 	useEventListener(
 		"click",
 		clickOutsideNav,
@@ -175,6 +186,7 @@ NavLinks.propTypes = {
 	currentService: PropTypes.string,
 	subLinks: PropTypes.array,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	handleScrim: PropTypes.func,
 };
 
 export default NavLinks;

@@ -133,6 +133,16 @@
     margin-right: rem($nds-spacing-large);
   }
 
+  .scrim {
+    background: rgba(0, 0, 0, 70%);
+    display: block;
+    height: 100vh;
+    left: 0;
+    margin-top: rem($search-height) + rem($nds-spacing-large);
+    position: absolute;
+    width: 100vw;
+  }
+
   .wrapper {
     justify-content: flex-end;
   }

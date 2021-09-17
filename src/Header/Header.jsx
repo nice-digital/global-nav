@@ -24,11 +24,13 @@ export class Header extends Component {
 			isExpanded: false,
 			isLoggedIn: false,
 			accountsData: null,
+			scrimIsActive: false,
 		};
 
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
 		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
 		this.handleLogoClick = this.handleLogoClick.bind(this);
+		this.handleScrim = this.handleScrim.bind(this);
 	}
 
 	componentDidMount() {
@@ -67,6 +69,14 @@ export class Header extends Component {
 		);
 	}
 
+	handleScrim(scrim) {
+		if (scrim === true) {
+			this.setState({ scrimIsActive: true });
+		} else {
+			this.setState({ scrimIsActive: false });
+		}
+	}
+
 	handleLoginStatusChecked(accountsData) {
 		if (accountsData.display_name) {
 			this.setState({ isLoggedIn: true, accountsData: accountsData });
@@ -78,81 +88,91 @@ export class Header extends Component {
 	render() {
 		return (
 			this.props.enabled !== false && (
-				<div className={styles.header}>
-					<header aria-label="Site header">
-						<ul className={styles.a11yLinks} aria-label="Accessibility links">
-							<li>
-								<SkipLink to={`#${this.props.skipLinkId}`}>
-									Skip to content
-								</SkipLink>
-							</li>
-							<li>
-								<SkipLink to="https://www.nice.org.uk/accessibility">
-									Accessibility help
-								</SkipLink>
-							</li>
-						</ul>
-						<div className={styles.container}>
-							<a
-								href="https://www.nice.org.uk/"
-								aria-label="Home"
-								className={styles.home}
-								onClick={this.handleLogoClick}
-							>
-								<LogoIcon className={styles.icon} width={null} height={null} />
-							</a>
-							<div className={styles.wrapper}>
-								<div className={styles.search}>
-									{this.props.search && (
-										<Search
-											skipLinkId={this.props.skipLinkId}
-											onNavigating={this.props.onNavigating}
-											{...this.props.search}
-										/>
+				<>
+					{this.state.scrimIsActive && (
+						<span id="scrim" className={styles.scrim} aria-hidden="true" />
+					)}
+					<div className={styles.header}>
+						<header aria-label="Site header">
+							<ul className={styles.a11yLinks} aria-label="Accessibility links">
+								<li>
+									<SkipLink to={`#${this.props.skipLinkId}`}>
+										Skip to content
+									</SkipLink>
+								</li>
+								<li>
+									<SkipLink to="https://www.nice.org.uk/accessibility">
+										Accessibility help
+									</SkipLink>
+								</li>
+							</ul>
+							<div className={styles.container}>
+								<a
+									href="https://www.nice.org.uk/"
+									aria-label="Home"
+									className={styles.home}
+									onClick={this.handleLogoClick}
+								>
+									<LogoIcon
+										className={styles.icon}
+										width={null}
+										height={null}
+									/>
+								</a>
+								<div className={styles.wrapper}>
+									<div className={styles.search}>
+										{this.props.search && (
+											<Search
+												skipLinkId={this.props.skipLinkId}
+												onNavigating={this.props.onNavigating}
+												{...this.props.search}
+											/>
+										)}
+									</div>
+									<button
+										className={styles.mobileMenuBtn}
+										id="header-menu-button"
+										type="button"
+										aria-controls="header-menu"
+										aria-expanded={this.state.isExpanded}
+										aria-haspopup="menu"
+										aria-label={
+											this.state.isExpanded
+												? "Close site menu"
+												: "Expand site menu"
+										}
+										onClick={this.handleMobileMenuBtnClick}
+									>
+										{this.state.isExpanded ? "Close" : "Menu"}
+									</button>
+									{this.props.auth !== false && (
+										<div className={styles.account}>
+											<Account
+												onLoginStatusChecked={this.handleLoginStatusChecked}
+												isLoggedIn={this.state.isLoggedIn}
+												accountsData={this.state.accountsData}
+												{...this.props.auth}
+											/>
+										</div>
 									)}
 								</div>
-								<button
-									className={styles.mobileMenuBtn}
-									id="header-menu-button"
-									type="button"
-									aria-controls="header-menu"
-									aria-expanded={this.state.isExpanded}
-									aria-haspopup="menu"
-									aria-label={
-										this.state.isExpanded
-											? "Close site menu"
-											: "Expand site menu"
-									}
-									onClick={this.handleMobileMenuBtnClick}
-								>
-									{this.state.isExpanded ? "Close" : "Menu"}
-								</button>
-								{this.props.auth !== false && (
-									<div className={styles.account}>
-										<Account
-											onLoginStatusChecked={this.handleLoginStatusChecked}
-											isLoggedIn={this.state.isLoggedIn}
-											accountsData={this.state.accountsData}
-											{...this.props.auth}
-										/>
-									</div>
-								)}
 							</div>
-						</div>
-						<Nav
-							skipLinkId={this.props.skipLinkId}
-							service={this.props.service}
-							isExpanded={this.state.isExpanded}
-							accountsLinks={
-								this.state.accountsData && this.state.accountsData.links
-							}
-							onNavigating={this.props.onNavigating}
-							additionalSubMenuItems={this.props.additionalSubMenuItems}
-						/>
-					</header>
-					<CoronaMessage onResize={this.props.onResize} />
-					<OldIEMessage />
-				</div>
+							<Nav
+								handleScrim={this.handleScrim}
+								skipLinkId={this.props.skipLinkId}
+								service={this.props.service}
+								isExpanded={this.state.isExpanded}
+								accountsLinks={
+									this.state.accountsData && this.state.accountsData.links
+								}
+								onNavigating={this.props.onNavigating}
+								additionalSubMenuItems={this.props.additionalSubMenuItems}
+							/>
+						</header>
+						<CoronaMessage onResize={this.props.onResize} />
+						<OldIEMessage />
+					</div>
+				</>
 			)
 		);
 	}
