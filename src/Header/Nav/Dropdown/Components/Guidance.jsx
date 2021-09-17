@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import styles from "./Components.module.scss";
 
 export function Guidance() {
 	return (
@@ -19,7 +20,7 @@ export function Guidance() {
 				<GridItem cols={12} md={6}>
 					<h3>Most visited guidance topics</h3>
 					<p>Guidance grouped by subject, most visited by other people:</p>
-					<ul className="list list--unstyled" style={{ columnCount: 2 }}>
+					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
 							<a href="/">Diabetes</a>
 						</li>
@@ -49,7 +50,7 @@ export function Guidance() {
 				<GridItem cols={12} md={6}>
 					<h3>COVID-19</h3>
 					<p>Latest COVID-19 guidance:</p>
-					<ul className="list list--unstyled">
+					<ul className={styles.listUnstyled}>
 						<li>
 							<a href="/">
 								COVID-19 rapid guideline: vaccine-induced immune
