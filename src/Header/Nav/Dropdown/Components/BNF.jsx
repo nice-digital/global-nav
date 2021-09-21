@@ -36,9 +36,13 @@ export function BNF() {
 	return (
 		<section aria-label="BNF - dropdown navigation">
 			<h2 className="mt--0">BNF</h2>
-			<p>Everything NICE says on a topic in an interactive flowchart</p>
+			<p>
+				The BNF aims to provide prescribers, pharmacists, and other healthcare
+				professionals with sound up-to-date information about the use of
+				medicines.
+			</p>
 			<Button variant="primary" to="https://bnf.nice.org.uk/">
-				Explore BNF
+				View BNF
 			</Button>
 
 			<h3>Drugs A to Z</h3>
@@ -109,11 +113,11 @@ export function BNF() {
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
-					<h3>Latest</h3>
+					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<a href="https://bnf.nice.org.uk/about/changes.html">
-								What's changed
+								Latest BNF
 							</a>
 						</li>
 					</ul>
