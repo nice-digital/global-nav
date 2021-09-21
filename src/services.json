@@ -105,7 +105,8 @@
       "abbreviation": true,
       "title": "Clinical Knowledge Summaries",
       "id": "cks",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "CKS",
       "links": [
         {
           "image": "cks",
