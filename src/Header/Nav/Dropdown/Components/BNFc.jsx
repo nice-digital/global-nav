@@ -34,11 +34,15 @@ const drugsAtoZ = [
 
 export function BNFc() {
 	return (
-		<section aria-label="BNFc - dropdown navigation">
-			<h2 className="mt--0">BNFc</h2>
-			<p>Everything NICE says on a topic in an interactive flowchart</p>
+		<section aria-label="BNFC - dropdown navigation">
+			<h2 className="mt--0">BNFC</h2>
+			<p>
+				BNF for Children aims to provide prescribers, pharmacists, and other
+				healthcare professionals with sound up-to-date information on the use of
+				medicines for treating children.
+			</p>
 			<Button variant="primary" to="https://bnfc.nice.org.uk/">
-				Explore BNFc
+				View BNFC
 			</Button>
 
 			<h3>Drugs A to Z</h3>
@@ -79,6 +83,16 @@ export function BNFc() {
 					<h3>Browse by type</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
+							<a href="https://bnfc.nice.org.uk/medical-devices/">
+								Medical devices
+							</a>
+						</li>
+						<li>
+							<a href="https://bnfc.nice.org.uk/borderline-substance-taxonomy/">
+								Borderline substances
+							</a>
+						</li>
+						<li>
 							<a href="https://bnfc.nice.org.uk/dental-practitioners-formulary/">
 								Dental practitioners' formulary
 							</a>
@@ -93,31 +107,21 @@ export function BNFc() {
 								Medicines guidance
 							</a>
 						</li>
-						<li>
-							<a href="https://bnfc.nice.org.uk/medical-devices/">
-								Medical devices
-							</a>
-						</li>
-						<li>
-							<a href="https://bnfc.nice.org.uk/borderline-substance-taxonomy/">
-								Borderline substances
-							</a>
-						</li>
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
-					<h3>Latest</h3>
+					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<a href="https://bnfc.nice.org.uk/about/changes.html">
-								What's changed
+								Latest BNFC
 							</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
 			<hr />
-			<a href="https://bnfc.nice.org.uk/about/">About BNF</a>
+			<a href="https://bnfc.nice.org.uk/about/">About BNFC</a>
 		</section>
 	);
 }
