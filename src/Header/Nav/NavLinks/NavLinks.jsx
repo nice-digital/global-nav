@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import FocusTrap from "focus-trap-react";
 import PropTypes from "prop-types";
@@ -21,10 +21,16 @@ export function NavLinks({
 	subLinks,
 	onNavigating,
 	skipLinkId,
+	handleScrim,
 }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
+	const [focusTrapActive] = useState(idOfOpenDropdown !== null);
 
 	const ESCAPE_KEYS = ["27", "Escape"];
+
+	useEffect(() => {
+		handleScrim(Boolean(idOfOpenDropdown !== null));
+	}, [idOfOpenDropdown]);
 
 	function handleNavButtonClick(id) {
 		setidOfOpenDropdown(id === idOfOpenDropdown ? null : id);
@@ -34,6 +40,7 @@ export function NavLinks({
 	function handleNavLinkClick(e) {
 		e.preventDefault();
 		setidOfOpenDropdown(null);
+
 		const href = e.currentTarget.getAttribute("href");
 		trackEvent(
 			defaultEventCategory,
@@ -50,22 +57,23 @@ export function NavLinks({
 		if (ESCAPE_KEYS.includes(String(key))) setidOfOpenDropdown(null);
 	}
 
-	function clickOutsideNav() {
-		setidOfOpenDropdown(null);
+	// NOTE: could the following be solved with context?
+	function clickOutsideNav(e) {
+		var thingYouClickedOn = e.target;
+		var areaToAvoid = document.getElementById("header-menu");
+		if (!areaToAvoid.contains(thingYouClickedOn)) {
+			setidOfOpenDropdown(null);
+		}
 	}
 
+	useEventListener(
+		"click",
+		clickOutsideNav,
+		document.querySelector("#global-nav-header")
+	);
+	// ---------------
+
 	useEventListener("keydown", escapeDropdown);
-	useEventListener("click", clickOutsideNav, document.querySelector("main"));
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		document.querySelector("#global-nav-search-form")
-	);
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		document.querySelector("#my-account-button")
-	);
 
 	const options = {
 		clickOutsideDeactivates: true,
@@ -73,7 +81,7 @@ export function NavLinks({
 	};
 
 	return (
-		<FocusTrap active={idOfOpenDropdown !== null} focusTrapOptions={options}>
+		<FocusTrap active={focusTrapActive} focusTrapOptions={options}>
 			<ul className={styles.menuList} aria-labelledby="header-menu-button">
 				{servicesToDisplay.map(
 					(
@@ -115,9 +123,12 @@ export function NavLinks({
 									>
 										<span aria-label={abbreviation && title}>{text}</span>{" "}
 										{id === idOfOpenDropdown ? (
-											<ChevronUp className={styles.icon} />
+											<ChevronUp className={styles.icon} pointerEvents="none" />
 										) : (
-											<ChevronDown className={styles.icon} />
+											<ChevronDown
+												className={styles.icon}
+												pointerEvents="none"
+											/>
 										)}
 									</button>
 								) : (
@@ -169,6 +180,7 @@ NavLinks.propTypes = {
 	currentService: PropTypes.string,
 	subLinks: PropTypes.array,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	handleScrim: PropTypes.func,
 };
 
 export default NavLinks;

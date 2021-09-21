@@ -28,6 +28,7 @@ export default class Account extends Component {
 			this.handleMyAccountButtonClick.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
+		this.handleMegaMenuClick = this.handleMegaMenuClick.bind(this);
 	}
 
 	handleMyAccountButtonClick(e) {
@@ -53,6 +54,19 @@ export default class Account extends Component {
 				isExpanded: false,
 			});
 			document.getElementById("my-account-button").focus();
+		}
+	}
+
+	// NOTE: We would benefit from managing the state higher up
+	handleMegaMenuClick(event) {
+		let megaMenu = document.querySelector("#header-menu");
+
+		if (megaMenu.contains(event.target)) {
+			event.preventDefault();
+			this.setState({
+				isExpanded: false,
+			});
+			megaMenu.focus();
 		}
 	}
 
@@ -133,6 +147,8 @@ export default class Account extends Component {
 					}.bind(this)
 				);
 		}
+
+		document.addEventListener("click", this.handleMegaMenuClick);
 	}
 
 	render() {

@@ -1,0 +1,9 @@
+@import '~@nice-digital/nds-core/scss/core';
+
+.listUnstyled {
+  @include nds-list;
+  list-style: none !important;
+  margin-left: 0;
+  max-width: none; // To override max-width of 66ch set on lists
+  padding: 0;
+}
