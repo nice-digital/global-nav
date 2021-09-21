@@ -101,11 +101,12 @@
     },
     {
       "href": "https://cks.nice.org.uk/",
-      "text": "Clinical Knowledge Summaries",
+      "text": "CKS",
       "abbreviation": true,
       "title": "Clinical Knowledge Summaries",
       "id": "cks",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "CKS",
       "links": [
         {
           "image": "cks",

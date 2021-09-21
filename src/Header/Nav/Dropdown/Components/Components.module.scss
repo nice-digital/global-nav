@@ -24,7 +24,7 @@
     row-gap: rem($nds-spacing-small);
 
     @include mq($from: md) {
-      grid-template-columns: repeat(17, minmax(4ch, 1fr));
+      grid-template-columns: repeat(17, minmax(6ch, 1fr));
     }
   }
 }
