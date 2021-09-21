@@ -70,11 +70,7 @@ export class Header extends Component {
 	}
 
 	handleScrim(scrim) {
-		if (scrim === true) {
-			this.setState({ scrimIsActive: true });
-		} else {
-			this.setState({ scrimIsActive: false });
-		}
+		this.setState({ scrimIsActive: Boolean(scrim === true) });
 	}
 
 	handleLoginStatusChecked(accountsData) {
@@ -89,9 +85,12 @@ export class Header extends Component {
 		return (
 			this.props.enabled !== false && (
 				<>
-					{this.state.scrimIsActive && (
-						<span id="scrim" className={styles.scrim} aria-hidden="true" />
-					)}
+					<span
+						id="scrim"
+						className={this.state.scrimIsActive && styles.scrim}
+						aria-hidden="true"
+					/>
+
 					<div className={styles.header}>
 						<header aria-label="Site header">
 							<ul className={styles.a11yLinks} aria-label="Accessibility links">
