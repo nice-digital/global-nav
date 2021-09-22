@@ -10,19 +10,19 @@ export function Guidance() {
 			<p>
 				Evidence-based recommendations developed by independent committees,
 				including professionals and lay members, and consulted on by
-				stakeholder.
+				stakeholders.
 			</p>
-			<Button variant="cta" to="/">
-				Find NICE Guidance
+
+			<Button variant="primary" to="/">
+				Explore all guidance
 			</Button>
 
 			<Grid gutter="loose">
-				<GridItem cols={12} md={6}>
-					<h3>Most visited guidance topics</h3>
-					<p>Guidance grouped by subject, most visited by other people:</p>
-					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
+				<GridItem cols={12} md={9}>
+					<h3>Most visited guidance topics by other people</h3>
+					<ul className={styles.listUnstyled} style={{ columnCount: 3 }}>
 						<li>
-							<a href="/">Diabetes</a>
+							<a href="/">COVID-19</a>
 						</li>
 						<li>
 							<a href="/">Mental health and wellbeing</a>
@@ -45,27 +45,44 @@ export function Guidance() {
 						<li>
 							<a href="/">Medicines management</a>
 						</li>
+						<li>
+							<a href="/">Stroke and transient ischaemic attack</a>
+						</li>
+						<li>
+							<a href="/">Children and young people</a>
+						</li>
+						<li>
+							<a href="/">Anxiety</a>
+						</li>
+						<li>
+							<a href="/">Medicines management</a>
+						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={6}>
-					<h3>COVID-19</h3>
-					<p>Latest COVID-19 guidance:</p>
+				<GridItem cols={12} md={3}>
+					<h3>Browse guidance</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href="/">
-								COVID-19 rapid guideline: vaccine-induced immune
-								thrombocytopenia and thrombosis (VITT)
-							</a>
+							<a href="/">In consultation</a>
 						</li>
 						<li>
-							<a href="/">COVID-19 rapid guideline: managing COVID-19</a>
+							<a href="/">In development</a>
 						</li>
 						<li>
-							<a href="/">View all COVID-19 guidance</a>
+							<a href="/">Proposed</a>
+						</li>
+						<li>
+							<a href="/">New and updated</a>
+						</li>
+						<li>
+							<a href="/">By programme</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
+			<Button variant="inverse" to="/">
+				View all guidance topics
+			</Button>
 		</section>
 	);
 }

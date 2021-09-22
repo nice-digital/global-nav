@@ -127,6 +127,7 @@
     "es5-polyfill": "0.0.6",
     "js-cookie": "^2.2.1",
     "prop-types": "^15.7.2",
+    "react-shadow-root": "^6.1.0",
     "unfetch": "^4.2.0"
   },
   "files": [
