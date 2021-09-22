@@ -57,6 +57,7 @@ export default class Account extends Component {
 		}
 	}
 
+	// NOTE: We would benefit from managing the state higher up
 	handleMegaMenuClick(event) {
 		let megaMenu = document.querySelector("#header-menu");
 

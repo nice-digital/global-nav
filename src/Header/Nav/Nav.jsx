@@ -134,6 +134,7 @@ export default class Nav extends Component {
 				<nav className={styles.nav} aria-label="primary navigation">
 					<div className={styles.menuWrapper}>
 						<NavLinks
+							handleScrim={this.props.handleScrim}
 							skipLinkId={this.props.skipLinkId}
 							servicesToDisplay={servicesToDisplay}
 							currentService={this.props.service}
@@ -179,6 +180,7 @@ Nav.propTypes = {
 	accountsLinks: PropTypes.object,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
+	handleScrim: PropTypes.func,
 };
 
 Nav.defaultProps = {
