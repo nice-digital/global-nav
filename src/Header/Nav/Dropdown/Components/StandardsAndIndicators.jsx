@@ -28,11 +28,13 @@ export function StandardsAndIndicators() {
 
 					<ol className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href={`${baseUrl}`}>Current quality standards</a>
+							<a href={`${baseUrl}how-to-use-quality-standards`}>
+								How we use quality standards
+							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/Media/Default/Standards-and-indicators/qs-forward-planner.xlsx">
-								Upcoming quality standards - forward planner
+							<a href={`${baseUrl}timeline-developing-quality-standards`}>
+								Timeline-quality standards development
 							</a>
 						</li>
 						<li>
@@ -41,7 +43,28 @@ export function StandardsAndIndicators() {
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}`}>About quality standards</a>
+							<a
+								href={`${baseUrl}selecting-and-prioritising-quality-standard-topics`}
+							>
+								Selecting and prioritising quality standards topics
+							</a>
+						</li>
+						<li>
+							<a
+								href={`${baseUrl}developing-nice-quality-standards-/quality-standards-topic-library`}
+							>
+								Quality standard topic library
+							</a>
+						</li>
+						<li>
+							<a href="https://www.nice.org.uk/Media/Default/Standards-and-indicators/qs-forward-planner.xlsx">
+								Upcoming quality standards - forward planner
+							</a>
+						</li>
+						<li>
+							<a href="https://www.nice.org.uk/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance">
+								Measuring uptake of quality standards
+							</a>
 						</li>
 					</ol>
 				</GridItem>
