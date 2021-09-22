@@ -2,37 +2,44 @@ import React from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import styles from "./Components.module.scss";
-
-const topicsAtoZ = [
-	{ letter: "A", link: "https://cks.nice.org.uk/topics/#a" },
-	{ letter: "B", link: "https://cks.nice.org.uk/topics/#b" },
-	{ letter: "C", link: "https://cks.nice.org.uk/topics/#c" },
-	{ letter: "D", link: "https://cks.nice.org.uk/topics/#d" },
-	{ letter: "E", link: "https://cks.nice.org.uk/topics/#e" },
-	{ letter: "F", link: "https://cks.nice.org.uk/topics/#f" },
-	{ letter: "G", link: "https://cks.nice.org.uk/topics/#g" },
-	{ letter: "H", link: "https://cks.nice.org.uk/topics/#h" },
-	{ letter: "I", link: "https://cks.nice.org.uk/topics/#i" },
-	{ letter: "J", link: "https://cks.nice.org.uk/topics/#j" },
-	{ letter: "K", link: "https://cks.nice.org.uk/topics/#k" },
-	{ letter: "L", link: "https://cks.nice.org.uk/topics/#l" },
-	{ letter: "M", link: "https://cks.nice.org.uk/topics/#m" },
-	{ letter: "N", link: "https://cks.nice.org.uk/topics/#n" },
-	{ letter: "O", link: "https://cks.nice.org.uk/topics/#o" },
-	{ letter: "P", link: "https://cks.nice.org.uk/topics/#p" },
-	{ letter: "Q", link: null },
-	{ letter: "R", link: "https://cks.nice.org.uk/topics/#r" },
-	{ letter: "S", link: "https://cks.nice.org.uk/topics/#s" },
-	{ letter: "T", link: "https://cks.nice.org.uk/topics/#t" },
-	{ letter: "U", link: "https://cks.nice.org.uk/topics/#u" },
-	{ letter: "V", link: "https://cks.nice.org.uk/topics/#v" },
-	{ letter: "W", link: "https://cks.nice.org.uk/topics/#w" },
-	{ letter: "X", link: null },
-	{ letter: "Y", link: null },
-	{ letter: "Z", link: "https://cks.nice.org.uk/topics/#z" },
-];
+import services from "../../../../services.json";
 
 export function CKS() {
+	const baseUrl = services.external.find(
+		(service) => service.text == "CKS"
+	).href;
+
+	const topicsAtoZurl = baseUrl + "topics/#";
+
+	const topicsAtoZ = [
+		{ letter: "A", link: true },
+		{ letter: "B", link: true },
+		{ letter: "C", link: true },
+		{ letter: "D", link: true },
+		{ letter: "E", link: true },
+		{ letter: "F", link: true },
+		{ letter: "G", link: true },
+		{ letter: "H", link: true },
+		{ letter: "I", link: true },
+		{ letter: "J", link: true },
+		{ letter: "K", link: true },
+		{ letter: "L", link: true },
+		{ letter: "M", link: true },
+		{ letter: "N", link: true },
+		{ letter: "O", link: true },
+		{ letter: "P", link: true },
+		{ letter: "Q", link: false },
+		{ letter: "R", link: true },
+		{ letter: "S", link: true },
+		{ letter: "T", link: true },
+		{ letter: "U", link: true },
+		{ letter: "V", link: true },
+		{ letter: "W", link: true },
+		{ letter: "X", link: false },
+		{ letter: "Y", link: false },
+		{ letter: "Z", link: true },
+	];
+
 	return (
 		<section aria-label="CKS - dropdown navigation">
 			<h2 className="mt--0">CKS</h2>
@@ -40,24 +47,22 @@ export function CKS() {
 				Providing primary care practitioners with a readily accessible summary
 				of the current evidence base and practical guidance on best practice
 			</p>
-			<Button variant="primary" to="https://cks.nice.org.uk/">
+			<Button variant="primary" to={baseUrl}>
 				View CKS
 			</Button>
 
-			<h3>Health topics A to Z</h3>
+			<h3 className="mt--d">Health topics A to Z</h3>
 			<ol className={styles.alphabet}>
-				{topicsAtoZ.map((letter) => {
+				{topicsAtoZ.map(({ letter, link }) => {
 					return (
 						<li
-							key={letter.letter}
-							className={`${styles.letter} ${
-								letter.link == null ? styles.chunkyLetter : ""
-							}`}
+							key={letter}
+							className={`${styles.letter} ${link ? "" : styles.chunkyLetter}`}
 						>
-							{letter.link == null ? (
-								<span>{letter.letter}</span>
+							{link ? (
+								<a href={`${topicsAtoZurl}${letter}`}>{letter}</a>
 							) : (
-								<a href={letter.link}>{letter.letter}</a>
+								<span>{letter}</span>
 							)}
 						</li>
 					);
@@ -66,53 +71,51 @@ export function CKS() {
 
 			<Grid gutter="loose">
 				<GridItem cols={12} md={6}>
-					<h3>Topics most frequently visited</h3>
+					<h3 className="mt--0">Topics most frequently visited</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href="https://cks.nice.org.uk/topics/hypertension/">
-								Hypertension
-							</a>
+							<a href={`${baseUrl}topics/hypertension/`}>Hypertension</a>
 						</li>
 						<li>
-							<a href="https://cks.nice.org.uk/topics/diabetes-type-2/">
+							<a href={`${baseUrl}topics/diabetes-type-2/`}>
 								Diabetes - type 2
 							</a>
 						</li>
 						<li>
-							<a href="https://cks.nice.org.uk/topics/gout/">Gout</a>
+							<a href={`${baseUrl}topics/gout/`}>Gout</a>
 						</li>
 						<li>
-							<a href="https://cks.nice.org.uk/topics/migraine/">Migraine</a>
+							<a href={`${baseUrl}topics/migraine/`}>Migraine</a>
 						</li>
 						<li>
-							<a href="https://cks.nice.org.uk/topics/allergic-rhinitis/">
+							<a href={`${baseUrl}topics/allergic-rhinitis/`}>
 								Allergic rhinitis
 							</a>
 						</li>
 						<li>
-							<a href="https://cks.nice.org.uk/topics/asthma/">Asthma</a>
+							<a href={`${baseUrl}topics/asthma/`}>Asthma</a>
 						</li>
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
-					<h3>Browse by</h3>
+					<h3 className="mt--0">Browse by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href="https://cks.nice.org.uk/specialities/">Specialities</a>
+							<a href={`${baseUrl}specialities/`}>Specialities</a>
 						</li>
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
-					<h3>What’s new</h3>
+					<h3 className="mt--0">What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href="https://cks.nice.org.uk/whats-new/">Latest CKS</a>
+							<a href={`${baseUrl}whats-new/`}>Latest CKS</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
 			<hr />
-			<a href="https://cks.nice.org.uk/about/">About CKS</a>
+			<a href={`${baseUrl}about/`}>About CKS</a>
 		</section>
 	);
 }
