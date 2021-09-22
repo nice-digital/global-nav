@@ -24,18 +24,12 @@ export function NavLinks({
 	handleScrim,
 }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
-	const [focusTrapActive, setFocusTrapActive] = useState(
-		idOfOpenDropdown !== null
-	);
+	const [focusTrapActive] = useState(idOfOpenDropdown !== null);
 
 	const ESCAPE_KEYS = ["27", "Escape"];
 
 	useEffect(() => {
-		if (idOfOpenDropdown === null) {
-			handleScrim(false);
-		} else {
-			handleScrim(true);
-		}
+		handleScrim(Boolean(idOfOpenDropdown !== null));
 	}, [idOfOpenDropdown]);
 
 	function handleNavButtonClick(id) {
@@ -63,23 +57,23 @@ export function NavLinks({
 		if (ESCAPE_KEYS.includes(String(key))) setidOfOpenDropdown(null);
 	}
 
-	function clickOutsideNav(event) {
-		if (event.target === document.querySelector("#scrim"))
+	// NOTE: could the following be solved with context?
+	function clickOutsideNav(e) {
+		var thingYouClickedOn = e.target;
+		var areaToAvoid = document.getElementById("header-menu");
+		if (!areaToAvoid.contains(thingYouClickedOn)) {
 			setidOfOpenDropdown(null);
+		}
 	}
 
+	useEventListener(
+		"click",
+		clickOutsideNav,
+		document.querySelector("#global-nav-header")
+	);
+	// ---------------
+
 	useEventListener("keydown", escapeDropdown);
-	useEventListener("click", clickOutsideNav);
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		document.querySelector("#global-nav-search-form")
-	);
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		document.querySelector("#my-account-button")
-	);
 
 	const options = {
 		clickOutsideDeactivates: true,
