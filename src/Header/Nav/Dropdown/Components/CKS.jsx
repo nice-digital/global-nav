@@ -44,7 +44,7 @@ export function CKS() {
 				View CKS
 			</Button>
 
-			<h3>Health topics A to Z</h3>
+			<h3 className="mt--d">Health topics A to Z</h3>
 			<ol className={styles.alphabet}>
 				{topicsAtoZ.map((letter) => {
 					return (
@@ -66,7 +66,7 @@ export function CKS() {
 
 			<Grid gutter="loose">
 				<GridItem cols={12} md={6}>
-					<h3>Topics most frequently visited</h3>
+					<h3 className="mt--0">Topics most frequently visited</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
 							<a href="https://cks.nice.org.uk/topics/hypertension/">
@@ -95,7 +95,7 @@ export function CKS() {
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
-					<h3>Browse by</h3>
+					<h3 className="mt--0">Browse by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<a href="https://cks.nice.org.uk/specialities/">Specialities</a>
@@ -103,7 +103,7 @@ export function CKS() {
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
-					<h3>What’s new</h3>
+					<h3 className="mt--0">What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<a href="https://cks.nice.org.uk/whats-new/">Latest CKS</a>

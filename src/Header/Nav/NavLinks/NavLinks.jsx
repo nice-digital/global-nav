@@ -81,7 +81,7 @@ export function NavLinks({
 	};
 
 	return (
-		<FocusTrap active={focusTrapActive} focusTrapOptions={options}>
+		<FocusTrap active={idOfOpenDropdown !== null} focusTrapOptions={options}>
 			<ul className={styles.menuList} aria-labelledby="header-menu-button">
 				{servicesToDisplay.map(
 					(
