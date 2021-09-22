@@ -2,7 +2,7 @@
   "external": [
     {
       "href": "https://www.nice.org.uk/guidance",
-      "text": "NICE guidance",
+      "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
       "dropdownComponent": "Guidance"
