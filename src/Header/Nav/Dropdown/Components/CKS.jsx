@@ -3,7 +3,7 @@ import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import styles from "./Components.module.scss";
 
-const drugsAtoZ = [
+const topicsAtoZ = [
 	{ letter: "A", link: "https://cks.nice.org.uk/topics/#a" },
 	{ letter: "B", link: "https://cks.nice.org.uk/topics/#b" },
 	{ letter: "C", link: "https://cks.nice.org.uk/topics/#c" },
@@ -46,7 +46,7 @@ export function CKS() {
 
 			<h3>Health topics A to Z</h3>
 			<ol className={styles.alphabet}>
-				{drugsAtoZ.map((letter) => {
+				{topicsAtoZ.map((letter) => {
 					return (
 						<li
 							key={letter.letter}
