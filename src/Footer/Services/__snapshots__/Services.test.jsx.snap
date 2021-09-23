@@ -141,6 +141,20 @@ exports[`Services Matches snapshot 1`] = `
       </TrackedLink>
     </li>
     <li
+      key="about-us"
+    >
+      <TrackedLink
+        aria-current={null}
+        className="link"
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="About us"
+        href="https://www.nice.org.uk/about"
+      >
+        About us
+      </TrackedLink>
+    </li>
+    <li
       key="more-nice-services"
     >
       <TrackedLink
