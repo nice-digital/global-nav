@@ -132,13 +132,13 @@ exports[`Services Matches snapshot 1`] = `
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="Clinical Knowledge Summaries"
+        eventLabel="CKS"
         href="https://cks.nice.org.uk/"
       >
         <abbr
           title="Clinical Knowledge Summaries"
         >
-          Clinical Knowledge Summaries
+          CKS
            
           <span
             className="visuallyHidden"
