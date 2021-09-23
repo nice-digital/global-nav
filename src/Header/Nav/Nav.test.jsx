@@ -18,6 +18,7 @@ describe("Nav", () => {
 		isExpanded: false,
 		accountsData: null,
 		service: null,
+		handleScrim: () => {},
 	};
 	const externalServices = services.external;
 
