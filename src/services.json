@@ -1,14 +1,14 @@
 {
   "external": [
     {
-      "href": "https://www.nice.org.uk/guidance",
+      "href": "https://alpha.nice.org.uk/guidance",
       "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
       "dropdownComponent": "Guidance"
     },
     {
-      "href": "https://pathways.nice.org.uk/",
+      "href": "https://alpha-pathways.nice.org.uk/",
       "text": "NICE Pathways",
       "id": "pathways",
       "dropdown": false,
@@ -32,14 +32,14 @@
       ]
     },
     {
-      "href": "https://www.nice.org.uk/standards-and-indicators",
+      "href": "https://alpha.nice.org.uk/standards-and-indicators",
       "text": "Standards and indicators",
       "id": "standards-and-indicators",
       "dropdown": true,
       "dropdownComponent": "StandardsAndIndicators"
     },
     {
-      "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
+      "href": "https://alpha.nice.org.uk/about/what-we-do/life-sciences",
       "text": "Life sciences",
       "id": "life-sciences",
       "dropdown": false
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "href": "https://cks.nice.org.uk/",
+      "href": "https://test.cks.nice.org.uk/",
       "text": "CKS",
       "abbreviation": true,
       "title": "Clinical Knowledge Summaries",
@@ -139,7 +139,7 @@
       ]
     },
     {
-      "href": "https://www.nice.org.uk/about",
+      "href": "https://alpha.nice.org.uk/about",
       "text": "About us",
       "id": "about-us",
       "dropdown": true,
