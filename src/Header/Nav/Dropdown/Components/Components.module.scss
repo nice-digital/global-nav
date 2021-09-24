@@ -9,24 +9,16 @@
 }
 
 .alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem($nds-spacing-small);
   list-style: none;
   margin: rem(0 0 $nds-spacing-large);
+  max-width: 90%;
   padding: 0;
 
   &:focus {
     outline: none;
-  }
-
-  @supports (display: grid) {
-    column-gap: rem($nds-spacing-small);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(4ch, 1fr));
-    max-width: none;
-    row-gap: rem($nds-spacing-small);
-
-    @include mq($from: md) {
-      grid-template-columns: repeat(auto-fit, minmax(6ch, 1fr));
-    }
   }
 }
 
@@ -35,7 +27,7 @@
   color: $nds-colour-nice-dark-grey;
 
   span {
-    width: 4.95ch;
+    width: 3.95ch;
   }
 }
 
@@ -49,25 +41,48 @@
     display: block;
     padding: rem($nds-spacing-small 0);
     text-align: center;
-    width: 3.95ch;
   }
 
   a {
     background: $nds-colour-true-white;
     border: 1px solid $nds-colour-border;
     text-decoration: none;
+    width: 4.95ch;
 
     &:hover {
       text-decoration: underline;
     }
   }
+}
 
-  @supports (display: grid) {
-    margin: 0;
+.btn {
+  &:hover,
+  &:focus,
+  &:active {
+    border: em(1px) solid $nds-colour-btn-primary-text !important;
+  }
 
-    a,
-    span {
-      width: auto;
+  &--cta {
+    &:hover,
+    &:focus,
+    &:active {
+      border: em(1px) solid $nds-colour-btn-cta-text !important;
+    }
+  }
+
+  &--secondary {
+    &:hover,
+    &:focus,
+    &:active {
+      border: em(1px) solid $nds-colour-btn-secondary-text !important;
+    }
+  }
+
+  &--inverse {
+    &:hover,
+    &:focus,
+    &:active {
+      border: em(1px) solid $nds-colour-btn-inverse-text !important;
     }
   }
 }

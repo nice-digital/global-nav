@@ -28,16 +28,16 @@ export function BNF() {
 		{ letter: "N", link: true },
 		{ letter: "O", link: true },
 		{ letter: "P", link: true },
-		{ letter: "Q", link: false },
+		{ letter: "Q", link: true },
 		{ letter: "R", link: true },
 		{ letter: "S", link: true },
 		{ letter: "T", link: true },
 		{ letter: "U", link: true },
 		{ letter: "V", link: true },
 		{ letter: "W", link: true },
-		{ letter: "X", link: false },
-		{ letter: "Y", link: false },
-		{ letter: "Z", link: false },
+		{ letter: "X", link: true },
+		{ letter: "Y", link: true },
+		{ letter: "Z", link: true },
 	];
 
 	return (
