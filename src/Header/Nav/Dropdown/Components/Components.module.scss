@@ -55,8 +55,9 @@
   }
 }
 
-a.btn,
-button.btn {
+// The buttons kept dancing on the BNF
+html body a.btn,
+html body button.btn {
   &:hover,
   &:focus,
   &:active {
