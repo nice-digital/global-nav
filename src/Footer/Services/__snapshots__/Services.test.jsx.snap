@@ -45,7 +45,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="Standards and indicators"
-        href="https://www.nice.org.uk/standards-and-indicators"
+        href="https://www.nice.org.uk/standards-and-indicators/"
       >
         Standards and indicators
       </TrackedLink>
