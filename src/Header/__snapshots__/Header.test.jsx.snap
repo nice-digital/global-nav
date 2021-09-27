@@ -1,95 +1,102 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Matches snapshot 1`] = `
-<div
-  className="header"
->
-  <header
-    aria-label="Site header"
+<Fragment>
+  <span
+    aria-hidden="true"
+    id="scrim"
+  />
+  <div
+    className="header"
   >
-    <ul
-      aria-label="Accessibility links"
-      className="a11yLinks"
+    <header
+      aria-label="Site header"
     >
-      <li>
-        <SkipLink
-          to="#content-start"
-        >
-          Skip to content
-        </SkipLink>
-      </li>
-      <li>
-        <SkipLink
-          to="https://www.nice.org.uk/accessibility"
-        >
-          Accessibility help
-        </SkipLink>
-      </li>
-    </ul>
-    <div
-      className="container"
-    >
-      <a
-        aria-label="Home"
-        className="home"
-        href="https://www.nice.org.uk/"
-        onClick={[Function]}
+      <ul
+        aria-label="Accessibility links"
+        className="a11yLinks"
       >
-        <SvgLogoFull
-          className="icon"
-          height={null}
-          width={null}
-        />
-      </a>
+        <li>
+          <SkipLink
+            to="#content-start"
+          >
+            Skip to content
+          </SkipLink>
+        </li>
+        <li>
+          <SkipLink
+            to="https://www.nice.org.uk/accessibility"
+          >
+            Accessibility help
+          </SkipLink>
+        </li>
+      </ul>
       <div
-        className="wrapper"
+        className="container"
       >
-        <div
-          className="search"
-        >
-          <Search
-            onNavigating="onNavigatingHandler"
-            placeholder="Search NICE…"
-            query=""
-            skipLinkId="content-start"
-            url="/search"
-          />
-        </div>
-        <button
-          aria-controls="header-menu"
-          aria-expanded={false}
-          aria-haspopup="menu"
-          aria-label="Expand site menu"
-          className="mobileMenuBtn"
-          id="header-menu-button"
+        <a
+          aria-label="Home"
+          className="home"
+          href="https://www.nice.org.uk/"
           onClick={[Function]}
-          type="button"
         >
-          Menu
-        </button>
-        <div
-          className="account"
-        >
-          <Account
-            accountsData={null}
-            environment="live"
-            isLoggedIn={false}
-            onLoginStatusChecked={[Function]}
-            provider="niceAccounts"
+          <SvgLogoFull
+            className="icon"
+            height={null}
+            width={null}
           />
+        </a>
+        <div
+          className="wrapper"
+        >
+          <div
+            className="search"
+          >
+            <Search
+              onNavigating="onNavigatingHandler"
+              placeholder="Search NICE…"
+              query=""
+              skipLinkId="content-start"
+              url="/search"
+            />
+          </div>
+          <button
+            aria-controls="header-menu"
+            aria-expanded={false}
+            aria-haspopup="menu"
+            aria-label="Expand site menu"
+            className="mobileMenuBtn"
+            id="header-menu-button"
+            onClick={[Function]}
+            type="button"
+          >
+            Menu
+          </button>
+          <div
+            className="account"
+          >
+            <Account
+              accountsData={null}
+              environment="live"
+              isLoggedIn={false}
+              onLoginStatusChecked={[Function]}
+              provider="niceAccounts"
+            />
+          </div>
         </div>
       </div>
-    </div>
-    <Nav
-      accountsLinks={null}
-      additionalSubMenuItems={Array []}
-      isExpanded={false}
-      onNavigating="onNavigatingHandler"
-      service={null}
-      skipLinkId="content-start"
-    />
-  </header>
-  <CoronaMessage />
-  <OldIEMessage />
-</div>
+      <Nav
+        accountsLinks={null}
+        additionalSubMenuItems={Array []}
+        handleScrim={[Function]}
+        isExpanded={false}
+        onNavigating="onNavigatingHandler"
+        service={null}
+        skipLinkId="content-start"
+      />
+    </header>
+    <CoronaMessage />
+    <OldIEMessage />
+  </div>
+</Fragment>
 `;

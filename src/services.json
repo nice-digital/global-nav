@@ -43,7 +43,8 @@
       "abbreviation": true,
       "title": "British National Formulary",
       "id": "bnf",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "BNF",
       "links": [
         {
           "text": "Drugs",
@@ -73,7 +74,8 @@
       "abbreviation": true,
       "title": "British National Formulary for Children",
       "id": "bnfc",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "BNFc",
       "links": [
         {
           "text": "Drugs",
