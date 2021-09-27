@@ -1,7 +1,7 @@
 {
   "external": [
     {
-      "href": "https://www.nice.org.uk/guidance",
+      "href": "https://www.nice.org.uk/guidance/",
       "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
