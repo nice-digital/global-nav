@@ -43,7 +43,8 @@
       "abbreviation": true,
       "title": "British National Formulary",
       "id": "bnf",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "BNF",
       "links": [
         {
           "text": "Drugs",
@@ -69,11 +70,12 @@
     },
     {
       "href": "https://bnfc.nice.org.uk/",
-      "text": "BNF for Children",
+      "text": "BNFC",
       "abbreviation": true,
       "title": "British National Formulary for Children",
       "id": "bnfc",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "BNFc",
       "links": [
         {
           "text": "Drugs",
