@@ -87,7 +87,7 @@ export class Header extends Component {
 				<>
 					<span
 						id="scrim"
-						className={this.state.scrimIsActive && styles.scrim}
+						className={this.state.scrimIsActive ? styles.scrim : undefined}
 						aria-hidden="true"
 					/>
 
