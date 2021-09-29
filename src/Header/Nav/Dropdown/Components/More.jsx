@@ -6,7 +6,7 @@ export function More() {
 	return (
 		<section aria-label="More NICE services">
 			<Grid gutter="loose">
-				<GridItem cols={12} md={4}>
+				<GridItem cols={12} md={6}>
 					<h3>Evidence search</h3>
 					<p>
 						Evidence search helps you make better, faster evidence-based
@@ -20,27 +20,8 @@ export function More() {
 						</Button>
 					</p>
 				</GridItem>
-				<GridItem cols={12} md={4}>
-					<h3>Standards and indicators</h3>
-					<p>
-						Quality standards set out the priority areas for quality improvement
-						in health and social care. They cover areas where there is variation
-						in care. Each standard gives you:
-					</p>
-					<ul>
-						<li>a set of statements to help you</li>
-						<li>improve quality information on how to measure progress.</li>
-					</ul>
-					<p>
-						<Button
-							variant="cta"
-							to="https://www.nice.org.uk/standards-and-indicators"
-						>
-							Standards and indicators
-						</Button>
-					</p>
-				</GridItem>
-				<GridItem cols={12} md={4}>
+
+				<GridItem cols={12} md={6}>
 					<h3>Journals and databases</h3>
 					<p>
 						Quick access to a range of journals and other evidence-based
@@ -52,7 +33,7 @@ export function More() {
 					</p>
 
 					<p>
-						You'll need an NHS OpenAthens account to access most of these
+						You&apos;ll need an NHS OpenAthens account to access most of these
 						resources.
 					</p>
 					<p>
