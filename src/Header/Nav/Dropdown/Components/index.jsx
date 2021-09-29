@@ -3,3 +3,4 @@ export { More } from "./More";
 export { BNF } from "./BNF";
 export { BNFc } from "./BNFc";
 export { CKS } from "./CKS";
+export { Pathways } from "./Pathways";

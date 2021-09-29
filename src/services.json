@@ -11,7 +11,8 @@
       "href": "https://pathways.nice.org.uk/",
       "text": "NICE Pathways",
       "id": "pathways",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "Pathways",
       "links": [
         {
           "text": "Browse",
