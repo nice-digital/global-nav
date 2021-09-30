@@ -32,7 +32,7 @@ export function More() {
 					</p>
 
 					<p>
-						You'll need an NHS OpenAthens account to access most of these
+						You&apos;ll need an NHS OpenAthens account to access most of these
 						resources.
 					</p>
 					<p>
