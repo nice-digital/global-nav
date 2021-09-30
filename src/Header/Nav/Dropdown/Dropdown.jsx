@@ -9,6 +9,7 @@ import {
 	BNFc,
 	CKS,
 	AboutUs,
+	Pathways
 } from "./Components/";
 import Remove from "@nice-digital/icons/lib/Remove";
 
@@ -27,6 +28,7 @@ export function Dropdown({
 		BNF: BNF,
 		BNFc: BNFc,
 		CKS: CKS,
+		Pathways: Pathways,
 		AboutUs: AboutUs,
 	};
 	const Component = components[component];
