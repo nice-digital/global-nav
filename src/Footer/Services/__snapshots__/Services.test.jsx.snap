@@ -37,20 +37,6 @@ exports[`Services Matches snapshot 1`] = `
       </TrackedLink>
     </li>
     <li
-      key="standards-and-indicators"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Standards and indicators"
-        href="https://www.nice.org.uk/standards-and-indicators/"
-      >
-        Standards and indicators
-      </TrackedLink>
-    </li>
-    <li
       key="life-sciences"
     >
       <TrackedLink
@@ -152,6 +138,20 @@ exports[`Services Matches snapshot 1`] = `
         >
           Clinical Knowledge Summaries
         </span>
+      </TrackedLink>
+    </li>
+    <li
+      key="about-us"
+    >
+      <TrackedLink
+        aria-current={null}
+        className="link"
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="About us"
+        href="https://www.nice.org.uk/about/"
+      >
+        About us
       </TrackedLink>
     </li>
     <li

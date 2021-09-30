@@ -19,8 +19,8 @@ export function AboutUs() {
 				We provide national guidance and advice to improve health and social
 				care.
 			</p>
-			<Button variant="primary" to={baseUrl}>
-				View about us
+			<Button variant="cta" to={baseUrl}>
+				Explore about us
 			</Button>
 			<Grid gutter="loose">
 				<GridItem cols={12} md={3}>
