@@ -25,6 +25,11 @@ export function NavLinks({
 }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 	const [focusTrapActive] = useState(idOfOpenDropdown !== null);
+	const [canUseDOM, setCanUseDOM] = useState(false);
+
+	useEffect(() => {
+		setCanUseDOM(true);
+	}, []);
 
 	const ESCAPE_KEYS = ["27", "Escape"];
 
@@ -113,7 +118,7 @@ export function NavLinks({
 
 						return (
 							<li key={id} id={id}>
-								{dropdown ? (
+								{dropdown && canUseDOM ? (
 									<button
 										onClick={() => handleNavButtonClick(id)}
 										aria-current={ariaCurrent}
@@ -141,7 +146,7 @@ export function NavLinks({
 										<span aria-label={abbreviation && title}>{text}</span>
 									</a>
 								)}
-								{dropdown && (
+								{dropdown && canUseDOM ? (
 									<Dropdown
 										component={dropdownComponent}
 										className={classnames([
@@ -157,7 +162,7 @@ export function NavLinks({
 										closeDropdown={() => setidOfOpenDropdown(null)}
 										id={`dropdown-${id}`}
 									/>
-								)}
+								) : null}
 								{ariaCurrent && subLinks && (
 									<SubNav
 										links={subLinks}

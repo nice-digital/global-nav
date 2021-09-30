@@ -62,7 +62,6 @@ export default class Account extends Component {
 		let megaMenu = document.querySelector("#header-menu");
 
 		if (megaMenu.contains(event.target)) {
-			event.preventDefault();
 			this.setState({
 				isExpanded: false,
 			});
