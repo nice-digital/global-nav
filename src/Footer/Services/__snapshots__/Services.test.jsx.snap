@@ -102,13 +102,13 @@ exports[`Services Matches snapshot 1`] = `
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="BNF for Children"
+        eventLabel="BNFC"
         href="https://bnfc.nice.org.uk/"
       >
         <abbr
           title="British National Formulary for Children"
         >
-          BNF for Children
+          BNFC
            
           <span
             className="visuallyHidden"
