@@ -42,36 +42,28 @@ export function Guidance() {
 					<p className="h5">Find topics by</p>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}guidance/conditions-and-diseases`}>
+							<a href={`${baseUrl}conditions-and-diseases`}>
 								Conditions and diseases
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}guidance/health-and-social-care-delivery`}>
+							<a href={`${baseUrl}health-and-social-care-delivery`}>
 								Health and social care delivery
 							</a>
 						</li>
 						<li>
-							<a
-								href={`${baseUrl}guidance/health-protection">Health protection</`}
-							>
-								Health protection
-							</a>
+							<a href={`${baseUrl}health-protection`}>Health protection</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}guidance/lifestyle-and-wellbeing`}>
+							<a href={`${baseUrl}lifestyle-and-wellbeing`}>
 								Lifestyle and wellbeing
 							</a>
 						</li>
 						<li>
-							<a
-								href={`${baseUrl}guidance/population-groups">Population groups</`}
-							>
-								Population groups
-							</a>
+							<a href={`${baseUrl}population-groups`}>Population groups</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}guidance/settings">Settings</`}>Settings</a>
+							<a href={`${baseUrl}settings`}>Settings</a>
 						</li>
 					</ul>
 				</GridItem>

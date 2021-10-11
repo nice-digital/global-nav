@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Dropdown.module.scss";
 import {
+	AboutUs,
 	Guidance,
 	More,
 	StandardsAndIndicators,
-	AboutUs,
 	BNF,
 	BNFc,
 } from "./Components/";
+
 import Remove from "@nice-digital/icons/lib/Remove";
 
 export function Dropdown({
@@ -20,9 +21,9 @@ export function Dropdown({
 	component,
 }) {
 	const components = {
+		AboutUs: AboutUs,
 		Guidance: Guidance,
 		More: More,
-		AboutUs: AboutUs,
 		StandardsAndIndicators: StandardsAndIndicators,
 		BNF: BNF,
 		BNFc: BNFc,
