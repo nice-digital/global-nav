@@ -16,10 +16,10 @@ exports[`Services Matches snapshot 1`] = `
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="NICE guidance"
-        href="https://www.nice.org.uk/guidance"
+        eventLabel="Guidance"
+        href="https://www.nice.org.uk/guidance/"
       >
-        NICE guidance
+        Guidance
       </TrackedLink>
     </li>
     <li
@@ -34,6 +34,20 @@ exports[`Services Matches snapshot 1`] = `
         href="https://pathways.nice.org.uk/"
       >
         NICE Pathways
+      </TrackedLink>
+    </li>
+    <li
+      key="standards-and-indicators"
+    >
+      <TrackedLink
+        aria-current={null}
+        className="link"
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="Standards and indicators"
+        href="https://www.nice.org.uk/standards-and-indicators/"
+      >
+        Standards and indicators
       </TrackedLink>
     </li>
     <li
@@ -149,7 +163,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="About us"
-        href="https://www.nice.org.uk/about/"
+        href="https://www.nice.org.uk/about"
       >
         About us
       </TrackedLink>

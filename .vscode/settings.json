@@ -24,10 +24,10 @@
     "lib": true
   },
   "workbench.colorCustomizations": {
-    "activityBar.background": "#493657",
-    "activityBar.foreground": "#FFFFFF",
-    "titleBar.activeBackground": "#493657",
-    "titleBar.activeForeground": "#FFFFFF"
+    "activityBar.background": "#8f4e4d",
+    "activityBar.foreground": "#FFFDE1",
+    "titleBar.activeBackground": "#8f4e4d",
+    "titleBar.activeForeground": "#FFFDE1"
   },
   "omnisharp.autoStart": false
 }

@@ -15,7 +15,7 @@ export function More() {
 						go.
 					</p>
 					<p>
-						<Button variant="cta" to="https://evidence.nhs.uk">
+						<Button variant="primary" to="https://evidence.nhs.uk">
 							Evidence search
 						</Button>
 					</p>
@@ -38,7 +38,7 @@ export function More() {
 					</p>
 					<p>
 						<Button
-							variant="cta"
+							variant="primary"
 							to="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
 						>
 							Journals and databases
