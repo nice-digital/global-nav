@@ -4,4 +4,3 @@ export { StandardsAndIndicators } from "./StandardsAndIndicators";
 export { AboutUs } from "./AboutUs";
 export { BNF } from "./BNF";
 export { BNFc } from "./BNFc";
-export { AboutUs } from "./AboutUs";
