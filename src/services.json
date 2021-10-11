@@ -1,8 +1,8 @@
 {
   "external": [
     {
-      "href": "https://www.nice.org.uk/guidance",
-      "text": "NICE guidance",
+      "href": "https://www.nice.org.uk/guidance/",
+      "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
       "dropdownComponent": "Guidance"
@@ -31,6 +31,13 @@
           "href": "https://www.nice.org.uk/NICE-Pathways-feedback"
         }
       ]
+    },
+    {
+      "href": "https://www.nice.org.uk/standards-and-indicators/",
+      "text": "Standards and indicators",
+      "id": "standards-and-indicators",
+      "dropdown": true,
+      "dropdownComponent": "StandardsAndIndicators"
     },
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
@@ -71,7 +78,7 @@
     },
     {
       "href": "https://bnfc.nice.org.uk/",
-      "text": "BNF for Children",
+      "text": "BNFC",
       "abbreviation": true,
       "title": "British National Formulary for Children",
       "id": "bnfc",
@@ -131,6 +138,13 @@
           "href": "/about/"
         }
       ]
+    },
+    {
+      "href": "https://www.nice.org.uk/about",
+      "text": "About us",
+      "id": "about-us",
+      "dropdown": true,
+      "dropdownComponent": "AboutUs"
     },
     {
       "href": null,
