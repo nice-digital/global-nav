@@ -16,10 +16,10 @@ exports[`Services Matches snapshot 1`] = `
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="NICE guidance"
-        href="https://www.nice.org.uk/guidance"
+        eventLabel="Guidance"
+        href="https://www.nice.org.uk/guidance/"
       >
-        NICE guidance
+        Guidance
       </TrackedLink>
     </li>
     <li
@@ -152,6 +152,20 @@ exports[`Services Matches snapshot 1`] = `
         >
           Clinical Knowledge Summaries
         </span>
+      </TrackedLink>
+    </li>
+    <li
+      key="about-us"
+    >
+      <TrackedLink
+        aria-current={null}
+        className="link"
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="About us"
+        href="https://www.nice.org.uk/about"
+      >
+        About us
       </TrackedLink>
     </li>
     <li

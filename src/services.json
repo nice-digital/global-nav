@@ -1,8 +1,8 @@
 {
   "external": [
     {
-      "href": "https://www.nice.org.uk/guidance",
-      "text": "NICE guidance",
+      "href": "https://www.nice.org.uk/guidance/",
+      "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
       "dropdownComponent": "Guidance"
@@ -136,6 +136,13 @@
           "href": "/about/"
         }
       ]
+    },
+    {
+      "href": "https://www.nice.org.uk/about",
+      "text": "About us",
+      "id": "about-us",
+      "dropdown": true,
+      "dropdownComponent": "AboutUs"
     },
     {
       "href": null,
