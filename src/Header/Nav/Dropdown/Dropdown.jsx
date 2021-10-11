@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Dropdown.module.scss";
 import {
+	AboutUs,
 	Guidance,
 	More,
 	StandardsAndIndicators,
@@ -20,6 +21,7 @@ export function Dropdown({
 	component,
 }) {
 	const components = {
+		AboutUs: AboutUs,
 		Guidance: Guidance,
 		More: More,
 		StandardsAndIndicators: StandardsAndIndicators,
