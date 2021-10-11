@@ -11,6 +11,7 @@ import {
 	CKS,
 	AboutUs,
 	Pathways
+	Pathways,
 } from "./Components/";
 
 import Remove from "@nice-digital/icons/lib/Remove";
