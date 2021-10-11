@@ -21,7 +21,7 @@ button.link {
   left: 0;
   position: relative;
   width: 100%;
-  z-index: 999; // NOTE Need to standardise z-indexes!
+  z-index: 1;
 
   &.active {
     display: block;
