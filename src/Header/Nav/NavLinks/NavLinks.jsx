@@ -156,10 +156,6 @@ export function NavLinks({
 									</a>
 								)}
 
-								{!canUseDOM && id && id == "more-nice-services" ? (
-									<p>do something different for nice services</p>
-								) : null}
-
 								{dropdown && canUseDOM ? (
 									<Dropdown
 										component={dropdownComponent}
@@ -285,10 +281,6 @@ export function NavLinks({
 										</li>
 									</>
 								)}
-
-								{/* {!canUseDOM && id && id == "more-nice-services" ? (
-									<p>do something different for nice services</p>
-								) : null} */}
 
 								{dropdown && canUseDOM ? (
 									<Dropdown
