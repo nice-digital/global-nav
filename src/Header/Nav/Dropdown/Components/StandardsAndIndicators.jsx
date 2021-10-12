@@ -20,7 +20,7 @@ export function StandardsAndIndicators() {
 						in health and social care.
 					</p>
 					<Button
-						variant="primary"
+						variant="cta"
 						to="https://alpha.nice.org.uk/guidance/published?type=qs"
 					>
 						View quality standards
@@ -74,7 +74,7 @@ export function StandardsAndIndicators() {
 						NICE indicators measure outcomes that reflect the quality of care,
 						or processes linked, by evidence, to improved outcomes.
 					</p>
-					<Button variant="primary" to={`${baseUrl}index`}>
+					<Button variant="cta" to={`${baseUrl}index`}>
 						View indicators
 					</Button>
 

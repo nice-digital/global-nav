@@ -48,7 +48,7 @@ export function BNF() {
 				professionals with sound up-to-date information about the use of
 				medicines.
 			</p>
-			<Button variant="primary" to={baseUrl}>
+			<Button variant="cta" to={baseUrl}>
 				View BNF
 			</Button>
 
