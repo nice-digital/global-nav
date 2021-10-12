@@ -17,7 +17,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="Guidance"
-        href="https://www.nice.org.uk/guidance/"
+        href="https://www.nice.org.uk/guidance"
       >
         Guidance
       </TrackedLink>
@@ -45,7 +45,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="Standards and indicators"
-        href="https://www.nice.org.uk/standards-and-indicators/"
+        href="https://www.nice.org.uk/standards-and-indicators"
       >
         Standards and indicators
       </TrackedLink>
@@ -132,13 +132,13 @@ exports[`Services Matches snapshot 1`] = `
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="Clinical Knowledge Summaries"
+        eventLabel="CKS"
         href="https://cks.nice.org.uk/"
       >
         <abbr
           title="Clinical Knowledge Summaries"
         >
-          Clinical Knowledge Summaries
+          CKS
            
           <span
             className="visuallyHidden"

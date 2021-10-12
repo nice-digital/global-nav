@@ -43,7 +43,8 @@
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
       "text": "Life sciences",
       "id": "life-sciences",
-      "dropdown": false
+      "dropdown": true,
+      "dropdownComponent": "LifeSciences"
     },
     {
       "href": "https://bnf.nice.org.uk/",
