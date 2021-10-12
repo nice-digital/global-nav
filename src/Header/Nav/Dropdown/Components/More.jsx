@@ -15,7 +15,7 @@ export function More() {
 						go.
 					</p>
 					<p>
-						<Button variant="primary" to="https://evidence.nhs.uk">
+						<Button variant="primary" to="https://alpha.evidence.nhs.uk/">
 							Evidence search
 						</Button>
 					</p>
@@ -32,13 +32,13 @@ export function More() {
 					</p>
 
 					<p>
-						You'll need an NHS OpenAthens account to access most of these
+						You&apos;ll need an NHS OpenAthens account to access most of these
 						resources.
 					</p>
 					<p>
 						<Button
 							variant="primary"
-							to="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
+							to="https://alpha.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
 						>
 							Journals and databases
 						</Button>

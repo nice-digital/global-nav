@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import styles from "./Dropdown.module.scss";
 import {
 	AboutUs,
-	Guidance,
-	More,
-	StandardsAndIndicators,
 	BNF,
 	BNFc,
+	CKS,
+	Guidance,
+	More,
+	Pathways,
+	StandardsAndIndicators,
 } from "./Components/";
 
 import Remove from "@nice-digital/icons/lib/Remove";
@@ -22,11 +24,13 @@ export function Dropdown({
 }) {
 	const components = {
 		AboutUs: AboutUs,
-		Guidance: Guidance,
-		More: More,
-		StandardsAndIndicators: StandardsAndIndicators,
 		BNF: BNF,
 		BNFc: BNFc,
+		CKS: CKS,
+		Guidance: Guidance,
+		More: More,
+		Pathways: Pathways,
+		StandardsAndIndicators: StandardsAndIndicators,
 	};
 	const Component = components[component];
 

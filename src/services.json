@@ -1,7 +1,7 @@
 {
   "external": [
     {
-      "href": "https://www.nice.org.uk/guidance/",
+      "href": "https://www.nice.org.uk/guidance",
       "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
@@ -11,7 +11,8 @@
       "href": "https://pathways.nice.org.uk/",
       "text": "NICE Pathways",
       "id": "pathways",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "Pathways",
       "links": [
         {
           "text": "Browse",
@@ -32,7 +33,7 @@
       ]
     },
     {
-      "href": "https://www.nice.org.uk/standards-and-indicators/",
+      "href": "https://www.nice.org.uk/standards-and-indicators",
       "text": "Standards and indicators",
       "id": "standards-and-indicators",
       "dropdown": true,
@@ -108,11 +109,12 @@
     },
     {
       "href": "https://cks.nice.org.uk/",
-      "text": "Clinical Knowledge Summaries",
+      "text": "CKS",
       "abbreviation": true,
       "title": "Clinical Knowledge Summaries",
       "id": "cks",
-      "dropdown": false,
+      "dropdown": true,
+      "dropdownComponent": "CKS",
       "links": [
         {
           "image": "cks",

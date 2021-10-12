@@ -21,7 +21,7 @@ export function StandardsAndIndicators() {
 					</p>
 					<Button
 						variant="primary"
-						to="https://www.nice.org.uk/guidance/published?type=QS"
+						to="https://alpha.nice.org.uk/guidance/published?type=qs"
 					>
 						View quality standards
 					</Button>
@@ -62,7 +62,7 @@ export function StandardsAndIndicators() {
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance">
+							<a href="https://alpha.nice.org.uk/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance">
 								Measuring uptake of quality standards
 							</a>
 						</li>
@@ -85,7 +85,7 @@ export function StandardsAndIndicators() {
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/get-involved/meetings-in-public/indicator-advisory-committee">
+							<a href="https://alpha.nice.org.uk/get-involved/meetings-in-public/indicator-advisory-committee">
 								Learn about the committee that develops indicators
 							</a>
 						</li>
