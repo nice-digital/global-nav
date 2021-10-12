@@ -84,11 +84,20 @@ export function NavLinks({
 		clickOutsideDeactivates: true,
 		initialFocus: false,
 	};
+	const filteredServicesToDisplay = servicesToDisplay.filter(
+		(a) => a.id !== "more-nice-services"
+	);
+
+	const moreNiceServices = servicesToDisplay.filter(
+		(a) => a.id == "more-nice-services"
+	);
+
+	console.log("MORE>>> ", moreNiceServices);
 
 	return (
 		<FocusTrap active={focusTrapActive} focusTrapOptions={options}>
 			<ul className={styles.menuList} aria-labelledby="header-menu-button">
-				{servicesToDisplay.map(
+				{filteredServicesToDisplay.map(
 					(
 						{
 							href,
@@ -146,6 +155,11 @@ export function NavLinks({
 										<span aria-label={abbreviation && title}>{text}</span>
 									</a>
 								)}
+
+								{!canUseDOM && id && id == "more-nice-services" ? (
+									<p>do something different for nice services</p>
+								) : null}
+
 								{dropdown && canUseDOM ? (
 									<Dropdown
 										component={dropdownComponent}
@@ -171,6 +185,136 @@ export function NavLinks({
 									/>
 								)}
 							</li>
+						);
+					}
+				)}
+
+				{moreNiceServices.map(
+					(
+						{
+							href,
+							id,
+							text,
+							abbreviation,
+							title,
+							dropdown,
+							dropdownComponent,
+						},
+						index
+					) => {
+						let ariaCurrent = null;
+
+						if (currentService && id === currentService) {
+							ariaCurrent = true;
+
+							if (
+								typeof location !== "undefined" &&
+								location &&
+								href ===
+									`${location.protocol}//${location.host}${location.pathname}`
+							) {
+								ariaCurrent = "page";
+							}
+						}
+
+						return (
+							<>
+								{dropdown && canUseDOM ? (
+									<li key={id} id={id}>
+										<button
+											onClick={() => handleNavButtonClick(id)}
+											aria-current={ariaCurrent}
+											className={styles.link}
+											aria-controls={`dropdown-${id}`}
+											aria-expanded={id === idOfOpenDropdown ? true : false}
+										>
+											<span aria-label={abbreviation && title}>{text}</span>{" "}
+											{id === idOfOpenDropdown ? (
+												<ChevronUp
+													className={styles.icon}
+													pointerEvents="none"
+												/>
+											) : (
+												<ChevronDown
+													className={styles.icon}
+													pointerEvents="none"
+												/>
+											)}
+										</button>
+									</li>
+								) : (
+									// <a
+									// 	href={href}
+									// 	aria-current={ariaCurrent}
+									// 	className={styles.link}
+									// 	onClick={handleNavLinkClick}
+									// >
+									// 	<span aria-label={abbreviation && title}>{text}</span>
+									// </a>
+
+									<>
+										<li>
+											<a
+												className="btn btn--cta"
+												href="https://evidence.nhs.uk"
+												className={styles.link}
+												onClick={handleNavLinkClick}
+											>
+												<span aria-label="">Evidence search</span>
+											</a>
+										</li>
+										<li>
+											<a
+												className="btn btn--cta"
+												href="https://www.nice.org.uk/standards-and-indicators"
+												className={styles.link}
+												onClick={handleNavLinkClick}
+											>
+												<span aria-label="">Standards and indicators</span>
+											</a>
+										</li>
+										<li>
+											<a
+												className="btn btn--cta"
+												href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
+												className={styles.link}
+												onClick={handleNavLinkClick}
+											>
+												<span aria-label="">Journals and databases</span>
+											</a>
+										</li>
+									</>
+								)}
+
+								{/* {!canUseDOM && id && id == "more-nice-services" ? (
+									<p>do something different for nice services</p>
+								) : null} */}
+
+								{dropdown && canUseDOM ? (
+									<Dropdown
+										component={dropdownComponent}
+										className={classnames([
+											styles.dropdown,
+											id === idOfOpenDropdown && styles.active,
+										])}
+										text={text}
+										nextNavSlug={
+											servicesToDisplay[index + 1]
+												? servicesToDisplay[index + 1]["id"]
+												: skipLinkId
+										}
+										closeDropdown={() => setidOfOpenDropdown(null)}
+										id={`dropdown-${id}`}
+									/>
+								) : null}
+								{ariaCurrent && subLinks && (
+									<SubNav
+										links={subLinks}
+										text={text}
+										onNavigating={onNavigating}
+									/>
+								)}
+							</>
 						);
 					}
 				)}
