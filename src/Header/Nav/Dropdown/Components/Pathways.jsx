@@ -48,27 +48,17 @@ export function Pathways() {
 				View NICE Pathways
 			</Button>
 
-			<h3 className="mt--d">Pathways A to Z</h3>
-			<ol className={styles.alphabet}>
-				{pathwaysAtoZ.map(({ letter, link }) => {
-					return (
-						<li
-							key={letter}
-							className={`${styles.letter} ${link ? "" : styles.chunkyLetter}`}
-						>
-							{link ? (
-								<a href={`${pathwaysAtoZurl}${letter}`}>{letter}</a>
-							) : (
-								<span>{letter}</span>
-							)}
-						</li>
-					);
-				})}
-			</ol>
-
 			<Grid gutter="loose">
+				<GridItem cols={12} md={3}>
+					<h3>Browse by A to Z</h3>
+					<ul className={styles.listUnstyled}>
+						<li>
+							<a href={baseUrl}>Pathways A to Z</a>
+						</li>
+					</ul>
+				</GridItem>
 				<GridItem cols={12} md={6}>
-					<h3 className="mt--0">Browse topics by</h3>
+					<h3>Browse topics by</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
 							<a href={`${baseUrl}?browse=conditionsAndDiseases`}>
@@ -98,7 +88,7 @@ export function Pathways() {
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
-					<h3 className="mt--0">What&apos;s new</h3>
+					<h3>What&apos;s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<a href={`${baseUrl}?browse=latest`}>Latest NICE Pathways</a>
