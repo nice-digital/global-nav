@@ -41,7 +41,7 @@ export function LifeSciences() {
 				</GridItem>
 				<GridItem cols={12} md={6}>
 					<h4 className="h5 mb--c mt--0">
-						<a href="https://www.nice.org.uk/about/what-we-do/life-sciences/office-for-market-access">
+						<a href={`${baseUrl}/office-for-market-access`}>
 							Office for Market Access
 						</a>
 					</h4>
@@ -51,9 +51,7 @@ export function LifeSciences() {
 					</p>
 
 					<h4 className="h5 mb--c">
-						<a href="https://www.nice.org.uk/about/what-we-do/life-sciences/scientific-advice">
-							Scientific advice
-						</a>
+						<a href={`${baseUrl}/scientific-advice`}>Scientific advice</a>
 					</h4>
 					<p className="mt--0">
 						By answering your questions, scientific advice can help you design

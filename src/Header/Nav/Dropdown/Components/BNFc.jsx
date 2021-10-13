@@ -9,7 +9,7 @@ export function BNFc() {
 		(service) => service.text == "BNFC"
 	).href;
 
-	const drugsAtoZurl = baseUrl + "drug/#";
+	const drugsAtoZurl = baseUrl + "/drug/#";
 
 	const drugsAtoZ = [
 		{ letter: "A", link: true },
@@ -75,10 +75,10 @@ export function BNFc() {
 					<h3 className="mt--0">Browse A to Z by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}interaction/`}>Interactions</a>
+							<a href={`${baseUrl}/interaction/`}>Interactions</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}treatment-summary/`}>Treatment summaries</a>
+							<a href={`${baseUrl}/treatment-summary/`}>Treatment summaries</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -86,25 +86,25 @@ export function BNFc() {
 					<h3 className="mt--0">Browse by type</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}medical-devices/`}>Medical devices</a>
+							<a href={`${baseUrl}/medical-devices/`}>Medical devices</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}borderline-substance-taxonomy/`}>
+							<a href={`${baseUrl}/borderline-substance-taxonomy/`}>
 								Borderline substances
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}dental-practitioners-formulary/`}>
-								Dental practitioners' formulary
+							<a href={`${baseUrl}/dental-practitioners-formulary/`}>
+								Dental practitioners&apos; formulary
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}nurse-prescribers-formulary/`}>
-								Nurse prescribers' formulary
+							<a href={`${baseUrl}/nurse-prescribers-formulary/`}>
+								Nurse prescribers&apos; formulary
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}guidance/`}>Medicines guidance</a>
+							<a href={`${baseUrl}/guidance/`}>Medicines guidance</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -112,13 +112,13 @@ export function BNFc() {
 					<h3 className="mt--0">What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}about/changes.html`}>Latest BNFC</a>
+							<a href={`${baseUrl}/about/changes.html`}>Latest BNFC</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
 			<hr />
-			<a href={`${baseUrl}about/`}>About BNFC</a>
+			<a href={`${baseUrl}/about/`}>About BNFC</a>
 		</section>
 	);
 }

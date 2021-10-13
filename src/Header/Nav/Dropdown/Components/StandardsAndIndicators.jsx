@@ -10,6 +10,8 @@ export function StandardsAndIndicators() {
 		(service) => service.text == "Standards and indicators"
 	).href;
 
+	const rootUrl = services.rootUrl;
+
 	return (
 		<section aria-label="Standards and indicators - dropdown navigation">
 			<Grid gutter="loose">
@@ -28,41 +30,45 @@ export function StandardsAndIndicators() {
 
 					<ol className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href={`${baseUrl}how-to-use-quality-standards`}>
+							<a href={`${baseUrl}/how-to-use-quality-standards`}>
 								How we use quality standards
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}timeline-developing-quality-standards`}>
+							<a href={`${baseUrl}/timeline-developing-quality-standards`}>
 								Timeline-quality standards development
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}get-involved`}>
+							<a href={`${baseUrl}/get-involved`}>
 								Help develop quality standards
 							</a>
 						</li>
 						<li>
 							<a
-								href={`${baseUrl}selecting-and-prioritising-quality-standard-topics`}
+								href={`${baseUrl}/selecting-and-prioritising-quality-standard-topics`}
 							>
 								Selecting and prioritising quality standards topics
 							</a>
 						</li>
 						<li>
 							<a
-								href={`${baseUrl}developing-nice-quality-standards-/quality-standards-topic-library`}
+								href={`${baseUrl}/developing-nice-quality-standards-/quality-standards-topic-library`}
 							>
 								Quality standard topic library
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/Media/Default/Standards-and-indicators/qs-forward-planner.xlsx">
+							<a
+								href={`${rootUrl}/Media/Default/Standards-and-indicators/qs-forward-planner.xlsx`}
+							>
 								Upcoming quality standards - forward planner
 							</a>
 						</li>
 						<li>
-							<a href="https://alpha.nice.org.uk/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance">
+							<a
+								href={`${rootUrl}/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance`}
+							>
 								Measuring uptake of quality standards
 							</a>
 						</li>
@@ -74,38 +80,50 @@ export function StandardsAndIndicators() {
 						NICE indicators measure outcomes that reflect the quality of care,
 						or processes linked, by evidence, to improved outcomes.
 					</p>
-					<Button variant="cta" to={`${baseUrl}index`}>
+					<Button variant="cta" to={`${baseUrl}/index`}>
 						View indicators
 					</Button>
 
 					<ol className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href="https://www.nice.org.uk/media/default/Get-involved/Meetings-In-Public/indicator-advisory-committee/ioc-process-guide.pdf">
+							<a
+								href={`${rootUrl}/media/default/Get-involved/Meetings-In-Public/indicator-advisory-committee/ioc-process-guide.pdf`}
+							>
 								How we develop indicators for the NICE menu (PDF)
 							</a>
 						</li>
 						<li>
-							<a href="https://alpha.nice.org.uk/get-involved/meetings-in-public/indicator-advisory-committee">
+							<a
+								href={`${rootUrl}/get-involved/meetings-in-public/indicator-advisory-committee`}
+							>
 								Learn about the committee that develops indicators
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/Media/Default/Standards-and-indicators/new-updated-retired-indicators.docx">
+							<a
+								href={`${rootUrl}/Media/Default/Standards-and-indicators/new-updated-retired-indicators.docx`}
+							>
 								New, updated and retired indicators: September 2020 (Word)
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/Media/Default/Standards-and-indicators/full-indicator-menu.docx">
+							<a
+								href={`${rootUrl}/Media/Default/Standards-and-indicators/full-indicator-menu.docx`}
+							>
 								NICE indicator menu (Word)
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/Media/Default/Standards-and-indicators/hypertension-indicator-pack.pptx">
+							<a
+								href={`${rootUrl}/Media/Default/Standards-and-indicators/hypertension-indicator-pack.pptx`}
+							>
 								Hypertension indicator pack (PowerPoint)
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/Media/Default/Standards-and-indicators/qof-indicator-assessment-report.pdf">
+							<a
+								href={`${rootUrl}/Media/Default/Standards-and-indicators/qof-indicator-assessment-report.pdf`}
+							>
 								QOF indicator assessment report (PDF)
 							</a>
 						</li>
