@@ -11,6 +11,8 @@
 a.link,
 button.link {
   @extend .linkStyling;
+  column-gap: rem($nds-spacing-small);
+  padding: rem($nds-spacing-medium);
 }
 
 .dropdown {
