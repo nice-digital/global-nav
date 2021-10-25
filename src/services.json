@@ -1,4 +1,5 @@
 {
+  "rootUrl": "https://www.nice.org.uk",
   "external": [
     {
       "href": "https://www.nice.org.uk/guidance",
@@ -8,7 +9,7 @@
       "dropdownComponent": "Guidance"
     },
     {
-      "href": "https://pathways.nice.org.uk/",
+      "href": "https://pathways.nice.org.uk",
       "text": "NICE Pathways",
       "id": "pathways",
       "dropdown": true,
@@ -47,7 +48,7 @@
       "dropdownComponent": "LifeSciences"
     },
     {
-      "href": "https://bnf.nice.org.uk/",
+      "href": "https://bnf.nice.org.uk",
       "text": "BNF",
       "abbreviation": true,
       "title": "British National Formulary",
@@ -78,7 +79,7 @@
       ]
     },
     {
-      "href": "https://bnfc.nice.org.uk/",
+      "href": "https://bnfc.nice.org.uk",
       "text": "BNFC",
       "abbreviation": true,
       "title": "British National Formulary for Children",
@@ -109,7 +110,7 @@
       ]
     },
     {
-      "href": "https://cks.nice.org.uk/",
+      "href": "https://cks.nice.org.uk",
       "text": "CKS",
       "abbreviation": true,
       "title": "Clinical Knowledge Summaries",

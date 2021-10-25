@@ -3,7 +3,6 @@ import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import styles from "./Components.module.scss";
 import services from "../../../../services.json";
-import classnames from "classnames";
 
 export function Guidance() {
 	const baseUrl = services.external.find(
@@ -26,9 +25,9 @@ export function Guidance() {
 			<h3>New and updated</h3>
 			<ul className={styles.listPiped}>
 				<li>
-					<a href={`${baseUrl}date`}>This month</a>
-					<a href={`${baseUrl}lastmonth`}>Last month</a>
-					<a href={`${baseUrl}last6months`}>Last 6 months</a>
+					<a href={`${baseUrl}/date`}>This month</a>
+					<a href={`${baseUrl}/lastmonth`}>Last month</a>
+					<a href={`${baseUrl}/last6months`}>Last 6 months</a>
 				</li>
 			</ul>
 
@@ -42,28 +41,28 @@ export function Guidance() {
 					<p className="h5">Find topics by</p>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}conditions-and-diseases`}>
+							<a href={`${baseUrl}/conditions-and-diseases`}>
 								Conditions and diseases
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}health-and-social-care-delivery`}>
+							<a href={`${baseUrl}/health-and-social-care-delivery`}>
 								Health and social care delivery
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}health-protection`}>Health protection</a>
+							<a href={`${baseUrl}/health-protection`}>Health protection</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}lifestyle-and-wellbeing`}>
+							<a href={`${baseUrl}/lifestyle-and-wellbeing`}>
 								Lifestyle and wellbeing
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}population-groups`}>Population groups</a>
+							<a href={`${baseUrl}/population-groups`}>Population groups</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}settings`}>Settings</a>
+							<a href={`${baseUrl}/settings`}>Settings</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -72,7 +71,7 @@ export function Guidance() {
 					<ul className={styles.listUnstyled}>
 						<li>
 							<h4 className="h5 mb--c">
-								<a href={`${baseUrl}inconsultation`}>In consultation</a>
+								<a href={`${baseUrl}/inconsultation`}>In consultation</a>
 							</h4>
 							<p className="mt--0">
 								Guidance and quality standards open for consultation.
@@ -80,7 +79,7 @@ export function Guidance() {
 						</li>
 						<li>
 							<h4 className="h5 mb--c">
-								<a href={`${baseUrl}indevelopment`}>In development</a>
+								<a href={`${baseUrl}/indevelopment`}>In development</a>
 							</h4>
 							<p className="mt--0">
 								Guidance, quality standards and advice being developed.
@@ -88,7 +87,7 @@ export function Guidance() {
 						</li>
 						<li>
 							<h4 className="h5 mb--c">
-								<a href={`${baseUrl}proposed`}>Proposed</a>
+								<a href={`${baseUrl}/proposed`}>Proposed</a>
 							</h4>
 							<p className="mt--0">
 								Guidance and quality standards that have been proposed for
@@ -107,7 +106,7 @@ export function Guidance() {
 						<li>
 							<h4 className="h5 mt--0 mb--c">
 								<a
-									href={`${baseUrl}published?type=apg,csg,cg,cov,mpg,ph,sg,sc`}
+									href={`${baseUrl}/published?type=apg,csg,cg,cov,mpg,ph,sg,sc`}
 								>
 									NICE guidelines
 								</a>
@@ -118,7 +117,9 @@ export function Guidance() {
 						</li>
 						<li>
 							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}published?type=dg`}>Diagnostics guidance</a>
+								<a href={`${baseUrl}/published?type=dg`}>
+									Diagnostics guidance
+								</a>
 							</h4>
 							<p className="mt--0">
 								Review new diagnostic technologies for adoption in the&nbsp;NHS.
@@ -126,7 +127,7 @@ export function Guidance() {
 						</li>
 						<li>
 							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}published?type=ipg`}>
+								<a href={`${baseUrl}/published?type=ipg`}>
 									Interventional procedures guidance
 								</a>
 							</h4>
@@ -141,7 +142,7 @@ export function Guidance() {
 					<ul className={styles.listUnstyled}>
 						<li>
 							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}published?type=ta`}>
+								<a href={`${baseUrl}/published?type=ta`}>
 									Technology appraisal guidance
 								</a>
 							</h4>
@@ -152,7 +153,7 @@ export function Guidance() {
 
 						<li>
 							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}published?type=hst`}>
+								<a href={`${baseUrl}/published?type=hst`}>
 									Highly specialised technologies guidance
 								</a>
 							</h4>
@@ -164,7 +165,7 @@ export function Guidance() {
 
 						<li>
 							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}published?type=mtg`}>
+								<a href={`${baseUrl}/published?type=mtg`}>
 									Medical technologies guidance
 								</a>
 							</h4>

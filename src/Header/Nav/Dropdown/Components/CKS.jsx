@@ -9,7 +9,7 @@ export function CKS() {
 		(service) => service.text == "CKS"
 	).href;
 
-	const topicsAtoZurl = baseUrl + "topics/#";
+	const topicsAtoZurl = baseUrl + "/topics/#";
 
 	const topicsAtoZ = [
 		{ letter: "A", link: true },
@@ -47,7 +47,7 @@ export function CKS() {
 				Providing primary care practitioners with a readily accessible summary
 				of the current evidence base and practical guidance on best practice
 			</p>
-			<Button variant="primary" to={baseUrl}>
+			<Button variant="cta" to={baseUrl}>
 				View CKS
 			</Button>
 
@@ -74,26 +74,26 @@ export function CKS() {
 					<h3 className="mt--0">Topics most frequently visited</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}topics/hypertension/`}>Hypertension</a>
+							<a href={`${baseUrl}/topics/hypertension/`}>Hypertension</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}topics/diabetes-type-2/`}>
+							<a href={`${baseUrl}/topics/diabetes-type-2/`}>
 								Diabetes - type 2
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}topics/gout/`}>Gout</a>
+							<a href={`${baseUrl}/topics/gout/`}>Gout</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}topics/migraine/`}>Migraine</a>
+							<a href={`${baseUrl}/topics/migraine/`}>Migraine</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}topics/allergic-rhinitis/`}>
+							<a href={`${baseUrl}/topics/allergic-rhinitis/`}>
 								Allergic rhinitis
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}topics/asthma/`}>Asthma</a>
+							<a href={`${baseUrl}/topics/asthma/`}>Asthma</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -101,7 +101,7 @@ export function CKS() {
 					<h3 className="mt--0">Browse by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}specialities/`}>Specialities</a>
+							<a href={`${baseUrl}/specialities/`}>Specialities</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -109,13 +109,13 @@ export function CKS() {
 					<h3 className="mt--0">What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}whats-new/`}>Latest CKS</a>
+							<a href={`${baseUrl}/whats-new/`}>Latest CKS</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
 			<hr />
-			<a href={`${baseUrl}about/`}>About CKS</a>
+			<a href={`${baseUrl}/about/`}>About CKS</a>
 		</section>
 	);
 }

@@ -1,8 +1,10 @@
 import React from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import services from "../../../../services.json";
 
 export function More() {
+	const rootUrl = services.rootUrl;
 	return (
 		<section aria-label="More NICE services">
 			<Grid gutter="loose">
@@ -15,7 +17,7 @@ export function More() {
 						go.
 					</p>
 					<p>
-						<Button variant="primary" to="https://alpha.evidence.nhs.uk/">
+						<Button variant="primary" to="https://www.evidence.nhs.uk/">
 							Evidence search
 						</Button>
 					</p>
@@ -38,7 +40,7 @@ export function More() {
 					<p>
 						<Button
 							variant="primary"
-							to="https://alpha.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
+							to={`${rootUrl}/about/what-we-do/evidence-services/journals-and-databases`}
 						>
 							Journals and databases
 						</Button>

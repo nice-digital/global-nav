@@ -10,7 +10,8 @@ export function AboutUs() {
 		(service) => service.text == "About us"
 	).href;
 
-	const alphaNICEorg = "http://alpha.nice.org.uk/";
+	const rootUrl = services.rootUrl;
+
 	return (
 		<section aria-label="About us - dropdown navigation">
 			<h2 className="mt--0">About us</h2>
@@ -133,28 +134,28 @@ export function AboutUs() {
 					<h3 className="mt--d">Get involved</h3>
 					<ol className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href={`${alphaNICEorg}Get-Involved/stakeholder-registration`}>
+							<a href={`${rootUrl}/Get-Involved/stakeholder-registration`}>
 								Register as a stakeholder
 							</a>
 						</li>
 						<li>
-							<a href={`${alphaNICEorg}Get-Involved/Consultations`}>
+							<a href={`${rootUrl}/Get-Involved/Consultations`}>
 								Comment on a consultation
 							</a>
 						</li>
 						<li>
-							<a href={`${alphaNICEorg}Get-Involved/our-committees`}>
+							<a href={`${rootUrl}/Get-Involved/our-committees`}>
 								Join a committee
 							</a>
 						</li>
 						<li>
-							<a href={`${alphaNICEorg}Get-Involved/Meetings-in-public`}>
+							<a href={`${rootUrl}/Get-Involved/Meetings-in-public`}>
 								Come to a meeting
 							</a>
 						</li>
 						<li>
-							<a href={`${alphaNICEorg}Get-Involved/jobs`}>Work with us</a>
-							<a href={`${baseUrl}nice-communities/public-involvement`}>
+							<a href={`${rootUrl}/Get-Involved/jobs`}>Work with us</a>
+							<a href={`${rootUrl}/nice-communities/public-involvement`}>
 								Public involvement
 							</a>
 						</li>
