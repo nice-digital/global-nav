@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
 export function More() {
@@ -9,7 +10,7 @@ export function More() {
 		<section aria-label="More NICE services">
 			<Grid gutter="loose">
 				<GridItem cols={12} md={6}>
-					<h3>Evidence search</h3>
+					<h2>Evidence search</h2>
 					<p>
 						Evidence search helps you make better, faster evidence-based
 						decisions. It includes high quality resources from over 800
@@ -17,13 +18,17 @@ export function More() {
 						go.
 					</p>
 					<p>
-						<Button variant="primary" to="https://www.evidence.nhs.uk/">
+						<Button
+							className={reset.gnButtonPrimary}
+							variant="primary"
+							to="https://www.evidence.nhs.uk/"
+						>
 							Evidence search
 						</Button>
 					</p>
 				</GridItem>
 				<GridItem cols={12} md={6}>
-					<h3>Journals and databases</h3>
+					<h2>Journals and databases</h2>
 					<p>
 						Quick access to a range of journals and other evidence-based
 						resources for health and social care staff in England.
@@ -40,6 +45,7 @@ export function More() {
 					<p>
 						<Button
 							variant="primary"
+							className={reset.gnButtonPrimary}
 							to={`${rootUrl}/about/what-we-do/evidence-services/journals-and-databases`}
 						>
 							Journals and databases

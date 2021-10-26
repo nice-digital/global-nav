@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import reset from "./../Reset.module.scss";
 import styles from "./Components.module.scss";
 import services from "../../../../services.json";
 import classnames from "classnames";
@@ -16,19 +17,20 @@ export function StandardsAndIndicators() {
 		<section aria-label="Standards and indicators - dropdown navigation">
 			<Grid gutter="loose">
 				<GridItem cols={12} md={6}>
-					<h3>Quality standards</h3>
+					<h2>Quality standards</h2>
 					<p>
 						Quality standards set out the priority areas for quality improvement
 						in health and social care.
 					</p>
-					<Button
-						variant="cta"
-						to="https://alpha.nice.org.uk/guidance/published?type=qs"
-					>
-						View quality standards
-					</Button>
-
-					<ol className={classnames(styles.listUnstyled, "mt--d")}>
+					<p>
+						<Button
+							className={reset.gnButtonPrimary}
+							to="https://alpha.nice.org.uk/guidance/published?type=qs"
+						>
+							View quality standards
+						</Button>
+					</p>
+					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
 							<a href={`${baseUrl}/how-to-use-quality-standards`}>
 								How we use quality standards
@@ -72,19 +74,20 @@ export function StandardsAndIndicators() {
 								Measuring uptake of quality standards
 							</a>
 						</li>
-					</ol>
+					</ul>
 				</GridItem>
 				<GridItem cols={12} md={6}>
-					<h3>Indicators</h3>
+					<h2>Indicators</h2>
 					<p>
 						NICE indicators measure outcomes that reflect the quality of care,
 						or processes linked, by evidence, to improved outcomes.
 					</p>
-					<Button variant="cta" to={`${baseUrl}/index`}>
-						View indicators
-					</Button>
-
-					<ol className={classnames(styles.listUnstyled, "mt--d")}>
+					<p>
+						<Button className={reset.gnButtonPrimary} to={`${baseUrl}/index`}>
+							View indicators
+						</Button>
+					</p>
+					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
 							<a
 								href={`${rootUrl}/media/default/Get-involved/Meetings-In-Public/indicator-advisory-committee/ioc-process-guide.pdf`}
@@ -127,7 +130,7 @@ export function StandardsAndIndicators() {
 								QOF indicator assessment report (PDF)
 							</a>
 						</li>
-					</ol>
+					</ul>
 				</GridItem>
 			</Grid>
 		</section>

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import styles from "./Components.module.scss";
+import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
 export function BNFc() {
@@ -48,7 +49,7 @@ export function BNFc() {
 				healthcare professionals with sound up-to-date information on the use of
 				medicines for treating children.
 			</p>
-			<Button variant="cta" to={baseUrl}>
+			<Button className={reset.gnButtonCta} variant="cta" to={baseUrl}>
 				View BNFC
 			</Button>
 
@@ -72,7 +73,7 @@ export function BNFc() {
 
 			<Grid gutter="loose">
 				<GridItem cols={12} md={3}>
-					<h3 className="mt--0">Browse A to Z by</h3>
+					<h3>Browse A to Z by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<a href={`${baseUrl}/interaction/`}>Interactions</a>
@@ -83,7 +84,7 @@ export function BNFc() {
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={6}>
-					<h3 className="mt--0">Browse by type</h3>
+					<h3>Browse by type</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
 							<a href={`${baseUrl}/medical-devices/`}>Medical devices</a>
@@ -109,7 +110,7 @@ export function BNFc() {
 					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
-					<h3 className="mt--0">What’s new</h3>
+					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<a href={`${baseUrl}/about/changes.html`}>Latest BNFC</a>
