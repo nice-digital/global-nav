@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Social Matches snapshot with SVG support 1`] = `
+exports[`Social Matches snapshot 1`] = `
 <div
   className="wrapper"
 >
@@ -60,68 +60,6 @@ exports[`Social Matches snapshot with SVG support 1`] = `
         href="https://www.linkedin.com/company/national-institute-for-health-and-clinical-excellence"
       >
         <SvgLinkedin />
-        LinkedIn
-      </TrackedLink>
-    </li>
-  </ul>
-</div>
-`;
-
-exports[`Social Matches snapshot with no SVG support 1`] = `
-<div
-  className="wrapper"
->
-  <ul
-    aria-label="NICE on social media"
-    className="list"
-  >
-    <li>
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Facebook"
-        href="https://en-gb.facebook.com/NationalInstituteforHealthandCareExcellence/"
-      >
-        Facebook
-      </TrackedLink>
-    </li>
-    <li>
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Twitter"
-        href="https://twitter.com/NICEcomms"
-      >
-        Twitter
-      </TrackedLink>
-    </li>
-    <li>
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="YouTube"
-        href="https://www.youtube.com/user/NICEmedia"
-      >
-        YouTube
-      </TrackedLink>
-    </li>
-    <li>
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Instagram"
-        href="https://www.instagram.com/nicecomms/"
-      >
-        Instagram
-      </TrackedLink>
-    </li>
-    <li>
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="LinkedIn"
-        href="https://www.linkedin.com/company/national-institute-for-health-and-clinical-excellence"
-      >
         LinkedIn
       </TrackedLink>
     </li>
