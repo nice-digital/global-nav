@@ -5,5 +5,4 @@ export { CKS } from "./CKS";
 export { Guidance } from "./Guidance";
 export { LifeSciences } from "./LifeSciences";
 export { More } from "./More";
-export { Pathways } from "./Pathways";
 export { StandardsAndIndicators } from "./StandardsAndIndicators";

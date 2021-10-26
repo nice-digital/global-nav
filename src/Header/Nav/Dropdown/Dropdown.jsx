@@ -9,7 +9,6 @@ import {
 	Guidance,
 	LifeSciences,
 	More,
-	Pathways,
 	StandardsAndIndicators,
 } from "./Components/";
 
@@ -31,7 +30,6 @@ export function Dropdown({
 		Guidance: Guidance,
 		LifeSciences: LifeSciences,
 		More: More,
-		Pathways: Pathways,
 		StandardsAndIndicators: StandardsAndIndicators,
 	};
 	const Component = components[component];
