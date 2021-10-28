@@ -18,7 +18,7 @@
   flex-wrap: wrap;
   gap: rem($nds-spacing-small);
   list-style: none;
-  margin: rem(0 0 $nds-spacing-large);
+  margin: rem(0 0 $nds-spacing-medium);
   max-width: 90%;
   padding: 0;
 
@@ -40,6 +40,7 @@
   display: inline-block;
   font-weight: bold;
   margin: rem(0 $nds-spacing-small $nds-spacing-small 0);
+  text-transform: uppercase;
 
   a,
   span {

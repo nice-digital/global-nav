@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Dropdown.module.scss";
+import reset from "./Reset.module.scss";
+import classnames from "classnames";
+
 import {
 	AboutUs,
 	BNF,
@@ -35,7 +38,7 @@ export function Dropdown({
 	const Component = components[component];
 
 	return (
-		<div className={className} id={id}>
+		<div className={classnames([className, reset.wrapper])} id={id}>
 			<div className={styles.container}>
 				{nextNavSlug && (
 					<a

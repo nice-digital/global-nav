@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import services from "../../../../services.json";
+import reset from "./../Reset.module.scss";
 
 export function LifeSciences() {
 	const baseUrl = services.external.find(
@@ -16,7 +17,7 @@ export function LifeSciences() {
 				health technology development. Helping them deliver better and
 				measurable outcomes.
 			</p>
-			<Button variant="cta" to={baseUrl} className="mb--d">
+			<Button className={reset.gnButtonCta} variant="cta" to={baseUrl}>
 				View life sciences
 			</Button>
 			<h3 className="mt--d">Engage with us</h3>

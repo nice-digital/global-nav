@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@nice-digital/nds-button";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import styles from "./Components.module.scss";
+import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 import classnames from "classnames";
 
@@ -19,13 +20,13 @@ export function AboutUs() {
 				We provide national guidance and advice to improve health and social
 				care.
 			</p>
-			<Button variant="cta" to={baseUrl}>
+			<Button className={reset.gnButtonCta} variant="cta" to={baseUrl}>
 				Explore about us
 			</Button>
 			<Grid gutter="loose">
 				<GridItem cols={12} md={3}>
 					<h3 className="mt--d">Who we are</h3>
-					<ol className={classnames(styles.listUnstyled, "mt--d")}>
+					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
 							<a href={`${baseUrl}/who-we-are/board`}>The board</a>
 						</li>
@@ -56,11 +57,11 @@ export function AboutUs() {
 								The NICE strategy 2021 to 2026
 							</a>
 						</li>
-					</ol>
+					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
 					<h3 className="mt--d">What we do</h3>
-					<ol className={classnames(styles.listUnstyled, "mt--d")}>
+					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
 							<a
 								href={`${baseUrl}/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies`}
@@ -91,11 +92,11 @@ export function AboutUs() {
 								Shared decision making
 							</a>
 						</li>
-					</ol>
+					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
 					<h3 className="mt--d">Our programmes</h3>
-					<ol className={classnames(styles.listUnstyled, "mt--d")}>
+					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
 							<a href={`${baseUrl}/what-we-do/our-programmes/nice-guidance`}>
 								Guidance
@@ -128,11 +129,11 @@ export function AboutUs() {
 								Patient safety
 							</a>
 						</li>
-					</ol>
+					</ul>
 				</GridItem>
 				<GridItem cols={12} md={3}>
 					<h3 className="mt--d">Get involved</h3>
-					<ol className={classnames(styles.listUnstyled, "mt--d")}>
+					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
 							<a href={`${rootUrl}/Get-Involved/stakeholder-registration`}>
 								Register as a stakeholder
@@ -159,7 +160,7 @@ export function AboutUs() {
 								Public involvement
 							</a>
 						</li>
-					</ol>
+					</ul>
 				</GridItem>
 			</Grid>
 		</section>
