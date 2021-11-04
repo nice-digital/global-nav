@@ -184,7 +184,7 @@ Using SCSS allows us to use mixins, functions and variables from the NICE Design
 
 **TL;DR;** to run the project locally, do the following:
 
-- install [Node 10+](https://nodejs.org/en/download/) or latest LTS version
+- install [Node 14+](https://nodejs.org/en/download/) or latest LTS version. Or even better, use [Volta](https://volta.sh/) to use the Node version pinned in package.json.
 - run `npm i` on the command line to install dependencies
 - run `npm start` on the command line
 - navigate to http://localhost:8080/ in a browser.

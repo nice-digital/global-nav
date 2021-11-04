@@ -10,7 +10,7 @@
     "start:nohot": "cross-env HOT=false webpack serve --mode development",
     "// PRODUCTION BUILDS": "",
     "build": "webpack --mode=production --config webpack.config.prod.js",
-    "es5ify": "cross-env NODE_ENV=production babel src -d lib --copy-files --no-copy-ignored --ignore \"src/**/*.test.js\",\"src/**/*.test.jsx\",\"src/setupTests.js\",\"src/polyfill/**/*.js\"",
+    "es5ify": "cross-env NODE_ENV=production babel src -d lib --extensions \".js\",\".jsx\",\".snap\" --copy-files --no-copy-ignored --ignore \"src/**/*.test.js\",\"src/**/*.test.jsx\",\"src/setupTests.js\",\"src/polyfill/**/*.js\",\"src/cdn.js\",\"src/**/*.snap\"",
     "// TESTS": "",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --notify",
@@ -48,7 +48,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">= 8.9"
+    "node": ">= 12"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -131,5 +131,8 @@
   ],
   "directories": {
     "lib": "lib"
+  },
+  "volta": {
+    "node": "14.18.1"
   }
 }
