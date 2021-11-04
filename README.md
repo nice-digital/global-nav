@@ -287,13 +287,13 @@ Install the package and require the `Header` and `Footer` React components into 
 
 #### Installation
 
-First, install the _@nice-digital/global-nav_ package into your project, directly from GitHub:
-
-> Note: we currently don't publish the Global Nav to npm but we plan to in the future.
+First, install the _@nice-digital/global-nav_ package [from npm](https://www.npmjs.com/package/@nice-digital/global-nav) into your project:
 
 ```sh
-npm install nice-digital/global-nav --save
+npm i @nice-digital/global-nav --save
 ```
+
+> Note: we used to recommend installing directly from GitHub via `npm i nice-digital/global-nav --save` (notice the missing _@_), which still works but we now recommend using npm.
 
 Then, require the header and/or footer into your application:
 
