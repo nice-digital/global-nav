@@ -20,7 +20,7 @@ export default class Social extends Component {
 							eventAction={footerClickEventAction}
 							eventLabel="Facebook"
 						>
-							{typeof SVGRect !== "undefined" && <FacebookIcon />}
+							<FacebookIcon />
 							Facebook
 						</TrackedLink>
 					</li>
@@ -30,7 +30,7 @@ export default class Social extends Component {
 							eventAction={footerClickEventAction}
 							eventLabel="Twitter"
 						>
-							{typeof SVGRect !== "undefined" && <TwitterIcon />}
+							<TwitterIcon />
 							Twitter
 						</TrackedLink>
 					</li>
@@ -40,7 +40,7 @@ export default class Social extends Component {
 							eventAction={footerClickEventAction}
 							eventLabel="YouTube"
 						>
-							{typeof SVGRect !== "undefined" && <YouTubeIcon />}
+							<YouTubeIcon />
 							YouTube
 						</TrackedLink>
 					</li>
@@ -50,7 +50,7 @@ export default class Social extends Component {
 							eventAction={footerClickEventAction}
 							eventLabel="Instagram"
 						>
-							{typeof SVGRect !== "undefined" && <InstagramIcon />}
+							<InstagramIcon />
 							Instagram
 						</TrackedLink>
 					</li>
@@ -60,7 +60,7 @@ export default class Social extends Component {
 							eventAction={footerClickEventAction}
 							eventLabel="LinkedIn"
 						>
-							{typeof SVGRect !== "undefined" && <LinkedInIcon />}
+							<LinkedInIcon />
 							LinkedIn
 						</TrackedLink>
 					</li>
