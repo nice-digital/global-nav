@@ -184,7 +184,7 @@ Using SCSS allows us to use mixins, functions and variables from the NICE Design
 
 **TL;DR;** to run the project locally, do the following:
 
-- install [Node 10+](https://nodejs.org/en/download/) or latest LTS version
+- install [Node 14+](https://nodejs.org/en/download/) or latest LTS version. Or even better, use [Volta](https://volta.sh/) to use the Node version pinned in package.json.
 - run `npm i` on the command line to install dependencies
 - run `npm start` on the command line
 - navigate to http://localhost:8080/ in a browser.
@@ -287,13 +287,13 @@ Install the package and require the `Header` and `Footer` React components into 
 
 #### Installation
 
-First, install the _@nice-digital/global-nav_ package into your project, directly from GitHub:
-
-> Note: we currently don't publish the Global Nav to npm but we plan to in the future.
+First, install the _@nice-digital/global-nav_ package [from npm](https://www.npmjs.com/package/@nice-digital/global-nav) into your project:
 
 ```sh
-npm install nice-digital/global-nav --save
+npm i @nice-digital/global-nav --save
 ```
+
+> Note: we used to recommend installing directly from GitHub via `npm i nice-digital/global-nav --save` (notice the missing _@_), which still works but we now recommend using npm.
 
 Then, require the header and/or footer into your application:
 

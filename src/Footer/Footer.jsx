@@ -23,7 +23,7 @@ export class Footer extends Component {
 						className={styles.logo}
 						aria-label="Go to NICE home page"
 					>
-						{typeof SVGRect !== "undefined" && <NiceLogo />}
+						<NiceLogo />
 					</TrackedLink>
 					<Services service={this.props.service} />
 					<Pages service={this.props.service} />

@@ -29,17 +29,10 @@ describe("Search", () => {
 			expect(toJson(wrapper)).toMatchSnapshot();
 		});
 
-		it("Renders SVG search icon when in an SVG-compatible browser", () => {
-			window.SVGRect = {};
+		it("Renders SVG search icon", () => {
 			const wrapper = shallow(<Search {...defaultProps} />);
 			expect(wrapper.find("SvgSearch").length).toEqual(1);
 			expect(wrapper.find("SvgSearch").props()).toEqual({ className: "icon" });
-			window.SVGRect = undefined;
-		});
-
-		it("Renders fallback unicode search button text when in an non SVG-compatible browser", () => {
-			const wrapper = shallow(<Search {...defaultProps} />);
-			expect(wrapper.find("button").text()).toEqual("search");
 		});
 	});
 

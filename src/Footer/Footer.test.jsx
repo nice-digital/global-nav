@@ -10,15 +10,8 @@ describe("Legal", () => {
 		expect(wrapper).toHaveLength(1);
 	});
 
-	it("Matches snapshot with no SVG support", () => {
+	it("Matches snapshot", () => {
 		const wrapper = shallow(<Footer service="cks" />);
 		expect(toJson(wrapper)).toMatchSnapshot();
-	});
-
-	it("Matches snapshot with SVG support", () => {
-		window.SVGRect = "anything";
-		const wrapper = shallow(<Footer service="cks" />);
-		expect(toJson(wrapper)).toMatchSnapshot();
-		delete window.SVGRect;
 	});
 });
