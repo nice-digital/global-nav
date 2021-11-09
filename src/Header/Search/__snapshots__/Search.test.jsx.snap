@@ -26,12 +26,9 @@ exports[`Search Rendering Matches snapshot 1`] = `
     onClick={[Function]}
     type="submit"
   >
-    <span
-      aria-hidden="true"
+    <SvgSearch
       className="icon"
-    >
-      search
-    </span>
+    />
   </button>
   <SkipLink
     to="#content-start"
