@@ -24,10 +24,14 @@ export function Guidance() {
 			</Button>
 
 			<h3>New and updated</h3>
-			<ul className={styles.listPiped}>
+			<ul className={styles.inlineList}>
 				<li>
 					<a href={`${baseUrl}/date`}>This month</a>
+				</li>
+				<li>
 					<a href={`${baseUrl}/lastmonth`}>Last month</a>
+				</li>
+				<li>
 					<a href={`${baseUrl}/last6months`}>Last 6 months</a>
 				</li>
 			</ul>
