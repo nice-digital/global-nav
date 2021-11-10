@@ -6,7 +6,7 @@ import reset from "./../Reset.module.scss";
 
 export function LifeSciences() {
 	const baseUrl = services.external.find(
-		(service) => service.text == "Life sciences"
+		(service) => service.id == "life-sciences"
 	).href;
 
 	return (

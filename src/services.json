@@ -142,15 +142,15 @@
     },
     {
       "href": "https://www.nice.org.uk/about",
-      "text": "About us",
-      "id": "about-us",
+      "text": "About",
+      "id": "about",
       "dropdown": true,
       "dropdownComponent": "AboutUs"
     },
     {
       "href": null,
-      "text": "More NICE services",
-      "id": "more-nice-services",
+      "text": "More",
+      "id": "more",
       "dropdown": true,
       "dropdownComponent": "More"
     }

@@ -24,7 +24,6 @@ export function NavLinks({
 	handleScrim,
 }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
-	const [focusTrapActive] = useState(idOfOpenDropdown !== null);
 	const [canUseDOM, setCanUseDOM] = useState(false);
 
 	useEffect(() => {
