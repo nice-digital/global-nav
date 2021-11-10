@@ -7,7 +7,7 @@ import services from "../../../../services.json";
 
 export function Guidance() {
 	const baseUrl = services.external.find(
-		(service) => service.text == "Guidance"
+		(service) => service.id == "guidance"
 	).href;
 
 	return (
