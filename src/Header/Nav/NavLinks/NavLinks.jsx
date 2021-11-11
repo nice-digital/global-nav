@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import classnames from "classnames";
 import FocusTrap from "focus-trap-react";
 import PropTypes from "prop-types";
@@ -14,6 +14,11 @@ import {
 	defaultEventCategory,
 	headerClickEventAction,
 } from "../../../tracker";
+import useClickOutside from "../../../useClickOutside";
+import {
+	GlobalNavContext,
+	GlobalNavContextProvider,
+} from "../../../GlobalNav.context";
 
 export function NavLinks({
 	servicesToDisplay,
@@ -27,6 +32,8 @@ export function NavLinks({
 	const [focusTrapActive] = useState(idOfOpenDropdown !== null);
 	const [canUseDOM, setCanUseDOM] = useState(false);
 
+	const { someData, handleChangeView } = useContext(GlobalNavContext);
+
 	useEffect(() => {
 		setCanUseDOM(true);
 	}, []);
@@ -35,6 +42,8 @@ export function NavLinks({
 
 	useEffect(() => {
 		handleScrim(Boolean(idOfOpenDropdown !== null));
+		console.log("ID OF OPEN DROPDOWN CHANGED TO ", idOfOpenDropdown, someData);
+		handleChangeView("hello");
 	}, [idOfOpenDropdown]);
 
 	function handleNavButtonClick(id) {
@@ -67,15 +76,17 @@ export function NavLinks({
 		var thingYouClickedOn = e.target;
 		var areaToAvoid = document.getElementById("header-menu");
 		if (!areaToAvoid.contains(thingYouClickedOn)) {
+			console.log("non reacty setting id to null");
 			setidOfOpenDropdown(null);
 		}
 	}
 
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		document.querySelector("#global-nav-header")
-	);
+	// useEventListener(
+	// 	"click",
+	// 	clickOutsideNav,
+	// 	// document.querySelector("#global-nav-header")
+	// 	document.querySelector("body")
+	// );
 	// ---------------
 
 	useEventListener("keydown", escapeDropdown);
@@ -86,96 +97,104 @@ export function NavLinks({
 	};
 
 	return (
-		<FocusTrap active={idOfOpenDropdown !== null} focusTrapOptions={options}>
-			<ul className={styles.menuList} aria-labelledby="header-menu-button">
-				{servicesToDisplay.map(
-					(
-						{
-							href,
-							id,
-							text,
-							abbreviation,
-							title,
-							dropdown,
-							dropdownComponent,
-						},
-						index
-					) => {
-						let ariaCurrent = null;
+		<GlobalNavContextProvider>
+			<p>TEST!!!!!!!!!!!!{someData}</p>
+			<FocusTrap active={idOfOpenDropdown !== null} focusTrapOptions={options}>
+				<ul className={styles.menuList} aria-labelledby="header-menu-button">
+					{servicesToDisplay.map(
+						(
+							{
+								href,
+								id,
+								text,
+								abbreviation,
+								title,
+								dropdown,
+								dropdownComponent,
+							},
+							index
+						) => {
+							let ariaCurrent = null;
 
-						if (currentService && id === currentService) {
-							ariaCurrent = true;
+							if (currentService && id === currentService) {
+								ariaCurrent = true;
 
-							if (
-								typeof location !== "undefined" &&
-								location &&
-								href ===
-									`${location.protocol}//${location.host}${location.pathname}`
-							) {
-								ariaCurrent = "page";
+								if (
+									typeof location !== "undefined" &&
+									location &&
+									href ===
+										`${location.protocol}//${location.host}${location.pathname}`
+								) {
+									ariaCurrent = "page";
+								}
 							}
-						}
 
-						return (
-							<li key={id} id={id}>
-								{dropdown && canUseDOM ? (
-									<button
-										onClick={() => handleNavButtonClick(id)}
-										aria-current={ariaCurrent}
-										className={styles.link}
-										aria-controls={`dropdown-${id}`}
-										aria-expanded={id === idOfOpenDropdown ? true : false}
-									>
-										<span aria-label={abbreviation && title}>{text}</span>{" "}
-										{id === idOfOpenDropdown ? (
-											<ChevronUp className={styles.icon} pointerEvents="none" />
-										) : (
-											<ChevronDown
-												className={styles.icon}
-												pointerEvents="none"
-											/>
-										)}
-									</button>
-								) : (
-									<a
-										href={href}
-										aria-current={ariaCurrent}
-										className={styles.link}
-										onClick={handleNavLinkClick}
-									>
-										<span aria-label={abbreviation && title}>{text}</span>
-									</a>
-								)}
-								{dropdown && canUseDOM ? (
-									<Dropdown
-										component={dropdownComponent}
-										className={classnames([
-											styles.dropdown,
-											id === idOfOpenDropdown && styles.active,
-										])}
-										text={text}
-										nextNavSlug={
-											servicesToDisplay[index + 1]
-												? servicesToDisplay[index + 1]["id"]
-												: skipLinkId
-										}
-										closeDropdown={() => setidOfOpenDropdown(null)}
-										id={`dropdown-${id}`}
-									/>
-								) : null}
-								{ariaCurrent && subLinks && (
-									<SubNav
-										links={subLinks}
-										text={text}
-										onNavigating={onNavigating}
-									/>
-								)}
-							</li>
-						);
-					}
-				)}
-			</ul>
-		</FocusTrap>
+							return (
+								<li key={id} id={id}>
+									{dropdown && canUseDOM ? (
+										<button
+											onClick={() => handleNavButtonClick(id)}
+											aria-current={ariaCurrent}
+											className={styles.link}
+											aria-controls={`dropdown-${id}`}
+											aria-expanded={id === idOfOpenDropdown ? true : false}
+										>
+											<span aria-label={abbreviation && title}>{text}</span>
+											{id === idOfOpenDropdown ? (
+												<ChevronUp
+													className={styles.icon}
+													pointerEvents="none"
+												/>
+											) : (
+												<>
+													<ChevronDown
+														className={styles.icon}
+														pointerEvents="none"
+													/>
+												</>
+											)}
+										</button>
+									) : (
+										<a
+											href={href}
+											aria-current={ariaCurrent}
+											className={styles.link}
+											onClick={handleNavLinkClick}
+										>
+											<span aria-label={abbreviation && title}>{text}</span>
+										</a>
+									)}
+									{dropdown && canUseDOM ? (
+										<Dropdown
+											component={dropdownComponent}
+											className={classnames([
+												styles.dropdown,
+												id === idOfOpenDropdown && styles.active,
+											])}
+											text={text}
+											nextNavSlug={
+												servicesToDisplay[index + 1]
+													? servicesToDisplay[index + 1]["id"]
+													: skipLinkId
+											}
+											closeDropdown={() => setidOfOpenDropdown(null)}
+											id={`dropdown-${id}`}
+										/>
+									) : null}
+									{ariaCurrent && subLinks && (
+										<SubNav
+											links={subLinks}
+											text={text}
+											onNavigating={onNavigating}
+										/>
+									)}
+								</li>
+							);
+						}
+					)}
+				</ul>
+			</FocusTrap>
+		</GlobalNavContextProvider>
 	);
 }
 
