@@ -10,7 +10,6 @@ import {
 import OldIEMessage from "./OldIEMessage";
 import CoronaMessage from "./CoronaMessage";
 import Nav from "./Nav";
-import Nnav from "./Nav/Nnav";
 import Search from "./Search";
 import Account from "./Account";
 import SkipLink from "./SkipLink";
@@ -158,7 +157,7 @@ export class Header extends Component {
 									)}
 								</div>
 							</div>
-							<Nnav
+							<Nav
 								handleScrim={this.handleScrim}
 								skipLinkId={this.props.skipLinkId}
 								service={this.props.service}
@@ -169,17 +168,6 @@ export class Header extends Component {
 								onNavigating={this.props.onNavigating}
 								additionalSubMenuItems={this.props.additionalSubMenuItems}
 							/>
-							{/* <Nav
-								handleScrim={this.handleScrim}
-								skipLinkId={this.props.skipLinkId}
-								service={this.props.service}
-								isExpanded={this.state.isExpanded}
-								accountsLinks={
-									this.state.accountsData && this.state.accountsData.links
-								}
-								onNavigating={this.props.onNavigating}
-								additionalSubMenuItems={this.props.additionalSubMenuItems}
-							/> */}
 						</header>
 						<CoronaMessage onResize={this.props.onResize} />
 						<OldIEMessage />

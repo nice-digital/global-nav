@@ -1,19 +1,14 @@
 import React, { useState, createContext } from "react";
+import PropTypes from "prop-types";
 
 export const GlobalNavContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export const GlobalNavContextProvider = function ({ children }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
-
-	const handleChangeView = (value) => {
-		console.log("test handleChange", value);
-	};
 
 	const value = {
 		idOfOpenDropdown,
 		setidOfOpenDropdown,
-		handleChangeView,
 	};
 
 	return (
@@ -21,4 +16,8 @@ export const GlobalNavContextProvider = function ({ children }) {
 			{children}
 		</GlobalNavContext.Provider>
 	);
+};
+
+GlobalNavContextProvider.propTypes = {
+	children: PropTypes.array,
 };

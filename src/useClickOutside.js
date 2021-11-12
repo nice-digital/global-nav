@@ -1,15 +1,12 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
-function useClickOutside(idOfOpenDropdown) {
+function useClickOutside(idOfOpenDropdown, setidOfOpenDropdown) {
 	const ref = useRef(null);
 
 	const handleClickOutside = useCallback(
 		(event) => {
 			if (ref.current && !ref.current.contains(event.target)) {
-				console.log("outside click ", idOfOpenDropdown);
-				// setidOfOpenDropdown(null);
-			} else {
-				console.log("inside click ", idOfOpenDropdown);
+				setidOfOpenDropdown(null);
 			}
 		},
 		[idOfOpenDropdown]
