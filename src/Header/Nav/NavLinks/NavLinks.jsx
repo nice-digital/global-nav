@@ -80,12 +80,12 @@ export function NavLinks({
 		}
 	}
 
-	// useEventListener(
-	// 	"click",
-	// 	clickOutsideNav,
-	// 	// document.querySelector("#global-nav-header")
-	// 	document.querySelector("body")
-	// );
+	useEventListener(
+		"click",
+		clickOutsideNav,
+		// document.querySelector("#global-nav-header")
+		document.querySelector("body")
+	);
 	// ---------------
 
 	useEventListener("keydown", escapeDropdown);
