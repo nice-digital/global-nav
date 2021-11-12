@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -11,13 +11,14 @@ import {
 	headerClickEventAction,
 } from "../../tracker";
 
-import { GlobalNavContextProvider } from "../../GlobalNav.context";
 import useClickOutside from "../../useClickOutside";
+import { GlobalNavContext } from "../../GlobalNav.context";
 
 function Nnav(props) {
 	const { accountsLinks } = props;
 	const { ref } = useClickOutside();
-
+	const context = useContext(GlobalNavContext);
+	console.log("### context ###", context);
 	function handleNavItemClick(e) {
 		e.preventDefault();
 
@@ -116,59 +117,57 @@ function Nnav(props) {
 		activeService.links.concat(additionalSubMenuLinks);
 
 	return (
-		<GlobalNavContextProvider>
-			<div
-				id="header-menu"
-				className={classnames(
-					styles.wrapper,
-					{
-						[styles.wrapperExpanded]: props.isExpanded,
-					},
-					{
-						[styles.wrapperWithSubLinks]: subLinks,
-					}
-				)}
-				ref={ref}
-			>
-				<nav className={styles.nav} aria-label="primary navigation">
+		<div
+			id="header-menu"
+			className={classnames(
+				styles.wrapper,
+				{
+					[styles.wrapperExpanded]: props.isExpanded,
+				},
+				{
+					[styles.wrapperWithSubLinks]: subLinks,
+				}
+			)}
+			ref={ref}
+		>
+			<nav className={styles.nav} aria-label="primary navigation">
+				<div className={styles.menuWrapper}>
+					<NavLinks
+						handleScrim={props.handleScrim}
+						skipLinkId={props.skipLinkId}
+						servicesToDisplay={servicesToDisplay}
+						currentService={props.service}
+						subLinks={subLinks}
+						onNavigating={props.onNavigating}
+					/>
+				</div>
+			</nav>
+			{accountsLinksArray && (
+				<nav
+					aria-label="My account"
+					className={classnames(styles.nav, styles.myAccount)}
+				>
+					{accountsLinksArray.length > 1 && (
+						<h2 className={styles.myAccountHeading}>My account</h2>
+					)}
 					<div className={styles.menuWrapper}>
-						<NavLinks
-							handleScrim={props.handleScrim}
-							skipLinkId={props.skipLinkId}
-							servicesToDisplay={servicesToDisplay}
-							currentService={props.service}
-							subLinks={subLinks}
-							onNavigating={props.onNavigating}
-						/>
+						<ul className={styles.menuList}>
+							{accountsLinksArray.map(({ href, text }) => (
+								<li key={href}>
+									<a
+										href={href}
+										className={styles.link}
+										onClick={handleAccountNavItemClick}
+									>
+										{text}
+									</a>
+								</li>
+							))}
+						</ul>
 					</div>
 				</nav>
-				{accountsLinksArray && (
-					<nav
-						aria-label="My account"
-						className={classnames(styles.nav, styles.myAccount)}
-					>
-						{accountsLinksArray.length > 1 && (
-							<h2 className={styles.myAccountHeading}>My account</h2>
-						)}
-						<div className={styles.menuWrapper}>
-							<ul className={styles.menuList}>
-								{accountsLinksArray.map(({ href, text }) => (
-									<li key={href}>
-										<a
-											href={href}
-											className={styles.link}
-											onClick={handleAccountNavItemClick}
-										>
-											{text}
-										</a>
-									</li>
-								))}
-							</ul>
-						</div>
-					</nav>
-				)}
-			</div>
-		</GlobalNavContextProvider>
+			)}
+		</div>
 	);
 }
 

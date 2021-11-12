@@ -16,6 +16,7 @@ import Account from "./Account";
 import SkipLink from "./SkipLink";
 
 import styles from "./Header.module.scss";
+import { GlobalNavContextProvider } from "../GlobalNav.context";
 
 export class Header extends Component {
 	constructor(props) {
@@ -85,7 +86,7 @@ export class Header extends Component {
 	render() {
 		return (
 			this.props.enabled !== false && (
-				<>
+				<GlobalNavContextProvider>
 					<span
 						id="scrim"
 						className={this.state.scrimIsActive ? styles.scrim : undefined}
@@ -183,7 +184,7 @@ export class Header extends Component {
 						<CoronaMessage onResize={this.props.onResize} />
 						<OldIEMessage />
 					</div>
-				</>
+				</GlobalNavContextProvider>
 			)
 		);
 	}
