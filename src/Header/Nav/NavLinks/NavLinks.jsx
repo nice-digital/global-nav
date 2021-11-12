@@ -14,7 +14,6 @@ import {
 	defaultEventCategory,
 	headerClickEventAction,
 } from "../../../tracker";
-import useClickOutside from "../../../useClickOutside";
 import {
 	GlobalNavContext,
 	GlobalNavContextProvider,
@@ -29,10 +28,9 @@ export function NavLinks({
 	handleScrim,
 }) {
 	// const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
-	const [focusTrapActive] = useState(idOfOpenDropdown !== null);
 	const [canUseDOM, setCanUseDOM] = useState(false);
 
-	const { someData, handleChangeView, idOfOpenDropdown, setidOfOpenDropdown } =
+	const { handleChangeView, idOfOpenDropdown, setidOfOpenDropdown } =
 		useContext(GlobalNavContext);
 
 	useEffect(() => {
@@ -43,7 +41,7 @@ export function NavLinks({
 
 	useEffect(() => {
 		handleScrim(Boolean(idOfOpenDropdown !== null));
-		console.log("ID OF OPEN DROPDOWN CHANGED TO ", idOfOpenDropdown, someData);
+		console.log("ID OF OPEN DROPDOWN CHANGED TO ", idOfOpenDropdown);
 		handleChangeView(idOfOpenDropdown);
 	}, [idOfOpenDropdown]);
 
@@ -82,12 +80,12 @@ export function NavLinks({
 		}
 	}
 
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		// document.querySelector("#global-nav-header")
-		document.querySelector("body")
-	);
+	// useEventListener(
+	// 	"click",
+	// 	clickOutsideNav,
+	// 	// document.querySelector("#global-nav-header")
+	// 	document.querySelector("body")
+	// );
 	// ---------------
 
 	useEventListener("keydown", escapeDropdown);
@@ -99,7 +97,7 @@ export function NavLinks({
 
 	return (
 		<GlobalNavContextProvider>
-			<p>TEST!!!!!!!!!!!!{someData}</p>
+			<p>TEST!!!!!!!!!!!!{idOfOpenDropdown}</p>
 			<FocusTrap active={idOfOpenDropdown !== null} focusTrapOptions={options}>
 				<ul className={styles.menuList} aria-labelledby="header-menu-button">
 					{servicesToDisplay.map(

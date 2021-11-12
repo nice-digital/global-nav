@@ -6,14 +6,11 @@ export const GlobalNavContext = createContext();
 export const GlobalNavContextProvider = function ({ children }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 
-	const someData = "a static value";
-
 	const handleChangeView = (value) => {
 		console.log("test handleChange", value);
 	};
 
 	const value = {
-		someData,
 		idOfOpenDropdown,
 		setidOfOpenDropdown,
 		handleChangeView,
