@@ -12,12 +12,13 @@ import {
 } from "../../tracker";
 
 import useClickOutside from "../../useClickOutside";
-import { GlobalNavContext } from "../../GlobalNav.context";
+import { GlobalNavContext } from "../../GlobalNavContext";
 
 function Nnav(props) {
 	const { accountsLinks } = props;
-	const { ref } = useClickOutside();
 	const context = useContext(GlobalNavContext);
+	const { ref } = useClickOutside(context.idOfOpenDropdown);
+
 	console.log("### context ###", context);
 	function handleNavItemClick(e) {
 		e.preventDefault();

@@ -17,7 +17,7 @@ import {
 import {
 	GlobalNavContext,
 	GlobalNavContextProvider,
-} from "../../../GlobalNav.context";
+} from "../../../GlobalNavContext";
 
 export function NavLinks({
 	servicesToDisplay,
@@ -79,12 +79,12 @@ export function NavLinks({
 		}
 	}
 
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		// document.querySelector("#global-nav-header")
-		document.querySelector("body")
-	);
+	// useEventListener(
+	// 	"click",
+	// 	clickOutsideNav,
+	// 	// document.querySelector("#global-nav-header")
+	// 	document.querySelector("body")
+	// );
 	// ---------------
 
 	useEventListener("keydown", escapeDropdown);
