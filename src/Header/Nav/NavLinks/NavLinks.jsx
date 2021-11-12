@@ -80,12 +80,12 @@ export function NavLinks({
 		}
 	}
 
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		// document.querySelector("#global-nav-header")
-		document.querySelector("body")
-	);
+	// useEventListener(
+	// 	"click",
+	// 	clickOutsideNav,
+	// 	// document.querySelector("#global-nav-header")
+	// 	document.querySelector("body")
+	// );
 	// ---------------
 
 	useEventListener("keydown", escapeDropdown);
@@ -97,7 +97,7 @@ export function NavLinks({
 
 	return (
 		<GlobalNavContextProvider>
-			<p>TEST!!!!!!!!!!!!{idOfOpenDropdown}</p>
+			<p>State from global nav context ### : {idOfOpenDropdown}</p>
 			<FocusTrap active={idOfOpenDropdown !== null} focusTrapOptions={options}>
 				<ul className={styles.menuList} aria-labelledby="header-menu-button">
 					{servicesToDisplay.map(
