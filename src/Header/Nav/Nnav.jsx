@@ -10,12 +10,13 @@ import {
 	defaultEventCategory,
 	headerClickEventAction,
 } from "../../tracker";
-import useVisible from "../../useClickOutside";
+
 import { GlobalNavContextProvider } from "../../GlobalNav.context";
+import useClickOutside from "../../useClickOutside";
 
 function Nnav(props) {
 	const { accountsLinks } = props;
-	const { ref } = useVisible();
+	const { ref } = useClickOutside();
 
 	function handleNavItemClick(e) {
 		e.preventDefault();

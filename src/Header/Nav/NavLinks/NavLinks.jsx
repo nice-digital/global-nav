@@ -28,11 +28,12 @@ export function NavLinks({
 	skipLinkId,
 	handleScrim,
 }) {
-	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
+	// const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 	const [focusTrapActive] = useState(idOfOpenDropdown !== null);
 	const [canUseDOM, setCanUseDOM] = useState(false);
 
-	const { someData, handleChangeView } = useContext(GlobalNavContext);
+	const { someData, handleChangeView, idOfOpenDropdown, setidOfOpenDropdown } =
+		useContext(GlobalNavContext);
 
 	useEffect(() => {
 		setCanUseDOM(true);
@@ -43,7 +44,7 @@ export function NavLinks({
 	useEffect(() => {
 		handleScrim(Boolean(idOfOpenDropdown !== null));
 		console.log("ID OF OPEN DROPDOWN CHANGED TO ", idOfOpenDropdown, someData);
-		handleChangeView("hello");
+		handleChangeView(idOfOpenDropdown);
 	}, [idOfOpenDropdown]);
 
 	function handleNavButtonClick(id) {
@@ -81,12 +82,12 @@ export function NavLinks({
 		}
 	}
 
-	// useEventListener(
-	// 	"click",
-	// 	clickOutsideNav,
-	// 	// document.querySelector("#global-nav-header")
-	// 	document.querySelector("body")
-	// );
+	useEventListener(
+		"click",
+		clickOutsideNav,
+		// document.querySelector("#global-nav-header")
+		document.querySelector("body")
+	);
 	// ---------------
 
 	useEventListener("keydown", escapeDropdown);
