@@ -5,10 +5,10 @@ function useClickOutside() {
 
 	const handleClickOutside = (event) => {
 		if (ref.current && !ref.current.contains(event.target)) {
-			console.log("outside click ", event.target);
+			console.log("outside click ");
 			// setidOfOpenDropdown(null);
 		} else {
-			console.log("inside click ", event.target);
+			console.log("inside click ");
 		}
 	};
 
