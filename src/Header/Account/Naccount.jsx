@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -41,34 +41,25 @@ function Naccount(props) {
 		useIdAM: props.provider == Naccount.providers.idam,
 	});
 
+	const keypress = useRef();
+
 	const handleMyAccountButtonClick = useCallback((e) => {
-		// debugger;
+		keypress.current = e.pageX;
 		setState(function (prevState) {
 			return { isExpanded: !prevState.isExpanded };
-		}, focusAccount(e, state.isExpanded));
-		// if (!e.pageX && state.isExpanded) {
-		// 	focusAccount();
-		// }
+		});
 	}, []);
-	function focusAccount(e, expanded) {
-		// debugger;
-		console.log("focussing", e, " ", expanded);
+
+	function focusAccount() {
 		const accountMenu = document.getElementById("my-account");
 		accountMenu.setAttribute("tabIndex", -1);
 		accountMenu.focus();
 	}
 
-	useEffect(
-		(a, b, c, d, e) => {
-			console.log(a, b, c, d, e);
-		},
-		[state.isExpanded]
-	);
 	useEffect(() => {
-		// console.log("use effect ran");
-		// if (state.isExpanded) {
-		// 	focusAccount();
-		// }
+		if (!keypress.current && state.isExpanded) {
+			focusAccount();
+		}
 	}, [state.isExpanded]);
 
 	function handleKeyDown(event) {
