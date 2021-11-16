@@ -164,7 +164,6 @@ function Naccount(props) {
 		document.addEventListener("click", handleMegaMenuClick);
 	}, []);
 
-	// render() {
 	const { accountsData, environment } = props;
 
 	let signInLink = {};
@@ -229,7 +228,6 @@ function Naccount(props) {
 			{signInLink.text}
 		</a>
 	);
-	// }
 }
 
 export default Naccount;
