@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
@@ -32,19 +31,19 @@ function Naccount(props) {
 	// 	this.handleMegaMenuClick = this.handleMegaMenuClick.bind(this);
 	// }
 
-	const [providers] = useState({
-		idam: "idam",
-		niceAccounts: "niceAccounts",
-	});
+	// const [providers] = useState({
+	// 	idam: "idam",
+	// 	niceAccounts: "niceAccounts",
+	// });
 
 	const [state, setState] = useState({
 		isExpanded: false,
-		useIdAM: props.provider == providers.idam,
+		useIdAM: props.provider == Naccount.providers.idam,
 	});
 
 	console.log("PROPS ################ ", props);
 	console.log("PROPS.PROVIDER ################ ", props.provider);
-	console.log("Naccount providers ", providers);
+	console.log("Naccount providers ", Naccount.providers);
 
 	function handleMyAccountButtonClick(e) {
 		const isKeyboardEvent = !e.pageX;
@@ -231,3 +230,35 @@ function Naccount(props) {
 }
 
 export default Naccount;
+
+Naccount.providers = {
+	idam: "idam",
+	niceAccounts: "niceAccounts",
+};
+
+Naccount.propTypes = {
+	isLoggedIn: PropTypes.bool.isRequired,
+	onLoginStatusChecked: PropTypes.func,
+	accountsData: PropTypes.shape({
+		display_name: PropTypes.string,
+		thumbnail: PropTypes.string,
+		links: PropTypes.object,
+	}),
+	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
+	provider: PropTypes.oneOf([
+		Naccount.providers.niceAccounts,
+		Naccount.providers.idam,
+	]),
+	links: PropTypes.arrayOf(
+		PropTypes.shape({
+			text: PropTypes.string.isRequired,
+			url: PropTypes.string.isRequired,
+		})
+	),
+	displayName: PropTypes.string,
+};
+
+Naccount.defaultProps = {
+	environment: "live",
+	provider: "niceAccounts",
+};
