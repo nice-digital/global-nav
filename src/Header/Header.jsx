@@ -148,12 +148,12 @@ export class Header extends Component {
 									</button>
 									{this.props.auth !== false && (
 										<div className={styles.account}>
-											<Account
+											{/* <Account
 												onLoginStatusChecked={this.handleLoginStatusChecked}
 												isLoggedIn={this.state.isLoggedIn}
 												accountsData={this.state.accountsData}
 												{...this.props.auth}
-											/>
+											/> */}
 											<Naccount
 												onLoginStatusChecked={this.handleLoginStatusChecked}
 												isLoggedIn={this.state.isLoggedIn}

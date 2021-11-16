@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -25,10 +25,10 @@ function Naccount(props) {
 	// };
 
 	// 	this.handleMyAccountButtonClick =
-	// 		this.handleMyAccountButtonClick.bind(this);
-	// 	this.handleKeyDown = this.handleKeyDown.bind(this);
-	// 	this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
-	// 	this.handleMegaMenuClick = this.handleMegaMenuClick.bind(this);
+	// 		this.handleMyAccountButtonClick;
+	// 	this.handleKeyDown = this.handleKeyDown;
+	// 	this.handleMenuItemClick = this.handleMenuItemClick;
+	// 	this.handleMegaMenuClick = this.handleMegaMenuClick;
 	// }
 
 	// const [providers] = useState({
@@ -41,25 +41,35 @@ function Naccount(props) {
 		useIdAM: props.provider == Naccount.providers.idam,
 	});
 
-	console.log("PROPS ################ ", props);
-	console.log("PROPS.PROVIDER ################ ", props.provider);
-	console.log("Naccount providers ", Naccount.providers);
-
-	function handleMyAccountButtonClick(e) {
-		const isKeyboardEvent = !e.pageX;
-		setState(
-			function (prevState) {
-				return { isExpanded: !prevState.isExpanded };
-			},
-			function () {
-				if (state.isExpanded && isKeyboardEvent) {
-					const accountMenu = document.getElementById("my-account");
-					accountMenu.setAttribute("tabIndex", -1);
-					accountMenu.focus();
-				}
-			}.bind(this)
-		);
+	const handleMyAccountButtonClick = useCallback((e) => {
+		// debugger;
+		setState(function (prevState) {
+			return { isExpanded: !prevState.isExpanded };
+		}, focusAccount(e, state.isExpanded));
+		// if (!e.pageX && state.isExpanded) {
+		// 	focusAccount();
+		// }
+	}, []);
+	function focusAccount(e, expanded) {
+		// debugger;
+		console.log("focussing", e, " ", expanded);
+		const accountMenu = document.getElementById("my-account");
+		accountMenu.setAttribute("tabIndex", -1);
+		accountMenu.focus();
 	}
+
+	useEffect(
+		(a, b, c, d, e) => {
+			console.log(a, b, c, d, e);
+		},
+		[state.isExpanded]
+	);
+	useEffect(() => {
+		// console.log("use effect ran");
+		// if (state.isExpanded) {
+		// 	focusAccount();
+		// }
+	}, [state.isExpanded]);
 
 	function handleKeyDown(event) {
 		if (event.keyCode === escapeKeyCode) {
@@ -145,19 +155,15 @@ function Naccount(props) {
 		} else {
 			//NICE accounts
 			niceAccountsLoggedIn(props.environment)
-				.then(
-					function (data) {
-						if (props.onLoginStatusChecked) {
-							data.links = { ...consultationsResponsesLink, ...data.links };
-							props.onLoginStatusChecked(data);
-						}
-					}.bind(this)
-				)
-				.catch(
-					function (e) {
-						console.warn("Couldn't load account data from NICE accounts", e);
-					}.bind(this)
-				);
+				.then(function (data) {
+					if (props.onLoginStatusChecked) {
+						data.links = { ...consultationsResponsesLink, ...data.links };
+						props.onLoginStatusChecked(data);
+					}
+				})
+				.catch(function (e) {
+					console.warn("Couldn't load account data from NICE accounts", e);
+				});
 		}
 
 		document.addEventListener("click", handleMegaMenuClick);
@@ -195,27 +201,23 @@ function Naccount(props) {
 				onKeyDown={handleKeyDown}
 			>
 				{accountsData.links &&
-					Object.keys(accountsData.links).map(
-						function (text, i) {
-							return (
-								<li key={i} role="presentation">
-									<a
-										href={accountsData.links[text]}
-										role="menuitem"
-										onClick={handleMenuItemClick}
-										onKeyDown={handleKeyDown}
-										data-hj-suppress={
-											accountsData.links[text].indexOf("profile") > -1
-												? ""
-												: null
-										}
-									>
-										{text}
-									</a>
-								</li>
-							);
-						}.bind(this)
-					)}
+					Object.keys(accountsData.links).map(function (text, i) {
+						return (
+							<li key={i} role="presentation">
+								<a
+									href={accountsData.links[text]}
+									role="menuitem"
+									onClick={handleMenuItemClick}
+									onKeyDown={handleKeyDown}
+									data-hj-suppress={
+										accountsData.links[text].indexOf("profile") > -1 ? "" : null
+									}
+								>
+									{text}
+								</a>
+							</li>
+						);
+					})}
 			</ul>
 		</div>
 	) : (
