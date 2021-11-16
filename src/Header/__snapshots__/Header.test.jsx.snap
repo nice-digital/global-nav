@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Matches snapshot 1`] = `
-<Fragment>
+<GlobalNavContextProvider>
   <span
     aria-hidden="true"
     id="scrim"
@@ -82,6 +82,7 @@ exports[`Header Matches snapshot 1`] = `
               onLoginStatusChecked={[Function]}
               provider="niceAccounts"
             />
+            <Naccount />
           </div>
         </div>
       </div>
@@ -98,5 +99,5 @@ exports[`Header Matches snapshot 1`] = `
     <CoronaMessage />
     <OldIEMessage />
   </div>
-</Fragment>
+</GlobalNavContextProvider>
 `;

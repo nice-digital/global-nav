@@ -12,6 +12,7 @@ import CoronaMessage from "./CoronaMessage";
 import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
+import Naccount from "./Account/Naccount";
 import SkipLink from "./SkipLink";
 
 import styles from "./Header.module.scss";
@@ -148,6 +149,12 @@ export class Header extends Component {
 									{this.props.auth !== false && (
 										<div className={styles.account}>
 											<Account
+												onLoginStatusChecked={this.handleLoginStatusChecked}
+												isLoggedIn={this.state.isLoggedIn}
+												accountsData={this.state.accountsData}
+												{...this.props.auth}
+											/>
+											<Naccount
 												onLoginStatusChecked={this.handleLoginStatusChecked}
 												isLoggedIn={this.state.isLoggedIn}
 												accountsData={this.state.accountsData}
