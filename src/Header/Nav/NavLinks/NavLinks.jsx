@@ -27,8 +27,7 @@ export function NavLinks({
 	const [canUseDOM, setCanUseDOM] = useState(false);
 
 	useEffect(() => {
-		// NOTE: Reset this
-		// setCanUseDOM(true);
+		setCanUseDOM(true);
 	}, []);
 
 	const ESCAPE_KEYS = ["27", "Escape"];
