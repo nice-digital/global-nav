@@ -13,8 +13,6 @@ import {
 	headerClickEventAction,
 } from "../../tracker";
 
-const escapeKeyCode = 27;
-
 function Naccount(props) {
 	// constructor(props) {
 	// 	super(props);
@@ -41,7 +39,9 @@ function Naccount(props) {
 		useIdAM: props.provider == Naccount.providers.idam,
 	});
 
-	const keypress = useRef();
+	const keypress = useRef(),
+		myAccountButton = useRef(),
+		myAccountMenu = useRef();
 
 	const handleMyAccountButtonClick = useCallback((e) => {
 		keypress.current = e.pageX;
@@ -51,9 +51,8 @@ function Naccount(props) {
 	}, []);
 
 	function focusAccount() {
-		const accountMenu = document.getElementById("my-account");
-		accountMenu.setAttribute("tabIndex", -1);
-		accountMenu.focus();
+		myAccountMenu && myAccountMenu.current.setAttribute("tabIndex", -1);
+		myAccountMenu && myAccountMenu.current.focus();
 	}
 
 	useEffect(() => {
@@ -62,21 +61,21 @@ function Naccount(props) {
 		}
 	}, [state.isExpanded]);
 
-	function handleKeyDown(event) {
-		if (event.keyCode === escapeKeyCode) {
-			event.preventDefault();
+	function handleKeyDown(e) {
+		if (e.key === "Escape") {
+			e.preventDefault();
 			setState({
 				isExpanded: false,
 			});
-			document.getElementById("my-account-button").focus();
+			myAccountButton && myAccountButton.current.focus();
 		}
 	}
 
 	// NOTE: We would benefit from managing the state higher up
-	function handleMegaMenuClick(event) {
+	function handleMegaMenuClick(e) {
 		let megaMenu = document.querySelector("#header-menu");
 
-		if (megaMenu.contains(event.target)) {
+		if (megaMenu.contains(e.target)) {
 			setState({
 				isExpanded: false,
 			});
@@ -180,6 +179,7 @@ function Naccount(props) {
 				aria-expanded={state.isExpanded}
 				onClick={handleMyAccountButtonClick}
 				onKeyDown={handleKeyDown}
+				ref={myAccountButton}
 			>
 				My account
 			</button>
@@ -190,6 +190,7 @@ function Naccount(props) {
 				aria-hidden={!state.isExpanded}
 				aria-labelledby="my-account-button"
 				onKeyDown={handleKeyDown}
+				ref={myAccountMenu}
 			>
 				{accountsData.links &&
 					Object.keys(accountsData.links).map(function (text, i) {
