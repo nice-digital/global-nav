@@ -5,10 +5,13 @@ export const GlobalNavContext = createContext();
 
 export const GlobalNavContextProvider = function ({ children }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
+	const [isExpanded, setIsExpanded] = useState(null);
 
 	const value = {
 		idOfOpenDropdown,
 		setidOfOpenDropdown,
+		isExpanded,
+		setIsExpanded,
 	};
 
 	return (
