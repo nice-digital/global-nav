@@ -19,7 +19,8 @@ function Nav(props) {
 	const context = useContext(GlobalNavContext);
 	const { ref } = useClickOutside(
 		context.idOfOpenDropdown,
-		context.setidOfOpenDropdown
+		context.setidOfOpenDropdown,
+		context.setIsExpanded
 	);
 
 	function handleNavItemClick(e) {

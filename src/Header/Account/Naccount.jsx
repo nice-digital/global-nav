@@ -21,14 +21,6 @@ import {
 } from "../../tracker";
 
 function Naccount(props) {
-	// constructor(props) {
-	// 	super(props);
-
-	// state = {
-	// 	isExpanded: false,
-	// 	useIdAM: props.provider == Account.providers.idam,
-	// };
-
 	const [state, setState] = useState({
 		useIdAM: props.provider == Naccount.providers.idam,
 	});
@@ -64,14 +56,13 @@ function Naccount(props) {
 	}
 
 	// NOTE: We would benefit from managing the state higher up
-	function handleMegaMenuClick(e) {
-		let megaMenu = document.querySelector("#header-menu");
-
-		if (megaMenu.contains(e.target)) {
-			setIsExpanded(false);
-			megaMenu.focus();
-		}
-	}
+	// function handleMegaMenuClick(e) {
+	// let megaMenu = document.querySelector("#header-menu");
+	// if (megaMenu.contains(e.target)) {
+	// 	setIsExpanded(false);
+	// 	megaMenu.focus();
+	// }
+	// }
 
 	function handleMenuItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
@@ -146,7 +137,7 @@ function Naccount(props) {
 				});
 		}
 
-		document.addEventListener("click", handleMegaMenuClick);
+		// document.addEventListener("click", handleMegaMenuClick);
 	}, []);
 
 	const { accountsData, environment } = props;
