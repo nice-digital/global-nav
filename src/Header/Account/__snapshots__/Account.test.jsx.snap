@@ -111,13 +111,19 @@ exports[`Account Matches snapshot when logged in 1`] = `
 `;
 
 exports[`Account Matches snapshot when logged out 1`] = `
-<a
-  className="button"
-  href="https://accounts.nice.org.uk/signin"
-  onClick={[Function]}
+<Account
+  environment="live"
+  isLoggedIn={false}
+  provider="niceAccounts"
 >
-  Sign in
-</a>
+  <a
+    className="button"
+    href="https://accounts.nice.org.uk/signin"
+    onClick={[Function]}
+  >
+    Sign in
+  </a>
+</Account>
 `;
 
 exports[`Account Matches snapshot when logged out using IDAM 1`] = `

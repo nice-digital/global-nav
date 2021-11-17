@@ -2,6 +2,7 @@ import React from "react";
 import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
+import { GlobalNavContextProvider } from "./../../GlobalNavContext";
 
 import {
 	eventName,
@@ -43,40 +44,71 @@ describe("Account", () => {
 	});
 
 	it("Renders without crashing", () => {
-		const wrapper = shallow(<Account isLoggedIn={false} />);
+		const wrapper = shallow(
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={false} />
+			</GlobalNavContextProvider>
+		);
 		expect(wrapper).toHaveLength(1);
 	});
 
-	it("Matches snapshot when logged out", () => {
-		const wrapper = shallow(<Account isLoggedIn={false} />);
-
+	it.only("Matches snapshot when logged out", () => {
+		const full = mount(
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={false} />
+			</GlobalNavContextProvider>
+		);
+		const wrapper = full.find(Account);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
+	it("Matches snapshot when logged out", () => {
+		const wrapper = shallow(
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={false} />
+			</GlobalNavContextProvider>
+		);
+
+		const account = wrapper.find(Account);
+
+		expect(toJson(account)).toMatchSnapshot();
+	});
 	it("Matches snapshot when logged in", () => {
 		const wrapper = shallow(
-			<Account isLoggedIn={true} accountsData={accountsData} />
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</GlobalNavContextProvider>
 		);
 
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Matches snapshot when logged out using IDAM", () => {
-		const wrapper = shallow(<Account isLoggedIn={false} {...idamProps} />);
+		const wrapper = shallow(
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={false} {...idamProps} />
+			</GlobalNavContextProvider>
+		);
 
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Matches snapshot when logged in  using IDAM", () => {
 		const wrapper = shallow(
-			<Account isLoggedIn={true} accountsData={accountsData} {...idamProps} />
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} {...idamProps} />
+			</GlobalNavContextProvider>
 		);
 
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Is the correct authentication environment when supplied", () => {
-		const wrapper = shallow(<Account isLoggedIn={false} environment="beta" />);
+		const wrapper = shallow(
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={false} environment="beta" />
+			</GlobalNavContextProvider>
+		);
 		expect(wrapper.find(".button").props().href).toBe(
 			"https://beta-accounts.nice.org.uk/signin"
 		);
@@ -86,7 +118,12 @@ describe("Account", () => {
 		const onLoginStatusChecked = jest.fn();
 
 		shallow(
-			<Account isLoggedIn={false} onLoginStatusChecked={onLoginStatusChecked} />
+			<GlobalNavContextProvider>
+				<Account
+					isLoggedIn={false}
+					onLoginStatusChecked={onLoginStatusChecked}
+				/>
+			</GlobalNavContextProvider>
 		);
 
 		setImmediate(() => {
@@ -106,7 +143,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />,
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</GlobalNavContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -127,7 +166,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />,
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</GlobalNavContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -144,7 +185,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />,
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</GlobalNavContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -166,7 +209,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />,
+			<GlobalNavContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</GlobalNavContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -195,10 +240,12 @@ describe("Account", () => {
 
 		const trackingTest = (accountsData, linkText, eventLabel, href) => {
 			const wrapper = shallow(
-				<Account
-					isLoggedIn={accountsData != null}
-					accountsData={accountsData}
-				/>
+				<GlobalNavContextProvider>
+					<Account
+						isLoggedIn={accountsData != null}
+						accountsData={accountsData}
+					/>
+				</GlobalNavContextProvider>
 			);
 
 			const preventDefault = jest.fn();
@@ -230,15 +277,17 @@ describe("Account", () => {
 
 		it("should not send dataLayer event or prevent default for admin link click", () => {
 			const wrapper = shallow(
-				<Account
-					isLoggedIn={true}
-					accountsData={{
-						display_name: "Joe Bloggs",
-						links: {
-							Admin: "https://accounts.nice.org.uk/admin",
-						},
-					}}
-				/>
+				<GlobalNavContextProvider>
+					<Account
+						isLoggedIn={true}
+						accountsData={{
+							display_name: "Joe Bloggs",
+							links: {
+								Admin: "https://accounts.nice.org.uk/admin",
+							},
+						}}
+					/>
+				</GlobalNavContextProvider>
 			);
 
 			const preventDefault = jest.fn();

@@ -21,9 +21,8 @@ import {
 } from "../../tracker";
 
 function Account(props) {
-	const [state, setState] = useState({
-		useIdAM: props.provider == Account.providers.idam,
-	});
+	// We've left this is state as per the pre-hook implementation
+	const [doesUseIdAM] = useState(props.provider == Account.providers.idam);
 
 	const { accountMenuIsExpanded, setAccountMenuIsExpanded } =
 		useContext(GlobalNavContext);
@@ -90,7 +89,7 @@ function Account(props) {
 			"Consultation responses": "https://www.nice.org.uk/consultations/",
 		};
 
-		if (state.useIdAM) {
+		if (doesUseIdAM) {
 			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
 			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
 			//the following just converts the idam format to the nice accounts format.
@@ -133,7 +132,7 @@ function Account(props) {
 	const { accountsData, environment } = props;
 
 	let signInLink = {};
-	if (state.useIdAM) {
+	if (doesUseIdAM) {
 		signInLink = props.links[0];
 	} else {
 		signInLink["text"] = "Sign in";

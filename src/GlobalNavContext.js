@@ -32,5 +32,5 @@ export const GlobalNavContextProvider = function ({ children }) {
 };
 
 GlobalNavContextProvider.propTypes = {
-	children: PropTypes.array,
+	children: PropTypes.node,
 };
