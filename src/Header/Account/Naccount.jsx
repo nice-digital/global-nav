@@ -29,18 +29,6 @@ function Naccount(props) {
 	// 	useIdAM: props.provider == Account.providers.idam,
 	// };
 
-	// 	this.handleMyAccountButtonClick =
-	// 		this.handleMyAccountButtonClick;
-	// 	this.handleKeyDown = this.handleKeyDown;
-	// 	this.handleMenuItemClick = this.handleMenuItemClick;
-	// 	this.handleMegaMenuClick = this.handleMegaMenuClick;
-	// }
-
-	// const [providers] = useState({
-	// 	idam: "idam",
-	// 	niceAccounts: "niceAccounts",
-	// });
-
 	const [state, setState] = useState({
 		useIdAM: props.provider == Naccount.providers.idam,
 	});
