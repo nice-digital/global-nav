@@ -1,4 +1,11 @@
-import React, { Component } from "react";
+import React, {
+	useContext,
+	useEffect,
+	useState,
+	useCallback,
+	useRef,
+} from "react";
+import { GlobalNavContext } from "../../GlobalNavContext";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -13,63 +20,43 @@ import {
 	headerClickEventAction,
 } from "../../tracker";
 
-const escapeKeyCode = 27;
+function Account(props) {
+	const [state, setState] = useState({
+		useIdAM: props.provider == Account.providers.idam,
+	});
 
-export default class Account extends Component {
-	constructor(props) {
-		super(props);
+	const { accountMenuIsExpanded, setAccountMenuIsExpanded } =
+		useContext(GlobalNavContext);
 
-		this.state = {
-			isExpanded: false,
-			useIdAM: this.props.provider == Account.providers.idam,
-		};
+	const keypress = useRef(),
+		myAccountButton = useRef(),
+		myAccountMenu = useRef();
 
-		this.handleMyAccountButtonClick =
-			this.handleMyAccountButtonClick.bind(this);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
-		this.handleMegaMenuClick = this.handleMegaMenuClick.bind(this);
+	const handleMyAccountButtonClick = useCallback((e) => {
+		keypress.current = e.pageX;
+		setAccountMenuIsExpanded((prevState) => !prevState);
+	}, []);
+
+	function focusAccount() {
+		myAccountMenu && myAccountMenu.current.setAttribute("tabIndex", -1);
+		myAccountMenu && myAccountMenu.current.focus();
 	}
 
-	handleMyAccountButtonClick(e) {
-		const isKeyboardEvent = !e.pageX;
-		this.setState(
-			function (prevState) {
-				return { isExpanded: !prevState.isExpanded };
-			},
-			function () {
-				if (this.state.isExpanded && isKeyboardEvent) {
-					const accountMenu = document.getElementById("my-account");
-					accountMenu.setAttribute("tabIndex", -1);
-					accountMenu.focus();
-				}
-			}.bind(this)
-		);
-	}
+	useEffect(() => {
+		if (!keypress.current && accountMenuIsExpanded) {
+			focusAccount();
+		}
+	}, [accountMenuIsExpanded]);
 
-	handleKeyDown(event) {
-		if (event.keyCode === escapeKeyCode) {
-			event.preventDefault();
-			this.setState({
-				isExpanded: false,
-			});
-			document.getElementById("my-account-button").focus();
+	function handleKeyDown(e) {
+		if (e.key === "Escape") {
+			e.preventDefault();
+			setAccountMenuIsExpanded(false);
+			myAccountButton && myAccountButton.current.focus();
 		}
 	}
 
-	// NOTE: We would benefit from managing the state higher up
-	handleMegaMenuClick(event) {
-		let megaMenu = document.querySelector("#header-menu");
-
-		if (megaMenu.contains(event.target)) {
-			this.setState({
-				isExpanded: false,
-			});
-			megaMenu.focus();
-		}
-	}
-
-	handleMenuItemClick(e) {
+	function handleMenuItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
 
 		let eventLabel;
@@ -98,20 +85,20 @@ export default class Account extends Component {
 		}
 	}
 
-	componentDidMount() {
+	useEffect(() => {
 		const consultationsResponsesLink = {
 			"Consultation responses": "https://www.nice.org.uk/consultations/",
 		};
 
-		if (this.state.useIdAM) {
+		if (state.useIdAM) {
 			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
 			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
 			//the following just converts the idam format to the nice accounts format.
 
-			const { displayName } = this.props;
+			const { displayName } = props;
 			const isLoggedIn = !!displayName;
 
-			let links = this.props.links.reduce(function (links, link) {
+			let links = props.links.reduce(function (links, link) {
 				links[link.text] = link.url;
 				return links;
 			}, {});
@@ -125,98 +112,89 @@ export default class Account extends Component {
 				links: links,
 			};
 
-			if (this.props.onLoginStatusChecked) {
-				this.props.onLoginStatusChecked(convertedData);
+			if (props.onLoginStatusChecked) {
+				props.onLoginStatusChecked(convertedData);
 			}
 		} else {
 			//NICE accounts
-			niceAccountsLoggedIn(this.props.environment)
-				.then(
-					function (data) {
-						if (this.props.onLoginStatusChecked) {
-							data.links = { ...consultationsResponsesLink, ...data.links };
-
-							this.props.onLoginStatusChecked(data);
-						}
-					}.bind(this)
-				)
-				.catch(
-					function (e) {
-						console.warn("Couldn't load account data from NICE accounts", e);
-					}.bind(this)
-				);
+			niceAccountsLoggedIn(props.environment)
+				.then(function (data) {
+					if (props.onLoginStatusChecked) {
+						data.links = { ...consultationsResponsesLink, ...data.links };
+						props.onLoginStatusChecked(data);
+					}
+				})
+				.catch(function (e) {
+					console.warn("Couldn't load account data from NICE accounts", e);
+				});
 		}
+	}, []);
 
-		document.addEventListener("click", this.handleMegaMenuClick);
+	const { accountsData, environment } = props;
+
+	let signInLink = {};
+	if (state.useIdAM) {
+		signInLink = props.links[0];
+	} else {
+		signInLink["text"] = "Sign in";
+		signInLink["url"] = getDomainBaseUrl(environment) + "signin";
 	}
 
-	render() {
-		const { accountsData, environment } = this.props;
-
-		let signInLink = {};
-		if (this.state.useIdAM) {
-			signInLink = this.props.links[0];
-		} else {
-			signInLink["text"] = "Sign in";
-			signInLink["url"] = getDomainBaseUrl(environment) + "signin";
-		}
-
-		return this.props.isLoggedIn ? (
-			<div className={styles.account}>
-				<button
-					className={classnames(styles.button, styles.myAccount)}
-					id="my-account-button"
-					aria-controls="my-account"
-					aria-haspopup="menu"
-					aria-expanded={this.state.isExpanded}
-					onClick={this.handleMyAccountButtonClick}
-					onKeyDown={this.handleKeyDown}
-				>
-					My account
-				</button>
-				<ul
-					className={styles.menu}
-					id="my-account"
-					role="menu"
-					aria-hidden={!this.state.isExpanded}
-					aria-labelledby="my-account-button"
-					onKeyDown={this.handleKeyDown}
-				>
-					{accountsData.links &&
-						Object.keys(accountsData.links).map(
-							function (text, i) {
-								return (
-									<li key={i} role="presentation">
-										<a
-											href={accountsData.links[text]}
-											role="menuitem"
-											onClick={this.handleMenuItemClick}
-											onKeyDown={this.handleKeyDown}
-											data-hj-suppress={
-												accountsData.links[text].indexOf("profile") > -1
-													? ""
-													: null
-											}
-										>
-											{text}
-										</a>
-									</li>
-								);
-							}.bind(this)
-						)}
-				</ul>
-			</div>
-		) : (
-			<a
-				href={signInLink.url}
-				className={styles.button}
-				onClick={this.handleMenuItemClick}
+	return props.isLoggedIn ? (
+		<div className={styles.account}>
+			<button
+				className={classnames(styles.button, styles.myAccount)}
+				id="my-account-button"
+				aria-controls="my-account"
+				aria-haspopup="menu"
+				aria-expanded={accountMenuIsExpanded}
+				onClick={handleMyAccountButtonClick}
+				onKeyDown={handleKeyDown}
+				ref={myAccountButton}
 			>
-				{signInLink.text}
-			</a>
-		);
-	}
+				My account
+			</button>
+			<ul
+				className={styles.menu}
+				id="my-account"
+				role="menu"
+				aria-hidden={!accountMenuIsExpanded}
+				aria-labelledby="my-account-button"
+				onKeyDown={handleKeyDown}
+				ref={myAccountMenu}
+			>
+				{accountsData.links &&
+					Object.keys(accountsData.links).map(function (text, i) {
+						return (
+							<li key={i} role="presentation">
+								<a
+									href={accountsData.links[text]}
+									role="menuitem"
+									onClick={handleMenuItemClick}
+									onKeyDown={handleKeyDown}
+									data-hj-suppress={
+										accountsData.links[text].indexOf("profile") > -1 ? "" : null
+									}
+								>
+									{text}
+								</a>
+							</li>
+						);
+					})}
+			</ul>
+		</div>
+	) : (
+		<a
+			href={signInLink.url}
+			className={styles.button}
+			onClick={handleMenuItemClick}
+		>
+			{signInLink.text}
+		</a>
+	);
 }
+
+export default Account;
 
 Account.providers = {
 	idam: "idam",

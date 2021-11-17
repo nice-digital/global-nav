@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -15,44 +15,30 @@ import {
 
 const escapeKeyCode = 27;
 
-function Naccount(props) {
-	// constructor(props) {
-	// 	super(props);
+export default class Account extends Component {
+	constructor(props) {
+		super(props);
 
-	// state = {
-	// 	isExpanded: false,
-	// 	useIdAM: props.provider == Account.providers.idam,
-	// };
+		this.state = {
+			isExpanded: false,
+			useIdAM: this.props.provider == Account.providers.idam,
+		};
 
-	// 	this.handleMyAccountButtonClick =
-	// 		this.handleMyAccountButtonClick.bind(this);
-	// 	this.handleKeyDown = this.handleKeyDown.bind(this);
-	// 	this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
-	// 	this.handleMegaMenuClick = this.handleMegaMenuClick.bind(this);
-	// }
+		this.handleMyAccountButtonClick =
+			this.handleMyAccountButtonClick.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
+		this.handleMegaMenuClick = this.handleMegaMenuClick.bind(this);
+	}
 
-	// const [providers] = useState({
-	// 	idam: "idam",
-	// 	niceAccounts: "niceAccounts",
-	// });
-
-	const [state, setState] = useState({
-		isExpanded: false,
-		useIdAM: props.provider == Naccount.providers.idam,
-	});
-
-	console.log("PROPS ################ ", props);
-	console.log("PROPS.PROVIDER ################ ", props.provider);
-	console.log("Naccount providers ", Naccount.providers);
-
-	function handleMyAccountButtonClick(e) {
+	handleMyAccountButtonClick(e) {
 		const isKeyboardEvent = !e.pageX;
-		setState(
+		this.setState(
 			function (prevState) {
 				return { isExpanded: !prevState.isExpanded };
 			},
 			function () {
-				if (state.isExpanded && isKeyboardEvent) {
+				if (this.state.isExpanded && isKeyboardEvent) {
 					const accountMenu = document.getElementById("my-account");
 					accountMenu.setAttribute("tabIndex", -1);
 					accountMenu.focus();
@@ -61,10 +47,10 @@ function Naccount(props) {
 		);
 	}
 
-	function handleKeyDown(event) {
+	handleKeyDown(event) {
 		if (event.keyCode === escapeKeyCode) {
 			event.preventDefault();
-			setState({
+			this.setState({
 				isExpanded: false,
 			});
 			document.getElementById("my-account-button").focus();
@@ -72,18 +58,18 @@ function Naccount(props) {
 	}
 
 	// NOTE: We would benefit from managing the state higher up
-	function handleMegaMenuClick(event) {
+	handleMegaMenuClick(event) {
 		let megaMenu = document.querySelector("#header-menu");
 
 		if (megaMenu.contains(event.target)) {
-			setState({
+			this.setState({
 				isExpanded: false,
 			});
 			megaMenu.focus();
 		}
 	}
 
-	function handleMenuItemClick(e) {
+	handleMenuItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
 
 		let eventLabel;
@@ -112,20 +98,20 @@ function Naccount(props) {
 		}
 	}
 
-	useEffect(() => {
+	componentDidMount() {
 		const consultationsResponsesLink = {
 			"Consultation responses": "https://www.nice.org.uk/consultations/",
 		};
 
-		if (state.useIdAM) {
+		if (this.state.useIdAM) {
 			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
 			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
 			//the following just converts the idam format to the nice accounts format.
 
-			const { displayName } = props;
+			const { displayName } = this.props;
 			const isLoggedIn = !!displayName;
 
-			let links = props.links.reduce(function (links, link) {
+			let links = this.props.links.reduce(function (links, link) {
 				links[link.text] = link.url;
 				return links;
 			}, {});
@@ -139,17 +125,18 @@ function Naccount(props) {
 				links: links,
 			};
 
-			if (props.onLoginStatusChecked) {
-				props.onLoginStatusChecked(convertedData);
+			if (this.props.onLoginStatusChecked) {
+				this.props.onLoginStatusChecked(convertedData);
 			}
 		} else {
 			//NICE accounts
-			niceAccountsLoggedIn(props.environment)
+			niceAccountsLoggedIn(this.props.environment)
 				.then(
 					function (data) {
-						if (props.onLoginStatusChecked) {
+						if (this.props.onLoginStatusChecked) {
 							data.links = { ...consultationsResponsesLink, ...data.links };
-							props.onLoginStatusChecked(data);
+
+							this.props.onLoginStatusChecked(data);
 						}
 					}.bind(this)
 				)
@@ -160,83 +147,83 @@ function Naccount(props) {
 				);
 		}
 
-		document.addEventListener("click", handleMegaMenuClick);
-	}, []);
-
-	const { accountsData, environment } = props;
-
-	let signInLink = {};
-	if (state.useIdAM) {
-		signInLink = props.links[0];
-	} else {
-		signInLink["text"] = "Sign in";
-		signInLink["url"] = getDomainBaseUrl(environment) + "signin";
+		document.addEventListener("click", this.handleMegaMenuClick);
 	}
 
-	return props.isLoggedIn ? (
-		<div className={styles.account}>
-			<button
-				className={classnames(styles.button, styles.myAccount)}
-				id="my-account-button"
-				aria-controls="my-account"
-				aria-haspopup="menu"
-				aria-expanded={state.isExpanded}
-				onClick={handleMyAccountButtonClick}
-				onKeyDown={handleKeyDown}
+	render() {
+		const { accountsData, environment } = this.props;
+
+		let signInLink = {};
+		if (this.state.useIdAM) {
+			signInLink = this.props.links[0];
+		} else {
+			signInLink["text"] = "Sign in";
+			signInLink["url"] = getDomainBaseUrl(environment) + "signin";
+		}
+
+		return this.props.isLoggedIn ? (
+			<div className={styles.account}>
+				<button
+					className={classnames(styles.button, styles.myAccount)}
+					id="my-account-button"
+					aria-controls="my-account"
+					aria-haspopup="menu"
+					aria-expanded={this.state.isExpanded}
+					onClick={this.handleMyAccountButtonClick}
+					onKeyDown={this.handleKeyDown}
+				>
+					My account
+				</button>
+				<ul
+					className={styles.menu}
+					id="my-account"
+					role="menu"
+					aria-hidden={!this.state.isExpanded}
+					aria-labelledby="my-account-button"
+					onKeyDown={this.handleKeyDown}
+				>
+					{accountsData.links &&
+						Object.keys(accountsData.links).map(
+							function (text, i) {
+								return (
+									<li key={i} role="presentation">
+										<a
+											href={accountsData.links[text]}
+											role="menuitem"
+											onClick={this.handleMenuItemClick}
+											onKeyDown={this.handleKeyDown}
+											data-hj-suppress={
+												accountsData.links[text].indexOf("profile") > -1
+													? ""
+													: null
+											}
+										>
+											{text}
+										</a>
+									</li>
+								);
+							}.bind(this)
+						)}
+				</ul>
+			</div>
+		) : (
+			<a
+				href={signInLink.url}
+				className={styles.button}
+				onClick={this.handleMenuItemClick}
 			>
-				My account
-			</button>
-			<ul
-				className={styles.menu}
-				id="my-account"
-				role="menu"
-				aria-hidden={!state.isExpanded}
-				aria-labelledby="my-account-button"
-				onKeyDown={handleKeyDown}
-			>
-				{accountsData.links &&
-					Object.keys(accountsData.links).map(
-						function (text, i) {
-							return (
-								<li key={i} role="presentation">
-									<a
-										href={accountsData.links[text]}
-										role="menuitem"
-										onClick={handleMenuItemClick}
-										onKeyDown={handleKeyDown}
-										data-hj-suppress={
-											accountsData.links[text].indexOf("profile") > -1
-												? ""
-												: null
-										}
-									>
-										{text}
-									</a>
-								</li>
-							);
-						}.bind(this)
-					)}
-			</ul>
-		</div>
-	) : (
-		<a
-			href={signInLink.url}
-			className={styles.button}
-			onClick={handleMenuItemClick}
-		>
-			{signInLink.text}
-		</a>
-	);
+				{signInLink.text}
+			</a>
+		);
+	}
 }
 
-export default Naccount;
-
-Naccount.providers = {
+Account.providers = {
 	idam: "idam",
 	niceAccounts: "niceAccounts",
 };
 
-Naccount.propTypes = {
+Account.propTypes = {
 	isLoggedIn: PropTypes.bool.isRequired,
 	onLoginStatusChecked: PropTypes.func,
 	accountsData: PropTypes.shape({
@@ -246,8 +233,8 @@ Naccount.propTypes = {
 	}),
 	environment: PropTypes.oneOf(["live", "test", "beta", "local"]),
 	provider: PropTypes.oneOf([
-		Naccount.providers.niceAccounts,
-		Naccount.providers.idam,
+		Account.providers.niceAccounts,
+		Account.providers.idam,
 	]),
 	links: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -258,7 +245,7 @@ Naccount.propTypes = {
 	displayName: PropTypes.string,
 };
 
-Naccount.defaultProps = {
+Account.defaultProps = {
 	environment: "live",
 	provider: "niceAccounts",
 };
