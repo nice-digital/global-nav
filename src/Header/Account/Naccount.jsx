@@ -25,7 +25,8 @@ function Naccount(props) {
 		useIdAM: props.provider == Naccount.providers.idam,
 	});
 
-	const { isExpanded, setIsExpanded } = useContext(GlobalNavContext);
+	const { accountMenuIsExpanded, setAccountMenuIsExpanded } =
+		useContext(GlobalNavContext);
 
 	const keypress = useRef(),
 		myAccountButton = useRef(),
@@ -33,7 +34,7 @@ function Naccount(props) {
 
 	const handleMyAccountButtonClick = useCallback((e) => {
 		keypress.current = e.pageX;
-		setIsExpanded((prevState) => !prevState);
+		setAccountMenuIsExpanded((prevState) => !prevState);
 	}, []);
 
 	function focusAccount() {
@@ -42,27 +43,18 @@ function Naccount(props) {
 	}
 
 	useEffect(() => {
-		if (!keypress.current && isExpanded) {
+		if (!keypress.current && accountMenuIsExpanded) {
 			focusAccount();
 		}
-	}, [isExpanded]);
+	}, [accountMenuIsExpanded]);
 
 	function handleKeyDown(e) {
 		if (e.key === "Escape") {
 			e.preventDefault();
-			setIsExpanded(false);
+			setAccountMenuIsExpanded(false);
 			myAccountButton && myAccountButton.current.focus();
 		}
 	}
-
-	// NOTE: We would benefit from managing the state higher up
-	// function handleMegaMenuClick(e) {
-	// let megaMenu = document.querySelector("#header-menu");
-	// if (megaMenu.contains(e.target)) {
-	// 	setIsExpanded(false);
-	// 	megaMenu.focus();
-	// }
-	// }
 
 	function handleMenuItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
@@ -136,8 +128,6 @@ function Naccount(props) {
 					console.warn("Couldn't load account data from NICE accounts", e);
 				});
 		}
-
-		// document.addEventListener("click", handleMegaMenuClick);
 	}, []);
 
 	const { accountsData, environment } = props;
@@ -157,7 +147,7 @@ function Naccount(props) {
 				id="my-account-button"
 				aria-controls="my-account"
 				aria-haspopup="menu"
-				aria-expanded={isExpanded}
+				aria-expanded={accountMenuIsExpanded}
 				onClick={handleMyAccountButtonClick}
 				onKeyDown={handleKeyDown}
 				ref={myAccountButton}
@@ -168,7 +158,7 @@ function Naccount(props) {
 				className={styles.menu}
 				id="my-account"
 				role="menu"
-				aria-hidden={!isExpanded}
+				aria-hidden={!accountMenuIsExpanded}
 				aria-labelledby="my-account-button"
 				onKeyDown={handleKeyDown}
 				ref={myAccountMenu}
