@@ -11,8 +11,6 @@ import {
 	eventTimeout,
 } from "../../tracker";
 
-const escapeKeyCode = 27;
-
 jest.mock("./nice-accounts", () => ({
 	checkIsLoggedIn: jest.fn(() =>
 		Promise.resolve({
@@ -186,13 +184,8 @@ describe("Account", () => {
 		);
 
 		wrapper.find("#my-account-button").simulate("click", {});
-		wrapper
-			.find("#my-account-button")
-			.simulate("keydown", { keyCode: escapeKeyCode });
-
-		// wrapper.instance().forceUpdate();
+		wrapper.find("#my-account-button").simulate("keydown", { key: "Escape" });
 		wrapper.update();
-
 		expect(wrapper.find("#my-account-button").props()["aria-expanded"]).toBe(
 			false
 		);
@@ -215,7 +208,7 @@ describe("Account", () => {
 		wrapper
 			.find("a[role='menuitem']")
 			.first()
-			.simulate("keydown", { keyCode: escapeKeyCode });
+			.simulate("keydown", { key: "Escape" });
 
 		expect(
 			wrapper.find("[aria-controls='my-account']").props()["aria-expanded"]
