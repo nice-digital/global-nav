@@ -2,7 +2,7 @@ import React from "react";
 import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
-import { GlobalNavContextProvider } from "./../../GlobalNavContext";
+import { GlobalNavContextProvider } from "./../context/HeaderContext";
 
 import {
 	eventName,
