@@ -155,31 +155,31 @@ exports[`Services Matches snapshot 1`] = `
       </TrackedLink>
     </li>
     <li
-      key="about-us"
+      key="about"
     >
       <TrackedLink
         aria-current={null}
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="About us"
+        eventLabel="About"
         href="https://www.nice.org.uk/about"
       >
-        About us
+        About
       </TrackedLink>
     </li>
     <li
-      key="more-nice-services"
+      key="more"
     >
       <TrackedLink
         aria-current={null}
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="More NICE services"
-        href={null}
+        eventLabel="More"
+        href="#more"
       >
-        More NICE services
+        More
       </TrackedLink>
     </li>
   </ul>

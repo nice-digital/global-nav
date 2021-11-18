@@ -160,14 +160,13 @@ export function NavLinks({
 													className={styles.nonJsDropdown}
 													aria-label="More NICE services"
 												>
-													{nestedLinks &&
-														nestedLinks.map(({ href, text, id }) => {
-															return (
-																<li key={id}>
-																	<a href={href}>{text}</a>
-																</li>
-															);
-														})}
+													{nestedLinks.map(({ href, text, id }) => {
+														return (
+															<li key={id}>
+																<a href={href}>{text}</a>
+															</li>
+														);
+													})}
 												</ul>
 											</>
 										)}
