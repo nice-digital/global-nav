@@ -1,113 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Account Matches snapshot when logged in  using IDAM 1`] = `
-<div
-  className="account"
+exports[`Account Matches snapshot when logged in 1`] = `
+<Account
+  accountsData={
+    Object {
+      "display_name": "Joe Bloggs",
+      "links": Object {
+        "Joe Bloggs": "https://accounts.nice.org.uk/users/12345/editprofile",
+        "Sign out": "https://accounts.nice.org.uk/signout",
+      },
+    }
+  }
+  environment="live"
+  isLoggedIn={true}
+  provider="niceAccounts"
 >
-  <button
-    aria-controls="my-account"
-    aria-expanded={false}
-    aria-haspopup="menu"
-    className="button myAccount"
-    id="my-account-button"
-    onClick={[Function]}
-    onKeyDown={[Function]}
+  <div
+    className="account"
   >
-    My account
-  </button>
-  <ul
-    aria-hidden={true}
-    aria-labelledby="my-account-button"
-    className="menu"
-    id="my-account"
-    onKeyDown={[Function]}
-    role="menu"
-  >
-    <li
-      key="0"
-      role="presentation"
+    <button
+      aria-controls="my-account"
+      aria-expanded={false}
+      aria-haspopup="menu"
+      className="button myAccount"
+      id="my-account-button"
+      onClick={[Function]}
+      onKeyDown={[Function]}
     >
-      <a
-        data-hj-suppress=""
-        href="https://accounts.nice.org.uk/users/12345/editprofile"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="menuitem"
-      >
-        Joe Bloggs
-      </a>
-    </li>
-    <li
-      key="1"
-      role="presentation"
+      My account
+    </button>
+    <ul
+      aria-hidden={true}
+      aria-labelledby="my-account-button"
+      className="menu"
+      id="my-account"
+      onKeyDown={[Function]}
+      role="menu"
     >
-      <a
-        data-hj-suppress={null}
-        href="https://accounts.nice.org.uk/signout"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="menuitem"
+      <li
+        key="0"
+        role="presentation"
       >
-        Sign out
-      </a>
-    </li>
-  </ul>
-</div>
+        <a
+          data-hj-suppress=""
+          href="https://accounts.nice.org.uk/users/12345/editprofile"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="menuitem"
+        >
+          Joe Bloggs
+        </a>
+      </li>
+      <li
+        key="1"
+        role="presentation"
+      >
+        <a
+          data-hj-suppress={null}
+          href="https://accounts.nice.org.uk/signout"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="menuitem"
+        >
+          Sign out
+        </a>
+      </li>
+    </ul>
+  </div>
+</Account>
 `;
 
-exports[`Account Matches snapshot when logged in 1`] = `
-<div
-  className="account"
+exports[`Account Matches snapshot when logged in using IDAM 1`] = `
+<Account
+  accountsData={
+    Object {
+      "display_name": "Joe Bloggs",
+      "links": Object {
+        "Joe Bloggs": "https://accounts.nice.org.uk/users/12345/editprofile",
+        "Sign out": "https://accounts.nice.org.uk/signout",
+      },
+    }
+  }
+  environment="live"
+  isLoggedIn={true}
+  links={
+    Array [
+      Object {
+        "text": "sign in",
+        "url": "/signin",
+      },
+    ]
+  }
+  provider="idam"
 >
-  <button
-    aria-controls="my-account"
-    aria-expanded={false}
-    aria-haspopup="menu"
-    className="button myAccount"
-    id="my-account-button"
-    onClick={[Function]}
-    onKeyDown={[Function]}
+  <div
+    className="account"
   >
-    My account
-  </button>
-  <ul
-    aria-hidden={true}
-    aria-labelledby="my-account-button"
-    className="menu"
-    id="my-account"
-    onKeyDown={[Function]}
-    role="menu"
-  >
-    <li
-      key="0"
-      role="presentation"
+    <button
+      aria-controls="my-account"
+      aria-expanded={false}
+      aria-haspopup="menu"
+      className="button myAccount"
+      id="my-account-button"
+      onClick={[Function]}
+      onKeyDown={[Function]}
     >
-      <a
-        data-hj-suppress=""
-        href="https://accounts.nice.org.uk/users/12345/editprofile"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="menuitem"
-      >
-        Joe Bloggs
-      </a>
-    </li>
-    <li
-      key="1"
-      role="presentation"
+      My account
+    </button>
+    <ul
+      aria-hidden={true}
+      aria-labelledby="my-account-button"
+      className="menu"
+      id="my-account"
+      onKeyDown={[Function]}
+      role="menu"
     >
-      <a
-        data-hj-suppress={null}
-        href="https://accounts.nice.org.uk/signout"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="menuitem"
+      <li
+        key="0"
+        role="presentation"
       >
-        Sign out
-      </a>
-    </li>
-  </ul>
-</div>
+        <a
+          data-hj-suppress=""
+          href="https://accounts.nice.org.uk/users/12345/editprofile"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="menuitem"
+        >
+          Joe Bloggs
+        </a>
+      </li>
+      <li
+        key="1"
+        role="presentation"
+      >
+        <a
+          data-hj-suppress={null}
+          href="https://accounts.nice.org.uk/signout"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="menuitem"
+        >
+          Sign out
+        </a>
+      </li>
+    </ul>
+  </div>
+</Account>
 `;
 
 exports[`Account Matches snapshot when logged out 1`] = `
@@ -127,11 +165,25 @@ exports[`Account Matches snapshot when logged out 1`] = `
 `;
 
 exports[`Account Matches snapshot when logged out using IDAM 1`] = `
-<a
-  className="button"
-  href="/signin"
-  onClick={[Function]}
+<Account
+  environment="live"
+  isLoggedIn={false}
+  links={
+    Array [
+      Object {
+        "text": "sign in",
+        "url": "/signin",
+      },
+    ]
+  }
+  provider="idam"
 >
-  sign in
-</a>
+  <a
+    className="button"
+    href="/signin"
+    onClick={[Function]}
+  >
+    sign in
+  </a>
+</Account>
 `;
