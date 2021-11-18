@@ -238,7 +238,9 @@ describe("Account", () => {
 
 			const preventDefault = jest.fn();
 
-			wrapper.find(`a[children="${linkText}"]`).simulate("click", {
+			const button = wrapper.find(`a[children="${linkText}"]`);
+
+			button.props().onClick({
 				preventDefault: preventDefault,
 				currentTarget: {
 					getAttribute: () => href,
