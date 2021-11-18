@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 
-function useClickOutside(
-	idOfOpenDropdown,
-	setidOfOpenDropdown
-	// setAccountMenuIsExpanded
-) {
+function useClickOutside(idOfOpenDropdown, setidOfOpenDropdown) {
 	const ref = useRef(null);
 
 	const handleClickOutside = useCallback(
@@ -13,10 +9,6 @@ function useClickOutside(
 			if (ref.current && !ref.current.contains(event.target)) {
 				setidOfOpenDropdown(null);
 			}
-			// if (ref.current && ref.current.contains(event.target)) {
-			// 	setAccountMenuIsExpanded(false);
-			// 	ref.current.focus();
-			// }
 		},
 		[idOfOpenDropdown]
 	);
