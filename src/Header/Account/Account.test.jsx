@@ -144,8 +144,8 @@ describe("Account", () => {
 		);
 
 		wrapper.find("#my-account-button").simulate("click", { pageX: 99 });
-
-		wrapper.instance().forceUpdate();
+		// wrapper.instance().forceUpdate();
+		wrapper.update();
 
 		expect(wrapper.find("#my-account-button").props()["aria-expanded"]).toBe(
 			true
@@ -190,7 +190,8 @@ describe("Account", () => {
 			.find("#my-account-button")
 			.simulate("keydown", { keyCode: escapeKeyCode });
 
-		wrapper.instance().forceUpdate();
+		// wrapper.instance().forceUpdate();
+		wrapper.update();
 
 		expect(wrapper.find("#my-account-button").props()["aria-expanded"]).toBe(
 			false
