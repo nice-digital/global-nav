@@ -11,16 +11,17 @@ import {
 	headerClickEventAction,
 } from "../../tracker";
 
-import useClickOutside from "../../useClickOutside";
-import { GlobalNavContext } from "../../GlobalNavContext";
+import useClickOutside from "../../hooks/useClickOutside";
+import { GlobalNavContext } from "../context/HeaderContext";
 
 function Nav(props) {
 	const { accountsLinks } = props;
 	const context = useContext(GlobalNavContext);
-	const { ref } = useClickOutside(
-		context.idOfOpenDropdown,
-		context.setidOfOpenDropdown
-	);
+	const { ref } = useClickOutside(context.idOfOpenDropdown, wasClickedOutside);
+
+	function wasClickedOutside(result) {
+		if (result == true) context.setidOfOpenDropdown(null);
+	}
 
 	function handleNavItemClick(e) {
 		e.preventDefault();

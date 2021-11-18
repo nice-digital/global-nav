@@ -15,7 +15,7 @@ import Account from "./Account";
 import SkipLink from "./SkipLink";
 
 import styles from "./Header.module.scss";
-import { GlobalNavContextProvider } from "../GlobalNavContext";
+import { GlobalNavContextProvider } from "./context/HeaderContext";
 
 export class Header extends Component {
 	constructor(props) {

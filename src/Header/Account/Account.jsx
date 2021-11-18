@@ -5,7 +5,7 @@ import React, {
 	useCallback,
 	useRef,
 } from "react";
-import { GlobalNavContext } from "../../GlobalNavContext";
+import { GlobalNavContext } from "../context/HeaderContext";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 

@@ -7,7 +7,7 @@ import ChevronDown from "@nice-digital/icons/lib/ChevronDown";
 import ChevronUp from "@nice-digital/icons/lib/ChevronUp";
 import SubNav from "../SubNav";
 import Dropdown from "../Dropdown";
-import { GlobalNavContext } from "../../../GlobalNavContext";
+import { GlobalNavContext } from "../../context/HeaderContext";
 
 import styles from "./NavLinks.module.scss";
 import {
