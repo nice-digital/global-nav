@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
-import { GlobalNavContextProvider } from "./../context/HeaderContext";
-import { GlobalNavContext } from "./../context/HeaderContext";
+import { HeaderContextProvider } from "./../context/HeaderContext";
+import { HeaderContext } from "./../context/HeaderContext";
 
 import {
 	eventName,
@@ -84,12 +84,12 @@ describe("Account", () => {
 		const onLoginStatusChecked = jest.fn();
 
 		mount(
-			<GlobalNavContextProvider>
+			<HeaderContextProvider>
 				<Account
 					isLoggedIn={false}
 					onLoginStatusChecked={onLoginStatusChecked}
 				/>
-			</GlobalNavContextProvider>
+			</HeaderContextProvider>
 		);
 
 		// shallow(
@@ -98,7 +98,7 @@ describe("Account", () => {
 		// 		onLoginStatusChecked={onLoginStatusChecked}
 		// 	/>,
 		// 	{
-		// 		wrappingComponent: GlobalNavContext.Provider,
+		// 		wrappingComponent: HeaderContext.Provider,
 		// 		wrappingComponentProps: {
 		// 			value: { accountMenuIsExpanded: false, idOfOpenDropdown: null },
 		// 		},
@@ -122,9 +122,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<GlobalNavContextProvider>
+			<HeaderContextProvider>
 				<Account isLoggedIn={true} accountsData={accountsData} />
-			</GlobalNavContextProvider>,
+			</HeaderContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -145,9 +145,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<GlobalNavContextProvider>
+			<HeaderContextProvider>
 				<Account isLoggedIn={true} accountsData={accountsData} />
-			</GlobalNavContextProvider>,
+			</HeaderContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -164,9 +164,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<GlobalNavContextProvider>
+			<HeaderContextProvider>
 				<Account isLoggedIn={true} accountsData={accountsData} />
-			</GlobalNavContextProvider>,
+			</HeaderContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -184,9 +184,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<GlobalNavContextProvider>
+			<HeaderContextProvider>
 				<Account isLoggedIn={true} accountsData={accountsData} />
-			</GlobalNavContextProvider>,
+			</HeaderContextProvider>,
 			{ attachTo: appContainer }
 		);
 

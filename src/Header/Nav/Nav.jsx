@@ -12,11 +12,11 @@ import {
 } from "../../tracker";
 
 import useClickOutside from "../../hooks/useClickOutside";
-import { GlobalNavContext } from "../context/HeaderContext";
+import { HeaderContext } from "../context/HeaderContext";
 
 function Nav(props) {
 	const { accountsLinks } = props;
-	const context = useContext(GlobalNavContext);
+	const context = useContext(HeaderContext);
 	const { ref } = useClickOutside(context.idOfOpenDropdown, wasClickedOutside);
 
 	function wasClickedOutside(result) {

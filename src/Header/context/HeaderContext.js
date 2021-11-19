@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const defaultValues = { accountMenuIsExpanded: false, idOfOpenDropdown: null };
 
-export const GlobalNavContext = createContext(defaultValues);
+export const HeaderContext = createContext(defaultValues);
 
-export const GlobalNavContextProvider = function ({ children }) {
+export const HeaderContextProvider = function ({ children }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 	const [accountMenuIsExpanded, setAccountMenuIsExpanded] = useState(false);
 
@@ -27,12 +27,10 @@ export const GlobalNavContextProvider = function ({ children }) {
 	}, [accountMenuIsExpanded, idOfOpenDropdown]);
 
 	return (
-		<GlobalNavContext.Provider value={value}>
-			{children}
-		</GlobalNavContext.Provider>
+		<HeaderContext.Provider value={value}>{children}</HeaderContext.Provider>
 	);
 };
 
-GlobalNavContextProvider.propTypes = {
+HeaderContextProvider.propTypes = {
 	children: PropTypes.node,
 };

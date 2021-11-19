@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Matches snapshot 1`] = `
-<GlobalNavContextProvider>
+<HeaderContextProvider>
   <span
     aria-hidden="true"
     id="scrim"
@@ -99,5 +99,5 @@ exports[`Header Matches snapshot 1`] = `
     <CoronaMessage />
     <OldIEMessage />
   </div>
-</GlobalNavContextProvider>
+</HeaderContextProvider>
 `;

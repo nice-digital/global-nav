@@ -5,7 +5,7 @@ import React, {
 	useCallback,
 	useRef,
 } from "react";
-import { GlobalNavContext } from "../context/HeaderContext";
+import { HeaderContext } from "../context/HeaderContext";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -25,7 +25,7 @@ function Account(props) {
 	const [doesUseIdAM] = useState(props.provider == Account.providers.idam);
 
 	const { accountMenuIsExpanded, setAccountMenuIsExpanded } =
-		useContext(GlobalNavContext);
+		useContext(HeaderContext);
 
 	const keypress = useRef(),
 		myAccountButton = useRef(),

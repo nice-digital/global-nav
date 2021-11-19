@@ -7,7 +7,7 @@ import ChevronDown from "@nice-digital/icons/lib/ChevronDown";
 import ChevronUp from "@nice-digital/icons/lib/ChevronUp";
 import SubNav from "../SubNav";
 import Dropdown from "../Dropdown";
-import { GlobalNavContext } from "../../context/HeaderContext";
+import { HeaderContext } from "../../context/HeaderContext";
 
 import styles from "./NavLinks.module.scss";
 import {
@@ -25,8 +25,7 @@ export function NavLinks({
 	handleScrim,
 }) {
 	const [canUseDOM, setCanUseDOM] = useState(false);
-	const { idOfOpenDropdown, setidOfOpenDropdown } =
-		useContext(GlobalNavContext);
+	const { idOfOpenDropdown, setidOfOpenDropdown } = useContext(HeaderContext);
 
 	useEffect(() => {
 		setCanUseDOM(true);
