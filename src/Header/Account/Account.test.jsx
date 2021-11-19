@@ -3,6 +3,7 @@ import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import { GlobalNavContextProvider } from "./../context/HeaderContext";
+import { GlobalNavContext } from "./../context/HeaderContext";
 
 import {
 	eventName,
@@ -82,16 +83,7 @@ describe("Account", () => {
 	it("Calls onLoginStatusChecked callback prop when mounted", (done) => {
 		const onLoginStatusChecked = jest.fn();
 
-		// mount(
-		// 	<GlobalNavContextProvider>
-		// 		<Account
-		// 			isLoggedIn={false}
-		// 			onLoginStatusChecked={onLoginStatusChecked}
-		// 		/>
-		// 	</GlobalNavContextProvider>
-		// );
-
-		shallow(
+		mount(
 			<GlobalNavContextProvider>
 				<Account
 					isLoggedIn={false}
@@ -99,6 +91,19 @@ describe("Account", () => {
 				/>
 			</GlobalNavContextProvider>
 		);
+
+		// shallow(
+		// 	<Account
+		// 		isLoggedIn={false}
+		// 		onLoginStatusChecked={onLoginStatusChecked}
+		// 	/>,
+		// 	{
+		// 		wrappingComponent: GlobalNavContext.Provider,
+		// 		wrappingComponentProps: {
+		// 			value: { accountMenuIsExpanded: false, idOfOpenDropdown: null },
+		// 		},
+		// 	}
+		// );
 
 		setImmediate(() => {
 			expect(onLoginStatusChecked).toHaveBeenCalledWith({
