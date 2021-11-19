@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useClickOutside hook Matches snapshot 1`] = `
+<Fragment>
+  <div>
+    <button>
+      inside
+    </button>
+  </div>
+  <button>
+    outside
+  </button>
+</Fragment>
+`;
