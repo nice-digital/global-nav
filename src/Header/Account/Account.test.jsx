@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import { HeaderContextProvider } from "./../context/HeaderContext";
-import { HeaderContext } from "./../context/HeaderContext";
 
 import {
 	eventName,
@@ -116,6 +115,21 @@ describe("Account", () => {
 			done();
 		});
 	});
+
+	// it.only("Should mock the context", () => {
+	// 	const contextValues = {
+	// 		accountMenuIsExpanded: true,
+	// 		idOfOpenDropdown: null,
+	// 	};
+	// 	jest
+	// 		.spyOn(HeaderContext, "HeaderContext")
+	// 		.mockImplementation(() => contextValues);
+	// 	const wrapper = shallow(
+	// 		<Account isLoggedIn={true} accountsData={accountsData} />
+	// 	);
+
+	// 	console.log("###", wrapper.debug());
+	// });
 
 	it("Expands account menu when button is clicked", () => {
 		var appContainer = document.createElement("div");
