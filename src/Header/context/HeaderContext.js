@@ -1,7 +1,9 @@
 import React, { useEffect, useState, createContext } from "react";
 import PropTypes from "prop-types";
 
-export const GlobalNavContext = createContext();
+const defaultValues = { accountMenuIsExpanded: false, idOfOpenDropdown: null };
+
+export const GlobalNavContext = createContext(defaultValues);
 
 export const GlobalNavContextProvider = function ({ children }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);

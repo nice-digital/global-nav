@@ -42,64 +42,37 @@ describe("Account", () => {
 	});
 
 	it("Renders without crashing", () => {
-		const wrapper = shallow(
-			<GlobalNavContextProvider>
-				<Account isLoggedIn={false} />
-			</GlobalNavContextProvider>
-		);
+		const wrapper = shallow(<Account isLoggedIn={false} />);
 		expect(wrapper).toHaveLength(1);
 	});
 
 	it("Matches snapshot when logged out", () => {
-		const full = mount(
-			<GlobalNavContextProvider>
-				<Account isLoggedIn={false} />
-			</GlobalNavContextProvider>
-		);
-		const wrapper = full.find(Account);
+		const wrapper = shallow(<Account isLoggedIn={false} />);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Matches snapshot when logged in", () => {
-		const full = mount(
-			<GlobalNavContextProvider>
-				<Account isLoggedIn={true} accountsData={accountsData} />
-			</GlobalNavContextProvider>
+		const wrapper = shallow(
+			<Account isLoggedIn={true} accountsData={accountsData} />
 		);
 
-		const wrapper = full.find(Account);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Matches snapshot when logged out using IDAM", () => {
-		const full = mount(
-			<GlobalNavContextProvider>
-				<Account isLoggedIn={false} {...idamProps} />
-			</GlobalNavContextProvider>
-		);
-
-		const wrapper = full.find(Account);
+		const wrapper = shallow(<Account isLoggedIn={false} {...idamProps} />);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Matches snapshot when logged in using IDAM", () => {
-		const full = mount(
-			<GlobalNavContextProvider>
-				<Account isLoggedIn={true} accountsData={accountsData} {...idamProps} />
-			</GlobalNavContextProvider>
+		const wrapper = shallow(
+			<Account isLoggedIn={true} accountsData={accountsData} {...idamProps} />
 		);
-
-		const wrapper = full.find(Account);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Is the correct authentication environment when supplied", () => {
-		const full = mount(
-			<GlobalNavContextProvider>
-				<Account isLoggedIn={false} environment="beta" />
-			</GlobalNavContextProvider>
-		);
-		const wrapper = full.find(Account);
+		const wrapper = shallow(<Account isLoggedIn={false} environment="beta" />);
 
 		expect(wrapper.find(".button").props().href).toBe(
 			"https://beta-accounts.nice.org.uk/signin"
@@ -227,13 +200,11 @@ describe("Account", () => {
 		});
 
 		const trackingTest = (accountsData, linkText, eventLabel, href) => {
-			const wrapper = mount(
-				<GlobalNavContextProvider>
-					<Account
-						isLoggedIn={accountsData != null}
-						accountsData={accountsData}
-					/>
-				</GlobalNavContextProvider>
+			const wrapper = shallow(
+				<Account
+					isLoggedIn={accountsData != null}
+					accountsData={accountsData}
+				/>
 			);
 
 			const preventDefault = jest.fn();
