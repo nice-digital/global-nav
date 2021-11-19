@@ -1,11 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 
 import useClickOutside from "./useClickOutside";
 
 describe("useClickOutside hook", () => {
-	it("Passes a test", () => {
+	it("Returns true when the element clicked is outside the referenced element", () => {
 		const callbackFunction = jest.fn();
 
 		function MyWrapper() {
