@@ -6,9 +6,7 @@ import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
 export function CKS() {
-	const baseUrl = services.external.find(
-		(service) => service.text == "CKS"
-	).href;
+	const baseUrl = services.external.find((service) => service.id == "cks").href;
 
 	const topicsAtoZurl = baseUrl + "/topics/#";
 

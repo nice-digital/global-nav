@@ -8,7 +8,7 @@ import classnames from "classnames";
 
 export function AboutUs() {
 	const baseUrl = services.external.find(
-		(service) => service.text == "About us"
+		(service) => service.id == "about"
 	).href;
 
 	const rootUrl = services.rootUrl;

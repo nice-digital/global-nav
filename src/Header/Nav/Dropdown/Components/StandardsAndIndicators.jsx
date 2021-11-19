@@ -8,7 +8,7 @@ import classnames from "classnames";
 
 export function StandardsAndIndicators() {
 	const baseUrl = services.external.find(
-		(service) => service.text == "Standards and indicators"
+		(service) => service.id == "standards-and-indicators"
 	).href;
 
 	const rootUrl = services.rootUrl;

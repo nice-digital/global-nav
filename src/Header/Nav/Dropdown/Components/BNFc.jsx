@@ -7,7 +7,7 @@ import services from "../../../../services.json";
 
 export function BNFc() {
 	const baseUrl = services.external.find(
-		(service) => service.text == "BNFC"
+		(service) => service.id == "bnfc"
 	).href;
 
 	const drugsAtoZurl = baseUrl + "/drug/#";
