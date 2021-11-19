@@ -43,33 +43,56 @@
 .menuWrapper {
   background: $colour-nav-background;
   color: $colour-nav-text;
-  padding: rem($nds-spacing-x-small 0);
+  // padding: rem($nds-spacing-x-small 0);
+}
+
+@include mq($from: md) {
+  .wrapperWithSubLinks {
+    padding-bottom: rem($sub-nav-height);
+  }
 }
 
 .menuList {
   list-style: none;
   margin: auto;
-  padding: 0;
 
   > li {
     margin: 0;
+    @include mq($from: md) {
+      flex-grow: 1;
+    }
+  }
+  @include mq($from: md) {
+    @include nds-container;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 }
 
-a.link {
-  //qualified this with a to add specificity to avoid overrides from application css (NW-1253)
+a.link,
+.linkStyling {
+  //qualified this with 'a' and 'button' to add specificity to avoid overrides from application css (NW-1253)
+  align-items: center;
+  background: none;
   border: rem($nds-spacing-x-small) solid $colour-nav-background;
-  border-bottom-width: 0;
-  border-top-width: 0;
+  border-left-width: 0;
+  border-radius: 0;
+  border-right-width: 0;
   color: $colour-nav-text;
-  display: block;
+  cursor: pointer;
+  display: flex;
   font-weight: normal;
+  height: 100%;
+  justify-content: left;
+  line-height: 1.25;
+  margin-bottom: 0;
   padding: rem($nds-spacing-small);
+  position: relative;
+  text-align: left;
   text-decoration: none;
-
-  span {
-    text-decoration: inherit;
-  }
+  width: 100%;
 
   &:focus {
     color: $colour-nav-text;
@@ -78,103 +101,29 @@ a.link {
     z-index: 1; // Push above the adjacent nav items
   }
 
-  &:visited {
-    color: $colour-nav-text;
-  }
-
-  &:active {
-    background: #acadad;
-    color: $nds-colour-text;
-  }
-
+  &:active,
   &:hover {
-    background: #d6d6d6;
+    background: $nds-colour-nice-grey-3;
     color: $nds-colour-text;
     text-decoration: underline;
   }
 
   &[aria-current='true'],
-  &[aria-current='page'] {
+  &[aria-current='page'],
+  &[aria-expanded='true'] {
     background: $nds-colour-body;
+    border-bottom: rem($nds-spacing-x-small) solid $nds-colour-body;
     color: $nds-colour-text;
-    font-weight: bold;
 
     &:focus {
       outline-color: $nds-colour-focus;
-      outline-offset: rem(-$nds-spacing-x-small);
-    }
-  }
-}
-
-@include mq($from: md) {
-  .wrapperWithSubLinks {
-    padding-bottom: rem($sub-nav-height);
-  }
-
-  .menuList {
-    @include nds-container;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-
-    > li {
-      flex-grow: 1;
+      outline-offset: rem(-$nds-spacing-small);
     }
   }
 
-  a.link {
-    border-left-width: 0;
-    border-right-width: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    line-height: 1.25;
-    margin: 0;
-    position: relative;
+  @include mq($from: md) {
+    justify-content: space-evenly;
+    padding: rem($nds-spacing-medium);
     text-align: center;
-
-    &:focus {
-      outline-offset: rem(-$nds-spacing-x-small);
-    }
-
-    span {
-      display: inline-block;
-      vertical-align: middle;
-      white-space: normal;
-    }
-
-    &[aria-current='true'],
-    &[aria-current='page'] {
-      // Create space between selected item, and adjacent hover states
-      margin: rem(0 $nds-spacing-x-small);
-
-      &:focus {
-        outline-offset: rem(-$nds-spacing-small);
-      }
-
-      // Use a pseudo to cover the bottom border, otherwise we'd have to use borders which don't have square edges
-      &:after {
-        background: #fff;
-        content: '';
-        display: block;
-        height: rem($nds-spacing-x-small);
-        left: 0;
-        position: absolute;
-        top: 100%;
-        width: 100%;
-      }
-
-      &:hover:after {
-        background: #d6d6d6;
-      }
-    }
-  }
-
-  @include mq($from: lg) {
-    a.link {
-      padding: rem($nds-spacing-medium);
-    }
   }
 }

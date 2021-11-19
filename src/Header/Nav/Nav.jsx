@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-import SubNav from "./SubNav";
+import NavLinks from "./NavLinks";
 import styles from "./Nav.module.scss";
-import rootLinks from "./../../services.json";
+import services from "./../../services.json";
 import {
 	trackEvent,
 	defaultEventCategory,
@@ -15,7 +15,6 @@ export default class Nav extends Component {
 	constructor(props) {
 		super(props);
 
-		this.handleNavItemClick = this.handleNavItemClick.bind(this);
 		this.handleAccountNavItemClick = this.handleAccountNavItemClick.bind(this);
 	}
 
@@ -81,9 +80,9 @@ export default class Nav extends Component {
 		// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for support
 		let activeService = null;
 		let internalService = false;
-		let servicesToDisplay = rootLinks.external; //default to displaying external services.
-		for (let i = 0; i < rootLinks.internal.length; i++) {
-			const internalRootLink = rootLinks.internal[i];
+		let servicesToDisplay = services.external; //default to displaying external services.
+		for (let i = 0; i < services.internal.length; i++) {
+			const internalRootLink = services.internal[i];
 			if (this.props.service && internalRootLink.id === this.props.service) {
 				internalService = true;
 				activeService = internalRootLink;
@@ -92,10 +91,10 @@ export default class Nav extends Component {
 			}
 		}
 		if (!internalService) {
-			for (let i = 0; i < rootLinks.external.length; i++) {
-				const externalRootLink = rootLinks.external[i];
-				if (this.props.service && externalRootLink.id === this.props.service) {
-					activeService = externalRootLink;
+			for (let i = 0; i < services.external.length; i++) {
+				const externalService = services.external[i];
+				if (this.props.service && externalService.id === this.props.service) {
+					activeService = externalService;
 					break;
 				}
 			}
@@ -134,63 +133,14 @@ export default class Nav extends Component {
 			>
 				<nav className={styles.nav} aria-label="primary navigation">
 					<div className={styles.menuWrapper}>
-						<ul
-							className={styles.menuList}
-							aria-labelledby="header-menu-button"
-						>
-							{servicesToDisplay.map(
-								({ href, id, text, abbreviation, title }) => {
-									let ariaCurrent = null;
-
-									if (this.props.service && id === this.props.service) {
-										ariaCurrent = true;
-
-										if (
-											typeof location !== "undefined" &&
-											location &&
-											href ===
-												`${location.protocol}//${location.host}${location.pathname}`
-										) {
-											ariaCurrent = "page";
-										}
-									}
-
-									return (
-										<li key={id}>
-											<a
-												href={href}
-												aria-current={ariaCurrent}
-												className={styles.link}
-												onClick={this.handleNavItemClick}
-											>
-												{abbreviation ? (
-													<>
-														<abbr title={title}>
-															{text}{" "}
-															<span className={styles.visuallyHidden}>
-																{title}
-															</span>
-														</abbr>
-														<span aria-hidden="true" className={styles.tooltip}>
-															{title}
-														</span>
-													</>
-												) : (
-													text
-												)}
-											</a>
-											{ariaCurrent && subLinks && (
-												<SubNav
-													links={subLinks}
-													text={text}
-													onNavigating={this.props.onNavigating}
-												/>
-											)}
-										</li>
-									);
-								}
-							)}
-						</ul>
+						<NavLinks
+							handleScrim={this.props.handleScrim}
+							skipLinkId={this.props.skipLinkId}
+							servicesToDisplay={servicesToDisplay}
+							currentService={this.props.service}
+							subLinks={subLinks}
+							onNavigating={this.props.onNavigating}
+						/>
 					</div>
 				</nav>
 				{accountsLinksArray && (
@@ -224,11 +174,13 @@ export default class Nav extends Component {
 }
 
 Nav.propTypes = {
+	skipLinkId: PropTypes.string,
 	service: PropTypes.string,
 	isExpanded: PropTypes.bool,
 	accountsLinks: PropTypes.object,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
+	handleScrim: PropTypes.func,
 };
 
 Nav.defaultProps = {

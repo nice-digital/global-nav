@@ -105,3 +105,4 @@ lib
 .DS_Store
 .idea
 .idea/Global Nav.iml
+.netlify/state.json

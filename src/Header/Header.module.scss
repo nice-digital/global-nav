@@ -5,6 +5,8 @@
   border-bottom: rem($nds-spacing-xx-small) solid $nds-colour-nice-teal;
   box-sizing: border-box;
   font-family: unquote($nds-font-family-sans);
+  position: relative;
+  z-index: 2;
 
   *,
   *:before,
@@ -119,6 +121,19 @@
 }
 
 @include mq($from: md) {
+  .scrim {
+    background: rgba(0, 0, 0, 70%);
+    display: block;
+    left: 0;
+    margin-top: rem($search-height) + rem($nds-spacing-large);
+    min-height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 2;
+  }
+
   .header {
     border-bottom: rem($nds-spacing-x-small) solid $nds-colour-body;
   }

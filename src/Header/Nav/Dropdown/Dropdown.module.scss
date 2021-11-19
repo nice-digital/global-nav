@@ -1,0 +1,36 @@
+/* stylelint-disable no-descending-specificity */
+
+@import '../../SkipLink/SkipLink.module.scss';
+@import '~@nice-digital/nds-core/scss/core';
+
+.skiplink {
+  @extend .link;
+}
+
+.container {
+  @include nds-container;
+  color: $nds-colour-text;
+  padding-bottom: rem($nds-spacing-large);
+  padding-top: rem($nds-spacing-large);
+  position: relative;
+}
+
+.exit {
+  display: none;
+  @include mq($from: md) {
+    align-items: center;
+    background: none;
+    border: none;
+    column-gap: rem($nds-spacing-small);
+    cursor: pointer;
+    display: flex;
+    padding: rem($nds-spacing-small);
+    position: absolute;
+    right: rem($nds-spacing-medium);
+    top: rem($nds-spacing-medium);
+
+    &:focus {
+      outline: rem($nds-spacing-x-small) solid $nds-colour-focus;
+    }
+  }
+}

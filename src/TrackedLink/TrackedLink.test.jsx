@@ -33,114 +33,114 @@ describe("TrackedLink", () => {
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
-	it("should send event to the dataLayer with navigating event callback on link click", () => {
-		const href = "https://www.nice.org.uk/a-url",
-			eventCategory = "Test action",
-			eventAction = "Test action",
-			eventLabel = "Test label";
+	// it("should send event to the dataLayer with navigating event callback on link click", () => {
+	// 	const href = "https://www.nice.org.uk/a-url",
+	// 		eventCategory = "Test action",
+	// 		eventAction = "Test action",
+	// 		eventLabel = "Test label";
 
-		const wrapper = shallow(
-			<TrackedLink
-				href={href}
-				eventCategory={eventCategory}
-				eventAction={eventAction}
-				eventLabel={eventLabel}
-			>
-				Some text
-			</TrackedLink>
-		);
+	// 	const wrapper = shallow(
+	// 		<TrackedLink
+	// 			href={href}
+	// 			eventCategory={eventCategory}
+	// 			eventAction={eventAction}
+	// 			eventLabel={eventLabel}
+	// 		>
+	// 			Some text
+	// 		</TrackedLink>
+	// 	);
 
-		const preventDefault = jest.fn();
+	// 	const preventDefault = jest.fn();
 
-		wrapper.simulate("click", {
-			preventDefault: preventDefault,
-			currentTarget: {
-				getAttribute: () => href,
-			},
-		});
+	// 	wrapper.simulate("click", {
+	// 		preventDefault: preventDefault,
+	// 		currentTarget: {
+	// 			getAttribute: () => href,
+	// 		},
+	// 	});
 
-		expect(window.dataLayer).toEqual([
-			{
-				event: eventName,
-				eventCategory: eventCategory,
-				eventAction: eventAction,
-				eventLabel: eventLabel,
-				destinationUrl: href,
-				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout,
-			},
-		]);
+	// 	expect(window.dataLayer).toEqual([
+	// 		{
+	// 			event: eventName,
+	// 			eventCategory: eventCategory,
+	// 			eventAction: eventAction,
+	// 			eventLabel: eventLabel,
+	// 			destinationUrl: href,
+	// 			eventCallback: expect.any(Function),
+	// 			eventTimeout: eventTimeout,
+	// 		},
+	// 	]);
 
-		expect(preventDefault).toHaveBeenCalled();
+	// 	expect(preventDefault).toHaveBeenCalled();
 
-		window.dataLayer[0].eventCallback();
-		expect(window.location.href).toEqual(href);
-	});
+	// 	window.dataLayer[0].eventCallback();
+	// 	expect(window.location.href).toEqual(href);
+	// });
 
-	it("should use default event category when none provided", () => {
-		const eventAction = "Test action",
-			eventLabel = "Some text";
+	// it("should use default event category when none provided", () => {
+	// 	const eventAction = "Test action",
+	// 		eventLabel = "Some text";
 
-		const wrapper = shallow(
-			<TrackedLink
-				href="/anything"
-				eventAction={eventAction}
-				eventLabel={eventLabel}
-			>
-				Some text
-			</TrackedLink>
-		);
+	// 	const wrapper = shallow(
+	// 		<TrackedLink
+	// 			href="/anything"
+	// 			eventAction={eventAction}
+	// 			eventLabel={eventLabel}
+	// 		>
+	// 			Some text
+	// 		</TrackedLink>
+	// 	);
 
-		const preventDefault = jest.fn();
+	// 	const preventDefault = jest.fn();
 
-		wrapper.simulate("click", {
-			preventDefault: preventDefault,
-			currentTarget: {
-				getAttribute: () => "",
-			},
-		});
+	// 	wrapper.simulate("click", {
+	// 		preventDefault: preventDefault,
+	// 		currentTarget: {
+	// 			getAttribute: () => "",
+	// 		},
+	// 	});
 
-		expect(window.dataLayer).toEqual([
-			{
-				event: eventName,
-				eventCategory: defaultEventCategory,
-				eventAction: eventAction,
-				eventLabel: eventLabel,
-				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout,
-			},
-		]);
-	});
+	// 	expect(window.dataLayer).toEqual([
+	// 		{
+	// 			event: eventName,
+	// 			eventCategory: defaultEventCategory,
+	// 			eventAction: eventAction,
+	// 			eventLabel: eventLabel,
+	// 			eventCallback: expect.any(Function),
+	// 			eventTimeout: eventTimeout,
+	// 		},
+	// 	]);
+	// });
 
-	it("should use link textContent property for event label when none provided", () => {
-		const eventAction = "Test action",
-			eventLabel = "Some text";
+	// it("should use link textContent property for event label when none provided", () => {
+	// 	const eventAction = "Test action",
+	// 		eventLabel = "Some text";
 
-		const wrapper = shallow(
-			<TrackedLink href="/anything" eventAction={eventAction}>
-				Some other text
-			</TrackedLink>
-		);
+	// 	const wrapper = shallow(
+	// 		<TrackedLink href="/anything" eventAction={eventAction}>
+	// 			Some other text
+	// 		</TrackedLink>
+	// 	);
 
-		const preventDefault = jest.fn();
+	// 	const preventDefault = jest.fn();
 
-		wrapper.simulate("click", {
-			preventDefault: preventDefault,
-			currentTarget: {
-				getAttribute: () => "",
-				textContent: eventLabel,
-			},
-		});
+	// 	wrapper.simulate("click", {
+	// 		preventDefault: preventDefault,
+	// 		currentTarget: {
+	// 			getAttribute: () => "",
+	// 			textContent: eventLabel,
+	// 		},
+	// 	});
 
-		expect(window.dataLayer).toEqual([
-			{
-				event: eventName,
-				eventCategory: defaultEventCategory,
-				eventAction: eventAction,
-				eventLabel: eventLabel,
-				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout,
-			},
-		]);
-	});
+	// 	expect(window.dataLayer).toEqual([
+	// 		{
+	// 			event: eventName,
+	// 			eventCategory: defaultEventCategory,
+	// 			eventAction: eventAction,
+	// 			eventLabel: eventLabel,
+	// 			eventCallback: expect.any(Function),
+	// 			eventTimeout: eventTimeout,
+	// 		},
+	// 	]);
+	// });
 });

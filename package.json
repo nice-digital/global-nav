@@ -61,6 +61,7 @@
     "@babel/plugin-transform-runtime": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
+    "@nice-digital/design-system": "^1.2.30",
     "@nice-digital/eslint-config": "^1.0.3",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "autoprefixer": "^10.2.5",
@@ -83,6 +84,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-webpack-plugin": "^2.5.4",
     "file-loader": "^6.2.0",
+    "focus-trap-react": "^8.7.0",
     "html-webpack-plugin": "^5.3.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
@@ -116,13 +118,13 @@
   "dependencies": {
     "@babel/runtime": "^7.14.0",
     "@nice-digital/browserslist-config": "^2.0.1",
-    "@nice-digital/icons": "^2.2.3",
-    "@nice-digital/nds-core": "^1.2.4",
+    "@use-it/event-listener": "^0.1.6",
     "accessible-autocomplete": "^2.0.3",
     "classnames": "^2.3.1",
     "es5-polyfill": "0.0.6",
     "js-cookie": "^2.2.1",
     "prop-types": "^15.7.2",
+    "react-shadow-root": "^6.1.0",
     "unfetch": "^4.2.0"
   },
   "files": [

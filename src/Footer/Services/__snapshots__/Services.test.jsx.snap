@@ -9,6 +9,20 @@ exports[`Services Matches snapshot 1`] = `
     className="list"
   >
     <li
+      key="guidance"
+    >
+      <TrackedLink
+        aria-current={null}
+        className="link"
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="Guidance"
+        href="https://www.nice.org.uk/guidance"
+      >
+        Guidance
+      </TrackedLink>
+    </li>
+    <li
       key="pathways"
     >
       <TrackedLink
@@ -17,23 +31,23 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="NICE Pathways"
-        href="https://pathways.nice.org.uk/"
+        href="https://pathways.nice.org.uk"
       >
         NICE Pathways
       </TrackedLink>
     </li>
     <li
-      key="guidance"
+      key="standards-and-indicators"
     >
       <TrackedLink
         aria-current={null}
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="NICE guidance"
-        href="https://www.nice.org.uk/guidance"
+        eventLabel="Standards and indicators"
+        href="https://www.nice.org.uk/standards-and-indicators"
       >
-        NICE guidance
+        Standards and indicators
       </TrackedLink>
     </li>
     <li
@@ -51,34 +65,6 @@ exports[`Services Matches snapshot 1`] = `
       </TrackedLink>
     </li>
     <li
-      key="standards"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Standards and indicators"
-        href="https://www.nice.org.uk/standards-and-indicators"
-      >
-        Standards and indicators
-      </TrackedLink>
-    </li>
-    <li
-      key="evidence"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Evidence search"
-        href="https://www.evidence.nhs.uk/"
-      >
-        Evidence search
-      </TrackedLink>
-    </li>
-    <li
       key="bnf"
     >
       <TrackedLink
@@ -87,7 +73,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="BNF"
-        href="https://bnf.nice.org.uk/"
+        href="https://bnf.nice.org.uk"
       >
         <abbr
           title="British National Formulary"
@@ -117,7 +103,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="BNFC"
-        href="https://bnfc.nice.org.uk/"
+        href="https://bnfc.nice.org.uk"
       >
         <abbr
           title="British National Formulary for Children"
@@ -147,7 +133,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="CKS"
-        href="https://cks.nice.org.uk/"
+        href="https://cks.nice.org.uk"
       >
         <abbr
           title="Clinical Knowledge Summaries"
@@ -169,17 +155,31 @@ exports[`Services Matches snapshot 1`] = `
       </TrackedLink>
     </li>
     <li
-      key="journals"
+      key="about-us"
     >
       <TrackedLink
         aria-current={null}
         className="link"
         eventAction="Footer click"
         eventCategory="TopHat and footer"
-        eventLabel="Journals and databases"
-        href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
+        eventLabel="About us"
+        href="https://www.nice.org.uk/about"
       >
-        Journals and databases
+        About us
+      </TrackedLink>
+    </li>
+    <li
+      key="more-nice-services"
+    >
+      <TrackedLink
+        aria-current={null}
+        className="link"
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="More NICE services"
+        href={null}
+      >
+        More NICE services
       </TrackedLink>
     </li>
   </ul>

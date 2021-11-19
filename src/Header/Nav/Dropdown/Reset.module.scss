@@ -1,0 +1,72 @@
+@import '~@nice-digital/nds-core/scss/core';
+@import '~@nice-digital/nds-core/scss/typography/_typography-helpers';
+
+// This file is here to normalise the appearance of the global nav on pages that also include NICE bootstrap or other conflicting styling
+
+$tags: h2, h3, h4, h5, h6;
+
+.wrapper {
+  @each $tag in $tags {
+    #{$tag} {
+      @include nds-font-size(#{$tag});
+      margin-top: rem($nds-spacing-medium);
+    }
+  }
+
+  [class^='grid'],
+  [class*=' grid'] {
+    margin-left: calc(var(--nds-grid-gutter) / -2) !important;
+    margin-right: calc(var(--nds-grid-gutter) / -2) !important;
+    width: calc(100% + var(--nds-grid-gutter)) !important;
+  }
+
+  a {
+    color: $nds-colour-link;
+    font-weight: normal;
+    text-decoration: underline;
+
+    &:hover {
+      color: $nds-colour-link-hover;
+    }
+
+    &:visited {
+      color: $nds-colour-link-visited;
+    }
+  }
+
+  p {
+    max-width: 66ch;
+  }
+
+  ul {
+    @include nds-list;
+    list-style: none !important;
+    margin-left: 0;
+    max-width: none; // To override max-width of 66ch set on lists
+    padding: 0;
+  }
+
+  li {
+    margin-left: 0;
+  }
+}
+
+.gnButtonCta {
+  background-color: $nds-colour-btn-cta !important;
+  color: $nds-colour-nice-white !important;
+  padding: rem($nds-spacing-small $nds-spacing-medium) !important;
+
+  &:focus {
+    outline: rem($nds-spacing-x-small) solid $nds-colour-focus !important;
+  }
+}
+
+.gnButtonPrimary {
+  background-color: $nds-colour-btn-primary !important;
+  color: $nds-colour-nice-white !important;
+  padding: rem($nds-spacing-small $nds-spacing-medium) !important;
+
+  &:focus {
+    outline: rem($nds-spacing-x-small) solid $nds-colour-focus !important;
+  }
+}

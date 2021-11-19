@@ -1,0 +1,7 @@
+NOW
+- shadow on main content
+
+NEXT
+- maybe relook at main area for closing?
+- IE11
+    - current issue syntax error on GN project

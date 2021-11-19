@@ -1,0 +1,103 @@
+@import '~@nice-digital/nds-core/scss/core';
+@import '~@nice-digital/nds-core/scss/typography/_typography-helpers';
+
+.listUnstyled {
+  @include nds-list;
+  list-style: none !important;
+  margin-left: 0;
+  max-width: none; // To override max-width of 66ch set on lists
+  padding: 0;
+
+  li {
+    margin-bottom: rem($nds-spacing-small);
+  }
+}
+
+.alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem($nds-spacing-small);
+  list-style: none;
+  margin: rem(0 0 $nds-spacing-medium);
+  max-width: 90%;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.chunkyLetter {
+  @include nds-font-size(h4);
+  color: $nds-colour-nice-dark-grey;
+
+  span {
+    width: 3.95ch;
+  }
+}
+
+.inlineList {
+  li {
+    display: inline-block;
+    margin-right: rem($nds-spacing-small);
+  }
+}
+
+.letter {
+  display: inline-block;
+  font-weight: bold;
+  margin: rem(0 $nds-spacing-small $nds-spacing-small 0);
+  text-transform: uppercase;
+
+  a,
+  span {
+    display: block;
+    padding: rem($nds-spacing-small 0);
+    text-align: center;
+  }
+
+  a {
+    background: $nds-colour-true-white;
+    border: 1px solid $nds-colour-border;
+    text-decoration: none;
+    width: 4.95ch;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// The buttons kept dancing on the BNF
+html body a.btn,
+html body button.btn {
+  &:hover,
+  &:focus,
+  &:active {
+    border: em(1px) solid $nds-colour-btn-primary-text !important;
+  }
+
+  &--cta {
+    &:hover,
+    &:focus,
+    &:active {
+      border: em(1px) solid $nds-colour-btn-cta-text !important;
+    }
+  }
+
+  &--secondary {
+    &:hover,
+    &:focus,
+    &:active {
+      border: em(1px) solid $nds-colour-btn-secondary-text !important;
+    }
+  }
+
+  &--inverse {
+    &:hover,
+    &:focus,
+    &:active {
+      border: em(1px) solid $nds-colour-btn-inverse-text !important;
+    }
+  }
+}

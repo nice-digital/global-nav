@@ -1,0 +1,42 @@
+/* stylelint-disable no-descending-specificity */
+
+@import '../../header-settings';
+@import '../../../Common.module.scss';
+@import '../Nav.module.scss';
+
+.menuList {
+  @extend .menuList;
+}
+
+a.link,
+button.link {
+  @extend .linkStyling;
+  column-gap: rem($nds-spacing-small);
+  padding: rem($nds-spacing-medium);
+}
+
+.dropdown {
+  background-color: $nds-colour-body;
+  box-shadow: 0 rem($nds-spacing-small) rem($nds-spacing-small) 0
+    rgb(0 0 0 / 10%);
+  display: none;
+  left: 0;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  &.active {
+    display: block;
+  }
+
+  @include mq($from: md) {
+    position: absolute;
+  }
+}
+
+.icon {
+  margin-left: rem($nds-spacing-small);
+  @include mq($from: md) {
+    margin-left: 0;
+  }
+}
