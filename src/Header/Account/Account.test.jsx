@@ -82,7 +82,16 @@ describe("Account", () => {
 	it("Calls onLoginStatusChecked callback prop when mounted", (done) => {
 		const onLoginStatusChecked = jest.fn();
 
-		mount(
+		// mount(
+		// 	<GlobalNavContextProvider>
+		// 		<Account
+		// 			isLoggedIn={false}
+		// 			onLoginStatusChecked={onLoginStatusChecked}
+		// 		/>
+		// 	</GlobalNavContextProvider>
+		// );
+
+		shallow(
 			<GlobalNavContextProvider>
 				<Account
 					isLoggedIn={false}
@@ -237,18 +246,16 @@ describe("Account", () => {
 		};
 
 		it("should not send dataLayer event or prevent default for admin link click", () => {
-			const wrapper = mount(
-				<GlobalNavContextProvider>
-					<Account
-						isLoggedIn={true}
-						accountsData={{
-							display_name: "Joe Bloggs",
-							links: {
-								Admin: "https://accounts.nice.org.uk/admin",
-							},
-						}}
-					/>
-				</GlobalNavContextProvider>
+			const wrapper = shallow(
+				<Account
+					isLoggedIn={true}
+					accountsData={{
+						display_name: "Joe Bloggs",
+						links: {
+							Admin: "https://accounts.nice.org.uk/admin",
+						},
+					}}
+				/>
 			);
 
 			const preventDefault = jest.fn();
