@@ -91,19 +91,6 @@ describe("Account", () => {
 			</HeaderContextProvider>
 		);
 
-		// shallow(
-		// 	<Account
-		// 		isLoggedIn={false}
-		// 		onLoginStatusChecked={onLoginStatusChecked}
-		// 	/>,
-		// 	{
-		// 		wrappingComponent: HeaderContext.Provider,
-		// 		wrappingComponentProps: {
-		// 			value: { accountMenuIsExpanded: false, idOfOpenDropdown: null },
-		// 		},
-		// 	}
-		// );
-
 		setImmediate(() => {
 			expect(onLoginStatusChecked).toHaveBeenCalledWith({
 				links: {
@@ -115,21 +102,6 @@ describe("Account", () => {
 			done();
 		});
 	});
-
-	// it.only("Should mock the context", () => {
-	// 	const contextValues = {
-	// 		accountMenuIsExpanded: true,
-	// 		idOfOpenDropdown: null,
-	// 	};
-	// 	jest
-	// 		.spyOn(HeaderContext, "HeaderContext")
-	// 		.mockImplementation(() => contextValues);
-	// 	const wrapper = shallow(
-	// 		<Account isLoggedIn={true} accountsData={accountsData} />
-	// 	);
-
-	// 	console.log("###", wrapper.debug());
-	// });
 
 	it("Expands account menu when button is clicked", () => {
 		var appContainer = document.createElement("div");

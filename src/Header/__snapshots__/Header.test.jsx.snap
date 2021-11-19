@@ -82,7 +82,6 @@ exports[`Header Matches snapshot 1`] = `
               onLoginStatusChecked={[Function]}
               provider="niceAccounts"
             />
-            <Naccount />
           </div>
         </div>
       </div>
