@@ -1,17 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 
-// import useClickOutside from "./useClickOutside";
+import useClickOutside from "./useClickOutside";
 
 describe("useClickOutside hook", () => {
 	it("Passes a test", () => {
-		const wrapper = shallow(<div></div>);
-		console.log(wrapper.html());
+		const callbackFunction = jest.fn();
 
-		// document.createElement("div");
-		// ReactDOM.render(<div>hello</div>, document.querySelector("div"));
-		// expect
-		// expect(useClickOutside()).toBeCalled();
+		function MyWrapper() {
+			const { ref } = useClickOutside(callbackFunction);
+
+			return (
+				<>
+					<div ref={ref}>
+						<button id="inside">Inside</button>
+					</div>
+					<button id="outside">Outside</button>
+				</>
+			);
+		}
+
+		mount(<MyWrapper />, { attachTo: document.body });
+
+		const inside = document.getElementById("inside");
+		inside.dispatchEvent(new Event("click"));
+		expect(callbackFunction).toHaveBeenCalledTimes(0);
+
+		const outside = document.getElementById("outside");
+		outside.dispatchEvent(new Event("click"));
+		expect(callbackFunction).toHaveBeenCalledTimes(1);
+
+		outside.dispatchEvent(new Event("click"));
+		expect(callbackFunction).toHaveBeenCalledTimes(2);
 	});
 });

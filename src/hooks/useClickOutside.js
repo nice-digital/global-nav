@@ -1,17 +1,14 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-function useClickOutside(variable, action) {
+function useClickOutside(action) {
 	const ref = useRef(null);
 
-	const handleClickOutside = useCallback(
-		(event) => {
-			// detects that the clicked element is not inside the referenced element
-			if (ref.current && !ref.current.contains(event.target)) {
-				action(true);
-			}
-		},
-		[variable]
-	);
+	const handleClickOutside = (event) => {
+		// detects that the clicked element is not inside the referenced element
+		if (ref.current && !ref.current.contains(event.target)) {
+			action(true);
+		}
+	};
 
 	useEffect(() => {
 		document.addEventListener("click", handleClickOutside, true);

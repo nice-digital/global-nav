@@ -17,30 +17,10 @@ import { HeaderContext } from "../context/HeaderContext";
 function Nav(props) {
 	const { accountsLinks } = props;
 	const context = useContext(HeaderContext);
-	const { ref } = useClickOutside(context.idOfOpenDropdown, wasClickedOutside);
+	const { ref } = useClickOutside(wasClickedOutside);
 
 	function wasClickedOutside(result) {
-		if (result == true) context.setidOfOpenDropdown(null);
-	}
-
-	function handleNavItemClick(e) {
-		e.preventDefault();
-
-		const href = e.currentTarget.getAttribute("href");
-
-		// To support IE8
-		const eventLabel = e.currentTarget.textContent || e.currentTarget.innerText;
-
-		trackEvent(
-			defaultEventCategory,
-			headerClickEventAction,
-			eventLabel,
-			null,
-			href,
-			function () {
-				window.location.href = href;
-			}
-		);
+		if (result) context.setidOfOpenDropdown(null);
 	}
 
 	function handleAccountNavItemClick(e) {
