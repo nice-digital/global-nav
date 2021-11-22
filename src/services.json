@@ -36,8 +36,7 @@
       "href": "https://www.nice.org.uk/standards-and-indicators",
       "text": "Standards and indicators",
       "id": "standards-and-indicators",
-      "dropdown": true,
-      "dropdownComponent": "StandardsAndIndicators"
+      "dropdown": false
     },
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
