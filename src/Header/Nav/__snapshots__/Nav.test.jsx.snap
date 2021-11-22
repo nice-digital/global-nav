@@ -195,7 +195,6 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
               className="menuList"
             >
               <li
-                id="link1"
                 key="link1"
               >
                 <a
@@ -210,7 +209,6 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
                 </a>
               </li>
               <li
-                id="link2"
                 key="link2"
               >
                 <a
@@ -356,7 +354,6 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
               className="menuList"
             >
               <li
-                id="internal1"
                 key="internal1"
               >
                 <a
