@@ -2,6 +2,7 @@ import React from "react";
 import Account from "./Account";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
+import { HeaderContextProvider } from "./../context/HeaderContext";
 
 import {
 	eventName,
@@ -9,8 +10,6 @@ import {
 	headerClickEventAction,
 	eventTimeout,
 } from "../../tracker";
-
-const escapeKeyCode = 27;
 
 jest.mock("./nice-accounts", () => ({
 	checkIsLoggedIn: jest.fn(() =>
@@ -49,7 +48,6 @@ describe("Account", () => {
 
 	it("Matches snapshot when logged out", () => {
 		const wrapper = shallow(<Account isLoggedIn={false} />);
-
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
@@ -63,20 +61,19 @@ describe("Account", () => {
 
 	it("Matches snapshot when logged out using IDAM", () => {
 		const wrapper = shallow(<Account isLoggedIn={false} {...idamProps} />);
-
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
-	it("Matches snapshot when logged in  using IDAM", () => {
+	it("Matches snapshot when logged in using IDAM", () => {
 		const wrapper = shallow(
 			<Account isLoggedIn={true} accountsData={accountsData} {...idamProps} />
 		);
-
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
 	it("Is the correct authentication environment when supplied", () => {
 		const wrapper = shallow(<Account isLoggedIn={false} environment="beta" />);
+
 		expect(wrapper.find(".button").props().href).toBe(
 			"https://beta-accounts.nice.org.uk/signin"
 		);
@@ -85,8 +82,13 @@ describe("Account", () => {
 	it("Calls onLoginStatusChecked callback prop when mounted", (done) => {
 		const onLoginStatusChecked = jest.fn();
 
-		shallow(
-			<Account isLoggedIn={false} onLoginStatusChecked={onLoginStatusChecked} />
+		mount(
+			<HeaderContextProvider>
+				<Account
+					isLoggedIn={false}
+					onLoginStatusChecked={onLoginStatusChecked}
+				/>
+			</HeaderContextProvider>
 		);
 
 		setImmediate(() => {
@@ -106,13 +108,15 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />,
+			<HeaderContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</HeaderContextProvider>,
 			{ attachTo: appContainer }
 		);
 
 		wrapper.find("#my-account-button").simulate("click", { pageX: 99 });
-
-		wrapper.instance().forceUpdate();
+		// wrapper.instance().forceUpdate();
+		wrapper.update();
 
 		expect(wrapper.find("#my-account-button").props()["aria-expanded"]).toBe(
 			true
@@ -127,7 +131,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />,
+			<HeaderContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</HeaderContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -144,17 +150,15 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />,
+			<HeaderContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</HeaderContextProvider>,
 			{ attachTo: appContainer }
 		);
 
 		wrapper.find("#my-account-button").simulate("click", {});
-		wrapper
-			.find("#my-account-button")
-			.simulate("keydown", { keyCode: escapeKeyCode });
-
-		wrapper.instance().forceUpdate();
-
+		wrapper.find("#my-account-button").simulate("keydown", { key: "Escape" });
+		wrapper.update();
 		expect(wrapper.find("#my-account-button").props()["aria-expanded"]).toBe(
 			false
 		);
@@ -166,7 +170,9 @@ describe("Account", () => {
 		document.body.appendChild(appContainer);
 
 		const wrapper = mount(
-			<Account isLoggedIn={true} accountsData={accountsData} />,
+			<HeaderContextProvider>
+				<Account isLoggedIn={true} accountsData={accountsData} />
+			</HeaderContextProvider>,
 			{ attachTo: appContainer }
 		);
 
@@ -175,7 +181,7 @@ describe("Account", () => {
 		wrapper
 			.find("a[role='menuitem']")
 			.first()
-			.simulate("keydown", { keyCode: escapeKeyCode });
+			.simulate("keydown", { key: "Escape" });
 
 		expect(
 			wrapper.find("[aria-controls='my-account']").props()["aria-expanded"]
@@ -203,7 +209,9 @@ describe("Account", () => {
 
 			const preventDefault = jest.fn();
 
-			wrapper.find(`a[children="${linkText}"]`).simulate("click", {
+			const button = wrapper.find(`a[children="${linkText}"]`);
+
+			button.props().onClick({
 				preventDefault: preventDefault,
 				currentTarget: {
 					getAttribute: () => href,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import classnames from "classnames";
 import FocusTrap from "focus-trap-react";
 import PropTypes from "prop-types";
@@ -7,6 +7,7 @@ import ChevronDown from "@nice-digital/icons/lib/ChevronDown";
 import ChevronUp from "@nice-digital/icons/lib/ChevronUp";
 import SubNav from "../SubNav";
 import Dropdown from "../Dropdown";
+import { HeaderContext } from "../../context/HeaderContext";
 
 import styles from "./NavLinks.module.scss";
 import {
@@ -23,8 +24,8 @@ export function NavLinks({
 	skipLinkId,
 	handleScrim,
 }) {
-	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 	const [canUseDOM, setCanUseDOM] = useState(false);
+	const { idOfOpenDropdown, setidOfOpenDropdown } = useContext(HeaderContext);
 
 	useEffect(() => {
 		setCanUseDOM(true);
@@ -60,22 +61,6 @@ export function NavLinks({
 	function escapeDropdown({ key }) {
 		if (ESCAPE_KEYS.includes(String(key))) setidOfOpenDropdown(null);
 	}
-
-	// NOTE: could the following be solved with context?
-	function clickOutsideNav(e) {
-		var thingYouClickedOn = e.target;
-		var areaToAvoid = document.getElementById("header-menu");
-		if (!areaToAvoid.contains(thingYouClickedOn)) {
-			setidOfOpenDropdown(null);
-		}
-	}
-
-	useEventListener(
-		"click",
-		clickOutsideNav,
-		document.querySelector("#global-nav-header")
-	);
-	// ---------------
 
 	useEventListener("keydown", escapeDropdown);
 
@@ -126,14 +111,16 @@ export function NavLinks({
 										aria-controls={`dropdown-${id}`}
 										aria-expanded={id === idOfOpenDropdown ? true : false}
 									>
-										<span aria-label={abbreviation && title}>{text}</span>{" "}
+										<span aria-label={abbreviation && title}>{text}</span>
 										{id === idOfOpenDropdown ? (
 											<ChevronUp className={styles.icon} pointerEvents="none" />
 										) : (
-											<ChevronDown
-												className={styles.icon}
-												pointerEvents="none"
-											/>
+											<>
+												<ChevronDown
+													className={styles.icon}
+													pointerEvents="none"
+												/>
+											</>
 										)}
 									</button>
 								) : (
