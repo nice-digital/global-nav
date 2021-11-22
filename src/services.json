@@ -147,13 +147,26 @@
       "dropdownComponent": "AboutUs"
     },
     {
-      "href": null,
+      "href": "#more",
       "text": "More",
       "id": "more",
       "dropdown": true,
-      "dropdownComponent": "More"
+      "dropdownComponent": "More",
+      "nestedLinks": [
+        {
+          "href": "https://www.evidence.nhs.uk",
+          "text": "Evidence search",
+          "id": "evidence-search"
+        },
+        {
+          "href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
+          "text": "Journals and databases",
+          "id": "journals-and-databases"
+        }
+      ]
     }
   ],
+
   "internal": [
     {
       "href": "/",

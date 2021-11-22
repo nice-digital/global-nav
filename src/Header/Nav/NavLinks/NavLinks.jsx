@@ -97,6 +97,7 @@ export function NavLinks({
 							title,
 							dropdown,
 							dropdownComponent,
+							nestedLinks,
 						},
 						index
 					) => {
@@ -116,7 +117,7 @@ export function NavLinks({
 						}
 
 						return (
-							<li key={id} id={id}>
+							<li key={id}>
 								{dropdown && canUseDOM ? (
 									<button
 										onClick={() => handleNavButtonClick(id)}
@@ -136,14 +137,40 @@ export function NavLinks({
 										)}
 									</button>
 								) : (
-									<a
-										href={href}
-										aria-current={ariaCurrent}
-										className={styles.link}
-										onClick={handleNavLinkClick}
-									>
-										<span aria-label={abbreviation && title}>{text}</span>
-									</a>
+									<>
+										<a
+											href={href}
+											aria-current={ariaCurrent}
+											className={styles.link}
+											onClick={handleNavLinkClick}
+										>
+											<span aria-label={abbreviation && title}>{text}</span>
+											{nestedLinks && (
+												<ChevronDown
+													className={styles.icon}
+													pointerEvents="none"
+												/>
+											)}
+										</a>
+
+										{nestedLinks && (
+											<>
+												<ul
+													id={id}
+													className={styles.nonJsDropdown}
+													aria-label="More NICE services"
+												>
+													{nestedLinks.map(({ href, text, id }) => {
+														return (
+															<li key={id}>
+																<a href={href}>{text}</a>
+															</li>
+														);
+													})}
+												</ul>
+											</>
+										)}
+									</>
 								)}
 								{dropdown && canUseDOM ? (
 									<Dropdown

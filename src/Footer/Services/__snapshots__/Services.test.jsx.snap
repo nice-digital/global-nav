@@ -177,7 +177,7 @@ exports[`Services Matches snapshot 1`] = `
         eventAction="Footer click"
         eventCategory="TopHat and footer"
         eventLabel="More"
-        href={null}
+        href="#more"
       >
         More
       </TrackedLink>

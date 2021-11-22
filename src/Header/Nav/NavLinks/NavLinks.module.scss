@@ -1,5 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 
+@import '~@nice-digital/nds-core/scss/core';
 @import '../../header-settings';
 @import '../../../Common.module.scss';
 @import '../Nav.module.scss';
@@ -38,5 +39,21 @@ button.link {
   margin-left: rem($nds-spacing-small);
   @include mq($from: md) {
     margin-left: 0;
+  }
+}
+
+.nonJsDropdown {
+  background-color: $nds-colour-nice-teal;
+  display: none;
+  list-style: none;
+  padding: rem($nds-spacing-small);
+  position: absolute;
+
+  a {
+    color: $nds-colour-nice-white;
+  }
+
+  &:target {
+    display: block;
   }
 }
