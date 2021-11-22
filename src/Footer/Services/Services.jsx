@@ -12,38 +12,54 @@ export default class Services extends Component {
 			<nav className={styles.wrapper} aria-label="Our services">
 				<ul className={styles.list}>
 					{links.external.map(
-						function ({ href, id, text, abbreviation, title }) {
-							return (
-								<li key={id}>
-									<TrackedLink
-										href={href}
-										eventAction={footerClickEventAction}
-										eventLabel={text}
-										aria-current={id == this.props.service ? "true" : null}
-										className={styles.link}
-									>
-										{abbreviation ? (
-											<>
-												<abbr title={title}>
-													{text}{" "}
-													<span className={styles.visuallyHidden}>{title}</span>
-												</abbr>
-												<span aria-hidden="true" className={styles.tooltip}>
-													{title}
-												</span>
-											</>
-										) : (
-											text
-										)}
-									</TrackedLink>
-								</li>
-							);
+						function (link) {
+							if (link.nestedLinks) {
+								return link.nestedLinks.map((nestedLink) => {
+									return <FooterLink key={nestedLink.id} {...nestedLink} />;
+								});
+							} else {
+								return <FooterLink key={link.id} {...link} />;
+							}
 						}.bind(this)
 					)}
 				</ul>
 			</nav>
 		);
 	}
+}
+
+FooterLink.propTypes = {
+	href: PropTypes.string,
+	id: PropTypes.string,
+	text: PropTypes.string,
+	abbreviation: PropTypes.string,
+	title: PropTypes.string,
+};
+
+function FooterLink({ href, text, abbreviation, title }) {
+	return (
+		<li>
+			<TrackedLink
+				href={href}
+				eventAction={footerClickEventAction}
+				eventLabel={text}
+				className={styles.link}
+			>
+				{abbreviation ? (
+					<>
+						<abbr title={title}>
+							{text} <span className={styles.visuallyHidden}>{title}</span>
+						</abbr>
+						<span aria-hidden="true" className={styles.tooltip}>
+							{title}
+						</span>
+					</>
+				) : (
+					text
+				)}
+			</TrackedLink>
+		</li>
+	);
 }
 
 Services.propTypes = {

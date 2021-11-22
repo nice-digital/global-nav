@@ -1,4 +1,5 @@
 @import '~@nice-digital/nds-core/scss/core';
+@import '../header-settings';
 
 .link {
   clip: rect(1px 1px 1px 1px);
@@ -22,6 +23,6 @@
     top: rem($nds-spacing-x-small);
     white-space: nowrap;
     width: auto;
-    z-index: 5;
+    z-index: $base-z-index + 5;
   }
 }

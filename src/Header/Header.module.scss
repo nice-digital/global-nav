@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: unquote($nds-font-family-sans);
   position: relative;
-  z-index: 2;
+  z-index: $base-z-index;
 
   *,
   *:before,
@@ -131,7 +131,7 @@
     position: fixed;
     top: 0;
     width: 100vw;
-    z-index: 2;
+    z-index: $base-z-index;
   }
 
   .header {
