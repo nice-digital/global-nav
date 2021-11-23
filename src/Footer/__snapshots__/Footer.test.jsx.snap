@@ -3,6 +3,7 @@
 exports[`Legal Matches snapshot 1`] = `
 <footer
   className="footer"
+  data-tracking="Global footer"
 >
   <div
     className="container"
