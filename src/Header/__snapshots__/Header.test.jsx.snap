@@ -8,6 +8,7 @@ exports[`Header Matches snapshot 1`] = `
   />
   <div
     className="header"
+    data-tracking="Global nav"
   >
     <header
       aria-label="Site header"
@@ -37,6 +38,7 @@ exports[`Header Matches snapshot 1`] = `
         <a
           aria-label="Home"
           className="home"
+          data-tracking="Logo"
           href="https://www.nice.org.uk/"
           onClick={[Function]}
         >

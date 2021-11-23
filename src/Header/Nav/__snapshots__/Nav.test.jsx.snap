@@ -51,6 +51,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
   <nav
     aria-label="primary navigation"
     className="nav"
+    data-tracking="Primary navigation"
   >
     <div
       className="menuWrapper"
@@ -133,6 +134,7 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
     <nav
       aria-label="primary navigation"
       className="nav"
+      data-tracking="Primary navigation"
     >
       <div
         className="menuWrapper"
@@ -299,6 +301,7 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
     <nav
       aria-label="primary navigation"
       className="nav"
+      data-tracking="Primary navigation"
     >
       <div
         className="menuWrapper"
