@@ -98,7 +98,7 @@ a.link,
     color: $colour-nav-text;
     outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
     outline-offset: rem(-$nds-spacing-small);
-    z-index: 1; // Push above the adjacent nav items
+    z-index: $base-z-index + 1; // Push above the adjacent nav items
   }
 
   &:active,
