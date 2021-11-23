@@ -38,7 +38,11 @@ export function Dropdown({
 	const Component = components[component];
 
 	return (
-		<div className={classnames([className, reset.wrapper])} id={id}>
+		<div
+			className={classnames([className, reset.wrapper])}
+			id={id}
+			data-tracking={`${text} dropdown`}
+		>
 			<div className={styles.container}>
 				{nextNavSlug && (
 					<a
@@ -50,7 +54,11 @@ export function Dropdown({
 					</a>
 				)}
 				<Component />
-				<button onClick={closeDropdown} className={styles.exit}>
+				<button
+					onClick={closeDropdown}
+					className={styles.exit}
+					data-tracking="Close menu"
+				>
 					Close menu <Remove />
 				</button>
 			</div>

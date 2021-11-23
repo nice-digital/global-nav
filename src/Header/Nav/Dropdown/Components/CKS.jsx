@@ -50,26 +50,33 @@ export function CKS() {
 				View CKS
 			</Button>
 
-			<h3 className="mt--d">Health topics A to Z</h3>
-			<ol className={styles.alphabet}>
-				{topicsAtoZ.map(({ letter, link }) => {
-					return (
-						<li
-							key={letter}
-							className={`${styles.letter} ${link ? "" : styles.chunkyLetter}`}
-						>
-							{link ? (
-								<a href={`${topicsAtoZurl}${letter}`}>{letter}</a>
-							) : (
-								<span>{letter}</span>
-							)}
-						</li>
-					);
-				})}
-			</ol>
-
+			<div data-tracking="Health topics A to Z">
+				<h3 className="mt--d">Health topics A to Z</h3>
+				<ol className={styles.alphabet}>
+					{topicsAtoZ.map(({ letter, link }) => {
+						return (
+							<li
+								key={letter}
+								className={`${styles.letter} ${
+									link ? "" : styles.chunkyLetter
+								}`}
+							>
+								{link ? (
+									<a href={`${topicsAtoZurl}${letter}`}>{letter}</a>
+								) : (
+									<span>{letter}</span>
+								)}
+							</li>
+						);
+					})}
+				</ol>
+			</div>
 			<Grid gutter="loose">
-				<GridItem cols={12} md={6}>
+				<GridItem
+					cols={12}
+					md={6}
+					data-tracking="Topics most frequently visited"
+				>
 					<h3>Topics most frequently visited</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
@@ -96,7 +103,7 @@ export function CKS() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={3}>
+				<GridItem cols={12} md={3} data-tracking="Browse by">
 					<h3>Browse by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
@@ -104,7 +111,7 @@ export function CKS() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={3}>
+				<GridItem cols={12} md={3} data-tracking="What's new">
 					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>

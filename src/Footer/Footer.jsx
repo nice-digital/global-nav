@@ -14,7 +14,7 @@ import { footerClickEventAction } from "../tracker";
 export class Footer extends Component {
 	render() {
 		return (
-			<footer className={styles.footer}>
+			<footer className={styles.footer} data-tracking="Global footer">
 				<div className={styles.container}>
 					<TrackedLink
 						eventAction={footerClickEventAction}

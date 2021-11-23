@@ -114,7 +114,11 @@ function Nav(props) {
 			)}
 			ref={ref}
 		>
-			<nav className={styles.nav} aria-label="primary navigation">
+			<nav
+				className={styles.nav}
+				aria-label="primary navigation"
+				data-tracking="Primary navigation"
+			>
 				<div className={styles.menuWrapper}>
 					<NavLinks
 						handleScrim={props.handleScrim}
@@ -126,6 +130,7 @@ function Nav(props) {
 					/>
 				</div>
 			</nav>
+			{/* TODO: when is this used? */}
 			{accountsLinksArray && (
 				<nav
 					aria-label="My account"
