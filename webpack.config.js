@@ -39,10 +39,6 @@ module.exports = function (env, argv) {
 				path.resolve(__dirname, "node_modules"),
 				"node_modules",
 			],
-			alias: {
-				react: HOT ? "react" : "nervjs",
-				"react-dom": HOT ? "react-dom" : "nervjs",
-			},
 		},
 
 		module: {
