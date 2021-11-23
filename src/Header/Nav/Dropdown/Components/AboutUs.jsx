@@ -24,7 +24,7 @@ export function AboutUs() {
 				Explore about us
 			</Button>
 			<Grid gutter="loose">
-				<GridItem cols={12} md={3}>
+				<GridItem cols={12} md={3} data-tracking="Who we are">
 					<h3 className="mt--d">Who we are</h3>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
@@ -59,7 +59,7 @@ export function AboutUs() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={3}>
+				<GridItem cols={12} md={3} data-tracking="What we do">
 					<h3 className="mt--d">What we do</h3>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
@@ -94,7 +94,7 @@ export function AboutUs() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={3}>
+				<GridItem cols={12} md={3} data-tracking="Our programmes">
 					<h3 className="mt--d">Our programmes</h3>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
@@ -131,7 +131,7 @@ export function AboutUs() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={3}>
+				<GridItem cols={12} md={3} data-tracking="Get involved">
 					<h3 className="mt--d">Get involved</h3>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>

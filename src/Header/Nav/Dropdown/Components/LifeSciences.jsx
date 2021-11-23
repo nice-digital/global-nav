@@ -20,47 +20,51 @@ export function LifeSciences() {
 			<Button className={reset.gnButtonCta} variant="cta" to={baseUrl}>
 				View life sciences
 			</Button>
-			<h3 className="mt--d">Engage with us</h3>
-			<Grid gutter="loose">
-				<GridItem cols={12} md={6}>
-					<h4 className="h5 mb--c mt--0">
-						<a href="http://www.healthtechconnect.org.uk">HealthTech Connect</a>
-					</h4>
-					<p className="mt--0">
-						Register with HealthTech Connect for initial information and support
-						getting your non-pharmaceutical technology developed and adopted in
-						the UK.
-					</p>
+			<div data-tracking="Engage with us">
+				<h3 className="mt--d">Engage with us</h3>
+				<Grid gutter="loose">
+					<GridItem cols={12} md={6}>
+						<h4 className="h5 mb--c mt--0">
+							<a href="http://www.healthtechconnect.org.uk">
+								HealthTech Connect
+							</a>
+						</h4>
+						<p className="mt--0">
+							Register with HealthTech Connect for initial information and
+							support getting your non-pharmaceutical technology developed and
+							adopted in the UK.
+						</p>
 
-					<h4 className="h5 mb--c">
-						<a href="https://www.ukpharmascan.org.uk">UK PharmaScan</a>
-					</h4>
-					<p className="mt--0">
-						UK PharmaScan can help ensure earlier and more effective decision
-						making. Enabling faster uptake of innovative new medicines.
-					</p>
-				</GridItem>
-				<GridItem cols={12} md={6}>
-					<h4 className="h5 mb--c mt--0">
-						<a href={`${baseUrl}/office-for-market-access`}>
-							Office for Market Access
-						</a>
-					</h4>
-					<p className="mt--0">
-						The Office for Market Access can help you engage with us and speed
-						up the development process.
-					</p>
+						<h4 className="h5 mb--c">
+							<a href="https://www.ukpharmascan.org.uk">UK PharmaScan</a>
+						</h4>
+						<p className="mt--0">
+							UK PharmaScan can help ensure earlier and more effective decision
+							making. Enabling faster uptake of innovative new medicines.
+						</p>
+					</GridItem>
+					<GridItem cols={12} md={6}>
+						<h4 className="h5 mb--c mt--0">
+							<a href={`${baseUrl}/office-for-market-access`}>
+								Office for Market Access
+							</a>
+						</h4>
+						<p className="mt--0">
+							The Office for Market Access can help you engage with us and speed
+							up the development process.
+						</p>
 
-					<h4 className="h5 mb--c">
-						<a href={`${baseUrl}/scientific-advice`}>Scientific advice</a>
-					</h4>
-					<p className="mt--0">
-						By answering your questions, scientific advice can help you design
-						evidence generation plans and provide key insights through our
-						advisory services.
-					</p>
-				</GridItem>
-			</Grid>
+						<h4 className="h5 mb--c">
+							<a href={`${baseUrl}/scientific-advice`}>Scientific advice</a>
+						</h4>
+						<p className="mt--0">
+							By answering your questions, scientific advice can help you design
+							evidence generation plans and provide key insights through our
+							advisory services.
+						</p>
+					</GridItem>
+				</Grid>
+			</div>
 		</section>
 	);
 }

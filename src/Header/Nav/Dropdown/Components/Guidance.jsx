@@ -23,21 +23,23 @@ export function Guidance() {
 				View guidance
 			</Button>
 
-			<h3>New and updated</h3>
-			<ul className={styles.inlineList}>
-				<li>
-					<a href={`${baseUrl}/date`}>This month</a>
-				</li>
-				<li>
-					<a href={`${baseUrl}/lastmonth`}>Last month</a>
-				</li>
-				<li>
-					<a href={`${baseUrl}/last6months`}>Last 6 months</a>
-				</li>
-			</ul>
+			<div data-tracking="New and updated">
+				<h3>New and updated</h3>
+				<ul className={styles.inlineList}>
+					<li>
+						<a href={`${baseUrl}/date`}>This month</a>
+					</li>
+					<li>
+						<a href={`${baseUrl}/lastmonth`}>Last month</a>
+					</li>
+					<li>
+						<a href={`${baseUrl}/last6months`}>Last 6 months</a>
+					</li>
+				</ul>
+			</div>
 
 			<Grid gutter="loose">
-				<GridItem cols={12} md={6}>
+				<GridItem cols={12} md={6} data-tracking="Topics">
 					<h3>Topics</h3>
 					<p>
 						Topic pages bring together products on the same subject, for example
@@ -71,7 +73,7 @@ export function Guidance() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={6}>
+				<GridItem cols={12} md={6} data-tracking="Being developed">
 					<h3>Being developed</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
@@ -102,85 +104,88 @@ export function Guidance() {
 					</ul>
 				</GridItem>
 			</Grid>
+			<div data-tracking="Programmes">
+				<h3>Programmes</h3>
 
-			<h3>Programmes</h3>
+				<Grid>
+					<GridItem cols={12} md={6}>
+						<ul className={styles.listUnstyled}>
+							<li>
+								<h4 className="h5 mt--0 mb--c">
+									<a
+										href={`${baseUrl}/published?type=apg,csg,cg,cov,mpg,ph,sg,sc`}
+									>
+										NICE guidelines
+									</a>
+								</h4>
+								<p className="mt--0">
+									Review the evidence across broad health and social care
+									topics.
+								</p>
+							</li>
+							<li>
+								<h4 className="h5 mt--0 mb--c">
+									<a href={`${baseUrl}/published?type=dg`}>
+										Diagnostics guidance
+									</a>
+								</h4>
+								<p className="mt--0">
+									Review new diagnostic technologies for adoption in
+									the&nbsp;NHS.
+								</p>
+							</li>
+							<li>
+								<h4 className="h5 mt--0 mb--c">
+									<a href={`${baseUrl}/published?type=ipg`}>
+										Interventional procedures guidance
+									</a>
+								</h4>
+								<p className="mt--0">
+									<span>Review the efficacy and safety of&nbsp;procedures</span>
+								</p>
+							</li>
+						</ul>
+					</GridItem>
 
-			<Grid>
-				<GridItem cols={12} md={6}>
-					<ul className={styles.listUnstyled}>
-						<li>
-							<h4 className="h5 mt--0 mb--c">
-								<a
-									href={`${baseUrl}/published?type=apg,csg,cg,cov,mpg,ph,sg,sc`}
-								>
-									NICE guidelines
-								</a>
-							</h4>
-							<p className="mt--0">
-								Review the evidence across broad health and social care topics.
-							</p>
-						</li>
-						<li>
-							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}/published?type=dg`}>
-									Diagnostics guidance
-								</a>
-							</h4>
-							<p className="mt--0">
-								Review new diagnostic technologies for adoption in the&nbsp;NHS.
-							</p>
-						</li>
-						<li>
-							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}/published?type=ipg`}>
-									Interventional procedures guidance
-								</a>
-							</h4>
-							<p className="mt--0">
-								<span>Review the efficacy and safety of&nbsp;procedures</span>
-							</p>
-						</li>
-					</ul>
-				</GridItem>
+					<GridItem cols={12} md={6}>
+						<ul className={styles.listUnstyled}>
+							<li>
+								<h4 className="h5 mt--0 mb--c">
+									<a href={`${baseUrl}/published?type=ta`}>
+										Technology appraisal guidance
+									</a>
+								</h4>
+								<p className="mt--0">
+									Review clinical and cost effectiveness of new&nbsp;treatments.
+								</p>
+							</li>
 
-				<GridItem cols={12} md={6}>
-					<ul className={styles.listUnstyled}>
-						<li>
-							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}/published?type=ta`}>
-									Technology appraisal guidance
-								</a>
-							</h4>
-							<p className="mt--0">
-								Review clinical and cost effectiveness of new&nbsp;treatments.
-							</p>
-						</li>
+							<li>
+								<h4 className="h5 mt--0 mb--c">
+									<a href={`${baseUrl}/published?type=hst`}>
+										Highly specialised technologies guidance
+									</a>
+								</h4>
+								<p className="mt--0">
+									Review clinical and cost effectiveness of
+									specialised&nbsp;treatments.
+								</p>
+							</li>
 
-						<li>
-							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}/published?type=hst`}>
-									Highly specialised technologies guidance
-								</a>
-							</h4>
-							<p className="mt--0">
-								Review clinical and cost effectiveness of
-								specialised&nbsp;treatments.
-							</p>
-						</li>
-
-						<li>
-							<h4 className="h5 mt--0 mb--c">
-								<a href={`${baseUrl}/published?type=mtg`}>
-									Medical technologies guidance
-								</a>
-							</h4>
-							<p className="mt--0">
-								Review new medical devices for adoption in the&nbsp;NHS.
-							</p>
-						</li>
-					</ul>
-				</GridItem>
-			</Grid>
+							<li>
+								<h4 className="h5 mt--0 mb--c">
+									<a href={`${baseUrl}/published?type=mtg`}>
+										Medical technologies guidance
+									</a>
+								</h4>
+								<p className="mt--0">
+									Review new medical devices for adoption in the&nbsp;NHS.
+								</p>
+							</li>
+						</ul>
+					</GridItem>
+				</Grid>
+			</div>
 		</section>
 	);
 }

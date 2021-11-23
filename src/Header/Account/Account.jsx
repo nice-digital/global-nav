@@ -140,7 +140,7 @@ function Account(props) {
 	}
 
 	return props.isLoggedIn ? (
-		<div className={styles.account}>
+		<div className={styles.account} data-tracking="Account panel">
 			<button
 				className={classnames(styles.button, styles.myAccount)}
 				id="my-account-button"
@@ -184,6 +184,7 @@ function Account(props) {
 		</div>
 	) : (
 		<a
+			data-tracking="Sign in"
 			href={signInLink.url}
 			className={styles.button}
 			onClick={handleMenuItemClick}

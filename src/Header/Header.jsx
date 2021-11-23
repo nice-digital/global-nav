@@ -92,7 +92,7 @@ export class Header extends Component {
 						aria-hidden="true"
 					/>
 
-					<div className={styles.header}>
+					<div className={styles.header} data-tracking="Global nav">
 						<header aria-label="Site header">
 							<ul className={styles.a11yLinks} aria-label="Accessibility links">
 								<li>
@@ -112,6 +112,7 @@ export class Header extends Component {
 									aria-label="Home"
 									className={styles.home}
 									onClick={this.handleLogoClick}
+									data-tracking="Logo"
 								>
 									<LogoIcon
 										className={styles.icon}
