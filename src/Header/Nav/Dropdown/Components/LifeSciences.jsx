@@ -5,9 +5,9 @@ import services from "../../../../services.json";
 import reset from "./../Reset.module.scss";
 
 export function LifeSciences() {
-	const baseUrl = services.external.find(
+	const baseUrl = services.external.filter(
 		(service) => service.id == "life-sciences"
-	).href;
+	)[0].href;
 
 	return (
 		<section aria-label="Life Sciences - dropdown navigation">
