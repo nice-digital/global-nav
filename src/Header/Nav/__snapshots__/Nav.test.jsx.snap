@@ -197,6 +197,7 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
               className="menuList"
             >
               <li
+                data-tracking="First link"
                 key="link1"
               >
                 <a
@@ -211,6 +212,7 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
                 </a>
               </li>
               <li
+                data-tracking="Second link"
                 key="link2"
               >
                 <a
@@ -357,6 +359,7 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
               className="menuList"
             >
               <li
+                data-tracking="First internal service"
                 key="internal1"
               >
                 <a
