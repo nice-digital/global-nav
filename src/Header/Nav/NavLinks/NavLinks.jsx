@@ -102,7 +102,7 @@ export function NavLinks({
 						}
 
 						return (
-							<li key={id}>
+							<li key={id} data-tracking={text}>
 								{dropdown && canUseDOM ? (
 									<button
 										onClick={() => handleNavButtonClick(id)}
