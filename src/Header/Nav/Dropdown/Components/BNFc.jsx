@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@nice-digital/nds-button";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
@@ -75,7 +75,7 @@ export function BNFc() {
 				</ol>
 			</div>
 			<Grid gutter="loose">
-				<GridItem cols={12} md={3} data-tracking="Browse A to Z by">
+				<GridItem data-tracking="Browse A to Z by">
 					<h3>Browse A to Z by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
@@ -86,7 +86,7 @@ export function BNFc() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={6} data-tracking="Browse by type">
+				<GridItem data-tracking="Browse by type" style={{ flex: 2 }}>
 					<h3>Browse by type</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
@@ -112,7 +112,7 @@ export function BNFc() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={3} data-tracking="What's new">
+				<GridItem data-tracking="What's new">
 					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@nice-digital/nds-button";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
@@ -39,7 +39,7 @@ export function Guidance() {
 			</div>
 
 			<Grid gutter="loose">
-				<GridItem cols={12} md={6} data-tracking="Topics">
+				<GridItem data-tracking="Topics">
 					<h3>Topics</h3>
 					<p>
 						Topic pages bring together products on the same subject, for example
@@ -73,7 +73,7 @@ export function Guidance() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={6} data-tracking="Being developed">
+				<GridItem data-tracking="Being developed">
 					<h3>Being developed</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
@@ -108,7 +108,7 @@ export function Guidance() {
 				<h3>Programmes</h3>
 
 				<Grid>
-					<GridItem cols={12} md={6}>
+					<GridItem>
 						<ul className={styles.listUnstyled}>
 							<li>
 								<h4 className="h5 mt--0 mb--c">
@@ -147,7 +147,7 @@ export function Guidance() {
 						</ul>
 					</GridItem>
 
-					<GridItem cols={12} md={6}>
+					<GridItem>
 						<ul className={styles.listUnstyled}>
 							<li>
 								<h4 className="h5 mt--0 mb--c">
