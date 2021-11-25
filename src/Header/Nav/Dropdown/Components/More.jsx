@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@nice-digital/nds-button";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { Grid, GridItem } from "./Grid";
 import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
@@ -9,7 +9,7 @@ export function More() {
 	return (
 		<section aria-label="More NICE services">
 			<Grid gutter="loose">
-				<GridItem cols={12} md={6}>
+				<GridItem>
 					<h2>Evidence search</h2>
 					<p>
 						Evidence search helps you make better, faster evidence-based
@@ -27,7 +27,7 @@ export function More() {
 						</Button>
 					</p>
 				</GridItem>
-				<GridItem cols={12} md={6}>
+				<GridItem>
 					<h2>Journals and databases</h2>
 					<p>
 						Quick access to a range of journals and other evidence-based

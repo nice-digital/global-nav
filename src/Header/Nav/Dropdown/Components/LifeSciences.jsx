@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@nice-digital/nds-button";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { Grid, GridItem } from "./Grid";
 import services from "../../../../services.json";
 import reset from "./../Reset.module.scss";
 
@@ -23,7 +23,7 @@ export function LifeSciences() {
 			<div data-tracking="Engage with us">
 				<h3 className="mt--d">Engage with us</h3>
 				<Grid gutter="loose">
-					<GridItem cols={12} md={6}>
+					<GridItem>
 						<h4 className="h5 mb--c mt--0">
 							<a href="http://www.healthtechconnect.org.uk">
 								HealthTech Connect
@@ -43,7 +43,7 @@ export function LifeSciences() {
 							making. Enabling faster uptake of innovative new medicines.
 						</p>
 					</GridItem>
-					<GridItem cols={12} md={6}>
+					<GridItem>
 						<h4 className="h5 mb--c mt--0">
 							<a href={`${baseUrl}/office-for-market-access`}>
 								Office for Market Access
