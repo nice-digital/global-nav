@@ -6,9 +6,9 @@ import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
 export function Guidance() {
-	const baseUrl = services.external.find(
+	const baseUrl = services.external.filter(
 		(service) => service.id == "guidance"
-	).href;
+	)[0].href;
 
 	return (
 		<section aria-label="NICE Guidance - dropdown navigation">

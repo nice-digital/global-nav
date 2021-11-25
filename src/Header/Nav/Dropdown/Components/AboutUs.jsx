@@ -7,9 +7,9 @@ import services from "../../../../services.json";
 import classnames from "classnames";
 
 export function AboutUs() {
-	const baseUrl = services.external.find(
+	const baseUrl = services.external.filter(
 		(service) => service.id == "about"
-	).href;
+	)[0].href;
 
 	const rootUrl = services.rootUrl;
 

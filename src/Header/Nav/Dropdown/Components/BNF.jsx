@@ -6,7 +6,8 @@ import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
 export function BNF() {
-	const baseUrl = services.external.find((service) => service.id == "bnf").href;
+	const baseUrl = services.external.filter((service) => service.id == "bnf")[0]
+		.href;
 
 	const drugsAtoZurl = baseUrl + "/drug/#";
 
