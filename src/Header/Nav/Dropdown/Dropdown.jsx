@@ -40,9 +40,9 @@ export function Dropdown({
 	function handleSkipLink(e) {
 		e.preventDefault();
 		const hash = e.target.hash.substring(1);
-		const el = document.getElementById(`navlink-${hash}`);
+		const element = document.getElementById(`navlink-${hash}`);
 		requestAnimationFrame(() => {
-			el.focus();
+			element.focus();
 		});
 		closeDropdown();
 	}
