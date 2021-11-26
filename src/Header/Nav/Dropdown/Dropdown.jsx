@@ -37,6 +37,16 @@ export function Dropdown({
 	};
 	const Component = components[component];
 
+	function handleSkipLink(e) {
+		e.preventDefault();
+		const hash = e.target.hash.substring(1);
+		const el = document.getElementById(`navlink-${hash}`);
+		requestAnimationFrame(() => {
+			el.focus();
+		});
+		closeDropdown();
+	}
+
 	return (
 		<div
 			className={classnames([className, reset.wrapper])}
@@ -48,7 +58,7 @@ export function Dropdown({
 					<a
 						href={`#${nextNavSlug}`}
 						className={styles.skiplink}
-						onClick={closeDropdown}
+						onClick={handleSkipLink}
 					>
 						Skip {text} submenu
 					</a>

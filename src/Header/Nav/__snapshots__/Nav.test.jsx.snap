@@ -204,6 +204,7 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
                   aria-current={null}
                   className="link"
                   href="https://url1/"
+                  id="navlink-link1"
                   onClick={[Function]}
                 >
                   <span>
@@ -219,6 +220,7 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
                   aria-current={true}
                   className="link"
                   href="https://url2/"
+                  id="navlink-link2"
                   onClick={[Function]}
                 >
                   <span
@@ -366,6 +368,7 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
                   aria-current={true}
                   className="link"
                   href="/"
+                  id="navlink-internal1"
                   onClick={[Function]}
                 >
                   <span>

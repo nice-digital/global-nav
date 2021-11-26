@@ -110,6 +110,7 @@ export function NavLinks({
 										className={styles.link}
 										aria-controls={`dropdown-${id}`}
 										aria-expanded={id === idOfOpenDropdown ? true : false}
+										id={`navlink-${id}`}
 									>
 										<span aria-label={abbreviation && title}>{text}</span>
 										{id === idOfOpenDropdown ? (
@@ -130,6 +131,7 @@ export function NavLinks({
 											aria-current={ariaCurrent}
 											className={styles.link}
 											onClick={handleNavLinkClick}
+											id={`navlink-${id}`}
 										>
 											<span aria-label={abbreviation && title}>{text}</span>
 											{nestedLinks && (
