@@ -21,6 +21,7 @@
     align-items: center;
     background: none;
     border: none;
+    color: $nds-colour-nice-black;
     column-gap: rem($nds-spacing-small);
     cursor: pointer;
     display: flex;
@@ -31,6 +32,11 @@
 
     &:focus {
       outline: rem($nds-spacing-x-small) solid $nds-colour-focus;
+    }
+
+    &:hover {
+      background: $nds-colour-nice-white;
+      color: $nds-colour-nice-black;
     }
   }
 }
