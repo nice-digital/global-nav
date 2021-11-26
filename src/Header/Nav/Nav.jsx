@@ -121,7 +121,6 @@ function Nav(props) {
 			>
 				<div className={styles.menuWrapper}>
 					<NavLinks
-						handleScrim={props.handleScrim}
 						skipLinkId={props.skipLinkId}
 						servicesToDisplay={servicesToDisplay}
 						currentService={props.service}
@@ -169,7 +168,6 @@ Nav.propTypes = {
 	accountsLinks: PropTypes.object,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
-	handleScrim: PropTypes.func,
 };
 
 Nav.defaultProps = {

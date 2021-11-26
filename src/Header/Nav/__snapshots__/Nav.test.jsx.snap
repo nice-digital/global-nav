@@ -58,7 +58,6 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
     >
       <NavLinks
         currentService={null}
-        handleScrim={[Function]}
         servicesToDisplay={
           Array [
             Object {
@@ -141,7 +140,6 @@ exports[`Nav Matches snapshot with sub links for selected external service 1`] =
       >
         <NavLinks
           currentService="link2"
-          handleScrim={[Function]}
           servicesToDisplay={
             Array [
               Object {
@@ -312,7 +310,6 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
       >
         <NavLinks
           currentService="internal1"
-          handleScrim={[Function]}
           servicesToDisplay={
             Array [
               Object {

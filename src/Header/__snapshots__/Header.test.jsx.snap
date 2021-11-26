@@ -2,10 +2,9 @@
 
 exports[`Header Matches snapshot 1`] = `
 <HeaderContextProvider>
-  <span
-    aria-hidden="true"
-    id="scrim"
-  />
+  <ContextConsumer>
+    <Component />
+  </ContextConsumer>
   <div
     className="header"
     data-tracking="Global nav"
@@ -90,7 +89,6 @@ exports[`Header Matches snapshot 1`] = `
       <Nav
         accountsLinks={null}
         additionalSubMenuItems={Array []}
-        handleScrim={[Function]}
         isExpanded={false}
         onNavigating="onNavigatingHandler"
         service={null}

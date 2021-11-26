@@ -15,7 +15,7 @@ import Account from "./Account";
 import SkipLink from "./SkipLink";
 
 import styles from "./Header.module.scss";
-import { HeaderContextProvider } from "./context/HeaderContext";
+import { HeaderContextProvider, HeaderContext } from "./context/HeaderContext";
 
 export class Header extends Component {
 	constructor(props) {
@@ -31,7 +31,6 @@ export class Header extends Component {
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
 		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
 		this.handleLogoClick = this.handleLogoClick.bind(this);
-		this.handleScrim = this.handleScrim.bind(this);
 	}
 
 	componentDidMount() {
@@ -70,10 +69,6 @@ export class Header extends Component {
 		);
 	}
 
-	handleScrim(scrim) {
-		this.setState({ scrimIsActive: Boolean(scrim === true) });
-	}
-
 	handleLoginStatusChecked(accountsData) {
 		if (accountsData.display_name) {
 			this.setState({ isLoggedIn: true, accountsData: accountsData });
@@ -86,11 +81,17 @@ export class Header extends Component {
 		return (
 			this.props.enabled !== false && (
 				<HeaderContextProvider>
-					<span
-						id="scrim"
-						className={this.state.scrimIsActive ? styles.scrim : undefined}
-						aria-hidden="true"
-					/>
+					<HeaderContext.Consumer>
+						{({ idOfOpenDropdown }) => {
+							return (
+								<span
+									id="scrim"
+									className={idOfOpenDropdown !== null && styles.scrim}
+									aria-hidden="true"
+								/>
+							);
+						}}
+					</HeaderContext.Consumer>
 
 					<div className={styles.header} data-tracking="Global nav">
 						<header aria-label="Site header">
@@ -159,7 +160,6 @@ export class Header extends Component {
 								</div>
 							</div>
 							<Nav
-								handleScrim={this.handleScrim}
 								skipLinkId={this.props.skipLinkId}
 								service={this.props.service}
 								isExpanded={this.state.isExpanded}

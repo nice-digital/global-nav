@@ -22,7 +22,6 @@ export function NavLinks({
 	subLinks,
 	onNavigating,
 	skipLinkId,
-	handleScrim,
 }) {
 	const [canUseDOM, setCanUseDOM] = useState(false);
 	const { idOfOpenDropdown, setidOfOpenDropdown } = useContext(HeaderContext);
@@ -33,13 +32,8 @@ export function NavLinks({
 
 	const ESCAPE_KEYS = ["27", "Escape"];
 
-	useEffect(() => {
-		handleScrim(Boolean(idOfOpenDropdown !== null));
-	}, [idOfOpenDropdown]);
-
 	function handleNavButtonClick(id) {
 		setidOfOpenDropdown(id === idOfOpenDropdown ? null : id);
-		// TODO: Track dropdown opening
 	}
 
 	function handleNavLinkClick(e) {
