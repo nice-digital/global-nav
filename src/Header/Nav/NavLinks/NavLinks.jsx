@@ -30,7 +30,7 @@ export function NavLinks({
 		setCanUseDOM(true);
 	}, []);
 
-	const ESCAPE_KEYS = ["27", "Escape"];
+	const ESCAPE_KEYS = ["27", "Escape", "Esc"];
 
 	function handleNavButtonClick(id) {
 		setidOfOpenDropdown(id === idOfOpenDropdown ? null : id);
