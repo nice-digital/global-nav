@@ -159,7 +159,7 @@ export function AboutUs() {
 						</li>
 						<li>
 							<a
-								href={`${rootUrl}/nice-communities/nice-and-the-public/public-involvement`}
+								href={`${rootUrl}/about/nice-communities/nice-and-the-public/public-involvement`}
 							>
 								Public involvement
 							</a>
