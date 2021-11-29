@@ -60,26 +60,26 @@ describe("Nav", () => {
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
-	// it("Adds aria-current=true attribute for selected service", () => {
-	// 	const wrapper = shallow(
-	// 		<Nav {...defaultProps} service={externalServices[1].id} />
-	// 	);
-	// 	expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual(true);
-	// });
+	it("Adds aria-current=true attribute for selected service", () => {
+		const wrapper = shallow(
+			<Nav {...defaultProps} service={externalServices[1].id} />
+		);
+		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual(true);
+	});
 
-	// it("Adds aria-current=page attribute for selected service when matches current URL", () => {
-	// 	const oldLocation = global.window.location;
-	// 	delete global.window.location;
-	// 	global.window.location = new URL(externalServices[1].href);
+	it("Adds aria-current=page attribute for selected service when matches current URL", () => {
+		const oldLocation = global.window.location;
+		delete global.window.location;
+		global.window.location = new URL(externalServices[1].href);
 
-	// 	const wrapper = shallow(
-	// 		<Nav {...defaultProps} service={externalServices[1].id} />
-	// 	);
-	// 	expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
+		const wrapper = shallow(
+			<Nav {...defaultProps} service={externalServices[1].id} />
+		);
+		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
 
-	// 	// Tidy up
-	// 	global.window.location = oldLocation;
-	// });
+		// Tidy up
+		global.window.location = oldLocation;
+	});
 
 	it("Add expanded class to root element when passed isExpanded prop", () => {
 		const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
@@ -98,48 +98,48 @@ describe("Nav", () => {
 			delete window.dataLayer;
 		});
 
-		// it("should push dataLayer event for nav item click", () => {
-		// 	const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
+		it("should push dataLayer event for nav item click", () => {
+			const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
 
-		// 	wrapper.find("a[href='https://url1/']").simulate("click", {
-		// 		preventDefault: () => {},
-		// 		currentTarget: {
-		// 			// Mock e.currentTarget.getAttribute("href")
-		// 			getAttribute: () => "",
-		// 			textContent: "First link",
-		// 		},
-		// 	});
+			wrapper.find("a[href='https://url1/']").simulate("click", {
+				preventDefault: () => {},
+				currentTarget: {
+					// Mock e.currentTarget.getAttribute("href")
+					getAttribute: () => "",
+					textContent: "First link",
+				},
+			});
 
-		// 	expect(window.dataLayer).toEqual([
-		// 		{
-		// 			event: eventName,
-		// 			eventCategory: defaultEventCategory,
-		// 			eventAction: headerClickEventAction,
-		// 			eventLabel: "First link",
-		// 			eventCallback: expect.any(Function),
-		// 			eventTimeout: eventTimeout,
-		// 		},
-		// 	]);
-		// });
+			expect(window.dataLayer).toEqual([
+				{
+					event: eventName,
+					eventCategory: defaultEventCategory,
+					eventAction: headerClickEventAction,
+					eventLabel: "First link",
+					eventCallback: expect.any(Function),
+					eventTimeout: eventTimeout,
+				},
+			]);
+		});
 
-		// it("should prevent default and navigate in event callback on nav item click", () => {
-		// 	const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
+		it("should prevent default and navigate in event callback on nav item click", () => {
+			const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
 
-		// 	const preventDefault = jest.fn();
+			const preventDefault = jest.fn();
 
-		// 	wrapper.find("a[href='https://url1/']").simulate("click", {
-		// 		preventDefault: preventDefault,
-		// 		currentTarget: {
-		// 			// Mock e.currentTarget.getAttribute("href")
-		// 			getAttribute: () => "https://url1/",
-		// 		},
-		// 	});
+			wrapper.find("a[href='https://url1/']").simulate("click", {
+				preventDefault: preventDefault,
+				currentTarget: {
+					// Mock e.currentTarget.getAttribute("href")
+					getAttribute: () => "https://url1/",
+				},
+			});
 
-		// 	expect(preventDefault).toHaveBeenCalled();
+			expect(preventDefault).toHaveBeenCalled();
 
-		// 	window.dataLayer[0].eventCallback();
-		// 	expect(window.location.href).toEqual("https://url1/");
-		// });
+			window.dataLayer[0].eventCallback();
+			expect(window.location.href).toEqual("https://url1/");
+		});
 
 		describe("Accounts links", () => {
 			const accountsLinks = {

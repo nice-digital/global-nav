@@ -202,7 +202,7 @@ export default class Autocomplete extends Component {
 						showNoOptionsFound={false}
 						defaultValue={this.props.query}
 						ref={function (acElement) {
-							// TODO: This relies on an inner implementation detail of the autocomplete component, can we do this in a better way?
+							// This relies on an inner implementation detail of the autocomplete component, can we do this in a better way?
 							var inputEl =
 								acElement &&
 								acElement.elementReferences &&
