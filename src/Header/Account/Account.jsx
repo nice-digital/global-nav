@@ -48,7 +48,7 @@ function Account(props) {
 	}, [accountMenuIsExpanded]);
 
 	function handleKeyDown(e) {
-		if (e.key === "Escape") {
+		if (e.key === "Escape" || e.key === "Esc") {
 			e.preventDefault();
 			setAccountMenuIsExpanded(false);
 			myAccountButton && myAccountButton.current.focus();
