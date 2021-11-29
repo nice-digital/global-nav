@@ -156,7 +156,9 @@ export function AboutUs() {
 						</li>
 						<li>
 							<a href={`${rootUrl}/Get-Involved/jobs`}>Work with us</a>
-							<a href={`${rootUrl}/nice-communities/public-involvement`}>
+							<a
+								href={`${rootUrl}/nice-communities/nice-and-the-public/public-involvement`}
+							>
 								Public involvement
 							</a>
 						</li>
