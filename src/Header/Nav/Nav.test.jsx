@@ -60,27 +60,6 @@ describe("Nav", () => {
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
-	it("Adds aria-current=true attribute for selected service", () => {
-		const wrapper = shallow(
-			<Nav {...defaultProps} service={externalServices[1].id} />
-		);
-		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual(true);
-	});
-
-	it("Adds aria-current=page attribute for selected service when matches current URL", () => {
-		const oldLocation = global.window.location;
-		delete global.window.location;
-		global.window.location = new URL(externalServices[1].href);
-
-		const wrapper = shallow(
-			<Nav {...defaultProps} service={externalServices[1].id} />
-		);
-		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
-
-		// Tidy up
-		global.window.location = oldLocation;
-	});
-
 	it("Add expanded class to root element when passed isExpanded prop", () => {
 		const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
 		expect(wrapper.props().className).not.toContain("wrapperExpanded");

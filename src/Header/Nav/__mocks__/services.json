@@ -1,14 +1,18 @@
 {
+  "rootUrl": "https://rootUrl.org.uk",
   "external": [
     {
       "href": "https://url1/",
       "text": "First link",
-      "id": "link1"
+      "id": "link1",
+      "dropdown": true,
+      "dropdownComponent": "FirstComponent"
     },
     {
       "href": "https://url2/",
       "text": "Second link",
       "id": "link2",
+      "dropdown": false,
       "abbreviation": true,
       "title": "Abbreviation title",
       "links": [
@@ -19,6 +23,37 @@
         {
           "text": "Sub link 2",
           "href": "/test"
+        }
+      ]
+    },
+    {
+      "href": "https://url3/",
+      "text": "Third link",
+      "id": "link3",
+      "dropdown": true,
+      "dropdownComponent": "ThirdComponent",
+      "abbreviation": true,
+      "title": "Abbreviation title",
+      "links": [
+        {
+          "text": "Sub link 1",
+          "href": "/"
+        },
+        {
+          "text": "Sub link 2",
+          "href": "/test"
+        }
+      ],
+      "nestedLinks": [
+        {
+          "href": "https://nestedLink1",
+          "text": "Nested link one",
+          "id": "nested-1"
+        },
+        {
+          "href": "https://nestedLink2",
+          "text": "Nested link two",
+          "id": "nested-2"
         }
       ]
     }
