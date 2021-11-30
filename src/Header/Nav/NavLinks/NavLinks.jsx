@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import classnames from "classnames";
 import FocusTrap from "focus-trap-react";
 import PropTypes from "prop-types";
@@ -23,7 +23,7 @@ export function NavLinks({
 	onNavigating,
 	skipLinkId,
 }) {
-	const [canUseDOM, setCanUseDOM] = useState(false);
+	const [canUseDOM, setCanUseDOM] = React.useState(false);
 	const { idOfOpenDropdown, setidOfOpenDropdown } = useContext(HeaderContext);
 
 	useEffect(() => {

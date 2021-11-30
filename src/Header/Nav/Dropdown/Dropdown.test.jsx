@@ -5,7 +5,7 @@ import { AboutUs } from "./Components/AboutUs";
 
 describe("Dropdown", () => {
 	const defaultProps = {
-		component: "AboutUs", // Needs to be present in the dropdown key values
+		component: "AboutUs", // Needs to be present in the dropdown key values in the component
 		text: "Our Dropdown",
 		id: "our-dropdown",
 	};
