@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavLinks Matches snapshot with sub links for selected external service 1`] = `
+<FocusTrap
+  _createFocusTrap={[Function]}
+  active={false}
+  focusTrapOptions={
+    Object {
+      "clickOutsideDeactivates": true,
+      "initialFocus": false,
+    }
+  }
+  paused={false}
+>
+  <ul
+    aria-labelledby="header-menu-button"
+    className="menuList"
+  >
+    <li
+      data-tracking="First link"
+      key="link1"
+    >
+      <button
+        aria-controls="dropdown-link1"
+        aria-current={null}
+        aria-expanded={false}
+        className="link"
+        id="navlink-link1"
+        onClick={[Function]}
+      >
+        <span>
+          First link
+        </span>
+        <SvgChevronDown
+          className="icon"
+          pointerEvents="none"
+        />
+      </button>
+      <Dropdown
+        className="dropdown"
+        closeDropdown={[Function]}
+        component="FirstComponent"
+        id="dropdown-link1"
+        nextNavSlug="link2"
+        text="First link"
+      />
+    </li>
+    <li
+      data-tracking="Second link"
+      key="link2"
+    >
+      <a
+        aria-current={null}
+        className="link"
+        href="https://url2/"
+        id="navlink-link2"
+        onClick={[Function]}
+      >
+        <span
+          aria-label="Abbreviation title"
+        >
+          Second link
+        </span>
+      </a>
+    </li>
+    <li
+      data-tracking="Third link"
+      key="link3"
+    >
+      <button
+        aria-controls="dropdown-link3"
+        aria-current={null}
+        aria-expanded={false}
+        className="link"
+        id="navlink-link3"
+        onClick={[Function]}
+      >
+        <span
+          aria-label="Abbreviation title"
+        >
+          Third link
+        </span>
+        <SvgChevronDown
+          className="icon"
+          pointerEvents="none"
+        />
+      </button>
+      <Dropdown
+        className="dropdown"
+        closeDropdown={[Function]}
+        component="ThirdComponent"
+        id="dropdown-link3"
+        text="Third link"
+      />
+    </li>
+  </ul>
+</FocusTrap>
+`;

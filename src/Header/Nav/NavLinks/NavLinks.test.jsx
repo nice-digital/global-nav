@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLinks } from "./NavLinks";
 import { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
+
 import services from "./../__mocks__/services.json";
 
 describe("NavLinks", () => {
@@ -88,5 +90,65 @@ describe("NavLinks", () => {
 		);
 		const link = wrapper.find("a[id='navlink-link2']");
 		expect(link.props()["aria-current"]).toBe(true);
+	});
+
+	it.skip("should prevent default and navigate in event callback on nav item click", () => {
+		const wrapper = shallow(
+			<NavLinks {...defaultProps} currentService="link2" />
+		);
+
+		const preventDefault = jest.fn();
+
+		console.log("#####", wrapper.debug());
+		const link = wrapper.find("a[href='https://url2/']");
+
+		console.log(".......", link.debug());
+
+		link.props().onClick({
+			preventDefault: preventDefault,
+			currentTarget: {
+				getAttribute: () => "https://url2/",
+			},
+		});
+
+		expect(preventDefault).toHaveBeenCalled();
+
+		window.dataLayer[0].eventCallback();
+		expect(window.location.href).toEqual("https://url2/");
+	});
+
+	it.skip("should push dataLayer event for nav item click", () => {
+		const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
+
+		console.log(wrapper.debug());
+
+		wrapper.find("a[href='https://url1/']").simulate("click", {
+			preventDefault: () => {},
+			currentTarget: {
+				// Mock e.currentTarget.getAttribute("href")
+				getAttribute: () => "",
+				textContent: "First link",
+			},
+		});
+
+		expect(window.dataLayer).toEqual([
+			{
+				event: eventName,
+				eventCategory: defaultEventCategory,
+				eventAction: headerClickEventAction,
+				eventLabel: "First link",
+				eventCallback: expect.any(Function),
+				eventTimeout: eventTimeout,
+			},
+		]);
+	});
+
+	it("Matches snapshot with sub links for selected external service", () => {
+		const externalServices = services.external;
+
+		const wrapper = shallow(
+			<NavLinks {...defaultProps} service={externalServices[1].id} />
+		);
+		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 });
