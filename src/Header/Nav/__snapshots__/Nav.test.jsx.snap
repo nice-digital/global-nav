@@ -61,12 +61,15 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
         servicesToDisplay={
           Array [
             Object {
+              "dropdown": true,
+              "dropdownComponent": "FirstComponent",
               "href": "https://url1/",
               "id": "link1",
               "text": "First link",
             },
             Object {
               "abbreviation": true,
+              "dropdown": false,
               "href": "https://url2/",
               "id": "link2",
               "links": Array [
@@ -80,6 +83,37 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                 },
               ],
               "text": "Second link",
+              "title": "Abbreviation title",
+            },
+            Object {
+              "abbreviation": true,
+              "dropdown": true,
+              "dropdownComponent": "ThirdComponent",
+              "href": "https://url3/",
+              "id": "link3",
+              "links": Array [
+                Object {
+                  "href": "/",
+                  "text": "Sub link 1",
+                },
+                Object {
+                  "href": "/test",
+                  "text": "Sub link 2",
+                },
+              ],
+              "nestedLinks": Array [
+                Object {
+                  "href": "https://nestedLink1",
+                  "id": "nested-1",
+                  "text": "Nested link one",
+                },
+                Object {
+                  "href": "https://nestedLink2",
+                  "id": "nested-2",
+                  "text": "Nested link two",
+                },
+              ],
+              "text": "Third link",
               "title": "Abbreviation title",
             },
           ]
