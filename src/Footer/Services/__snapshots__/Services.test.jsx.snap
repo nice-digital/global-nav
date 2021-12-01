@@ -44,7 +44,8 @@ exports[`Services Matches snapshot 1`] = `
       text="NICE Pathways"
     />
     <FooterLink
-      dropdown={false}
+      dropdown={true}
+      dropdownComponent="StandardsAndIndicators"
       href="https://www.nice.org.uk/standards-and-indicators"
       id="standards-and-indicators"
       key="standards-and-indicators"

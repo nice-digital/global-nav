@@ -14,6 +14,14 @@ button.link {
   @extend .linkStyling;
   column-gap: rem($nds-spacing-small);
   padding: rem($nds-spacing-medium);
+
+  &:visited {
+    color: $nds-colour-nice-white !important;
+  }
+
+  &:hover {
+    color: $nds-colour-nice-black !important;
+  }
 }
 
 .dropdown {

@@ -1,8 +1,7 @@
 import React from "react";
-import { Button } from "@nice-digital/nds-button";
+import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 import classnames from "classnames";
 
@@ -20,7 +19,7 @@ export function AboutUs() {
 				We provide national guidance and advice to improve health and social
 				care.
 			</p>
-			<Button className={reset.gnButtonCta} variant="cta" to={baseUrl}>
+			<Button variant="cta" to={baseUrl}>
 				Explore about us
 			</Button>
 			<Grid gutter="loose">

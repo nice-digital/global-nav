@@ -1,8 +1,7 @@
 import React from "react";
-import { Button } from "@nice-digital/nds-button";
+import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
 export function CKS() {
@@ -47,7 +46,7 @@ export function CKS() {
 				Providing primary care practitioners with a readily accessible summary
 				of the current evidence base and practical guidance on best practice
 			</p>
-			<Button className={reset.gnButtonCta} variant="cta" to={baseUrl}>
+			<Button variant="cta" to={baseUrl}>
 				View CKS
 			</Button>
 

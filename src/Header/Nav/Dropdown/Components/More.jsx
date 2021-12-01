@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from "@nice-digital/nds-button";
+import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
-import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
 export function More() {
@@ -18,11 +17,7 @@ export function More() {
 						go.
 					</p>
 					<p>
-						<Button
-							className={reset.gnButtonPrimary}
-							variant="primary"
-							to="https://www.evidence.nhs.uk/"
-						>
+						<Button variant="primary" to="https://www.evidence.nhs.uk/">
 							Evidence search
 						</Button>
 					</p>
@@ -45,7 +40,6 @@ export function More() {
 					<p>
 						<Button
 							variant="primary"
-							className={reset.gnButtonPrimary}
 							to={`${rootUrl}/about/what-we-do/evidence-services/journals-and-databases`}
 						>
 							Journals and databases

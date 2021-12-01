@@ -1,8 +1,7 @@
 import React from "react";
-import { Button } from "@nice-digital/nds-button";
+import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import reset from "./../Reset.module.scss";
 import services from "../../../../services.json";
 
 export function BNF() {
@@ -49,7 +48,7 @@ export function BNF() {
 				medicines.
 			</p>
 
-			<Button className={reset.gnButtonCta} variant="cta" to={baseUrl}>
+			<Button variant="cta" to={baseUrl}>
 				View BNF
 			</Button>
 

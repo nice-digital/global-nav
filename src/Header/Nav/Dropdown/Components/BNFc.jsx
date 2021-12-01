@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@nice-digital/nds-button";
+import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 import reset from "./../Reset.module.scss";
@@ -48,7 +48,7 @@ export function BNFc() {
 				healthcare professionals with sound up-to-date information on the use of
 				medicines for treating children.
 			</p>
-			<Button className={reset.gnButtonCta} variant="cta" to={baseUrl}>
+			<Button variant="cta" to={baseUrl}>
 				View BNFC
 			</Button>
 
