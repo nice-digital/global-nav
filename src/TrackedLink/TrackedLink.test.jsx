@@ -3,7 +3,7 @@ import TrackedLink from "./TrackedLink";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import { eventName, defaultEventCategory, eventTimeout } from "../tracker";
+import { eventName, defaultEventCategory } from "../tracker";
 
 describe("TrackedLink", () => {
 	beforeEach(() => {
@@ -35,16 +35,15 @@ describe("TrackedLink", () => {
 
 	it("should send event to the dataLayer with navigating event callback on link click", () => {
 		const href = "https://www.nice.org.uk/a-url",
-			eventCategory = "Test action",
+			eventName = "GlobalNav",
 			eventAction = "Test action",
 			eventLabel = "Test label";
 
 		const wrapper = shallow(
 			<TrackedLink
-				href={href}
-				eventCategory={eventCategory}
 				eventAction={eventAction}
 				eventLabel={eventLabel}
+				href={href}
 			>
 				Some text
 			</TrackedLink>
@@ -52,33 +51,32 @@ describe("TrackedLink", () => {
 
 		const preventDefault = jest.fn();
 
-		wrapper.simulate("click", {
+		const link = wrapper.find("a");
+
+		link.props().onClick({
 			preventDefault: preventDefault,
 			currentTarget: {
 				getAttribute: () => href,
 			},
 		});
 
-		expect(window.dataLayer).toEqual([
+		expect(window.dataLayer).toStrictEqual([
 			{
 				event: eventName,
-				eventCategory: eventCategory,
+				eventCategory: defaultEventCategory,
 				eventAction: eventAction,
 				eventLabel: eventLabel,
 				destinationUrl: href,
-				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout,
 			},
 		]);
 
 		expect(preventDefault).toHaveBeenCalled();
-
-		window.dataLayer[0].eventCallback();
 		expect(window.location.href).toEqual(href);
 	});
 
 	it("should use default event category when none provided", () => {
-		const eventAction = "Test action",
+		const href = "https://www.nice.org.uk/a-url",
+			eventAction = "Test action",
 			eventLabel = "Some text";
 
 		const wrapper = shallow(
@@ -93,28 +91,27 @@ describe("TrackedLink", () => {
 
 		const preventDefault = jest.fn();
 
-		wrapper.simulate("click", {
+		wrapper.props().onClick({
 			preventDefault: preventDefault,
 			currentTarget: {
-				getAttribute: () => "",
+				getAttribute: () => href,
 			},
 		});
 
-		expect(window.dataLayer).toEqual([
+		expect(window.dataLayer).toStrictEqual([
 			{
 				event: eventName,
 				eventCategory: defaultEventCategory,
 				eventAction: eventAction,
 				eventLabel: eventLabel,
-				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout,
+				destinationUrl: href,
 			},
 		]);
 	});
 
 	it("should use link textContent property for event label when none provided", () => {
 		const eventAction = "Test action",
-			eventLabel = "Some text";
+			href = "https://www.nice.org.uk/a-url";
 
 		const wrapper = shallow(
 			<TrackedLink href="/anything" eventAction={eventAction}>
@@ -124,22 +121,21 @@ describe("TrackedLink", () => {
 
 		const preventDefault = jest.fn();
 
-		wrapper.simulate("click", {
+		wrapper.props().onClick({
 			preventDefault: preventDefault,
 			currentTarget: {
-				getAttribute: () => "",
-				textContent: eventLabel,
+				getAttribute: () => href,
+				textContent: "Some text content",
 			},
 		});
 
-		expect(window.dataLayer).toEqual([
+		expect(window.dataLayer).toStrictEqual([
 			{
 				event: eventName,
 				eventCategory: defaultEventCategory,
 				eventAction: eventAction,
-				eventLabel: eventLabel,
-				eventCallback: expect.any(Function),
-				eventTimeout: eventTimeout,
+				eventLabel: "Some text content",
+				destinationUrl: href,
 			},
 		]);
 	});
