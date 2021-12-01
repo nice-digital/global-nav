@@ -94,7 +94,7 @@ export function Guidance() {
 						</li>
 						<li>
 							<h4 className="h5 mb--c">
-								<a href={`${baseUrl}/proposed`}>Proposed</a>
+								<a href={`${baseUrl}/proposed`}>Awaiting development</a>
 							</h4>
 							<p className="mt--0">
 								Guidance and quality standards that have been proposed for

@@ -115,7 +115,6 @@ describe("Account", () => {
 		);
 
 		wrapper.find("#my-account-button").simulate("click", { pageX: 99 });
-		// wrapper.instance().forceUpdate();
 		wrapper.update();
 
 		expect(wrapper.find("#my-account-button").props()["aria-expanded"]).toBe(
