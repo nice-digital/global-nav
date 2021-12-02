@@ -19,6 +19,7 @@ button.link {
     color: $nds-colour-nice-white !important;
   }
 
+  &[aria-current='true'],
   &:hover {
     color: $nds-colour-nice-black !important;
   }
