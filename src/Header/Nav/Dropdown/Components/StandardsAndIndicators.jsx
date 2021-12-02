@@ -15,7 +15,7 @@ export function StandardsAndIndicators() {
 	return (
 		<section aria-label="Standards and indicators - dropdown navigation">
 			<Grid gutter="loose">
-				<GridItem cols={12} md={6}>
+				<GridItem cols={12} md={6} data-tracking="Standards">
 					<h2>Quality standards</h2>
 					<p>
 						Our quality standards set out priority areas for quality
@@ -60,7 +60,7 @@ export function StandardsAndIndicators() {
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem cols={12} md={6}>
+				<GridItem cols={12} md={6} data-tracking="Indicators">
 					<h2>Indicators</h2>
 					<p>
 						Our indicators measure outcomes that reflect the quality of care, or
