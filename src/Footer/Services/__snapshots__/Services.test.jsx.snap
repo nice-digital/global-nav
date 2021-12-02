@@ -8,180 +8,180 @@ exports[`Services Matches snapshot 1`] = `
   <ul
     className="list"
   >
-    <li
-      key="pathways"
-    >
-      <TrackedLink
-        aria-current="true"
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="NICE Pathways"
-        href="https://pathways.nice.org.uk/"
-      >
-        NICE Pathways
-      </TrackedLink>
-    </li>
-    <li
+    <FooterLink
+      dropdown={true}
+      dropdownComponent="Guidance"
+      href="https://www.nice.org.uk/guidance"
+      id="guidance"
       key="guidance"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="NICE guidance"
-        href="https://www.nice.org.uk/guidance"
-      >
-        NICE guidance
-      </TrackedLink>
-    </li>
-    <li
+      text="Guidance"
+    />
+    <FooterLink
+      dropdown={false}
+      href="https://pathways.nice.org.uk"
+      id="pathways"
+      key="pathways"
+      links={
+        Array [
+          Object {
+            "href": "/#browse",
+            "text": "Browse",
+          },
+          Object {
+            "href": "/#recently-viewed",
+            "text": "Recently viewed",
+          },
+          Object {
+            "href": "/#help",
+            "text": "Help",
+          },
+          Object {
+            "href": "https://www.nice.org.uk/NICE-Pathways-feedback",
+            "text": "Leave feedback",
+          },
+        ]
+      }
+      text="NICE Pathways"
+    />
+    <FooterLink
+      dropdown={true}
+      dropdownComponent="StandardsAndIndicators"
+      href="https://www.nice.org.uk/standards-and-indicators"
+      id="standards-and-indicators"
+      key="standards-and-indicators"
+      text="Standards and indicators"
+    />
+    <FooterLink
+      dropdown={true}
+      dropdownComponent="LifeSciences"
+      href="https://www.nice.org.uk/about/what-we-do/life-sciences"
+      id="life-sciences"
       key="life-sciences"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Life sciences"
-        href="https://www.nice.org.uk/about/what-we-do/life-sciences"
-      >
-        Life sciences
-      </TrackedLink>
-    </li>
-    <li
-      key="standards"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Standards and indicators"
-        href="https://www.nice.org.uk/standards-and-indicators"
-      >
-        Standards and indicators
-      </TrackedLink>
-    </li>
-    <li
-      key="evidence"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Evidence search"
-        href="https://www.evidence.nhs.uk/"
-      >
-        Evidence search
-      </TrackedLink>
-    </li>
-    <li
+      text="Life sciences"
+    />
+    <FooterLink
+      abbreviation={true}
+      dropdown={true}
+      dropdownComponent="BNF"
+      href="https://bnf.nice.org.uk"
+      id="bnf"
       key="bnf"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="BNF"
-        href="https://bnf.nice.org.uk/"
-      >
-        <abbr
-          title="British National Formulary"
-        >
-          BNF
-           
-          <span
-            className="visuallyHidden"
-          >
-            British National Formulary
-          </span>
-        </abbr>
-        <span
-          aria-hidden="true"
-          className="tooltip"
-        >
-          British National Formulary
-        </span>
-      </TrackedLink>
-    </li>
-    <li
+      links={
+        Array [
+          Object {
+            "href": "/drug/",
+            "text": "Drugs",
+          },
+          Object {
+            "href": "/interaction/",
+            "text": "Interactions",
+          },
+          Object {
+            "href": "/treatment-summary/",
+            "text": "Treatment summaries",
+          },
+          Object {
+            "href": "/about/changes.html",
+            "text": "What's changed?",
+          },
+          Object {
+            "href": "/about/",
+            "text": "About BNF",
+          },
+        ]
+      }
+      text="BNF"
+      title="British National Formulary"
+    />
+    <FooterLink
+      abbreviation={true}
+      dropdown={true}
+      dropdownComponent="BNFc"
+      href="https://bnfc.nice.org.uk"
+      id="bnfc"
       key="bnfc"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="BNFC"
-        href="https://bnfc.nice.org.uk/"
-      >
-        <abbr
-          title="British National Formulary for Children"
-        >
-          BNFC
-           
-          <span
-            className="visuallyHidden"
-          >
-            British National Formulary for Children
-          </span>
-        </abbr>
-        <span
-          aria-hidden="true"
-          className="tooltip"
-        >
-          British National Formulary for Children
-        </span>
-      </TrackedLink>
-    </li>
-    <li
+      links={
+        Array [
+          Object {
+            "href": "/drug/",
+            "text": "Drugs",
+          },
+          Object {
+            "href": "/interaction/",
+            "text": "Interactions",
+          },
+          Object {
+            "href": "/treatment-summary/",
+            "text": "Treatment summaries",
+          },
+          Object {
+            "href": "/about/changes.html",
+            "text": "What's changed?",
+          },
+          Object {
+            "href": "/about/",
+            "text": "About BNFC",
+          },
+        ]
+      }
+      text="BNFC"
+      title="British National Formulary for Children"
+    />
+    <FooterLink
+      abbreviation={true}
+      dropdown={true}
+      dropdownComponent="CKS"
+      href="https://cks.nice.org.uk"
+      id="cks"
       key="cks"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="CKS"
-        href="https://cks.nice.org.uk/"
-      >
-        <abbr
-          title="Clinical Knowledge Summaries"
-        >
-          CKS
-           
-          <span
-            className="visuallyHidden"
-          >
-            Clinical Knowledge Summaries
-          </span>
-        </abbr>
-        <span
-          aria-hidden="true"
-          className="tooltip"
-        >
-          Clinical Knowledge Summaries
-        </span>
-      </TrackedLink>
-    </li>
-    <li
-      key="journals"
-    >
-      <TrackedLink
-        aria-current={null}
-        className="link"
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Journals and databases"
-        href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
-      >
-        Journals and databases
-      </TrackedLink>
-    </li>
+      links={
+        Array [
+          Object {
+            "href": "/",
+            "image": "cks",
+            "text": "CKS - Home",
+          },
+          Object {
+            "href": "/topics/",
+            "text": "Health topics A to Z",
+          },
+          Object {
+            "href": "/specialities/",
+            "text": "Specialities",
+          },
+          Object {
+            "href": "/whats-new/",
+            "text": "What's new",
+          },
+          Object {
+            "href": "/about/",
+            "text": "About CKS",
+          },
+        ]
+      }
+      text="CKS"
+      title="Clinical Knowledge Summaries"
+    />
+    <FooterLink
+      dropdown={true}
+      dropdownComponent="AboutUs"
+      href="https://www.nice.org.uk/about"
+      id="about"
+      key="about"
+      text="About"
+    />
+    <FooterLink
+      href="https://www.evidence.nhs.uk"
+      id="evidence-search"
+      key="evidence-search"
+      text="Evidence search"
+    />
+    <FooterLink
+      href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
+      id="journals-and-databases"
+      key="journals-and-databases"
+      text="Journals and databases"
+    />
   </ul>
 </nav>
 `;

@@ -1,0 +1,45 @@
+@import '~@nice-digital/nds-core/scss/core';
+@import '~@nice-digital/nds-core/scss/typography/_typography-helpers';
+
+// This file is here to normalise the appearance of the global nav on pages that also include NICE bootstrap or other conflicting styling
+
+$tags: h2, h3, h4, h5, h6;
+
+.wrapper {
+  @each $tag in $tags {
+    #{$tag} {
+      @include nds-font-size(#{$tag});
+      margin-top: rem($nds-spacing-medium);
+    }
+  }
+
+  a {
+    color: $nds-colour-link;
+    font-weight: normal;
+    text-decoration: underline;
+
+    &:hover {
+      color: $nds-colour-link-hover;
+    }
+
+    &:visited {
+      color: $nds-colour-link-visited;
+    }
+  }
+
+  p {
+    max-width: 66ch;
+  }
+
+  ul {
+    @include nds-list;
+    list-style: none !important;
+    margin-left: 0;
+    max-width: none; // To override max-width of 66ch set on lists
+    padding: 0;
+  }
+
+  li {
+    margin-left: 0;
+  }
+}

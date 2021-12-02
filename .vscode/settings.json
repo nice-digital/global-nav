@@ -1,10 +1,12 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.prettierPath": "./node_modules/prettier",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "editor.formatOnSave": true,
   "editor.rulers": [80, 120],
   "files.eol": "\n",
-  "sasslint.enable": false,
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
@@ -22,10 +24,11 @@
     "lib": true
   },
   "workbench.colorCustomizations": {
-    "activityBar.background": "#493657",
-    "activityBar.foreground": "#FFFFFF",
-    "titleBar.activeBackground": "#493657",
-    "titleBar.activeForeground": "#FFFFFF"
+    "activityBar.background": "#8f4e4d",
+    "activityBar.foreground": "#000",
+    "activityBar.inactiveForeground": "#FFFDE1",
+    "titleBar.activeBackground": "#8f4e4d",
+    "titleBar.activeForeground": "#FFFDE1"
   },
   "omnisharp.autoStart": false
 }

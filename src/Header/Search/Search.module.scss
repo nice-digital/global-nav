@@ -29,7 +29,7 @@
   right: 0;
   text-align: center;
   top: 0;
-  z-index: 101; // To sit above the search box so the focus outline surrounds the button
+  z-index: $base-z-index + 2; // To sit above the search box so the focus outline surrounds the button
 
   &:focus {
     @include nds-default-focus-style;

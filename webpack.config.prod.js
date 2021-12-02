@@ -18,13 +18,6 @@ module.exports = function (env, argv) {
 	const baseConfig = require("./webpack.config")(env, argv);
 
 	const commonConfig = {
-		resolve: {
-			alias: {
-				react: "nervjs",
-				"react-dom": "nervjs",
-			},
-		},
-
 		devtool: "source-map",
 
 		plugins: [

@@ -1,0 +1,15 @@
+@import '~@nice-digital/nds-core/scss/core';
+
+.grid {
+  @include mq($from: md) {
+    display: flex;
+  }
+}
+
+.gridItem {
+  padding-right: rem($nds-spacing-large);
+
+  @include mq($from: md) {
+    flex: 1;
+  }
+}

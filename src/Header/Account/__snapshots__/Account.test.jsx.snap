@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Account Matches snapshot when logged in  using IDAM 1`] = `
+exports[`Account Matches snapshot when logged in 1`] = `
 <div
   className="account"
+  data-tracking="Account panel"
 >
   <button
     aria-controls="my-account"
@@ -55,9 +56,10 @@ exports[`Account Matches snapshot when logged in  using IDAM 1`] = `
 </div>
 `;
 
-exports[`Account Matches snapshot when logged in 1`] = `
+exports[`Account Matches snapshot when logged in using IDAM 1`] = `
 <div
   className="account"
+  data-tracking="Account panel"
 >
   <button
     aria-controls="my-account"
@@ -113,6 +115,7 @@ exports[`Account Matches snapshot when logged in 1`] = `
 exports[`Account Matches snapshot when logged out 1`] = `
 <a
   className="button"
+  data-tracking="Sign in"
   href="https://accounts.nice.org.uk/signin"
   onClick={[Function]}
 >
@@ -123,6 +126,7 @@ exports[`Account Matches snapshot when logged out 1`] = `
 exports[`Account Matches snapshot when logged out using IDAM 1`] = `
 <a
   className="button"
+  data-tracking="Sign in"
   href="/signin"
   onClick={[Function]}
 >

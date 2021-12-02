@@ -62,7 +62,7 @@
   position: absolute;
   right: 0;
   top: 100%;
-  z-index: 2;
+  z-index: $base-z-index;
 
   // We move focus when we expand via keyboard navigation
   &:focus {

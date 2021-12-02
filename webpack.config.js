@@ -39,10 +39,6 @@ module.exports = function (env, argv) {
 				path.resolve(__dirname, "node_modules"),
 				"node_modules",
 			],
-			alias: {
-				react: HOT ? "react" : "nervjs",
-				"react-dom": HOT ? "react-dom" : "nervjs",
-			},
 		},
 
 		module: {
@@ -59,7 +55,9 @@ module.exports = function (env, argv) {
 						{
 							loader: require.resolve("babel-loader"),
 							options: {
-								plugins: HOT ? [require.resolve("react-refresh/babel")] : [],
+								plugins: [isDevelopment && "react-refresh/babel"].filter(
+									Boolean
+								),
 							},
 						},
 					],
@@ -74,6 +72,7 @@ module.exports = function (env, argv) {
 							options: {
 								importLoaders: 2,
 								modules: {
+									auto: true,
 									localIdentHashPrefix: "global-nav",
 									localIdentName: isDevelopment
 										? "[name]__[local]--[hash:base64]"

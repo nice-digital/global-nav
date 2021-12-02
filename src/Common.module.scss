@@ -1,3 +1,5 @@
+@import 'Header/header-settings';
+
 .link .tooltip {
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -18,7 +20,7 @@
   padding: rem(0 $nds-spacing-x-small);
   position: absolute;
   width: auto;
-  z-index: 1;
+  z-index: $base-z-index;
 }
 
 .visuallyHidden {
