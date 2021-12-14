@@ -28,7 +28,9 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
         id="navlink-link1"
         onClick={[Function]}
       >
-        <span>
+        <span
+          id="link1"
+        >
           First link
         </span>
         <SvgChevronDown
@@ -58,6 +60,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       >
         <span
           aria-label="Abbreviation title"
+          id="link2"
         >
           Second link
         </span>
@@ -77,6 +80,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       >
         <span
           aria-label="Abbreviation title"
+          id="link3"
         >
           Third link
         </span>

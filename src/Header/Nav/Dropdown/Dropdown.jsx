@@ -42,7 +42,7 @@ export function Dropdown({
 		const hash = e.target.hash.substring(1);
 		const element = document.getElementById(`navlink-${hash}`);
 		requestAnimationFrame(() => {
-			element.focus();
+			element && element.focus();
 		});
 		closeDropdown();
 	}

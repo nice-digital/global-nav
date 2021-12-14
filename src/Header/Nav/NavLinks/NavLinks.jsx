@@ -107,7 +107,9 @@ export function NavLinks({
 										aria-expanded={id === idOfOpenDropdown ? true : false}
 										id={`navlink-${id}`}
 									>
-										<span aria-label={abbreviation && title}>{text}</span>
+										<span aria-label={abbreviation && title} id={id}>
+											{text}
+										</span>
 										{id === idOfOpenDropdown ? (
 											<ChevronUp className={styles.icon} pointerEvents="none" />
 										) : (
@@ -128,7 +130,9 @@ export function NavLinks({
 											onClick={handleNavLinkClick}
 											id={`navlink-${id}`}
 										>
-											<span aria-label={abbreviation && title}>{text}</span>
+											<span aria-label={abbreviation && title} id={id}>
+												{text}
+											</span>
 											{nestedLinks && (
 												<ChevronDown
 													className={styles.icon}
