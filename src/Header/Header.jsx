@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";
 
@@ -17,42 +17,60 @@ import SkipLink from "./SkipLink";
 import styles from "./Header.module.scss";
 import { HeaderContextProvider, HeaderContext } from "./context/HeaderContext";
 
-export class Header extends Component {
-	constructor(props) {
-		super(props);
+export function Header(props) {
+	const [state, setState] = useState({
+		isExpanded: false,
+		isLoggedIn: false,
+		accountsData: null,
+		scrimIsActive: false,
+	});
 
-		this.state = {
-			isExpanded: false,
-			isLoggedIn: false,
-			accountsData: null,
-			scrimIsActive: false,
-		};
+	const searchInputSelector = "header form[role='search'] [name='q']";
 
-		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
-		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
-		this.handleLogoClick = this.handleLogoClick.bind(this);
-	}
+	// TODO: Remove this hack to fix https://github.com/alphagov/accessible-autocomplete/issues/434
+	// We do this to make our axe tests pass
+	// Wait for the search box to appear before removing the aria-activedescendant attribute
+	const globalNavWrapperRef = useCallback((node) => {
+		let searchInput;
+		if (node && "MutationObserver" in window) {
+			new MutationObserver(() => {
+				searchInput =
+					searchInput || document.querySelector(searchInputSelector);
+				if (
+					searchInput &&
+					searchInput.getAttribute("aria-activedescendant") === "false"
+				) {
+					searchInput.setAttribute("aria-activedescendant", "");
+				}
+			}).observe(node, {
+				attributeFilter: ["aria-activedescendant"],
+				attributes: true, // See https://stackoverflow.com/a/50593541/486434
+				childList: true,
+				subtree: true,
+			});
+		}
+	}, []);
 
-	componentDidMount() {
-		if (!document.getElementById(this.props.skipLinkId)) {
+	useEffect(() => {
+		if (!document.getElementById(props.skipLinkId)) {
 			const firstH1OnPage = document.getElementsByTagName("h1")[0];
 			firstH1OnPage
-				? firstH1OnPage.setAttribute("id", this.props.skipLinkId)
+				? firstH1OnPage.setAttribute("id", props.skipLinkId)
 				: console.warn(
-						`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
+						`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${props.skipLinkId}"`
 				  );
 		}
-	}
+	}, []);
 
-	handleMobileMenuBtnClick() {
+	function handleMobileMenuBtnClick() {
 		trackEvent(defaultEventCategory, headerClickEventAction, "Menu");
 
-		this.setState((prevState) => ({
+		setState((prevState) => ({
 			isExpanded: !prevState.isExpanded,
 		}));
 	}
 
-	handleLogoClick(e) {
+	function handleLogoClick(e) {
 		e.preventDefault();
 
 		const href = e.currentTarget.getAttribute("href");
@@ -69,114 +87,106 @@ export class Header extends Component {
 		);
 	}
 
-	handleLoginStatusChecked(accountsData) {
+	function handleLoginStatusChecked(accountsData) {
 		if (accountsData.display_name) {
-			this.setState({ isLoggedIn: true, accountsData: accountsData });
+			setState({ isLoggedIn: true, accountsData: accountsData });
 		} else {
-			this.setState({ isLoggedIn: false, accountsData: accountsData });
+			setState({ isLoggedIn: false, accountsData: accountsData });
 		}
 	}
 
-	render() {
-		return (
-			this.props.enabled !== false && (
-				<HeaderContextProvider>
-					<HeaderContext.Consumer>
-						{({ idOfOpenDropdown }) => {
-							return (
-								<span
-									id="scrim"
-									className={idOfOpenDropdown !== null && styles.scrim}
-									aria-hidden="true"
-								/>
-							);
-						}}
-					</HeaderContext.Consumer>
+	return (
+		props.enabled !== false && (
+			<HeaderContextProvider>
+				<HeaderContext.Consumer>
+					{({ idOfOpenDropdown }) => {
+						return (
+							<span
+								id="scrim"
+								className={idOfOpenDropdown !== null && styles.scrim}
+								aria-hidden="true"
+							/>
+						);
+					}}
+				</HeaderContext.Consumer>
 
-					<div className={styles.header} data-tracking="Global nav">
-						<header aria-label="Site header">
-							<ul className={styles.a11yLinks} aria-label="Accessibility links">
-								<li>
-									<SkipLink to={`#${this.props.skipLinkId}`}>
-										Skip to content
-									</SkipLink>
-								</li>
-								<li>
-									<SkipLink to="https://www.nice.org.uk/accessibility">
-										Accessibility help
-									</SkipLink>
-								</li>
-							</ul>
-							<div className={styles.container}>
-								<a
-									href="https://www.nice.org.uk/"
-									aria-label="Home"
-									className={styles.home}
-									onClick={this.handleLogoClick}
-									data-tracking="Logo"
-								>
-									<LogoIcon
-										className={styles.icon}
-										width={null}
-										height={null}
-									/>
-								</a>
-								<div className={styles.wrapper}>
-									<div className={styles.search}>
-										{this.props.search && (
-											<Search
-												skipLinkId={this.props.skipLinkId}
-												onNavigating={this.props.onNavigating}
-												{...this.props.search}
-											/>
-										)}
-									</div>
-									<button
-										className={styles.mobileMenuBtn}
-										id="header-menu-button"
-										type="button"
-										aria-controls="header-menu"
-										aria-expanded={this.state.isExpanded}
-										aria-haspopup="menu"
-										aria-label={
-											this.state.isExpanded
-												? "Close site menu"
-												: "Expand site menu"
-										}
-										onClick={this.handleMobileMenuBtnClick}
-									>
-										{this.state.isExpanded ? "Close" : "Menu"}
-									</button>
-									{this.props.auth !== false && (
-										<div className={styles.account}>
-											<Account
-												onLoginStatusChecked={this.handleLoginStatusChecked}
-												isLoggedIn={this.state.isLoggedIn}
-												accountsData={this.state.accountsData}
-												{...this.props.auth}
-											/>
-										</div>
+				<div
+					className={styles.header}
+					data-tracking="Global nav"
+					ref={globalNavWrapperRef}
+				>
+					<header aria-label="Site header">
+						<ul className={styles.a11yLinks} aria-label="Accessibility links">
+							<li>
+								<SkipLink to={`#${props.skipLinkId}`}>Skip to content</SkipLink>
+							</li>
+							<li>
+								<SkipLink to="https://www.nice.org.uk/accessibility">
+									Accessibility help
+								</SkipLink>
+							</li>
+						</ul>
+						<div className={styles.container}>
+							<a
+								href="https://www.nice.org.uk/"
+								aria-label="Home"
+								className={styles.home}
+								onClick={handleLogoClick}
+								data-tracking="Logo"
+							>
+								<LogoIcon className={styles.icon} width={null} height={null} />
+							</a>
+							<div className={styles.wrapper}>
+								<div className={styles.search}>
+									{props.search && (
+										<Search
+											skipLinkId={props.skipLinkId}
+											onNavigating={props.onNavigating}
+											{...props.search}
+										/>
 									)}
 								</div>
+								<button
+									className={styles.mobileMenuBtn}
+									id="header-menu-button"
+									type="button"
+									aria-controls="header-menu"
+									aria-expanded={state.isExpanded}
+									aria-haspopup="menu"
+									aria-label={
+										state.isExpanded ? "Close site menu" : "Expand site menu"
+									}
+									onClick={handleMobileMenuBtnClick}
+								>
+									{state.isExpanded ? "Close" : "Menu"}
+								</button>
+								{props.auth !== false && (
+									<div className={styles.account}>
+										<Account
+											onLoginStatusChecked={handleLoginStatusChecked}
+											isLoggedIn={state.isLoggedIn}
+											accountsData={state.accountsData}
+											{...props.auth}
+										/>
+									</div>
+								)}
 							</div>
-							<Nav
-								skipLinkId={this.props.skipLinkId}
-								service={this.props.service}
-								isExpanded={this.state.isExpanded}
-								accountsLinks={
-									this.state.accountsData && this.state.accountsData.links
-								}
-								onNavigating={this.props.onNavigating}
-								additionalSubMenuItems={this.props.additionalSubMenuItems}
-							/>
-						</header>
-						<CoronaMessage onResize={this.props.onResize} />
-						<OldIEMessage />
-					</div>
-				</HeaderContextProvider>
-			)
-		);
-	}
+						</div>
+						<Nav
+							skipLinkId={props.skipLinkId}
+							service={props.service}
+							isExpanded={state.isExpanded}
+							accountsLinks={state.accountsData && state.accountsData.links}
+							onNavigating={props.onNavigating}
+							additionalSubMenuItems={props.additionalSubMenuItems}
+						/>
+					</header>
+					<CoronaMessage onResize={props.onResize} />
+					<OldIEMessage />
+				</div>
+			</HeaderContextProvider>
+		)
+	);
 }
 
 Header.propTypes = {
