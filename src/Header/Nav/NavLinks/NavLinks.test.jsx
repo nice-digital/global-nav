@@ -59,7 +59,7 @@ describe("NavLinks", () => {
 		expect(link.props()["aria-current"]).toBe(true);
 	});
 
-	it("should add render an abbreviation title label", () => {
+	it("should add an abbreviation title label", () => {
 		const wrapper = shallow(
 			<NavLinks {...defaultProps} currentService="link2" />
 		);
