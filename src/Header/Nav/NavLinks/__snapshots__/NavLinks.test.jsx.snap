@@ -51,14 +51,13 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
     >
       <a
         aria-current={null}
+        aria-label="Abbreviation title"
         className="link"
         href="https://url2/"
         id="navlink-link2"
         onClick={[Function]}
       >
-        <span
-          aria-label="Abbreviation title"
-        >
+        <span>
           Second link
         </span>
       </a>
@@ -71,13 +70,12 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
         aria-controls="dropdown-link3"
         aria-current={null}
         aria-expanded={false}
+        aria-label="Abbreviation title"
         className="link"
         id="navlink-link3"
         onClick={[Function]}
       >
-        <span
-          aria-label="Abbreviation title"
-        >
+        <span>
           Third link
         </span>
         <SvgChevronDown

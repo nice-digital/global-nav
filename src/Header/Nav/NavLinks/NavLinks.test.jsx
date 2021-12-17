@@ -59,11 +59,11 @@ describe("NavLinks", () => {
 		expect(link.props()["aria-current"]).toBe(true);
 	});
 
-	it("should add render an abbreviation title element", () => {
+	it("should add render an abbreviation title label", () => {
 		const wrapper = shallow(
 			<NavLinks {...defaultProps} currentService="link2" />
 		);
-		const abbreviationElement = wrapper.find("[id='navlink-link2'] span");
+		const abbreviationElement = wrapper.find("[id='navlink-link2']");
 		expect(abbreviationElement.props()["aria-label"]).toBe(
 			"Abbreviation title"
 		);

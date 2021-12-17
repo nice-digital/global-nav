@@ -128,8 +128,9 @@ export function NavLinks({
 											className={styles.link}
 											onClick={handleNavLinkClick}
 											id={`navlink-${id}`}
+											aria-label={abbreviation && title}
 										>
-											<span aria-label={abbreviation && title}>{text}</span>
+											<span>{text}</span>
 											{nestedLinks && (
 												<ChevronDown
 													className={styles.icon}
