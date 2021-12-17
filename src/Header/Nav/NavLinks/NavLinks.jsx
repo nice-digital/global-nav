@@ -106,8 +106,9 @@ export function NavLinks({
 										aria-controls={`dropdown-${id}`}
 										aria-expanded={id === idOfOpenDropdown ? true : false}
 										id={`navlink-${id}`}
+										aria-label={abbreviation && title}
 									>
-										<span aria-label={abbreviation && title}>{text}</span>
+										<span>{text}</span>
 										{id === idOfOpenDropdown ? (
 											<ChevronUp className={styles.icon} pointerEvents="none" />
 										) : (
