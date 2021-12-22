@@ -232,9 +232,7 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
                   id="navlink-internal1"
                   onClick={[Function]}
                 >
-                  <span
-                    id="internal1"
-                  >
+                  <span>
                     First internal service
                   </span>
                 </a>
