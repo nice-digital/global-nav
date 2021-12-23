@@ -7,20 +7,20 @@ Feature: Header
     And I go to the GlobalNav homepage
     And I accept all cookies
 
-  Scenario: To verify the drop down guidance test
+  Scenario: To verify the drop down guidance
     When I click on the element "//*[@id='navlink-guidance']/span"
     Then  I expect that element "h2" matches the text "Guidance"
     When I wait on element "button.gn_O6Y90"
     When I click on the button "button.gn_O6Y90"
 
-  Scenario: To verify the drop down standards and indicators test
+  Scenario: To verify the drop down standards and indicators
     When I click on the element "//*[@id='navlink-standards-and-indicators']"
     When I wait on element "button#navlink-standards-and-indicators.gn_wkwGC"
     Then I expect that element "a.gn_4I9VC.gn_1O8Gt" contains the text "View our quality standards"
     When I wait on element "button.gn_O6Y90"
     When I click on the button "//*[@id='dropdown-standards-and-indicators']/div/button"
 
-  Scenario: To verify the drop down life sciences test
+  Scenario: To verify the drop down life sciences
     When I click on the element "//*[@id='navlink-life-sciences']"
     Then I expect that element "//*[@id='dropdown-life-sciences']/div/section/a" contains the text "View life sciences"
     When I wait on element "button.gn_O6Y90"
