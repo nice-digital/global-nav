@@ -55,7 +55,11 @@ export function Dropdown({
 			<div className={styles.container}>
 				{nextNavSlug && (
 					<a
-						href={`#navlink-${nextNavSlug}`}
+						href={
+							nextNavSlug == "content-start"
+								? `#${nextNavSlug}`
+								: `#navlink-${nextNavSlug}`
+						}
 						className={styles.skiplink}
 						onClick={handleSkipLink}
 					>
