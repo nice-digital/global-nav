@@ -39,7 +39,7 @@ describe("Dropdown", () => {
 				closeDropdown={closingFunction}
 			/>
 		);
-		const skipButton = wrapper.find("a[href='#next-thing']");
+		const skipButton = wrapper.find("a[href='#navlink-next-thing']");
 		expect(skipButton.length).toEqual(1);
 		expect(skipButton.text()).toBe("Skip Our Dropdown submenu");
 		skipButton
@@ -51,7 +51,7 @@ describe("Dropdown", () => {
 
 	it("Should not render a skip link when there is no next nav item to skip to", () => {
 		const wrapper = shallow(<Dropdown {...defaultProps} />);
-		expect(wrapper.find("a[href='#next-thing']").length).toEqual(0);
+		expect(wrapper.find("a[href='#navlink-next-thing']").length).toEqual(0);
 	});
 
 	it("should fire onClosing when the close dropdown button is clicked", () => {

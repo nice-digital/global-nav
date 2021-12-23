@@ -103,7 +103,7 @@ export function Header(props) {
 						return (
 							<span
 								id="scrim"
-								className={idOfOpenDropdown !== null && styles.scrim}
+								className={idOfOpenDropdown !== null ? styles.scrim : undefined}
 								aria-hidden="true"
 							/>
 						);

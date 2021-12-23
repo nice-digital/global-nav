@@ -39,10 +39,9 @@ export function Dropdown({
 
 	function handleSkipLink(e) {
 		e.preventDefault();
-		const hash = e.target.hash.substring(1);
-		const element = document.getElementById(`navlink-${hash}`);
+		const element = document.getElementById(e.target.hash.substr(1));
 		requestAnimationFrame(() => {
-			element.focus();
+			element && element.focus();
 		});
 		closeDropdown();
 	}
@@ -56,7 +55,11 @@ export function Dropdown({
 			<div className={styles.container}>
 				{nextNavSlug && (
 					<a
-						href={`#${nextNavSlug}`}
+						href={
+							nextNavSlug == "content-start"
+								? `#${nextNavSlug}`
+								: `#navlink-${nextNavSlug}`
+						}
 						className={styles.skiplink}
 						onClick={handleSkipLink}
 					>
