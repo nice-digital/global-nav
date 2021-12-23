@@ -22,9 +22,9 @@ services:
   hub:
     image: selenium/hub:3.11.0-antimony
     ports:
-      - "4444:4444"
+      - '4444:4444'
     expose:
-      - "4444"
+      - '4444'
 
   tests:
     build: .
