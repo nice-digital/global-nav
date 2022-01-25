@@ -122,7 +122,7 @@
 
 @include mq($from: md) {
   .scrim {
-    background: rgba(0, 0, 0, 70%);
+    background: rgba(0, 0, 0, 0.7);
     display: block;
     left: 0;
     min-height: 100vh;
