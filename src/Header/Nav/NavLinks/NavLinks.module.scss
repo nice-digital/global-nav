@@ -28,7 +28,7 @@ button.link {
 .dropdown {
   background-color: $nds-colour-body;
   box-shadow: 0 rem($nds-spacing-small) rem($nds-spacing-small) 0
-    rgb(0, 0, 0, 10%);
+    rgba(0, 0, 0, 10%);
   display: none;
   left: 0;
   position: relative;
