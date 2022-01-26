@@ -7,7 +7,7 @@
   background: $colour-footer-background;
   box-sizing: border-box;
   color: $colour-footer-text;
-  contain-intrinsic-size: 350px; /* stylelint-disable-line */
+  contain-intrinsic-size: 100vw rem(1090); /* stylelint-disable-line */
   content-visibility: auto; /* stylelint-disable-line */
   font-family: unquote($nds-font-family-sans);
   margin: rem($nds-spacing-large 0 0 0);
@@ -22,6 +22,20 @@
 
   a {
     font-weight: normal; // To override Pathways global anchor style
+  }
+
+  // Estimates of intrinsic height across breakpoints
+  @include mq($from: xs) {
+    contain-intrinsic-height: rem(930);
+  }
+  @include mq($from: sm) {
+    contain-intrinsic-height: rem(540);
+  }
+  @include mq($from: md) {
+    contain-intrinsic-height: rem(450);
+  }
+  @include mq($from: lg) {
+    contain-intrinsic-height: rem(495);
   }
 }
 
