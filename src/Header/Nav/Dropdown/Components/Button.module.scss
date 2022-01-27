@@ -2,11 +2,12 @@
 
 // Mostly copied from nds-button
 
-$nds-button-shadow-colour: rgba(0, 0, 0, 20%);
+$nds-button-shadow-colour: rgba(0, 0, 0, 0.2);
 $nds-button-border-radius: em(3px);
 
 .button {
   border: em(1px) solid $nds-colour-btn-primary-text;
+  border-radius: $nds-button-border-radius;
   box-shadow: 0 em(3px) em(6px) 0 $nds-button-shadow-colour;
   color: $nds-colour-nice-white !important;
   display: inline-block;
