@@ -84,7 +84,9 @@ exports[`Account Matches snapshot when logged in using IDAM 1`] = `
       key="0"
       role="presentation"
     >
-      Joe Bloggs
+      <span>
+        Joe Bloggs
+      </span>
     </li>
     <li
       key="1"
