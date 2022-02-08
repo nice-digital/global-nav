@@ -181,7 +181,7 @@ function Account(props) {
 										{text}
 									</a>
 								) : (
-									<>{text}</>
+									<span>{text}</span>
 								)}
 							</li>
 						);
