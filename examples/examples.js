@@ -189,6 +189,7 @@ const identityAdminLoggedInConfig = {
 			auth: {
 				provider: "idam",
 				links: [
+					{ text: "John Holland", url: "#" },
 					{ text: "My profile", url: "/Account/todo" },
 					{ text: "Sign out", url: "/Account/Logout" },
 				],
