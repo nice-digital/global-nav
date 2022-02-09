@@ -80,6 +80,11 @@ exports[`Account Matches snapshot when logged in using IDAM 1`] = `
     onKeyDown={[Function]}
     role="menu"
   >
+    <li>
+      <span>
+        Joe Bloggs
+      </span>
+    </li>
     <li
       key="0"
       role="presentation"
@@ -94,9 +99,6 @@ exports[`Account Matches snapshot when logged in using IDAM 1`] = `
         Sign out
       </a>
     </li>
-    <span>
-      Joe Bloggs
-    </span>
   </ul>
 </div>
 `;
