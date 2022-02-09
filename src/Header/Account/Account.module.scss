@@ -106,6 +106,12 @@
     margin: 0;
   }
 
+  .span,
+  a {
+    display: block;
+    padding: rem($nds-spacing-small $nds-spacing-medium);
+  }
+
   a {
     color: $nds-colour-link;
     text-decoration: none;
@@ -119,11 +125,5 @@
       background: $nds-colour-nice-grey-3;
       text-decoration: underline;
     }
-  }
-
-  .span,
-  a {
-    display: block;
-    padding: rem($nds-spacing-small $nds-spacing-medium);
   }
 }
