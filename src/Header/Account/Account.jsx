@@ -166,26 +166,23 @@ function Account(props) {
 					Object.keys(accountsData.links).map(function (text, i) {
 						return (
 							<li key={i} role="presentation">
-								{accountsData.links[text] != "#" ? (
-									<a
-										href={accountsData.links[text]}
-										role="menuitem"
-										onClick={handleMenuItemClick}
-										onKeyDown={handleKeyDown}
-										data-hj-suppress={
-											accountsData.links[text].indexOf("profile") > -1
-												? ""
-												: null
-										}
-									>
-										{text}
-									</a>
-								) : (
-									<span>{text}</span>
-								)}
+								<a
+									href={accountsData.links[text]}
+									role="menuitem"
+									onClick={handleMenuItemClick}
+									onKeyDown={handleKeyDown}
+									data-hj-suppress={
+										accountsData.links[text].indexOf("profile") > -1 ? "" : null
+									}
+								>
+									{text}
+								</a>
 							</li>
 						);
 					})}
+				{doesUseIdAM && accountsData.display_name && (
+					<span>{accountsData.display_name}</span>
+				)}
 			</ul>
 		</div>
 	) : (

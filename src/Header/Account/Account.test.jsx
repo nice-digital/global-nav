@@ -40,7 +40,6 @@ describe("Account", () => {
 	const idamData = {
 		display_name: "Joe Bloggs",
 		links: {
-			"Joe Bloggs": "#",
 			"Sign out": "https:/identity.nice.org.uk/signout",
 		},
 	};

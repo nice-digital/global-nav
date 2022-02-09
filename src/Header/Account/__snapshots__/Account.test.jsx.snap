@@ -84,14 +84,6 @@ exports[`Account Matches snapshot when logged in using IDAM 1`] = `
       key="0"
       role="presentation"
     >
-      <span>
-        Joe Bloggs
-      </span>
-    </li>
-    <li
-      key="1"
-      role="presentation"
-    >
       <a
         data-hj-suppress={null}
         href="https:/identity.nice.org.uk/signout"
@@ -102,6 +94,9 @@ exports[`Account Matches snapshot when logged in using IDAM 1`] = `
         Sign out
       </a>
     </li>
+    <span>
+      Joe Bloggs
+    </span>
   </ul>
 </div>
 `;
