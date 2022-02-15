@@ -77,12 +77,48 @@ export class Header extends Component {
 		}
 	}
 
+	dropdownToggleHandler(idOfOpenDropdown) {
+		// If we've got an onDropdownOpen or onDropdownClose prop call the onDropdownOpen or onDropdownClose callback based on idOfOpenDropdown.
+		const { onDropdownOpen, onDropdownClose } = this.props;
+
+		if (onDropdownOpen) {
+			const onDropdownOpenCallback =
+				typeof onDropdownOpen === "function"
+					? onDropdownOpen
+					: window[onDropdownOpen];
+			if (
+				idOfOpenDropdown !== null &&
+				typeof onDropdownOpenCallback === "function"
+			) {
+				onDropdownOpenCallback();
+				return true;
+			}
+		}
+
+		if (onDropdownClose) {
+			const onDropdownCloseCallback =
+				typeof onDropdownClose === "function"
+					? onDropdownClose
+					: window[onDropdownClose];
+			if (
+				idOfOpenDropdown == null &&
+				typeof onDropdownCloseCallback === "function"
+			) {
+				onDropdownCloseCallback();
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	render() {
 		return (
 			this.props.enabled !== false && (
 				<HeaderContextProvider>
 					<HeaderContext.Consumer>
 						{({ idOfOpenDropdown }) => {
+							this.dropdownToggleHandler(idOfOpenDropdown);
 							return (
 								<span
 									id="scrim"
@@ -189,6 +225,8 @@ Header.propTypes = {
 	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onDropdownOpen: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onDropdownClose: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
 };
 
