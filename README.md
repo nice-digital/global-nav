@@ -421,7 +421,7 @@ Pass either a function, or the name of a function defined on `window`. E.g.:
 ```js
 window.onDropdownOpenHandler = function () {
   // Define your implementation here e.g.:
-  document.querySelector("body").classList.add("dropdown--open");
+  document.querySelector("body").classList.add("global-nav__dropdown--open");
 };
 
 var global_nav_config = {
@@ -446,7 +446,7 @@ Pass either a function, or the name of a function defined on `window`. E.g.:
 ```js
 window.onDropdownCloseHandler = function (e) {
   // Define your implementation here e.g.:
- document.querySelector("body").classList.remove("dropdown--open")
+ document.querySelector("body").classList.remove("global-nav__dropdown--open")
 
 };
 
