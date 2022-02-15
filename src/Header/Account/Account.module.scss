@@ -106,10 +106,14 @@
     margin: 0;
   }
 
+  span,
   a {
-    color: $nds-colour-link;
     display: block;
     padding: rem($nds-spacing-small $nds-spacing-medium);
+  }
+
+  a {
+    color: $nds-colour-link;
     text-decoration: none;
     white-space: nowrap;
 

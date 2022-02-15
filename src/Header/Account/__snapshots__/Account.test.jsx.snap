@@ -80,27 +80,18 @@ exports[`Account Matches snapshot when logged in using IDAM 1`] = `
     onKeyDown={[Function]}
     role="menu"
   >
+    <li>
+      <span>
+        Joe Bloggs
+      </span>
+    </li>
     <li
       key="0"
       role="presentation"
     >
       <a
-        data-hj-suppress=""
-        href="https://accounts.nice.org.uk/users/12345/editprofile"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="menuitem"
-      >
-        Joe Bloggs
-      </a>
-    </li>
-    <li
-      key="1"
-      role="presentation"
-    >
-      <a
         data-hj-suppress={null}
-        href="https://accounts.nice.org.uk/signout"
+        href="https:/identity.nice.org.uk/signout"
         onClick={[Function]}
         onKeyDown={[Function]}
         role="menuitem"
