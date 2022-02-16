@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 
 import styles from "./BackToTop.module.scss";
 
-export const BackToTop = function ({ show, scrollTargetId = "content-start" }) {
-	return show ? (
+export const BackToTop = function ({ scrollTargetId = "content-start" }) {
+	return (
 		<div className={styles.wrapper}>
 			<nav aria-labelledby="back-to-top-link" className={styles.nav}>
 				<a
@@ -20,10 +20,9 @@ export const BackToTop = function ({ show, scrollTargetId = "content-start" }) {
 				</a>
 			</nav>
 		</div>
-	) : null;
+	);
 };
 
 BackToTop.propTypes = {
-	show: PropTypes.boolean,
 	scrollTargetId: PropTypes.string,
 };

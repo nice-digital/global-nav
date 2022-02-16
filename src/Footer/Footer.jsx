@@ -15,12 +15,17 @@ import { BackToTop } from "./BackToTop/BackToTop";
 export class Footer extends Component {
 	constructor(props) {
 		super(props);
+
+		console.log(this.props.backToTop.show);
 	}
 
 	render() {
 		return (
 			<>
-				<BackToTop show={true} scrollTargetId="global-nav-header" />
+				{this.props.backToTop.show ? (
+					<BackToTop scrollTargetId="global-nav-header" />
+				) : null}
+
 				<footer className={styles.footer} data-tracking="Global footer">
 					<div className={styles.container}>
 						<TrackedLink
@@ -43,8 +48,13 @@ export class Footer extends Component {
 	}
 }
 
+Footer.defaultProps = {
+	backToTop: { show: false, scrollTargetId: "content-start" },
+};
+
 Footer.propTypes = {
 	service: PropTypes.string,
+	backToTop: { show: PropTypes.boolean },
 };
 
 export default Footer;
