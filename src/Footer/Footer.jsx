@@ -23,7 +23,7 @@ export class Footer extends Component {
 		return (
 			<>
 				{this.props.backToTop.show ? (
-					<BackToTop scrollTargetId="global-nav-header" />
+					<BackToTop scrollTargetId={this.props.backToTop.scrollTargetId} />
 				) : null}
 
 				<footer className={styles.footer} data-tracking="Global footer">

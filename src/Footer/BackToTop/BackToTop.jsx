@@ -5,6 +5,12 @@ import PropTypes from "prop-types";
 
 import styles from "./BackToTop.module.scss";
 
+const checkElementExists = function (elementId) {
+	if (document.getElementById(elementId)) {
+		return true;
+	}
+};
+
 export const BackToTop = function ({ scrollTargetId = "content-start" }) {
 	return (
 		<div className={styles.wrapper}>
@@ -12,7 +18,9 @@ export const BackToTop = function ({ scrollTargetId = "content-start" }) {
 				<a
 					className={styles.anchor}
 					id="back-to-top-link"
-					href={`#${scrollTargetId}`}
+					href={
+						checkElementExists(scrollTargetId) ? `#${scrollTargetId}` : `#top`
+					}
 				>
 					<Container>
 						<ChevronUp /> Back to top
