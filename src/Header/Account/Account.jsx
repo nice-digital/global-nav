@@ -162,6 +162,11 @@ function Account(props) {
 				onKeyDown={handleKeyDown}
 				ref={myAccountMenu}
 			>
+				{doesUseIdAM && accountsData.display_name && (
+					<li>
+						<span>{accountsData.display_name}</span>
+					</li>
+				)}
 				{accountsData.links &&
 					Object.keys(accountsData.links).map(function (text, i) {
 						return (

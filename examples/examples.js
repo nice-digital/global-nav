@@ -195,10 +195,11 @@ const identityAdminLoggedInConfig = {
 			auth: {
 				provider: "idam",
 				links: [
+					{ text: "Joe Bloggs", url: "#" },
 					{ text: "My profile", url: "/Account/todo" },
 					{ text: "Sign out", url: "/Account/Logout" },
 				],
-				displayName: "John Holland",
+				displayName: "Joe Bloggs",
 			},
 			search: {
 				autocomplete: "/niceorg/autocomplete/?ajax=ajax",

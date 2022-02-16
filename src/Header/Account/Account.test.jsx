@@ -37,6 +37,13 @@ describe("Account", () => {
 		},
 	};
 
+	const idamData = {
+		display_name: "Joe Bloggs",
+		links: {
+			"Sign out": "https:/identity.nice.org.uk/signout",
+		},
+	};
+
 	afterEach(() => {
 		document.body.innerHTML = "";
 	});
@@ -66,7 +73,7 @@ describe("Account", () => {
 
 	it("Matches snapshot when logged in using IDAM", () => {
 		const wrapper = shallow(
-			<Account isLoggedIn={true} accountsData={accountsData} {...idamProps} />
+			<Account isLoggedIn={true} accountsData={idamData} {...idamProps} />
 		);
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
