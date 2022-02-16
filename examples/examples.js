@@ -118,6 +118,12 @@ const bnfConfig = {
 					window.location.hash = "Search?q=" + encodeURIComponent(searchArgs.query);
 				}
 			}
+		},
+		footer: {
+			backToTop: {
+				show: true,
+				scrollTargetId: "content-start",
+			}
 		}
 	}`,
 };

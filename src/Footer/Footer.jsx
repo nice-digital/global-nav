@@ -10,27 +10,31 @@ import Pages from "./Pages";
 import styles from "./Footer.module.scss";
 import TrackedLink from "../TrackedLink";
 import { footerClickEventAction } from "../tracker";
+import { BackToTop } from "./BackToTop/BackToTop";
 
 export class Footer extends Component {
 	render() {
 		return (
-			<footer className={styles.footer} data-tracking="Global footer">
-				<div className={styles.container}>
-					<TrackedLink
-						eventAction={footerClickEventAction}
-						eventLabel="Logo"
-						href="https://www.nice.org.uk/"
-						className={styles.logo}
-						aria-label="Go to NICE home page"
-					>
-						<NiceLogo />
-					</TrackedLink>
-					<Services service={this.props.service} />
-					<Pages service={this.props.service} />
-					<Social />
-				</div>
-				<Legal />
-			</footer>
+			<>
+				<BackToTop />
+				<footer className={styles.footer} data-tracking="Global footer">
+					<div className={styles.container}>
+						<TrackedLink
+							eventAction={footerClickEventAction}
+							eventLabel="Logo"
+							href="https://www.nice.org.uk/"
+							className={styles.logo}
+							aria-label="Go to NICE home page"
+						>
+							<NiceLogo />
+						</TrackedLink>
+						<Services service={this.props.service} />
+						<Pages service={this.props.service} />
+						<Social />
+					</div>
+					<Legal />
+				</footer>
+			</>
 		);
 	}
 }
