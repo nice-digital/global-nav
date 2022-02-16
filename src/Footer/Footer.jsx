@@ -20,7 +20,7 @@ export class Footer extends Component {
 	render() {
 		return (
 			<>
-				<BackToTop show={true} scrollTargetId="content-start" />
+				<BackToTop show={true} scrollTargetId="global-nav-header" />
 				<footer className={styles.footer} data-tracking="Global footer">
 					<div className={styles.container}>
 						<TrackedLink

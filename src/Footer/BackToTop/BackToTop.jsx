@@ -5,17 +5,14 @@ import PropTypes from "prop-types";
 
 import styles from "./BackToTop.module.scss";
 
-export const BackToTop = function ({
-	show,
-	scrollTargetId: scrollTo = "content-start",
-}) {
+export const BackToTop = function ({ show, scrollTargetId = "content-start" }) {
 	return show ? (
 		<div className={styles.wrapper}>
 			<nav aria-labelledby="back-to-top-link" className={styles.nav}>
 				<a
 					className={styles.anchor}
 					id="back-to-top-link"
-					href={`#${scrollTo}`}
+					href={`#${scrollTargetId}`}
 				>
 					<Container>
 						<ChevronUp /> Back to top
