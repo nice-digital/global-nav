@@ -13,10 +13,14 @@ import { footerClickEventAction } from "../tracker";
 import { BackToTop } from "./BackToTop/BackToTop";
 
 export class Footer extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
 		return (
 			<>
-				<BackToTop />
+				<BackToTop show={true} scrollTargetId="content-start" />
 				<footer className={styles.footer} data-tracking="Global footer">
 					<div className={styles.container}>
 						<TrackedLink
