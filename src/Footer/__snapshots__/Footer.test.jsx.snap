@@ -1,31 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Legal Matches snapshot 1`] = `
-<footer
-  className="footer"
-  data-tracking="Global footer"
->
-  <div
-    className="container"
+<Fragment>
+  <footer
+    className="footer"
+    data-tracking="Global footer"
   >
-    <TrackedLink
-      aria-label="Go to NICE home page"
-      className="logo"
-      eventAction="Footer click"
-      eventCategory="TopHat and footer"
-      eventLabel="Logo"
-      href="https://www.nice.org.uk/"
+    <div
+      className="container"
     >
-      <SvgLogo />
-    </TrackedLink>
-    <Services
-      service="cks"
-    />
-    <Pages
-      service="cks"
-    />
-    <Social />
-  </div>
-  <Legal />
-</footer>
+      <TrackedLink
+        aria-label="Go to NICE home page"
+        className="logo"
+        eventAction="Footer click"
+        eventCategory="TopHat and footer"
+        eventLabel="Logo"
+        href="https://www.nice.org.uk/"
+      >
+        <SvgLogo />
+      </TrackedLink>
+      <Services
+        service="cks"
+      />
+      <Pages
+        service="cks"
+      />
+      <Social />
+    </div>
+    <Legal />
+  </footer>
+</Fragment>
 `;

@@ -15,8 +15,6 @@ import { BackToTop } from "./BackToTop/BackToTop";
 export class Footer extends Component {
 	constructor(props) {
 		super(props);
-
-		console.log(this.props.backToTop.show);
 	}
 
 	render() {
@@ -54,7 +52,7 @@ Footer.defaultProps = {
 
 Footer.propTypes = {
 	service: PropTypes.string,
-	backToTop: { show: PropTypes.boolean },
+	backToTop: PropTypes.shape({ show: PropTypes.boolean }),
 };
 
 export default Footer;
