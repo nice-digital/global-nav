@@ -52,7 +52,10 @@ Footer.defaultProps = {
 
 Footer.propTypes = {
 	service: PropTypes.string,
-	backToTop: PropTypes.shape({ show: PropTypes.boolean }),
+	backToTop: PropTypes.shape({
+		show: PropTypes.boolean,
+		scrollTargetId: PropTypes.string,
+	}),
 };
 
 export default Footer;
