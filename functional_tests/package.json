@@ -1,0 +1,55 @@
+{
+  "name": "@nice-digital/frontend-testing-base",
+  "private": true,
+  "version": "2.0.0",
+  "description": "A place from which to start browser driven testing",
+  "main": "wdio.conf.js",
+  "scripts": {
+    "test": "wdio run wdio.conf.js",
+    "test:allbrowsers": "cross-env ALL_BROWSERS=true npm test",
+    "// LINTING/CODE STYLE": "",
+    "lint": "npm run prettier && npm run lint:ts && npm run typecheck",
+    "prettier": "prettier --check \"./**/*.{ts,tsx,js}\"",
+    "prettier:fix": "npm run prettier -- --write",
+    "lint:ts": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:ts:fix": "npm run lint:ts -- --fix",
+    "// TYPECHECKING": "",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nice-digital/frontend-testing-base.git"
+  },
+  "author": "NICE Digital Services",
+  "contributors": [
+    "Ian Routledge <ian@ediblecode.com>",
+    "Dave Wong"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/nice-digital/frontend-testing-base#readme",
+  "engines": {
+    "node": ">= 12"
+  },
+  "devDependencies": {
+    "@nice-digital/wdio-cucumber-steps": "2.0.1",
+    "@types/node": "^12.12.6",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "@wdio/allure-reporter": "^7.9.0",
+    "@wdio/cli": "^7.9.0",
+    "@wdio/cucumber-framework": "^7.9.0",
+    "@wdio/local-runner": "^7.9.0",
+    "@wdio/selenium-standalone-service": "^7.8.0",
+    "@wdio/spec-reporter": "^7.9.0",
+    "axe-core": "^4.0.2",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.5.5",
+    "wdio-teamcity-reporter": "^2.3.0",
+    "webdriverio": "^7.9.0"
+  }
+}
