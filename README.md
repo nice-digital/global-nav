@@ -436,10 +436,6 @@ var global_nav_config = {
 - Type: `String`, `Function`
 - Default: `null`
 
-Function parameters:
-
-- `query` (`String`) the query term used in the search
-
 Pass an `onDropdownClose` property to enable callback when dropdown is closed.
 Pass either a function, or the name of a function defined on `window`. E.g.:
 
