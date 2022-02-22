@@ -149,7 +149,7 @@ describe("Header", () => {
 			expect(window.testFunc).toHaveBeenCalledTimes(1);
 		});
 
-		it.only("should call onDropdownClose function name callback prop if dropdown is opened", () => {
+		it("should call onDropdownClose function name callback prop if dropdown is opened", () => {
 			window.testFunc = jest.fn();
 
 			const wrapper = mount(
