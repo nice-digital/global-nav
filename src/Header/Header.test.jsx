@@ -155,6 +155,7 @@ describe("Header", () => {
 			const wrapper = mount(
 				<Header {...defaultProps} onDropdownClose={"testFunc"} />
 			);
+
 			wrapper.find("#navlink-bnfc").at(0).simulate("click");
 			wrapper.find("#navlink-bnfc").at(0).simulate("click");
 			expect(window.testFunc).toHaveBeenCalledTimes(2);
