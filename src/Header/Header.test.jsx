@@ -138,6 +138,28 @@ describe("Header", () => {
 	});
 
 	describe("Dropdown open and close callbacks", () => {
+		it("should call onDropdownOpen function name callback prop if dropdown is opened", () => {
+			window.testFunc = jest.fn();
+
+			const wrapper = mount(
+				<Header {...defaultProps} onDropdownOpen={"testFunc"} />
+			);
+
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			expect(window.testFunc).toHaveBeenCalledTimes(1);
+		});
+
+		it.only("should call onDropdownClose function name callback prop if dropdown is opened", () => {
+			window.testFunc = jest.fn();
+
+			const wrapper = mount(
+				<Header {...defaultProps} onDropdownClose={"testFunc"} />
+			);
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			expect(window.testFunc).toHaveBeenCalledTimes(2);
+		});
+
 		it("should call onDropdownOpen callback prop if dropdown is opened", () => {
 			const onDropdownOpen = jest.fn();
 			const wrapper = mount(

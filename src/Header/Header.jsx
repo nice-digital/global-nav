@@ -77,8 +77,16 @@ export class Header extends Component {
 		}
 	}
 
-	checkForFunctionOrFunctionName(funcParam) {
-		return typeof funcParam === "function" ? funcParam : window[funcParam];
+	getCallbackFunction(funcOrFuncName) {
+		if (typeof funcOrFuncName === "function") {
+			return funcOrFuncName;
+		}
+
+		if (typeof window[funcOrFuncName] === "function") {
+			return window[funcOrFuncName];
+		}
+
+		return undefined;
 	}
 
 	dropdownToggleHandler(idOfOpenDropdown) {
@@ -86,22 +94,14 @@ export class Header extends Component {
 		const { onDropdownOpen, onDropdownClose } = this.props;
 
 		if (onDropdownOpen && idOfOpenDropdown !== null) {
-			if (
-				typeof this.checkForFunctionOrFunctionName(onDropdownOpen) ===
-				"function"
-			) {
+			if (typeof this.getCallbackFunction(onDropdownOpen) === "function") {
 				onDropdownOpen();
-				return true;
 			}
 		}
 
 		if (onDropdownClose && idOfOpenDropdown == null) {
-			if (
-				typeof this.checkForFunctionOrFunctionName(onDropdownClose) ===
-				"function"
-			) {
+			if (typeof this.getCallbackFunction(onDropdownClose) === "function") {
 				onDropdownClose();
-				return true;
 			}
 		}
 	}
