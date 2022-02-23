@@ -46,7 +46,7 @@ const debounce = function (
 const maxResults = 5;
 
 /** Delay in millieconds before loading results */
-export const rateLimitWait = 300;
+export const rateLimitWait = 100;
 
 const inputValueTemplate = function (suggestion) {
 		if (!suggestion || !suggestion.Title) return "";
