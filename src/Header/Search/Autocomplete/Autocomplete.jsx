@@ -6,6 +6,7 @@ import styles from "./Autocomplete.module.scss";
 import { suggester } from "./suggester";
 import { isIosDevice } from "./../../../utils";
 import { trackEvent } from "./../../../tracker";
+import { getCallbackFunction } from "./../../../utils";
 
 /**
  * Debounce
@@ -84,13 +85,9 @@ export default class Autocomplete extends Component {
 			// eslint-disable-next-line react/prop-types
 			const { onNavigating } = this.props;
 			const eventCallback = function () {
-				const onNavigatingCallback =
-					onNavigating &&
-					(typeof onNavigating === "function"
-						? onNavigating
-						: window[onNavigating]);
+				const onNavigatingCallback = getCallbackFunction(onNavigating);
 
-				if (typeof onNavigatingCallback === "function") {
+				if (onNavigatingCallback) {
 					onNavigatingCallback({
 						element: selectedEl,
 						href: suggestion.Link,

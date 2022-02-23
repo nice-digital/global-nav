@@ -13,6 +13,7 @@ import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
 import SkipLink from "./SkipLink";
+import { getCallbackFunction } from "../utils";
 
 import styles from "./Header.module.scss";
 import { HeaderContextProvider, HeaderContext } from "./context/HeaderContext";
@@ -77,33 +78,19 @@ export class Header extends Component {
 		}
 	}
 
-	getCallbackFunction(funcOrFuncName) {
-		if (typeof funcOrFuncName === "function") {
-			return funcOrFuncName;
-		}
-
-		const fn = window[funcOrFuncName];
-
-		if (typeof fn === "function") {
-			return fn;
-		}
-
-		return undefined;
-	}
-
 	dropdownToggleHandler(idOfOpenDropdown) {
 		// If we've got an onDropdownOpen or onDropdownClose prop call the onDropdownOpen or onDropdownClose callback based on idOfOpenDropdown.
 		const { onDropdownOpen, onDropdownClose } = this.props;
 
 		if (onDropdownOpen && idOfOpenDropdown !== null) {
-			const onDropdownOpenCallback = this.getCallbackFunction(onDropdownOpen);
+			const onDropdownOpenCallback = getCallbackFunction(onDropdownOpen);
 			if (onDropdownOpenCallback) {
 				onDropdownOpenCallback();
 			}
 		}
 
 		if (onDropdownClose && idOfOpenDropdown == null) {
-			const onDropdownCloseCallback = this.getCallbackFunction(onDropdownClose);
+			const onDropdownCloseCallback = getCallbackFunction(onDropdownClose);
 			if (onDropdownCloseCallback) {
 				onDropdownCloseCallback();
 			}
