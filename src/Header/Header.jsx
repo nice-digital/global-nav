@@ -95,7 +95,7 @@ export class Header extends Component {
 						}}
 					</HeaderContext.Consumer>
 
-					<div className={styles.header} data-tracking="Global nav">
+					<div className={styles.header} data-tracking="Global nav" id="top">
 						<header aria-label="Site header">
 							<ul className={styles.a11yLinks} aria-label="Accessibility links">
 								<li>
