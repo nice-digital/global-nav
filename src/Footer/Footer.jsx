@@ -10,7 +10,6 @@ import Pages from "./Pages";
 import styles from "./Footer.module.scss";
 import TrackedLink from "../TrackedLink";
 import { footerClickEventAction } from "../tracker";
-import { BackToTop } from "./BackToTop/BackToTop";
 
 export class Footer extends Component {
 	constructor(props) {
@@ -19,43 +18,29 @@ export class Footer extends Component {
 
 	render() {
 		return (
-			<>
-				{this.props.backToTop.show ? (
-					<BackToTop scrollTargetId={this.props.backToTop.scrollTargetId} />
-				) : null}
-
-				<footer className={styles.footer} data-tracking="Global footer">
-					<div className={styles.container}>
-						<TrackedLink
-							eventAction={footerClickEventAction}
-							eventLabel="Logo"
-							href="https://www.nice.org.uk/"
-							className={styles.logo}
-							aria-label="Go to NICE home page"
-						>
-							<NiceLogo />
-						</TrackedLink>
-						<Services service={this.props.service} />
-						<Pages service={this.props.service} />
-						<Social />
-					</div>
-					<Legal />
-				</footer>
-			</>
+			<footer className={styles.footer} data-tracking="Global footer">
+				<div className={styles.container}>
+					<TrackedLink
+						eventAction={footerClickEventAction}
+						eventLabel="Logo"
+						href="https://www.nice.org.uk/"
+						className={styles.logo}
+						aria-label="Go to NICE home page"
+					>
+						<NiceLogo />
+					</TrackedLink>
+					<Services service={this.props.service} />
+					<Pages service={this.props.service} />
+					<Social />
+				</div>
+				<Legal />
+			</footer>
 		);
 	}
 }
 
-Footer.defaultProps = {
-	backToTop: { show: false, scrollTargetId: "content-start" },
-};
-
 Footer.propTypes = {
 	service: PropTypes.string,
-	backToTop: PropTypes.shape({
-		show: PropTypes.boolean,
-		scrollTargetId: PropTypes.string,
-	}),
 };
 
 export default Footer;
