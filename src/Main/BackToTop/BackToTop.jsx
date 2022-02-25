@@ -8,7 +8,7 @@ export const BackToTop = function () {
 	return (
 		<div className={styles.wrapper}>
 			<nav aria-labelledby="back-to-top-link" className={styles.nav}>
-				<a className={styles.anchor} id="back-to-top-link" href="top">
+				<a className={styles.anchor} id="back-to-top-link" href="#top">
 					<Container>
 						<ChevronUp /> Back to top
 					</Container>

@@ -2,7 +2,7 @@ import React from "react";
 import { BackToTop } from "./BackToTop/BackToTop";
 import PropTypes from "prop-types";
 
-import styles from "./BackToTop.module.scss";
+import styles from "./Main.module.scss";
 
 const Main = function ({ children }) {
 	return (
