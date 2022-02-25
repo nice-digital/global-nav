@@ -82,6 +82,7 @@ declare module "@nice-digital/global-nav" {
 
 	const Header: React.FC<HeaderProps>;
 	const Footer: React.FC<FooterProps>;
+	const Main: React.FC;
 
-	export { Header, Footer };
+	export { Header, Footer, Main };
 }
