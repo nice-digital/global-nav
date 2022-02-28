@@ -131,7 +131,7 @@ The following non-functional requirements apply:
 
 Consider the following development principles:
 
-- One single header and footer component across _all_ NICE services
+- One single header and footer component and optional main wrapper component across _all_ NICE services
 - Progressively enhanced to support maximum number of devices and browsers
 - Fast performance
   - single HTTP request for CDN minified bundle
@@ -284,7 +284,7 @@ This is a good option if you're rendering you're app's interface via React, eith
 
 > Note if you're using Create React App you'll need to use v2+ because we use CSS modules
 
-Install the package and require the `Header` and `Footer` React components into your application, just as you would for any other 3rd party component:
+Install the package and require the `Header`, `Footer` and `Main` React components into your application, just as you would for any other 3rd party component:
 
 #### Installation
 
@@ -296,19 +296,19 @@ npm i @nice-digital/global-nav --save
 
 > Note: we used to recommend installing directly from GitHub via `npm i nice-digital/global-nav --save` (notice the missing _@_), which still works but we now recommend using npm.
 
-Then, require the header and/or footer into your application:
+Then, require the header and/or footer and/or main into your application:
 
 #### Usage
 
-Import the header and footer like this:
+Import the header, footer and main component like this:
 
 ```js
-import { Header, Footer } from '@nice-digital/global-nav';
+import { Header, Footer, Main } from '@nice-digital/global-nav';
 ```
 
 > Note: we've used ES6 module imports for this examples as we've assumed all React apps will be using ES6.
 
-These header and footer components that can be be used like any other React component and configured via [props](#props), for example:
+These header, footer and main components that can be be used like any other React component and configured via [props](#props), for example:
 
 ```jsx
 const search = {
@@ -318,10 +318,12 @@ const search = {
 const page = () => (
   <div>
     <Header service="pathways" search={search} />
+		<Main>{/* Your page content here */} </Main>
     <Footer />
   </div>
 );
 ```
+Wrapping your template with the main component will render a main tag in the html with a back to top link.
 
 For a full list of all the available props, see the [props section](#props) below:
 
