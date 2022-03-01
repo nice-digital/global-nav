@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
 import {
@@ -116,6 +116,14 @@ describe("Header", () => {
 		it("Nav is collapsed by default", () => {
 			const wrapper = shallow(<Header {...defaultProps} />);
 			expect(wrapper.find("Nav").props().isExpanded).toEqual(false);
+		});
+	});
+
+	describe("Back to top link target", () => {
+		it("should contain a back to top scroll target id", () => {
+			const wrapper = shallow(<Header {...defaultProps} />);
+			const scrollTargetId = wrapper.find("#top");
+			expect(scrollTargetId).toHaveLength(1);
 		});
 	});
 

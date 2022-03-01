@@ -18,6 +18,7 @@ export class Footer extends Component {
 
 	render() {
 		return (
+			/* eslint-disable react/jsx-key */
 			<footer className={styles.footer} data-tracking="Global footer">
 				<div className={styles.container}>
 					<TrackedLink

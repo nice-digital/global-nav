@@ -119,12 +119,6 @@ const bnfConfig = {
 				}
 			}
 		},
-		footer: {
-			backToTop: {
-				show: true,
-				scrollTargetId: "content-start",
-			}
-		}
 	}`,
 };
 

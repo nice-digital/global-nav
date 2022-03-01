@@ -8,6 +8,7 @@ exports[`Header Matches snapshot 1`] = `
   <div
     className="header"
     data-tracking="Global nav"
+    id="top"
   >
     <header
       aria-label="Site header"

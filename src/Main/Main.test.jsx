@@ -12,6 +12,7 @@ describe("Main", () => {
 
 	it("Matches snapshot", () => {
 		const wrapper = shallow(
+			/* eslint-disable react/jsx-key */
 			<Main>
 				<p>test</p>
 			</Main>

@@ -56,7 +56,6 @@
 					- [Header.auth.displayName](#headerauthdisplayname)
 				- [Footer props](#footer-props)
 					- [Footer.service](#footerservice)
-					- [Footer.backToTop](#footerbacktotop)
 		- [CDN](#cdn)
 			- [Container IDs](#container-ids)
 			- [Overrides](#overrides)
@@ -639,27 +638,6 @@ The displayName is the user's name and must be provided if the "idam" provider i
 
 The identifier of the currently active service.
 See [services.json](src/services.json) for a list of the available service identifiers.
-
-###### Footer.backToTop
-
-- Type: `Object | null`
-- Default: `null`
-- Properties: `show : boolean`, `scrollTargetId: string`
-
-Pass a set of key value pairs to configure the back to top link behaviour, for example
-
-```js
-
-// config:
-var global_nav_config = {
-  footer: {
-			backToTop: {
-				show: true,
-				scrollTargetId: "content-start",
-			}
-		}
-};
-```
 
 ### CDN
 

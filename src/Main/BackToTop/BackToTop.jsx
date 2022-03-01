@@ -6,6 +6,7 @@ import styles from "./BackToTop.module.scss";
 
 export const BackToTop = function () {
 	return (
+		/* eslint-disable react/jsx-key */
 		<div className={styles.wrapper}>
 			<nav aria-labelledby="back-to-top-link" className={styles.nav}>
 				<a className={styles.anchor} id="back-to-top-link" href="#top">
