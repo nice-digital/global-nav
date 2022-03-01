@@ -5,17 +5,21 @@ import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
 describe("BackToTop", () => {
+	const scrollIntoViewMock = jest.fn();
 	let wrapper;
 
 	beforeEach(() => {
 		let contentDiv = document.createElement("div");
 		contentDiv.id = "top";
 		document.body.appendChild(contentDiv);
+		document.getElementById("top").scrollIntoView = scrollIntoViewMock;
 		wrapper = shallow(<BackToTop />);
 	});
 
 	afterEach(() => {
 		wrapper.unmount();
+		document.body.innerHTML = "";
+		scrollIntoViewMock.mockReset();
 	});
 
 	it("Renders without crashing", () => {
@@ -30,26 +34,8 @@ describe("BackToTop", () => {
 		expect(wrapper.find("a[href='#top']").length).toEqual(1);
 	});
 
-	it("Scrolls element with id = back to top link target into view on back to top click", () => {
-		let scrollIntoViewMock = jest.fn();
-		document.getElementById("top").scrollIntoView = scrollIntoViewMock;
-
-		wrapper
-			.find("a")
-			.at(0)
-			.simulate("click", {
-				currentTarget: {
-					getAttribute: () => "#top",
-				},
-				preventDefault: () => {},
-			});
-
-		expect(scrollIntoViewMock).toBeCalled();
-	});
-
 	it("Prevents default and moves focus to the back to top link target on click", () => {
 		const preventDefault = jest.fn();
-
 		wrapper
 			.find("a")
 			.at(0)
@@ -65,5 +51,19 @@ describe("BackToTop", () => {
 			"-1"
 		);
 		expect(document.activeElement).toBe(document.getElementById("top"));
+	});
+
+	it("Scrolls element with id = back to top link target into view on back to top click", () => {
+		wrapper
+			.find("a")
+			.at(0)
+			.simulate("click", {
+				currentTarget: {
+					getAttribute: () => "#top",
+				},
+				preventDefault: () => {},
+			});
+
+		expect(scrollIntoViewMock).toHaveBeenCalledTimes(1);
 	});
 });
