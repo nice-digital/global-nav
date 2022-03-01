@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
 import {
