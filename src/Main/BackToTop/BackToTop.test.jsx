@@ -8,6 +8,9 @@ describe("BackToTop", () => {
 	let wrapper;
 
 	beforeEach(() => {
+		let contentDiv = document.createElement("div");
+		contentDiv.id = "top";
+		document.body.appendChild(contentDiv);
 		wrapper = shallow(<BackToTop />);
 	});
 
@@ -27,13 +30,9 @@ describe("BackToTop", () => {
 		expect(wrapper.find("a[href='#top']").length).toEqual(1);
 	});
 
-	it("scroll element with id='top' into view on back to top click", () => {
+	it("Scrolls element with id = back to top link target into view on back to top click", () => {
 		let scrollIntoViewMock = jest.fn();
-
-		let contentDiv = document.createElement("div");
-		contentDiv.scrollIntoView = scrollIntoViewMock;
-		contentDiv.id = "top";
-		document.body.appendChild(contentDiv);
+		document.getElementById("top").scrollIntoView = scrollIntoViewMock;
 
 		wrapper
 			.find("a")
@@ -49,10 +48,6 @@ describe("BackToTop", () => {
 	});
 
 	it("Prevents default and moves focus to the back to top link target on click", () => {
-		let contentDiv = document.createElement("div");
-		contentDiv.id = "top";
-		document.body.appendChild(contentDiv);
-
 		const preventDefault = jest.fn();
 
 		wrapper
