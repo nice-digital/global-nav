@@ -12,6 +12,7 @@ exports[`BackToTop Matches snapshot 1`] = `
       className="anchor"
       href="#top"
       id="back-to-top-link"
+      onClick={[Function]}
     >
       <Container>
         <SvgChevronUp />
