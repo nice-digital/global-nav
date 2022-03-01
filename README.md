@@ -130,7 +130,7 @@ The following non-functional requirements apply:
 
 Consider the following development principles:
 
-- One single header and footer component and optional main wrapper component across _all_ NICE services
+- One single header and footer component (and optional main wrapper component with back to top link) across _all_ NICE services
 - Progressively enhanced to support maximum number of devices and browsers
 - Fast performance
   - single HTTP request for CDN minified bundle
