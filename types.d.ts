@@ -80,9 +80,13 @@ declare module "@nice-digital/global-nav" {
 		service?: Service;
 	};
 
+	export type MainProps = {
+		children: React.ReactNode;
+	};
+
 	const Header: React.FC<HeaderProps>;
 	const Footer: React.FC<FooterProps>;
-	const Main: React.FC;
+	const Main: React.FC<MainProps>;
 
 	export { Header, Footer, Main };
 }
