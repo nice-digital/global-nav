@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import styles from "./Main.module.scss";
 
-export const Main = (props) => {
+export const Main = function (props) {
 	const { children, elementType: ElementType = "main", ...rest } = props;
 
 	return (
