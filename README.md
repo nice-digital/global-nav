@@ -37,6 +37,8 @@
 			- [Installation](#installation)
 			- [Usage](#usage)
 			- [Props](#props)
+				- [Main props](#main-props)
+					- [Main.elementType](#mainelementtype)
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
 					- [Header.skipLinkId](#headerskiplinkid)
@@ -317,16 +319,22 @@ const search = {
 const page = () => (
   <div>
     <Header service="pathways" search={search} />
-		<Main>{/* Your page content here */} </Main>
+		<Main elementType="div">{/* Your page content here */} </Main>
     <Footer />
   </div>
 );
 ```
-Wrapping your template with the main component will render a main tag in the html with a back to top link.
+Wrapping your template with the main component will render a tag (defaults to elementType of main) in the html with a back to top link.
 
 For a full list of all the available props, see the [props section](#props) below:
 
 #### Props
+
+##### Main props
+
+###### Main.elementType
+- Type: `String | null`
+- Default: `'main'`
 
 ##### Header props
 
