@@ -80,17 +80,13 @@ declare module "@nice-digital/global-nav" {
 		service?: Service;
 	};
 
-	// export type MainProps = {
-	// 	children: React.ReactNode;
-	// };
-
 	export interface MainProps {
 		/** Allow any additional props to be passed and applied to the main element */
 		[prop: string]: unknown;
 		/** Contents for the main element */
 		children: React.ReactNode;
-		/** The type of DOM node to render for the main element. Leave blank to default to main. */
-		elementType?: React.ElementType;
+		/** Additional classnames for the main element. */
+		className?: string;
 	}
 
 	const Header: React.FC<HeaderProps>;
