@@ -89,11 +89,7 @@ declare module "@nice-digital/global-nav" {
 		[prop: string]: unknown;
 		/** Contents for the main element */
 		children: React.ReactNode;
-		/** Additional classes to add to the main element */
-		className?: string;
-		/** Allow the main element to defy the max-width and extend to the edges of the viewport */
-		fullWidth?: boolean;
-		/** The type of DOM node to render for the main element. Leave blank to default to div. */
+		/** The type of DOM node to render for the main element. Leave blank to default to main. */
 		elementType?: React.ElementType;
 	}
 
