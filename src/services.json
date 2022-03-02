@@ -56,6 +56,11 @@
       "dropdownComponent": "BNF",
       "links": [
         {
+          "image": "bnf",
+          "text": "BNF - Home",
+          "href": "/"
+        },
+        {
           "text": "Drugs",
           "href": "/drug/"
         },
@@ -86,6 +91,11 @@
       "dropdown": true,
       "dropdownComponent": "BNFc",
       "links": [
+        {
+          "image": "bnfc",
+          "text": "BNFC - Home",
+          "href": "/"
+        },
         {
           "text": "Drugs",
           "href": "/drug/"
