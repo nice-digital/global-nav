@@ -18,11 +18,11 @@ describe("SubNav", () => {
 		},
 		{
 			text: "Drugs",
-			href: "/drug/",
+			href: "/drugs/",
 		},
 		{
 			text: "Interactions",
-			href: "/interaction/",
+			href: "/interactions/",
 		},
 	];
 

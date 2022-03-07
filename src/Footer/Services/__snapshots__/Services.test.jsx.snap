@@ -69,19 +69,24 @@ exports[`Services Matches snapshot 1`] = `
       links={
         Array [
           Object {
-            "href": "/drug/",
+            "href": "/",
+            "image": "bnf",
+            "text": "BNF - Home",
+          },
+          Object {
+            "href": "/drugs/",
             "text": "Drugs",
           },
           Object {
-            "href": "/interaction/",
+            "href": "/interactions/",
             "text": "Interactions",
           },
           Object {
-            "href": "/treatment-summary/",
+            "href": "/treatment-summaries/",
             "text": "Treatment summaries",
           },
           Object {
-            "href": "/about/changes.html",
+            "href": "/about/changes/",
             "text": "What's changed?",
           },
           Object {
@@ -103,19 +108,24 @@ exports[`Services Matches snapshot 1`] = `
       links={
         Array [
           Object {
-            "href": "/drug/",
+            "href": "/",
+            "image": "bnfc",
+            "text": "BNFC - Home",
+          },
+          Object {
+            "href": "/drugs/",
             "text": "Drugs",
           },
           Object {
-            "href": "/interaction/",
+            "href": "/interactions/",
             "text": "Interactions",
           },
           Object {
-            "href": "/treatment-summary/",
+            "href": "/treatment-summaries/",
             "text": "Treatment summaries",
           },
           Object {
-            "href": "/about/changes.html",
+            "href": "/about/changes/",
             "text": "What's changed?",
           },
           Object {
