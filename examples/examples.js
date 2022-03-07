@@ -15,6 +15,12 @@ const pathwaysConfig = {
 			onResize: function() {
 				console.log("Resize!");
 			},
+			onDropdownOpen: function() {
+				console.log("Dropdown Open!");
+			},
+			onDropdownClose: function() {
+				console.log("Dropdown Close!");
+			},
 			onNavigating: function(e) {
 				if(e.href === "/#browse") {
 					alert("You clicked browse!");

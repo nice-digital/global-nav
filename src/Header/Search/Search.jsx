@@ -4,6 +4,7 @@ import SearchIcon from "@nice-digital/icons/lib/Search";
 
 import Autocomplete from "./Autocomplete";
 import SkipLink from "../SkipLink";
+import { getCallbackFunction } from "../../utils";
 
 import styles from "./Search.module.scss";
 
@@ -50,10 +51,9 @@ export default class Search extends Component {
 		// and call the onSearcing callback with the query value.
 		const { onSearching } = this.props;
 		if (onSearching) {
-			const onSearchingCallback =
-				typeof onSearching === "function" ? onSearching : window[onSearching];
+			const onSearchingCallback = getCallbackFunction(onSearching);
 
-			if (typeof onSearchingCallback === "function") {
+			if (onSearchingCallback) {
 				e.preventDefault();
 				const query = document.getElementById("autocomplete").value;
 				onSearchingCallback({ query: query });

@@ -72,6 +72,8 @@ declare module "@nice-digital/global-nav" {
 		skipLinkId?: string;
 		search?: false | SearchProps;
 		auth?: NiceAccountsProviderProps | IdamProviderProps | false;
+		onDropdownOpen?: string | (() => void);
+		onDropdownClose?: string | (() => void);
 		onNavigating?: string | OnNavigatingCallback;
 		additionalSubMenuItems?: Array<AdditionalSubMenuItem>;
 	};
