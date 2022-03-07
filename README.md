@@ -42,6 +42,8 @@
 					- [Header.skipLinkId](#headerskiplinkid)
 					- [Header.onNavigating](#headeronnavigating)
 					- [Header.onResize](#headeronresize)
+					- [Header.onDropdownOpen](#headerondropdownopen)
+					- [Header.onDropdownClose](#headerondropdownclose)
 					- [Header.additionalSubMenuItems](#headeradditionalsubmenuitems)
 					- [Header.search](#headersearch)
 					- [Header.search.url](#headersearchurl)
@@ -404,6 +406,49 @@ window.onResizeHandler = function () {
 var global_nav_config = {
   header: {
     onResize: 'onResizeHandler',
+  },
+};
+```
+
+###### Header.onDropdownOpen
+
+- Type: `String`, `Function`
+- Default: `null`
+
+Pass an `onDropdownOpen` property to enable callback when dropdown is open.
+Pass either a function, or the name of a function defined on `window`. E.g.:
+
+```js
+window.onDropdownOpenHandler = function () {
+  // Define your implementation here e.g.:
+  document.querySelector("body").classList.add("global-nav__dropdown--open");
+};
+
+var global_nav_config = {
+  header: {
+      onDropdownOpen: 'onDropdownOpenHandler',
+  },
+};
+```
+
+###### Header.onDropdownClose
+
+- Type: `String`, `Function`
+- Default: `null`
+
+Pass an `onDropdownClose` property to enable callback when dropdown is closed.
+Pass either a function, or the name of a function defined on `window`. E.g.:
+
+```js
+window.onDropdownCloseHandler = function (e) {
+  // Define your implementation here e.g.:
+ document.querySelector("body").classList.remove("global-nav__dropdown--open")
+
+};
+
+var global_nav_config = {
+  header: {
+      onDropdownClose: 'onDropdownCloseHandler',
   },
 };
 ```

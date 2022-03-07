@@ -12,3 +12,21 @@ export function isIosDevice() {
 		)
 	);
 }
+
+/**
+ * return callback function if it is available
+ * @returns {function || undefined}
+ */
+export function getCallbackFunction(funcOrFuncName) {
+	if (typeof funcOrFuncName === "function") {
+		return funcOrFuncName;
+	}
+
+	const fn = window[funcOrFuncName];
+
+	if (typeof fn === "function") {
+		return fn;
+	}
+
+	return undefined;
+}

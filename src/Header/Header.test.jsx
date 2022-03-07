@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
 import {
@@ -134,6 +134,51 @@ describe("Header", () => {
 			shallow(<Header {...defaultProps} skipLinkId="super-skip-link" />);
 			expect(document.querySelector("h1#super-skip-link")).toBeTruthy();
 			heading1.parentNode.removeChild(heading1);
+		});
+	});
+
+	describe("Dropdown open and close callbacks", () => {
+		it("should call onDropdownOpen function name callback prop if dropdown is opened", () => {
+			window.testFunc = jest.fn();
+
+			const wrapper = mount(
+				<Header {...defaultProps} onDropdownOpen={"testFunc"} />
+			);
+
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			expect(window.testFunc).toHaveBeenCalledTimes(1);
+		});
+
+		it("should call onDropdownClose function name callback prop if dropdown is opened", () => {
+			window.testFunc = jest.fn();
+
+			const wrapper = mount(
+				<Header {...defaultProps} onDropdownClose={"testFunc"} />
+			);
+
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			expect(window.testFunc).toHaveBeenCalledTimes(2);
+		});
+
+		it("should call onDropdownOpen callback prop if dropdown is opened", () => {
+			const onDropdownOpen = jest.fn();
+			const wrapper = mount(
+				<Header {...defaultProps} onDropdownOpen={onDropdownOpen} />
+			);
+
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			expect(onDropdownOpen).toHaveBeenCalledTimes(1);
+		});
+
+		it("should call onDropdownClose callback prop if dropdown is closed", () => {
+			const onDropdownClose = jest.fn();
+			const wrapper = mount(
+				<Header {...defaultProps} onDropdownClose={onDropdownClose} />
+			);
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			wrapper.find("#navlink-bnfc").at(0).simulate("click");
+			expect(onDropdownClose).toHaveBeenCalledTimes(2);
 		});
 	});
 
