@@ -79,10 +79,12 @@ export function BNF() {
 					<h3>Browse A to Z by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/interaction/`}>Interactions</a>
+							<a href={`${baseUrl}/interactions/`}>Interactions</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/treatment-summary/`}>Treatment summaries</a>
+							<a href={`${baseUrl}/treatment-summaries/`}>
+								Treatment summaries
+							</a>
 						</li>
 					</ul>
 				</GridItem>
