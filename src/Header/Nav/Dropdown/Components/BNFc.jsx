@@ -117,7 +117,7 @@ export function BNFc() {
 					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/about/changes.html`}>Latest BNFC</a>
+							<a href={`${baseUrl}/about/changes/`}>Latest BNFC</a>
 						</li>
 					</ul>
 				</GridItem>
