@@ -4,6 +4,20 @@ import { mount } from "enzyme";
 import useClickOutside from "./useClickOutside";
 
 describe("useClickOutside hook", () => {
+	beforeEach(() => {
+		// Avoid `attachTo: document.body` Warning
+		const div = document.createElement("div");
+		div.setAttribute("id", "container");
+		document.body.appendChild(div);
+	});
+
+	afterEach(() => {
+		const div = document.getElementById("container");
+		if (div) {
+			document.body.removeChild(div);
+		}
+	});
+
 	it("Returns true when the element clicked is outside the referenced element", () => {
 		const callbackFunction = jest.fn();
 
@@ -20,7 +34,7 @@ describe("useClickOutside hook", () => {
 			);
 		}
 
-		mount(<MyWrapper />, { attachTo: document.body });
+		mount(<MyWrapper />, { attachTo: document.getElementById("container") });
 
 		const inside = document.getElementById("inside");
 		inside.dispatchEvent(new Event("click"));

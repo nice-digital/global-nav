@@ -81,8 +81,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^3.4.1",
-    "eslint-plugin-react": "^7.28.0",
     "eslint-webpack-plugin": "^2.6.0",
+    "eslint-plugin-react": "^7.29.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
@@ -115,6 +115,7 @@
   "dependencies": {
     "@babel/runtime": "^7.16.7",
     "@nice-digital/icons": "^2.2.7",
+    "@nice-digital/nds-container": "^1.0.8",
     "@nice-digital/nds-core": "^1.2.11",
     "@use-it/event-listener": "^0.1.7",
     "accessible-autocomplete": "^2.0.3",

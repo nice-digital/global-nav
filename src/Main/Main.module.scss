@@ -1,0 +1,12 @@
+@import '~@nice-digital/nds-core/scss/core';
+
+$back-to-top-height: rem(
+  $nds-spacing-medium * 3
+); // Line height + bottom and top padding
+
+@supports (position: sticky) {
+  .main {
+    padding-bottom: $back-to-top-height; /* space for the back to top link to dock */
+    position: relative;
+  }
+}
