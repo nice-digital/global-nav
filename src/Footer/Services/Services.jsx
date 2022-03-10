@@ -9,19 +9,23 @@ import links from "../../services.json";
 export default class Services extends Component {
 	render() {
 		return (
-			<nav className={styles.wrapper} aria-label="Our services">
+			<nav className={styles.wrapper} aria-label="Our services!!!">
 				<ul className={styles.list}>
-					{links.external.map(
-						function (link) {
-							if (link.nestedLinks) {
-								return link.nestedLinks.map((nestedLink) => {
-									return <FooterLink key={nestedLink.id} {...nestedLink} />;
-								});
-							} else {
-								return <FooterLink key={link.id} {...link} />;
-							}
-						}.bind(this)
-					)}
+					{links.external
+						.filter(function (item) {
+							return item.id !== "about";
+						})
+						.map(
+							function (link) {
+								if (link.nestedLinks) {
+									return link.nestedLinks.map((nestedLink) => {
+										return <FooterLink key={nestedLink.id} {...nestedLink} />;
+									});
+								} else {
+									return <FooterLink key={link.id} {...link} />;
+								}
+							}.bind(this)
+						)}
 				</ul>
 			</nav>
 		);
