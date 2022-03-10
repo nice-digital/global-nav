@@ -119,6 +119,14 @@ describe("Header", () => {
 		});
 	});
 
+	describe("Back to top link target", () => {
+		it("should contain a back to top scroll target id", () => {
+			const wrapper = shallow(<Header {...defaultProps} />);
+			const scrollTargetId = wrapper.find("#top");
+			expect(scrollTargetId).toHaveLength(1);
+		});
+	});
+
 	describe("Skip link target", () => {
 		it(`If skip link doesn't exist, create a link to the first <h1> in the document`, () => {
 			const heading1 = document.createElement("h1");
