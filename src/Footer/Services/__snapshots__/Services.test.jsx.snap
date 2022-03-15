@@ -2,7 +2,7 @@
 
 exports[`Services Matches snapshot 1`] = `
 <nav
-  aria-label="Our services"
+  aria-label="Our services!!!"
   className="wrapper"
 >
   <ul
@@ -161,14 +161,6 @@ exports[`Services Matches snapshot 1`] = `
       }
       text="CKS"
       title="Clinical Knowledge Summaries"
-    />
-    <FooterLink
-      dropdown={true}
-      dropdownComponent="AboutUs"
-      href="https://www.nice.org.uk/about"
-      id="about"
-      key="about"
-      text="About"
     />
     <FooterLink
       href="https://www.evidence.nhs.uk"
