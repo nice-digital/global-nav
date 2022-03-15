@@ -9,7 +9,7 @@ import links from "../../services.json";
 export default class Services extends Component {
 	render() {
 		return (
-			<nav className={styles.wrapper} aria-label="Our services!!!">
+			<nav className={styles.wrapper} aria-label="Our services">
 				<ul className={styles.list}>
 					{links.external
 						// Filtering out the about link, as it appears in Pages component but is required in services for the header dropdown

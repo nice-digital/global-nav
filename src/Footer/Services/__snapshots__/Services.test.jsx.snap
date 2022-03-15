@@ -2,7 +2,7 @@
 
 exports[`Services Matches snapshot 1`] = `
 <nav
-  aria-label="Our services!!!"
+  aria-label="Our services"
   className="wrapper"
 >
   <ul
