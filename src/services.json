@@ -6,13 +6,15 @@
       "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
-      "dropdownComponent": "Guidance"
+      "dropdownComponent": "Guidance",
+      "footer": true
     },
     {
       "href": "https://pathways.nice.org.uk",
       "text": "NICE Pathways",
       "id": "pathways",
       "dropdown": false,
+      "footer": true,
       "links": [
         {
           "text": "Browse",
@@ -37,14 +39,16 @@
       "text": "Standards and indicators",
       "id": "standards-and-indicators",
       "dropdown": true,
-      "dropdownComponent": "StandardsAndIndicators"
+      "dropdownComponent": "StandardsAndIndicators",
+      "footer": true
     },
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
       "text": "Life sciences",
       "id": "life-sciences",
       "dropdown": true,
-      "dropdownComponent": "LifeSciences"
+      "dropdownComponent": "LifeSciences",
+      "footer": true
     },
     {
       "href": "https://bnf.nice.org.uk",
@@ -54,6 +58,7 @@
       "id": "bnf",
       "dropdown": true,
       "dropdownComponent": "BNF",
+      "footer": true,
       "links": [
         {
           "text": "Drugs",
@@ -85,6 +90,7 @@
       "id": "bnfc",
       "dropdown": true,
       "dropdownComponent": "BNFc",
+      "footer": true,
       "links": [
         {
           "text": "Drugs",
@@ -116,6 +122,7 @@
       "id": "cks",
       "dropdown": true,
       "dropdownComponent": "CKS",
+      "footer": true,
       "links": [
         {
           "image": "cks",
@@ -145,7 +152,8 @@
       "text": "About",
       "id": "about",
       "dropdown": true,
-      "dropdownComponent": "AboutUs"
+      "dropdownComponent": "AboutUs",
+      "footer": false
     },
     {
       "href": "#more",
@@ -153,6 +161,7 @@
       "id": "more",
       "dropdown": true,
       "dropdownComponent": "More",
+      "footer": true,
       "nestedLinks": [
         {
           "href": "https://www.evidence.nhs.uk",

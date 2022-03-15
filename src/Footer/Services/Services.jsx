@@ -12,9 +12,8 @@ export default class Services extends Component {
 			<nav className={styles.wrapper} aria-label="Our services">
 				<ul className={styles.list}>
 					{links.external
-						// Filtering out the about link, as it appears in Pages component but is required in services for the header dropdown
 						.filter(function (item) {
-							return item.id !== "about";
+							return item.footer;
 						})
 						.map(
 							function (link) {
