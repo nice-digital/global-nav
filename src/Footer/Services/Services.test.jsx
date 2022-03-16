@@ -5,6 +5,8 @@ import Services from "./Services";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
+jest.mock("./../../services.json", () => require("./__mocks__/services.json"));
+
 describe("Services", () => {
 	it("Renders without crashing", () => {
 		const wrapper = shallow(<Services />);
@@ -22,5 +24,12 @@ describe("Services", () => {
 		const aboutElementText = list.find({ text: "About" });
 
 		expect(aboutElementText).toHaveLength(0);
+	});
+
+	it("should render link(s) if footer boolean is set to true", () => {
+		const wrapper = shallow(<Services service="cks" />);
+
+		expect(wrapper.exists({ text: "Nested link one" })).toBeTruthy();
+		expect(wrapper.exists({ text: "Second link" })).toBeFalsy();
 	});
 });

@@ -10,176 +10,24 @@ exports[`Services Matches snapshot 1`] = `
   >
     <FooterLink
       dropdown={true}
-      dropdownComponent="Guidance"
+      dropdownComponent="FirstComponent"
       footer={true}
-      href="https://www.nice.org.uk/guidance"
-      id="guidance"
-      key="guidance"
-      text="Guidance"
+      href="https://url1/"
+      id="link1"
+      key="link1"
+      text="First link"
     />
     <FooterLink
-      dropdown={false}
-      footer={true}
-      href="https://pathways.nice.org.uk"
-      id="pathways"
-      key="pathways"
-      links={
-        Array [
-          Object {
-            "href": "/#browse",
-            "text": "Browse",
-          },
-          Object {
-            "href": "/#recently-viewed",
-            "text": "Recently viewed",
-          },
-          Object {
-            "href": "/#help",
-            "text": "Help",
-          },
-          Object {
-            "href": "https://www.nice.org.uk/NICE-Pathways-feedback",
-            "text": "Leave feedback",
-          },
-        ]
-      }
-      text="NICE Pathways"
+      href="https://nestedLink1"
+      id="nested-1"
+      key="nested-1"
+      text="Nested link one"
     />
     <FooterLink
-      dropdown={true}
-      dropdownComponent="StandardsAndIndicators"
-      footer={true}
-      href="https://www.nice.org.uk/standards-and-indicators"
-      id="standards-and-indicators"
-      key="standards-and-indicators"
-      text="Standards and indicators"
-    />
-    <FooterLink
-      dropdown={true}
-      dropdownComponent="LifeSciences"
-      footer={true}
-      href="https://www.nice.org.uk/about/what-we-do/life-sciences"
-      id="life-sciences"
-      key="life-sciences"
-      text="Life sciences"
-    />
-    <FooterLink
-      abbreviation={true}
-      dropdown={true}
-      dropdownComponent="BNF"
-      footer={true}
-      href="https://bnf.nice.org.uk"
-      id="bnf"
-      key="bnf"
-      links={
-        Array [
-          Object {
-            "href": "/drug/",
-            "text": "Drugs",
-          },
-          Object {
-            "href": "/interaction/",
-            "text": "Interactions",
-          },
-          Object {
-            "href": "/treatment-summary/",
-            "text": "Treatment summaries",
-          },
-          Object {
-            "href": "/about/changes.html",
-            "text": "What's changed?",
-          },
-          Object {
-            "href": "/about/",
-            "text": "About BNF",
-          },
-        ]
-      }
-      text="BNF"
-      title="British National Formulary"
-    />
-    <FooterLink
-      abbreviation={true}
-      dropdown={true}
-      dropdownComponent="BNFc"
-      footer={true}
-      href="https://bnfc.nice.org.uk"
-      id="bnfc"
-      key="bnfc"
-      links={
-        Array [
-          Object {
-            "href": "/drug/",
-            "text": "Drugs",
-          },
-          Object {
-            "href": "/interaction/",
-            "text": "Interactions",
-          },
-          Object {
-            "href": "/treatment-summary/",
-            "text": "Treatment summaries",
-          },
-          Object {
-            "href": "/about/changes.html",
-            "text": "What's changed?",
-          },
-          Object {
-            "href": "/about/",
-            "text": "About BNFC",
-          },
-        ]
-      }
-      text="BNFC"
-      title="British National Formulary for Children"
-    />
-    <FooterLink
-      abbreviation={true}
-      dropdown={true}
-      dropdownComponent="CKS"
-      footer={true}
-      href="https://cks.nice.org.uk"
-      id="cks"
-      key="cks"
-      links={
-        Array [
-          Object {
-            "href": "/",
-            "image": "cks",
-            "text": "CKS - Home",
-          },
-          Object {
-            "href": "/topics/",
-            "text": "Health topics A to Z",
-          },
-          Object {
-            "href": "/specialities/",
-            "text": "Specialities",
-          },
-          Object {
-            "href": "/whats-new/",
-            "text": "What's new",
-          },
-          Object {
-            "href": "/about/",
-            "text": "About CKS",
-          },
-        ]
-      }
-      text="CKS"
-      title="Clinical Knowledge Summaries"
-    />
-    <FooterLink
-      href="https://www.evidence.nhs.uk"
-      id="evidence-search"
-      key="evidence-search"
-      text="Evidence search"
-    />
-    <FooterLink
-      href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
-      id="journals-and-databases"
-      key="journals-and-databases"
-      text="Journals and databases"
+      href="https://nestedLink2"
+      id="nested-2"
+      key="nested-2"
+      text="Nested link two"
     />
   </ul>
 </nav>
