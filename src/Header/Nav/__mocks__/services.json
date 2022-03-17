@@ -6,15 +6,13 @@
       "text": "First link",
       "id": "link1",
       "dropdown": true,
-      "dropdownComponent": "FirstComponent",
-      "footer": true
+      "dropdownComponent": "FirstComponent"
     },
     {
       "href": "https://url2/",
       "text": "Second link",
       "id": "link2",
       "dropdown": false,
-      "footer": false,
       "abbreviation": true,
       "title": "Abbreviation title",
       "links": [
@@ -34,7 +32,6 @@
       "id": "link3",
       "dropdown": true,
       "dropdownComponent": "ThirdComponent",
-      "footer": true,
       "abbreviation": true,
       "title": "Abbreviation title",
       "links": [
