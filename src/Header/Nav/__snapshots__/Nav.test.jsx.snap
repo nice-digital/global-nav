@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav Matches snapshot with multiple accounts links 1`] = `
+<nav
+  aria-label="My account"
+  className="nav myAccount"
+>
+  <h2
+    className="myAccountHeading"
+  >
+    My account
+  </h2>
+  <div
+    className="menuWrapper"
+  >
+    <ul
+      className="menuList"
+    >
+      <li
+        key="https://accounts.nice.org.uk/profile"
+      >
+        <a
+          className="link"
+          href="https://accounts.nice.org.uk/profile"
+          onClick={[Function]}
+        >
+          Joe Bloggs
+        </a>
+      </li>
+      <li
+        key="https://accounts.nice.org.uk/signout"
+      >
+        <a
+          className="link"
+          href="https://accounts.nice.org.uk/signout"
+          onClick={[Function]}
+        >
+          Sign out
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`Nav Matches snapshot with no accounts links 1`] = `
+<div
+  className="wrapper"
+  id="header-menu"
+>
+  <nav
+    aria-label="primary navigation"
+    className="nav"
+    data-tracking="Primary navigation"
+  >
+    <div
+      className="menuWrapper"
+    >
+      <NavLinks
+        currentService={null}
+        servicesToDisplay={
+          Array [
+            Object {
+              "dropdown": true,
+              "dropdownComponent": "FirstComponent",
+              "href": "https://url1/",
+              "id": "link1",
+              "text": "First link",
+            },
+            Object {
+              "abbreviation": true,
+              "dropdown": false,
+              "href": "https://url2/",
+              "id": "link2",
+              "links": Array [
+                Object {
+                  "href": "/",
+                  "text": "Sub link 1",
+                },
+                Object {
+                  "href": "/test",
+                  "text": "Sub link 2",
+                },
+              ],
+              "text": "Second link",
+              "title": "Abbreviation title",
+            },
+            Object {
+              "abbreviation": true,
+              "dropdown": true,
+              "dropdownComponent": "ThirdComponent",
+              "href": "https://url3/",
+              "id": "link3",
+              "links": Array [
+                Object {
+                  "href": "/",
+                  "text": "Sub link 1",
+                },
+                Object {
+                  "href": "/test",
+                  "text": "Sub link 2",
+                },
+              ],
+              "nestedLinks": Array [
+                Object {
+                  "href": "https://nestedLink1",
+                  "id": "nested-1",
+                  "text": "Nested link one",
+                },
+                Object {
+                  "href": "https://nestedLink2",
+                  "id": "nested-2",
+                  "text": "Nested link two",
+                },
+              ],
+              "text": "Third link",
+              "title": "Abbreviation title",
+            },
+          ]
+        }
+        subLinks={null}
+      />
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`Nav Matches snapshot with single accounts link 1`] = `
+<nav
+  aria-label="My account"
+  className="nav myAccount"
+>
+  <div
+    className="menuWrapper"
+  >
+    <ul
+      className="menuList"
+    >
+      <li
+        key="https://accounts.nice.org.uk/"
+      >
+        <a
+          className="link"
+          href="https://accounts.nice.org.uk/"
+          onClick={[Function]}
+        >
+          Sign in
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`Nav internalServices Matches snapshot with sub links for selected internal service 1`] = `
+<Nav
+  accountsData={null}
+  additionalSubMenuItems={Array []}
+  handleScrim={[Function]}
+  isExpanded={false}
+  service="internal1"
+>
+  <div
+    className="wrapper wrapperWithSubLinks"
+    id="header-menu"
+  >
+    <nav
+      aria-label="primary navigation"
+      className="nav"
+      data-tracking="Primary navigation"
+    >
+      <div
+        className="menuWrapper"
+      >
+        <NavLinks
+          currentService="internal1"
+          servicesToDisplay={
+            Array [
+              Object {
+                "href": "/",
+                "id": "internal1",
+                "links": Array [
+                  Object {
+                    "href": "/i1sublink1",
+                    "text": "internal1 sub link 1",
+                  },
+                  Object {
+                    "href": "/i2sublink2",
+                    "text": "internal1 sub link 2",
+                  },
+                ],
+                "text": "First internal service",
+              },
+            ]
+          }
+          subLinks={
+            Array [
+              Object {
+                "href": "/i1sublink1",
+                "text": "internal1 sub link 1",
+              },
+              Object {
+                "href": "/i2sublink2",
+                "text": "internal1 sub link 2",
+              },
+            ]
+          }
+        >
+          <FocusTrap
+            _createFocusTrap={[Function]}
+            active={false}
+            focusTrapOptions={
+              Object {
+                "clickOutsideDeactivates": true,
+                "initialFocus": false,
+              }
+            }
+            paused={false}
+          >
+            <ul
+              aria-labelledby="header-menu-button"
+              className="menuList"
+            >
+              <li
+                data-tracking="First internal service"
+                key="internal1"
+              >
+                <a
+                  aria-current={true}
+                  className="link"
+                  href="/"
+                  id="navlink-internal1"
+                  onClick={[Function]}
+                >
+                  <span>
+                    First internal service
+                  </span>
+                </a>
+                <SubNav
+                  links={
+                    Array [
+                      Object {
+                        "href": "/i1sublink1",
+                        "text": "internal1 sub link 1",
+                      },
+                      Object {
+                        "href": "/i2sublink2",
+                        "text": "internal1 sub link 2",
+                      },
+                    ]
+                  }
+                  text="First internal service"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <ul
+                      aria-label="First internal service links"
+                      className="list"
+                    >
+                      <li
+                        key="0"
+                      >
+                        <a
+                          aria-current={null}
+                          aria-label="internal1 sub link 1"
+                          className="link"
+                          href="/i1sublink1"
+                          onClick={[Function]}
+                        >
+                          internal1 sub link 1
+                        </a>
+                      </li>
+                      <li
+                        key="1"
+                      >
+                        <a
+                          aria-current={null}
+                          aria-label="internal1 sub link 2"
+                          className="link"
+                          href="/i2sublink2"
+                          onClick={[Function]}
+                        >
+                          internal1 sub link 2
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </SubNav>
+              </li>
+            </ul>
+          </FocusTrap>
+        </NavLinks>
+      </div>
+    </nav>
+  </div>
+</Nav>
+`;
