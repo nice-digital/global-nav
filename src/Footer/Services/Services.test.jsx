@@ -20,14 +20,6 @@ describe("Services", () => {
 		expect(toJson(wrapper)).toMatchSnapshot();
 	});
 
-	it("Does not render the link to about", () => {
-		const wrapper = shallow(<Services service="pathways" />);
-		const list = wrapper.find("ul").children();
-		const aboutElementText = list.find({ text: "About" });
-
-		expect(aboutElementText).toHaveLength(0);
-	});
-
 	it("should render link(s) if footer boolean is set to true", () => {
 		const wrapper = shallow(<Services service="cks" />);
 
