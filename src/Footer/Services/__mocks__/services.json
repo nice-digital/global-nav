@@ -16,17 +16,7 @@
       "dropdown": false,
       "footer": false,
       "abbreviation": true,
-      "title": "Abbreviation title",
-      "links": [
-        {
-          "text": "Sub link 1",
-          "href": "/"
-        },
-        {
-          "text": "Sub link 2",
-          "href": "/test"
-        }
-      ]
+      "title": "Abbreviation title"
     },
     {
       "href": "https://url3/",
@@ -36,61 +26,7 @@
       "dropdownComponent": "ThirdComponent",
       "footer": true,
       "abbreviation": true,
-      "title": "Abbreviation title",
-      "links": [
-        {
-          "text": "Sub link 1",
-          "href": "/"
-        },
-        {
-          "text": "Sub link 2",
-          "href": "/test"
-        }
-      ],
-      "nestedLinks": [
-        {
-          "href": "https://nestedLink1",
-          "text": "Nested link one",
-          "id": "nested-1"
-        },
-        {
-          "href": "https://nestedLink2",
-          "text": "Nested link two",
-          "id": "nested-2"
-        }
-      ]
-    }
-  ],
-  "internal": [
-    {
-      "href": "/",
-      "text": "First internal service",
-      "id": "internal1",
-      "links": [
-        {
-          "text": "internal1 sub link 1",
-          "href": "/i1sublink1"
-        },
-        {
-          "text": "internal1 sub link 2",
-          "href": "/i2sublink2"
-        }
-      ]
-    },
-    {
-      "href": "/",
-      "text": "Second internal service",
-      "id": "internal2",
-      "links": [
-        {
-          "text": "internal2 sub link 1",
-          "href": "/i2sublink1"
-        },
-        {
-          "text": "internal2 sub link 2",
-          "href": "/i2sublink2"
-        }
-      ]
+      "title": "Abbreviation title"
     }
   ]
 }

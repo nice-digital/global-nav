@@ -18,16 +18,15 @@ exports[`Services Matches snapshot 1`] = `
       text="First link"
     />
     <FooterLink
-      href="https://nestedLink1"
-      id="nested-1"
-      key="nested-1"
-      text="Nested link one"
-    />
-    <FooterLink
-      href="https://nestedLink2"
-      id="nested-2"
-      key="nested-2"
-      text="Nested link two"
+      abbreviation={true}
+      dropdown={true}
+      dropdownComponent="ThirdComponent"
+      footer={true}
+      href="https://url3/"
+      id="link3"
+      key="link3"
+      text="Third link"
+      title="Abbreviation title"
     />
   </ul>
 </nav>
