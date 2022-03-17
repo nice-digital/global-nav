@@ -5,28 +5,19 @@
       "href": "https://url1/",
       "text": "First link",
       "id": "link1",
-      "dropdown": true,
-      "dropdownComponent": "FirstComponent",
       "footer": true
     },
     {
       "href": "https://url2/",
       "text": "Second link",
       "id": "link2",
-      "dropdown": false,
-      "footer": false,
-      "abbreviation": true,
-      "title": "Abbreviation title"
+      "footer": false
     },
     {
       "href": "https://url3/",
       "text": "Third link",
       "id": "link3",
-      "dropdown": true,
-      "dropdownComponent": "ThirdComponent",
-      "footer": true,
-      "abbreviation": true,
-      "title": "Abbreviation title"
+      "footer": true
     }
   ]
 }

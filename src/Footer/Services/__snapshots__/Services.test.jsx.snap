@@ -9,8 +9,6 @@ exports[`Services Matches snapshot 1`] = `
     className="list"
   >
     <FooterLink
-      dropdown={true}
-      dropdownComponent="FirstComponent"
       footer={true}
       href="https://url1/"
       id="link1"
@@ -18,15 +16,11 @@ exports[`Services Matches snapshot 1`] = `
       text="First link"
     />
     <FooterLink
-      abbreviation={true}
-      dropdown={true}
-      dropdownComponent="ThirdComponent"
       footer={true}
       href="https://url3/"
       id="link3"
       key="link3"
       text="Third link"
-      title="Abbreviation title"
     />
   </ul>
 </nav>
