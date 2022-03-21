@@ -8,7 +8,6 @@ import ChevronUp from "@nice-digital/icons/lib/ChevronUp";
 import SubNav from "../SubNav";
 import Dropdown from "../Dropdown";
 import { HeaderContext } from "../../context/HeaderContext";
-import { createMarkup } from "../../../utils";
 
 import styles from "./NavLinks.module.scss";
 import {
@@ -109,7 +108,7 @@ export function NavLinks({
 										id={`navlink-${id}`}
 										aria-label={abbreviation && title}
 									>
-										<span dangerouslySetInnerHTML={createMarkup(text)}></span>
+										<span>{text}</span>
 										{id === idOfOpenDropdown ? (
 											<ChevronUp className={styles.icon} pointerEvents="none" />
 										) : (

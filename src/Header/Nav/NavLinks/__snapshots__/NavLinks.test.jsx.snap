@@ -28,13 +28,9 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
         id="navlink-link1"
         onClick={[Function]}
       >
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "First link",
-            }
-          }
-        />
+        <span>
+          First link
+        </span>
         <SvgChevronDown
           className="icon"
           pointerEvents="none"
@@ -79,13 +75,9 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
         id="navlink-link3"
         onClick={[Function]}
       >
-        <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "Third link",
-            }
-          }
-        />
+        <span>
+          Third link
+        </span>
         <SvgChevronDown
           className="icon"
           pointerEvents="none"
