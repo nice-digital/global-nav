@@ -10,21 +10,21 @@
     },
     {
       "href": "https://www.nice.org.uk/standards-and-indicators",
-      "text": "Standards and indicators",
+      "text": "Standards and indicators",
       "id": "standards-and-indicators",
       "dropdown": true,
       "dropdownComponent": "StandardsAndIndicators"
     },
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
-      "text": "Life&nbsp;sciences",
+      "text": "Life sciences",
       "id": "life-sciences",
       "dropdown": true,
       "dropdownComponent": "LifeSciences"
     },
     {
       "href": "https://bnf.nice.org.uk",
-      "text": "British National Formulary (BNF)",
+      "text": "British National Formulary (BNF)",
       "abbreviation": false,
       "title": "British National Formulary",
       "id": "bnf",
@@ -86,7 +86,7 @@
     },
     {
       "href": "https://cks.nice.org.uk",
-      "text": "Clinical Knowledge Summaries (CKS)",
+      "text": "Clinical Knowledge Summaries (CKS)",
       "abbreviation": false,
       "title": "Clinical Knowledge Summaries",
       "id": "cks",

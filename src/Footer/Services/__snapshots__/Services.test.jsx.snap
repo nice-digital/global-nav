@@ -22,7 +22,7 @@ exports[`Services Matches snapshot 1`] = `
       href="https://www.nice.org.uk/standards-and-indicators"
       id="standards-and-indicators"
       key="standards-and-indicators"
-      text="Standards and indicators"
+      text="Standards and indicators"
     />
     <FooterLink
       dropdown={true}
@@ -30,7 +30,7 @@ exports[`Services Matches snapshot 1`] = `
       href="https://www.nice.org.uk/about/what-we-do/life-sciences"
       id="life-sciences"
       key="life-sciences"
-      text="Life&nbsp;sciences"
+      text="Life sciences"
     />
     <FooterLink
       abbreviation={false}
@@ -63,7 +63,7 @@ exports[`Services Matches snapshot 1`] = `
           },
         ]
       }
-      text="British National Formulary (BNF)"
+      text="British National Formulary (BNF)"
       title="British National Formulary"
     />
     <FooterLink
@@ -132,7 +132,7 @@ exports[`Services Matches snapshot 1`] = `
           },
         ]
       }
-      text="Clinical Knowledge Summaries (CKS)"
+      text="Clinical Knowledge Summaries (CKS)"
       title="Clinical Knowledge Summaries"
     />
     <FooterLink

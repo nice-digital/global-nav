@@ -120,7 +120,6 @@
     "@use-it/event-listener": "^0.1.7",
     "accessible-autocomplete": "^2.0.3",
     "classnames": "^2.3.1",
-    "dompurify": "^2.3.6",
     "es5-polyfill": "0.0.6",
     "focus-trap-react": "^8.9.1",
     "js-cookie": "^2.2.1",
