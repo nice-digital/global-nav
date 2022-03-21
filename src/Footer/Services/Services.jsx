@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { createMarkup } from "../../utils";
 
 import styles from "./Services.module.scss";
 import TrackedLink from "../../TrackedLink";
@@ -55,7 +56,9 @@ function FooterLink({ href, text, abbreviation, title }) {
 						</span>
 					</>
 				) : (
-					text
+					<>
+						<span dangerouslySetInnerHTML={createMarkup(text)}></span>
+					</>
 				)}
 			</TrackedLink>
 		</li>

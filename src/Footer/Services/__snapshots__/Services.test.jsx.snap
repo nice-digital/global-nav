@@ -17,33 +17,6 @@ exports[`Services Matches snapshot 1`] = `
       text="Guidance"
     />
     <FooterLink
-      dropdown={false}
-      href="https://pathways.nice.org.uk"
-      id="pathways"
-      key="pathways"
-      links={
-        Array [
-          Object {
-            "href": "/#browse",
-            "text": "Browse",
-          },
-          Object {
-            "href": "/#recently-viewed",
-            "text": "Recently viewed",
-          },
-          Object {
-            "href": "/#help",
-            "text": "Help",
-          },
-          Object {
-            "href": "https://www.nice.org.uk/NICE-Pathways-feedback",
-            "text": "Leave feedback",
-          },
-        ]
-      }
-      text="NICE Pathways"
-    />
-    <FooterLink
       dropdown={true}
       dropdownComponent="StandardsAndIndicators"
       href="https://www.nice.org.uk/standards-and-indicators"
@@ -57,10 +30,10 @@ exports[`Services Matches snapshot 1`] = `
       href="https://www.nice.org.uk/about/what-we-do/life-sciences"
       id="life-sciences"
       key="life-sciences"
-      text="Life sciences"
+      text="Life&nbsp;sciences"
     />
     <FooterLink
-      abbreviation={true}
+      abbreviation={false}
       dropdown={true}
       dropdownComponent="BNF"
       href="https://bnf.nice.org.uk"
@@ -90,11 +63,11 @@ exports[`Services Matches snapshot 1`] = `
           },
         ]
       }
-      text="BNF"
+      text="British National Formulary (BNF)"
       title="British National Formulary"
     />
     <FooterLink
-      abbreviation={true}
+      abbreviation={false}
       dropdown={true}
       dropdownComponent="BNFc"
       href="https://bnfc.nice.org.uk"
@@ -124,11 +97,11 @@ exports[`Services Matches snapshot 1`] = `
           },
         ]
       }
-      text="BNFC"
+      text="British National Formulary for Children (BNFC)"
       title="British National Formulary for Children"
     />
     <FooterLink
-      abbreviation={true}
+      abbreviation={false}
       dropdown={true}
       dropdownComponent="CKS"
       href="https://cks.nice.org.uk"
@@ -159,7 +132,7 @@ exports[`Services Matches snapshot 1`] = `
           },
         ]
       }
-      text="CKS"
+      text="Clinical Knowledge Summaries (CKS)"
       title="Clinical Knowledge Summaries"
     />
     <FooterLink
@@ -169,18 +142,6 @@ exports[`Services Matches snapshot 1`] = `
       id="about"
       key="about"
       text="About"
-    />
-    <FooterLink
-      href="https://www.evidence.nhs.uk"
-      id="evidence-search"
-      key="evidence-search"
-      text="Evidence search"
-    />
-    <FooterLink
-      href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
-      id="journals-and-databases"
-      key="journals-and-databases"
-      text="Journals and databases"
     />
   </ul>
 </nav>

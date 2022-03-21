@@ -1,3 +1,5 @@
+import DOMPurify from "dompurify";
+
 /**
  * Test userAgent to see if we're on iOS
  * @returns {boolean}
@@ -29,4 +31,17 @@ export function getCallbackFunction(funcOrFuncName) {
 	}
 
 	return undefined;
+}
+
+/**
+ * return sanitized output with __html prop for use with dangerouslySetInnerHtml
+ * @returns {
+ * __html: string
+ * }
+ */
+
+export function createMarkup(string) {
+	return {
+		__html: DOMPurify.sanitize(string),
+	};
 }
