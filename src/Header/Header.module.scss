@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import 'header-settings';
 
 .header {
@@ -73,7 +75,7 @@
   flex-grow: 1;
   float: left;
   margin-right: rem($nds-spacing-medium);
-  min-width: percentage(2 / 3);
+  min-width: percentage(math.div(2, 3));
 }
 
 .mobileMenuBtn {
