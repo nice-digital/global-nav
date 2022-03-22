@@ -29,6 +29,7 @@ export function AboutUs() {
 					style={{ flexBasis: "max-content", flexShrink: 0 }}
 				>
 					<h3 className="mt--d">Our programmes</h3>
+					<p>Learn about the information we produce.</p>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
 							<a
