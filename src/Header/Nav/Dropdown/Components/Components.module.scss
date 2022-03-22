@@ -13,6 +13,28 @@
   }
 }
 
+.listColumnar {
+  @extend .listUnstyled;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+
+  p {
+    margin: 0;
+  }
+
+  li {
+    width: 100%;
+  }
+
+  @include mq($from: md) {
+    li {
+      margin-bottom: rem($nds-spacing-large);
+      width: 33%;
+    }
+  }
+}
+
 .alphabet {
   display: flex;
   flex-wrap: wrap;
