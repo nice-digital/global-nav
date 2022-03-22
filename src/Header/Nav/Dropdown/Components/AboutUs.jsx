@@ -14,46 +14,129 @@ export function AboutUs() {
 
 	return (
 		<section aria-label="About us - dropdown navigation">
-			<h2 className="mt--0">About us</h2>
+			<h2 className="mt--0">About</h2>
 			<p>
 				We provide national guidance and advice to improve health and social
 				care.
 			</p>
 			<Button variant="cta" to={baseUrl}>
-				Explore about us
+				Explore about
 			</Button>
+
 			<Grid gutter="loose">
-				<GridItem data-tracking="Who we are">
-					<h3 className="mt--d">Who we are</h3>
+				<GridItem cols={3}>our programmes...</GridItem>
+				<GridItem cols={9}>
+					<Grid>
+						<GridItem>
+							<GridItem>
+								Get involved heading...
+								<Grid gutter="loose">
+									<GridItem cols={4}>col one </GridItem>
+									<GridItem cols={4}>col two</GridItem>
+									<GridItem cols={4}>col three</GridItem>
+								</Grid>
+								<Grid>
+									<GridItem cols={4}>col four</GridItem>
+									<GridItem cols={4}>col five</GridItem>
+									<GridItem cols={4}>col six</GridItem>
+								</Grid>
+							</GridItem>
+							<GridItem>
+								<Grid>
+									<GridItem cols={4}>what we do</GridItem>
+									<GridItem cols={4}>Into practice </GridItem>
+									<GridItem cols={4}>Who we are</GridItem>
+								</Grid>
+							</GridItem>
+						</GridItem>
+					</Grid>
+				</GridItem>
+			</Grid>
+
+			<Grid gutter="loose">
+				<GridItem data-tracking="Our programmes">
+					<h3 className="mt--d">Our programmes</h3>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href={`${baseUrl}/who-we-are/board`}>The board</a>
-						</li>
-						<li>
-							<a href={`${baseUrl}/who-we-are/senior-management-team`}>
-								Executive team
-							</a>
-						</li>
-						<li>
-							<a href={`${baseUrl}/who-we-are/guidance-executive`}>
-								Guidance executive
-							</a>
-						</li>
-						<li>
-							<a href={`${baseUrl}/who-we-are/structure-of-nice`}>
-								Our structure
-							</a>
-						</li>
-						<li>
-							<a href={`${baseUrl}/who-we-are/policies-and-procedures`}>
-								Policies and procedures
+							<a
+								href={`${baseUrl}/about/what-we-do/our-programmes/nice-guidance`}
+							>
+								Guidance
 							</a>
 						</li>
 						<li>
 							<a
-								href={`${baseUrl}/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026`}
+								href={`${baseUrl}/about/what-we-do/our-programmes/nice-advice`}
 							>
-								The NICE strategy 2021 to 2026
+								Advice
+							</a>
+						</li>
+						<li>
+							<a href="https://www.nice.org.uk/standards-and-indicators/quality-standards">
+								Quality standards
+							</a>
+						</li>
+						<li>
+							<a href={`${baseUrl}/standards-and-indicators/indicators`}>
+								Indicators
+							</a>
+						</li>
+						<li>
+							<a href={`${baseUrl}/about/what-we-do/digital-health`}>
+								Digital health
+							</a>
+						</li>
+						<li>
+							<a
+								href={`${baseUrl}/about/what-we-do/our-programmes/topic-selection`}
+							>
+								Topic selection
+							</a>
+						</li>
+					</ul>
+				</GridItem>
+				<GridItem data-tracking="Get involved">
+					<h3 className="mt--d">Get involved</h3>
+					<ul
+						className={classnames(styles.listUnstyled, "mt--d")}
+						style={{ columnCount: 3 }}
+					>
+						<li>
+							<p>Understand how decisions are made:</p>
+							<a href={`${rootUrl}/Get-Involved/Meetings-in-public`}>
+								Attend a committee meeting
+							</a>
+						</li>
+						<li>
+							<p>Comment on draft guidance:</p>
+							<a href={`${rootUrl}/Get-Involved/Consultations`}>
+								Guidance in consultation
+							</a>
+						</li>
+						<li>
+							<p>Be part of a guidance committee:</p>
+							<a href={`${rootUrl}/Get-Involved/our-committees`}>
+								Join a committee
+							</a>
+						</li>
+						<li>
+							<p>Help develop our products:</p>
+							<a href={`${rootUrl}/Get-Involved/stakeholder-registration`}>
+								Register as a stakeholder
+							</a>
+						</li>
+						<li>
+							<p>Putting you at the heart of our work:</p>
+							<a
+								href={`${rootUrl}/about/nice-communities/nice-and-the-public/public-involvement`}
+							>
+								Public involvement
+							</a>
+						</li>
+						<li>
+							<p>Stay up-to-date with our work:</p>
+							<a href={`${rootUrl}/news/nice-newsletters-and-alerts`}>
+								Subscribe to our newsletters
 							</a>
 						</li>
 					</ul>
@@ -62,110 +145,103 @@ export function AboutUs() {
 					<h3 className="mt--d">What we do</h3>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a
-								href={`${baseUrl}/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies`}
-							>
-								Digital health
-							</a>
-						</li>
-						<li>
-							<a href={`${baseUrl}/what-we-do/nice-international`}>
-								NICE international
-							</a>
-						</li>
-						<li>
-							<a href={`${baseUrl}/nice-communities/social-care`}>
+							<a href={`${baseUrl}/about/nice-communities/social-care`}>
 								Social care
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/what-we-do/life-sciences`}>Life sciences</a>
+							<a href={`${baseUrl}/about/what-we-do/life-sciences`}>
+								Life sciences
+							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/what-we-do/into-practice`}>Into practice</a>
+							<a href={`${baseUrl}/about/what-we-do/nice-international`}>
+								NICE international
+							</a>
 						</li>
 						<li>
 							<a
-								href={`${baseUrl}/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making`}
+								href={`${baseUrl}/about/what-we-do/our-programmes/patient-safety`}
+							>
+								Patient safety
+							</a>
+						</li>
+						<li>
+							<a
+								href={`${baseUrl}/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making`}
 							>
 								Shared decision making
 							</a>
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem data-tracking="Our programmes">
-					<h3 className="mt--d">Our programmes</h3>
+				<GridItem data-tracking="Into practice">
+					<h3 className="mt--d">Into practice</h3>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href={`${baseUrl}/what-we-do/our-programmes/nice-guidance`}>
-								Guidance
-							</a>
-						</li>
-						<li>
-							<a href={`${baseUrl}/what-we-do/our-programmes/nice-advice`}>
-								Advice
-							</a>
-						</li>
-						<li>
-							<a href="https://www.nice.org.uk/standards-and-indicators">
-								Standards and indicators
-							</a>
-						</li>
-						<li>
-							<a href={`${baseUrl}/what-we-do/our-programmes/topic-selection`}>
-								Topic selection
+							<a
+								href={`${baseUrl}/about/nice-communities/social-care/quick-guides`}
+							>
+								Social care quick guides
 							</a>
 						</li>
 						<li>
 							<a
-								href={`${baseUrl}/what-we-do/our-programmes/cost-savings-resource-planning`}
+								href={`${baseUrl}/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance`}
 							>
-								Financial planning
+								Measuring the use of NICE guidance
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/what-we-do/our-programmes/patient-safety`}>
-								Patient safety
+							<a
+								href={`${baseUrl}/about/what-we-do/into-practice/resource-planner`}
+							>
+								Resource planner
+							</a>
+						</li>
+						<li>
+							<a href={`${baseUrl}/about/what-we-do/into-practice`}>
+								View all Into practice
 							</a>
 						</li>
 					</ul>
 				</GridItem>
-				<GridItem data-tracking="Get involved">
-					<h3 className="mt--d">Get involved</h3>
+				<GridItem data-tracking="Who we are">
+					<h3 className="mt--d">Who we are</h3>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href={`${rootUrl}/Get-Involved/stakeholder-registration`}>
-								Register as a stakeholder
-							</a>
-						</li>
-						<li>
-							<a href={`${rootUrl}/Get-Involved/Consultations`}>
-								Comment on a consultation
-							</a>
-						</li>
-						<li>
-							<a href={`${rootUrl}/Get-Involved/our-committees`}>
-								Join a committee
-							</a>
-						</li>
-						<li>
-							<a href={`${rootUrl}/Get-Involved/Meetings-in-public`}>
-								Come to a meeting
-							</a>
-						</li>
-						<li>
-							<a href={`${rootUrl}/Get-Involved/jobs`}>Work with us</a>
+							<a href={`${baseUrl}/about/who-we-are/board`}>The board</a>
 						</li>
 						<li>
 							<a
-								href={`${rootUrl}/about/nice-communities/nice-and-the-public/public-involvement`}
+								href={`${baseUrl}/about/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026`}
 							>
-								Public involvement
+								The NICE strategy 2021 to 2026
 							</a>
+						</li>
+						<li>
+							<a href={`${baseUrl}/about/who-we-are/corporate-publications`}>
+								Corporate publications
+							</a>
+						</li>
+						<li>
+							<a href={`${baseUrl}/about/who-we-are`}>View all Who we are</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
+			<hr />
+			<ul
+				className={classnames(styles.listUnstyled, "mt--d")}
+				data-tracking="Contact us"
+			>
+				<li>
+					<a href={`${baseUrl}/get-involved/contact-us`}>Contact us</a>
+				</li>
+				<li>
+					<a href={`${baseUrl}/get-involved/jobs`}>Jobs</a>
+				</li>
+			</ul>
 		</section>
 	);
 }
