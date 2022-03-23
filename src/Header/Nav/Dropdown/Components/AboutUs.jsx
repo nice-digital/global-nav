@@ -13,7 +13,7 @@ export function AboutUs() {
 	const rootUrl = services.rootUrl;
 
 	return (
-		<section aria-label="About us - dropdown navigation">
+		<section aria-label="About - navigation">
 			<h2 className="mt--0">About</h2>
 			<p>
 				We provide national guidance and advice to improve health and social
@@ -26,7 +26,7 @@ export function AboutUs() {
 			<Grid gutter="loose">
 				<GridItem
 					data-tracking="Our programmes"
-					className={classnames(styles.aboutCol, [styles["aboutCol--one"]])}
+					className={classnames(styles.aboutCol, styles.aboutCol1)}
 				>
 					<h3 className="mt--d">Our programmes</h3>
 					<p>Learn about the information we produce.</p>

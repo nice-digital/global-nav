@@ -1,6 +1,5 @@
 @import '~@nice-digital/nds-core/scss/core';
 @import '~@nice-digital/nds-core/scss/typography/_typography-helpers';
-@import './Grid.module.scss';
 
 .listUnstyled {
   @include nds-list;
@@ -38,10 +37,9 @@
 }
 
 .aboutCol {
-  @extend .gridItem;
   flex-basis: auto;
 
-  &--one {
+  &.aboutCol1 {
     flex-shrink: 0;
   }
 }
