@@ -26,7 +26,7 @@ export function AboutUs() {
 			<Grid gutter="loose">
 				<GridItem
 					data-tracking="Our programmes"
-					style={{ flexBasis: "max-content", flexShrink: 0 }}
+					className={classnames(styles.aboutCol, [styles["aboutCol--one"]])}
 				>
 					<h3 className="mt--d">Our programmes</h3>
 					<p>Learn about the information we produce.</p>
@@ -71,7 +71,7 @@ export function AboutUs() {
 				</GridItem>
 				<GridItem
 					data-tracking="Get involved"
-					style={{ flexBasis: "max-content" }}
+					className={classnames(styles.aboutCol)}
 				>
 					<h3 className="mt--d">Get involved</h3>
 					<ul className={classnames(styles.listColumnar, "mt--d")}>

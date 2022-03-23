@@ -1,5 +1,6 @@
 @import '~@nice-digital/nds-core/scss/core';
 @import '~@nice-digital/nds-core/scss/typography/_typography-helpers';
+@import './Grid.module.scss';
 
 .listUnstyled {
   @include nds-list;
@@ -30,8 +31,18 @@
   @include mq($from: md) {
     li {
       margin-bottom: rem($nds-spacing-large);
-      width: 33%;
+      padding-right: rem($nds-spacing-small);
+      width: calc(100% / 3);
     }
+  }
+}
+
+.aboutCol {
+  @extend .gridItem;
+  flex-basis: auto;
+
+  &--one {
+    flex-shrink: 0;
   }
 }
 
