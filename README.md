@@ -337,7 +337,7 @@ For a full list of all the available props, see the [props section](#props) belo
 ###### Main.withPadding
 
 - Type: `Boolean`
-- Default: false
+- Default: true
   
 Optional spacing between page content and footer back-to-top link.
 

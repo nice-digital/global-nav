@@ -6,7 +6,7 @@ import classnames from "classnames";
 import styles from "./Main.module.scss";
 
 export function Main(props) {
-	const { children, className, withPadding, ...rest } = props;
+	const { children, className, withPadding = true, ...rest } = props;
 
 	return (
 		<main
