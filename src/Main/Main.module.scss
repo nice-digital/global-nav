@@ -8,5 +8,9 @@ $back-to-top-height: rem(
   .main {
     padding-bottom: $back-to-top-height; /* space for the back to top link to dock */
     position: relative;
+
+    &.withPadding {
+      padding-bottom: rem($nds-spacing-medium);
+    }
   }
 }

@@ -6,10 +6,17 @@ import classnames from "classnames";
 import styles from "./Main.module.scss";
 
 export function Main(props) {
-	const { children, className, ...rest } = props;
+	const { children, className, withPadding, ...rest } = props;
 
 	return (
-		<main className={classnames([styles.main, className])} {...rest}>
+		<main
+			withPadding={withPadding}
+			className={classnames(
+				[styles.main, className],
+				withPadding && styles.withPadding
+			)}
+			{...rest}
+		>
 			{children}
 			<BackToTop />
 		</main>
@@ -22,6 +29,7 @@ Main.propTypes = {
 		PropTypes.node,
 	]).isRequired,
 	className: PropTypes.string,
+	withPadding: PropTypes.boolean,
 };
 
 export default Main;
