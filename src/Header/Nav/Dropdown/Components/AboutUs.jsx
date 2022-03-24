@@ -108,9 +108,11 @@ export function AboutUs() {
 							</a>
 						</li>
 						<li>
-							<p>Stay up-to-date with our work:</p>
-							<a href={`${rootUrl}/news/nice-newsletters-and-alerts`}>
-								Subscribe to our newsletters
+							<p>Test our guideline prototype:</p>
+							<a
+								href={`${rootUrl}/get-involved/help-shape-the-future-of-nice-guidelines`}
+							>
+								Help shape the future of NICE guidelines
 							</a>
 						</li>
 					</ul>
