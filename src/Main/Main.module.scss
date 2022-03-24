@@ -4,13 +4,15 @@ $back-to-top-height: rem(
   $nds-spacing-medium * 3
 ); // Line height + bottom and top padding
 
+$main-content-padding: 4rem;
+
 @supports (position: sticky) {
   .main {
     padding-bottom: $back-to-top-height; /* space for the back to top link to dock */
     position: relative;
 
     &.withPadding {
-      padding-bottom: rem($nds-spacing-medium);
+      padding-bottom: $main-content-padding; /* space between page content and footer when withPadding prop set to true */
     }
   }
 }
