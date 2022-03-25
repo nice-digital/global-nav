@@ -89,6 +89,7 @@ declare module "@nice-digital/global-nav" {
 		children: React.ReactNode;
 		/** Additional classnames for the main element. */
 		className?: string;
+		withPadding?: boolean;
 	}
 
 	const Header: React.FC<HeaderProps>;
