@@ -1,0 +1,23 @@
+{
+  "rootUrl": "https://rootUrl.org.uk",
+  "external": [
+    {
+      "href": "https://url1/",
+      "text": "First link",
+      "id": "link1",
+      "footer": true
+    },
+    {
+      "href": "https://url2/",
+      "text": "Second link",
+      "id": "link2",
+      "footer": false
+    },
+    {
+      "href": "https://url3/",
+      "text": "Third link",
+      "id": "link3",
+      "footer": true
+    }
+  ]
+}

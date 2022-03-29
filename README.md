@@ -37,6 +37,8 @@
 			- [Installation](#installation)
 			- [Usage](#usage)
 			- [Props](#props)
+				- [Main props](#main-props)
+					- [Main.withPadding](#mainwithpadding)
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
 					- [Header.skipLinkId](#headerskiplinkid)
@@ -319,7 +321,7 @@ const search = {
 const page = () => (
   <div>
     <Header service="pathways" search={search} />
-		<Main myOptionalProp={myOptionalProp} className="my-optional-class" >{/* Your page content here */} </Main>
+		<Main withPadding={true} myOptionalProp={myOptionalProp} className="my-optional-class" >{/* Your page content here */} </Main>
     <Footer />
   </div>
 );
@@ -329,6 +331,15 @@ Wrapping your template with the main component will render a main tag in the htm
 For a full list of all the available props, see the [props section](#props) below:
 
 #### Props
+
+##### Main props
+
+###### Main.withPadding
+
+- Type: `Boolean`
+- Default: true
+  
+Optional spacing between page content and footer back-to-top link.
 
 ##### Header props
 

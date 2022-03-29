@@ -11,17 +11,21 @@ export default class Services extends Component {
 		return (
 			<nav className={styles.wrapper} aria-label="Our services">
 				<ul className={styles.list}>
-					{links.external.map(
-						function (link) {
-							if (link.nestedLinks) {
-								return link.nestedLinks.map((nestedLink) => {
-									return <FooterLink key={nestedLink.id} {...nestedLink} />;
-								});
-							} else {
-								return <FooterLink key={link.id} {...link} />;
-							}
-						}.bind(this)
-					)}
+					{links.external
+						.filter(function (item) {
+							return item.footer;
+						})
+						.map(
+							function (link) {
+								if (link.nestedLinks) {
+									return link.nestedLinks.map((nestedLink) => {
+										return <FooterLink key={nestedLink.id} {...nestedLink} />;
+									});
+								} else {
+									return <FooterLink key={link.id} {...link} />;
+								}
+							}.bind(this)
+						)}
 				</ul>
 			</nav>
 		);

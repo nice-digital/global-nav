@@ -9,139 +9,18 @@ exports[`Services Matches snapshot 1`] = `
     className="list"
   >
     <FooterLink
-      dropdown={true}
-      dropdownComponent="Guidance"
-      href="https://www.nice.org.uk/guidance"
-      id="guidance"
-      key="guidance"
-      text="Guidance"
+      footer={true}
+      href="https://url1/"
+      id="link1"
+      key="link1"
+      text="First link"
     />
     <FooterLink
-      dropdown={true}
-      dropdownComponent="StandardsAndIndicators"
-      href="https://www.nice.org.uk/standards-and-indicators"
-      id="standards-and-indicators"
-      key="standards-and-indicators"
-      text="Standards and indicators"
-    />
-    <FooterLink
-      dropdown={true}
-      dropdownComponent="LifeSciences"
-      href="https://www.nice.org.uk/about/what-we-do/life-sciences"
-      id="life-sciences"
-      key="life-sciences"
-      text="Life sciences"
-    />
-    <FooterLink
-      abbreviation={false}
-      dropdown={true}
-      dropdownComponent="BNF"
-      href="https://bnf.nice.org.uk"
-      id="bnf"
-      key="bnf"
-      links={
-        Array [
-          Object {
-            "href": "/drug/",
-            "text": "Drugs",
-          },
-          Object {
-            "href": "/interaction/",
-            "text": "Interactions",
-          },
-          Object {
-            "href": "/treatment-summary/",
-            "text": "Treatment summaries",
-          },
-          Object {
-            "href": "/about/changes.html",
-            "text": "What's changed?",
-          },
-          Object {
-            "href": "/about/",
-            "text": "About BNF",
-          },
-        ]
-      }
-      text="British National Formulary (BNF)"
-      title="British National Formulary"
-    />
-    <FooterLink
-      abbreviation={false}
-      dropdown={true}
-      dropdownComponent="BNFc"
-      href="https://bnfc.nice.org.uk"
-      id="bnfc"
-      key="bnfc"
-      links={
-        Array [
-          Object {
-            "href": "/drug/",
-            "text": "Drugs",
-          },
-          Object {
-            "href": "/interaction/",
-            "text": "Interactions",
-          },
-          Object {
-            "href": "/treatment-summary/",
-            "text": "Treatment summaries",
-          },
-          Object {
-            "href": "/about/changes.html",
-            "text": "What's changed?",
-          },
-          Object {
-            "href": "/about/",
-            "text": "About BNFC",
-          },
-        ]
-      }
-      text="British National Formulary for Children (BNFC)"
-      title="British National Formulary for Children"
-    />
-    <FooterLink
-      abbreviation={false}
-      dropdown={true}
-      dropdownComponent="CKS"
-      href="https://cks.nice.org.uk"
-      id="cks"
-      key="cks"
-      links={
-        Array [
-          Object {
-            "href": "/",
-            "image": "cks",
-            "text": "CKS - Home",
-          },
-          Object {
-            "href": "/topics/",
-            "text": "Health topics A to Z",
-          },
-          Object {
-            "href": "/specialities/",
-            "text": "Specialities",
-          },
-          Object {
-            "href": "/whats-new/",
-            "text": "What's new",
-          },
-          Object {
-            "href": "/about/",
-            "text": "About CKS",
-          },
-        ]
-      }
-      text="Clinical Knowledge Summaries (CKS)"
-      title="Clinical Knowledge Summaries"
-    />
-    <FooterLink
-      dropdown={true}
-      dropdownComponent="AboutUs"
-      href="https://www.nice.org.uk/about"
-      id="about"
-      key="about"
-      text="About"
+      footer={true}
+      href="https://url3/"
+      id="link3"
+      key="link3"
+      text="Third link"
     />
   </ul>
 </nav>
