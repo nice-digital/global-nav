@@ -124,6 +124,6 @@ a.link,
   @include mq($from: md) {
     justify-content: space-evenly;
     padding: rem($nds-spacing-medium);
-    text-align: center;
+    text-align: left;
   }
 }
