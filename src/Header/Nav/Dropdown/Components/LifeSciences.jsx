@@ -97,7 +97,7 @@ export function LifeSciences() {
 					<GridItem>
 						<h3 className="mt--d">Register your product</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a href="https://www.healthtechconnect.org.uk/m">
+							<a href="https://www.healthtechconnect.org.uk">
 								Non-pharmaceutical
 							</a>
 						</h4>
@@ -106,7 +106,7 @@ export function LifeSciences() {
 							technologies to access support and national evaluation programmes.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.ukpharmascan.org.uk/">Pharmaceutical</a>
+							<a href="https://www.ukpharmascan.org.uk">Pharmaceutical</a>
 						</h4>
 						<p className="mt--0">
 							UK PharmaScan is a database of new medicines, indications and
