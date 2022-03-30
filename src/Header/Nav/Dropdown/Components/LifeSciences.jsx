@@ -24,19 +24,13 @@ export function LifeSciences() {
 					<GridItem>
 						<h3 className="mt--d">Get support from NICE</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a
-								href={`${baseUrl}/about/what-we-do/life-sciences/scientific-advice`}
-							>
-								Scientific advice
-							</a>
+							<a href={`${baseUrl}/scientific-advice`}>Scientific advice</a>
 						</h4>
 						<p className="mt--0">
 							Advisory service for developers of a range of health technologies.
 						</p>
 						<h4 className="h5 mb--c">
-							<a
-								href={`${baseUrl}/about/what-we-do/life-sciences/office-for-market-access`}
-							>
+							<a href={`${baseUrl}/office-for-market-access`}>
 								Office for Market Access
 							</a>
 						</h4>
@@ -45,16 +39,12 @@ export function LifeSciences() {
 							development.
 						</p>
 						<h4 className="h5 mb--c">
-							<a
-								href={`${baseUrl}/about/what-we-do/life-sciences/contact-us-form`}
-							>
-								Make an enquiry
-							</a>
+							<a href={`${baseUrl}/contact-us-form`}>Make an enquiry</a>
 						</h4>
 						<p className="mt--0">Contact us to discuss your requirements.</p>
 						<h4 className="h5 mb--c">
 							<a
-								href={`${baseUrl}/about/what-we-do/life-sciences/our-role-in-the-innovative-licensing-and-access-pathway--ilap`}
+								href={`${baseUrl}/our-role-in-the-innovative-licensing-and-access-pathway--ilap`}
 							>
 								Innovative Licensing and Access Pathway (ILAP)
 							</a>
@@ -69,7 +59,7 @@ export function LifeSciences() {
 						<h3 className="mt--d">Learn how we evaluate technologies</h3>
 						<h4 className="h5 mb--c mt--0">
 							<a
-								href={`${baseUrl}/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/changes-to-health-technology-evaluation`}
+								href={`${baseUrl}/our-programmes/nice-guidance/nice-technology-appraisal-guidance/changes-to-health-technology-evaluation`}
 							>
 								Health technology evaluation and topic selection manuals
 							</a>
@@ -78,9 +68,7 @@ export function LifeSciences() {
 							Updated manuals for methods, processes and topic selection.
 						</p>
 						<h4 className="h5 mb--c">
-							<a
-								href={`${baseUrl}/about/what-we-do/digital-health/office-for-digital-health`}
-							>
+							<a href={`${baseUrl}/digital-health/office-for-digital-health`}>
 								Digital health technologies
 							</a>
 						</h4>
@@ -90,7 +78,7 @@ export function LifeSciences() {
 						</p>
 						<h4 className="h5 mb--c">
 							<a
-								href={`${baseUrl}/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies`}
+								href={`${baseUrl}/our-programmes/evidence-standards-framework-for-digital-health-technologies`}
 							>
 								Evidence standards framework
 							</a>
@@ -100,9 +88,7 @@ export function LifeSciences() {
 							guide decisions in health, public health and social care.
 						</p>
 						<h4 className="h5 mb--c">
-							<a
-								href={`${baseUrl}/about/what-we-do/our-programmes/nice-guidance`}
-							>
+							<a href={`${baseUrl}/our-programmes/nice-guidance`}>
 								Our guidance programmes
 							</a>
 						</h4>
