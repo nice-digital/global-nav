@@ -58,9 +58,7 @@ export function LifeSciences() {
 					<GridItem>
 						<h3 className="mt--d">Learn how we evaluate technologies</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a
-								href={`${baseUrl}/our-programmes/nice-guidance/nice-technology-appraisal-guidance/changes-to-health-technology-evaluation`}
-							>
+							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/changes-to-health-technology-evaluation">
 								Health technology evaluation and topic selection manuals
 							</a>
 						</h4>
@@ -68,7 +66,7 @@ export function LifeSciences() {
 							Updated manuals for methods, processes and topic selection.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href={`${baseUrl}/digital-health/office-for-digital-health`}>
+							<a href="https://www.nice.org.uk/about/what-we-do/digital-health/office-for-digital-health">
 								Digital health technologies
 							</a>
 						</h4>
@@ -77,9 +75,7 @@ export function LifeSciences() {
 							care system.
 						</p>
 						<h4 className="h5 mb--c">
-							<a
-								href={`${baseUrl}/our-programmes/evidence-standards-framework-for-digital-health-technologies`}
-							>
+							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies">
 								Evidence standards framework
 							</a>
 						</h4>
@@ -88,7 +84,7 @@ export function LifeSciences() {
 							guide decisions in health, public health and social care.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href={`${baseUrl}/our-programmes/nice-guidance`}>
+							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance">
 								Our guidance programmes
 							</a>
 						</h4>
@@ -121,9 +117,7 @@ export function LifeSciences() {
 					<GridItem>
 						<h3 className="mt--d">Find published and proposed evaluations</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a
-								href={`${baseUrl}/guidance/published?ngt=Diagnostics%20guidance&ndt=Guidance`}
-							>
+							<a href="https://www.nice.org.uk/guidance/published?ngt=diagnostics%20guidance&ndt=guidance">
 								Diagnostics
 							</a>
 						</h4>
@@ -132,9 +126,7 @@ export function LifeSciences() {
 							patient&apos;s condition.
 						</p>
 						<h4 className="h5 mb--c">
-							<a
-								href={`${baseUrl}/guidance/published?ngt=Medical%20technologies%20guidance&ndt=Guidance`}
-							>
+							<a href="https://www.nice.org.uk/guidance/published?ngt=medical%20technologies%20guidance&ndt=guidance">
 								Medical technologies
 							</a>
 						</h4>
@@ -143,9 +135,7 @@ export function LifeSciences() {
 							manufacturers.
 						</p>
 						<h4 className="h5 mb--c">
-							<a
-								href={`${baseUrl}/guidance/published?ngt=Technology%20appraisal%20guidance&ndt=Guidance`}
-							>
+							<a href="https://www.nice.org.uk/guidance/published?ngt=technology%20appraisal%20guidance&ndt=guidance">
 								Technology appraisals
 							</a>
 						</h4>
@@ -153,9 +143,7 @@ export function LifeSciences() {
 							Guidance on new and existing medicines and treatments in the NHS.
 						</p>
 						<h4 className="h5 mb--c">
-							<a
-								href={`${baseUrl}/guidance/published?ngt=Highly%20specialised%20technologies%20guidance&ndt=Guidance`}
-							>
+							<a href="https://www.nice.org.uk/guidance/published?ngt=highly%20specialised%20technologies%20guidance&ndt=guidance">
 								Highly specialised technologies
 							</a>
 						</h4>
