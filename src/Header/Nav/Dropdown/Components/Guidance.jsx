@@ -101,6 +101,17 @@ export function Guidance() {
 							</p>
 						</li>
 					</ul>
+					<h3>Being considered</h3>
+					<ul className={styles.listUnstyled}>
+						<li>
+							<p className="mt--0">Guiance being considered for development.</p>
+							<h4 className="h5 mb--c">
+								<a href={`${baseUrl}/guidance/topic-selection`}>
+									Topic selection
+								</a>
+							</h4>
+						</li>
+					</ul>
 				</GridItem>
 			</Grid>
 			<div data-tracking="Programmes">
