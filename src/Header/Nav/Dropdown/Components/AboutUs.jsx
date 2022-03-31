@@ -96,7 +96,7 @@ export function AboutUs() {
 						<li>
 							<p>Putting you at the heart of our work:</p>
 							<a
-								href={`${rootUrl}/nice-communities/nice-and-the-public/public-involvement`}
+								href={`${baseUrl}/nice-communities/nice-and-the-public/public-involvement`}
 							>
 								Public involvement
 							</a>
