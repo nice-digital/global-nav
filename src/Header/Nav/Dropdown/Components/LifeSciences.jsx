@@ -50,7 +50,7 @@ export function LifeSciences() {
 							</a>
 						</h4>
 						<p className="mt--0">
-							Streamlining patient access to safe, financially sustainable, and
+							Streamlining patient access to safe, financially sustainable and
 							innovative medicines.
 						</p>
 					</GridItem>
@@ -109,7 +109,7 @@ export function LifeSciences() {
 							<a href="https://www.ukpharmascan.org.uk">Pharmaceutical</a>
 						</h4>
 						<p className="mt--0">
-							UK PharmaScan is a database of new medicines, indications, and
+							UK PharmaScan is a database of new medicines, indications and
 							formulations in the pharmaceutical pipeline.
 						</p>
 					</GridItem>
