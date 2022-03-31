@@ -32,16 +32,12 @@ export function AboutUs() {
 					<p>Learn about the information we produce.</p>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a
-								href={`${baseUrl}/about/what-we-do/our-programmes/nice-guidance`}
-							>
+							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance">
 								Guidance
 							</a>
 						</li>
 						<li>
-							<a
-								href={`${baseUrl}/about/what-we-do/our-programmes/nice-advice`}
-							>
+							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-advice">
 								Advice
 							</a>
 						</li>
@@ -51,19 +47,17 @@ export function AboutUs() {
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/standards-and-indicators/indicators`}>
+							<a href="https://www.nice.org.uk/standards-and-indicators/indicators">
 								Indicators
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/about/what-we-do/digital-health`}>
+							<a href="https://www.nice.org.uk/about/what-we-do/digital-health">
 								Digital health
 							</a>
 						</li>
 						<li>
-							<a
-								href={`${baseUrl}/about/what-we-do/our-programmes/topic-selection`}
-							>
+							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/topic-selection">
 								Topic selection
 							</a>
 						</li>
@@ -102,7 +96,7 @@ export function AboutUs() {
 						<li>
 							<p>Putting you at the heart of our work:</p>
 							<a
-								href={`${rootUrl}/about/nice-communities/nice-and-the-public/public-involvement`}
+								href={`${rootUrl}/nice-communities/nice-and-the-public/public-involvement`}
 							>
 								Public involvement
 							</a>
@@ -122,30 +116,30 @@ export function AboutUs() {
 							<h3 className="mt--d">What we do</h3>
 							<ul className={classnames(styles.listUnstyled, "mt--d")}>
 								<li>
-									<a href={`${baseUrl}/about/nice-communities/social-care`}>
+									<a href={`${baseUrl}/nice-communities/social-care`}>
 										Social care
 									</a>
 								</li>
 								<li>
-									<a href={`${baseUrl}/about/what-we-do/life-sciences`}>
+									<a href={`${baseUrl}/what-we-do/life-sciences`}>
 										Life sciences
 									</a>
 								</li>
 								<li>
-									<a href={`${baseUrl}/about/what-we-do/nice-international`}>
+									<a href={`${baseUrl}/what-we-do/nice-international`}>
 										NICE international
 									</a>
 								</li>
 								<li>
 									<a
-										href={`${baseUrl}/about/what-we-do/our-programmes/patient-safety`}
+										href={`${baseUrl}/what-we-do/our-programmes/patient-safety`}
 									>
 										Patient safety
 									</a>
 								</li>
 								<li>
 									<a
-										href={`${baseUrl}/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making`}
+										href={`${baseUrl}/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making`}
 									>
 										Shared decision making
 									</a>
@@ -157,27 +151,27 @@ export function AboutUs() {
 							<ul className={classnames(styles.listUnstyled, "mt--d")}>
 								<li>
 									<a
-										href={`${baseUrl}/about/nice-communities/social-care/quick-guides`}
+										href={`${baseUrl}/nice-communities/social-care/quick-guides`}
 									>
 										Social care quick guides
 									</a>
 								</li>
 								<li>
 									<a
-										href={`${baseUrl}/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance`}
+										href={`${baseUrl}/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance`}
 									>
 										Measuring the use of NICE guidance
 									</a>
 								</li>
 								<li>
 									<a
-										href={`${baseUrl}/about/what-we-do/into-practice/resource-planner`}
+										href={`${baseUrl}/what-we-do/into-practice/resource-planner`}
 									>
 										Resource planner
 									</a>
 								</li>
 								<li>
-									<a href={`${baseUrl}/about/what-we-do/into-practice`}>
+									<a href={`${baseUrl}/what-we-do/into-practice`}>
 										View all Into practice
 									</a>
 								</li>
@@ -187,26 +181,22 @@ export function AboutUs() {
 							<h3 className="mt--d">Who we are</h3>
 							<ul className={classnames(styles.listUnstyled, "mt--d")}>
 								<li>
-									<a href={`${baseUrl}/about/who-we-are/board`}>The board</a>
+									<a href={`${baseUrl}/who-we-are/board`}>The board</a>
 								</li>
 								<li>
 									<a
-										href={`${baseUrl}/about/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026`}
+										href={`${baseUrl}/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026`}
 									>
 										The NICE strategy 2021 to 2026
 									</a>
 								</li>
 								<li>
-									<a
-										href={`${baseUrl}/about/who-we-are/corporate-publications`}
-									>
+									<a href={`${baseUrl}/who-we-are/corporate-publications`}>
 										Corporate publications
 									</a>
 								</li>
 								<li>
-									<a href={`${baseUrl}/about/who-we-are`}>
-										View all Who we are
-									</a>
+									<a href={`${baseUrl}/who-we-are`}>View all Who we are</a>
 								</li>
 							</ul>
 						</GridItem>
