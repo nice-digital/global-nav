@@ -6,54 +6,34 @@
       "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
-      "dropdownComponent": "Guidance"
-    },
-    {
-      "href": "https://pathways.nice.org.uk",
-      "text": "NICE Pathways",
-      "id": "pathways",
-      "dropdown": false,
-      "links": [
-        {
-          "text": "Browse",
-          "href": "/#browse"
-        },
-        {
-          "text": "Recently viewed",
-          "href": "/#recently-viewed"
-        },
-        {
-          "text": "Help",
-          "href": "/#help"
-        },
-        {
-          "text": "Leave feedback",
-          "href": "https://www.nice.org.uk/NICE-Pathways-feedback"
-        }
-      ]
+      "dropdownComponent": "Guidance",
+      "footer": true
     },
     {
       "href": "https://www.nice.org.uk/standards-and-indicators",
-      "text": "Standards and indicators",
+      "text": "Standards and indicators",
       "id": "standards-and-indicators",
       "dropdown": true,
-      "dropdownComponent": "StandardsAndIndicators"
+      "dropdownComponent": "StandardsAndIndicators",
+      "footer": true
     },
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
       "text": "Life sciences",
       "id": "life-sciences",
       "dropdown": true,
-      "dropdownComponent": "LifeSciences"
+      "dropdownComponent": "LifeSciences",
+      "footer": true
     },
     {
       "href": "https://bnf.nice.org.uk",
-      "text": "BNF",
-      "abbreviation": true,
+      "text": "British National Formulary (BNF)",
+      "abbreviation": false,
       "title": "British National Formulary",
       "id": "bnf",
       "dropdown": true,
       "dropdownComponent": "BNF",
+      "footer": true,
       "links": [
         {
           "text": "Drugs",
@@ -79,12 +59,13 @@
     },
     {
       "href": "https://bnfc.nice.org.uk",
-      "text": "BNFC",
-      "abbreviation": true,
+      "text": "British National Formulary for Children (BNFC)",
+      "abbreviation": false,
       "title": "British National Formulary for Children",
       "id": "bnfc",
       "dropdown": true,
       "dropdownComponent": "BNFc",
+      "footer": true,
       "links": [
         {
           "text": "Drugs",
@@ -110,12 +91,13 @@
     },
     {
       "href": "https://cks.nice.org.uk",
-      "text": "CKS",
-      "abbreviation": true,
+      "text": "Clinical Knowledge Summaries (CKS)",
+      "abbreviation": false,
       "title": "Clinical Knowledge Summaries",
       "id": "cks",
       "dropdown": true,
       "dropdownComponent": "CKS",
+      "footer": true,
       "links": [
         {
           "image": "cks",
@@ -146,25 +128,6 @@
       "id": "about",
       "dropdown": true,
       "dropdownComponent": "AboutUs"
-    },
-    {
-      "href": "#more",
-      "text": "More",
-      "id": "more",
-      "dropdown": true,
-      "dropdownComponent": "More",
-      "nestedLinks": [
-        {
-          "href": "https://www.evidence.nhs.uk",
-          "text": "Evidence search",
-          "id": "evidence-search"
-        },
-        {
-          "href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
-          "text": "Journals and databases",
-          "id": "journals-and-databases"
-        }
-      ]
     }
   ],
 
