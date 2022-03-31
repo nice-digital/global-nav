@@ -209,10 +209,10 @@ export function AboutUs() {
 				data-tracking="Contact us"
 			>
 				<li>
-					<a href={`${baseUrl}/get-involved/contact-us`}>Contact us</a>
+					<a href={`${rootUrl}/get-involved/contact-us`}>Contact us</a>
 				</li>
 				<li>
-					<a href={`${baseUrl}/get-involved/jobs`}>Jobs</a>
+					<a href={`${rootUrl}/get-involved/jobs`}>Jobs</a>
 				</li>
 			</ul>
 		</section>
