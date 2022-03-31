@@ -37,7 +37,9 @@ describe("NavLinks", () => {
 	it("should render a top level anchor if there's no dropdown", () => {
 		const wrapper = shallow(<NavLinks {...defaultProps} />);
 		expect(wrapper.find("a").length).toEqual(
-			services.external.filter((service) => service.dropdown === false).length
+			services.external.filter(
+				(service) => service.dropdown === false && service.header
+			).length
 		);
 	});
 

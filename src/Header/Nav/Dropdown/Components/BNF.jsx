@@ -119,7 +119,7 @@ export function BNF() {
 					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/about/changes.html`}>Latest BNF</a>
+							<a href={`${baseUrl}/about/changes.html`}>Latest BNF changes</a>
 						</li>
 					</ul>
 				</GridItem>

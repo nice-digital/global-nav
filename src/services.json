@@ -7,7 +7,8 @@
       "id": "guidance",
       "dropdown": true,
       "dropdownComponent": "Guidance",
-      "footer": true
+      "footer": true,
+      "header": true
     },
     {
       "href": "https://www.nice.org.uk/standards-and-indicators",
@@ -15,7 +16,8 @@
       "id": "standards-and-indicators",
       "dropdown": true,
       "dropdownComponent": "StandardsAndIndicators",
-      "footer": true
+      "footer": true,
+      "header": true
     },
     {
       "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
@@ -23,7 +25,8 @@
       "id": "life-sciences",
       "dropdown": true,
       "dropdownComponent": "LifeSciences",
-      "footer": true
+      "footer": true,
+      "header": true
     },
     {
       "href": "https://bnf.nice.org.uk",
@@ -34,6 +37,7 @@
       "dropdown": true,
       "dropdownComponent": "BNF",
       "footer": true,
+      "header": true,
       "links": [
         {
           "text": "Drugs",
@@ -66,6 +70,7 @@
       "dropdown": true,
       "dropdownComponent": "BNFc",
       "footer": true,
+      "header": true,
       "links": [
         {
           "text": "Drugs",
@@ -98,6 +103,7 @@
       "dropdown": true,
       "dropdownComponent": "CKS",
       "footer": true,
+      "header": true,
       "links": [
         {
           "image": "cks",
@@ -127,7 +133,16 @@
       "text": "About",
       "id": "about",
       "dropdown": true,
-      "dropdownComponent": "AboutUs"
+      "dropdownComponent": "AboutUs",
+      "header": true
+    },
+    {
+      "href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
+      "text": "Knowledge resources",
+      "id": "knowledge-resources",
+      "dropdown": false,
+      "footer": true,
+      "header": false
     }
   ],
 
