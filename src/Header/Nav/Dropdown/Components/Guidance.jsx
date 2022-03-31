@@ -22,23 +22,22 @@ export function Guidance() {
 				View guidance
 			</Button>
 
-			<div data-tracking="New and updated">
-				<h3>New and updated</h3>
-				<ul className={styles.inlineList}>
-					<li>
-						<a href={`${baseUrl}/date`}>This month</a>
-					</li>
-					<li>
-						<a href={`${baseUrl}/lastmonth`}>Last month</a>
-					</li>
-					<li>
-						<a href={`${baseUrl}/last6months`}>Last 6 months</a>
-					</li>
-				</ul>
-			</div>
-
 			<Grid gutter="loose">
 				<GridItem data-tracking="Topics">
+					<div data-tracking="New and updated">
+						<h3>New and updated</h3>
+						<ul className={styles.inlineList}>
+							<li>
+								<a href={`${baseUrl}/date`}>This month</a>
+							</li>
+							<li>
+								<a href={`${baseUrl}/lastmonth`}>Last month</a>
+							</li>
+							<li>
+								<a href={`${baseUrl}/last6months`}>Last 6 months</a>
+							</li>
+						</ul>
+					</div>
 					<h3>Topics</h3>
 					<p>
 						Topic pages bring together products on the same subject, for example
@@ -101,7 +100,7 @@ export function Guidance() {
 							</p>
 						</li>
 					</ul>
-					<h3>Being considered</h3>
+					<h3 className="mt--e">Being considered</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<p className="mt--0">Guiance being considered for development.</p>
