@@ -117,7 +117,7 @@ export function LifeSciences() {
 					<GridItem>
 						<h3 className="mt--d">Find published and proposed evaluations</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a href="https://www.nice.org.uk/guidance/published?ngt=diagnostics%20guidance&ndt=guidance">
+							<a href="https://www.nice.org.uk/guidance/published?ngt=Diagnostics%20guidance&ndt=Guidance">
 								Diagnostics
 							</a>
 						</h4>
@@ -126,7 +126,7 @@ export function LifeSciences() {
 							patient&apos;s condition.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/guidance/published?ngt=medical%20technologies%20guidance&ndt=guidance">
+							<a href="https://www.nice.org.uk/guidance/published?ngt=Medical%20technologies%20guidance&ndt=Guidance">
 								Medical technologies
 							</a>
 						</h4>
@@ -135,7 +135,7 @@ export function LifeSciences() {
 							manufacturers.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/guidance/published?ngt=technology%20appraisal%20guidance&ndt=guidance">
+							<a href="https://www.nice.org.uk/guidance/published?ngt=Technology%20appraisal%20guidance&ndt=Guidance">
 								Technology appraisals
 							</a>
 						</h4>
@@ -143,7 +143,7 @@ export function LifeSciences() {
 							Guidance on new and existing medicines and treatments in the NHS.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/guidance/published?ngt=highly%20specialised%20technologies%20guidance&ndt=guidance">
+							<a href="https://www.nice.org.uk/guidance/published?ngt=Highly%20specialised%20technologies%20guidance&ndt=Guidance">
 								Highly specialised technologies
 							</a>
 						</h4>
