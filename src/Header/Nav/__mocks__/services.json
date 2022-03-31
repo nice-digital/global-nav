@@ -82,6 +82,7 @@
       "href": "/",
       "text": "Second internal service",
       "id": "internal2",
+      "header": true,
       "links": [
         {
           "text": "internal2 sub link 1",
