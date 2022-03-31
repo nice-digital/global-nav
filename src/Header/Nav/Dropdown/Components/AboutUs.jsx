@@ -32,12 +32,12 @@ export function AboutUs() {
 					<p>Learn about the information we produce.</p>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance">
+							<a href={`${baseUrl}/what-we-do/our-programmes/nice-guidance`}>
 								Guidance
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-advice">
+							<a href={`${baseUrl}/what-we-do/our-programmes/nice-advice`}>
 								Advice
 							</a>
 						</li>
@@ -52,12 +52,12 @@ export function AboutUs() {
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/about/what-we-do/digital-health">
+							<a href={`${baseUrl}/what-we-do/digital-health`}>
 								Digital health
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/topic-selection">
+							<a href={`${baseUrl}/what-we-do/our-programmes/topic-selection`}>
 								Topic selection
 							</a>
 						</li>
