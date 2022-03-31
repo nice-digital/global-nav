@@ -102,11 +102,11 @@ export function AboutUs() {
 							</a>
 						</li>
 						<li>
-							<p>Test our guideline prototype:</p>
+							<p>Help shape the future of NICE guidelines:</p>
 							<a
 								href={`${rootUrl}/get-involved/help-shape-the-future-of-nice-guidelines`}
 							>
-								Help shape the future of NICE guidelines
+								Test our guideline prototype
 							</a>
 						</li>
 					</ul>
