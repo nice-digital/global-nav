@@ -152,6 +152,7 @@
       "text": "NICE In development",
       "id": "indev",
       "dropdown": false,
+      "header": true,
       "links": [
         {
           "text": "Guidance projects",
