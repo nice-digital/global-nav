@@ -10,7 +10,6 @@ export function Main(props) {
 
 	return (
 		<main
-			withPadding={withPadding}
 			className={classnames(
 				[styles.main, className],
 				withPadding && styles.withPadding
