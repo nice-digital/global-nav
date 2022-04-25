@@ -6,13 +6,15 @@
       "text": "First link",
       "id": "link1",
       "dropdown": true,
-      "dropdownComponent": "FirstComponent"
+      "dropdownComponent": "FirstComponent",
+      "header": true
     },
     {
       "href": "https://url2/",
       "text": "Second link",
       "id": "link2",
       "dropdown": false,
+      "header": true,
       "abbreviation": true,
       "title": "Abbreviation title",
       "links": [
@@ -31,6 +33,7 @@
       "text": "Third link",
       "id": "link3",
       "dropdown": true,
+      "header": true,
       "dropdownComponent": "ThirdComponent",
       "abbreviation": true,
       "title": "Abbreviation title",
@@ -63,6 +66,7 @@
       "href": "/",
       "text": "First internal service",
       "id": "internal1",
+      "header": true,
       "links": [
         {
           "text": "internal1 sub link 1",
@@ -78,6 +82,7 @@
       "href": "/",
       "text": "Second internal service",
       "id": "internal2",
+      "header": true,
       "links": [
         {
           "text": "internal2 sub link 1",

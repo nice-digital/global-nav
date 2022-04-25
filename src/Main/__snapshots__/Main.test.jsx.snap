@@ -2,7 +2,7 @@
 
 exports[`Main Matches snapshot 1`] = `
 <main
-  className="main"
+  className="main withPadding"
 >
   <p>
     test

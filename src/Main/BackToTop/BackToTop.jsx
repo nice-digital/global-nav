@@ -30,7 +30,7 @@ export const BackToTop = function () {
 					href="#top"
 					onClick={handleClick}
 				>
-					<Container>
+					<Container className={styles.container}>
 						<ChevronUp /> Back to top
 					</Container>
 				</a>

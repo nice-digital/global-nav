@@ -45,7 +45,8 @@ button.link {
 }
 
 .icon {
-  margin-left: rem($nds-spacing-small);
+  flex-shrink: 0;
+  margin-left: rem($nds-spacing-x-small);
   @include mq($from: md) {
     margin-left: 0;
   }

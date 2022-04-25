@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '~@nice-digital/nds-core/scss/core';
 @import '../header-settings';
 
@@ -87,9 +88,10 @@
   }
 
   &:after {
-    border-bottom: rem($nds-spacing-small / 1.25) solid $nds-colour-true-white;
-    border-left: rem($nds-spacing-x-small / 1.25) solid transparent;
-    border-right: rem($nds-spacing-x-small / 1.25) solid transparent;
+    border-bottom: rem(math.div($nds-spacing-small, 1.25)) solid
+      $nds-colour-true-white;
+    border-left: rem(math.div($nds-spacing-x-small, 1.25)) solid transparent;
+    border-right: rem(math.div($nds-spacing-x-small, 1.25)) solid transparent;
     bottom: 100%;
     content: '';
     display: block;

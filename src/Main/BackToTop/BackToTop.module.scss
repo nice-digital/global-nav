@@ -31,6 +31,7 @@ $back-to-top-height: rem(
   }
 
   svg {
+    margin-right: rem($nds-spacing-small);
     transition: all 0.25s ease;
   }
 
@@ -40,6 +41,11 @@ $back-to-top-height: rem(
     svg {
       transform: translateY(-#{rem($nds-spacing-xx-small)});
     }
+  }
+
+  .container {
+    align-items: center;
+    display: flex;
   }
 }
 

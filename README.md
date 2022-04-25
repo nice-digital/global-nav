@@ -37,6 +37,8 @@
 			- [Installation](#installation)
 			- [Usage](#usage)
 			- [Props](#props)
+				- [Main props](#main-props)
+					- [Main.withPadding](#mainwithpadding)
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
 					- [Header.skipLinkId](#headerskiplinkid)
@@ -319,7 +321,7 @@ const search = {
 const page = () => (
   <div>
     <Header service="pathways" search={search} />
-		<Main myOptionalProp={myOptionalProp} className="my-optional-class" >{/* Your page content here */} </Main>
+		<Main withPadding={true} myOptionalProp={myOptionalProp} className="my-optional-class" >{/* Your page content here */} </Main>
     <Footer />
   </div>
 );
@@ -329,6 +331,15 @@ Wrapping your template with the main component will render a main tag in the htm
 For a full list of all the available props, see the [props section](#props) below:
 
 #### Props
+
+##### Main props
+
+###### Main.withPadding
+
+- Type: `Boolean`
+- Default: true
+  
+Optional spacing between page content and footer back-to-top link.
 
 ##### Header props
 
@@ -696,11 +707,15 @@ This renders with the default configuration. See [the configuration section belo
 
 > Note: you can reference the non-minified version by removing _.min_ from the filename.
 
-Reference a specific version of the global nav by including the build number as a sub folder. This is useful for testing, or in case of a breaking change, for example:
+Reference a specific version of the global nav by including the build number as a sub folder. This is useful for testing, in case of a breaking change, or in case of needing to roll back for a hotfix, for example:
 
 ```html
-<script src="//alpha-cdn.nice.org.uk/global-nav/1.2.3-r1a2b3c/global-nav.min.js"></script>
+<script src="//alpha-cdn.nice.org.uk/global-nav/4.1.806-GN-180-FixInDev/global-nav.min.js"></script>
+or
+<script src="//cdn.nice.org.uk/global-nav/4.1.805%2Br6D13311/global-nav.min.js"></script>
 ```
+
+Note the production build needs the `+` character in the build metadata encoding as `%2B` to avoid browsers interpreting it as a space in the URL.
 
 > See the [IE8](#supporting-ie8) section below if you're supporting IE8.
 

@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '~@nice-digital/nds-core/scss/core';
 
 .wrapper {
@@ -26,7 +27,7 @@
     float: left;
     margin: 0;
     padding: rem(0 0 0 $nds-spacing-large);
-    width: percentage(2 / 3);
+    width: percentage(math.div(2, 3));
   }
 }
 

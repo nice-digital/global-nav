@@ -118,7 +118,7 @@ export function BNF() {
 					</ul>
 				</GridItem>
 				<GridItem data-tracking="What's new">
-					<h3>What’s new</h3>
+					<h3>What&apos;s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
 							<a href={`${baseUrl}/about/changes/`}>Latest BNF</a>
