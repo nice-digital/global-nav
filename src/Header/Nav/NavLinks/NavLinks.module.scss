@@ -13,7 +13,7 @@ a.link,
 button.link {
   @extend .linkStyling;
   column-gap: rem($nds-spacing-small);
-  padding: rem($nds-spacing-medium);
+  padding: rem($nds-spacing-small);
 
   &:visited {
     color: $nds-colour-nice-white !important;
@@ -22,6 +22,10 @@ button.link {
   &[aria-current='true'],
   &:hover {
     color: $nds-colour-nice-black !important;
+  }
+
+  @include mq($from: lg) {
+    padding: rem($nds-spacing-medium);
   }
 }
 
