@@ -161,6 +161,10 @@
         {
           "text": "Advice projects",
           "href": "/adviceprojects"
+        },
+        {
+          "text": "Other projects",
+          "href": "/otherprojects"
         }
       ]
     }
