@@ -40,20 +40,25 @@
       "header": true,
       "links": [
         {
+          "image": "bnf",
+          "text": "BNF - Home",
+          "href": "/"
+        },
+        {
           "text": "Drugs",
-          "href": "/drug/"
+          "href": "/drugs/"
         },
         {
           "text": "Interactions",
-          "href": "/interaction/"
+          "href": "/interactions/"
         },
         {
           "text": "Treatment summaries",
-          "href": "/treatment-summary/"
+          "href": "/treatment-summaries/"
         },
         {
           "text": "What's changed?",
-          "href": "/about/changes.html"
+          "href": "/about/changes/"
         },
         {
           "text": "About BNF",
@@ -73,20 +78,25 @@
       "header": true,
       "links": [
         {
+          "image": "bnfc",
+          "text": "BNFC - Home",
+          "href": "/"
+        },
+        {
           "text": "Drugs",
-          "href": "/drug/"
+          "href": "/drugs/"
         },
         {
           "text": "Interactions",
-          "href": "/interaction/"
+          "href": "/interactions/"
         },
         {
           "text": "Treatment summaries",
-          "href": "/treatment-summary/"
+          "href": "/treatment-summaries/"
         },
         {
           "text": "What's changed?",
-          "href": "/about/changes.html"
+          "href": "/about/changes/"
         },
         {
           "text": "About BNFC",

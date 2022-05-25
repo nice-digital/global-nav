@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import cksIcon from "./images/cks.svg";
+import bnfIcon from "./images/bnf.svg";
+import bnfcIcon from "./images/bnfc.svg";
 import { getCallbackFunction } from "../../../utils";
 
 const images = {
 	cks: cksIcon,
+	bnf: bnfIcon,
+	bnfc: bnfcIcon,
 };
 
 import {

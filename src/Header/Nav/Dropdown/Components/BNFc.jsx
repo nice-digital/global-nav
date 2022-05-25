@@ -78,10 +78,12 @@ export function BNFc() {
 					<h3>Browse A to Z by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/interaction/`}>Interactions</a>
+							<a href={`${baseUrl}/interactions/`}>Interactions</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/treatment-summary/`}>Treatment summaries</a>
+							<a href={`${baseUrl}/treatment-summaries/`}>
+								Treatment summaries
+							</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -115,7 +117,7 @@ export function BNFc() {
 					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/about/changes.html`}>Latest BNFC changes</a>
+							<a href={`${baseUrl}/about/changes/`}>Latest BNFC</a>
 						</li>
 					</ul>
 				</GridItem>

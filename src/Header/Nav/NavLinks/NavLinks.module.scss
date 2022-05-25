@@ -13,7 +13,7 @@ a.link,
 button.link {
   @extend .linkStyling;
   column-gap: rem($nds-spacing-small);
-  padding: rem($nds-spacing-medium);
+  padding: rem($nds-spacing-small);
 
   &:visited {
     color: $nds-colour-nice-white !important;
@@ -22,6 +22,21 @@ button.link {
   &[aria-current='true'],
   &:hover {
     color: $nds-colour-nice-black !important;
+  }
+
+  // reduce chevron size on smaller viewport to prevent back-to-top floating issue when site is wider than content
+  svg {
+    max-height: 0.8rem;
+    max-width: 0.8rem;
+  }
+
+  @include mq($from: lg) {
+    padding: rem($nds-spacing-medium);
+
+    svg {
+      max-height: 1rem;
+      max-width: 1rem;
+    }
   }
 }
 
