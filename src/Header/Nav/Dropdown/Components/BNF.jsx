@@ -8,7 +8,7 @@ export function BNF() {
 	const baseUrl = services.external.filter((service) => service.id == "bnf")[0]
 		.href;
 
-	const drugsAtoZurl = baseUrl + "/drug/#";
+	const drugsAtoZurl = baseUrl + "/drugs/#";
 
 	const drugsAtoZ = [
 		{ letter: "A", link: true },
@@ -111,7 +111,7 @@ export function BNF() {
 							<a href={`${baseUrl}/medical-devices/`}>Medical devices</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/borderline-substance-taxonomy/`}>
+							<a href={`${baseUrl}/borderline-substances/`}>
 								Borderline substances
 							</a>
 						</li>

@@ -9,7 +9,7 @@ export function BNFc() {
 	const baseUrl = services.external.filter((service) => service.id == "bnfc")[0]
 		.href;
 
-	const drugsAtoZurl = baseUrl + "/drug/#";
+	const drugsAtoZurl = baseUrl + "/drugs/#";
 
 	const drugsAtoZ = [
 		{ letter: "A", link: true },
@@ -94,7 +94,7 @@ export function BNFc() {
 							<a href={`${baseUrl}/medical-devices/`}>Medical devices</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/borderline-substance-taxonomy/`}>
+							<a href={`${baseUrl}/borderline-substances/`}>
 								Borderline substances
 							</a>
 						</li>
