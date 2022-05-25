@@ -64,7 +64,9 @@ export function BNFc() {
 								}`}
 							>
 								{link ? (
-									<a href={`${drugsAtoZurl}${letter}`}>{letter}</a>
+									<a href={`${drugsAtoZurl}${letter.toLowerCase()}`}>
+										{letter}
+									</a>
 								) : (
 									<span>{letter}</span>
 								)}
