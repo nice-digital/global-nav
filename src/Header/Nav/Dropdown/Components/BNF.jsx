@@ -3,8 +3,14 @@ import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 import services from "../../../../services.json";
+import { HeaderContext } from "../../../context/HeaderContext";
 
 export function BNF() {
+	const { setidOfOpenDropdown } = React.useContext(HeaderContext);
+
+	const handleClick = function () {
+		setidOfOpenDropdown(null);
+	};
 	const baseUrl = services.external.filter((service) => service.id == "bnf")[0]
 		.href;
 
@@ -64,7 +70,10 @@ export function BNF() {
 								}`}
 							>
 								{link ? (
-									<a href={`${drugsAtoZurl}${letter.toLowerCase()}`}>
+									<a
+										href={`${drugsAtoZurl}${letter.toLowerCase()}`}
+										onClick={handleClick}
+									>
 										{letter}
 									</a>
 								) : (
