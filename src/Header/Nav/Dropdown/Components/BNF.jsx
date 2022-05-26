@@ -3,8 +3,14 @@ import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 import services from "../../../../services.json";
+import { HeaderContext } from "../../../context/HeaderContext";
 
 export function BNF() {
+	const { setidOfOpenDropdown } = React.useContext(HeaderContext);
+
+	const handleClick = function () {
+		setidOfOpenDropdown(null);
+	};
 	const baseUrl = services.external.filter((service) => service.id == "bnf")[0]
 		.href;
 
@@ -48,7 +54,7 @@ export function BNF() {
 				medicines.
 			</p>
 
-			<Button variant="cta" to={baseUrl}>
+			<Button variant="cta" to={baseUrl} onClick={handleClick}>
 				View BNF
 			</Button>
 
@@ -64,7 +70,12 @@ export function BNF() {
 								}`}
 							>
 								{link ? (
-									<a href={`${drugsAtoZurl}${letter}`}>{letter}</a>
+									<a
+										href={`${drugsAtoZurl}${letter.toLowerCase()}`}
+										onClick={handleClick}
+									>
+										{letter}
+									</a>
 								) : (
 									<span>{letter}</span>
 								)}
@@ -79,10 +90,12 @@ export function BNF() {
 					<h3>Browse A to Z by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/interactions/`}>Interactions</a>
+							<a href={`${baseUrl}/interactions/`} onClick={handleClick}>
+								Interactions
+							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/treatment-summaries/`}>
+							<a href={`${baseUrl}/treatment-summaries/`} onClick={handleClick}>
 								Treatment summaries
 							</a>
 						</li>
@@ -92,26 +105,41 @@ export function BNF() {
 					<h3>Browse by type</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}/dental-practitioners-formulary/`}>
+							<a
+								href={`${baseUrl}/dental-practitioners-formulary/`}
+								onClick={handleClick}
+							>
 								Dental practitioners&apos; formulary
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/nurse-prescribers-formulary/`}>
+							<a
+								href={`${baseUrl}/nurse-prescribers-formulary/`}
+								onClick={handleClick}
+							>
 								Nurse prescribers&apos; formulary
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/guidance/`}>Medicines guidance</a>
+							<a href={`${baseUrl}/guidance/`} onClick={handleClick}>
+								Medicines guidance
+							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/wound-management/`}>Wound management</a>
+							<a href={`${baseUrl}/wound-management/`} onClick={handleClick}>
+								Wound management
+							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/medical-devices/`}>Medical devices</a>
+							<a href={`${baseUrl}/medical-devices/`} onClick={handleClick}>
+								Medical devices
+							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/borderline-substances/`}>
+							<a
+								href={`${baseUrl}/borderline-substances/`}
+								onClick={handleClick}
+							>
 								Borderline substances
 							</a>
 						</li>
@@ -121,13 +149,17 @@ export function BNF() {
 					<h3>What&apos;s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/about/changes/`}>Latest BNF</a>
+							<a href={`${baseUrl}/about/changes/`} onClick={handleClick}>
+								Latest BNF
+							</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
 			<hr />
-			<a href={`${baseUrl}/about/`}>About BNF</a>
+			<a href={`${baseUrl}/about/`} onClick={handleClick}>
+				About BNF
+			</a>
 		</section>
 	);
 }
