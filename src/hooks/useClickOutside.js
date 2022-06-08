@@ -17,6 +17,9 @@ function useClickOutside(action) {
 
 	const handleClickOutside = (event) => {
 		// detects that the clicked element is not inside the referenced element
+		if (ref.current) {
+			console.log("is element ", isElement(ref.current));
+		}
 		if (
 			ref.current &&
 			isElement(ref.current) &&
