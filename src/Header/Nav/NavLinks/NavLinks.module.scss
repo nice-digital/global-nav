@@ -9,6 +9,13 @@
   @extend .menuList;
 }
 
+// IE11 needs width declaring explicitly to text wrap properly under flexbox
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .menuList li {
+    flex-basis: 100%;
+  }
+}
+
 a.link,
 button.link {
   @extend .linkStyling;
