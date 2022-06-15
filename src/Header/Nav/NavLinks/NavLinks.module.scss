@@ -11,7 +11,7 @@
 
 // IE11 needs width declaring explicitly to text wrap properly under flexbox
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .menuList li {
+  ul[aria-labelledby='header-menu-button'] .menuList li {
     flex-basis: 100%;
   }
 }
