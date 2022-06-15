@@ -46,6 +46,13 @@
   // padding: rem($nds-spacing-x-small 0);
 }
 
+// IE11 needs width declaring explicitly to text wrap properly under flexbox
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .menuWrapper > ul > li {
+    flex-basis: 100%;
+  }
+}
+
 @include mq($from: md) {
   .wrapperWithSubLinks {
     padding-bottom: rem($sub-nav-height);
