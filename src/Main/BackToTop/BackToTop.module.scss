@@ -20,6 +20,13 @@ $back-to-top-height: rem(
   z-index: 1;
 }
 
+// IE11 needs margin bottom applied or back to top link is hidden under footer
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .nav {
+    margin-bottom: rem($nds-spacing-large);
+  }
+}
+
 .anchor {
   display: block;
   line-height: rem($nds-spacing-medium);
