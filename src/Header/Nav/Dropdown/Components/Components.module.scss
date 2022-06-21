@@ -36,6 +36,13 @@
   }
 }
 
+// IE11 needs width declaring explicitly to text wrap properly under flexbox
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .listColumnar li {
+    max-width: 50%;
+  }
+}
+
 .aboutCol {
   flex-basis: auto;
 
