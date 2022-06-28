@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import cksIcon from "./images/cks.svg";
 import bnfIcon from "./images/bnf.svg";
 import bnfcIcon from "./images/bnfc.svg";
-import { getCallbackFunction } from "../../../utils";
 
 const images = {
 	cks: cksIcon,
@@ -11,52 +10,11 @@ const images = {
 	bnfc: bnfcIcon,
 };
 
-import {
-	trackEvent,
-	defaultEventCategory,
-	headerClickEventAction,
-} from "../../../tracker";
-
 import styles from "./SubNav.module.scss";
 
 export class SubNav extends Component {
 	constructor(props) {
 		super(props);
-
-		this.handleClick = this.handleClick.bind(this);
-	}
-
-	handleClick(e) {
-		e.preventDefault();
-
-		const { currentTarget } = e;
-		const href = currentTarget.getAttribute("href");
-
-		// To support IE8
-		const eventLabel =
-			currentTarget.textContent ||
-			currentTarget.innerText ||
-			currentTarget.ariaLabel;
-
-		trackEvent(
-			defaultEventCategory,
-			headerClickEventAction,
-			eventLabel,
-			null,
-			href,
-			function () {
-				const { onNavigating } = this.props;
-
-				const onNavigatingCallback = getCallbackFunction(onNavigating);
-
-				if (onNavigatingCallback) {
-					onNavigatingCallback({
-						element: currentTarget,
-						href: href,
-					});
-				} else window.location.href = href;
-			}.bind(this)
-		);
 	}
 
 	render() {
@@ -80,7 +38,6 @@ export class SubNav extends Component {
 										href={subLink.href}
 										aria-current={ariaCurrent}
 										className={styles.link}
-										onClick={this.handleClick}
 										aria-label={subLink.text}
 									>
 										{subLink.image ? (

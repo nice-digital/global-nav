@@ -270,7 +270,6 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
                           aria-label="internal1 sub link 1"
                           className="link"
                           href="/i1sublink1"
-                          onClick={[Function]}
                         >
                           internal1 sub link 1
                         </a>
@@ -283,7 +282,6 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
                           aria-label="internal1 sub link 2"
                           className="link"
                           href="/i2sublink2"
-                          onClick={[Function]}
                         >
                           internal1 sub link 2
                         </a>
