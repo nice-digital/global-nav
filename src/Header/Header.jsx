@@ -39,9 +39,10 @@ export class Header extends Component {
 			const firstH1OnPage = document.getElementsByTagName("h1")[0];
 			firstH1OnPage
 				? firstH1OnPage.setAttribute("id", this.props.skipLinkId)
-				: console.warn(
-						`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
-				  );
+				: null;
+			// console.warn(
+			// 		`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
+			//   );
 		}
 	}
 
