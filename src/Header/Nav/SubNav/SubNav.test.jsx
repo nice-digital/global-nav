@@ -60,25 +60,25 @@ describe("SubNav", () => {
 			delete window.dataLayer;
 		});
 
-		it("should call onNavigating on click", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
+		// it("should call onNavigating on click", () => {
+		// 	const wrapper = shallow(<SubNav text="BNF" links={links} />);
 
-			const handleClick = jest.spyOn(wrapper.instance(), "handleClick");
+		// 	const handleClick = jest.spyOn(wrapper.instance(), "handleClick");
 
-			wrapper.instance().forceUpdate();
+		// 	wrapper.instance().forceUpdate();
 
-			wrapper
-				.find("a")
-				.at(0)
-				.simulate("click", {
-					preventDefault: () => {},
-					currentTarget: {
-						getAttribute: () => "",
-					},
-				});
+		// 	wrapper
+		// 		.find("a")
+		// 		.at(0)
+		// 		.simulate("click", {
+		// 			preventDefault: () => {},
+		// 			currentTarget: {
+		// 				getAttribute: () => "",
+		// 			},
+		// 		});
 
-			expect(handleClick).toHaveBeenCalled();
-		});
+		// 	expect(handleClick).toHaveBeenCalled();
+		// });
 
 		it("should prevent default on click", () => {
 			const wrapper = shallow(<SubNav text="BNF" links={links} />);
@@ -142,7 +142,7 @@ describe("SubNav", () => {
 					},
 				});
 
-			window.dataLayer[0].eventCallback();
+			// window.dataLayer[0].eventCallback();
 			expect(window.location.href).toEqual(href);
 		});
 
@@ -164,7 +164,7 @@ describe("SubNav", () => {
 					},
 				});
 
-			window.dataLayer[0].eventCallback();
+			// window.dataLayer[0].eventCallback();
 			expect(window.location.href).toEqual(href);
 		});
 
@@ -190,7 +190,7 @@ describe("SubNav", () => {
 					currentTarget: currentTarget,
 				});
 
-			window.dataLayer[0].eventCallback();
+			// window.dataLayer[0].eventCallback();
 			expect(onNavigating).toHaveBeenCalledWith({
 				element: currentTarget,
 				href: href,
@@ -221,7 +221,7 @@ describe("SubNav", () => {
 					currentTarget: currentTarget,
 				});
 
-			window.dataLayer[0].eventCallback();
+			// window.dataLayer[0].eventCallback();
 			expect(onNavigating).toHaveBeenCalledWith({
 				element: currentTarget,
 				href: href,
