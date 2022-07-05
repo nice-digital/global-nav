@@ -44,7 +44,7 @@ export function CKS() {
 			<h2 className="mt--0">CKS</h2>
 			<p>
 				Providing primary care practitioners with a readily accessible summary
-				of the current evidence base and practical guidance on best practice
+				of the current evidence base and practical advice on best practice
 			</p>
 			<Button variant="cta" to={baseUrl}>
 				View CKS
