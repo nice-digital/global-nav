@@ -18,7 +18,7 @@ export const HeaderContextProvider = function ({ children }) {
 
 	const locationOrHashChangeHandler = () => {
 		console.log("closing any open dropdown due to location or hash change");
-		idOfOpenDropdown && setidOfOpenDropdown(null);
+		setidOfOpenDropdown(null);
 	};
 
 	useEffect(() => {
