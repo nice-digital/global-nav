@@ -16,21 +16,9 @@ export const HeaderContextProvider = function ({ children }) {
 		setAccountMenuIsExpanded,
 	};
 
-	const locationOrHashChangeHandler = () => {
-		console.log("closing any open dropdown due to location or hash change");
+	useEffect(() => {
 		setidOfOpenDropdown(null);
-	};
-
-	useEffect(() => {
-		window.addEventListener("hashchange", locationOrHashChangeHandler);
-		return () => {
-			window.removeEventListener("hashchange", locationOrHashChangeHandler);
-		};
-	}, []);
-
-	useEffect(() => {
-		locationOrHashChangeHandler();
-	}, [location]);
+	}, [typeof location == "undefined" ? null : location.href]);
 
 	useEffect(() => {
 		// we know both are now open
