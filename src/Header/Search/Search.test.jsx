@@ -73,36 +73,6 @@ describe("Search", () => {
 	});
 
 	describe("onSearching", () => {
-		it("should call searchSubmitHandler when the form is submitted", () => {
-			const wrapper = shallow(<Search {...defaultProps} />);
-			const handleSubmit = jest.spyOn(
-				wrapper.instance(),
-				"searchSubmitHandler"
-			);
-
-			// Need to force update for some reason, see https://github.com/airbnb/enzyme/issues/944#issuecomment-322271527
-			wrapper.instance().forceUpdate();
-
-			wrapper.find("form").at(0).simulate("submit");
-
-			expect(handleSubmit).toHaveBeenCalledTimes(1);
-		});
-
-		it("should call searchSubmitHandler when the button is clicked", () => {
-			const wrapper = shallow(<Search {...defaultProps} />);
-			const handleSubmit = jest.spyOn(
-				wrapper.instance(),
-				"searchSubmitHandler"
-			);
-
-			// Need to force update for some reason, see https://github.com/airbnb/enzyme/issues/944#issuecomment-322271527
-			wrapper.instance().forceUpdate();
-
-			wrapper.find("button").at(0).simulate("click");
-
-			expect(handleSubmit).toHaveBeenCalledTimes(1);
-		});
-
 		it("should prevent default and call callback with the search query for a onSearching function", () => {
 			const onSearching = jest.fn();
 			const wrapper = mount(
