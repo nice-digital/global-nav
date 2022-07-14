@@ -3,14 +3,22 @@
 
 // This file is here to normalise the appearance of the global nav on pages that also include NICE bootstrap or other conflicting styling
 
-$tags: h2, h3, h4, h5, h6;
-
 .wrapper {
-  @each $tag in $tags {
-    #{$tag} {
-      @include nds-font-size(#{$tag});
-      margin-top: rem($nds-spacing-medium);
-    }
+  h2 {
+    @include nds-font-size(h2);
+    font-family: unquote($nds-font-family-serif);
+    margin-top: 0;
+  }
+
+  h3 {
+    @include nds-font-size(h4);
+    font-family: unquote($nds-font-family-serif);
+    margin-top: rem($nds-spacing-large);
+  }
+
+  h4 {
+    @include nds-font-size(h5);
+    margin-top: rem($nds-spacing-medium);
   }
 
   a {
