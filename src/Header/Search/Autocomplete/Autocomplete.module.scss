@@ -1,8 +1,12 @@
-@import '~@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 /* stylelint-disable */
 
-@import '../../header-settings';
+@use '../../header-settings';
 
 .ac {
   :global {
@@ -13,7 +17,7 @@
     .autocomplete__hint,
     .autocomplete__input {
       -webkit-appearance: none;
-      border: 1px solid $nds-colour-nice-black;
+      border: 1px solid colours.$nice-black;
       border-radius: 0; /* Safari 10 on iOS adds implicit border rounding. */
       box-sizing: border-box;
       margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */
@@ -22,17 +26,17 @@
 
     .autocomplete__input {
       // The importants here are to override conflicting global styles in niceorg
-      background-color: $nds-colour-nice-grey-3 !important;
-      height: rem($search-height) !important;
+      background-color: colours.$nice-grey-3 !important;
+      height: utils.rem(header-settings.$search-height) !important;
       margin: 0 !important;
       max-width: 100% !important;
       position: relative;
-      z-index: $base-z-index + 1;
+      z-index: header-settings.$base-z-index + 1;
 
       &:focus {
-        outline: 3px solid $nds-colour-focus;
+        outline: 3px solid colours.$focus;
         outline-offset: -3px;
-        z-index: $base-z-index - 1;
+        z-index: header-settings.$base-z-index - 1;
       }
 
       &::placeholder {
@@ -49,11 +53,11 @@
     }
 
     .autocomplete__input--default {
-      padding: rem($nds-spacing-small);
+      padding: utils.rem(spacing.$small);
     }
 
     .autocomplete__input--focused {
-      outline: 3px solid $nds-colour-focus;
+      outline: 3px solid colours.$focus;
       outline-offset: -3px;
     }
 
@@ -74,15 +78,15 @@
 
     .autocomplete__menu {
       background-color: #fff;
-      border: 1px solid $nds-colour-nice-grey-2;
+      border: 1px solid colours.$nice-grey-2;
       border-top: 0;
       color: #34384b;
       margin: 0;
       max-width: 100%;
       padding: 0;
       text-align: left;
-      width: calc(100vw - #{2 * rem($nds-container-gutter)});
-      @include mq($from: sm) {
+      width: calc(100vw - #{2 * utils.rem(layout.$container-gutter)});
+      @include media-queries.mq($from: sm) {
         width: 100%;
       }
     }
@@ -96,14 +100,12 @@
     }
 
     .autocomplete__menu--overlay {
-      box-shadow: rem(
-          0 $nds-spacing-x-small $nds-spacing-medium $nds-spacing-x-small
-        )
+      box-shadow: utils.rem(0 spacing.$x-small spacing.$medium spacing.$x-small)
         rgba(0, 0, 0, 0.1);
       left: 0;
       position: absolute;
       top: 100%;
-      z-index: $base-z-index;
+      z-index: header-settings.$base-z-index;
     }
 
     .autocomplete__menu--inline {
@@ -111,9 +113,9 @@
     }
 
     .autocomplete__option {
-      border-bottom: solid $nds-colour-nice-grey-2;
+      border-bottom: solid colours.$nice-grey-2;
       border-width: 1px 0;
-      color: $nds-colour-link;
+      color: colours.$link;
       cursor: pointer;
       display: block;
       margin: 0;
@@ -123,7 +125,7 @@
         color: inherit;
         display: block;
         font-weight: normal;
-        padding: rem($nds-spacing-small);
+        padding: utils.rem(spacing.$small);
         text-decoration: none;
       }
 
@@ -153,8 +155,8 @@
 
     .autocomplete__option--focused,
     .autocomplete__option:hover {
-      background-color: $nds-colour-nice-grey-3;
-      color: $nds-colour-link;
+      background-color: colours.$nice-grey-3;
+      color: colours.$link;
       outline: none;
       text-decoration: underline;
     }

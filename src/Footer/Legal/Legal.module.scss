@@ -1,10 +1,16 @@
-@import '~@nice-digital/nds-core/scss/core';
-@import '../footer-settings';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/visibility';
+@use '../footer-settings';
 
 .wrapper {
-  @include nds-font-size(-1);
-  background: $nds-colour-nice-dark-grey;
-  padding: rem($nds-spacing-medium 0);
+  @include typography.font-size(-1);
+  background: colours.$nice-dark-grey;
+  padding: utils.rem(spacing.$medium 0);
 
   a {
     text-decoration: underline;
@@ -12,12 +18,12 @@
 }
 
 .container {
-  @include nds-container;
+  @include layout.container;
 }
 
 .menu {
-  @include nds-hide-print;
-  margin: rem(0 0 $nds-spacing-medium);
+  @include visibility.hide-print;
+  margin: utils.rem(0 0 spacing.$medium);
 
   ul {
     list-style: none;
@@ -36,7 +42,7 @@
 }
 
 .copyright {
-  @include nds-font-size(-1);
+  @include typography.font-size(-1);
   margin: 0;
   @media print {
     float: none !important;
@@ -44,18 +50,18 @@
   }
 }
 
-@include mq($from: sm) {
+@include media-queries.mq($from: sm) {
   .menu {
     li {
       display: inline-block;
-      margin-right: rem($nds-spacing-medium);
+      margin-right: utils.rem(spacing.$medium);
     }
   }
 }
 
-@include mq($from: lg) {
+@include media-queries.mq($from: lg) {
   .wrapper {
-    @include nds-clearfix;
+    @include layout.clearfix;
   }
 
   .menu {

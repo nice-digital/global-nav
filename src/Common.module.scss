@@ -1,4 +1,8 @@
-@import 'Header/header-settings';
+@use 'Header/header-settings';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/visibility';
 
 .link .tooltip {
   clip: rect(1px 1px 1px 1px);
@@ -12,17 +16,17 @@
 .link:focus-visible .tooltip {
   background: #fff;
   clip: auto;
-  color: $nds-colour-link;
+  color: colours.$link;
   display: block;
   height: auto;
-  outline: 1px solid $nds-colour-focus;
+  outline: 1px solid colours.$focus;
   overflow: visible;
-  padding: rem(0 $nds-spacing-x-small);
+  padding: utils.rem(0 spacing.$x-small);
   position: absolute;
   width: auto;
-  z-index: $base-z-index;
+  z-index: header-settings.$base-z-index;
 }
 
 .visuallyHidden {
-  @include nds-invisible;
+  @include visibility.invisible;
 }

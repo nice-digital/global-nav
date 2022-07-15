@@ -1,3 +1,4 @@
-$colour-footer-background: $nds-colour-nice-black;
+@use '@nice-digital/nds-core/scss/colours';
 
-$colour-footer-text: $nds-colour-nice-white;
+$colour-footer-background: colours.$nice-black;
+$colour-footer-text: colours.$nice-white;

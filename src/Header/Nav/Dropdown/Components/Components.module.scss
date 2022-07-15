@@ -1,15 +1,18 @@
-@import '~@nice-digital/nds-core/scss/core';
-@import '~@nice-digital/nds-core/scss/typography/_typography-helpers';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/typography';
 
 .listUnstyled {
-  @include nds-list;
+  @include typography.list;
   list-style: none !important;
   margin-left: 0;
   max-width: none; // To override max-width of 66ch set on lists
   padding: 0;
 
   li {
-    margin-bottom: rem($nds-spacing-small);
+    margin-bottom: utils.rem(spacing.$small);
   }
 }
 
@@ -27,10 +30,10 @@
     width: 100%;
   }
 
-  @include mq($from: md) {
+  @include media-queries.mq($from: md) {
     li {
-      margin-bottom: rem($nds-spacing-large);
-      padding-right: rem($nds-spacing-small);
+      margin-bottom: utils.rem(spacing.$large);
+      padding-right: utils.rem(spacing.$small);
       width: calc(100% / 3);
     }
   }
@@ -54,9 +57,9 @@
 .alphabet {
   display: flex;
   flex-wrap: wrap;
-  gap: rem($nds-spacing-small);
+  gap: utils.rem(spacing.$small);
   list-style: none;
-  margin: rem(0 0 $nds-spacing-medium);
+  margin: utils.rem(0 0 spacing.$medium);
   max-width: 90%;
   padding: 0;
 
@@ -66,8 +69,8 @@
 }
 
 .chunkyLetter {
-  @include nds-font-size(h4);
-  color: $nds-colour-nice-dark-grey;
+  @include typography.font-size(h4);
+  color: colours.$nice-dark-grey;
 
   span {
     width: 3.95ch;
@@ -77,26 +80,26 @@
 .inlineList {
   li {
     display: inline-block;
-    margin-right: rem($nds-spacing-small);
+    margin-right: utils.rem(spacing.$small);
   }
 }
 
 .letter {
   display: inline-block;
   font-weight: bold;
-  margin: rem(0 $nds-spacing-small $nds-spacing-small 0);
+  margin: utils.rem(0 spacing.$small spacing.$small 0);
   text-transform: uppercase;
 
   a,
   span {
     display: block;
-    padding: rem($nds-spacing-small 0);
+    padding: utils.rem(spacing.$small 0);
     text-align: center;
   }
 
   a {
-    background: $nds-colour-true-white;
-    border: 1px solid $nds-colour-border;
+    background: colours.$true-white;
+    border: 1px solid colours.$border;
     text-decoration: none;
     width: 4.95ch;
 
@@ -112,14 +115,14 @@ html body button.btn {
   &:hover,
   &:focus,
   &:active {
-    border: em(1px) solid $nds-colour-btn-primary-text !important;
+    border: utils.em(1px) solid colours.$btn-primary-text !important;
   }
 
   &--cta {
     &:hover,
     &:focus,
     &:active {
-      border: em(1px) solid $nds-colour-btn-cta-text !important;
+      border: utils.em(1px) solid colours.$btn-cta-text !important;
     }
   }
 
@@ -127,7 +130,7 @@ html body button.btn {
     &:hover,
     &:focus,
     &:active {
-      border: em(1px) solid $nds-colour-btn-secondary-text !important;
+      border: utils.em(1px) solid colours.$btn-secondary-text !important;
     }
   }
 
@@ -135,7 +138,7 @@ html body button.btn {
     &:hover,
     &:focus,
     &:active {
-      border: em(1px) solid $nds-colour-btn-inverse-text !important;
+      border: utils.em(1px) solid colours.$btn-inverse-text !important;
     }
   }
 }
