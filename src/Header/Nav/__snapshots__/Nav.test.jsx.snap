@@ -210,90 +210,78 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
             ]
           }
         >
-          <FocusTrap
-            _createFocusTrap={[Function]}
-            active={false}
-            focusTrapOptions={
-              Object {
-                "clickOutsideDeactivates": true,
-                "initialFocus": false,
-              }
-            }
-            paused={false}
+          <ul
+            aria-labelledby="header-menu-button"
+            className="menuList"
           >
-            <ul
-              aria-labelledby="header-menu-button"
-              className="menuList"
+            <li
+              data-tracking="First internal service"
+              key="internal1"
             >
-              <li
-                data-tracking="First internal service"
-                key="internal1"
+              <a
+                aria-current={true}
+                className="link"
+                href="/"
+                id="navlink-internal1"
+                onClick={[Function]}
               >
-                <a
-                  aria-current={true}
-                  className="link"
-                  href="/"
-                  id="navlink-internal1"
-                  onClick={[Function]}
+                <span>
+                  First internal service
+                </span>
+              </a>
+              <SubNav
+                links={
+                  Array [
+                    Object {
+                      "href": "/i1sublink1",
+                      "text": "internal1 sub link 1",
+                    },
+                    Object {
+                      "href": "/i2sublink2",
+                      "text": "internal1 sub link 2",
+                    },
+                  ]
+                }
+                text="First internal service"
+              >
+                <div
+                  className="wrapper"
                 >
-                  <span>
-                    First internal service
-                  </span>
-                </a>
-                <SubNav
-                  links={
-                    Array [
-                      Object {
-                        "href": "/i1sublink1",
-                        "text": "internal1 sub link 1",
-                      },
-                      Object {
-                        "href": "/i2sublink2",
-                        "text": "internal1 sub link 2",
-                      },
-                    ]
-                  }
-                  text="First internal service"
-                >
-                  <div
-                    className="wrapper"
+                  <ul
+                    aria-label="First internal service links"
+                    className="list"
                   >
-                    <ul
-                      aria-label="First internal service links"
-                      className="list"
+                    <li
+                      key="0"
                     >
-                      <li
-                        key="0"
+                      <a
+                        aria-current={null}
+                        aria-label="internal1 sub link 1"
+                        className="link"
+                        href="/i1sublink1"
+                        onClick={[Function]}
                       >
-                        <a
-                          aria-current={null}
-                          aria-label="internal1 sub link 1"
-                          className="link"
-                          href="/i1sublink1"
-                          onClick={[Function]}
-                        >
-                          internal1 sub link 1
-                        </a>
-                      </li>
-                      <li
-                        key="1"
+                        internal1 sub link 1
+                      </a>
+                    </li>
+                    <li
+                      key="1"
+                    >
+                      <a
+                        aria-current={null}
+                        aria-label="internal1 sub link 2"
+                        className="link"
+                        href="/i2sublink2"
+                        onClick={[Function]}
                       >
-                        <a
-                          aria-current={null}
-                          aria-label="internal1 sub link 2"
-                          className="link"
-                          href="/i2sublink2"
-                          onClick={[Function]}
-                        >
-                          internal1 sub link 2
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </SubNav>
-              </li>
-            </ul>
-          </FocusTrap>
+                        internal1 sub link 2
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </SubNav>
+            </li>
+          </ul>
         </NavLinks>
       </div>
     </nav>
