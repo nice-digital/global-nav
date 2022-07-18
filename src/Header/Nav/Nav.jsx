@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -11,17 +11,13 @@ import {
 	headerClickEventAction,
 } from "../../tracker";
 
-import useClickOutside from "../../hooks/useClickOutside";
+import { useClickOutside } from "@mantine/hooks";
 import { HeaderContext } from "../context/HeaderContext";
 
 function Nav(props) {
 	const { accountsLinks } = props;
 	const context = useContext(HeaderContext);
-	const { ref } = useClickOutside(wasClickedOutside);
-
-	function wasClickedOutside(result) {
-		if (result) context.setidOfOpenDropdown(null);
-	}
+	const ref = useClickOutside(() => context.setidOfOpenDropdown(null));
 
 	function handleAccountNavItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
