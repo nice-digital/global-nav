@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { useFocusTrap } from "@mantine/hooks";
+import { HeaderContext } from "../../context/HeaderContext";
 import styles from "./Dropdown.module.scss";
 import reset from "./Reset.module.scss";
 import classnames from "classnames";
@@ -36,6 +38,8 @@ export function Dropdown({
 		StandardsAndIndicators: StandardsAndIndicators,
 	};
 	const Component = components[component];
+	const { idOfOpenDropdown } = useContext(HeaderContext);
+	const focusTrapRef = useFocusTrap(idOfOpenDropdown !== null);
 
 	function handleSkipLink(e) {
 		e.preventDefault();
@@ -51,6 +55,7 @@ export function Dropdown({
 			className={classnames([className, reset.wrapper])}
 			id={id}
 			data-tracking={`${text} dropdown`}
+			ref={focusTrapRef}
 		>
 			<div className={styles.container}>
 				{nextNavSlug && (
