@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback, useContext } from "react";
+import { useEventListener } from "@mantine/hooks";
+
 import classnames from "classnames";
 import PropTypes from "prop-types";
-import useEventListener from "@use-it/event-listener";
 import ChevronDown from "@nice-digital/icons/lib/ChevronDown";
 import ChevronUp from "@nice-digital/icons/lib/ChevronUp";
 import SubNav from "../SubNav";
@@ -23,8 +24,7 @@ export function NavLinks({
 	skipLinkId,
 }) {
 	const [canUseDOM, setCanUseDOM] = React.useState(false);
-	const { idOfOpenDropdown, setidOfOpenDropdown } =
-		React.useContext(HeaderContext);
+	const { idOfOpenDropdown, setidOfOpenDropdown } = useContext(HeaderContext);
 
 	useEffect(() => {
 		setCanUseDOM(true);
@@ -52,14 +52,18 @@ export function NavLinks({
 		);
 	}
 
-	function escapeDropdown({ key }) {
+	const escapeDropdown = useCallback(function ({ key }) {
 		if (ESCAPE_KEYS.includes(String(key))) setidOfOpenDropdown(null);
-	}
+	});
 
-	useEventListener("keydown", escapeDropdown);
+	const escapeDropdownRef = useEventListener("keydown", escapeDropdown);
 
 	return (
-		<ul className={styles.menuList} aria-labelledby="header-menu-button">
+		<ul
+			className={styles.menuList}
+			aria-labelledby="header-menu-button"
+			ref={escapeDropdownRef}
+		>
 			{servicesToDisplay
 				.filter(function (item) {
 					return item.header;
