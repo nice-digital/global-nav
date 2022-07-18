@@ -26,6 +26,7 @@ export function StandardsAndIndicators() {
 						<Button
 							variant="primary"
 							to="https://www.nice.org.uk/guidance/published?ndt=Quality+standard"
+							data-autofocus
 						>
 							View our quality standards
 						</Button>

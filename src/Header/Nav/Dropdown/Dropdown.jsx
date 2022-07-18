@@ -60,7 +60,6 @@ export function Dropdown({
 			<div className={styles.container}>
 				{nextNavSlug && (
 					<>
-						<input type="hidden" data-autofocus />
 						<a
 							href={
 								nextNavSlug == "content-start"

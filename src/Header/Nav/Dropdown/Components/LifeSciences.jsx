@@ -16,7 +16,7 @@ export function LifeSciences() {
 				expertise can help you build the evidence needed to achieve market
 				access.
 			</p>
-			<Button variant="cta" to={baseUrl}>
+			<Button variant="cta" to={baseUrl} data-autofocus>
 				View life sciences
 			</Button>
 			<div data-tracking="Engage with us">
