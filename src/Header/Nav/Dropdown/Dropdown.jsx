@@ -59,17 +59,20 @@ export function Dropdown({
 		>
 			<div className={styles.container}>
 				{nextNavSlug && (
-					<a
-						href={
-							nextNavSlug == "content-start"
-								? `#${nextNavSlug}`
-								: `#navlink-${nextNavSlug}`
-						}
-						className={styles.skiplink}
-						onClick={handleSkipLink}
-					>
-						Skip {text} submenu
-					</a>
+					<>
+						<input type="hidden" data-autofocus />
+						<a
+							href={
+								nextNavSlug == "content-start"
+									? `#${nextNavSlug}`
+									: `#navlink-${nextNavSlug}`
+							}
+							className={styles.skiplink}
+							onClick={handleSkipLink}
+						>
+							Skip {text} submenu
+						</a>
+					</>
 				)}
 				<Component />
 				<button
