@@ -1,4 +1,5 @@
-@use '@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 $back-to-top-height: utils.rem(
   spacing.$medium * 3
