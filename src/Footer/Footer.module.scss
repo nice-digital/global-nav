@@ -1,19 +1,18 @@
 @use 'sass:math';
-@use '@nice-digital/nds-core/scss/colours';
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/visibility';
-@use 'footer-settings';
 @use '../Common.module.scss';
 
 .footer {
   @include typography.links-inverse;
-  background: footer-settings.$colour-footer-background;
+  background: $footer-background;
   box-sizing: border-box;
-  color: footer-settings.$colour-footer-text;
+  color: $footer-text;
   contain-intrinsic-size: 100vw utils.rem(1090); /* stylelint-disable-line */
   content-visibility: auto; /* stylelint-disable-line */
   font-family: typography.get-font-family(sans);

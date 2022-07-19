@@ -1,10 +1,11 @@
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 
 .wrapper {
-  background: #ffeb3b;
+  background: $covid-background;
   padding: utils.rem(spacing.$small 0);
 
   p {

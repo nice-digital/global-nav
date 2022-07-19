@@ -1,5 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
@@ -32,24 +33,21 @@
 }
 
 .myAccount {
-  border-top: 1px solid colours.$nice-white;
-
   @include media-queries.mq($from: md) {
     display: none;
   }
 }
 
 .myAccountHeading {
-  border: utils.rem(spacing.$x-small) solid
-    header-settings.$colour-nav-background;
+  border: utils.rem(spacing.$x-small) solid $nav-background;
   font-size: 100%;
   margin: 0;
   padding: utils.rem(spacing.$small spacing.$medium);
 }
 
 .menuWrapper {
-  background: header-settings.$colour-nav-background;
-  color: header-settings.$colour-nav-text;
+  background: $nav-background;
+  color: $nav-text;
   // padding: utils.rem(spacing.$x-small 0);
 }
 
@@ -83,12 +81,11 @@ a.link,
   //qualified this with 'a' and 'button' to add specificity to avoid overrides from application css (NW-1253)
   align-items: center;
   background: none;
-  border: utils.rem(spacing.$x-small) solid
-    header-settings.$colour-nav-background;
+  border: utils.rem(spacing.$x-small) solid $nav-link-border;
   border-left-width: 0;
   border-radius: 0;
   border-right-width: 0;
-  color: header-settings.$colour-nav-text;
+  color: $nav-link-text;
   cursor: pointer;
   display: flex;
   font-weight: normal;
@@ -103,7 +100,7 @@ a.link,
   width: 100%;
 
   &:focus {
-    color: header-settings.$colour-nav-text;
+    color: $nav-link-text;
     outline: utils.rem(spacing.$x-small) solid colours.$focus-inverse;
     outline-offset: utils.rem(-(spacing.$small));
     z-index: header-settings.$base-z-index + 1; // Push above the adjacent nav items
@@ -111,16 +108,16 @@ a.link,
 
   &:active,
   &:hover {
-    background: colours.$nice-grey-3;
-    color: colours.$text;
+    background: $nav-link-hover-background;
+    color: $nav-link-hover-text;
     text-decoration: underline;
   }
 
   &[aria-current='true'],
   &[aria-current='page'],
   &[aria-expanded='true'] {
-    background: colours.$body;
-    border-bottom: utils.rem(spacing.$x-small) solid colours.$body;
+    background: $body;
+    border-bottom: utils.rem(spacing.$x-small) solid $body;
     color: colours.$text;
 
     &:focus {

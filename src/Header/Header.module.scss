@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/focus';
 @use '@nice-digital/nds-core/scss/layout';
@@ -11,8 +12,8 @@
 @use 'header-settings';
 
 .header {
-  background: colours.$nice-white;
-  border-bottom: utils.rem(spacing.$xx-small) solid colours.$nice-teal;
+  background: $header-background;
+  border-bottom: utils.rem(spacing.$xx-small) solid $header-border;
   box-sizing: border-box;
   font-family: typography.get-font-family(sans);
   position: relative;
@@ -43,7 +44,7 @@
 
 .home {
   @include visibility.remove-appended-print-link;
-  color: colours.$true-black;
+  color: colours.$text;
   display: inline-block;
   float: left;
   height: utils.rem(30);
@@ -54,7 +55,7 @@
   }
 
   &:visited {
-    color: colours.$true-black;
+    color: colours.$text;
   }
 
   .icon {
@@ -89,7 +90,7 @@
 .mobileMenuBtn {
   appearance: none;
   background: none;
-  border: 1px solid colours.$text;
+  border: 1px solid $mobile-menu-btn-text;
   float: right;
   font-family: inherit;
   font-size: 110%;
@@ -100,7 +101,7 @@
   &:after {
     border-left: utils.rem(spacing.$x-small) solid transparent;
     border-right: utils.rem(spacing.$x-small) solid transparent;
-    border-top: utils.rem(spacing.$small) solid colours.$nice-dark-grey;
+    border-top: utils.rem(spacing.$small) solid $mobile-menu-btn-border;
     content: '';
     display: inline-block;
     height: 0;
@@ -110,7 +111,7 @@
   }
 
   &[aria-expanded='true']:after {
-    border-bottom: utils.rem(spacing.$small) solid colours.$text;
+    border-bottom: utils.rem(spacing.$small) solid $mobile-menu-btn-text;
     border-top: 0;
   }
 }
@@ -144,7 +145,7 @@
   }
 
   .header {
-    border-bottom: utils.rem(spacing.$x-small) solid colours.$body;
+    border-bottom: utils.rem(spacing.$x-small) solid $body;
   }
 
   .container {

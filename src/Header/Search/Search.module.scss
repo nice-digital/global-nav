@@ -1,4 +1,4 @@
-@use '@nice-digital/nds-core/scss/colours';
+@use 'global-nav-colours';
 @use '@nice-digital/nds-core/scss/focus';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
@@ -22,9 +22,9 @@
 }
 
 .button {
-  background: colours.$nice-dark-grey;
+  background: global-nav-colours.$search-button-background;
   border: 0;
-  color: colours.$text-inverse;
+  color: global-nav-colours.$search-button-text;
   cursor: pointer;
   height: utils.rem(header-settings.$search-height);
   min-width: utils.rem(header-settings.$search-height);

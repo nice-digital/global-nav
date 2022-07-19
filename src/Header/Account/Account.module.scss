@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/focus';
 @use '@nice-digital/nds-core/scss/spacing';
@@ -42,7 +43,7 @@
   &:after {
     border-left: utils.rem(spacing.$x-small) solid transparent;
     border-right: utils.rem(spacing.$x-small) solid transparent;
-    border-top: utils.rem(spacing.$small) solid colours.$nice-dark-grey;
+    border-top: utils.rem(spacing.$small) solid $account-btn-icon;
     content: '';
     display: inline-block;
     height: 0;
@@ -58,8 +59,8 @@
 }
 
 .menu {
-  background: colours.$true-white;
-  border: 1px solid colours.$nice-dark-grey;
+  background: $account-menu-background;
+  border: 1px solid $account-menu-border;
   list-style: none;
   margin: utils.rem(spacing.$small + 2px 0 0 0);
   padding: 0;
@@ -78,7 +79,7 @@
   }
 
   &:before {
-    border-bottom: utils.rem(spacing.$small) solid colours.$nice-dark-grey;
+    border-bottom: utils.rem(spacing.$small) solid $account-menu-border;
     border-left: utils.rem(spacing.$x-small) solid transparent;
     border-right: utils.rem(spacing.$x-small) solid transparent;
     bottom: 100%;
@@ -92,7 +93,7 @@
 
   &:after {
     border-bottom: utils.rem(math.div(spacing.$small, 1.25)) solid
-      colours.$true-white;
+      $account-menu-background;
     border-left: utils.rem(math.div(spacing.$x-small, 1.25)) solid transparent;
     border-right: utils.rem(math.div(spacing.$x-small, 1.25)) solid transparent;
     bottom: 100%;
@@ -106,7 +107,7 @@
   }
 
   li {
-    border-top: 1px solid colours.$nice-grey-2;
+    border-top: 1px solid $account-menu-item-border;
     list-style: none;
     margin: 0;
   }
@@ -127,7 +128,7 @@
     }
 
     &:hover {
-      background: colours.$nice-grey-3;
+      background: $account-menu-hover-background;
       text-decoration: underline;
     }
   }

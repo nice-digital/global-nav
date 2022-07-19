@@ -1,15 +1,14 @@
-@use '@nice-digital/nds-core/scss/colours';
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 @use '@nice-digital/nds-core/scss/visibility';
-@use '../footer-settings';
 
 .wrapper {
   @include typography.font-size(-1);
-  background: colours.$nice-dark-grey;
+  background: $legal-background;
   padding: utils.rem(spacing.$medium 0);
 
   a {

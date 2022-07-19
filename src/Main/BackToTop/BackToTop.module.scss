@@ -1,4 +1,4 @@
-@use '@nice-digital/nds-core/scss/colours';
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
@@ -45,7 +45,7 @@ $back-to-top-height: utils.rem(
   }
 
   &:hover {
-    background: colours.$body;
+    background: $body;
 
     svg {
       transform: translateY(-#{utils.rem(spacing.$xx-small)});

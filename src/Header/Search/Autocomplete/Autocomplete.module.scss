@@ -1,3 +1,4 @@
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
@@ -17,7 +18,7 @@
     .autocomplete__hint,
     .autocomplete__input {
       -webkit-appearance: none;
-      border: 1px solid colours.$nice-black;
+      border: 1px solid;
       border-radius: 0; /* Safari 10 on iOS adds implicit border rounding. */
       box-sizing: border-box;
       margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */
@@ -26,7 +27,7 @@
 
     .autocomplete__input {
       // The importants here are to override conflicting global styles in niceorg
-      background-color: colours.$nice-grey-3 !important;
+      background-color: $autocomplete-background !important;
       height: utils.rem(header-settings.$search-height) !important;
       margin: 0 !important;
       max-width: 100% !important;
@@ -40,7 +41,7 @@
       }
 
       &::placeholder {
-        color: #666 !important;
+        color: $autocomplete-placeholder !important;
         font-size: 100%;
         font-weight: normal;
         opacity: 1; // Chrome uses a semi-transparent placeholder by default
@@ -77,8 +78,8 @@
     }
 
     .autocomplete__menu {
-      background-color: #fff;
-      border: 1px solid colours.$nice-grey-2;
+      background-color: $autocomplete-menu-background;
+      border: 1px solid $autocomplete-menu-border;
       border-top: 0;
       color: #34384b;
       margin: 0;
@@ -113,7 +114,8 @@
     }
 
     .autocomplete__option {
-      border-bottom: solid colours.$nice-grey-2;
+      background: $autocomplete-option-background;
+      border-bottom: solid $autocomplete-option-border;
       border-width: 1px 0;
       color: colours.$link;
       cursor: pointer;
@@ -150,20 +152,20 @@
     }
 
     .autocomplete__option--odd {
-      background-color: #fafafa;
+      background-color: $autocomplete-option-odd-background;
     }
 
     .autocomplete__option--focused,
     .autocomplete__option:hover {
-      background-color: colours.$nice-grey-3;
+      background-color: $autocomplete-option-focus-background;
       color: colours.$link;
       outline: none;
       text-decoration: underline;
     }
 
     .autocomplete__option--no-results {
-      background-color: #fafafa;
-      color: #646b6f;
+      background-color: $autocomplete-option-no-results-background;
+      color: $autocomplete-option-no-results-text;
       cursor: not-allowed;
     }
 

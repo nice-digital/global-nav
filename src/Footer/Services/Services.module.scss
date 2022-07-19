@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use '@nice-digital/nds-core/scss/colours';
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
@@ -21,15 +21,16 @@
 
 @include media-queries.mq($from: sm) {
   .wrapper {
-    border-right: 2px solid colours.$nice-dark-grey;
+    border-right: 2px solid $services-border;
     float: left;
+    padding-right: utils.rem(spacing.$medium);
     width: percentage(math.div(1, 3));
   }
 }
 
 @include media-queries.mq($from: md) {
   .wrapper {
-    border-right: 2px solid colours.$nice-dark-grey;
+    border-right: 2px solid $services-border;
     float: left;
     margin: 0;
     width: 25%;

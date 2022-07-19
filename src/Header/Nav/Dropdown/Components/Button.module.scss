@@ -1,18 +1,17 @@
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/focus';
 @use '@nice-digital/nds-core/scss/spacing';
 @use '@nice-digital/nds-core/scss/utils';
 
 // Mostly copied from nds-button
-
-$nds-button-shadow-colour: rgba(0, 0, 0, 0.2);
 $nds-button-border-radius: utils.em(3px);
 
 .button {
   border: utils.em(1px) solid colours.$btn-primary-text;
   border-radius: $nds-button-border-radius;
-  box-shadow: 0 utils.em(3px) utils.em(6px) 0 $nds-button-shadow-colour;
-  color: colours.$nice-white !important;
+  box-shadow: 0 utils.em(3px) utils.em(6px) 0 $button-shadow-colour;
+  color: colours.$btn-primary-text !important;
   display: inline-block;
   font-family: inherit;
   margin: utils.em(
@@ -31,7 +30,7 @@ $nds-button-border-radius: utils.em(3px);
 
   &:hover {
     background: colours.$btn-primary-hover;
-    box-shadow: 0 utils.em(5px) utils.em(8px) 0 $nds-button-shadow-colour;
+    box-shadow: 0 utils.em(5px) utils.em(8px) 0 $button-shadow-colour;
     color: colours.$btn-primary-text;
     text-decoration: none;
   }
@@ -56,8 +55,8 @@ $nds-button-border-radius: utils.em(3px);
 
 .cta {
   background: colours.$btn-cta;
-  border: utils.em(1px) solid colours.$btn-cta-text;
-  color: colours.$btn-cta-text;
+  border: utils.em(1px) solid colours.$btn-cta-border;
+  color: colours.$btn-cta-text !important;
 
   &:visited {
     color: colours.$btn-cta-text;

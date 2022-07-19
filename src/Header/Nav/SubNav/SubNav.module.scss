@@ -1,3 +1,4 @@
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
@@ -6,8 +7,8 @@
 @use '../../header-settings';
 
 .wrapper {
-  background: #fff;
-  color: black;
+  background: $subnav-background;
+  color: $subnav-text;
   display: block;
 }
 
@@ -22,8 +23,7 @@
 }
 
 .link {
-  border: utils.rem(spacing.$x-small) solid
-    header-settings.$colour-nav-background;
+  border: utils.rem(spacing.$x-small) solid $subnav-link-border;
   border-bottom-width: 0;
   border-top-width: 0;
   color: colours.$text;
@@ -43,15 +43,14 @@
   &:visited,
   &:hover,
   &:active {
-    border: utils.rem(spacing.$x-small) solid
-      header-settings.$colour-nav-background;
+    border: utils.rem(spacing.$x-small) solid $subnav-link-hover-border;
     border-bottom-width: 0;
     border-top-width: 0;
-    color: colours.$text;
+    color: $subnav-link-hover-text;
   }
 
   &:hover {
-    background: #d6d6d6;
+    background: $subnav-link-hover-background;
     color: colours.$text;
     text-decoration: underline;
   }
@@ -63,8 +62,7 @@
 
 @include media-queries.mq($from: md) {
   .wrapper {
-    border-bottom: utils.rem(spacing.$xx-small) solid
-      header-settings.$colour-nav-background;
+    border-bottom: utils.rem(spacing.$xx-small) solid $subnav-border;
     bottom: 0;
     height: utils.rem(header-settings.$sub-nav-height);
     left: 0;

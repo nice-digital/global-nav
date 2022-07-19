@@ -2,6 +2,7 @@
 
 @use '../../SkipLink/SkipLink.module.scss';
 
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
@@ -26,7 +27,7 @@
     align-items: center;
     background: none;
     border: none;
-    color: colours.$nice-black;
+    color: colours.$text;
     column-gap: utils.rem(spacing.$small);
     cursor: pointer;
     display: flex;
@@ -40,8 +41,7 @@
     }
 
     &:hover {
-      background: colours.$nice-white;
-      color: colours.$nice-black;
+      color: colours.$text;
     }
   }
 }

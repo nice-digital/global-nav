@@ -1,0 +1,79 @@
+@use 'sass:color';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/colours/tokens/global' as *;
+
+// Remove this override when the design system is rolled out everywhere
+$body: colours.$fill-page-background;
+
+// Header
+$header-background: colours.$fill-page-background;
+$header-border: $white;
+
+// Mobile menu button
+$mobile-menu-btn-border: $black-tint-1;
+$mobile-menu-btn-text: colours.$text;
+
+// Account button
+$account-btn-icon: $black-tint-1;
+
+// Account menu
+$account-menu-border: $black-tint-1;
+$account-menu-background: $white;
+$account-menu-item-border: $custom-grey-2;
+$account-menu-item-background: $white;
+$account-menu-hover-background: $custom-grey-4;
+
+// Nav
+$nav-background: $nice-teal;
+$nav-text: colours.$text-inverse;
+
+// Nav links
+$nav-link-border: $nice-teal;
+$nav-link-text: colours.$text-inverse;
+$nav-link-hover-background: $custom-grey-4;
+$nav-link-hover-text: colours.$text;
+
+// Dropdown
+$dropdown-nonjs-background: $nice-teal;
+
+// SubNav
+$subnav-background: $white;
+$subnav-border: $nice-teal;
+$subnav-text: colours.$text;
+$subnav-link-border: $black;
+$subnav-link-hover-border: $black;
+$subnav-link-hover-text: colours.$text;
+$subnav-link-hover-background: $custom-grey-2;
+
+// Search
+$search-button-background: $black-tint-1;
+$search-button-text: $white;
+
+// Autocomplete
+$autocomplete-background: $custom-grey-4;
+$autocomplete-border: colours.$border;
+$autocomplete-placeholder: $custom-grey-3;
+$autocomplete-menu-background: $custom-grey-3;
+$autocomplete-menu-border: $custom-grey-2;
+$autocomplete-option-border: $custom-grey-2;
+$autocomplete-option-background: $white;
+$autocomplete-option-focus-background: $custom-grey-4;
+$autocomplete-option-odd-background: $custom-grey-4;
+$autocomplete-option-no-results-background: $custom-grey-4;
+$autocomplete-option-no-results-text: $custom-grey-3;
+
+// Covid banner
+$covid-background: #ffeb3b;
+
+// Buttons
+$button-shadow-colour: color.adjust($black, $alpha: -0.8);
+
+// Footer
+$footer-background: $nice-black;
+$footer-text: colours.$text-inverse;
+
+// Services
+$services-border: $black-tint-1;
+
+// Legal
+$legal-background: $black-tint-1;

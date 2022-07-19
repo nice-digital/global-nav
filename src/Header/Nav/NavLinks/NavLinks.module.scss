@@ -1,8 +1,10 @@
 /* stylelint-disable no-descending-specificity */
 
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
 @use '@nice-digital/nds-core/scss/utils';
 @use '../../header-settings';
 @use '../../../Common.module.scss';
@@ -26,12 +28,12 @@ button.link {
   padding: utils.rem(spacing.$small);
 
   &:visited {
-    color: colours.$nice-white !important;
+    color: $nav-link-text !important;
   }
 
   &[aria-current='true'],
   &:hover {
-    color: colours.$nice-black !important;
+    color: $nav-link-hover-text !important;
   }
 
   // reduce chevron size on smaller viewport to prevent back-to-top floating issue when site is wider than content
@@ -51,7 +53,7 @@ button.link {
 }
 
 .dropdown {
-  background-color: colours.$body;
+  background-color: $body;
   box-shadow: 0 utils.rem(spacing.$small) utils.rem(spacing.$small) 0
     rgba(0, 0, 0, 0.1);
   display: none;
@@ -78,15 +80,12 @@ button.link {
 }
 
 .nonJsDropdown {
-  background-color: colours.$nice-teal;
+  @include typography.links-inverse;
+  background-color: $dropdown-nonjs-background;
   display: none;
   list-style: none;
   padding: utils.rem(spacing.$small);
   position: absolute;
-
-  a {
-    color: colours.$nice-white;
-  }
 
   &:target {
     display: block;

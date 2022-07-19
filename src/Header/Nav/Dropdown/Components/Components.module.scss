@@ -1,3 +1,4 @@
+@use 'global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/media-queries';
 @use '@nice-digital/nds-core/scss/spacing';
@@ -70,7 +71,7 @@
 
 .chunkyLetter {
   @include typography.font-size(h4);
-  color: colours.$nice-dark-grey;
+  color: colours.$text;
 
   span {
     width: 3.95ch;
@@ -98,7 +99,7 @@
   }
 
   a {
-    background: colours.$true-white;
+    background: $body;
     border: 1px solid colours.$border;
     text-decoration: none;
     width: 4.95ch;
