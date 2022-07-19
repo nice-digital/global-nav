@@ -48,7 +48,7 @@ export function BNF() {
 				medicines.
 			</p>
 
-			<Button variant="cta" to={baseUrl} data-autofocus>
+			<Button variant="cta" to={baseUrl}>
 				View BNF
 			</Button>
 

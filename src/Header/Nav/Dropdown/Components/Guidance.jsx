@@ -18,7 +18,7 @@ export function Guidance() {
 				stakeholders.
 			</p>
 
-			<Button variant="cta" to={baseUrl} data-autofocus>
+			<Button variant="cta" to={baseUrl}>
 				View guidance
 			</Button>
 

@@ -19,7 +19,7 @@ export function AboutUs() {
 				We provide national guidance and advice to improve health and social
 				care.
 			</p>
-			<Button variant="cta" to={baseUrl} data-autofocus>
+			<Button variant="cta" to={baseUrl}>
 				Explore about
 			</Button>
 

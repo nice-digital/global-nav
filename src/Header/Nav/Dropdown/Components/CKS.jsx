@@ -46,7 +46,7 @@ export function CKS() {
 				Providing primary care practitioners with a readily accessible summary
 				of the current evidence base and practical advice on best practice
 			</p>
-			<Button variant="cta" to={baseUrl} data-autofocus>
+			<Button variant="cta" to={baseUrl}>
 				View CKS
 			</Button>
 

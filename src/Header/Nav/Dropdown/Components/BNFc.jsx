@@ -47,7 +47,7 @@ export function BNFc() {
 				healthcare professionals with sound up-to-date information on the use of
 				medicines for treating children.
 			</p>
-			<Button variant="cta" to={baseUrl} data-autofocus>
+			<Button variant="cta" to={baseUrl}>
 				View BNFC
 			</Button>
 
