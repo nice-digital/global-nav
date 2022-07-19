@@ -7,6 +7,13 @@
   @extend .link;
 }
 
+.skiplink:focus:not(:focus-visible) {
+  /* undo all the above focused skiplink styles
+       if the button has focus but the browser wouldn't normally
+       show default focus styles */
+  visibility: hidden;
+}
+
 .container {
   @include nds-container;
   color: $nds-colour-text;
