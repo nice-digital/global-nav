@@ -1,6 +1,6 @@
 {
   "name": "@nice-digital/global-nav",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "Global header and footer components for NICE digital services",
   "main": "lib/index.js",
   "types": "./types.d.ts",

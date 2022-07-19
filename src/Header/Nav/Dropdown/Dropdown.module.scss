@@ -2,7 +2,7 @@
 
 @use '../../SkipLink/SkipLink.module.scss';
 
-@use 'global-nav-colours' as *;
+@use '../../../styles/global-nav-colours' as *;
 @use '@nice-digital/nds-core/scss/colours';
 @use '@nice-digital/nds-core/scss/layout';
 @use '@nice-digital/nds-core/scss/media-queries';
