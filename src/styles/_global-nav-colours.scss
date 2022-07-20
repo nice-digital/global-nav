@@ -1,6 +1,6 @@
 @use 'sass:color';
 @use '@nice-digital/nds-core/scss/colours';
-@use '@nice-digital/nds-core/scss/colours/tokens/global' as *;
+@use '@nice-digital/nds-core/scss/colours/tokens/_global' as *;
 
 // Remove this override when the design system is rolled out everywhere
 $body: colours.$fill-page-background;
