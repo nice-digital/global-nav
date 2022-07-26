@@ -5,7 +5,7 @@ import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 // import services from "../../../../services.json";
 
-export function CKS({ baseUrl }) {
+export function CKS({ baseUrl = "default-base-url" }) {
 	// const baseUrl = services.external.filter((service) => service.id == "cks")[0]
 	// 	.href;
 

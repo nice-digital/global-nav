@@ -5,7 +5,10 @@ import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 import classnames from "classnames";
 
-export function StandardsAndIndicators({ baseUrl, rootUrl }) {
+export function StandardsAndIndicators({
+	baseUrl = "default-base-url",
+	rootUrl = "default-root-url",
+}) {
 	return (
 		<section aria-label="Standards and indicators - dropdown navigation">
 			<Grid gutter="loose">

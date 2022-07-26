@@ -4,11 +4,7 @@ import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 // import services from "../../../../services.json";
 
-export function LifeSciences({ baseUrl }) {
-	// const baseUrl = services.external.filter(
-	// 	(service) => service.id == "life-sciences"
-	// )[0].href;
-
+export function LifeSciences({ baseUrl = "default-base-url" }) {
 	return (
 		<section aria-label="Life Sciences - dropdown navigation">
 			<h2 className="mt--0">Life Sciences</h2>

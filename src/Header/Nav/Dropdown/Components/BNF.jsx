@@ -4,7 +4,7 @@ import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 
-export function BNF({ baseUrl }) {
+export function BNF({ baseUrl = "default-base-url" }) {
 	const drugsAtoZurl = baseUrl + "/drugs/#";
 
 	const drugsAtoZ = [

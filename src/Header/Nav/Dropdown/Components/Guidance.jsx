@@ -5,7 +5,7 @@ import { Button } from "./Button";
 import styles from "./Components.module.scss";
 // import services from "../../../../services.json";
 
-export function Guidance({ baseUrl }) {
+export function Guidance({ baseUrl = "default-base-url" }) {
 	// const baseUrl = services.external.filter(
 	// 	(service) => service.id == "guidance"
 	// )[0].href;
