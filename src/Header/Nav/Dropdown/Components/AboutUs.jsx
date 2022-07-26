@@ -5,10 +5,7 @@ import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 import classnames from "classnames";
 
-export function AboutUs({
-	baseUrl = "default-base-url",
-	rootUrl = "default-root-url",
-}) {
+export function AboutUs({ baseUrl = "", rootUrl = "" }) {
 	return (
 		<section aria-label="About - navigation">
 			<h2 className="mt--0">About</h2>

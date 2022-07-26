@@ -3,12 +3,8 @@ import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-// import services from "../../../../services.json";
 
-export function CKS({ baseUrl = "default-base-url" }) {
-	// const baseUrl = services.external.filter((service) => service.id == "cks")[0]
-	// 	.href;
-
+export function CKS({ baseUrl = "" }) {
 	const topicsAtoZurl = baseUrl + "/topics/#";
 
 	const topicsAtoZ = [

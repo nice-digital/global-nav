@@ -2,9 +2,8 @@
 import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
-// import services from "../../../../services.json";
 
-export function LifeSciences({ baseUrl = "default-base-url" }) {
+export function LifeSciences({ baseUrl = "" }) {
 	return (
 		<section aria-label="Life Sciences - dropdown navigation">
 			<h2 className="mt--0">Life Sciences</h2>
