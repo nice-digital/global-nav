@@ -1,14 +1,6 @@
 {
   "external": [
     {
-      "landingUrl": "https://url4/",
-      "text": "Fourth link",
-      "id": "test-service",
-      "dropdown": true,
-      "dropdownComponent": "FourthComponent",
-      "header": true
-    },
-    {
       "landingUrl": "https://url1/",
       "text": "First link",
       "id": "link1",
@@ -66,6 +58,14 @@
           "id": "nested-2"
         }
       ]
+    },
+    {
+      "landingUrl": "https://url4/",
+      "text": "Fourth link",
+      "id": "test-service",
+      "dropdown": true,
+      "dropdownComponent": "FourthComponent",
+      "header": true
     }
   ],
   "internal": [

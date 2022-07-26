@@ -6,35 +6,6 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
   className="menuList"
 >
   <li
-    data-tracking="Fourth link"
-    key="test-service"
-  >
-    <button
-      aria-controls="dropdown-test-service"
-      aria-current={null}
-      aria-expanded={false}
-      className="link"
-      id="navlink-test-service"
-      onClick={[Function]}
-    >
-      <span>
-        Fourth link
-      </span>
-      <SvgChevronDown
-        className="icon"
-        pointerEvents="none"
-      />
-    </button>
-    <Dropdown
-      className="dropdown"
-      closeDropdown={[Function]}
-      component="FourthComponent"
-      id="dropdown-test-service"
-      nextNavSlug="link1"
-      text="Fourth link"
-    />
-  </li>
-  <li
     data-tracking="First link"
     key="link1"
   >
@@ -105,7 +76,36 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       closeDropdown={[Function]}
       component="ThirdComponent"
       id="dropdown-link3"
+      nextNavSlug="test-service"
       text="Third link"
+    />
+  </li>
+  <li
+    data-tracking="Fourth link"
+    key="test-service"
+  >
+    <button
+      aria-controls="dropdown-test-service"
+      aria-current={null}
+      aria-expanded={false}
+      className="link"
+      id="navlink-test-service"
+      onClick={[Function]}
+    >
+      <span>
+        Fourth link
+      </span>
+      <SvgChevronDown
+        className="icon"
+        pointerEvents="none"
+      />
+    </button>
+    <Dropdown
+      className="dropdown"
+      closeDropdown={[Function]}
+      component="FourthComponent"
+      id="dropdown-test-service"
+      text="Fourth link"
     />
   </li>
 </ul>

@@ -62,14 +62,6 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
           Array [
             Object {
               "dropdown": true,
-              "dropdownComponent": "FourthComponent",
-              "header": true,
-              "id": "test-service",
-              "landingUrl": "https://url4/",
-              "text": "Fourth link",
-            },
-            Object {
-              "dropdown": true,
               "dropdownComponent": "FirstComponent",
               "header": true,
               "id": "link1",
@@ -126,6 +118,14 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
               ],
               "text": "Third link",
               "title": "Abbreviation title",
+            },
+            Object {
+              "dropdown": true,
+              "dropdownComponent": "FourthComponent",
+              "header": true,
+              "id": "test-service",
+              "landingUrl": "https://url4/",
+              "text": "Fourth link",
             },
           ]
         }
