@@ -1,17 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import services from "../../../../services.json";
 import classnames from "classnames";
 
-export function AboutUs() {
-	const baseUrl = services.external.filter(
-		(service) => service.id == "about"
-	)[0].href;
-
-	const rootUrl = services.rootUrl;
-
+export function AboutUs({ baseUrl, rootUrl }) {
 	return (
 		<section aria-label="About - navigation">
 			<h2 className="mt--0">About</h2>
@@ -42,12 +36,12 @@ export function AboutUs() {
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/standards-and-indicators/quality-standards">
+							<a href={`${rootUrl}/standards-and-indicators/quality-standards`}>
 								Quality standards
 							</a>
 						</li>
 						<li>
-							<a href="https://www.nice.org.uk/standards-and-indicators/indicators">
+							<a href={`${rootUrl}/standards-and-indicators/indicators`}>
 								Indicators
 							</a>
 						</li>

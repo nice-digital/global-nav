@@ -1,8 +1,15 @@
 {
-  "rootUrl": "https://rootUrl.org.uk",
   "external": [
     {
-      "href": "https://url1/",
+      "landingUrl": "https://url4/",
+      "text": "Fourth link",
+      "id": "test-service",
+      "dropdown": true,
+      "dropdownComponent": "FourthComponent",
+      "header": true
+    },
+    {
+      "landingUrl": "https://url1/",
       "text": "First link",
       "id": "link1",
       "dropdown": true,
@@ -10,7 +17,7 @@
       "header": true
     },
     {
-      "href": "https://url2/",
+      "landingUrl": "https://url2/",
       "text": "Second link",
       "id": "link2",
       "dropdown": false,
@@ -29,7 +36,7 @@
       ]
     },
     {
-      "href": "https://url3/",
+      "landingUrl": "https://url3/",
       "text": "Third link",
       "id": "link3",
       "dropdown": true,

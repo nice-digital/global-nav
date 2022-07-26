@@ -1,8 +1,7 @@
 {
-  "rootUrl": "https://www.nice.org.uk",
   "external": [
     {
-      "href": "https://www.nice.org.uk/guidance",
+      "landingUrl": "https://www.nice.org.uk/guidance",
       "text": "Guidance",
       "id": "guidance",
       "dropdown": true,
@@ -11,7 +10,7 @@
       "header": true
     },
     {
-      "href": "https://www.nice.org.uk/standards-and-indicators",
+      "landingUrl": "https://www.nice.org.uk/standards-and-indicators",
       "text": "Standards and indicators",
       "id": "standards-and-indicators",
       "dropdown": true,
@@ -20,7 +19,7 @@
       "header": true
     },
     {
-      "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
+      "landingUrl": "https://www.nice.org.uk/about/what-we-do/life-sciences",
       "text": "Life sciences",
       "id": "life-sciences",
       "dropdown": true,
@@ -29,7 +28,7 @@
       "header": true
     },
     {
-      "href": "https://bnf.nice.org.uk",
+      "landingUrl": "https://bnf.nice.org.uk",
       "text": "British National Formulary (BNF)",
       "abbreviation": false,
       "title": "British National Formulary",
@@ -67,7 +66,7 @@
       ]
     },
     {
-      "href": "https://bnfc.nice.org.uk",
+      "landingUrl": "https://bnfc.nice.org.uk",
       "text": "British National Formulary for Children (BNFC)",
       "abbreviation": false,
       "title": "British National Formulary for Children",
@@ -105,7 +104,7 @@
       ]
     },
     {
-      "href": "https://cks.nice.org.uk",
+      "landingUrl": "https://cks.nice.org.uk",
       "text": "Clinical Knowledge Summaries (CKS)",
       "abbreviation": false,
       "title": "Clinical Knowledge Summaries",
@@ -139,7 +138,7 @@
       ]
     },
     {
-      "href": "https://www.nice.org.uk/about",
+      "landingUrl": "https://www.nice.org.uk/about",
       "text": "About",
       "id": "about",
       "dropdown": true,
@@ -147,7 +146,7 @@
       "header": true
     },
     {
-      "href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
+      "landingUrl": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
       "text": "Knowledge resources",
       "id": "knowledge-resources",
       "dropdown": false,

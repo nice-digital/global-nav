@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
-import services from "../../../../services.json";
+// import services from "../../../../services.json";
 
-export function LifeSciences() {
-	const baseUrl = services.external.filter(
-		(service) => service.id == "life-sciences"
-	)[0].href;
+export function LifeSciences({ baseUrl }) {
+	// const baseUrl = services.external.filter(
+	// 	(service) => service.id == "life-sciences"
+	// )[0].href;
 
 	return (
 		<section aria-label="Life Sciences - dropdown navigation">

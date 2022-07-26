@@ -4,6 +4,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { headerId, footerId, renderHeader, renderFooter } from "./renderer";
 
+jest.mock("./services.json", () =>
+	require("./Header/Nav/__mocks__/services.json")
+);
+
 describe("renderer", () => {
 	let headerContainer, footerContainer, reactDOMRenderMock;
 
@@ -71,7 +75,7 @@ describe("renderer", () => {
 				expect(reactDOMRenderMock).toHaveBeenCalledTimes(1);
 			});
 
-			it("Calls ReactDOM.render with header component with correct props", () => {
+			it.only("Calls ReactDOM.render with header component with correct props", () => {
 				window.global_nav_config = {
 					service: "test-service",
 					header: {

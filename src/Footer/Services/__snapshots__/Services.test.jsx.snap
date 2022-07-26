@@ -10,16 +10,16 @@ exports[`Services Matches snapshot 1`] = `
   >
     <FooterLink
       footer={true}
-      href="https://url1/"
       id="link1"
       key="link1"
+      landingUrl="https://url1/"
       text="First link"
     />
     <FooterLink
       footer={true}
-      href="https://url3/"
       id="link3"
       key="link3"
+      landingUrl="https://url3/"
       text="Third link"
     />
   </ul>

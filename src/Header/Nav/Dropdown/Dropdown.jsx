@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import { useFocusTrap } from "@mantine/hooks";
 import { HeaderContext } from "../../context/HeaderContext";
 import styles from "./Dropdown.module.scss";
 import reset from "./Reset.module.scss";
 import classnames from "classnames";
+import services from "../../../services.json";
+
+const url = require("url");
 
 import {
 	AboutUs,
@@ -13,7 +16,6 @@ import {
 	CKS,
 	Guidance,
 	LifeSciences,
-	More,
 	StandardsAndIndicators,
 } from "./Components/";
 
@@ -25,6 +27,7 @@ export function Dropdown({
 	nextNavSlug,
 	closeDropdown,
 	id,
+	currentService,
 	component,
 }) {
 	const components = {
@@ -34,7 +37,6 @@ export function Dropdown({
 		CKS: CKS,
 		Guidance: Guidance,
 		LifeSciences: LifeSciences,
-		More: More,
 		StandardsAndIndicators: StandardsAndIndicators,
 	};
 	const Component = components[component];
@@ -48,6 +50,25 @@ export function Dropdown({
 			element && element.focus();
 		});
 		closeDropdown();
+	}
+
+	let baseUrl, rootUrl;
+
+	if (currentService) {
+		if (id === `dropdown-${currentService}`) {
+			baseUrl = "";
+		} else {
+			baseUrl = services.external.filter(
+				(service) => service.id == currentService
+			)[0].landingUrl;
+
+			const urlObject = url.parse(
+				services.external.filter((service) => service.id == currentService)[0]
+					.landingUrl
+			);
+
+			rootUrl = `${urlObject.protocol}//${urlObject.host}`;
+		}
 	}
 
 	return (
@@ -73,7 +94,7 @@ export function Dropdown({
 						</a>
 					</>
 				)}
-				<Component />
+				{Component && <Component baseUrl={baseUrl} rootUrl={rootUrl} />}
 				<button
 					onClick={closeDropdown}
 					className={styles.exit}
@@ -85,14 +106,5 @@ export function Dropdown({
 		</div>
 	);
 }
-
-Dropdown.propTypes = {
-	text: PropTypes.string,
-	className: PropTypes.string,
-	nextNavSlug: PropTypes.string,
-	closeDropdown: PropTypes.func,
-	id: PropTypes.string,
-	component: PropTypes.string,
-};
 
 export default Dropdown;

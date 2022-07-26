@@ -174,6 +174,7 @@ export function NavLinks({
 										}
 										closeDropdown={() => setidOfOpenDropdown(null)}
 										id={`dropdown-${id}`}
+										currentService={currentService}
 									/>
 								) : null}
 								{ariaCurrent && subLinks && (

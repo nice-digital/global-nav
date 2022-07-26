@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import services from "../../../../services.json";
+// import services from "../../../../services.json";
 
-export function BNFc() {
-	const baseUrl = services.external.filter((service) => service.id == "bnfc")[0]
-		.href;
+export function BNFc({ baseUrl }) {
+	// const baseUrl = services.external.filter((service) => service.id == "bnfc")[0]
+	// 	.href;
 
 	const drugsAtoZurl = baseUrl + "/drugs/#";
 

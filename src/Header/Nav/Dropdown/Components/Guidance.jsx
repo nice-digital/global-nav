@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Grid, GridItem } from "./Grid";
 import { Button } from "./Button";
 import styles from "./Components.module.scss";
-import services from "../../../../services.json";
+// import services from "../../../../services.json";
 
-export function Guidance() {
-	const baseUrl = services.external.filter(
-		(service) => service.id == "guidance"
-	)[0].href;
+export function Guidance({ baseUrl }) {
+	// const baseUrl = services.external.filter(
+	// 	(service) => service.id == "guidance"
+	// )[0].href;
 
 	return (
 		<section aria-label="NICE Guidance - dropdown navigation">

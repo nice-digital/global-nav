@@ -1,13 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import services from "../../../../services.json";
 
-export function BNF() {
-	const baseUrl = services.external.filter((service) => service.id == "bnf")[0]
-		.href;
-
+export function BNF({ baseUrl }) {
 	const drugsAtoZurl = baseUrl + "/drugs/#";
 
 	const drugsAtoZ = [
