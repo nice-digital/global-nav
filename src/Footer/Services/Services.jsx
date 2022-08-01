@@ -33,18 +33,18 @@ export default class Services extends Component {
 }
 
 FooterLink.propTypes = {
-	href: PropTypes.string,
+	landingUrl: PropTypes.string,
 	id: PropTypes.string,
 	text: PropTypes.string,
 	abbreviation: PropTypes.bool,
 	title: PropTypes.string,
 };
 
-function FooterLink({ href, text, abbreviation, title }) {
+function FooterLink({ landingUrl, text, abbreviation, title }) {
 	return (
 		<li>
 			<TrackedLink
-				href={href}
+				href={landingUrl}
 				eventAction={footerClickEventAction}
 				eventLabel={text}
 				className={styles.link}
