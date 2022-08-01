@@ -110,7 +110,7 @@ a.link,
   &:hover {
     background: $nav-link-hover-background;
     color: $nav-link-hover-text;
-    text-decoration: underline;
+    text-decoration-line: underline;
   }
 
   &[aria-current='true'],

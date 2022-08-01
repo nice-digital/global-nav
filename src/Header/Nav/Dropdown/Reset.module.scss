@@ -27,7 +27,7 @@
   a {
     color: colours.$link;
     font-weight: normal;
-    text-decoration: underline;
+    text-decoration-line: underline;
 
     &:hover {
       color: colours.$link-hover;

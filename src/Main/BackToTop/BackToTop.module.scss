@@ -34,7 +34,7 @@ $back-to-top-height: utils.rem(
   display: block;
   line-height: utils.rem(spacing.$medium);
   padding: utils.rem(spacing.$medium) 0;
-  text-decoration: underline;
+  text-decoration-line: underline;
 
   &:visited {
     color: colours.$link;

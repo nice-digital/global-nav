@@ -160,7 +160,7 @@
       background-color: $autocomplete-option-focus-background;
       color: colours.$link;
       outline: none;
-      text-decoration: underline;
+      text-decoration-line: underline;
     }
 
     .autocomplete__option--no-results {
