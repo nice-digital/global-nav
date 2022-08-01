@@ -114,7 +114,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
-    "@nice-digital/design-system": "^3.0.8-alpha.0",
+    "@nice-digital/design-system": "^3.0.9-alpha.0",
     "@use-it/event-listener": "^0.1.7",
     "accessible-autocomplete": "^2.0.3",
     "classnames": "^2.3.1",
