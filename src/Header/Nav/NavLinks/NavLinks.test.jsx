@@ -34,7 +34,7 @@ describe("NavLinks", () => {
 		);
 	});
 
-	it.only("should render a top level anchor if there's no dropdown", () => {
+	it("should render a top level anchor if there's no dropdown", () => {
 		const wrapper = shallow(<NavLinks {...defaultProps} />);
 		console.log(services.external);
 		expect(wrapper.find("a").length).toEqual(

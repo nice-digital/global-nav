@@ -1,12 +1,18 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { Dropdown } from "./Dropdown";
-import { AboutUs } from "./Components/AboutUs";
+
+jest.mock("../../../services.json", () =>
+	require("./../__mocks__/services.json")
+);
+
+const DropdownComponent = jest.fn(() => null);
 
 describe("Dropdown", () => {
 	const defaultProps = {
 		text: "Our Dropdown",
-		id: "guidance",
+		id: "link2",
+		component: DropdownComponent,
 	};
 
 	it("Renders without crashing", () => {
@@ -23,9 +29,11 @@ describe("Dropdown", () => {
 		);
 	});
 
-	it("should render a component by the supplied component string", () => {
+	it("should render the given component", () => {
 		const wrapper = shallow(<Dropdown {...defaultProps} />);
-		expect(wrapper.find(AboutUs).length).toEqual(1);
+		expect(
+			wrapper.find("[rootUrl='https://www.test-link2.nice.org']").length
+		).toEqual(1);
 	});
 
 	it("Should render a skip link when there is a next nav item to skip to", () => {

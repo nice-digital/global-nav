@@ -8,7 +8,7 @@
       "header": true
     },
     {
-      "host": "www.test.nice.org",
+      "host": "www.test-link2.nice.org",
       "landingPath": "/url2/",
       "text": "Second link",
       "id": "link2",
