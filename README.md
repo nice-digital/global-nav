@@ -320,7 +320,7 @@ const search = {
 
 const page = () => (
   <div>
-    <Header service="pathways" search={search} />
+    <Header service="guidance" search={search} />
 		<Main withPadding={true} myOptionalProp={myOptionalProp} className="my-optional-class" >{/* Your page content here */} </Main>
     <Footer />
   </div>
@@ -347,7 +347,7 @@ Optional spacing between page content and footer back-to-top link.
 
 - Type: `String | null`
 - Default: `''`
-- Values: `pathways`, `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
+- Values: `guidance`, `standards`, `evidence`, `bnf`, `bnfc`, `cks`, `journals`
 
 The identifier of the service to highlight in the main menu.
 See [services.json](src/services.json) for a list of the available service identifiers.
