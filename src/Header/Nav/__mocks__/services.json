@@ -1,18 +1,17 @@
 {
   "external": [
     {
-      "landingUrl": "https://url1/",
+      "host": "www.test.nice.org",
+      "landingPath": "/url1/",
       "text": "First link",
       "id": "link1",
-      "dropdown": true,
-      "dropdownComponent": "FirstComponent",
       "header": true
     },
     {
-      "landingUrl": "https://url2/",
+      "host": "www.test.nice.org",
+      "landingPath": "/url2/",
       "text": "Second link",
       "id": "link2",
-      "dropdown": false,
       "header": true,
       "abbreviation": true,
       "title": "Abbreviation title",
@@ -28,12 +27,11 @@
       ]
     },
     {
-      "landingUrl": "https://url3/",
+      "host": "www.test.nice.org",
+      "landingPath": "/url3/",
       "text": "Third link",
       "id": "link3",
-      "dropdown": true,
       "header": true,
-      "dropdownComponent": "ThirdComponent",
       "abbreviation": true,
       "title": "Abbreviation title",
       "links": [
@@ -60,11 +58,10 @@
       ]
     },
     {
-      "landingUrl": "https://url4/",
+      "host": "www.test.nice.org",
+      "landingPath": "/url4/",
       "text": "Fourth link",
       "id": "test-service",
-      "dropdown": true,
-      "dropdownComponent": "FourthComponent",
       "header": true
     }
   ],

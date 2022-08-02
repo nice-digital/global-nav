@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 
-export function LifeSciences({ baseUrl = "" }) {
+export function LifeSciences({ rootUrl }) {
 	return (
 		<section aria-label="Life Sciences - dropdown navigation">
 			<h2 className="mt--0">Life Sciences</h2>
@@ -12,7 +12,7 @@ export function LifeSciences({ baseUrl = "" }) {
 				expertise can help you build the evidence needed to achieve market
 				access.
 			</p>
-			<Button variant="cta" to={baseUrl}>
+			<Button variant="cta" to={`${rootUrl}/about/what-we-do/life-sciences`}>
 				View life sciences
 			</Button>
 			<div data-tracking="Engage with us">
@@ -20,13 +20,19 @@ export function LifeSciences({ baseUrl = "" }) {
 					<GridItem>
 						<h3 className="mt--d">Get support from NICE</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a href={`${baseUrl}/scientific-advice`}>Scientific advice</a>
+							<a
+								href={`${rootUrl}/about/what-we-do/life-sciences/scientific-advice`}
+							>
+								Scientific advice
+							</a>
 						</h4>
 						<p className="mt--0">
 							Advisory service for developers of a range of health technologies.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href={`${baseUrl}/office-for-market-access`}>
+							<a
+								href={`${rootUrl}/about/what-we-do/life-sciences/office-for-market-access`}
+							>
 								Office for Market Access
 							</a>
 						</h4>
@@ -35,12 +41,16 @@ export function LifeSciences({ baseUrl = "" }) {
 							development.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href={`${baseUrl}/contact-us-form`}>Make an enquiry</a>
+							<a
+								href={`${rootUrl}/about/what-we-do/life-sciences/contact-us-form`}
+							>
+								Make an enquiry
+							</a>
 						</h4>
 						<p className="mt--0">Contact us to discuss your requirements.</p>
 						<h4 className="h5 mb--c">
 							<a
-								href={`${baseUrl}/our-role-in-the-innovative-licensing-and-access-pathway--ilap`}
+								href={`${rootUrl}/about/what-we-do/life-sciences/our-role-in-the-innovative-licensing-and-access-pathway--ilap`}
 							>
 								Innovative Licensing and Access Pathway (ILAP)
 							</a>
@@ -54,7 +64,9 @@ export function LifeSciences({ baseUrl = "" }) {
 					<GridItem>
 						<h3 className="mt--d">Learn how we evaluate technologies</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/changes-to-health-technology-evaluation">
+							<a
+								href={`${rootUrl}/about/what-we-do/our-programmes/nice-guidance/nice-technology-appraisal-guidance/changes-to-health-technology-evaluation`}
+							>
 								Health technology evaluation and topic selection manuals
 							</a>
 						</h4>
@@ -62,7 +74,9 @@ export function LifeSciences({ baseUrl = "" }) {
 							Updated manuals for methods, processes and topic selection.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/about/what-we-do/digital-health/office-for-digital-health">
+							<a
+								href={`${rootUrl}/about/what-we-do/digital-health/office-for-digital-health`}
+							>
 								Digital health technologies
 							</a>
 						</h4>
@@ -71,7 +85,9 @@ export function LifeSciences({ baseUrl = "" }) {
 							care system.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies">
+							<a
+								href={`${rootUrl}/about/what-we-do/our-programmes/evidence-standards-framework-for-digital-health-technologies`}
+							>
 								Evidence standards framework
 							</a>
 						</h4>
@@ -80,7 +96,9 @@ export function LifeSciences({ baseUrl = "" }) {
 							guide decisions in health, public health and social care.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance">
+							<a
+								href={`${rootUrl}/about/what-we-do/our-programmes/nice-guidance`}
+							>
 								Our guidance programmes
 							</a>
 						</h4>
@@ -113,7 +131,9 @@ export function LifeSciences({ baseUrl = "" }) {
 					<GridItem>
 						<h3 className="mt--d">Find published and proposed evaluations</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a href="https://www.nice.org.uk/guidance/published?ngt=Diagnostics%20guidance&ndt=Guidance">
+							<a
+								href={`${rootUrl}/guidance/published?ngt=Diagnostics%20guidance&ndt=Guidance`}
+							>
 								Diagnostics
 							</a>
 						</h4>
@@ -122,7 +142,9 @@ export function LifeSciences({ baseUrl = "" }) {
 							patient&apos;s condition.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/guidance/published?ngt=Medical%20technologies%20guidance&ndt=Guidance">
+							<a
+								href={`${rootUrl}/guidance/published?ngt=Medical%20technologies%20guidance&ndt=Guidance`}
+							>
 								Medical technologies
 							</a>
 						</h4>
@@ -131,7 +153,9 @@ export function LifeSciences({ baseUrl = "" }) {
 							manufacturers.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/guidance/published?ngt=Technology%20appraisal%20guidance&ndt=Guidance">
+							<a
+								href={`${rootUrl}/guidance/published?ngt=Technology%20appraisal%20guidance&ndt=Guidance`}
+							>
 								Technology appraisals
 							</a>
 						</h4>
@@ -139,7 +163,9 @@ export function LifeSciences({ baseUrl = "" }) {
 							Guidance on new and existing medicines and treatments in the NHS.
 						</p>
 						<h4 className="h5 mb--c">
-							<a href="https://www.nice.org.uk/guidance/published?ngt=Highly%20specialised%20technologies%20guidance&ndt=Guidance">
+							<a
+								href={`${rootUrl}/guidance/published?ngt=Highly%20specialised%20technologies%20guidance&ndt=Guidance`}
+							>
 								Highly specialised technologies
 							</a>
 						</h4>

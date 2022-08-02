@@ -9,30 +9,17 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
     data-tracking="First link"
     key="link1"
   >
-    <button
-      aria-controls="dropdown-link1"
+    <a
       aria-current={null}
-      aria-expanded={false}
       className="link"
+      href="https://www.test.nice.org/url1/"
       id="navlink-link1"
       onClick={[Function]}
     >
       <span>
         First link
       </span>
-      <SvgChevronDown
-        className="icon"
-        pointerEvents="none"
-      />
-    </button>
-    <Dropdown
-      className="dropdown"
-      closeDropdown={[Function]}
-      component="FirstComponent"
-      id="dropdown-link1"
-      nextNavSlug="link2"
-      text="First link"
-    />
+    </a>
   </li>
   <li
     data-tracking="Second link"
@@ -42,6 +29,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       aria-current={null}
       aria-label="Abbreviation title"
       className="link"
+      href="https://www.test.nice.org/url2/"
       id="navlink-link2"
       onClick={[Function]}
     >
@@ -54,12 +42,11 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
     data-tracking="Third link"
     key="link3"
   >
-    <button
-      aria-controls="dropdown-link3"
+    <a
       aria-current={null}
-      aria-expanded={false}
       aria-label="Abbreviation title"
       className="link"
+      href="https://www.test.nice.org/url3/"
       id="navlink-link3"
       onClick={[Function]}
     >
@@ -70,43 +57,47 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
         className="icon"
         pointerEvents="none"
       />
-    </button>
-    <Dropdown
-      className="dropdown"
-      closeDropdown={[Function]}
-      component="ThirdComponent"
-      id="dropdown-link3"
-      nextNavSlug="test-service"
-      text="Third link"
-    />
+    </a>
+    <ul
+      aria-label="More NICE services"
+      className="nonJsDropdown"
+      id="link3"
+    >
+      <li
+        key="nested-1"
+      >
+        <a
+          href="https://nestedLink1"
+        >
+          Nested link one
+        </a>
+      </li>
+      <li
+        key="nested-2"
+      >
+        <a
+          href="https://nestedLink2"
+        >
+          Nested link two
+        </a>
+      </li>
+    </ul>
   </li>
   <li
     data-tracking="Fourth link"
     key="test-service"
   >
-    <button
-      aria-controls="dropdown-test-service"
+    <a
       aria-current={null}
-      aria-expanded={false}
       className="link"
+      href="https://www.test.nice.org/url4/"
       id="navlink-test-service"
       onClick={[Function]}
     >
       <span>
         Fourth link
       </span>
-      <SvgChevronDown
-        className="icon"
-        pointerEvents="none"
-      />
-    </button>
-    <Dropdown
-      className="dropdown"
-      closeDropdown={[Function]}
-      component="FourthComponent"
-      id="dropdown-test-service"
-      text="Fourth link"
-    />
+    </a>
   </li>
 </ul>
 `;

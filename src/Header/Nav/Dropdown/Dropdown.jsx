@@ -7,18 +7,6 @@ import reset from "./Reset.module.scss";
 import classnames from "classnames";
 import services from "../../../services.json";
 
-const url = require("url");
-
-import {
-	AboutUs,
-	BNF,
-	BNFc,
-	CKS,
-	Guidance,
-	LifeSciences,
-	StandardsAndIndicators,
-} from "./Components/";
-
 import Remove from "@nice-digital/icons/lib/Remove";
 
 export function Dropdown({
@@ -28,18 +16,8 @@ export function Dropdown({
 	closeDropdown,
 	id,
 	currentService,
-	component,
+	component: DropdownComponent,
 }) {
-	const components = {
-		AboutUs: AboutUs,
-		BNF: BNF,
-		BNFc: BNFc,
-		CKS: CKS,
-		Guidance: Guidance,
-		LifeSciences: LifeSciences,
-		StandardsAndIndicators: StandardsAndIndicators,
-	};
-	const Component = components[component];
 	const { idOfOpenDropdown } = useContext(HeaderContext);
 	const focusTrapRef = useFocusTrap(idOfOpenDropdown !== null);
 
@@ -52,29 +30,13 @@ export function Dropdown({
 		closeDropdown();
 	}
 
-	let baseUrl, rootUrl;
-
-	if (currentService) {
-		if (id === `dropdown-${currentService}`) {
-			baseUrl = "";
-		} else {
-			baseUrl = services.external.filter(
-				(service) => service.id == currentService
-			)[0].landingUrl;
-
-			const urlObject = url.parse(
-				services.external.filter((service) => service.id == currentService)[0]
-					.landingUrl
-			);
-
-			rootUrl = `${urlObject.protocol}//${urlObject.host}`;
-		}
-	}
+	const { host } = services.external.find((service) => service.id == id);
+	const rootUrl = id === currentService ? "" : `https://${host}`;
 
 	return (
 		<div
 			className={classnames([className, reset.wrapper])}
-			id={id}
+			id={`dropdown-${id}`}
 			data-tracking={`${text} dropdown`}
 			ref={focusTrapRef}
 		>
@@ -94,7 +56,7 @@ export function Dropdown({
 						</a>
 					</>
 				)}
-				{Component && <Component baseUrl={baseUrl} rootUrl={rootUrl} />}
+				{<DropdownComponent rootUrl={rootUrl} />}
 				<button
 					onClick={closeDropdown}
 					className={styles.exit}

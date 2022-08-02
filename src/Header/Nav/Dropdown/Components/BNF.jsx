@@ -4,8 +4,8 @@ import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 
-export function BNF({ baseUrl = "" }) {
-	const drugsAtoZurl = baseUrl + "/drugs/#";
+export function BNF({ rootUrl }) {
+	const drugsAtoZurl = rootUrl + "/drugs/#";
 
 	const drugsAtoZ = [
 		{ letter: "A", link: true },
@@ -45,7 +45,7 @@ export function BNF({ baseUrl = "" }) {
 				medicines.
 			</p>
 
-			<Button variant="cta" to={baseUrl}>
+			<Button variant="cta" to={rootUrl}>
 				View BNF
 			</Button>
 
@@ -78,10 +78,10 @@ export function BNF({ baseUrl = "" }) {
 					<h3>Browse A to Z by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/interactions/`}>Interactions</a>
+							<a href={`${rootUrl}/interactions/`}>Interactions</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/treatment-summaries/`}>
+							<a href={`${rootUrl}/treatment-summaries/`}>
 								Treatment summaries
 							</a>
 						</li>
@@ -91,26 +91,26 @@ export function BNF({ baseUrl = "" }) {
 					<h3>Browse by type</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}/dental-practitioners-formulary/`}>
+							<a href={`${rootUrl}/dental-practitioners-formulary/`}>
 								Dental practitioners&apos; formulary
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/nurse-prescribers-formulary/`}>
+							<a href={`${rootUrl}/nurse-prescribers-formulary/`}>
 								Nurse prescribers&apos; formulary
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/guidance/`}>Medicines guidance</a>
+							<a href={`${rootUrl}/guidance/`}>Medicines guidance</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/wound-management/`}>Wound management</a>
+							<a href={`${rootUrl}/wound-management/`}>Wound management</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/medical-devices/`}>Medical devices</a>
+							<a href={`${rootUrl}/medical-devices/`}>Medical devices</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/borderline-substances/`}>
+							<a href={`${rootUrl}/borderline-substances/`}>
 								Borderline substances
 							</a>
 						</li>
@@ -120,13 +120,13 @@ export function BNF({ baseUrl = "" }) {
 					<h3>What&apos;s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/about/changes/`}>Latest BNF</a>
+							<a href={`${rootUrl}/about/changes/`}>Latest BNF</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
 			<hr />
-			<a href={`${baseUrl}/about/`}>About BNF</a>
+			<a href={`${rootUrl}/about/`}>About BNF</a>
 		</section>
 	);
 }

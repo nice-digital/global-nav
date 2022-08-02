@@ -9,12 +9,32 @@ import SubNav from "../SubNav";
 import Dropdown from "../Dropdown";
 import { HeaderContext } from "../../context/HeaderContext";
 
+import {
+	AboutUs,
+	BNF,
+	BNFc,
+	CKS,
+	Guidance,
+	LifeSciences,
+	StandardsAndIndicators,
+} from "./../Dropdown/Components";
+
 import styles from "./NavLinks.module.scss";
 import {
 	trackEvent,
 	defaultEventCategory,
 	headerClickEventAction,
 } from "../../../tracker";
+
+const components = {
+	about: AboutUs,
+	bnf: BNF,
+	bnfc: BNFc,
+	cks: CKS,
+	guidance: Guidance,
+	"life-sciences": LifeSciences,
+	"standards-and-indicators": StandardsAndIndicators,
+};
 
 export function NavLinks({
 	servicesToDisplay,
@@ -70,18 +90,11 @@ export function NavLinks({
 				})
 				.map(
 					(
-						{
-							href,
-							id,
-							text,
-							abbreviation,
-							title,
-							dropdown,
-							dropdownComponent,
-							nestedLinks,
-						},
+						{ host, landingPath, id, text, abbreviation, title, nestedLinks },
 						index
 					) => {
+						const href = `https://${host}${landingPath}`,
+							dropdownComponent = components[id];
 						let ariaCurrent = null;
 
 						if (currentService && id === currentService) {
@@ -99,7 +112,7 @@ export function NavLinks({
 
 						return (
 							<li key={id} data-tracking={text}>
-								{dropdown && canUseDOM ? (
+								{dropdownComponent && canUseDOM ? (
 									<button
 										onClick={() => handleNavButtonClick(id)}
 										aria-current={ariaCurrent}
@@ -159,7 +172,7 @@ export function NavLinks({
 										)}
 									</>
 								)}
-								{dropdown && canUseDOM ? (
+								{dropdownComponent && canUseDOM ? (
 									<Dropdown
 										component={dropdownComponent}
 										className={classnames([
@@ -173,7 +186,7 @@ export function NavLinks({
 												: skipLinkId
 										}
 										closeDropdown={() => setidOfOpenDropdown(null)}
-										id={`dropdown-${id}`}
+										id={id}
 										currentService={currentService}
 									/>
 								) : null}
