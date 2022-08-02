@@ -67,6 +67,8 @@
   ],
   "internal": [
     {
+      "host": "www.test.nice.org",
+      "landingPath": "/first-internal-service",
       "href": "/",
       "text": "First internal service",
       "id": "internal1",
@@ -83,6 +85,8 @@
       ]
     },
     {
+      "host": "www.test.nice.org",
+      "landingPath": "/second-internal-service",
       "href": "/",
       "text": "Second internal service",
       "id": "internal2",

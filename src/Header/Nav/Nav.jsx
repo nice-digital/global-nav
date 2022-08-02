@@ -64,7 +64,7 @@ function Nav(props) {
 		if (props.service && internalRootLink.id === props.service) {
 			internalService = true;
 			activeService = internalRootLink;
-			servicesToDisplay = [internalRootLink]; //unlike external, internal services dosn't display other internal services.
+			servicesToDisplay = [internalRootLink]; //unlike external, internal services don't display other internal services.
 			break;
 		}
 	}
