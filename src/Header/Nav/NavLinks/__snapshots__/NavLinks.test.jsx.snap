@@ -29,7 +29,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       aria-current={null}
       aria-label="Abbreviation title"
       className="link"
-      href="https://www.test.nice.org/url2/"
+      href="https://www.test-link2.nice.org/url2/"
       id="navlink-link2"
       onClick={[Function]}
     >

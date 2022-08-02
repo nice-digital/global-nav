@@ -70,7 +70,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
             Object {
               "abbreviation": true,
               "header": true,
-              "host": "www.test.nice.org",
+              "host": "www.test-link2.nice.org",
               "id": "link2",
               "landingPath": "/url2/",
               "links": Array [
