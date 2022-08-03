@@ -73,6 +73,51 @@ describe("Search", () => {
 	});
 
 	describe("onSearching", () => {
+		describe("Form submit and button click", () => {
+			const div = document.createElement("div");
+
+			beforeEach(() => {
+				// Avoid `attachTo: document.body` Warning
+				div.setAttribute("id", "container");
+				document.body.appendChild(div);
+			});
+
+			afterEach(() => {
+				const div = document.getElementById("container");
+				if (div) {
+					document.body.removeChild(div);
+				}
+			});
+
+			it("should call the onSearching prop when the form is submitted", () => {
+				const onSearching = jest.fn();
+				const wrapper = mount(
+					<Search {...defaultProps} onSearching={onSearching} />,
+					{ attachTo: div }
+				);
+
+				wrapper.find("form").simulate("submit", { preventDefault: () => {} });
+
+				expect(onSearching).toHaveBeenCalled();
+				expect(onSearching).toHaveBeenCalledTimes(1);
+			});
+
+			it("should call onSearching prop when the button is clicked", () => {
+				const onSearching = jest.fn();
+				const wrapper = shallow(
+					<Search {...defaultProps} onSearching={onSearching} />
+				);
+
+				wrapper
+					.find("button")
+					.at(0)
+					.simulate("click", { preventDefault: () => {} });
+
+				expect(onSearching).toHaveBeenCalled();
+				expect(onSearching).toHaveBeenCalledTimes(1);
+			});
+		});
+
 		it("should prevent default and call callback with the search query for a onSearching function", () => {
 			const onSearching = jest.fn();
 			const wrapper = mount(
