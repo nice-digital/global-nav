@@ -75,7 +75,7 @@ describe("renderer", () => {
 				expect(reactDOMRenderMock).toHaveBeenCalledTimes(1);
 			});
 
-			it.only("Calls ReactDOM.render with header component with correct props", () => {
+			it("Calls ReactDOM.render with header component with correct props", () => {
 				window.global_nav_config = {
 					service: "test-service",
 					header: {

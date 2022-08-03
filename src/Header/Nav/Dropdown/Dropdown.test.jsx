@@ -6,7 +6,7 @@ jest.mock("../../../services.json", () =>
 	require("./../__mocks__/services.json")
 );
 
-const DropdownComponent = jest.fn(() => null);
+const DropdownComponent = () => null;
 
 describe("Dropdown", () => {
 	const defaultProps = {

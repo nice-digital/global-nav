@@ -186,8 +186,9 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
             Array [
               Object {
                 "header": true,
-                "href": "/",
+                "host": "www.test.nice.org",
                 "id": "internal1",
+                "landingPath": "/first-internal-service",
                 "links": Array [
                   Object {
                     "href": "/i1sublink1",
@@ -226,7 +227,7 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
               <a
                 aria-current={true}
                 className="link"
-                href="https://undefinedundefined"
+                href="https://www.test.nice.org/first-internal-service"
                 id="navlink-internal1"
                 onClick={[Function]}
               >

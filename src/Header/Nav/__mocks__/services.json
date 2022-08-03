@@ -69,7 +69,6 @@
     {
       "host": "www.test.nice.org",
       "landingPath": "/first-internal-service",
-      "href": "/",
       "text": "First internal service",
       "id": "internal1",
       "header": true,

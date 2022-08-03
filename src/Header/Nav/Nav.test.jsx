@@ -200,7 +200,7 @@ describe("Nav", () => {
 			expect(links.text()).toEqual("First internal service");
 		});
 
-		it.only("Internal service 2 only renders itself and no other services", () => {
+		it("Internal service 2 only renders itself and no other services", () => {
 			const wrapper = mount(
 				<Nav {...defaultProps} service={internalServices[1].id} />
 			);
