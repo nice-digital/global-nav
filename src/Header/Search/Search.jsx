@@ -126,6 +126,10 @@ Search.propTypes = {
 		}),
 		PropTypes.bool,
 		PropTypes.string,
+		PropTypes.shape({
+			suggestions: PropTypes.string,
+			suggestionTemplate: PropTypes.func,
+		}),
 		PropTypes.arrayOf(
 			PropTypes.shape({
 				Title: PropTypes.string.isRequired,
