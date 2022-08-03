@@ -114,22 +114,21 @@ Search.propTypes = {
 	url: PropTypes.string,
 	autocomplete: PropTypes.oneOfType([
 		PropTypes.shape({
-			suggestions: PropTypes.arrayOf(
-				PropTypes.shape({
-					Title: PropTypes.string.isRequired,
-					TitleHtml: PropTypes.string,
-					TypeAheadType: PropTypes.string,
-					Link: PropTypes.string.isRequired,
-				})
-			).isRequired,
+			suggestions: PropTypes.oneOfType([
+				PropTypes.arrayOf(
+					PropTypes.shape({
+						Title: PropTypes.string.isRequired,
+						TitleHtml: PropTypes.string,
+						TypeAheadType: PropTypes.string,
+						Link: PropTypes.string.isRequired,
+					})
+				).isRequired,
+				PropTypes.string,
+			]),
 			suggestionTemplate: PropTypes.func,
 		}),
 		PropTypes.bool,
 		PropTypes.string,
-		PropTypes.shape({
-			suggestions: PropTypes.string,
-			suggestionTemplate: PropTypes.func,
-		}),
 		PropTypes.arrayOf(
 			PropTypes.shape({
 				Title: PropTypes.string.isRequired,
