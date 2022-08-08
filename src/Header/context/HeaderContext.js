@@ -20,6 +20,17 @@ export const HeaderContextProvider = function ({ children }) {
 		setidOfOpenDropdown(null);
 	}, [typeof location == "undefined" ? null : location.href]);
 
+	const hashChangeHandler = () => {
+		setidOfOpenDropdown(null);
+	};
+
+	useEffect(() => {
+		window && window.addEventListener("hashchange", hashChangeHandler);
+		return () => {
+			window && window.removeEventListener("hashchange", hashChangeHandler);
+		};
+	}, []);
+
 	useEffect(() => {
 		// we know both are now open
 		if (accountMenuIsExpanded && idOfOpenDropdown) {
