@@ -1954,9 +1954,9 @@
       "dev": true
     },
     "@nice-digital/design-system": {
-      "version": "3.0.13-alpha.0",
-      "resolved": "https://registry.npmjs.org/@nice-digital/design-system/-/design-system-3.0.13-alpha.0.tgz",
-      "integrity": "sha512-JpULHsofxzmWoZNozIhBvXrgCCo3LvpE2nlW75jgLYshhjQLlC64rR51v9JJtitvzftqbERqPynmhFItPVg5CQ==",
+      "version": "3.0.14-alpha.0",
+      "resolved": "https://registry.npmjs.org/@nice-digital/design-system/-/design-system-3.0.14-alpha.0.tgz",
+      "integrity": "sha512-uXAJdpCAuAvwPkf/MY4wQGL62XSu6WQhQ/3g8SW9QAgxIK1EXZAYo0b6GQ04A6cwpNPWXVEGp5dZo09r3OMGsw==",
       "requires": {
         "@nice-digital/icons": "^4.0.1-alpha.0",
         "@nice-digital/nds-a-z-list": "^2.0.11-alpha.0",
@@ -1976,7 +1976,7 @@
         "@nice-digital/nds-form-group": "^2.0.11-alpha.0",
         "@nice-digital/nds-forms": "^2.0.11-alpha.0",
         "@nice-digital/nds-full-bleed": "^2.0.11-alpha.0",
-        "@nice-digital/nds-grid": "^2.0.11-alpha.0",
+        "@nice-digital/nds-grid": "^2.0.12-alpha.0",
         "@nice-digital/nds-hero": "^2.0.12-alpha.0",
         "@nice-digital/nds-horizontal-nav": "^2.0.11-alpha.0",
         "@nice-digital/nds-in-page-nav": "^2.0.11-alpha.0",
@@ -2181,9 +2181,9 @@
       }
     },
     "@nice-digital/nds-grid": {
-      "version": "2.0.11-alpha.0",
-      "resolved": "https://registry.npmjs.org/@nice-digital/nds-grid/-/nds-grid-2.0.11-alpha.0.tgz",
-      "integrity": "sha512-JAPT2lkMw0bNV++SVaIZcODBoIOErXUC9FixhbYN6Le/5SMSNvEQQ7dMItY1Nq77Ij6ONsHNEy8qHCSRoQYg2Q==",
+      "version": "2.0.12-alpha.0",
+      "resolved": "https://registry.npmjs.org/@nice-digital/nds-grid/-/nds-grid-2.0.12-alpha.0.tgz",
+      "integrity": "sha512-sN5bnfz028g1x/qj9yebi+yTdJoY+hlaLrUQ3SL9SdSe2cqGUPo1YtXLrrQvm/uDm5uu5XocWY7vxZmD1Jg5FA==",
       "requires": {
         "@nice-digital/nds-core": "^2.0.11-alpha.0",
         "classnames": "^2.2.6",
