@@ -74,6 +74,7 @@
 	- [Upgrading to v2](#upgrading-to-v2)
 	- [Upgrading to v3](#upgrading-to-v3)
 	- [Upgrading to v4](#upgrading-to-v4)
+	- [Upgrading to v5](#upgrading-to-v5)
 
 <!-- END doctoc -->
 </details>
@@ -882,3 +883,7 @@ Version 3 removes react hot loader, replacing it with fast refresh. Although thi
 ## Upgrading to v4
 
 V4 involved updating a lot of dependencies. Mostly this was internal implementation details. However, the one external facing change was the build command changing from `npm run build -- --env.version=1.2.3` to `npm run build -- --env version=1.2.3`. Notice the space instead of the dot. This is a result of the `--env` parameter in webpack 4.
+
+## Upgrading to v5
+
+Version 5 includes updates for the summer 2022 brand refresh. It's mostly an internal refactor of typography and colour updates and shouldn't include any breaking API changes.

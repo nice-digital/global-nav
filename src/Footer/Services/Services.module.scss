@@ -1,9 +1,12 @@
 @use 'sass:math';
-@import '~@nice-digital/nds-core/scss/core';
-@import '../../Common.module.scss';
+@use '../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '../../Common.module.scss';
 
 .wrapper {
-  margin: rem(0 0 $nds-spacing-large);
+  margin: utils.rem(0 0 spacing.$large);
 }
 
 .list {
@@ -12,21 +15,22 @@
   padding: 0;
 
   li {
-    margin: rem(0 0 $nds-spacing-x-small);
+    margin: utils.rem(0 0 spacing.$x-small);
   }
 }
 
-@include mq($from: sm) {
+@include media-queries.mq($from: sm) {
   .wrapper {
-    border-right: 2px solid $nds-colour-nice-dark-grey;
+    border-right: 2px solid $services-border;
     float: left;
+    padding-right: utils.rem(spacing.$medium);
     width: percentage(math.div(1, 3));
   }
 }
 
-@include mq($from: md) {
+@include media-queries.mq($from: md) {
   .wrapper {
-    border-right: 2px solid $nds-colour-nice-dark-grey;
+    border-right: 2px solid $services-border;
     float: left;
     margin: 0;
     width: 25%;

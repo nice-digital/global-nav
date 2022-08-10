@@ -1,8 +1,10 @@
 @use 'sass:math';
-@import '~@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 .wrapper {
-  margin: rem(0 0 $nds-spacing-large);
+  margin: utils.rem(0 0 spacing.$large);
 }
 
 .list {
@@ -11,36 +13,36 @@
   padding: 0;
 
   li {
-    margin: rem(0 0 $nds-spacing-x-small);
+    margin: utils.rem(0 0 spacing.$x-small);
   }
 }
 
-@include mq($from: xs) {
+@include media-queries.mq($from: xs) {
   .list {
     column-count: 2;
-    column-gap: rem($nds-spacing-medium);
+    column-gap: utils.rem(spacing.$medium);
   }
 }
 
-@include mq($from: sm) {
+@include media-queries.mq($from: sm) {
   .wrapper {
     float: left;
     margin: 0;
-    padding: rem(0 0 0 $nds-spacing-large);
+    padding: utils.rem(0 0 0 spacing.$large);
     width: percentage(math.div(2, 3));
   }
 }
 
-@include mq($from: md) {
+@include media-queries.mq($from: md) {
   .wrapper {
     float: left;
     margin: 0;
-    padding: rem(0 $nds-spacing-large);
+    padding: utils.rem(0 spacing.$large);
     width: 50%;
   }
 
   .list {
     column-count: 2;
-    column-gap: rem($nds-spacing-medium);
+    column-gap: utils.rem(spacing.$medium);
   }
 }

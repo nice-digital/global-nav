@@ -1,14 +1,21 @@
 /* stylelint-disable no-descending-specificity */
 
-@import '../header-settings';
-@import '../../Common.module.scss';
+@use '../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/visibility';
+@use '../header-settings';
+@use '../../Common.module.scss';
 
 .wrapper {
-  @include nds-hide-print;
+  @include visibility.hide-print;
   display: none;
   position: relative;
 
-  @include mq($from: md) {
+  @include media-queries.mq($from: md) {
     display: block;
   }
 }
@@ -26,29 +33,27 @@
 }
 
 .myAccount {
-  border-top: 1px solid $nds-colour-nice-white;
-
-  @include mq($from: md) {
+  @include media-queries.mq($from: md) {
     display: none;
   }
 }
 
 .myAccountHeading {
-  border: rem($nds-spacing-x-small) solid $colour-nav-background;
+  border: utils.rem(spacing.$x-small) solid $nav-background;
   font-size: 100%;
   margin: 0;
-  padding: rem($nds-spacing-small $nds-spacing-medium);
+  padding: utils.rem(spacing.$small spacing.$medium);
 }
 
 .menuWrapper {
-  background: $colour-nav-background;
-  color: $colour-nav-text;
-  // padding: rem($nds-spacing-x-small 0);
+  background: $nav-background;
+  color: $nav-text;
+  // padding: utils.rem(spacing.$x-small 0);
 }
 
-@include mq($from: md) {
+@include media-queries.mq($from: md) {
   .wrapperWithSubLinks {
-    padding-bottom: rem($sub-nav-height);
+    padding-bottom: utils.rem(header-settings.$sub-nav-height);
   }
 }
 
@@ -58,12 +63,12 @@
 
   > li {
     margin: 0;
-    @include mq($from: md) {
+    @include media-queries.mq($from: md) {
       flex-grow: 1;
     }
   }
-  @include mq($from: md) {
-    @include nds-container;
+  @include media-queries.mq($from: md) {
+    @include layout.container;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -76,11 +81,11 @@ a.link,
   //qualified this with 'a' and 'button' to add specificity to avoid overrides from application css (NW-1253)
   align-items: center;
   background: none;
-  border: rem($nds-spacing-x-small) solid $colour-nav-background;
+  border: utils.rem(spacing.$x-small) solid $nav-link-border;
   border-left-width: 0;
   border-radius: 0;
   border-right-width: 0;
-  color: $colour-nav-text;
+  color: $nav-link-text;
   cursor: pointer;
   display: flex;
   font-weight: normal;
@@ -88,42 +93,42 @@ a.link,
   justify-content: left;
   line-height: 1.25;
   margin-bottom: 0;
-  padding: rem($nds-spacing-small);
+  padding: utils.rem(spacing.$small);
   position: relative;
   text-align: left;
   text-decoration: none;
   width: 100%;
 
   &:focus {
-    color: $colour-nav-text;
-    outline: rem($nds-spacing-x-small) solid $nds-colour-focus-inverse;
-    outline-offset: rem(-$nds-spacing-small);
-    z-index: $base-z-index + 1; // Push above the adjacent nav items
+    color: $nav-link-text;
+    outline: utils.rem(spacing.$x-small) solid colours.$focus-inverse;
+    outline-offset: utils.rem(-(spacing.$small));
+    z-index: header-settings.$base-z-index + 1; // Push above the adjacent nav items
   }
 
   &:active,
   &:hover {
-    background: $nds-colour-nice-grey-3;
-    color: $nds-colour-text;
-    text-decoration: underline;
+    background: $nav-link-hover-background;
+    color: $nav-link-hover-text;
+    text-decoration-line: underline;
   }
 
   &[aria-current='true'],
   &[aria-current='page'],
   &[aria-expanded='true'] {
-    background: $nds-colour-body;
-    border-bottom: rem($nds-spacing-x-small) solid $nds-colour-body;
-    color: $nds-colour-text;
+    background: $body;
+    border-bottom: utils.rem(spacing.$x-small) solid $body;
+    color: colours.$text;
 
     &:focus {
-      outline-color: $nds-colour-focus;
-      outline-offset: rem(-$nds-spacing-small);
+      outline-color: colours.$focus;
+      outline-offset: utils.rem(-(spacing.$small));
     }
   }
 
-  @include mq($from: md) {
+  @include media-queries.mq($from: md) {
     justify-content: space-evenly;
-    padding: rem($nds-spacing-medium);
+    padding: utils.rem(spacing.$medium);
     text-align: left;
   }
 }

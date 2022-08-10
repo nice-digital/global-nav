@@ -1,9 +1,14 @@
 /* stylelint-disable no-descending-specificity */
 
-@import '~@nice-digital/nds-core/scss/core';
-@import '../../header-settings';
-@import '../../../Common.module.scss';
-@import '../Nav.module.scss';
+@use '../../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use '../../header-settings';
+@use '../../../Common.module.scss';
+@use '../Nav.module.scss';
 
 .menuList {
   @extend .menuList;
@@ -19,16 +24,16 @@
 a.link,
 button.link {
   @extend .linkStyling;
-  column-gap: rem($nds-spacing-small);
-  padding: rem($nds-spacing-small);
+  column-gap: utils.rem(spacing.$small);
+  padding: utils.rem(spacing.$small);
 
   &:visited {
-    color: $nds-colour-nice-white !important;
+    color: $nav-link-text !important;
   }
 
   &[aria-current='true'],
   &:hover {
-    color: $nds-colour-nice-black !important;
+    color: $nav-link-hover-text !important;
   }
 
   // reduce chevron size on smaller viewport to prevent back-to-top floating issue when site is wider than content
@@ -37,8 +42,8 @@ button.link {
     max-width: 0.8rem;
   }
 
-  @include mq($from: lg) {
-    padding: rem($nds-spacing-medium);
+  @include media-queries.mq($from: lg) {
+    padding: utils.rem(spacing.$medium);
 
     svg {
       max-height: 1rem;
@@ -48,42 +53,39 @@ button.link {
 }
 
 .dropdown {
-  background-color: $nds-colour-body;
-  box-shadow: 0 rem($nds-spacing-small) rem($nds-spacing-small) 0
+  background-color: $body;
+  box-shadow: 0 utils.rem(spacing.$small) utils.rem(spacing.$small) 0
     rgba(0, 0, 0, 0.1);
   display: none;
   left: 0;
   position: relative;
   width: 100%;
-  z-index: $base-z-index;
+  z-index: header-settings.$base-z-index;
 
   &.active {
     display: block;
   }
 
-  @include mq($from: md) {
+  @include media-queries.mq($from: md) {
     position: absolute;
   }
 }
 
 .icon {
   flex-shrink: 0;
-  margin-left: rem($nds-spacing-x-small);
-  @include mq($from: md) {
+  margin-left: utils.rem(spacing.$x-small);
+  @include media-queries.mq($from: md) {
     margin-left: 0;
   }
 }
 
 .nonJsDropdown {
-  background-color: $nds-colour-nice-teal;
+  @include typography.links-inverse;
+  background-color: $dropdown-nonjs-background;
   display: none;
   list-style: none;
-  padding: rem($nds-spacing-small);
+  padding: utils.rem(spacing.$small);
   position: absolute;
-
-  a {
-    color: $nds-colour-nice-white;
-  }
 
   &:target {
     display: block;

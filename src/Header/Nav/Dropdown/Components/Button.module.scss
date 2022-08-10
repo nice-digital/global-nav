@@ -1,21 +1,23 @@
-@import '~@nice-digital/nds-core/scss/core';
+@use '../../../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/focus';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 // Mostly copied from nds-button
-
-$nds-button-shadow-colour: rgba(0, 0, 0, 0.2);
-$nds-button-border-radius: em(3px);
+$nds-button-border-radius: utils.em(3px);
 
 .button {
-  border: em(1px) solid $nds-colour-btn-primary-text;
+  border: utils.em(1px) solid colours.$btn-primary-text;
   border-radius: $nds-button-border-radius;
-  box-shadow: 0 em(3px) em(6px) 0 $nds-button-shadow-colour;
-  color: $nds-colour-nice-white !important;
+  box-shadow: 0 utils.em(3px) utils.em(6px) 0 $button-shadow-colour;
+  color: colours.$btn-primary-text !important;
   display: inline-block;
   font-family: inherit;
-  margin: em(
-    0 $nds-spacing-small $nds-spacing-small -4px
+  margin: utils.em(
+    0 spacing.$small spacing.$small -4px
   ); // Negative left margin to combat inline-block gaps
-  padding: em($nds-spacing-small $nds-spacing-medium);
+  padding: utils.em(spacing.$small spacing.$medium);
   position: relative;
   text-align: left;
   text-decoration: none !important;
@@ -23,53 +25,53 @@ $nds-button-border-radius: em(3px);
   white-space: nowrap;
 
   &:visited {
-    color: $nds-colour-btn-primary-text;
+    color: colours.$btn-primary-text;
   }
 
   &:hover {
-    background: $nds-colour-btn-primary-hover;
-    box-shadow: 0 em(5px) em(8px) 0 $nds-button-shadow-colour;
-    color: $nds-colour-btn-primary-text;
+    background: colours.$btn-primary-hover;
+    box-shadow: 0 utils.em(5px) utils.em(8px) 0 $button-shadow-colour;
+    color: colours.$btn-primary-text;
     text-decoration: none;
   }
 
   &:focus {
-    @include nds-default-focus-style;
-    background: $nds-colour-btn-primary;
-    border-color: $nds-colour-focus-inverse;
-    color: $nds-colour-btn-primary-text;
+    @include focus.default-focus-style;
+    background: colours.$btn-primary;
+    border-color: colours.$focus-inverse;
+    color: colours.$btn-primary-text;
   }
 
   &:active {
-    background: $nds-colour-btn-primary-hover;
+    background: colours.$btn-primary-hover;
     text-decoration: none;
-    top: em(2px);
+    top: utils.em(2px);
   }
 }
 
 .primary {
-  background: $nds-colour-btn-primary;
+  background: colours.$btn-primary;
 }
 
 .cta {
-  background: $nds-colour-btn-cta;
-  border: em(1px) solid $nds-colour-btn-cta-text;
-  color: $nds-colour-btn-cta-text;
+  background: colours.$btn-cta;
+  border: utils.em(1px) solid colours.$btn-cta-border;
+  color: colours.$btn-cta-text !important;
 
   &:visited {
-    color: $nds-colour-btn-cta-text;
+    color: colours.$btn-cta-text;
   }
 
   &:hover {
-    background: $nds-colour-btn-cta-hover;
-    color: $nds-colour-btn-cta-text;
+    background: colours.$btn-cta-hover;
+    color: colours.$btn-cta-text;
   }
 
   &:focus {
-    background: $nds-colour-btn-cta-hover;
+    background: colours.$btn-cta-hover;
   }
 
   &:active {
-    background: $nds-colour-btn-cta-hover;
+    background: colours.$btn-cta-hover;
   }
 }

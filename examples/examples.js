@@ -6,51 +6,6 @@ const blankConfig = {
 	title: "Blank",
 };
 
-const pathwaysConfig = {
-	filename: "pathways",
-	title: "Pathways",
-	global_nav_config: `{
-		service: "pathways",
-		header: {
-			onResize: function() {
-				console.log("Resize!");
-			},
-			onDropdownOpen: function() {
-				console.log("Dropdown Open!");
-			},
-			onDropdownClose: function() {
-				console.log("Dropdown Close!");
-			},
-			onNavigating: function(e) {
-				if(e.href === "/#browse") {
-					alert("You clicked browse!");
-				} else {
-					window.location.href = e.href;
-				}
-			},
-			search: {
-				autocomplete: $.map(
-					$('#atozlist a'),
-					function (element) {
-						return { Title: $(element).text(), Link: $(element).attr('href') };
-					}
-				),
-				placeholder: "Search NICE's interactive flowcharts…"
-			},
-			onRendering: function(element) {
-				if (console && console.log) {
-					console.log("Header is rendering into", element);
-				}
-			},
-			onRendered: function(element) {
-				if (console && console.log) {
-					console.log("Header has rendered", element);
-				}
-			}
-		}
-	}`,
-};
-
 const guidanceConfig = {
 	filename: "guidance",
 	title: "Guidance",
@@ -78,34 +33,6 @@ const standardsConfig = {
 			},
 			search: {
 				autocomplete: "/niceorg/autocomplete/?ajax=ajax",
-			},
-		},
-	},
-};
-
-const evidenceHomeConfig = {
-	filename: "evidence-home",
-	title: "Evidence homepage",
-	bodyClasses: "layout-fill",
-	global_nav_config: {
-		service: "evidence",
-		header: {
-			search: false,
-		},
-	},
-};
-
-const evidenceSerpConfig = {
-	filename: "evidence-serp",
-	title: "Evidence SERP",
-	bodyClasses: "layout-fill layout-offcanvas-fixed",
-	global_nav_config: {
-		service: "evidence",
-		header: {
-			search: {
-				placeholder: "Search evidence…",
-				query: "diabetes",
-				autocomplete: "/evidence/autocomplete/?ajax=ajax",
 			},
 		},
 	},
@@ -240,11 +167,8 @@ const indevConfig = {
 
 module.exports = [
 	blankConfig,
-	pathwaysConfig,
 	guidanceConfig,
 	standardsConfig,
-	evidenceHomeConfig,
-	evidenceSerpConfig,
 	bnfConfig,
 	bnfcConfig,
 	cksConfig,

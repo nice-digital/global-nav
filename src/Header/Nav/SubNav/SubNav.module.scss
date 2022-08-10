@@ -1,8 +1,14 @@
-@import '../../header-settings';
+@use '../../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '../../header-settings';
 
 .wrapper {
-  background: #fff;
-  color: black;
+  background: $subnav-background;
+  color: $subnav-text;
   display: block;
 }
 
@@ -17,36 +23,36 @@
 }
 
 .link {
-  border: rem($nds-spacing-x-small) solid $colour-nav-background;
+  border: utils.rem(spacing.$x-small) solid $subnav-link-border;
   border-bottom-width: 0;
   border-top-width: 0;
-  color: $nds-colour-text;
+  color: colours.$text;
   display: block;
   font-weight: normal;
-  padding: rem(
-    $nds-spacing-small $nds-spacing-medium $nds-spacing-small $nds-spacing-large
+  padding: utils.rem(
+    spacing.$small spacing.$medium spacing.$small spacing.$large
   );
   text-decoration: none;
 
   &:focus {
-    color: $nds-colour-text;
-    outline: rem($nds-spacing-x-small) solid $nds-colour-focus;
-    outline-offset: rem(-$nds-spacing-small);
+    color: colours.$text;
+    outline: utils.rem(spacing.$x-small) solid colours.$focus;
+    outline-offset: utils.rem(-(spacing.$small));
   }
 
   &:visited,
   &:hover,
   &:active {
-    border: rem($nds-spacing-x-small) solid $colour-nav-background;
+    border: utils.rem(spacing.$x-small) solid $subnav-link-hover-border;
     border-bottom-width: 0;
     border-top-width: 0;
-    color: $nds-colour-text;
+    color: $subnav-link-hover-text;
   }
 
   &:hover {
-    background: #d6d6d6;
-    color: $nds-colour-text;
-    text-decoration: underline;
+    background: $subnav-link-hover-background;
+    color: colours.$text;
+    text-decoration-line: underline;
   }
 }
 
@@ -54,11 +60,11 @@
   display: none;
 }
 
-@include mq($from: md) {
+@include media-queries.mq($from: md) {
   .wrapper {
-    border-bottom: rem($nds-spacing-xx-small) solid $colour-nav-background;
+    border-bottom: utils.rem(spacing.$xx-small) solid $subnav-border;
     bottom: 0;
-    height: rem($sub-nav-height);
+    height: utils.rem(header-settings.$sub-nav-height);
     left: 0;
     position: absolute;
     width: 100%;
@@ -69,7 +75,7 @@
   }
 
   .list {
-    @include nds-container;
+    @include layout.container;
     height: 100%;
 
     li {
@@ -83,7 +89,7 @@
     border: 0;
     display: block;
     height: 100%;
-    padding: rem(0 $nds-spacing-medium);
+    padding: utils.rem(0 spacing.$medium);
 
     &[aria-current='true'],
     &[aria-current='page'] {

@@ -1,6 +1,10 @@
 @use 'sass:math';
-@import '~@nice-digital/nds-core/scss/core';
-@import '../header-settings';
+@use '../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/focus';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '../header-settings';
 
 .account {
   position: relative;
@@ -8,66 +12,66 @@
 
 .button {
   background: #fff;
-  border: 1px solid $nds-colour-text;
-  color: $nds-colour-text;
+  border: 1px solid colours.$text;
+  color: colours.$text;
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
   font-weight: normal;
-  height: rem($search-height);
-  line-height: rem($search-height);
-  padding: rem(0 $nds-spacing-small);
+  height: utils.rem(header-settings.$search-height);
+  line-height: utils.rem(header-settings.$search-height);
+  padding: utils.rem(0 spacing.$small);
   text-decoration: none;
   vertical-align: middle;
   white-space: nowrap;
 
   &:focus {
-    @include nds-default-focus-style;
+    @include focus.default-focus-style;
   }
 
   &:visited {
-    color: $nds-colour-text;
+    color: colours.$text;
   }
 
   &:hover {
-    border: 1px solid $nds-colour-text; // NICE.bootstrap removes border on hover by default
+    border: 1px solid colours.$text; // NICE.bootstrap removes border on hover by default
   }
 }
 
 .myAccount {
   &:after {
-    border-left: rem($nds-spacing-x-small) solid transparent;
-    border-right: rem($nds-spacing-x-small) solid transparent;
-    border-top: rem($nds-spacing-small) solid $nds-colour-nice-dark-grey;
+    border-left: utils.rem(spacing.$x-small) solid transparent;
+    border-right: utils.rem(spacing.$x-small) solid transparent;
+    border-top: utils.rem(spacing.$small) solid $account-btn-icon;
     content: '';
     display: inline-block;
     height: 0;
-    margin-left: rem($nds-spacing-small);
+    margin-left: utils.rem(spacing.$small);
     vertical-align: middle;
     width: 0;
   }
 
   &[aria-expanded='true']:after {
-    border-bottom: rem($nds-spacing-small) solid $nds-colour-text;
+    border-bottom: utils.rem(spacing.$small) solid colours.$text;
     border-top: 0;
   }
 }
 
 .menu {
-  background: $nds-colour-true-white;
-  border: 1px solid $nds-colour-nice-dark-grey;
+  background: $account-menu-background;
+  border: 1px solid $account-menu-border;
   list-style: none;
-  margin: rem($nds-spacing-small + 2px 0 0 0);
+  margin: utils.rem(spacing.$small + 2px 0 0 0);
   padding: 0;
   position: absolute;
   right: 0;
   top: 100%;
-  z-index: $base-z-index;
+  z-index: header-settings.$base-z-index;
 
   // We move focus when we expand via keyboard navigation
   &:focus {
-    @include nds-default-focus-style;
+    @include focus.default-focus-style;
   }
 
   &[aria-hidden='true'] {
@@ -75,35 +79,35 @@
   }
 
   &:before {
-    border-bottom: rem($nds-spacing-small) solid $nds-colour-nice-dark-grey;
-    border-left: rem($nds-spacing-x-small) solid transparent;
-    border-right: rem($nds-spacing-x-small) solid transparent;
+    border-bottom: utils.rem(spacing.$small) solid $account-menu-border;
+    border-left: utils.rem(spacing.$x-small) solid transparent;
+    border-right: utils.rem(spacing.$x-small) solid transparent;
     bottom: 100%;
     content: '';
     display: block;
     height: 0;
     position: absolute;
-    right: rem($nds-spacing-medium);
+    right: utils.rem(spacing.$medium);
     width: 0;
   }
 
   &:after {
-    border-bottom: rem(math.div($nds-spacing-small, 1.25)) solid
-      $nds-colour-true-white;
-    border-left: rem(math.div($nds-spacing-x-small, 1.25)) solid transparent;
-    border-right: rem(math.div($nds-spacing-x-small, 1.25)) solid transparent;
+    border-bottom: utils.rem(math.div(spacing.$small, 1.25)) solid
+      $account-menu-background;
+    border-left: utils.rem(math.div(spacing.$x-small, 1.25)) solid transparent;
+    border-right: utils.rem(math.div(spacing.$x-small, 1.25)) solid transparent;
     bottom: 100%;
     content: '';
     display: block;
     height: 0;
     margin-right: 1px;
     position: absolute;
-    right: rem($nds-spacing-medium);
+    right: utils.rem(spacing.$medium);
     width: 0;
   }
 
   li {
-    border-top: 1px solid $nds-colour-nice-grey-2;
+    border-top: 1px solid $account-menu-item-border;
     list-style: none;
     margin: 0;
   }
@@ -111,21 +115,21 @@
   span,
   a {
     display: block;
-    padding: rem($nds-spacing-small $nds-spacing-medium);
+    padding: utils.rem(spacing.$small spacing.$medium);
   }
 
   a {
-    color: $nds-colour-link;
+    color: colours.$link;
     text-decoration: none;
     white-space: nowrap;
 
     &:focus {
-      @include nds-default-focus-style;
+      @include focus.default-focus-style;
     }
 
     &:hover {
-      background: $nds-colour-nice-grey-3;
-      text-decoration: underline;
+      background: $account-menu-hover-background;
+      text-decoration-line: underline;
     }
   }
 }

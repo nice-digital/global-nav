@@ -1,12 +1,15 @@
-@import '~@nice-digital/nds-core/scss/core';
+@use '../..//styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
-$back-to-top-height: rem(
-  $nds-spacing-medium * 3
+$back-to-top-height: utils.rem(
+  spacing.$medium * 3
 ); // Line height + bottom and top padding
 
 .wrapper {
-  margin-bottom: rem($nds-spacing-large) * -1;
-  margin-top: rem($nds-spacing-x-large);
+  margin-bottom: utils.rem(spacing.$large) * -1;
+  margin-top: utils.rem(spacing.$x-large);
 
   @media print {
     display: none;
@@ -14,8 +17,8 @@ $back-to-top-height: rem(
 }
 
 .nav {
-  background: $nds-colour-nice-grey-3;
-  border-top: 1px solid $nds-colour-border;
+  background: $back-to-top-background;
+  border-top: 1px solid $back-to-top-border;
   width: 100%;
   z-index: 1;
 }
@@ -23,30 +26,30 @@ $back-to-top-height: rem(
 // IE11 needs margin bottom applied or back to top link is hidden under footer
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .nav {
-    margin-bottom: rem($nds-spacing-large);
+    margin-bottom: utils.rem(spacing.$large);
   }
 }
 
 .anchor {
   display: block;
-  line-height: rem($nds-spacing-medium);
-  padding: rem($nds-spacing-medium) 0;
-  text-decoration: underline;
+  line-height: utils.rem(spacing.$medium);
+  padding: utils.rem(spacing.$medium) 0;
+  text-decoration-line: underline;
 
   &:visited {
-    color: $nds-colour-link;
+    color: colours.$link;
   }
 
   svg {
-    margin-right: rem($nds-spacing-small);
+    margin-right: utils.rem(spacing.$small);
     transition: all 0.25s ease;
   }
 
   &:hover {
-    background: $nds-colour-body;
+    background: $back-to-top-hover-background;
 
     svg {
-      transform: translateY(-#{rem($nds-spacing-xx-small)});
+      transform: translateY(-#{utils.rem(spacing.$xx-small)});
     }
   }
 
@@ -70,8 +73,8 @@ $back-to-top-height: rem(
   }
 
   .nav {
-    background: $nds-colour-nice-grey-3;
-    border-top: 1px solid $nds-colour-border;
+    background: $back-to-top-background;
+    border-top: 1px solid $back-to-top-border;
     pointer-events: all;
     position: sticky;
     top: calc(100vh - #{$back-to-top-height});

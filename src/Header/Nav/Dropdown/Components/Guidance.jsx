@@ -43,7 +43,7 @@ export function Guidance() {
 						Topic pages bring together products on the same subject, for example
 						diabetes, mental health and wellbeing or children and young people.
 					</p>
-					<p className="h5">Find topics by</p>
+					<p className="h6">Find topics by</p>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
 							<a href={`${baseUrl}/conditions-and-diseases`}>

@@ -1,42 +1,47 @@
 /* stylelint-disable no-descending-specificity */
 
-@import '../../SkipLink/SkipLink.module.scss';
-@import '~@nice-digital/nds-core/scss/core';
+@use '../../SkipLink/SkipLink.module.scss';
+
+@use '../../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 .skiplink {
   @extend .link;
 }
 
 .container {
-  @include nds-container;
-  color: $nds-colour-text;
-  padding-bottom: rem($nds-spacing-large);
-  padding-top: rem($nds-spacing-large);
+  @include layout.container;
+  color: colours.$text;
+  padding-bottom: utils.rem(spacing.$large);
+  padding-top: utils.rem(spacing.$large);
   position: relative;
 }
 
 .exit {
   display: none;
-  @include mq($from: md) {
+  @include media-queries.mq($from: md) {
     align-items: center;
     background: none;
     border: none;
-    color: $nds-colour-nice-black;
-    column-gap: rem($nds-spacing-small);
+    color: colours.$text;
+    column-gap: utils.rem(spacing.$small);
     cursor: pointer;
     display: flex;
-    padding: rem($nds-spacing-small);
+    padding: utils.rem(spacing.$small);
     position: absolute;
-    right: rem($nds-spacing-medium);
-    top: rem($nds-spacing-medium);
+    right: utils.rem(spacing.$medium);
+    top: utils.rem(spacing.$medium);
 
     &:focus {
-      outline: rem($nds-spacing-x-small) solid $nds-colour-focus;
+      outline: utils.rem(spacing.$x-small) solid colours.$focus;
     }
 
     &:hover {
-      background: $nds-colour-nice-white;
-      color: $nds-colour-nice-black;
+      color: colours.$text;
     }
   }
 }

@@ -1,5 +1,7 @@
-@import '~@nice-digital/nds-core/scss/core';
-@import '../header-settings';
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+@use '../header-settings';
 
 .link {
   clip: rect(1px 1px 1px 1px);
@@ -12,17 +14,17 @@
   &:focus {
     background: #fff;
     clip: auto;
-    color: $nds-colour-link;
+    color: colours.$link;
     display: block;
     height: auto;
-    left: rem($nds-spacing-x-small);
-    outline: 3px solid $nds-colour-focus;
+    left: utils.rem(spacing.$x-small);
+    outline: 3px solid colours.$focus;
     overflow: visible;
-    padding: rem($nds-spacing-small $nds-spacing-medium);
+    padding: utils.rem(spacing.$small spacing.$medium);
     position: absolute;
-    top: rem($nds-spacing-x-small);
+    top: utils.rem(spacing.$x-small);
     white-space: nowrap;
     width: auto;
-    z-index: $base-z-index + 5;
+    z-index: header-settings.$base-z-index + 5;
   }
 }

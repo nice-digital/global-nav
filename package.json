@@ -1,6 +1,6 @@
 {
   "name": "@nice-digital/global-nav",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "Global header and footer components for NICE digital services",
   "main": "lib/index.js",
   "types": "./types.d.ts",
@@ -48,7 +48,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">= 12"
+    "node": ">= 14"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
@@ -114,9 +114,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
-    "@nice-digital/icons": "^2.2.7",
-    "@nice-digital/nds-container": "^1.0.8",
-    "@nice-digital/nds-core": "^1.2.13",
+    "@nice-digital/design-system": "^3.0.14-alpha.0",
     "@use-it/event-listener": "^0.1.7",
     "accessible-autocomplete": "^2.0.3",
     "classnames": "^2.3.1",
@@ -124,7 +122,6 @@
     "focus-trap-react": "^8.9.1",
     "js-cookie": "^2.2.1",
     "prop-types": "^15.8.1",
-    "react-shadow-root": "^6.1.1",
     "unfetch": "^4.2.0"
   },
   "files": [
@@ -135,6 +132,6 @@
     "lib": "lib"
   },
   "volta": {
-    "node": "14.18.1"
+    "node": "14.20.0"
   }
 }

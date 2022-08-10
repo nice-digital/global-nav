@@ -1,7 +1,8 @@
-@import '~@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
-$back-to-top-height: rem(
-  $nds-spacing-medium * 3
+$back-to-top-height: utils.rem(
+  spacing.$medium * 3
 ); // Line height + bottom and top padding
 
 @supports (position: sticky) {
@@ -10,7 +11,7 @@ $back-to-top-height: rem(
     position: relative;
 
     &.withPadding {
-      padding-bottom: $back-to-top-height + rem($nds-spacing-large); /* space between page content and footer when withPadding prop set to true */
+      padding-bottom: $back-to-top-height + utils.rem(spacing.$large); /* space between page content and footer when withPadding prop set to true */
     }
   }
 }
