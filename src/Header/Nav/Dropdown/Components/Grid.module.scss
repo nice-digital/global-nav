@@ -1,15 +1,17 @@
-@import '~@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 .grid {
-  @include mq($from: md) {
+  @include media-queries.mq($from: md) {
     display: flex;
   }
 }
 
 .gridItem {
-  padding-right: rem($nds-spacing-large);
+  padding-right: utils.rem(spacing.$large);
 
-  @include mq($from: md) {
+  @include media-queries.mq($from: md) {
     flex: 1;
   }
 }

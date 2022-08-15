@@ -1,4 +1,6 @@
-@import '~@nice-digital/nds-core/scss/core';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
 
 .wrapper {
   clear: left;
@@ -11,31 +13,31 @@
   padding: 0;
 
   li {
-    margin: rem(0 0 $nds-spacing-x-small);
+    margin: utils.rem(0 0 spacing.$x-small);
   }
 
   svg {
-    margin: rem(-$nds-spacing-xx-small $nds-spacing-x-small 0 0);
+    margin: utils.rem(-(spacing.$xx-small) spacing.$x-small 0 0);
     vertical-align: middle;
   }
 }
 
-@include mq($from: sm) {
+@include media-queries.mq($from: sm) {
   .list {
     li {
       float: left;
-      margin: rem(0 $nds-spacing-medium 0 0);
+      margin: utils.rem(0 spacing.$medium 0 0);
     }
   }
 }
 
-@include mq($from: md) {
+@include media-queries.mq($from: md) {
   .wrapper {
     clear: none;
 
     li {
       float: none;
-      margin: rem(0 0 $nds-spacing-x-small);
+      margin: utils.rem(0 0 spacing.$x-small);
     }
   }
 }

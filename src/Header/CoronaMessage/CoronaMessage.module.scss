@@ -1,15 +1,19 @@
-@import '~@nice-digital/nds-core/scss/core';
+@use '../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
 
 .wrapper {
-  background: #ffeb3b;
-  padding: rem($nds-spacing-small 0);
+  background: $covid-background;
+  padding: utils.rem(spacing.$small 0);
 
   p {
     margin-top: 0;
   }
 
   a {
-    @include nds-link-default;
+    @include typography.link-default;
   }
 
   @media print {
@@ -18,7 +22,7 @@
 }
 
 .container {
-  @include nds-container;
+  @include layout.container;
 
   > :last-child {
     margin-bottom: 0;

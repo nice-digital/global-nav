@@ -1,29 +1,40 @@
-@import '~@nice-digital/nds-core/scss/core';
-@import '~@nice-digital/nds-core/scss/typography/_typography-helpers';
+@use '../../../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/colours';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
 
 // This file is here to normalise the appearance of the global nav on pages that also include NICE bootstrap or other conflicting styling
 
-$tags: h2, h3, h4, h5, h6;
-
 .wrapper {
-  @each $tag in $tags {
-    #{$tag} {
-      @include nds-font-size(#{$tag});
-      margin-top: rem($nds-spacing-medium);
-    }
+  h2 {
+    @include typography.font-size(h2);
+    font-family: typography.get-font-family(serif);
+    margin-top: 0;
+  }
+
+  h3 {
+    @include typography.font-size(h4);
+    font-family: typography.get-font-family(serif);
+    margin-top: utils.rem(spacing.$large);
+  }
+
+  h4 {
+    @include typography.font-size(h5);
+    margin-top: utils.rem(spacing.$medium);
   }
 
   a {
-    color: $nds-colour-link;
+    color: colours.$link;
     font-weight: normal;
-    text-decoration: underline;
+    text-decoration-line: underline;
 
     &:hover {
-      color: $nds-colour-link-hover;
+      color: colours.$link-hover;
     }
 
     &:visited {
-      color: $nds-colour-link-visited;
+      color: colours.$link-visited;
     }
   }
 
@@ -32,7 +43,7 @@ $tags: h2, h3, h4, h5, h6;
   }
 
   ul {
-    @include nds-list;
+    @include typography.list;
     list-style: none !important;
     margin-left: 0;
     max-width: none; // To override max-width of 66ch set on lists

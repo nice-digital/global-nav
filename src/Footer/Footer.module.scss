@@ -1,17 +1,22 @@
 @use 'sass:math';
-@import '~@nice-digital/nds-core/scss/core';
-@import 'footer-settings';
-@import '../Common.module.scss';
+@use '../styles/global-nav-colours' as *;
+@use '@nice-digital/nds-core/scss/layout';
+@use '@nice-digital/nds-core/scss/media-queries';
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+@use '@nice-digital/nds-core/scss/visibility';
+@use '../Common.module.scss';
 
 .footer {
-  @include nds-links-inverse;
-  background: $colour-footer-background;
+  @include typography.links-inverse;
+  background: $footer-background;
   box-sizing: border-box;
-  color: $colour-footer-text;
-  contain-intrinsic-size: 100vw rem(1090); /* stylelint-disable-line */
+  color: $footer-text;
+  contain-intrinsic-size: 100vw utils.rem(1090); /* stylelint-disable-line */
   content-visibility: auto; /* stylelint-disable-line */
-  font-family: unquote($nds-font-family-sans);
-  margin: rem($nds-spacing-large 0 0 0);
+  font-family: typography.get-font-family(sans);
+  margin: utils.rem(spacing.$large 0 0 0);
   position: relative;
   z-index: 0;
 
@@ -26,25 +31,25 @@
   }
 
   // Estimates of intrinsic height across breakpoints
-  @include mq($from: xs) {
-    contain-intrinsic-height: rem(930);
+  @include media-queries.mq($from: xs) {
+    contain-intrinsic-height: utils.rem(930);
   }
-  @include mq($from: sm) {
-    contain-intrinsic-height: rem(540);
+  @include media-queries.mq($from: sm) {
+    contain-intrinsic-height: utils.rem(540);
   }
-  @include mq($from: md) {
-    contain-intrinsic-height: rem(450);
+  @include media-queries.mq($from: md) {
+    contain-intrinsic-height: utils.rem(450);
   }
-  @include mq($from: lg) {
-    contain-intrinsic-height: rem(495);
+  @include media-queries.mq($from: lg) {
+    contain-intrinsic-height: utils.rem(495);
   }
 }
 
 .container {
-  @include nds-container;
-  @include nds-clearfix;
-  @include nds-hide-print;
-  padding: rem($nds-spacing-medium 0);
+  @include layout.container;
+  @include layout.clearfix;
+  @include visibility.hide-print;
+  padding: utils.rem(spacing.$medium 0);
 }
 
 .logo {
@@ -52,7 +57,7 @@
   $logo-aspect-ratio: math.div(512, 1410);
   display: block;
   height: 0;
-  margin: rem(0 0 $nds-spacing-large 0);
+  margin: utils.rem(0 0 spacing.$large 0);
   padding: 0;
   padding-bottom: $logo-width * $logo-aspect-ratio; // Aspect ratio of NICE logo SVG
   position: relative;
@@ -68,8 +73,8 @@
   }
 }
 
-@include mq($from: md) {
+@include media-queries.mq($from: md) {
   .logo {
-    margin-bottom: rem($nds-spacing-medium);
+    margin-bottom: utils.rem(spacing.$medium);
   }
 }

@@ -38,34 +38,6 @@ const standardsConfig = {
 	},
 };
 
-const evidenceHomeConfig = {
-	filename: "evidence-home",
-	title: "Evidence homepage",
-	bodyClasses: "layout-fill",
-	global_nav_config: {
-		service: "evidence",
-		header: {
-			search: false,
-		},
-	},
-};
-
-const evidenceSerpConfig = {
-	filename: "evidence-serp",
-	title: "Evidence SERP",
-	bodyClasses: "layout-fill layout-offcanvas-fixed",
-	global_nav_config: {
-		service: "evidence",
-		header: {
-			search: {
-				placeholder: "Search evidence…",
-				query: "diabetes",
-				autocomplete: "/evidence/autocomplete/?ajax=ajax",
-			},
-		},
-	},
-};
-
 const bnfConfig = {
 	filename: "bnf",
 	title: "BNF",
@@ -197,8 +169,6 @@ module.exports = [
 	blankConfig,
 	guidanceConfig,
 	standardsConfig,
-	evidenceHomeConfig,
-	evidenceSerpConfig,
 	bnfConfig,
 	bnfcConfig,
 	cksConfig,
