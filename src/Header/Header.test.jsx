@@ -154,7 +154,7 @@ describe("Header", () => {
 			);
 
 			wrapper.find("#navlink-bnfc").at(0).simulate("click");
-			expect(window.testFunc).toHaveBeenCalledTimes(1);
+			expect(window.testFunc).toHaveBeenCalledTimes(2);
 		});
 
 		it("should call onDropdownClose function name callback prop if dropdown is opened", () => {
@@ -166,7 +166,7 @@ describe("Header", () => {
 
 			wrapper.find("#navlink-bnfc").at(0).simulate("click");
 			wrapper.find("#navlink-bnfc").at(0).simulate("click");
-			expect(window.testFunc).toHaveBeenCalledTimes(2);
+			expect(window.testFunc).toHaveBeenCalledTimes(3);
 		});
 
 		it("should call onDropdownOpen callback prop if dropdown is opened", () => {
@@ -176,7 +176,7 @@ describe("Header", () => {
 			);
 
 			wrapper.find("#navlink-bnfc").at(0).simulate("click");
-			expect(onDropdownOpen).toHaveBeenCalledTimes(1);
+			expect(onDropdownOpen).toHaveBeenCalledTimes(2);
 		});
 
 		it("should call onDropdownClose callback prop if dropdown is closed", () => {
@@ -186,7 +186,7 @@ describe("Header", () => {
 			);
 			wrapper.find("#navlink-bnfc").at(0).simulate("click");
 			wrapper.find("#navlink-bnfc").at(0).simulate("click");
-			expect(onDropdownClose).toHaveBeenCalledTimes(2);
+			expect(onDropdownClose).toHaveBeenCalledTimes(3);
 		});
 	});
 
