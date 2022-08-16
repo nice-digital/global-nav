@@ -1,4 +1,6 @@
 import React, { useEffect, useState, createContext } from "react";
+import { useScrollLock } from "@mantine/hooks";
+
 import PropTypes from "prop-types";
 
 const defaultValues = { accountMenuIsExpanded: false, idOfOpenDropdown: null };
@@ -40,6 +42,14 @@ export const HeaderContextProvider = function ({ children }) {
 			});
 		}
 	}, [accountMenuIsExpanded, idOfOpenDropdown]);
+
+	const [scrollLock, setScrollLock] = useScrollLock(false, {
+		disableBodyPadding: true,
+	});
+
+	useEffect(() => {
+		setScrollLock(!!idOfOpenDropdown);
+	}, [idOfOpenDropdown]);
 
 	return (
 		<HeaderContext.Provider value={value}>{children}</HeaderContext.Provider>

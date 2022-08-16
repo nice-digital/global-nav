@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -17,7 +17,7 @@ import { HeaderContext } from "../context/HeaderContext";
 function Nav(props) {
 	const { accountsLinks } = props;
 	const context = useContext(HeaderContext);
-	const ref = useClickOutside(() => context.setidOfOpenDropdown(null));
+	const ref = useClickOutside(() => context.setidOfOpenDropdown(null), null);
 
 	function handleAccountNavItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
