@@ -41,7 +41,6 @@ export function Dropdown({
 		if (idOfOpenDropdown == id) {
 			const top = dropdownRef.current.getBoundingClientRect().top;
 			dropdownRef.current.style.maxHeight = `calc(100vh - ${top}px)`;
-			dropdownRef.current.style.backgroundColor = "yellow";
 			dropdownRef.current.style.overflowY = "auto";
 		}
 	}, [idOfOpenDropdown, dropdownRef, id, height, width]);
