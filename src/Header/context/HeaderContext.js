@@ -11,11 +11,16 @@ export const HeaderContextProvider = function ({ children }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 	const [accountMenuIsExpanded, setAccountMenuIsExpanded] = useState(false);
 
+	const menuOpen = new CustomEvent("menuOpen", {
+		bubbles: true,
+	});
+
 	const value = {
 		idOfOpenDropdown,
 		setidOfOpenDropdown,
 		accountMenuIsExpanded,
 		setAccountMenuIsExpanded,
+		menuOpen,
 	};
 
 	useEffect(() => {
@@ -26,7 +31,22 @@ export const HeaderContextProvider = function ({ children }) {
 		setidOfOpenDropdown(null);
 	};
 
+	const mousedownHandler = function (e) {
+		if (e.offsetX > e.target.clientWidth || e.offsetY > e.target.clientHeight) {
+			// mouse down over scroll element
+			console.log("you clicked scroll ", idOfOpenDropdown);
+		} else {
+			console.log("you clicked elsewhere");
+			window.dispatchEvent(menuOpen);
+		}
+	};
+
 	useEffect(() => {
+		window &&
+			window.addEventListener("menuOpen", () => {
+				setidOfOpenDropdown(null);
+			});
+		window && window.addEventListener("mousedown", mousedownHandler);
 		window && window.addEventListener("hashchange", hashChangeHandler);
 		return () => {
 			window && window.removeEventListener("hashchange", hashChangeHandler);
@@ -43,13 +63,13 @@ export const HeaderContextProvider = function ({ children }) {
 		}
 	}, [accountMenuIsExpanded, idOfOpenDropdown]);
 
-	const [scrollLock, setScrollLock] = useScrollLock(false, {
-		disableBodyPadding: true,
-	});
+	// const [scrollLock, setScrollLock] = useScrollLock(false, {
+	// 	disableBodyPadding: true,
+	// });
 
-	useEffect(() => {
-		setScrollLock(!!idOfOpenDropdown);
-	}, [idOfOpenDropdown]);
+	// useEffect(() => {
+	// 	setScrollLock(!!idOfOpenDropdown);
+	// }, [idOfOpenDropdown]);
 
 	return (
 		<HeaderContext.Provider value={value}>{children}</HeaderContext.Provider>
@@ -59,3 +79,13 @@ export const HeaderContextProvider = function ({ children }) {
 HeaderContextProvider.propTypes = {
 	children: PropTypes.node,
 };
+
+// const mousedownHandler = (e) => {
+// 	if (e.offsetX > e.target.clientWidth || e.offsetY > e.target.clientHeight) {
+// 		// mouse down over scroll element
+// 		// idOfOpenDropdown && !scrollClick && setScrollClick(true);
+// 		console.log("you clicked scroll ", idOfOpenDropdown);
+// 	} else {
+// 		console.log("you clicked elsewhere");
+// 	}
+// };

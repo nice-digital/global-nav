@@ -17,7 +17,10 @@ import { HeaderContext } from "../context/HeaderContext";
 function Nav(props) {
 	const { accountsLinks } = props;
 	const context = useContext(HeaderContext);
-	const ref = useClickOutside(() => context.setidOfOpenDropdown(null), null);
+	const ref = useClickOutside(
+		() => context.setidOfOpenDropdown(null),
+		[context.menuOpen]
+	);
 
 	function handleAccountNavItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");

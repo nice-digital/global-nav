@@ -38,11 +38,11 @@ export function Dropdown({
 	const { height, width } = useViewportSize();
 
 	useEffect(() => {
-		if (idOfOpenDropdown == id) {
-			const top = dropdownRef.current.getBoundingClientRect().top;
-			dropdownRef.current.style.maxHeight = `calc(100vh - ${top}px)`;
-			dropdownRef.current.style.overflowY = "auto";
-		}
+		// if (idOfOpenDropdown == id) {
+		// 	const top = dropdownRef.current.getBoundingClientRect().top;
+		// 	dropdownRef.current.style.maxHeight = `calc(100vh - ${top}px)`;
+		// 	dropdownRef.current.style.overflowY = "auto";
+		// }
 	}, [idOfOpenDropdown, dropdownRef, id, height, width]);
 
 	return (
