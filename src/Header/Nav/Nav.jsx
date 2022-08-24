@@ -17,10 +17,9 @@ import { HeaderContext } from "../context/HeaderContext";
 function Nav(props) {
 	const { accountsLinks } = props;
 	const context = useContext(HeaderContext);
-	const ref = useClickOutside(
-		() => context.setidOfOpenDropdown(null),
-		[context.menuOpen]
-	);
+	const ref = useClickOutside(() => {
+		!context.isScrolling() && context.setidOfOpenDropdown(null);
+	}, ["mouseup", "touchend"]);
 
 	function handleAccountNavItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");

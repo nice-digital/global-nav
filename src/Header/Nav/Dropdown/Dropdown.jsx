@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useEffect, useRef } from "react";
-import { useFocusTrap, useMergedRef, useViewportSize } from "@mantine/hooks";
+import React, { useContext } from "react";
+import { useFocusTrap } from "@mantine/hooks";
 import { HeaderContext } from "../../context/HeaderContext";
 import styles from "./Dropdown.module.scss";
 import reset from "./Reset.module.scss";
@@ -33,24 +33,12 @@ export function Dropdown({
 	const { host } = services.external.find((service) => service.id == id);
 	const rootUrl = id === currentService ? "" : `https://${host}`;
 
-	const dropdownRef = useRef();
-	const mergedRef = useMergedRef(dropdownRef, focusTrapRef);
-	const { height, width } = useViewportSize();
-
-	useEffect(() => {
-		// if (idOfOpenDropdown == id) {
-		// 	const top = dropdownRef.current.getBoundingClientRect().top;
-		// 	dropdownRef.current.style.maxHeight = `calc(100vh - ${top}px)`;
-		// 	dropdownRef.current.style.overflowY = "auto";
-		// }
-	}, [idOfOpenDropdown, dropdownRef, id, height, width]);
-
 	return (
 		<div
 			className={classnames([className, reset.wrapper])}
 			id={`dropdown-${id}`}
 			data-tracking={`${text} dropdown`}
-			ref={mergedRef}
+			ref={focusTrapRef}
 		>
 			<div className={styles.container}>
 				{nextNavSlug && (
