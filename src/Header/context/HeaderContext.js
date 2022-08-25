@@ -10,23 +10,26 @@ export const HeaderContextProvider = function ({ children }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 	const [accountMenuIsExpanded, setAccountMenuIsExpanded] = useState(false);
 
-	const handleEvents = (e) => {
-		if (e.type == "click") {
-			if (
-				e.target.id == "scrim" ||
-				e.target.getAttribute("aria-label") == "Site header"
-			) {
-				setidOfOpenDropdown(null);
-			}
-		}
-	};
-
 	const value = {
 		idOfOpenDropdown,
 		setidOfOpenDropdown,
 		accountMenuIsExpanded,
 		setAccountMenuIsExpanded,
 	};
+
+	const handleClickOutsideHeaderMenu = (e) => {
+		if (!document.querySelector("#header-menu").contains(e.target)) {
+			setidOfOpenDropdown(null);
+		}
+	};
+
+	useEffect(() => {
+		// listen for clicks outside of header menu to close dropdown
+		document.body.addEventListener("click", handleClickOutsideHeaderMenu);
+		return () => {
+			document.body.removeEventListener("click", handleClickOutsideHeaderMenu);
+		};
+	}, [idOfOpenDropdown]);
 
 	useEffect(() => {
 		setidOfOpenDropdown(null);
@@ -35,12 +38,6 @@ export const HeaderContextProvider = function ({ children }) {
 	const hashChangeHandler = () => {
 		setidOfOpenDropdown(null);
 	};
-
-	useEffect(() => {
-		["scroll", "click", "ontouchstart"].forEach((evt) =>
-			window.addEventListener(evt, handleEvents, false)
-		);
-	}, []);
 
 	useEffect(() => {
 		window && window.addEventListener("hashchange", hashChangeHandler);

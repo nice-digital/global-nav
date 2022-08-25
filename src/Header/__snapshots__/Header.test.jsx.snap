@@ -34,6 +34,7 @@ exports[`Header Matches snapshot 1`] = `
       </ul>
       <div
         className="container"
+        id="site-header"
       >
         <a
           aria-label="Home"
