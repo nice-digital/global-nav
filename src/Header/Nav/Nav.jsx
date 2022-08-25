@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -11,16 +11,8 @@ import {
 	headerClickEventAction,
 } from "../../tracker";
 
-import { useClickOutside } from "@mantine/hooks";
-import { HeaderContext } from "../context/HeaderContext";
-
 function Nav(props) {
 	const { accountsLinks } = props;
-	const context = useContext(HeaderContext);
-	const ref = useClickOutside(() => {
-		console.log("in hook ", context.isClickOutside);
-		context.isClickOutside && context.setidOfOpenDropdown(null);
-	}, ["mouseup", "touchend"]);
 
 	function handleAccountNavItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
@@ -111,7 +103,6 @@ function Nav(props) {
 					[styles.wrapperWithSubLinks]: subLinks,
 				}
 			)}
-			ref={ref}
 		>
 			<nav
 				className={styles.nav}
