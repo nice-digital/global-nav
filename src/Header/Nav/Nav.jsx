@@ -18,6 +18,7 @@ function Nav(props) {
 	const { accountsLinks } = props;
 	const context = useContext(HeaderContext);
 	const ref = useClickOutside(() => {
+		console.log("in hook ", context.isClickOutside);
 		context.isClickOutside && context.setidOfOpenDropdown(null);
 	}, ["mouseup", "touchend"]);
 

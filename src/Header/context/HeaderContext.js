@@ -1,5 +1,4 @@
 import React, { useEffect, useState, createContext } from "react";
-// import { useScrollLock } from "@mantine/hooks";
 
 import PropTypes from "prop-types";
 
@@ -13,6 +12,7 @@ export const HeaderContextProvider = function ({ children }) {
 	const [isClickOutside, setIsClickOutside] = useState(false);
 
 	const handleEvents = (e) => {
+		// console.log("handing event ", e);
 		if (e.type == "scroll") {
 			setIsClickOutside(false);
 		} else {
@@ -21,15 +21,21 @@ export const HeaderContextProvider = function ({ children }) {
 
 		if (e.type == "click") {
 			if (
-				e.offsetX > e.target.clientWidth ||
-				e.offsetY > e.target.clientHeight
+				(e.target.id !== "scrim" && e.offsetX > e.target.clientWidth) ||
+				(e.target.id !== "scrim" && e.offsetY > e.target.clientHeight)
 			) {
+				console.log("is in scrollbar ", e.target);
 				setIsClickOutside(false);
 			} else {
+				console.log("is not in scrollbar ", e.target);
 				setIsClickOutside(true);
 			}
 		}
 	};
+
+	useEffect(() => {
+		// console.log("click outside triggered ----> ", isClickOutside);
+	}, [isClickOutside]);
 
 	const value = {
 		idOfOpenDropdown,
@@ -48,7 +54,6 @@ export const HeaderContextProvider = function ({ children }) {
 	};
 
 	useEffect(() => {
-		// window && window.addEventListener("mouseup", mouseupHandler);
 		["scroll", "click", "ontouchstart"].forEach((evt) =>
 			window.addEventListener(evt, handleEvents, false)
 		);
