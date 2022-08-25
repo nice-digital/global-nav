@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext, createRef } from "react";
 
 import PropTypes from "prop-types";
 
@@ -9,18 +9,26 @@ export const HeaderContext = createContext(defaultValues);
 export const HeaderContextProvider = function ({ children }) {
 	const [idOfOpenDropdown, setidOfOpenDropdown] = useState(null);
 	const [accountMenuIsExpanded, setAccountMenuIsExpanded] = useState(false);
+	const clickOutsideRef = createRef();
 
 	const value = {
 		idOfOpenDropdown,
 		setidOfOpenDropdown,
 		accountMenuIsExpanded,
 		setAccountMenuIsExpanded,
+		clickOutsideRef,
 	};
 
 	const handleClickOutsideHeaderMenu = (e) => {
-		if (!document.querySelector("#header-menu").contains(e.target)) {
+		if (
+			clickOutsideRef.current &&
+			clickOutsideRef.current.contains(e.target) == false
+		) {
 			setidOfOpenDropdown(null);
 		}
+		// if (!document.querySelector("#header-menu").contains(e.target)) {
+		// 	setidOfOpenDropdown(null);
+		// }
 	};
 
 	useEffect(() => {

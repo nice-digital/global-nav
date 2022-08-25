@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import { HeaderContext } from "../../Header/context/HeaderContext";
 
 import NavLinks from "./NavLinks";
 import styles from "./Nav.module.scss";
@@ -13,6 +14,7 @@ import {
 
 function Nav(props) {
 	const { accountsLinks } = props;
+	const { clickOutsideRef } = useContext(HeaderContext);
 
 	function handleAccountNavItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
@@ -103,6 +105,7 @@ function Nav(props) {
 					[styles.wrapperWithSubLinks]: subLinks,
 				}
 			)}
+			ref={clickOutsideRef}
 		>
 			<nav
 				className={styles.nav}
