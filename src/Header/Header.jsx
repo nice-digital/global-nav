@@ -130,7 +130,7 @@ export class Header extends Component {
 									</SkipLink>
 								</li>
 							</ul>
-							<div className={styles.container} id="site-header">
+							<div className={styles.container}>
 								<a
 									href="https://www.nice.org.uk/"
 									aria-label="Home"
