@@ -26,9 +26,6 @@ export const HeaderContextProvider = function ({ children }) {
 		) {
 			setidOfOpenDropdown(null);
 		}
-		// if (!document.querySelector("#header-menu").contains(e.target)) {
-		// 	setidOfOpenDropdown(null);
-		// }
 	};
 
 	useEffect(() => {
