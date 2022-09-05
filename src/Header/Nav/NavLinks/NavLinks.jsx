@@ -1,5 +1,5 @@
-import React, { useEffect, useCallback, useContext } from "react";
-import { useEventListener } from "@mantine/hooks";
+import React, { useEffect, useContext } from "react";
+import useEscapeKeydown from "../../../hooks/useEscapeKeydown";
 
 import classnames from "classnames";
 import PropTypes from "prop-types";
@@ -50,8 +50,6 @@ export function NavLinks({
 		setCanUseDOM(true);
 	}, []);
 
-	const ESCAPE_KEYS = ["27", "Escape", "Esc"];
-
 	function handleNavButtonClick(id) {
 		setidOfOpenDropdown(id === idOfOpenDropdown ? null : id);
 	}
@@ -72,17 +70,17 @@ export function NavLinks({
 		);
 	}
 
-	const escapeDropdown = useCallback(function ({ key }) {
-		if (ESCAPE_KEYS.includes(String(key))) setidOfOpenDropdown(null);
-	});
+	const { keydownRef } = useEscapeKeydown(escapeKeydown);
 
-	const escapeDropdownRef = useEventListener("keydown", escapeDropdown);
+	function escapeKeydown(result) {
+		if (result) setidOfOpenDropdown(null);
+	}
 
 	return (
 		<ul
 			className={styles.menuList}
 			aria-labelledby="header-menu-button"
-			ref={escapeDropdownRef}
+			ref={keydownRef}
 		>
 			{servicesToDisplay
 				.filter(function (item) {
