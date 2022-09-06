@@ -34,7 +34,7 @@ export const HeaderContextProvider = function ({ children }) {
 		return () => {
 			document.body.removeEventListener("click", handleClickOutsideHeaderMenu);
 		};
-	}, [idOfOpenDropdown]);
+	}, [handleClickOutsideHeaderMenu]);
 
 	useEffect(() => {
 		setidOfOpenDropdown(null);
