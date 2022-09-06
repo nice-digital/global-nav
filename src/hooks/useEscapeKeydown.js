@@ -1,15 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 
 function useEscapeKeydown(action) {
 	const keydownRef = useRef(null);
 
 	const ESCAPE_KEYS = ["27", "Escape", "Esc"];
 
-	const handleKeydown = (event) => {
-		if (ESCAPE_KEYS.includes(event.key)) {
-			action(true);
-		}
-	};
+	const handleKeydown = useCallback(
+		(event) => {
+			if (ESCAPE_KEYS.includes(event.key)) {
+				action(true);
+			}
+		},
+		[action]
+	);
 
 	useEffect(() => {
 		document.addEventListener("keydown", handleKeydown, true);

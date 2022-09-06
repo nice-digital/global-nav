@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useCallback } from "react";
 import useEscapeKeydown from "../../../hooks/useEscapeKeydown";
 
 import classnames from "classnames";
@@ -70,11 +70,11 @@ export function NavLinks({
 		);
 	}
 
-	const { keydownRef } = useEscapeKeydown(escapeKeydown);
-
-	function escapeKeydown(result) {
+	const escapeKeydown = useCallback(function (result) {
 		if (result) setidOfOpenDropdown(null);
-	}
+	}, []);
+
+	const { keydownRef } = useEscapeKeydown(escapeKeydown);
 
 	return (
 		<ul

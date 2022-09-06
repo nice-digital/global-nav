@@ -1,4 +1,10 @@
-import React, { useEffect, useState, createContext, createRef } from "react";
+import React, {
+	useEffect,
+	useState,
+	createContext,
+	createRef,
+	useCallback,
+} from "react";
 
 import PropTypes from "prop-types";
 
@@ -19,14 +25,17 @@ export const HeaderContextProvider = function ({ children }) {
 		clickOutsideRef,
 	};
 
-	const handleClickOutsideHeaderMenu = (e) => {
-		if (
-			clickOutsideRef.current &&
-			clickOutsideRef.current.contains(e.target) == false
-		) {
-			setidOfOpenDropdown(null);
-		}
-	};
+	const handleClickOutsideHeaderMenu = useCallback(
+		(e) => {
+			if (
+				clickOutsideRef.current &&
+				clickOutsideRef.current.contains(e.target) == false
+			) {
+				setidOfOpenDropdown(null);
+			}
+		},
+		[clickOutsideRef]
+	);
 
 	useEffect(() => {
 		// listen for clicks outside of header menu to close dropdown
