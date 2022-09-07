@@ -96,7 +96,6 @@ exports[`Header Matches snapshot 1`] = `
         skipLinkId="content-start"
       />
     </header>
-    <CoronaMessage />
     <OldIEMessage />
   </div>
 </HeaderContextProvider>
