@@ -1,17 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import services from "../../../../services.json";
 import classnames from "classnames";
 
-export function StandardsAndIndicators() {
-	const baseUrl = services.external.filter(
-		(service) => service.id == "standards-and-indicators"
-	)[0].href;
-
-	const rootUrl = services.rootUrl;
-
+export function StandardsAndIndicators({ rootUrl }) {
 	return (
 		<section aria-label="Standards and indicators - dropdown navigation">
 			<Grid gutter="loose">
@@ -25,36 +19,40 @@ export function StandardsAndIndicators() {
 					<p>
 						<Button
 							variant="primary"
-							to="https://www.nice.org.uk/guidance/published?ndt=Quality+standard"
+							to={`${rootUrl}/guidance/published?ndt=Quality+standard`}
 						>
 							View our quality standards
 						</Button>
 					</p>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
 						<li>
-							<a href={`${baseUrl}/how-to-use-quality-standards`}>
+							<a
+								href={`${rootUrl}/standards-and-indicators/how-to-use-quality-standards`}
+							>
 								How to use our quality standards
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/timeline-developing-quality-standards`}>
+							<a
+								href={`${rootUrl}/standards-and-indicators/timeline-developing-quality-standards`}
+							>
 								The timeline for developing quality standards
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/get-involved`}>
+							<a href={`${rootUrl}/standards-and-indicators/get-involved`}>
 								Help us develop quality standards
 							</a>
 						</li>
 						<li>
 							<a
-								href={`${baseUrl}/selecting-and-prioritising-quality-standard-topics`}
+								href={`${rootUrl}/standards-and-indicators/selecting-and-prioritising-quality-standard-topics`}
 							>
 								Selecting and prioritising quality standards topics
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/quality-standards`}>
+							<a href={`${rootUrl}/standards-and-indicators/quality-standards`}>
 								About quality standards
 							</a>
 						</li>
@@ -67,7 +65,10 @@ export function StandardsAndIndicators() {
 						processes linked by evidence to improved outcomes.
 					</p>
 					<p>
-						<Button variant="primary" to={`${baseUrl}/index`}>
+						<Button
+							variant="primary"
+							to={`${rootUrl}/standards-and-indicators/index`}
+						>
 							View the single indicator menu
 						</Button>
 					</p>

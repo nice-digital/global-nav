@@ -1,19 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+/* eslint-disable react/prop-types */
+import React, { useContext } from "react";
+import { useFocusTrap } from "@mantine/hooks";
+import { HeaderContext } from "../../context/HeaderContext";
 import styles from "./Dropdown.module.scss";
 import reset from "./Reset.module.scss";
 import classnames from "classnames";
-
-import {
-	AboutUs,
-	BNF,
-	BNFc,
-	CKS,
-	Guidance,
-	LifeSciences,
-	More,
-	StandardsAndIndicators,
-} from "./Components/";
+import services from "../../../services.json";
 
 import Remove from "@nice-digital/icons/lib/Remove";
 
@@ -23,19 +15,11 @@ export function Dropdown({
 	nextNavSlug,
 	closeDropdown,
 	id,
-	component,
+	currentService,
+	component: DropdownComponent,
 }) {
-	const components = {
-		AboutUs: AboutUs,
-		BNF: BNF,
-		BNFc: BNFc,
-		CKS: CKS,
-		Guidance: Guidance,
-		LifeSciences: LifeSciences,
-		More: More,
-		StandardsAndIndicators: StandardsAndIndicators,
-	};
-	const Component = components[component];
+	const { idOfOpenDropdown } = useContext(HeaderContext);
+	const focusTrapRef = useFocusTrap(idOfOpenDropdown !== null);
 
 	function handleSkipLink(e) {
 		e.preventDefault();
@@ -46,27 +30,33 @@ export function Dropdown({
 		closeDropdown();
 	}
 
+	const { host } = services.external.find((service) => service.id == id);
+	const rootUrl = id === currentService ? "" : `https://${host}`;
+
 	return (
 		<div
 			className={classnames([className, reset.wrapper])}
-			id={id}
+			id={`dropdown-${id}`}
 			data-tracking={`${text} dropdown`}
+			ref={focusTrapRef}
 		>
 			<div className={styles.container}>
 				{nextNavSlug && (
-					<a
-						href={
-							nextNavSlug == "content-start"
-								? `#${nextNavSlug}`
-								: `#navlink-${nextNavSlug}`
-						}
-						className={styles.skiplink}
-						onClick={handleSkipLink}
-					>
-						Skip {text} submenu
-					</a>
+					<>
+						<a
+							href={
+								nextNavSlug == "content-start"
+									? `#${nextNavSlug}`
+									: `#navlink-${nextNavSlug}`
+							}
+							className={styles.skiplink}
+							onClick={handleSkipLink}
+						>
+							Skip {text} submenu
+						</a>
+					</>
 				)}
-				<Component />
+				{<DropdownComponent rootUrl={rootUrl} />}
 				<button
 					onClick={closeDropdown}
 					className={styles.exit}
@@ -78,14 +68,5 @@ export function Dropdown({
 		</div>
 	);
 }
-
-Dropdown.propTypes = {
-	text: PropTypes.string,
-	className: PropTypes.string,
-	nextNavSlug: PropTypes.string,
-	closeDropdown: PropTypes.func,
-	id: PropTypes.string,
-	component: PropTypes.string,
-};
 
 export default Dropdown;

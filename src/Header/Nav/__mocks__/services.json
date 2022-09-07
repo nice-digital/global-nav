@@ -1,19 +1,17 @@
 {
-  "rootUrl": "https://rootUrl.org.uk",
   "external": [
     {
-      "href": "https://url1/",
+      "host": "www.test.nice.org",
+      "landingPath": "/url1/",
       "text": "First link",
       "id": "link1",
-      "dropdown": true,
-      "dropdownComponent": "FirstComponent",
       "header": true
     },
     {
-      "href": "https://url2/",
+      "host": "www.test-link2.nice.org",
+      "landingPath": "/url2/",
       "text": "Second link",
       "id": "link2",
-      "dropdown": false,
       "header": true,
       "abbreviation": true,
       "title": "Abbreviation title",
@@ -29,12 +27,11 @@
       ]
     },
     {
-      "href": "https://url3/",
+      "host": "www.test.nice.org",
+      "landingPath": "/url3/",
       "text": "Third link",
       "id": "link3",
-      "dropdown": true,
       "header": true,
-      "dropdownComponent": "ThirdComponent",
       "abbreviation": true,
       "title": "Abbreviation title",
       "links": [
@@ -59,11 +56,19 @@
           "id": "nested-2"
         }
       ]
+    },
+    {
+      "host": "www.test.nice.org",
+      "landingPath": "/url4/",
+      "text": "Fourth link",
+      "id": "test-service",
+      "header": true
     }
   ],
   "internal": [
     {
-      "href": "/",
+      "host": "www.test.nice.org",
+      "landingPath": "/first-internal-service",
       "text": "First internal service",
       "id": "internal1",
       "header": true,
@@ -79,6 +84,8 @@
       ]
     },
     {
+      "host": "www.test.nice.org",
+      "landingPath": "/second-internal-service",
       "href": "/",
       "text": "Second internal service",
       "id": "internal2",

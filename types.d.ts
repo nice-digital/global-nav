@@ -32,7 +32,6 @@ declare module "@nice-digital/global-nav" {
 	};
 
 	export type Service =
-		| "pathways"
 		| "guidance"
 		| "standards"
 		| "evidence"

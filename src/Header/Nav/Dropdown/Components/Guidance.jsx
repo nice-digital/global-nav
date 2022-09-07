@@ -1,14 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Grid, GridItem } from "./Grid";
 import { Button } from "./Button";
 import styles from "./Components.module.scss";
-import services from "../../../../services.json";
 
-export function Guidance() {
-	const baseUrl = services.external.filter(
-		(service) => service.id == "guidance"
-	)[0].href;
-
+export function Guidance({ rootUrl }) {
 	return (
 		<section aria-label="NICE Guidance - dropdown navigation">
 			<h2 className="mt--0">Guidance</h2>
@@ -18,7 +14,7 @@ export function Guidance() {
 				stakeholders.
 			</p>
 
-			<Button variant="cta" to={baseUrl}>
+			<Button variant="cta" to={`${rootUrl}/guidance`}>
 				View guidance
 			</Button>
 
@@ -28,13 +24,13 @@ export function Guidance() {
 						<h3>New and updated</h3>
 						<ul className={styles.inlineList}>
 							<li>
-								<a href={`${baseUrl}/date`}>This month</a>
+								<a href={`${rootUrl}/guidance/date`}>This month</a>
 							</li>
 							<li>
-								<a href={`${baseUrl}/lastmonth`}>Last month</a>
+								<a href={`${rootUrl}/guidance/lastmonth`}>Last month</a>
 							</li>
 							<li>
-								<a href={`${baseUrl}/last6months`}>Last 6 months</a>
+								<a href={`${rootUrl}/guidance/last6months`}>Last 6 months</a>
 							</li>
 						</ul>
 					</div>
@@ -46,28 +42,32 @@ export function Guidance() {
 					<p className="h6">Find topics by</p>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}/conditions-and-diseases`}>
+							<a href={`${rootUrl}/guidance/conditions-and-diseases`}>
 								Conditions and diseases
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/health-and-social-care-delivery`}>
+							<a href={`${rootUrl}/guidance/health-and-social-care-delivery`}>
 								Health and social care delivery
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/health-protection`}>Health protection</a>
+							<a href={`${rootUrl}/guidance/health-protection`}>
+								Health protection
+							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/lifestyle-and-wellbeing`}>
+							<a href={`${rootUrl}/guidance/lifestyle-and-wellbeing`}>
 								Lifestyle and wellbeing
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/population-groups`}>Population groups</a>
+							<a href={`${rootUrl}/guidance/population-groups`}>
+								Population groups
+							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/settings`}>Settings</a>
+							<a href={`${rootUrl}/guidance/settings`}>Settings</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -76,7 +76,9 @@ export function Guidance() {
 					<ul className={styles.listUnstyled}>
 						<li>
 							<h4 className="h5 mb--c">
-								<a href={`${baseUrl}/inconsultation`}>In consultation</a>
+								<a href={`${rootUrl}/guidance/inconsultation`}>
+									In consultation
+								</a>
 							</h4>
 							<p className="mt--0">
 								Guidance and quality standards open for consultation.
@@ -84,7 +86,7 @@ export function Guidance() {
 						</li>
 						<li>
 							<h4 className="h5 mb--c">
-								<a href={`${baseUrl}/indevelopment`}>In development</a>
+								<a href={`${rootUrl}/guidance/indevelopment`}>In development</a>
 							</h4>
 							<p className="mt--0">
 								Guidance, quality standards and advice being developed.
@@ -92,7 +94,9 @@ export function Guidance() {
 						</li>
 						<li>
 							<h4 className="h5 mb--c">
-								<a href={`${baseUrl}/proposed`}>Awaiting development</a>
+								<a href={`${rootUrl}/guidance/proposed`}>
+									Awaiting development
+								</a>
 							</h4>
 							<p className="mt--0">
 								Guidance and quality standards that have been proposed for
@@ -105,7 +109,9 @@ export function Guidance() {
 						<li>
 							<p className="mt--0">Guiance being considered for development.</p>
 							<h4 className="h5 mb--c">
-								<a href={`${baseUrl}/topic-selection`}>Topic selection</a>
+								<a href={`${rootUrl}/guidance/topic-selection`}>
+									Topic selection
+								</a>
 							</h4>
 						</li>
 					</ul>
@@ -120,7 +126,7 @@ export function Guidance() {
 							<li>
 								<h4 className="h5 mt--0 mb--c">
 									<a
-										href={`${baseUrl}/published?type=apg,csg,cg,cov,mpg,ph,sg,sc`}
+										href={`${rootUrl}/guidance/published?type=apg,csg,cg,cov,mpg,ph,sg,sc`}
 									>
 										NICE guidelines
 									</a>
@@ -132,7 +138,7 @@ export function Guidance() {
 							</li>
 							<li>
 								<h4 className="h5 mt--0 mb--c">
-									<a href={`${baseUrl}/published?type=dg`}>
+									<a href={`${rootUrl}/guidance/published?type=dg`}>
 										Diagnostics guidance
 									</a>
 								</h4>
@@ -143,7 +149,7 @@ export function Guidance() {
 							</li>
 							<li>
 								<h4 className="h5 mt--0 mb--c">
-									<a href={`${baseUrl}/published?type=ipg`}>
+									<a href={`${rootUrl}/guidance/published?type=ipg`}>
 										Interventional procedures guidance
 									</a>
 								</h4>
@@ -158,7 +164,7 @@ export function Guidance() {
 						<ul className={styles.listUnstyled}>
 							<li>
 								<h4 className="h5 mt--0 mb--c">
-									<a href={`${baseUrl}/published?type=ta`}>
+									<a href={`${rootUrl}/guidance/published?type=ta`}>
 										Technology appraisal guidance
 									</a>
 								</h4>
@@ -169,7 +175,7 @@ export function Guidance() {
 
 							<li>
 								<h4 className="h5 mt--0 mb--c">
-									<a href={`${baseUrl}/published?type=hst`}>
+									<a href={`${rootUrl}/guidance/published?type=hst`}>
 										Highly specialised technologies guidance
 									</a>
 								</h4>
@@ -181,7 +187,7 @@ export function Guidance() {
 
 							<li>
 								<h4 className="h5 mt--0 mb--c">
-									<a href={`${baseUrl}/published?type=mtg`}>
+									<a href={`${rootUrl}/guidance/published?type=mtg`}>
 										Medical technologies guidance
 									</a>
 								</h4>

@@ -192,7 +192,10 @@ describe("Nav", () => {
 			const wrapper = mount(
 				<Nav {...defaultProps} service={internalServices[0].id} />
 			);
-			const links = wrapper.find("a[href='/']");
+
+			const links = wrapper.find(
+				"a[href='https://www.test.nice.org/first-internal-service']"
+			);
 			expect(links.length).toEqual(1);
 			expect(links.text()).toEqual("First internal service");
 		});
@@ -201,7 +204,9 @@ describe("Nav", () => {
 			const wrapper = mount(
 				<Nav {...defaultProps} service={internalServices[1].id} />
 			);
-			const links = wrapper.find("a[href='/']");
+			const links = wrapper.find(
+				"a[href='https://www.test.nice.org/second-internal-service']"
+			);
 			expect(links.length).toEqual(1);
 			expect(links.text()).toEqual("Second internal service");
 		});

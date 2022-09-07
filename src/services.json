@@ -1,41 +1,36 @@
 {
-  "rootUrl": "https://www.nice.org.uk",
   "external": [
     {
-      "href": "https://www.nice.org.uk/guidance",
+      "host": "www.nice.org.uk",
+      "landingPath": "/guidance",
       "text": "Guidance",
       "id": "guidance",
-      "dropdown": true,
-      "dropdownComponent": "Guidance",
       "footer": true,
       "header": true
     },
     {
-      "href": "https://www.nice.org.uk/standards-and-indicators",
+      "host": "www.nice.org.uk",
+      "landingPath": "/standards-and-indicators",
       "text": "Standards and indicators",
       "id": "standards-and-indicators",
-      "dropdown": true,
-      "dropdownComponent": "StandardsAndIndicators",
       "footer": true,
       "header": true
     },
     {
-      "href": "https://www.nice.org.uk/about/what-we-do/life-sciences",
+      "host": "www.nice.org.uk",
+      "landingPath": "/about/what-we-do/life-sciences",
       "text": "Life sciences",
       "id": "life-sciences",
-      "dropdown": true,
-      "dropdownComponent": "LifeSciences",
       "footer": true,
       "header": true
     },
     {
-      "href": "https://bnf.nice.org.uk",
+      "host": "bnf.nice.org.uk",
+      "landingPath": "/",
       "text": "British National Formulary (BNF)",
       "abbreviation": false,
       "title": "British National Formulary",
       "id": "bnf",
-      "dropdown": true,
-      "dropdownComponent": "BNF",
       "footer": true,
       "header": true,
       "links": [
@@ -67,13 +62,12 @@
       ]
     },
     {
-      "href": "https://bnfc.nice.org.uk",
+      "host": "bnfc.nice.org.uk",
+      "landingPath": "/",
       "text": "British National Formulary for Children (BNFC)",
       "abbreviation": false,
       "title": "British National Formulary for Children",
       "id": "bnfc",
-      "dropdown": true,
-      "dropdownComponent": "BNFc",
       "footer": true,
       "header": true,
       "links": [
@@ -105,13 +99,12 @@
       ]
     },
     {
-      "href": "https://cks.nice.org.uk",
+      "host": "cks.nice.org.uk",
+      "landingPath": "/",
       "text": "Clinical Knowledge Summaries (CKS)",
       "abbreviation": false,
       "title": "Clinical Knowledge Summaries",
       "id": "cks",
-      "dropdown": true,
-      "dropdownComponent": "CKS",
       "footer": true,
       "header": true,
       "links": [
@@ -139,18 +132,18 @@
       ]
     },
     {
-      "href": "https://www.nice.org.uk/about",
+      "host": "www.nice.org.uk",
+      "landingPath": "/about",
       "text": "About",
       "id": "about",
-      "dropdown": true,
-      "dropdownComponent": "AboutUs",
       "header": true
     },
     {
-      "href": "https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases",
+      "host": "www.nice.org.uk",
+      "landingPath": "/about/what-we-do/evidence-services/journals-and-databases",
+      "title": "Journals and databases",
       "text": "Knowledge resources",
       "id": "knowledge-resources",
-      "dropdown": false,
       "footer": true,
       "header": false
     }
@@ -158,10 +151,10 @@
 
   "internal": [
     {
-      "href": "/",
+      "host": "www.nice.org.uk",
+      "landingPath": "/",
       "text": "NICE In development",
       "id": "indev",
-      "dropdown": false,
       "header": true,
       "links": [
         {

@@ -1,96 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavLinks Matches snapshot with sub links for selected external service 1`] = `
-<FocusTrap
-  _createFocusTrap={[Function]}
-  active={false}
-  focusTrapOptions={
-    Object {
-      "clickOutsideDeactivates": true,
-      "initialFocus": false,
-    }
-  }
-  paused={false}
+<ul
+  aria-labelledby="header-menu-button"
+  className="menuList"
 >
-  <ul
-    aria-labelledby="header-menu-button"
-    className="menuList"
+  <li
+    data-tracking="First link"
+    key="link1"
   >
-    <li
-      data-tracking="First link"
-      key="link1"
+    <a
+      aria-current={null}
+      className="link"
+      href="https://www.test.nice.org/url1/"
+      id="navlink-link1"
+      onClick={[Function]}
     >
-      <button
-        aria-controls="dropdown-link1"
-        aria-current={null}
-        aria-expanded={false}
-        className="link"
-        id="navlink-link1"
-        onClick={[Function]}
-      >
-        <span>
-          First link
-        </span>
-        <SvgChevronDown
-          className="icon"
-          pointerEvents="none"
-        />
-      </button>
-      <Dropdown
-        className="dropdown"
-        closeDropdown={[Function]}
-        component="FirstComponent"
-        id="dropdown-link1"
-        nextNavSlug="link2"
-        text="First link"
+      <span>
+        First link
+      </span>
+    </a>
+  </li>
+  <li
+    data-tracking="Second link"
+    key="link2"
+  >
+    <a
+      aria-current={null}
+      aria-label="Abbreviation title"
+      className="link"
+      href="https://www.test-link2.nice.org/url2/"
+      id="navlink-link2"
+      onClick={[Function]}
+    >
+      <span>
+        Second link
+      </span>
+    </a>
+  </li>
+  <li
+    data-tracking="Third link"
+    key="link3"
+  >
+    <a
+      aria-current={null}
+      aria-label="Abbreviation title"
+      className="link"
+      href="https://www.test.nice.org/url3/"
+      id="navlink-link3"
+      onClick={[Function]}
+    >
+      <span>
+        Third link
+      </span>
+      <SvgChevronDown
+        className="icon"
+        pointerEvents="none"
       />
-    </li>
-    <li
-      data-tracking="Second link"
-      key="link2"
+    </a>
+    <ul
+      aria-label="More NICE services"
+      className="nonJsDropdown"
+      id="link3"
     >
-      <a
-        aria-current={null}
-        aria-label="Abbreviation title"
-        className="link"
-        href="https://url2/"
-        id="navlink-link2"
-        onClick={[Function]}
+      <li
+        key="nested-1"
       >
-        <span>
-          Second link
-        </span>
-      </a>
-    </li>
-    <li
-      data-tracking="Third link"
-      key="link3"
+        <a
+          href="https://nestedLink1"
+        >
+          Nested link one
+        </a>
+      </li>
+      <li
+        key="nested-2"
+      >
+        <a
+          href="https://nestedLink2"
+        >
+          Nested link two
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li
+    data-tracking="Fourth link"
+    key="test-service"
+  >
+    <a
+      aria-current={null}
+      className="link"
+      href="https://www.test.nice.org/url4/"
+      id="navlink-test-service"
+      onClick={[Function]}
     >
-      <button
-        aria-controls="dropdown-link3"
-        aria-current={null}
-        aria-expanded={false}
-        aria-label="Abbreviation title"
-        className="link"
-        id="navlink-link3"
-        onClick={[Function]}
-      >
-        <span>
-          Third link
-        </span>
-        <SvgChevronDown
-          className="icon"
-          pointerEvents="none"
-        />
-      </button>
-      <Dropdown
-        className="dropdown"
-        closeDropdown={[Function]}
-        component="ThirdComponent"
-        id="dropdown-link3"
-        text="Third link"
-      />
-    </li>
-  </ul>
-</FocusTrap>
+      <span>
+        Fourth link
+      </span>
+    </a>
+  </li>
+</ul>
 `;
