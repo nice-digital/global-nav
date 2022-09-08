@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import { HeaderContext } from "../../Header/context/HeaderContext";
 
 import NavLinks from "./NavLinks";
 import styles from "./Nav.module.scss";
@@ -11,17 +12,9 @@ import {
 	headerClickEventAction,
 } from "../../tracker";
 
-import useClickOutside from "../../hooks/useClickOutside";
-import { HeaderContext } from "../context/HeaderContext";
-
 function Nav(props) {
 	const { accountsLinks } = props;
-	const context = useContext(HeaderContext);
-	const { ref } = useClickOutside(wasClickedOutside);
-
-	function wasClickedOutside(result) {
-		if (result) context.setidOfOpenDropdown(null);
-	}
+	const { clickOutsideRef } = useContext(HeaderContext);
 
 	function handleAccountNavItemClick(e) {
 		const href = e.currentTarget.getAttribute("href");
@@ -68,7 +61,7 @@ function Nav(props) {
 		if (props.service && internalRootLink.id === props.service) {
 			internalService = true;
 			activeService = internalRootLink;
-			servicesToDisplay = [internalRootLink]; //unlike external, internal services dosn't display other internal services.
+			servicesToDisplay = [internalRootLink]; //unlike external, internal services don't display other internal services.
 			break;
 		}
 	}
@@ -112,7 +105,7 @@ function Nav(props) {
 					[styles.wrapperWithSubLinks]: subLinks,
 				}
 			)}
-			ref={ref}
+			ref={clickOutsideRef}
 		>
 			<nav
 				className={styles.nav}

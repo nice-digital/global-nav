@@ -1,14 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import services from "../../../../services.json";
 
-export function CKS() {
-	const baseUrl = services.external.filter((service) => service.id == "cks")[0]
-		.href;
-
-	const topicsAtoZurl = baseUrl + "/topics/#";
+export function CKS({ rootUrl }) {
+	const topicsAtoZurl = rootUrl + "/topics/#";
 
 	const topicsAtoZ = [
 		{ letter: "a", link: true },
@@ -46,7 +43,7 @@ export function CKS() {
 				Providing primary care practitioners with a readily accessible summary
 				of the current evidence base and practical advice on best practice
 			</p>
-			<Button variant="cta" to={baseUrl}>
+			<Button variant="cta" to={rootUrl}>
 				View CKS
 			</Button>
 
@@ -79,26 +76,26 @@ export function CKS() {
 					<h3>Topics most frequently visited</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}/topics/hypertension/`}>Hypertension</a>
+							<a href={`${rootUrl}/topics/hypertension/`}>Hypertension</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/topics/diabetes-type-2/`}>
+							<a href={`${rootUrl}/topics/diabetes-type-2/`}>
 								Diabetes - type 2
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/topics/gout/`}>Gout</a>
+							<a href={`${rootUrl}/topics/gout/`}>Gout</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/topics/migraine/`}>Migraine</a>
+							<a href={`${rootUrl}/topics/migraine/`}>Migraine</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/topics/allergic-rhinitis/`}>
+							<a href={`${rootUrl}/topics/allergic-rhinitis/`}>
 								Allergic rhinitis
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/topics/asthma/`}>Asthma</a>
+							<a href={`${rootUrl}/topics/asthma/`}>Asthma</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -106,7 +103,7 @@ export function CKS() {
 					<h3>Browse by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/specialities/`}>Specialities</a>
+							<a href={`${rootUrl}/specialities/`}>Specialities</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -114,13 +111,13 @@ export function CKS() {
 					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/whats-new/`}>Latest CKS</a>
+							<a href={`${rootUrl}/whats-new/`}>Latest CKS</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
 			<hr />
-			<a href={`${baseUrl}/about/`}>About CKS</a>
+			<a href={`${rootUrl}/about/`}>About CKS</a>
 		</section>
 	);
 }

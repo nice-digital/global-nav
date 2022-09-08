@@ -4,6 +4,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { headerId, footerId, renderHeader, renderFooter } from "./renderer";
 
+jest.mock("./services.json", () =>
+	require("./Header/Nav/__mocks__/services.json")
+);
+
 describe("renderer", () => {
 	let headerContainer, footerContainer, reactDOMRenderMock;
 

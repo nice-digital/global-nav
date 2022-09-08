@@ -73,34 +73,49 @@ describe("Search", () => {
 	});
 
 	describe("onSearching", () => {
-		it("should call searchSubmitHandler when the form is submitted", () => {
-			const wrapper = shallow(<Search {...defaultProps} />);
-			const handleSubmit = jest.spyOn(
-				wrapper.instance(),
-				"searchSubmitHandler"
-			);
+		describe("Form submit and button click", () => {
+			const div = document.createElement("div");
 
-			// Need to force update for some reason, see https://github.com/airbnb/enzyme/issues/944#issuecomment-322271527
-			wrapper.instance().forceUpdate();
+			beforeEach(() => {
+				// Avoid `attachTo: document.body` Warning
+				div.setAttribute("id", "container");
+				document.body.appendChild(div);
+			});
 
-			wrapper.find("form").at(0).simulate("submit");
+			afterEach(() => {
+				const div = document.getElementById("container");
+				if (div) {
+					document.body.removeChild(div);
+				}
+			});
 
-			expect(handleSubmit).toHaveBeenCalledTimes(1);
-		});
+			it("should call the onSearching prop when the form is submitted", () => {
+				const onSearching = jest.fn();
+				const wrapper = mount(
+					<Search {...defaultProps} onSearching={onSearching} />,
+					{ attachTo: div }
+				);
 
-		it("should call searchSubmitHandler when the button is clicked", () => {
-			const wrapper = shallow(<Search {...defaultProps} />);
-			const handleSubmit = jest.spyOn(
-				wrapper.instance(),
-				"searchSubmitHandler"
-			);
+				wrapper.find("form").simulate("submit", { preventDefault: () => {} });
 
-			// Need to force update for some reason, see https://github.com/airbnb/enzyme/issues/944#issuecomment-322271527
-			wrapper.instance().forceUpdate();
+				expect(onSearching).toHaveBeenCalled();
+				expect(onSearching).toHaveBeenCalledTimes(1);
+			});
 
-			wrapper.find("button").at(0).simulate("click");
+			it("should call onSearching prop when the button is clicked", () => {
+				const onSearching = jest.fn();
+				const wrapper = shallow(
+					<Search {...defaultProps} onSearching={onSearching} />
+				);
 
-			expect(handleSubmit).toHaveBeenCalledTimes(1);
+				wrapper
+					.find("button")
+					.at(0)
+					.simulate("click", { preventDefault: () => {} });
+
+				expect(onSearching).toHaveBeenCalled();
+				expect(onSearching).toHaveBeenCalledTimes(1);
+			});
 		});
 
 		it("should prevent default and call callback with the search query for a onSearching function", () => {

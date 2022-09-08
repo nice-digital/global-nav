@@ -1,14 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
-import services from "../../../../services.json";
 
-export function BNFc() {
-	const baseUrl = services.external.filter((service) => service.id == "bnfc")[0]
-		.href;
-
-	const drugsAtoZurl = baseUrl + "/drugs/#";
+export function BNFc({ rootUrl }) {
+	const drugsAtoZurl = rootUrl + "/drugs/#";
 
 	const drugsAtoZ = [
 		{ letter: "A", link: true },
@@ -47,7 +44,7 @@ export function BNFc() {
 				healthcare professionals with sound up-to-date information on the use of
 				medicines for treating children.
 			</p>
-			<Button variant="cta" to={baseUrl}>
+			<Button variant="cta" to={rootUrl}>
 				View BNFC
 			</Button>
 
@@ -79,10 +76,10 @@ export function BNFc() {
 					<h3>Browse A to Z by</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/interactions/`}>Interactions</a>
+							<a href={`${rootUrl}/interactions/`}>Interactions</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/treatment-summaries/`}>
+							<a href={`${rootUrl}/treatment-summaries/`}>
 								Treatment summaries
 							</a>
 						</li>
@@ -92,25 +89,25 @@ export function BNFc() {
 					<h3>Browse by type</h3>
 					<ul className={styles.listUnstyled} style={{ columnCount: 2 }}>
 						<li>
-							<a href={`${baseUrl}/medical-devices/`}>Medical devices</a>
+							<a href={`${rootUrl}/medical-devices/`}>Medical devices</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/borderline-substances/`}>
+							<a href={`${rootUrl}/borderline-substances/`}>
 								Borderline substances
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/dental-practitioners-formulary/`}>
+							<a href={`${rootUrl}/dental-practitioners-formulary/`}>
 								Dental practitioners&apos; formulary
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/nurse-prescribers-formulary/`}>
+							<a href={`${rootUrl}/nurse-prescribers-formulary/`}>
 								Nurse prescribers&apos; formulary
 							</a>
 						</li>
 						<li>
-							<a href={`${baseUrl}/guidance/`}>Medicines guidance</a>
+							<a href={`${rootUrl}/guidance/`}>Medicines guidance</a>
 						</li>
 					</ul>
 				</GridItem>
@@ -118,13 +115,13 @@ export function BNFc() {
 					<h3>What’s new</h3>
 					<ul className={styles.listUnstyled}>
 						<li>
-							<a href={`${baseUrl}/about/changes/`}>Latest BNFC</a>
+							<a href={`${rootUrl}/about/changes/`}>Latest BNFC</a>
 						</li>
 					</ul>
 				</GridItem>
 			</Grid>
 			<hr />
-			<a href={`${baseUrl}/about/`}>About BNFC</a>
+			<a href={`${rootUrl}/about/`}>About BNFC</a>
 		</section>
 	);
 }
