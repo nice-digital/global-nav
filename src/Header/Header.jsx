@@ -8,7 +8,6 @@ import {
 	trackEvent,
 } from "./../tracker";
 import OldIEMessage from "./OldIEMessage";
-import CoronaMessage from "./CoronaMessage";
 import Nav from "./Nav";
 import Search from "./Search";
 import Account from "./Account";
@@ -193,7 +192,6 @@ export class Header extends Component {
 								additionalSubMenuItems={this.props.additionalSubMenuItems}
 							/>
 						</header>
-						<CoronaMessage onResize={this.props.onResize} />
 						<OldIEMessage />
 					</div>
 				</HeaderContextProvider>

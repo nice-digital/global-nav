@@ -75,14 +75,6 @@ describe("Header", () => {
 		});
 	});
 
-	describe("Corona banner", () => {
-		it("Passes onResize handler to corona message component", () => {
-			const onResize = jest.fn();
-			const wrapper = shallow(<Header {...defaultProps} onResize={onResize} />);
-			expect(wrapper.find("CoronaMessage").props().onResize).toEqual(onResize);
-		});
-	});
-
 	describe("Search", () => {
 		it("Renders search by default", () => {
 			const wrapper = shallow(<Header {...defaultProps} />);
