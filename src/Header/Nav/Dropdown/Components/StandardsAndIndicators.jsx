@@ -69,7 +69,7 @@ export function StandardsAndIndicators({ rootUrl }) {
 							variant="primary"
 							to={`${rootUrl}/standards-and-indicators/index`}
 						>
-							View the single indicator menu
+							View list of indicators
 						</Button>
 					</p>
 					<ul className={classnames(styles.listUnstyled, "mt--d")}>
