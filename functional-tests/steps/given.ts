@@ -1,4 +1,4 @@
-import { Given } from "cucumber";
+import { Given } from "@cucumber/cucumber";
 import "@nice-digital/wdio-cucumber-steps/lib/given";
 
 // Uncomment below section to write custom step definitions
@@ -10,5 +10,5 @@ Given(
 );*/
 
 Given("I go to the NICE homepage", async () => {
-	await browser.navigateTo("https://www.nice.org.uk");
+	await browser.navigateTo("https://alpha.nice.org.uk");
 });
