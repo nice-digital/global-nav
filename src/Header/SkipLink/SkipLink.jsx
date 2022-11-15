@@ -23,8 +23,6 @@ export default class SkipLink extends Component {
 				element.setAttribute("tabIndex", "-1");
 				element.focus();
 				window.scrollTo(0, this.getYOffset(element));
-			} else {
-				console.warn(`Skip link target with id ${id} doesn't exist`);
 			}
 		}
 	}

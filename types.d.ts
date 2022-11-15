@@ -33,7 +33,7 @@ declare module "@nice-digital/global-nav" {
 
 	export type Service =
 		| "guidance"
-		| "standards"
+		| "standards-and-indicators"
 		| "evidence"
 		| "bnf"
 		| "bnfc"

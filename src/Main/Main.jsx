@@ -28,7 +28,7 @@ Main.propTypes = {
 		PropTypes.node,
 	]).isRequired,
 	className: PropTypes.string,
-	withPadding: PropTypes.boolean,
+	withPadding: PropTypes.bool,
 };
 
 export default Main;
