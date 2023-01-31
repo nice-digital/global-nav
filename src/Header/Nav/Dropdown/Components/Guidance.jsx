@@ -157,11 +157,6 @@ export function Guidance({ rootUrl }) {
 									<span>Review the efficacy and safety of&nbsp;procedures</span>
 								</p>
 							</li>
-						</ul>
-					</GridItem>
-
-					<GridItem>
-						<ul className={styles.listUnstyled}>
 							<li>
 								<h4 className="h5 mt--0 mb--c">
 									<a href={`${rootUrl}/guidance/published?type=ta`}>
@@ -170,6 +165,24 @@ export function Guidance({ rootUrl }) {
 								</h4>
 								<p className="mt--0">
 									Review clinical and cost effectiveness of new&nbsp;treatments.
+								</p>
+							</li>
+						</ul>
+					</GridItem>
+
+					<GridItem>
+						<ul className={styles.listUnstyled}>
+							<li>
+								<h4 className="h5 mt--0 mb--c">
+									<a
+										href={`${rootUrl}/guidance/published?ngt=Health+technology+evaluations`}
+									>
+										Health technology evaluation guidance
+									</a>
+								</h4>
+								<p className="mt--0">
+									Review evidence to support adoption of health technologies in
+									the NHS.
 								</p>
 							</li>
 
