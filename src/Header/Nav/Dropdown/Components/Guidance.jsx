@@ -154,7 +154,9 @@ export function Guidance({ rootUrl }) {
 									</a>
 								</h4>
 								<p className="mt--0">
-									<span>Review the efficacy and safety of&nbsp;procedures</span>
+									<span>
+										Review the efficacy and safety of&nbsp;procedures.
+									</span>
 								</p>
 							</li>
 							<li>
