@@ -181,8 +181,8 @@ export function Guidance({ rootUrl }) {
 									</a>
 								</h4>
 								<p className="mt--0">
-									Review evidence to support adoption of health technologies in
-									the NHS.
+									Exploring new ways to support adoption of health technologies
+									in the NHS, including early value assessment.
 								</p>
 							</li>
 
