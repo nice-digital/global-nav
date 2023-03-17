@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -39,6 +39,10 @@ export const renderHeader = function () {
 		if (onRendering) {
 			onRendering.call(window, headerElement);
 		}
+
+		const root = createRoot(headerElement);
+
+		root.render(<Header service={config.service} {...config.header} />);
 
 		render(
 			<Header service={config.service} {...config.header} />,
