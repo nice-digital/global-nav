@@ -55,7 +55,7 @@ button.link {
 .dropdown {
   background-color: $body;
   box-shadow: 0 utils.rem(spacing.$small) utils.rem(spacing.$small) 0
-    rgba(0, 0, 0, 0.1);
+    rgba(0 0 0 / 10%);
   display: none;
   left: 0;
   position: relative;

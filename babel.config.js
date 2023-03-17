@@ -15,10 +15,6 @@ module.exports = function (api) {
 			"@babel/preset-react",
 		],
 		plugins: [
-			// Plugins to support ES3 syntax for IE8. These can be removed when we drop IE8 support.
-			"@babel/plugin-transform-member-expression-literals",
-			"@babel/plugin-transform-property-literals",
-			"@babel/plugin-transform-reserved-words",
 			// Including helpers from plugin-transform-runtime saves ~3Kb from minified bundle size
 			"@babel/plugin-transform-runtime",
 		],

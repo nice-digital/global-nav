@@ -72,13 +72,7 @@ module.exports = function (env, argv) {
 			optimization: {
 				minimize: true,
 				minimizer: [
-					// Custom minimizer so we can uglify with support for IE8.
-					// We can remove this and revert to the default webpack production
-					// minifier when we drop IE8 support
 					new TerserPlugin({
-						terserOptions: {
-							ie8: true,
-						},
 						include: /\.min\.js$/,
 					}),
 				],

@@ -19,9 +19,6 @@ module.exports = function (env, argv) {
 		context: path.resolve(__dirname, "src"),
 		entry: {
 			"global-nav": "./cdn.js",
-			// To polyfill for ES3 browsers e.g. IE8
-			// We can remove this when we drop IE8 support
-			"global-nav.ie8": "./polyfill",
 		},
 
 		output: {
@@ -70,10 +67,9 @@ module.exports = function (env, argv) {
 						{
 							loader: "css-loader",
 							options: {
-								importLoaders: 2,
+								importLoaders: 1,
 								modules: {
 									auto: true,
-									localIdentHashPrefix: "global-nav",
 									localIdentName: isDevelopment
 										? "[name]__[local]--[hash:base64]"
 										: "gn_[hash:base64:5]",
@@ -83,14 +79,14 @@ module.exports = function (env, argv) {
 						},
 						{
 							loader: "postcss-loader",
-							options: { sourceMap: true },
+							options: { sourceMap: isDevelopment },
 						},
 						{
 							loader: "sass-loader",
 							options: {
 								// See https://medium.com/@toolmantim/getting-started-with-css-sourcemaps-and-in-browser-sass-editing-b4daab987fb0
 								// if you want to edit SASS in Chrome DevTools
-								sourceMap: true,
+								sourceMap: isDevelopment,
 								sassOptions: {
 									outputStyle: "compressed",
 								},
@@ -102,36 +98,24 @@ module.exports = function (env, argv) {
 					test: /\.(png|svg|jpg|gif)$/,
 					use: ["file-loader"],
 				},
-			].concat(
-				HOT
-					? []
-					: {
-							// Use es3ify loader to support IE8 by changing something.default to something["default"] etc
-							// We can remove this when we drop support for IE8
-							test: /\.jsx?$/,
-							enforce: "post",
-							use: "es3ify-loader",
-					  }
-			),
+			],
 		},
 
 		plugins: [
 			HOT && new ReactRefreshWebpackPlugin(),
 			new ESLintPlugin(),
 			new StyleLintPlugin(),
-			// Add a ponyfill for Promise/fetch implementation in IE 8/9+
+			// Add a ponyfill for Promise/fetch implementation in IE 11
 			// Ponyfill rather than polyfill to avoid polluting global scope
 			new webpack.ProvidePlugin({
 				Promise: "promise-polyfill",
-				fetch: "unfetch",
+				// Direct path to unfetch because of this: https://github.com/developit/unfetch/pull/164#issuecomment-1426069180
+				fetch: path.resolve(__dirname, "node_modules/unfetch/dist/unfetch.mjs"),
 			}),
 
 			new HtmlWebpackPlugin({
 				template: "./../examples/index.html",
 				minify: { collapseWhitespace: true },
-				// Exlucde the IE8 bundle from outputting in the HTML file.
-				// This is so that we can manually include it in a conditional comment.
-				excludeChunks: ["global-nav.ie8"],
 				templateParameters: {
 					global_nav_config: {
 						header: {
@@ -152,9 +136,6 @@ module.exports = function (env, argv) {
 
 					return new HtmlWebpackPlugin({
 						template: "./../examples/example.html",
-						// Exlucde the IE8 bundle from outputting in the HTML file.
-						// This is so that we can manually include it in a conditional comment.
-						excludeChunks: ["global-nav.ie8"],
 						filename: filename + ".html",
 						title,
 						templateParameters: {
@@ -175,24 +156,19 @@ module.exports = function (env, argv) {
 
 		stats: { colors: true },
 
-		// Eval sourcemaps don't play nicely with IE8 (because es3ify doesn't work on
-		// strings and we still have code like something.default which breaks IE8).
-		// When we drop support for IE8 then we can revert to just using eval sourcemaps.
-		devtool: HOT ? "eval" : false,
+		devtool: "eval",
 
 		devServer: {
 			port: process.env.PORT || 8080,
-			host: "0.0.0.0",
-			publicPath: "/",
-			contentBase: path.join(__dirname, "examples/assets"),
+			host: "local-ip",
+			static: {
+				publicPath: "/",
+				directory: path.join(__dirname, "examples/assets"),
+			},
 			historyApiFallback: true,
 			open: true,
-			openPage: "",
-			useLocalIp: true,
-			// hot: false and inline: false to support IE8 in dev mode.
-			// These can be set to true when we add IE8 support
-			hot: HOT,
-			inline: HOT,
+			//openPage: "",
+			hot: true,
 			proxy: {
 				// For mimicking niceorg autocomplete endpoint
 				"/niceorg": {

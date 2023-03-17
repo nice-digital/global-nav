@@ -1,18 +1,16 @@
 {
-	"extends": "stylelint-config-standard",
-	"plugins": ["stylelint-scss", "stylelint-order"],
+	"extends": [
+		"stylelint-config-standard-scss",
+		"stylelint-prettier/recommended"
+	],
+	"plugins": ["stylelint-order"],
 	"rules": {
+		"selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
+		"scss/percent-placeholder-pattern": "^[a-z][a-zA-Z0-9]+$",
+		"scss/at-extend-no-missing-placeholder": null,
 		"at-rule-no-unknown": null,
-		"block-closing-brace-newline-after": [
-			"always",
-			{
-				"ignoreAtRules": ["if", "else"]
-			}
-		],
 		"scss/at-rule-no-unknown": true,
-		"declaration-colon-newline-after": null,
 		"selector-pseudo-element-colon-notation": "single",
-		"number-leading-zero": "always",
 		"declaration-empty-line-before": "never",
 		"at-rule-empty-line-before": null,
 		"no-invalid-position-at-import-rule": null,
