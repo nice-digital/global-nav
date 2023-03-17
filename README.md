@@ -63,7 +63,6 @@
 		- [CDN](#cdn)
 			- [Container IDs](#container-ids)
 			- [Overrides](#overrides)
-			- [Supporting IE8](#supporting-ie8)
 			- [Configuration](#configuration)
 				- [service](#service)
 				- [header](#header)
@@ -101,14 +100,12 @@ The following non-functional requirements apply:
 
 - _accessible_: to WCAG 2.0 AA
 - _touch_: optimized for touch with sufficient touch targets
-- _performance_: budget of 50KB total minified and gzipped, with single HTTP request
 - _print_: print styles
 - _security_: tested against OWASP top 10 and pen tested
 - _progressive enhancement_:
   - mobile first
   - non-JS fallback for SSR React apps
-- _browser support_: IE8+
-  - 'functional' in < IE11
+- _browser support_: IE11+
 
 ## Stack
 
@@ -118,7 +115,6 @@ The following non-functional requirements apply:
 - [CSS Modules](https://github.com/css-modules/css-modules) for generated class names
 - [PostCSS](https://postcss.org/) for transforming CSS with plugins:
   - [autoprefixer](https://autoprefixer.github.io/) for automatically adding vendor prefixes in CSS
-  - [pixrem](https://github.com/robwierzbowski/node-pixrem) for adding pixel fallbacks to rem values to support IE8+
   - and [NICE Digital shared browserslist config](https://github.com/nice-digital/browserslist-config#readme)
 - [Webpack](https://webpack.js.org/) for module bundling
 - [Babel 7](https://babeljs.io/) for ES6/JSX → ES5 transpilation
@@ -129,7 +125,7 @@ The following non-functional requirements apply:
 - [Prettier](https://prettier.io/) for code formatting
 - [Jest](https://jestjs.io/) for JS unit tests and snapshot tests
 - [NICE Design System](https://nice-digital.github.io/nice-design-system/) core for SASS mixins, functions and colour/spacing variables
-- [NICE Icons](https://github.com/nice-digital/nice-icons)
+  - [NICE Icons](https://github.com/nice-digital/nice-icons)
 
 ### Principles
 
@@ -170,8 +166,6 @@ We considered [Preact](https://preactjs.com/) as a React alternative as it's onl
 - it didn't have full support for React 16
 - the [browser support](https://preactjs.com/about/browser-support) docs were vague on detail for supporting IE8 and we struggled to get it to work.
 
-We may consider replacing Nerv with Preact in the future if we drop support for IE8.
-
 ### CSS Modules
 
 We use SCSS modules for a few reasons:
@@ -190,7 +184,7 @@ Using SCSS allows us to use mixins, functions and variables from the NICE Design
 **TL;DR;** to run the project locally, do the following:
 
 - install [Node 14+](https://nodejs.org/en/download/) or latest LTS version. Or even better, use [Volta](https://volta.sh/) to use the Node version pinned in package.json.
-- run `npm i` on the command line to install dependencies
+- run `npm ci` on the command line to install dependencies
 - run `npm start` on the command line
 - navigate to http://localhost:8080/ in a browser.
 
@@ -200,8 +194,6 @@ This compiles the application and spins up a development server. It then watches
 - automatically rebuilds the app.
 
 It then automatically reloads the application in the Browser (so no need for a manual reload) using [Hot Module Replacement (HMR) in webpack](https://webpack.js.org/concepts/hot-module-replacement/).
-
-> Note HMR doesn't work in IE8. Run the app via `npm run start:nohot` to test in IE8. You'll then to reload manually.
 
 ### Other commands
 
@@ -270,7 +262,6 @@ The following VS Code extensions are **strongly** recommended, but not required:
 
 - Check you have the right version of Node installed
 - Make sure have LF line endings as this is a cross-platform project. This _should_ happen automatically because of settings in _.gitattributes_ and _.editorconfig_.
-- Use normal functions, rather than arrow functions because of support for IE8
 - Watch out for features of React that Nerv doesn't support, for example refs.
 
 ## How to use
@@ -718,8 +709,6 @@ or
 
 Note the production build needs the `+` character in the build metadata encoding as `%2B` to avoid browsers interpreting it as a space in the URL.
 
-> See the [IE8](#supporting-ie8) section below if you're supporting IE8.
-
 #### Container IDs
 
 The CDN version of Global Nav creates its own containers for the header and footer if they don't already exist on the page. These containers use the ids:
@@ -757,19 +746,6 @@ Try not to override Global Nav styles in your app: the Global Nav exists to give
   position: relative;
 }
 ```
-
-#### Supporting IE8
-
-Include the Global Nav polyfills before Global Nav itself to support IE8, for example:
-
-```js
-<!--[if lt IE 9]>
-	<script src="//cdn.nice.org.uk/global-nav/global-nav.ie8.min.js"></script>
-<![endif]-->
-<script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
-```
-
-> Note: if you're supporting IE8 then you'll also need to include [html5shiv](https://github.com/aFarkas/html5shiv) in the `head` because we use HTML5 semantic elements like `header` and `footer`.
 
 #### Configuration
 

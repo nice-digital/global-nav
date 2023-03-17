@@ -1,6 +1,6 @@
 {
   "root": true,
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": [
     "@nice-digital/eslint-config/es6",
     "plugin:jsx-a11y/recommended",

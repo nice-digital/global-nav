@@ -14,6 +14,9 @@ module.exports = {
 	],
 	snapshotSerializers: ["enzyme-to-json/serializer"],
 	collectCoverage: process.env.TEAMCITY_VERSION ? true : false,
-	testURL: "https://global-nav-tests.nice.org.uk/",
+	testEnvironment: "jsdom",
+	testEnvironmentOptions: {
+		url: "https://global-nav-tests.nice.org.uk/",
+	},
 	testPathIgnorePatterns: ["lib"],
 };
