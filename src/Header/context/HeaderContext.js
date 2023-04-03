@@ -49,14 +49,14 @@ export const HeaderContextProvider = function ({ children }) {
 		setidOfOpenDropdown(null);
 	}, [typeof location == "undefined" ? null : location.href]);
 
-	const hashChangeHandler = () => {
+	const popStateHandler = () => {
 		setidOfOpenDropdown(null);
 	};
 
 	useEffect(() => {
-		window && window.addEventListener("hashchange", hashChangeHandler);
+		window && window.addEventListener("popstate", popStateHandler);
 		return () => {
-			window && window.removeEventListener("hashchange", hashChangeHandler);
+			window && window.removeEventListener("popstate", popStateHandler);
 		};
 	}, []);
 
