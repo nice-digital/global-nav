@@ -12,7 +12,6 @@ module.exports = {
 		"!<rootDir>/src/setupTests.js",
 		"!**/node_modules/**",
 	],
-	snapshotSerializers: ["enzyme-to-json/serializer"],
 	collectCoverage: process.env.TEAMCITY_VERSION ? true : false,
 	testEnvironment: "jsdom",
 	testEnvironmentOptions: {

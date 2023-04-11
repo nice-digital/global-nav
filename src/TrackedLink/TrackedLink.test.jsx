@@ -1,7 +1,6 @@
 import React from "react";
 import TrackedLink from "./TrackedLink";
-import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
+import { render } from "@testing-library/react";
 
 import { eventName, defaultEventCategory } from "../tracker";
 
@@ -15,22 +14,13 @@ describe("TrackedLink", () => {
 		delete window.dataLayer;
 	});
 
-	it("Renders without crashing", () => {
-		const wrapper = shallow(
-			<TrackedLink href="#" eventAction="Click">
-				test
-			</TrackedLink>
-		);
-		expect(wrapper).toHaveLength(1);
-	});
-
 	it("Matches snapshot", () => {
-		const wrapper = shallow(
+		const { container } = render(
 			<TrackedLink href="/a-url" eventAction="Action" className="className">
 				Some text
 			</TrackedLink>
 		);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it("should send event to the dataLayer with navigating event callback on link click", () => {
@@ -39,7 +29,7 @@ describe("TrackedLink", () => {
 			eventAction = "Test action",
 			eventLabel = "Test label";
 
-		const wrapper = shallow(
+		const { container } = render(
 			<TrackedLink
 				eventAction={eventAction}
 				eventLabel={eventLabel}
@@ -79,7 +69,7 @@ describe("TrackedLink", () => {
 			eventAction = "Test action",
 			eventLabel = "Some text";
 
-		const wrapper = shallow(
+		const { container } = render(
 			<TrackedLink
 				href="/anything"
 				eventAction={eventAction}
@@ -113,7 +103,7 @@ describe("TrackedLink", () => {
 		const eventAction = "Test action",
 			href = "https://www.nice.org.uk/a-url";
 
-		const wrapper = shallow(
+		const { container } = render(
 			<TrackedLink href="/anything" eventAction={eventAction}>
 				Some other text
 			</TrackedLink>

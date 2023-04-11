@@ -1,7 +1,6 @@
 import React from "react";
 import SubNav from "./SubNav";
-import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
+import { render } from "@testing-library/react";
 
 import {
 	eventName,
@@ -26,26 +25,21 @@ describe("SubNav", () => {
 		},
 	];
 
-	it("Renders without crashing", () => {
-		const wrapper = shallow(<SubNav text="BNF" links={links} />);
-		expect(wrapper).toHaveLength(1);
-	});
-
 	it("Matches snapshot", () => {
-		const wrapper = shallow(<SubNav text="BNF" links={links} />);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		const { container } = render(<SubNav text="BNF" links={links} />);
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Adds aria-current=page attribute to link when matches current URL", () => {
 		window.location.pathname = links[1].href;
-		const wrapper = shallow(<SubNav text="BNF" links={links} />);
+		const { container } = render(<SubNav text="BNF" links={links} />);
 
 		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
 	});
 
 	it("Adds aria-current=true attribute to link when partially matches current URL", () => {
 		window.location.pathname = links[1].href + "abacavir.html";
-		const wrapper = shallow(<SubNav text="BNF" links={links} />);
+		const { container } = render(<SubNav text="BNF" links={links} />);
 
 		expect(wrapper.find("a").at(0).props()["aria-current"]).toEqual(true);
 	});
@@ -61,7 +55,7 @@ describe("SubNav", () => {
 		});
 
 		it("should call onNavigating on click", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
+			const { container } = render(<SubNav text="BNF" links={links} />);
 
 			const handleClick = jest.spyOn(wrapper.instance(), "handleClick");
 
@@ -81,7 +75,7 @@ describe("SubNav", () => {
 		});
 
 		it("should prevent default on click", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
+			const { container } = render(<SubNav text="BNF" links={links} />);
 
 			const preventDefault = jest.fn();
 
@@ -99,7 +93,7 @@ describe("SubNav", () => {
 		});
 
 		it("should send event to dataLayer on click ", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
+			const { container } = render(<SubNav text="BNF" links={links} />);
 
 			const eventLabel = links[0].text;
 
@@ -127,7 +121,7 @@ describe("SubNav", () => {
 		});
 
 		it("should navigate in callback on click with no onNavigating prop", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
+			const { container } = render(<SubNav text="BNF" links={links} />);
 
 			const href = "https://sub-nav-test.nice.org.uk/" + links[0].href;
 
@@ -147,7 +141,7 @@ describe("SubNav", () => {
 		});
 
 		it("should navigate in event callback on click with onNavigating prop that doesn't exist", () => {
-			const wrapper = shallow(
+			const { container } = render(
 				<SubNav text="BNF" links={links} onNavigating="blah" />
 			);
 
@@ -171,7 +165,7 @@ describe("SubNav", () => {
 		it("should call onNavigating function prop in event callback on click", () => {
 			const onNavigating = jest.fn();
 
-			const wrapper = shallow(
+			const { container } = render(
 				<SubNav text="BNF" links={links} onNavigating={onNavigating} />
 			);
 
@@ -202,7 +196,7 @@ describe("SubNav", () => {
 
 			window.onNavigatingHandler = onNavigating;
 
-			const wrapper = shallow(
+			const { container } = render(
 				<SubNav text="BNF" links={links} onNavigating="onNavigatingHandler" />
 			);
 
