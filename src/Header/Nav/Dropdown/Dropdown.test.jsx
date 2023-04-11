@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { render } from "@testing-library/react";
 import { Dropdown } from "./Dropdown";
 
 jest.mock("../../../services.json", () =>
@@ -15,13 +15,8 @@ describe("Dropdown", () => {
 		component: DropdownComponent,
 	};
 
-	it("Renders without crashing", () => {
-		const wrapper = shallow(<Dropdown {...defaultProps} />);
-		expect(wrapper).toHaveLength(1);
-	});
-
 	it("Should have a data-tracking attribute on the wrapper", () => {
-		const wrapper = shallow(<Dropdown {...defaultProps} />);
+		const { container } = render(<Dropdown {...defaultProps} />);
 		const trackingDiv = wrapper.find("div[data-tracking]");
 		expect(trackingDiv.length).toEqual(1);
 		expect(trackingDiv.props()["data-tracking"]).toEqual(
@@ -30,7 +25,7 @@ describe("Dropdown", () => {
 	});
 
 	it("should render the given component", () => {
-		const wrapper = shallow(<Dropdown {...defaultProps} />);
+		const { container } = render(<Dropdown {...defaultProps} />);
 		expect(
 			wrapper.find("[rootUrl='https://www.test-link2.nice.org']").length
 		).toEqual(1);
@@ -39,7 +34,7 @@ describe("Dropdown", () => {
 	it("Should render a skip link when there is a next nav item to skip to", () => {
 		const closingFunction = jest.fn();
 		const preventer = jest.fn();
-		const wrapper = shallow(
+		const { container } = render(
 			<Dropdown
 				{...defaultProps}
 				nextNavSlug="next-thing"
@@ -57,14 +52,14 @@ describe("Dropdown", () => {
 	});
 
 	it("Should not render a skip link when there is no next nav item to skip to", () => {
-		const wrapper = shallow(<Dropdown {...defaultProps} />);
+		const { container } = render(<Dropdown {...defaultProps} />);
 		expect(wrapper.find("a[href='#navlink-next-thing']").length).toEqual(0);
 	});
 
 	it("should fire onClosing when the close dropdown button is clicked", () => {
 		const closingFunction = jest.fn();
 
-		const wrapper = shallow(
+		const { container } = render(
 			<Dropdown {...defaultProps} closeDropdown={closingFunction} />
 		);
 

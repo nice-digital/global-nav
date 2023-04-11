@@ -44,6 +44,7 @@ export const renderHeader = function () {
 
 		root.render(<Header service={config.service} {...config.header} />);
 
+		// TODO: Replace the old onRendered callback with a ref, see https://blog.saeloun.com/2021/07/15/react-18-adds-new-root-api
 		render(
 			<Header service={config.service} {...config.header} />,
 			headerElement,

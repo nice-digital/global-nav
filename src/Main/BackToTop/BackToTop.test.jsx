@@ -1,8 +1,7 @@
 import React from "react";
 
 import { BackToTop } from "./BackToTop";
-import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
+import { render } from "@testing-library/react";
 
 describe("BackToTop", () => {
 	const scrollIntoViewMock = jest.fn();
@@ -22,12 +21,8 @@ describe("BackToTop", () => {
 		scrollIntoViewMock.mockReset();
 	});
 
-	it("Renders without crashing", () => {
-		expect(wrapper).toHaveLength(1);
-	});
-
 	it("Matches snapshot", () => {
-		expect(toJson(wrapper)).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Renders a link with the default hash when no scroll target id prop provided", () => {

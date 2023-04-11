@@ -3,7 +3,6 @@ import AccessibleAutocomplete from "accessible-autocomplete/react";
 
 import Autocomplete, { rateLimitWait } from "./Autocomplete";
 import { shallow, mount } from "enzyme";
-import toJson from "enzyme-to-json";
 
 import { eventName, eventTimeout } from "./../../../tracker";
 
@@ -14,23 +13,16 @@ describe("Autocomplete", () => {
 		window.dataLayer = [];
 	});
 
-	describe("Rendering", () => {
-		it("Renders without crashing", () => {
-			const wrapper = shallow(<Autocomplete {...defaultProps} />);
-			expect(wrapper).toHaveLength(1);
-		});
-	});
-
 	describe("Autocomplete", () => {
 		it("should render autocomplete component", () => {
-			const wrapper = shallow(
+			const { container } = render(
 				<Autocomplete {...defaultProps} source="/url" query="test" />
 			);
-			expect(toJson(wrapper)).toMatchSnapshot();
+			expect(container).toMatchSnapshot();
 		});
 
 		it("should render query into defaultValue attribute on autocomplete component", () => {
-			const wrapper = shallow(
+			const { container } = render(
 				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
 			);
 			expect(wrapper.find(AccessibleAutocomplete).props().defaultValue).toEqual(
@@ -210,7 +202,7 @@ describe("Autocomplete", () => {
 
 		it("should not load suggestions within the rate limit threshold", () => {
 			jest.useFakeTimers();
-			const wrapper = shallow(
+			const { container } = render(
 				<Autocomplete {...defaultProps} source="/url" query="test" />
 			);
 			const suggestSpy = jest
@@ -229,7 +221,7 @@ describe("Autocomplete", () => {
 		it("should load the suggestions only once after the rate limit threshold", () => {
 			jest.useFakeTimers();
 			const callback = () => {};
-			const wrapper = shallow(
+			const { container } = render(
 				<Autocomplete {...defaultProps} source="/url" query="test" />
 			);
 			const suggestSpy = jest
@@ -252,10 +244,10 @@ describe("Autocomplete", () => {
 
 	describe("Non-autocomplete", () => {
 		it("should render fallback search box when no source", () => {
-			const wrapper = shallow(
+			const { container } = render(
 				<Autocomplete {...defaultProps} source={false} query="diabetes" />
 			);
-			expect(toJson(wrapper)).toMatchSnapshot();
+			expect(container).toMatchSnapshot();
 		});
 	});
 });

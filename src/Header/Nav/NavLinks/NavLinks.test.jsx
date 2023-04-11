@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLinks } from "./NavLinks";
-import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
+import { render } from "@testing-library/react";
 
 import services from "./../__mocks__/services.json";
 
@@ -16,26 +15,22 @@ describe("NavLinks", () => {
 		jest.clearAllMocks();
 	});
 
-	it("should render without crashing", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />);
-		expect(wrapper.length).toEqual(1);
-	});
 	it("should list over the top level items in services", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />);
+		const { container } = render(<NavLinks {...defaultProps} />);
 		expect(wrapper.find("li[data-tracking]").length).toEqual(
 			services.external.length
 		);
 	});
 
 	it("should render a top level button if there's a dropdown", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />);
+		const { container } = render(<NavLinks {...defaultProps} />);
 		expect(wrapper.find("button").length).toEqual(
 			services.external.filter((service) => service.dropdown === true).length
 		);
 	});
 
 	it("should render a top level anchor if there's no dropdown", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />);
+		const { container } = render(<NavLinks {...defaultProps} />);
 
 		// length check against the number of top level services set to display in the header
 		expect(wrapper.find("a.link").length).toEqual(
@@ -44,7 +39,7 @@ describe("NavLinks", () => {
 	});
 
 	it.skip("should add aria-expanded=true to the button of the currently expanded dropdown", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />, {
+		const { container } = render(<NavLinks {...defaultProps} />, {
 			idOfOpenDropdown: "link2",
 			setIdOfOpenDropdown: jest.fn(),
 		});
@@ -54,7 +49,7 @@ describe("NavLinks", () => {
 	});
 
 	it("should add aria-current=true if the global config currentService matches current service", () => {
-		const wrapper = shallow(
+		const { container } = render(
 			<NavLinks {...defaultProps} currentService="link2" />
 		);
 		const link = wrapper.find("a[id='navlink-link2']");
@@ -62,7 +57,7 @@ describe("NavLinks", () => {
 	});
 
 	it("should add an abbreviation title label", () => {
-		const wrapper = shallow(
+		const { container } = render(
 			<NavLinks {...defaultProps} currentService="link2" />
 		);
 		const abbreviationElement = wrapper.find("[id='navlink-link2']");
@@ -72,7 +67,7 @@ describe("NavLinks", () => {
 	});
 
 	it.skip("should prevent default and navigate in event callback on nav item click", () => {
-		const wrapper = shallow(
+		const { container } = render(
 			<NavLinks {...defaultProps} currentService="link2" />
 		);
 
@@ -94,7 +89,7 @@ describe("NavLinks", () => {
 	});
 
 	// it.skip("should push dataLayer event for nav item click", () => {
-	// 	const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
+	// 	const { container } = render(<Nav {...defaultProps} isExpanded={false} />);
 
 	// 	console.log(wrapper.debug());
 
@@ -121,9 +116,9 @@ describe("NavLinks", () => {
 	it("Matches snapshot with sub links for selected external service", () => {
 		const externalServices = services.external;
 
-		const wrapper = shallow(
+		const { container } = render(
 			<NavLinks {...defaultProps} service={externalServices[1].id} />
 		);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });

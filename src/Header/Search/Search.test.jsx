@@ -1,7 +1,6 @@
 import React from "react";
 import Search from "./Search";
 import { shallow, mount } from "enzyme";
-import toJson from "enzyme-to-json";
 
 describe("Search", () => {
 	const defaultProps = {};
@@ -17,20 +16,15 @@ describe("Search", () => {
 	});
 
 	describe("Rendering", () => {
-		it("Renders without crashing", () => {
-			const wrapper = shallow(<Search {...defaultProps} />);
-			expect(wrapper).toHaveLength(1);
-		});
-
 		it("Matches snapshot", () => {
-			const wrapper = shallow(
+			const { container } = render(
 				<Search {...defaultProps} query="test" skipLinkId="content-start" />
 			);
-			expect(toJson(wrapper)).toMatchSnapshot();
+			expect(container).toMatchSnapshot();
 		});
 
 		it("Renders SVG search icon", () => {
-			const wrapper = shallow(<Search {...defaultProps} />);
+			const { container } = render(<Search {...defaultProps} />);
 			expect(wrapper.find("SvgSearch").length).toEqual(1);
 			expect(wrapper.find("SvgSearch").props()).toEqual({ className: "icon" });
 		});
@@ -38,7 +32,7 @@ describe("Search", () => {
 
 	describe("Autocomplete", () => {
 		it("Passes props to autocomplete component", () => {
-			const wrapper = shallow(
+			const { container } = render(
 				<Search
 					{...defaultProps}
 					autocomplete="variableName"
@@ -55,7 +49,7 @@ describe("Search", () => {
 
 		it("Passes suggestions and template from object to autocomplete component", () => {
 			const suggestionTemplate = jest.fn();
-			const wrapper = shallow(
+			const { container } = render(
 				<Search
 					{...defaultProps}
 					autocomplete={{ suggestions: "variableName", suggestionTemplate }}
@@ -104,7 +98,7 @@ describe("Search", () => {
 
 			it("should call onSearching prop when the button is clicked", () => {
 				const onSearching = jest.fn();
-				const wrapper = shallow(
+				const { container } = render(
 					<Search {...defaultProps} onSearching={onSearching} />
 				);
 
@@ -161,7 +155,7 @@ describe("Search", () => {
 		});
 
 		it("should not prevent default with no onSearching prop", () => {
-			const wrapper = shallow(<Search {...defaultProps} />);
+			const { container } = render(<Search {...defaultProps} />);
 
 			const preventDefault = jest.fn();
 
@@ -174,7 +168,7 @@ describe("Search", () => {
 		});
 
 		it("should not prevent default with missing onSearching global function prop", () => {
-			const wrapper = shallow(
+			const { container } = render(
 				<Search {...defaultProps} onSearching="blahblah" />
 			);
 

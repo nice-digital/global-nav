@@ -1,7 +1,4 @@
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-configure({ adapter: new Adapter() });
+import "@testing-library/jest-dom";
 
 // Allow setting user agent in tests
 // https://github.com/facebook/jest/issues/717#issuecomment-246471809

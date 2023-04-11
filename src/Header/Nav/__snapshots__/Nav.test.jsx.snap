@@ -1,296 +1,401 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Nav Matches snapshot with multiple accounts links 1`] = `
-<nav
-  aria-label="My account"
-  className="nav myAccount"
->
-  <h2
-    className="myAccountHeading"
-  >
-    My account
-  </h2>
+<div>
   <div
-    className="menuWrapper"
-  >
-    <ul
-      className="menuList"
-    >
-      <li
-        key="https://accounts.nice.org.uk/profile"
-      >
-        <a
-          className="link"
-          href="https://accounts.nice.org.uk/profile"
-          onClick={[Function]}
-        >
-          Joe Bloggs
-        </a>
-      </li>
-      <li
-        key="https://accounts.nice.org.uk/signout"
-      >
-        <a
-          className="link"
-          href="https://accounts.nice.org.uk/signout"
-          onClick={[Function]}
-        >
-          Sign out
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-`;
-
-exports[`Nav Matches snapshot with no accounts links 1`] = `
-<div
-  className="wrapper"
-  id="header-menu"
->
-  <nav
-    aria-label="primary navigation"
-    className="nav"
-    data-tracking="Primary navigation"
-  >
-    <div
-      className="menuWrapper"
-    >
-      <NavLinks
-        currentService={null}
-        servicesToDisplay={
-          Array [
-            Object {
-              "header": true,
-              "host": "www.test.nice.org",
-              "id": "link1",
-              "landingPath": "/url1/",
-              "text": "First link",
-            },
-            Object {
-              "abbreviation": true,
-              "header": true,
-              "host": "www.test-link2.nice.org",
-              "id": "link2",
-              "landingPath": "/url2/",
-              "links": Array [
-                Object {
-                  "href": "/",
-                  "text": "Sub link 1",
-                },
-                Object {
-                  "href": "/test",
-                  "text": "Sub link 2",
-                },
-              ],
-              "text": "Second link",
-              "title": "Abbreviation title",
-            },
-            Object {
-              "abbreviation": true,
-              "header": true,
-              "host": "www.test.nice.org",
-              "id": "link3",
-              "landingPath": "/url3/",
-              "links": Array [
-                Object {
-                  "href": "/",
-                  "text": "Sub link 1",
-                },
-                Object {
-                  "href": "/test",
-                  "text": "Sub link 2",
-                },
-              ],
-              "nestedLinks": Array [
-                Object {
-                  "href": "https://nestedLink1",
-                  "id": "nested-1",
-                  "text": "Nested link one",
-                },
-                Object {
-                  "href": "https://nestedLink2",
-                  "id": "nested-2",
-                  "text": "Nested link two",
-                },
-              ],
-              "text": "Third link",
-              "title": "Abbreviation title",
-            },
-            Object {
-              "header": true,
-              "host": "www.test.nice.org",
-              "id": "test-service",
-              "landingPath": "/url4/",
-              "text": "Fourth link",
-            },
-          ]
-        }
-        subLinks={null}
-      />
-    </div>
-  </nav>
-</div>
-`;
-
-exports[`Nav Matches snapshot with single accounts link 1`] = `
-<nav
-  aria-label="My account"
-  className="nav myAccount"
->
-  <div
-    className="menuWrapper"
-  >
-    <ul
-      className="menuList"
-    >
-      <li
-        key="https://accounts.nice.org.uk/"
-      >
-        <a
-          className="link"
-          href="https://accounts.nice.org.uk/"
-          onClick={[Function]}
-        >
-          Sign in
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-`;
-
-exports[`Nav internalServices Matches snapshot with sub links for selected internal service 1`] = `
-<Nav
-  accountsData={null}
-  additionalSubMenuItems={Array []}
-  handleScrim={[Function]}
-  isExpanded={false}
-  service="internal1"
->
-  <div
-    className="wrapper wrapperWithSubLinks"
+    class="wrapper"
     id="header-menu"
   >
     <nav
       aria-label="primary navigation"
-      className="nav"
+      class="nav"
       data-tracking="Primary navigation"
     >
       <div
-        className="menuWrapper"
+        class="menuWrapper"
       >
-        <NavLinks
-          currentService="internal1"
-          servicesToDisplay={
-            Array [
-              Object {
-                "header": true,
-                "host": "www.test.nice.org",
-                "id": "internal1",
-                "landingPath": "/first-internal-service",
-                "links": Array [
-                  Object {
-                    "href": "/i1sublink1",
-                    "text": "internal1 sub link 1",
-                  },
-                  Object {
-                    "href": "/i2sublink2",
-                    "text": "internal1 sub link 2",
-                  },
-                ],
-                "text": "First internal service",
-              },
-            ]
-          }
-          subLinks={
-            Array [
-              Object {
-                "href": "/i1sublink1",
-                "text": "internal1 sub link 1",
-              },
-              Object {
-                "href": "/i2sublink2",
-                "text": "internal1 sub link 2",
-              },
-            ]
-          }
+        <ul
+          aria-labelledby="header-menu-button"
+          class="menuList"
         >
-          <ul
-            aria-labelledby="header-menu-button"
-            className="menuList"
+          <li
+            data-tracking="First link"
           >
-            <li
-              data-tracking="First internal service"
-              key="internal1"
+            <a
+              class="link"
+              href="https://www.test.nice.org/url1/"
+              id="navlink-link1"
             >
-              <a
-                aria-current={true}
-                className="link"
-                href="https://www.test.nice.org/first-internal-service"
-                id="navlink-internal1"
-                onClick={[Function]}
+              <span>
+                First link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Second link"
+          >
+            <a
+              aria-label="Abbreviation title"
+              class="link"
+              href="https://www.test-link2.nice.org/url2/"
+              id="navlink-link2"
+            >
+              <span>
+                Second link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Third link"
+          >
+            <a
+              aria-label="Abbreviation title"
+              class="link"
+              href="https://www.test.nice.org/url3/"
+              id="navlink-link3"
+            >
+              <span>
+                Third link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <span>
-                  First internal service
-                </span>
-              </a>
-              <SubNav
-                links={
-                  Array [
-                    Object {
-                      "href": "/i1sublink1",
-                      "text": "internal1 sub link 1",
-                    },
-                    Object {
-                      "href": "/i2sublink2",
-                      "text": "internal1 sub link 2",
-                    },
-                  ]
-                }
-                text="First internal service"
-              >
-                <div
-                  className="wrapper"
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <ul
+              aria-label="More NICE services"
+              class="nonJsDropdown"
+              id="link3"
+            >
+              <li>
+                <a
+                  href="https://nestedLink1"
                 >
-                  <ul
-                    aria-label="First internal service links"
-                    className="list"
-                  >
-                    <li
-                      key="0"
-                    >
-                      <a
-                        aria-current={null}
-                        aria-label="internal1 sub link 1"
-                        className="link"
-                        href="/i1sublink1"
-                        onClick={[Function]}
-                      >
-                        internal1 sub link 1
-                      </a>
-                    </li>
-                    <li
-                      key="1"
-                    >
-                      <a
-                        aria-current={null}
-                        aria-label="internal1 sub link 2"
-                        className="link"
-                        href="/i2sublink2"
-                        onClick={[Function]}
-                      >
-                        internal1 sub link 2
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </SubNav>
-            </li>
-          </ul>
-        </NavLinks>
+                  Nested link one
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nestedLink2"
+                >
+                  Nested link two
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li
+            data-tracking="Fourth link"
+          >
+            <a
+              class="link"
+              href="https://www.test.nice.org/url4/"
+              id="navlink-test-service"
+            >
+              <span>
+                Fourth link
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <nav
+      aria-label="My account"
+      class="nav myAccount"
+    >
+      <h2
+        class="myAccountHeading"
+      >
+        My account
+      </h2>
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          class="menuList"
+        >
+          <li>
+            <a
+              class="link"
+              href="https://accounts.nice.org.uk/profile"
+            >
+              Joe Bloggs
+            </a>
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://accounts.nice.org.uk/signout"
+            >
+              Sign out
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   </div>
-</Nav>
+</div>
+`;
+
+exports[`Nav Matches snapshot with no accounts links 1`] = `
+<div>
+  <div
+    class="wrapper"
+    id="header-menu"
+  >
+    <nav
+      aria-label="primary navigation"
+      class="nav"
+      data-tracking="Primary navigation"
+    >
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          aria-labelledby="header-menu-button"
+          class="menuList"
+        >
+          <li
+            data-tracking="First link"
+          >
+            <a
+              class="link"
+              href="https://www.test.nice.org/url1/"
+              id="navlink-link1"
+            >
+              <span>
+                First link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Second link"
+          >
+            <a
+              aria-label="Abbreviation title"
+              class="link"
+              href="https://www.test-link2.nice.org/url2/"
+              id="navlink-link2"
+            >
+              <span>
+                Second link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Third link"
+          >
+            <a
+              aria-label="Abbreviation title"
+              class="link"
+              href="https://www.test.nice.org/url3/"
+              id="navlink-link3"
+            >
+              <span>
+                Third link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <ul
+              aria-label="More NICE services"
+              class="nonJsDropdown"
+              id="link3"
+            >
+              <li>
+                <a
+                  href="https://nestedLink1"
+                >
+                  Nested link one
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nestedLink2"
+                >
+                  Nested link two
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li
+            data-tracking="Fourth link"
+          >
+            <a
+              class="link"
+              href="https://www.test.nice.org/url4/"
+              id="navlink-test-service"
+            >
+              <span>
+                Fourth link
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`Nav Matches snapshot with single accounts link 1`] = `
+<div>
+  <div
+    class="wrapper"
+    id="header-menu"
+  >
+    <nav
+      aria-label="primary navigation"
+      class="nav"
+      data-tracking="Primary navigation"
+    >
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          aria-labelledby="header-menu-button"
+          class="menuList"
+        >
+          <li
+            data-tracking="First link"
+          >
+            <a
+              class="link"
+              href="https://www.test.nice.org/url1/"
+              id="navlink-link1"
+            >
+              <span>
+                First link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Second link"
+          >
+            <a
+              aria-label="Abbreviation title"
+              class="link"
+              href="https://www.test-link2.nice.org/url2/"
+              id="navlink-link2"
+            >
+              <span>
+                Second link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Third link"
+          >
+            <a
+              aria-label="Abbreviation title"
+              class="link"
+              href="https://www.test.nice.org/url3/"
+              id="navlink-link3"
+            >
+              <span>
+                Third link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <ul
+              aria-label="More NICE services"
+              class="nonJsDropdown"
+              id="link3"
+            >
+              <li>
+                <a
+                  href="https://nestedLink1"
+                >
+                  Nested link one
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nestedLink2"
+                >
+                  Nested link two
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li
+            data-tracking="Fourth link"
+          >
+            <a
+              class="link"
+              href="https://www.test.nice.org/url4/"
+              id="navlink-test-service"
+            >
+              <span>
+                Fourth link
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <nav
+      aria-label="My account"
+      class="nav myAccount"
+    >
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          class="menuList"
+        >
+          <li>
+            <a
+              class="link"
+              href="https://accounts.nice.org.uk/"
+            >
+              Sign in
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
 `;

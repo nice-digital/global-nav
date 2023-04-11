@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./Header";
 import { shallow, mount } from "enzyme";
-import toJson from "enzyme-to-json";
 
 import {
 	eventName,
@@ -25,32 +24,27 @@ describe("Header", () => {
 		delete window.dataLayer;
 	});
 
-	it("Renders without crashing", () => {
-		const wrapper = shallow(<Header {...defaultProps} />);
-		expect(wrapper).toHaveLength(1);
-	});
-
 	it("Matches snapshot", () => {
-		const wrapper = shallow(
+		const { container } = render(
 			<Header {...defaultProps} onNavigating="onNavigatingHandler" />
 		);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	describe("Mobile menu button", () => {
 		it("Mobile menu button is collapsed by default", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 			expect(wrapper.find("button").props()["aria-expanded"]).toEqual(false);
 			expect(wrapper.find("button").text()).toEqual("Menu");
 		});
 		it("Mobile menu button toggles text and aria-expanded on click", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 			wrapper.find("button").simulate("click");
 			expect(wrapper.find("button").props()["aria-expanded"]).toEqual(true);
 			expect(wrapper.find("button").text()).toEqual("Close");
 		});
 		it("Mobile menu button toggles nav on click", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 
 			wrapper.find("button").simulate("click");
 			expect(wrapper.find("Nav").props().isExpanded).toEqual(true);
@@ -60,7 +54,7 @@ describe("Header", () => {
 		});
 
 		it("should track mobile menu button click", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 
 			wrapper.find("button").simulate("click");
 
@@ -77,12 +71,12 @@ describe("Header", () => {
 
 	describe("Search", () => {
 		it("Renders search by default", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 			expect(wrapper.find("Search").length).toEqual(1);
 		});
 
 		it("Doesn't render search if search is disabled", () => {
-			const wrapper = shallow(<Header {...defaultProps} search={false} />);
+			const { container } = render(<Header {...defaultProps} search={false} />);
 			expect(wrapper.find("Search").length).toEqual(0);
 		});
 
@@ -93,7 +87,7 @@ describe("Header", () => {
 				query: "",
 				skipLinkId: "content-start",
 			};
-			const wrapper = shallow(
+			const { container } = render(
 				<Header
 					{...defaultProps}
 					search={searchOptions}
@@ -106,14 +100,14 @@ describe("Header", () => {
 
 	describe("Nav", () => {
 		it("Nav is collapsed by default", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 			expect(wrapper.find("Nav").props().isExpanded).toEqual(false);
 		});
 	});
 
 	describe("Back to top link target", () => {
 		it("should contain a back to top scroll target id", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 			const scrollTargetId = wrapper.find("#top");
 			expect(scrollTargetId).toHaveLength(1);
 		});
@@ -184,7 +178,7 @@ describe("Header", () => {
 
 	describe("Logo tracking", () => {
 		it("should track logo click and prevent default", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 
 			wrapper.find("a[className='home']").simulate("click", {
 				preventDefault: () => {},
@@ -207,7 +201,7 @@ describe("Header", () => {
 		});
 
 		it("should prevent default and navigate in event callback on logo click", () => {
-			const wrapper = shallow(<Header {...defaultProps} />);
+			const { container } = render(<Header {...defaultProps} />);
 
 			const preventDefault = jest.fn();
 
@@ -228,7 +222,7 @@ describe("Header", () => {
 
 	describe("Sign in button", () => {
 		it("Should not render sign in button if false is supplied to auth prop", () => {
-			const wrapper = shallow(<Header {...defaultProps} auth={false} />);
+			const { container } = render(<Header {...defaultProps} auth={false} />);
 			expect(wrapper.find("Account").length).toEqual(0);
 		});
 	});

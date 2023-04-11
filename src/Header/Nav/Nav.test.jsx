@@ -1,7 +1,6 @@
 import React from "react";
 import Nav from "./Nav";
-import { shallow, mount } from "enzyme";
-import toJson from "enzyme-to-json";
+import { render } from "@testing-library/react";
 
 import services from "./__mocks__/services.json";
 import {
@@ -20,26 +19,20 @@ describe("Nav", () => {
 		service: null,
 		handleScrim: () => {},
 	};
-	const externalServices = services.external;
-
-	it("Renders without crashing", () => {
-		const wrapper = shallow(<Nav {...defaultProps} />);
-		expect(wrapper).toHaveLength(1);
-	});
 
 	it("Matches snapshot with no accounts links", () => {
-		const wrapper = shallow(<Nav {...defaultProps} />);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		const { container } = render(<Nav {...defaultProps} />);
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Matches snapshot with single accounts link", () => {
 		const accountsLinks = {
 			"Sign in": "https://accounts.nice.org.uk/",
 		};
-		const wrapper = shallow(
+		const { container } = render(
 			<Nav {...defaultProps} accountsLinks={accountsLinks} />
 		);
-		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Matches snapshot with multiple accounts links", () => {
@@ -47,17 +40,25 @@ describe("Nav", () => {
 			"Joe Bloggs": "https://accounts.nice.org.uk/profile",
 			"Sign out": "https://accounts.nice.org.uk/signout",
 		};
-		const wrapper = shallow(
+		const { container } = render(
 			<Nav {...defaultProps} accountsLinks={accountsLinks} />
 		);
-		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Add expanded class to root element when passed isExpanded prop", () => {
-		const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
-		expect(wrapper.props().className).not.toContain("wrapperExpanded");
-		wrapper.setProps({ isExpanded: true });
-		expect(wrapper.props().className).toContain("wrapperExpanded");
+		const { getByRole, rerender } = render(
+			<Nav {...defaultProps} isExpanded={false} />
+		);
+
+		const wrapper = getByRole("navigation", {
+			name: "primary navigation",
+		}).parentElement;
+
+		expect(wrapper).not.toHaveClass("wrapperExpanded");
+
+		rerender(<Nav {...defaultProps} isExpanded={true} />);
+		expect(wrapper).toHaveClass("wrapperExpanded");
 	});
 
 	describe("tracking", () => {
@@ -79,7 +80,7 @@ describe("Nav", () => {
 
 			it("should track edit profile link", () => {
 				const preventDefault = jest.fn();
-				const wrapper = shallow(
+				const { container } = render(
 					<Nav
 						{...defaultProps}
 						isExpanded={true}
@@ -118,7 +119,7 @@ describe("Nav", () => {
 
 			it("should track sign out link", () => {
 				const preventDefault = jest.fn();
-				const wrapper = shallow(
+				const { container } = render(
 					<Nav
 						{...defaultProps}
 						isExpanded={true}
@@ -153,7 +154,7 @@ describe("Nav", () => {
 
 			it("should not track admin link", () => {
 				const preventDefault = jest.fn();
-				const wrapper = shallow(
+				const { container } = render(
 					<Nav
 						{...defaultProps}
 						isExpanded={true}
@@ -185,7 +186,7 @@ describe("Nav", () => {
 			const wrapper = mount(
 				<Nav {...defaultProps} service={internalServices[0].id} />
 			);
-			expect(toJson(wrapper)).toMatchSnapshot();
+			expect(container).toMatchSnapshot();
 		});
 
 		it("Internal service 1 only renders itself and no other services", () => {
