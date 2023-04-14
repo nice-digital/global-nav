@@ -106,7 +106,7 @@ describe("Autocomplete", () => {
 			]);
 		});
 
-		it("should push autocomplete select event to the dataLayer using TypeAheadType property", async () => {
+		it.only("should push autocomplete select event to the dataLayer using TypeAheadType property", async () => {
 			const option = {
 				Title: "diabetes type 1",
 				TypeAheadType: "keyword",

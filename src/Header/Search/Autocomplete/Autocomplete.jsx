@@ -95,6 +95,8 @@ export default class Autocomplete extends Component {
 				} else window.location.href = suggestion.Link;
 			};
 
+			console.log({ suggestion });
+
 			if (suggestion.TypeAheadType) {
 				trackEvent(
 					"Search - Typeahead select",
