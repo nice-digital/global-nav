@@ -1,53 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
-<div
-  className="ac"
->
-  <e
-    autoselect={false}
-    confirmOnBlur={false}
-    cssNamespace="autocomplete"
-    defaultValue="test"
-    displayMenu="overlay"
-    dropdownArrow={[Function]}
-    id="autocomplete"
-    minLength={3}
-    name="q"
-    onConfirm={[Function]}
-    placeholder=""
-    required={false}
-    showAllValues={false}
-    showNoOptionsFound={false}
-    source={[Function]}
-    tAssistiveHint={[Function]}
-    tNoResults={[Function]}
-    templates={
-      Object {
-        "inputValue": [Function],
-        "suggestion": [Function],
-      }
-    }
-  />
+<div>
+  <div
+    class="ac"
+  >
+    <div
+      class="autocomplete__wrapper"
+    >
+      <div
+        style="border: 0px; height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
+      >
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          id="autocomplete__status--A"
+          role="status"
+        />
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          id="autocomplete__status--B"
+          role="status"
+        />
+      </div>
+      <input
+        aria-activedescendant="false"
+        aria-autocomplete="list"
+        aria-describedby="autocomplete__assistiveHint"
+        aria-expanded="false"
+        aria-owns="autocomplete__listbox"
+        autocomplete="off"
+        class="autocomplete__input autocomplete__input--default"
+        data-hj-allow=""
+        id="autocomplete"
+        maxlength="512"
+        name="q"
+        placeholder=""
+        role="combobox"
+        type="text"
+        value="test"
+      />
+      <ul
+        class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden"
+        id="autocomplete__listbox"
+        role="listbox"
+      >
+        <li
+          aria-posinset="1"
+          aria-selected="false"
+          aria-setsize="1"
+          class="autocomplete__option"
+          id="autocomplete__option--0"
+          role="option"
+          tabindex="-1"
+        />
+      </ul>
+      <span
+        id="autocomplete__assistiveHint"
+        style="display: none;"
+      >
+        When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.
+      </span>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Autocomplete Non-autocomplete should render fallback search box when no source 1`] = `
-<div
-  className="ac"
->
+<div>
   <div
-    className="autocomplete__wrapper"
+    class="ac"
   >
-    <input
-      className="autocomplete__input autocomplete__input--default"
-      data-hj-allow=""
-      defaultValue="diabetes"
-      id="autocomplete"
-      maxLength={512}
-      name="q"
-      type="search"
-    />
+    <div
+      class="autocomplete__wrapper"
+    >
+      <input
+        class="autocomplete__input autocomplete__input--default"
+        data-hj-allow=""
+        id="autocomplete"
+        maxlength="512"
+        name="q"
+        type="search"
+        value="diabetes"
+      />
+    </div>
   </div>
 </div>
 `;
