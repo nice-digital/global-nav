@@ -1,8 +1,8 @@
 import React from "react";
-import AccessibleAutocomplete from "accessible-autocomplete/react";
+import { getByRole, render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import Autocomplete, { rateLimitWait } from "./Autocomplete";
-import { shallow, mount } from "enzyme";
 
 import { eventName, eventTimeout } from "./../../../tracker";
 
@@ -22,45 +22,29 @@ describe("Autocomplete", () => {
 		});
 
 		it("should render query into defaultValue attribute on autocomplete component", () => {
-			const { container } = render(
+			const { getByRole } = render(
 				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
 			);
-			expect(wrapper.find(AccessibleAutocomplete).props().defaultValue).toEqual(
-				"diabetes"
-			);
+			expect(getByRole("combobox")).toHaveValue("diabetes");
 		});
 
-		it("should add HotJar whitelist attribute to input box", () => {
-			const wrapper = mount(
+		it("should add HotJar allowlist attribute to input box", () => {
+			const { getByRole } = render(
 				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
 			);
 
-			expect(
-				wrapper
-					.getDOMNode()
-					.querySelector("input#autocomplete")
-					.getAttribute("data-hj-allow")
-			).toEqual("");
+			expect(getByRole("combobox")).toHaveAttribute("data-hj-allow", "");
 		});
 
 		it("should add 512 character max length", () => {
-			const wrapper = mount(
+			const { getByRole } = render(
 				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
 			);
 
-			expect(
-				wrapper
-					.getDOMNode()
-					.querySelector("input#autocomplete")
-					.getAttribute("maxlength")
-			).toEqual("512");
+			expect(getByRole("combobox")).toHaveAttribute("maxlength", "512");
 		});
 
 		it("should use provided suggestion template", async () => {
-			document.body.innerHTML = "";
-			var appContainer = document.createElement("div");
-			document.body.appendChild(appContainer);
-
 			const option = {
 				Title: "diabetes type 1",
 				Link: "https://www.nice.org.uk/diabetes1.html",
@@ -68,39 +52,46 @@ describe("Autocomplete", () => {
 
 			const suggestionTemplate = jest.fn();
 
-			const wrapper = mount(
-				<Autocomplete
-					{...defaultProps}
-					source={[option]}
-					suggestionTemplate={suggestionTemplate}
-				/>,
-				{ attachTo: appContainer }
-			);
+			const { getByRole } = render(
+					<Autocomplete
+						{...defaultProps}
+						source={[option]}
+						suggestionTemplate={suggestionTemplate}
+					/>
+				),
+				input = getByRole("combobox"),
+				user = userEvent.setup();
 
-			wrapper
-				.find(AccessibleAutocomplete)
-				.instance()
-				.props.templates.suggestion();
+			await user.type(input, "dia");
 
-			expect(suggestionTemplate).toHaveBeenCalled();
+			await waitFor(() => {
+				expect(suggestionTemplate).toHaveBeenCalledTimes(1);
+			});
+
+			expect(suggestionTemplate.mock.calls[0][0]).toStrictEqual({
+				...option,
+				TitleHtml: "<mark>dia</mark>betes type 1",
+			});
 		});
 
-		it("should push autocomplete select event to the dataLayer", () => {
-			document.body.innerHTML = "";
-			var appContainer = document.createElement("div");
-			document.body.appendChild(appContainer);
-
+		it("should push autocomplete select event to the dataLayer", async () => {
 			const option = {
 				Title: "diabetes type 1",
 				Link: "https://www.nice.org.uk/diabetes1.html",
 			};
 
-			const wrapper = mount(
-				<Autocomplete {...defaultProps} source={[option]} query="diab" />,
-				{ attachTo: appContainer }
-			);
+			const { getByRole } = render(
+					<Autocomplete {...defaultProps} source={[option]} query="dia" />
+				),
+				input = getByRole("combobox"),
+				user = userEvent.setup();
 
-			wrapper.find("#autocomplete").first().props().onConfirm(option);
+			await user.type(input, "diab");
+
+			await waitFor(async () => {
+				const optionLink = getByRole("link", { name: "diab etes type 1" });
+				await user.click(optionLink);
+			});
 
 			expect(window.dataLayer).toEqual([
 				{
@@ -115,23 +106,25 @@ describe("Autocomplete", () => {
 			]);
 		});
 
-		it("should push autocomplete select event to the dataLayer using TypeAheadType property", () => {
-			document.body.innerHTML = "";
-			var appContainer = document.createElement("div");
-			document.body.appendChild(appContainer);
-
+		it("should push autocomplete select event to the dataLayer using TypeAheadType property", async () => {
 			const option = {
 				Title: "diabetes type 1",
 				TypeAheadType: "keyword",
 				Link: "https://www.nice.org.uk/diabetes1.html",
 			};
 
-			const wrapper = mount(
-				<Autocomplete {...defaultProps} source={[option]} query="diab" />,
-				{ attachTo: appContainer }
-			);
+			const { getByRole } = render(
+					<Autocomplete {...defaultProps} source={[option]} query="dia" />
+				),
+				input = getByRole("combobox"),
+				user = userEvent.setup();
 
-			wrapper.find("#autocomplete").first().props().onConfirm(option);
+			await user.type(input, "diab");
+
+			await waitFor(async () => {
+				const optionLink = getByRole("link", { name: "diab etes type 1" });
+				await user.click(optionLink);
+			});
 
 			expect(window.dataLayer).toEqual([
 				{
