@@ -399,3 +399,69 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
   </div>
 </div>
 `;
+
+exports[`Nav internalServices Matches snapshot with sub links for selected internal service 1`] = `
+<div>
+  <div
+    class="wrapper wrapperWithSubLinks"
+    id="header-menu"
+  >
+    <nav
+      aria-label="primary navigation"
+      class="nav"
+      data-tracking="Primary navigation"
+    >
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          aria-labelledby="header-menu-button"
+          class="menuList"
+        >
+          <li
+            data-tracking="First internal service"
+          >
+            <a
+              aria-current="true"
+              class="link"
+              href="https://www.test.nice.org/first-internal-service"
+              id="navlink-internal1"
+            >
+              <span>
+                First internal service
+              </span>
+            </a>
+            <div
+              class="wrapper"
+            >
+              <ul
+                aria-label="First internal service links"
+                class="list"
+              >
+                <li>
+                  <a
+                    aria-label="internal1 sub link 1"
+                    class="link"
+                    href="/i1sublink1"
+                  >
+                    internal1 sub link 1
+                  </a>
+                </li>
+                <li>
+                  <a
+                    aria-label="internal1 sub link 2"
+                    class="link"
+                    href="/i2sublink2"
+                  >
+                    internal1 sub link 2
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
