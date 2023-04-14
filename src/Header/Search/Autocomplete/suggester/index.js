@@ -85,12 +85,13 @@ export const suggester = function (suggestions, query, maxResults = 5) {
 		.map(highlightSuggestion)
 		.sort(sortSuggestions)
 		.slice(0, maxResults)
-		.map(function ({ Title, Link, titleHtml }) {
+		.map(function ({ Title, Link, TypeAheadType, titleHtml }) {
 			// keep only the properties we care about
 			return {
-				Title: Title,
-				Link: Link,
+				Title,
+				Link,
 				TitleHtml: titleHtml,
+				TypeAheadType,
 			};
 		});
 };
