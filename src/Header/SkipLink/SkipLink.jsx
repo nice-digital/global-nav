@@ -22,19 +22,9 @@ export default class SkipLink extends Component {
 
 				element.setAttribute("tabIndex", "-1");
 				element.focus();
-				window.scrollTo(0, this.getYOffset(element));
+				element.scrollIntoView();
 			}
 		}
-	}
-
-	// See https://stackoverflow.com/a/442474/486434
-	getYOffset(el) {
-		let _y = 0;
-		while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
-			_y += el.offsetTop - el.scrollTop;
-			el = el.offsetParent;
-		}
-		return _y;
 	}
 
 	render() {
