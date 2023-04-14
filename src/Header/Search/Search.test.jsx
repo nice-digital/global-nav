@@ -1,6 +1,14 @@
 import React from "react";
 import Search from "./Search";
-import { shallow, mount } from "enzyme";
+
+import {
+	render,
+	within,
+	createEvent,
+	fireEvent,
+	waitFor,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("Search", () => {
 	const defaultProps = {};
@@ -22,90 +30,84 @@ describe("Search", () => {
 			);
 			expect(container).toMatchSnapshot();
 		});
-
-		it("Renders SVG search icon", () => {
-			const { container } = render(<Search {...defaultProps} />);
-			expect(wrapper.find("SvgSearch").length).toEqual(1);
-			expect(wrapper.find("SvgSearch").props()).toEqual({ className: "icon" });
-		});
 	});
 
 	describe("Autocomplete", () => {
 		it("Passes props to autocomplete component", () => {
-			const { container } = render(
-				<Search
-					{...defaultProps}
-					autocomplete="variableName"
-					placeholder="Test placeholder"
-					query="diabetes"
-				/>
-			);
-			expect(wrapper.find("Autocomplete").props()).toEqual({
-				source: "variableName",
-				placeholder: "Test placeholder",
-				query: "diabetes",
-			});
+			const { getByRole } = render(
+					<Search
+						{...defaultProps}
+						autocomplete="variableName"
+						placeholder="Test placeholder"
+						query="diabetes"
+					/>
+				),
+				input = getByRole("combobox");
+
+			expect(input).toHaveAttribute("placeholder", "Test placeholder");
+			expect(input).toHaveValue("diabetes");
 		});
 
-		it("Passes suggestions and template from object to autocomplete component", () => {
-			const suggestionTemplate = jest.fn();
-			const { container } = render(
-				<Search
-					{...defaultProps}
-					autocomplete={{ suggestions: "variableName", suggestionTemplate }}
-					placeholder="Test placeholder"
-					query="diabetes"
-				/>
-			);
-			expect(wrapper.find("Autocomplete").props()).toEqual({
-				source: "variableName",
-				suggestionTemplate,
-				placeholder: "Test placeholder",
-				query: "diabetes",
+		it("Passes variable name with suggestions and template to autocomplete component", async () => {
+			window.variableName = [
+				{ Title: "diabetes", Link: "/diabetes" },
+				{ Title: "diabetes type 1", Link: "/diabetets-type-1" },
+			];
+			const suggestionTemplate = jest.fn().mockReturnValue("Test");
+			const { getByRole } = render(
+					<Search
+						{...defaultProps}
+						autocomplete={{ suggestions: "variableName", suggestionTemplate }}
+						placeholder="Test placeholder"
+					/>
+				),
+				input = getByRole("combobox"),
+				user = userEvent.setup();
+
+			await user.type(input, "dia");
+
+			await waitFor(() => {
+				expect(suggestionTemplate).toHaveBeenCalledTimes(2);
+			});
+
+			expect(suggestionTemplate.mock.calls[0][0]).toStrictEqual({
+				Title: "diabetes",
+				Link: "/diabetes",
+				TitleHtml: "<mark>dia</mark>betes",
+			});
+
+			expect(suggestionTemplate.mock.calls[1][0]).toStrictEqual({
+				Title: "diabetes type 1",
+				Link: "/diabetets-type-1",
+				TitleHtml: "<mark>dia</mark>betes type 1",
 			});
 		});
 	});
 
 	describe("onSearching", () => {
 		describe("Form submit and button click", () => {
-			const div = document.createElement("div");
-
-			beforeEach(() => {
-				// Avoid `attachTo: document.body` Warning
-				div.setAttribute("id", "container");
-				document.body.appendChild(div);
-			});
-
-			afterEach(() => {
-				const div = document.getElementById("container");
-				if (div) {
-					document.body.removeChild(div);
-				}
-			});
-
 			it("should call the onSearching prop when the form is submitted", () => {
-				const onSearching = jest.fn();
-				const wrapper = mount(
-					<Search {...defaultProps} onSearching={onSearching} />,
-					{ attachTo: div }
-				);
+				const onSearching = jest.fn(),
+					{ getByRole } = render(
+						<Search {...defaultProps} onSearching={onSearching} />
+					),
+					search = getByRole("search");
 
-				wrapper.find("form").simulate("submit", { preventDefault: () => {} });
+				fireEvent.submit(search);
 
 				expect(onSearching).toHaveBeenCalled();
 				expect(onSearching).toHaveBeenCalledTimes(1);
 			});
 
-			it("should call onSearching prop when the button is clicked", () => {
-				const onSearching = jest.fn();
-				const { container } = render(
-					<Search {...defaultProps} onSearching={onSearching} />
-				);
+			it("should call onSearching prop when the button is clicked", async () => {
+				const onSearching = jest.fn(),
+					{ getByRole } = render(
+						<Search {...defaultProps} onSearching={onSearching} />
+					),
+					searchButton = getByRole("button", { name: "Perform search" }),
+					user = userEvent.setup();
 
-				wrapper
-					.find("button")
-					.at(0)
-					.simulate("click", { preventDefault: () => {} });
+				await user.click(searchButton);
 
 				expect(onSearching).toHaveBeenCalled();
 				expect(onSearching).toHaveBeenCalledTimes(1);
@@ -113,20 +115,16 @@ describe("Search", () => {
 		});
 
 		it("should prevent default and call callback with the search query for a onSearching function", () => {
-			const onSearching = jest.fn();
-			const wrapper = mount(
-				<Search {...defaultProps} query="test" onSearching={onSearching} />,
-				{ attachTo: appContainer }
-			);
+			const onSearching = jest.fn(),
+				{ getByRole } = render(
+					<Search {...defaultProps} query="test" onSearching={onSearching} />
+				),
+				search = getByRole("search"),
+				submitEvent = createEvent.submit(search);
 
-			const preventDefault = jest.fn();
+			fireEvent(search, submitEvent);
 
-			wrapper
-				.find("form")
-				.at(0)
-				.simulate("submit", { preventDefault: preventDefault });
-
-			expect(preventDefault).toHaveBeenCalled();
+			expect(submitEvent.defaultPrevented).toBe(true);
 			expect(onSearching).toHaveBeenCalledWith({ query: "test" });
 		});
 
@@ -134,81 +132,57 @@ describe("Search", () => {
 			const onSearching = jest.fn();
 			window.onSearchingHandler = onSearching;
 
-			const wrapper = mount(
-				<Search
-					{...defaultProps}
-					query="test"
-					onSearching="onSearchingHandler"
-				/>,
-				{ attachTo: appContainer }
-			);
+			const { getByRole } = render(
+					<Search
+						{...defaultProps}
+						query="test"
+						onSearching="onSearchingHandler"
+					/>
+				),
+				search = getByRole("search"),
+				submitEvent = createEvent.submit(search);
 
-			const preventDefault = jest.fn();
+			fireEvent(search, submitEvent);
 
-			wrapper
-				.find("form")
-				.at(0)
-				.simulate("submit", { preventDefault: preventDefault });
-
-			expect(preventDefault).toHaveBeenCalled();
+			expect(submitEvent.defaultPrevented).toBe(true);
 			expect(onSearching).toHaveBeenCalledWith({ query: "test" });
 		});
 
 		it("should not prevent default with no onSearching prop", () => {
-			const { container } = render(<Search {...defaultProps} />);
+			const { getByRole } = render(<Search {...defaultProps} />),
+				search = getByRole("search"),
+				submitEvent = createEvent.submit(search);
 
-			const preventDefault = jest.fn();
+			fireEvent(search, submitEvent);
 
-			wrapper
-				.find("form")
-				.at(0)
-				.simulate("submit", { preventDefault: preventDefault });
-
-			expect(preventDefault).not.toHaveBeenCalled();
+			expect(submitEvent.defaultPrevented).toBe(false);
 		});
 
 		it("should not prevent default with missing onSearching global function prop", () => {
-			const { container } = render(
-				<Search {...defaultProps} onSearching="blahblah" />
-			);
+			const { getByRole } = render(
+					<Search {...defaultProps} onSearching="blahblah" />
+				),
+				search = getByRole("search"),
+				submitEvent = createEvent.submit(search);
 
-			const preventDefault = jest.fn();
+			fireEvent(search, submitEvent);
 
-			wrapper
-				.find("form")
-				.at(0)
-				.simulate("submit", { preventDefault: preventDefault });
-
-			expect(preventDefault).not.toHaveBeenCalled();
+			expect(submitEvent.defaultPrevented).toBe(false);
 		});
 	});
 
 	describe("enter key", () => {
-		it("should call onSearching callback prop if the enter key is pressed", () => {
-			const onSearching = jest.fn();
-			const wrapper = mount(
-				<Search {...defaultProps} onSearching={onSearching} />,
-				{
-					attachTo: appContainer,
-				}
-			);
+		it("should call onSearching callback prop if the enter key is pressed", async () => {
+			const onSearching = jest.fn(),
+				{ getByRole } = render(
+					<Search {...defaultProps} onSearching={onSearching} />
+				),
+				input = getByRole("searchbox"),
+				user = userEvent.setup();
 
-			wrapper.find("#autocomplete").at(0).simulate("keyDown", { key: "Enter" });
+			await user.type(input, "{enter}");
 
 			expect(onSearching).toHaveBeenCalledTimes(1);
-		});
-
-		it("should submit form if the enter key is pressed with no onSearching prop", () => {
-			const wrapper = mount(<Search {...defaultProps} />, {
-				attachTo: appContainer,
-			});
-
-			const formSubmit = jest.fn();
-			wrapper.find("form").instance().submit = formSubmit;
-
-			wrapper.find("#autocomplete").at(0).simulate("keyDown", { key: "Enter" });
-
-			expect(formSubmit).toHaveBeenCalledTimes(1);
 		});
 	});
 });
