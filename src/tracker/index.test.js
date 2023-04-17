@@ -64,7 +64,7 @@ describe("tracker", () => {
 		});
 
 		it("should pass event callback function into dataLayer and clear fallback timer", () => {
-			jest.useFakeTimers();
+			jest.useFakeTimers({ legacyFakeTimers: true });
 			const eventCallback = jest.fn();
 
 			trackEvent(
@@ -83,7 +83,7 @@ describe("tracker", () => {
 		});
 
 		it("should use fallback timer for event callback", () => {
-			jest.useFakeTimers();
+			jest.useFakeTimers({ legacyFakeTimers: true });
 
 			const eventCallback = jest.fn();
 
