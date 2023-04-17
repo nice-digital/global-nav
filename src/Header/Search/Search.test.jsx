@@ -3,7 +3,6 @@ import Search from "./Search";
 
 import {
 	render,
-	within,
 	createEvent,
 	fireEvent,
 	waitFor,
@@ -74,12 +73,14 @@ describe("Search", () => {
 				Title: "diabetes",
 				Link: "/diabetes",
 				TitleHtml: "<mark>dia</mark>betes",
+				TypeAheadType: undefined,
 			});
 
 			expect(suggestionTemplate.mock.calls[1][0]).toStrictEqual({
 				Title: "diabetes type 1",
 				Link: "/diabetets-type-1",
 				TitleHtml: "<mark>dia</mark>betes type 1",
+				TypeAheadType: undefined,
 			});
 		});
 	});

@@ -92,10 +92,8 @@ export default class Autocomplete extends Component {
 						element: selectedEl,
 						href: suggestion.Link,
 					});
-				} else window.location.href = suggestion.Link;
+				} else window.location.assign(suggestion.Link);
 			};
-
-			console.log({ suggestion });
 
 			if (suggestion.TypeAheadType) {
 				trackEvent(

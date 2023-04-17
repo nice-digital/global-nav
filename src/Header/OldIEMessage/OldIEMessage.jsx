@@ -1,22 +1,11 @@
 import React, { Component } from "react";
+import { getIEVersion } from "./ie";
 
 import styles from "./OldIEMessage.module.scss";
 
 export default class OldIEMessage extends Component {
-	// See https://gist.github.com/padolsey/527683#gistcomment-768383
-	getIEVersion() {
-		if (typeof document === "undefined") return void 0;
-		let tmp = (document["documentMode"] || document.attachEvent) && "ev",
-			msie =
-				tmp &&
-				(tmp = window[tmp + "al"]) &&
-				tmp("/*@cc_on 1;@*/") &&
-				+((/msie (\d+)/i.exec(navigator.userAgent) || [])[1] || 0);
-		return msie || void 0;
-	}
-
 	render() {
-		const ieVersion = this.getIEVersion();
+		const ieVersion = getIEVersion();
 
 		if (!ieVersion || ieVersion > 10) {
 			return null;
