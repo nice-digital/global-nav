@@ -1,8 +1,8 @@
 import React from "react";
-import { render, waitFor, within } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import Autocomplete, { rateLimitWait } from "./Autocomplete";
+import Autocomplete from "./Autocomplete";
 
 import { eventName, eventTimeout } from "./../../../tracker";
 
@@ -11,11 +11,6 @@ import { suggester } from "./suggester";
 jest.mock("./suggester", () => ({
 	suggester: jest.fn(jest.requireActual("./suggester").suggester),
 }));
-
-//let windowAssignMock = jest.fn();
-
-//delete window.location;
-//window.location = { assign: windowAssignMock };
 
 describe("Autocomplete", () => {
 	const defaultProps = {};
