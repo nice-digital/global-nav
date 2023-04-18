@@ -1,63 +1,64 @@
 import React from "react";
 
 import { BackToTop } from "./BackToTop";
-import { render } from "@testing-library/react";
+import {
+	render,
+	createEvent,
+	fireEvent,
+	waitFor,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("BackToTop", () => {
 	const scrollIntoViewMock = jest.fn();
-	let wrapper;
+
+	let top;
 
 	beforeEach(() => {
-		let contentDiv = document.createElement("div");
-		contentDiv.id = "top";
-		document.body.appendChild(contentDiv);
-		document.getElementById("top").scrollIntoView = scrollIntoViewMock;
-		wrapper = shallow(<BackToTop />);
+		top = document.createElement("div");
+		top.id = "top";
+		top.scrollIntoView = scrollIntoViewMock;
+		document.body.appendChild(top);
 	});
 
 	afterEach(() => {
-		wrapper.unmount();
 		document.body.innerHTML = "";
 		scrollIntoViewMock.mockReset();
 	});
 
 	it("Matches snapshot", () => {
+		const { container } = render(<BackToTop />);
 		expect(container).toMatchSnapshot();
 	});
 
+	it("Renders a link with an accessible name", () => {
+		const { getByRole } = render(<BackToTop />);
+		expect(getByRole("link")).toHaveAccessibleName("Back to top");
+	});
+
 	it("Renders a link with the default hash when no scroll target id prop provided", () => {
-		expect(wrapper.find("a[href='#top']").length).toEqual(1);
+		const { getByRole } = render(<BackToTop />);
+		expect(getByRole("link")).toHaveAttribute("href", "#top");
 	});
 
 	it("Prevents default and moves focus to the back to top link target on click", () => {
-		const preventDefault = jest.fn();
-		wrapper
-			.find("a")
-			.at(0)
-			.simulate("click", {
-				currentTarget: {
-					getAttribute: () => "#top",
-				},
-				preventDefault: preventDefault,
-			});
+		const { getByRole } = render(<BackToTop />),
+			link = getByRole("link"),
+			clickEvent = createEvent.click(link);
 
-		expect(preventDefault).toHaveBeenCalledTimes(1);
-		expect(document.getElementById("top").getAttribute("tabIndex")).toEqual(
-			"-1"
-		);
-		expect(document.activeElement).toBe(document.getElementById("top"));
+		fireEvent(link, clickEvent);
+
+		expect(clickEvent.defaultPrevented).toBe(true);
+		expect(top).toHaveAttribute("tabindex", "-1");
+		expect(top).toHaveFocus();
 	});
 
-	it("Scrolls element with id = back to top link target into view on back to top click", () => {
-		wrapper
-			.find("a")
-			.at(0)
-			.simulate("click", {
-				currentTarget: {
-					getAttribute: () => "#top",
-				},
-				preventDefault: () => {},
-			});
+	it("Scrolls element with id = back to top link target into view on back to top click", async () => {
+		const { getByRole } = render(<BackToTop />),
+			link = getByRole("link"),
+			user = userEvent.setup();
+
+		await user.click(link);
 
 		expect(scrollIntoViewMock).toHaveBeenCalledTimes(1);
 	});
