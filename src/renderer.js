@@ -40,18 +40,17 @@ export const renderHeader = function () {
 			onRendering.call(window, headerElement);
 		}
 
-		const root = createRoot(headerElement);
+		const root = createRoot(headerElement),
+			onRendered = ensureCallback(config.header.onRendered);
 
-		root.render(<Header service={config.service} {...config.header} />);
-
-		// TODO: Replace the old onRendered callback with a ref, see https://blog.saeloun.com/2021/07/15/react-18-adds-new-root-api
-		render(
-			<Header service={config.service} {...config.header} />,
-			headerElement,
-			function () {
-				const onRendered = ensureCallback(config.header.onRendered);
-				onRendered && onRendered.call(window, headerElement);
-			}
+		root.render(
+			<Header
+				service={config.service}
+				{...config.header}
+				onRendered={() => {
+					onRendered && onRendered(headerElement);
+				}}
+			/>
 		);
 	}
 };
@@ -65,9 +64,8 @@ export const renderFooter = function () {
 		const footerElement =
 			document.getElementById(footerId) || createAndAttachDiv(footerId, false);
 
-		render(
-			<Footer service={config.service} {...config.footer} />,
-			footerElement
-		);
+		const root = createRoot(footerElement);
+
+		root.render(<Footer service={config.service} {...config.footer} />);
 	}
 };

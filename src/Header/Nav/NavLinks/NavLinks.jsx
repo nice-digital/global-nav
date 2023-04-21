@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useCallback } from "react";
+import React, { useEffect, useContext, useCallback, useState } from "react";
 import useEscapeKeydown from "../../../hooks/useEscapeKeydown";
 
 import classnames from "classnames";
@@ -43,7 +43,7 @@ export function NavLinks({
 	onNavigating,
 	skipLinkId,
 }) {
-	const [canUseDOM, setCanUseDOM] = React.useState(false);
+	const [canUseDOM, setCanUseDOM] = useState(false);
 	const { idOfOpenDropdown, setidOfOpenDropdown } = useContext(HeaderContext);
 
 	useEffect(() => {
