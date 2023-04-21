@@ -167,7 +167,6 @@ module.exports = function (env, argv) {
 			},
 			historyApiFallback: true,
 			open: true,
-			//openPage: "",
 			hot: true,
 			proxy: {
 				// For mimicking niceorg autocomplete endpoint
