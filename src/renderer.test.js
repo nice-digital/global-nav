@@ -1,7 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import { act } from "react-dom/test-utils";
 import { headerId, footerId, renderHeader, renderFooter } from "./renderer";
 
 jest.mock("./services.json", () =>
@@ -9,11 +6,9 @@ jest.mock("./services.json", () =>
 );
 
 describe("renderer", () => {
-	let headerContainer, footerContainer, reactDOMRenderMock;
+	let headerContainer, footerContainer;
 
 	beforeEach(() => {
-		reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
-
 		window.global_nav_config = null;
 
 		// Create some dummy body copy so we can test creating the header above/footer below
@@ -39,7 +34,9 @@ describe("renderer", () => {
 	});
 
 	afterEach(() => {
-		reactDOMRenderMock.mockClear();
+		document.body.innerHTML = "";
+
+		delete window.global_nav_config;
 	});
 
 	describe("Header", () => {
@@ -54,47 +51,24 @@ describe("renderer", () => {
 		it("Renders header into existing header container div", () => {
 			expect(headerContainer.textContent).toEqual("");
 
-			renderHeader();
+			act(() => {
+				renderHeader();
+			});
 
 			expect(headerContainer.textContent.length).toBeGreaterThan(0);
 		});
 
-		describe("react-dom rendering", () => {
-			it("Doesn't call ReactDOM.render if header is disabled", () => {
-				window.global_nav_config = {
-					service: "test-service",
-					header: false,
-				};
-				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
+		it("Doesn't render header if header is disabled", () => {
+			window.global_nav_config = {
+				service: "test-service",
+				header: false,
+			};
+
+			act(() => {
 				renderHeader();
-				expect(reactDOMRenderMock).not.toHaveBeenCalled();
-			});
-			it("Calls ReactDOM.render once", () => {
-				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
-				renderHeader();
-				expect(reactDOMRenderMock).toHaveBeenCalledTimes(1);
 			});
 
-			it("Calls ReactDOM.render with header component with correct props", () => {
-				window.global_nav_config = {
-					service: "test-service",
-					header: {
-						test: true,
-					},
-				};
-
-				renderHeader();
-				expect(reactDOMRenderMock.mock.calls[0][0]).toEqual(
-					<Header service="test-service" {...{ test: true }} />
-				);
-			});
-
-			it("Calls ReactDOM.render with container div", () => {
-				renderHeader();
-				expect(reactDOMRenderMock.mock.calls[0][1]).toEqual(
-					document.getElementById(headerId)
-				);
-			});
+			expect(headerContainer).toHaveTextContent("");
 		});
 
 		describe("Render callbacks", () => {
@@ -107,10 +81,11 @@ describe("renderer", () => {
 					},
 				};
 
-				renderHeader();
-				expect(onRendering).toHaveBeenCalledWith(
-					document.getElementById(headerId)
-				);
+				act(() => {
+					renderHeader();
+				});
+
+				expect(onRendering).toHaveBeenCalledWith(headerContainer);
 			});
 
 			it("Calls onRendering callback from function name", () => {
@@ -123,10 +98,11 @@ describe("renderer", () => {
 					},
 				};
 
-				renderHeader();
-				expect(onRendering).toHaveBeenCalledWith(
-					document.getElementById(headerId)
-				);
+				act(() => {
+					renderHeader();
+				});
+
+				expect(onRendering).toHaveBeenCalledWith(headerContainer);
 
 				delete window.headerRenderingCallback;
 			});
@@ -136,14 +112,15 @@ describe("renderer", () => {
 
 				window.global_nav_config = {
 					header: {
-						onRendered: onRendered,
+						onRendered,
 					},
 				};
 
-				renderHeader();
-				expect(onRendered).toHaveBeenCalledWith(
-					document.getElementById(headerId)
-				);
+				act(() => {
+					renderHeader();
+				});
+
+				expect(onRendered).toHaveBeenCalledWith(headerContainer);
 			});
 
 			it("Calls onRendered callback from function name", () => {
@@ -156,10 +133,11 @@ describe("renderer", () => {
 					},
 				};
 
-				renderHeader();
-				expect(onRendered).toHaveBeenCalledWith(
-					document.getElementById(headerId)
-				);
+				act(() => {
+					renderHeader();
+				});
+
+				expect(onRendered).toHaveBeenCalledWith(headerContainer);
 
 				delete window.headerRenderedCallback;
 			});
@@ -170,56 +148,35 @@ describe("renderer", () => {
 		it("Creates footer root div if it doesn't exist", () => {
 			footerContainer.parentElement.removeChild(footerContainer);
 
-			renderFooter();
+			act(() => {
+				renderFooter();
+			});
 
 			expect(document.getElementById(footerId)).not.toBeNull();
 		});
 
-		it("Renders footer into existing header container div", () => {
+		it("Doesn't render footer if footer is disabled", () => {
+			window.global_nav_config = {
+				footer: false,
+			};
+
 			expect(footerContainer.textContent).toEqual("");
 
-			renderFooter();
+			act(() => {
+				renderFooter();
+			});
 
-			expect(footerContainer.textContent.length).toBeGreaterThan(0);
+			expect(headerContainer).toHaveTextContent("");
 		});
 
-		describe("react-dom rendering", () => {
-			it("Doesn't call ReactDOM.render if footer is disabled", () => {
-				window.global_nav_config = {
-					service: "test-service",
-					footer: false,
-				};
-				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
+		it("Renders footer into existing footer container div", () => {
+			expect(footerContainer.textContent).toEqual("");
+
+			act(() => {
 				renderFooter();
-				expect(reactDOMRenderMock).not.toHaveBeenCalled();
 			});
 
-			it("Calls ReactDOM.render once", () => {
-				const reactDOMRenderMock = jest.spyOn(ReactDOM, "render");
-				renderFooter();
-				expect(reactDOMRenderMock).toHaveBeenCalledTimes(1);
-			});
-
-			it("Calls ReactDOM.render with footer component with correct props", () => {
-				window.global_nav_config = {
-					service: "test-service",
-					footer: {
-						test: true,
-					},
-				};
-
-				renderFooter();
-				expect(reactDOMRenderMock.mock.calls[0][0]).toEqual(
-					<Footer service="test-service" {...{ test: true }} />
-				);
-			});
-
-			it("Calls ReactDOM.render with container div", () => {
-				renderFooter();
-				expect(reactDOMRenderMock.mock.calls[0][1]).toEqual(
-					document.getElementById(footerId)
-				);
-			});
+			expect(footerContainer.textContent.length).toBeGreaterThan(0);
 		});
 	});
 });

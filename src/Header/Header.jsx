@@ -31,6 +31,8 @@ export class Header extends Component {
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
 		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
 		this.handleLogoClick = this.handleLogoClick.bind(this);
+
+		this.headerRef = React.createRef(null);
 	}
 
 	componentDidMount() {
@@ -113,7 +115,12 @@ export class Header extends Component {
 						}}
 					</HeaderContext.Consumer>
 
-					<div className={styles.header} data-tracking="Global nav" id="top">
+					<div
+						className={styles.header}
+						data-tracking="Global nav"
+						id="top"
+						ref={this.props.onRendered}
+					>
 						<header aria-label="Site header">
 							<ul className={styles.a11yLinks} aria-label="Accessibility links">
 								<li>
@@ -208,6 +215,7 @@ Header.propTypes = {
 	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onDropdownOpen: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onDropdownClose: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onRendered: PropTypes.func,
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
 };
 
