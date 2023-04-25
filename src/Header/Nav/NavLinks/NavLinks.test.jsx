@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLinks } from "./NavLinks";
-import { render } from "@testing-library/react";
+import { createEvent, fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import services from "./../__mocks__/services.json";
@@ -72,52 +72,50 @@ describe("NavLinks", () => {
 		expect(secondLink).toHaveTextContent("Second link");
 	});
 
-	it.skip("should prevent default and navigate in event callback on nav item click", () => {
-		const { container } = render(
-			<NavLinks {...defaultProps} currentService="link2" />
-		);
+	it("should prevent default and navigate in event callback on nav item click", () => {
+		const { getByRole } = render(
+				<HeaderContextProvider>
+					<NavLinks {...defaultProps} currentService="link2" />
+				</HeaderContextProvider>
+			),
+			secondLink = getByRole("link", {
+				name: "Second link abbreviation title",
+			}),
+			clickEvent = createEvent.click(secondLink);
 
-		const preventDefault = jest.fn();
+		fireEvent(secondLink, clickEvent);
 
-		const link = wrapper.find("a[href='https://url2/']");
-
-		link.props().onClick({
-			preventDefault: preventDefault,
-			currentTarget: {
-				getAttribute: () => "https://url2/",
-			},
-		});
-
-		expect(preventDefault).toHaveBeenCalled();
+		expect(clickEvent.defaultPrevented).toBeTruthy();
 
 		window.dataLayer[0].eventCallback();
-		expect(window.location.href).toEqual("https://url2/");
+		expect(window.location).toBeAt("https://www.test-link2.nice.org/url2/");
 	});
 
-	// it.skip("should push dataLayer event for nav item click", () => {
-	// 	const { container } = render(<Nav {...defaultProps} isExpanded={false} />);
+	it("should push dataLayer event for nav item click", async () => {
+		const { getByRole } = render(
+				<HeaderContextProvider>
+					<NavLinks {...defaultProps} currentService="link2" />
+				</HeaderContextProvider>
+			),
+			secondLink = getByRole("link", {
+				name: "Second link abbreviation title",
+			}),
+			user = userEvent.setup();
 
-	// 	console.log(wrapper.debug());
+		await user.click(secondLink);
 
-	// 	wrapper.find("a[href='https://url1/']").simulate("click", {
-	// 		preventDefault: () => {},
-	// 		currentTarget: {
-	// 			getAttribute: () => "",
-	// 			textContent: "First link",
-	// 		},
-	// 	});
-
-	// 	expect(window.dataLayer).toEqual([
-	// 		{
-	// 			event: eventName,
-	// 			eventCategory: defaultEventCategory,
-	// 			eventAction: headerClickEventAction,
-	// 			eventLabel: "First link",
-	// 			eventCallback: expect.any(Function),
-	// 			eventTimeout: eventTimeout,
-	// 		},
-	// 	]);
-	// });
+		expect(window.dataLayer).toStrictEqual([
+			{
+				destinationUrl: "https://www.test-link2.nice.org/url2/",
+				event: "GlobalNav",
+				eventCategory: "TopHat and footer",
+				eventAction: "Tophat click",
+				eventLabel: "Second link",
+				eventCallback: expect.any(Function),
+				eventTimeout: 2000,
+			},
+		]);
+	});
 
 	it("Matches snapshot with sub links for selected external service", () => {
 		const externalServices = services.external;

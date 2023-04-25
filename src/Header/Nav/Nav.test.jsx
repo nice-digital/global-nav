@@ -62,15 +62,6 @@ describe("Nav", () => {
 	});
 
 	describe("tracking", () => {
-		beforeEach(() => {
-			window.dataLayer = [];
-		});
-
-		afterAll(() => {
-			// Cleanup
-			delete window.dataLayer;
-		});
-
 		describe("Accounts links", () => {
 			const accountsLinks = {
 				"Joe Bloggs": "https://accounts.nice.org.uk/users/12345/editprofile",

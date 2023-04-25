@@ -53,7 +53,7 @@ export class SubNav extends Component {
 						element: currentTarget,
 						href: href,
 					});
-				} else window.location.href = href;
+				} else window.location.assign(href);
 			}.bind(this)
 		);
 	}

@@ -188,15 +188,6 @@ describe("Account", () => {
 	});
 
 	describe("tracking", () => {
-		beforeEach(() => {
-			window.dataLayer = [];
-		});
-
-		afterAll(() => {
-			// Cleanup
-			delete window.dataLayer;
-		});
-
 		it("should not send dataLayer event or prevent default for admin link click", async () => {
 			const { getByRole } = render(
 				<HeaderContextProvider>
@@ -239,39 +230,42 @@ describe("Account", () => {
 				"Sign out",
 				"https://accounts.nice.org.uk/signout",
 			],
-		])("double(%d)", async (accountsData, linkText, eventLabel, href) => {
-			const { getByRole } = render(
-				<HeaderContextProvider>
-					<Account isLoggedIn accountsData={accountsData} />
-				</HeaderContextProvider>
-			);
+		])(
+			"should prevent default, track and navigate",
+			async (accountsData, linkText, eventLabel, href) => {
+				const { getByRole } = render(
+					<HeaderContextProvider>
+						<Account isLoggedIn accountsData={accountsData} />
+					</HeaderContextProvider>
+				);
 
-			const user = userEvent.setup(),
-				myAccountButton = getByRole("button", { name: "My account" });
+				const user = userEvent.setup(),
+					myAccountButton = getByRole("button", { name: "My account" });
 
-			await user.click(myAccountButton);
+				await user.click(myAccountButton);
 
-			const menuLink = getByRole("menuitem", { name: linkText }),
-				clickEvent = createEvent.click(menuLink);
+				const menuLink = getByRole("menuitem", { name: linkText }),
+					clickEvent = createEvent.click(menuLink);
 
-			fireEvent(menuLink, clickEvent);
+				fireEvent(menuLink, clickEvent);
 
-			expect(window.dataLayer).toEqual([
-				{
-					event: eventName,
-					eventCategory: defaultEventCategory,
-					eventAction: headerClickEventAction,
-					eventLabel: eventLabel,
-					destinationUrl: href,
-					eventCallback: expect.any(Function),
-					eventTimeout: eventTimeout,
-				},
-			]);
+				expect(window.dataLayer).toEqual([
+					{
+						event: eventName,
+						eventCategory: defaultEventCategory,
+						eventAction: headerClickEventAction,
+						eventLabel: eventLabel,
+						destinationUrl: href,
+						eventCallback: expect.any(Function),
+						eventTimeout: eventTimeout,
+					},
+				]);
 
-			expect(clickEvent.defaultPrevented).toBe(true);
+				expect(clickEvent.defaultPrevented).toBe(true);
 
-			window.dataLayer[0].eventCallback();
-			expect(window.location.href).toEqual(href);
-		});
+				window.dataLayer[0].eventCallback();
+				expect(window.location).toBeAt(href);
+			}
+		);
 	});
 });

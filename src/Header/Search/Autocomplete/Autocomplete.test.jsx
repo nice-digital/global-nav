@@ -15,16 +15,8 @@ jest.mock("./suggester", () => ({
 describe("Autocomplete", () => {
 	const defaultProps = {};
 
-	window.location = { ...window.location, assign: jest.fn() };
-
 	beforeEach(() => {
-		window.dataLayer = [];
-
 		suggester.mockClear();
-	});
-
-	afterEach(() => {
-		window.location.assign.mockClear();
 	});
 
 	describe("Autocomplete", () => {
@@ -174,9 +166,7 @@ describe("Autocomplete", () => {
 			});
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location.assign).toHaveBeenCalledWith(
-				"https://www.nice.org.uk/diabetes1.html"
-			);
+			expect(window.location).toBeAt("https://www.nice.org.uk/diabetes1.html");
 		});
 
 		it("should call onNavigating prop function with selected option in event callback", async () => {

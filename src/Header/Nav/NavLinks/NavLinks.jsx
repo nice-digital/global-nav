@@ -64,9 +64,10 @@ export function NavLinks({
 			headerClickEventAction,
 			e.currentTarget.textContent,
 			null,
-			(function () {
-				window.location.href = href;
-			})()
+			href,
+			() => {
+				window.location.assign(href);
+			}
 		);
 	}
 

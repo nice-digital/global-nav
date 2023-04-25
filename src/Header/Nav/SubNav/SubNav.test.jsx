@@ -54,15 +54,6 @@ describe("SubNav", () => {
 	});
 
 	describe("Tracking", () => {
-		beforeEach(() => {
-			window.dataLayer = [];
-		});
-
-		afterAll(() => {
-			// Cleanup
-			delete window.dataLayer;
-		});
-
 		it("should prevent default on link click", () => {
 			const { getByRole } = render(<SubNav text="BNF" links={links} />),
 				link = getByRole("link", { name: links[1].text }),
@@ -117,7 +108,7 @@ describe("SubNav", () => {
 			await user.click(link);
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location.href).toEqual(href);
+			expect(window.location).toBeAt(href);
 		});
 
 		it("should navigate in event callback on click with onNavigating prop that doesn't exist", async () => {
@@ -143,7 +134,7 @@ describe("SubNav", () => {
 			await user.click(link);
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location.href).toEqual(href);
+			expect(window.location).toBeAt(href);
 		});
 
 		it("should call onNavigating function prop in event callback on click", async () => {

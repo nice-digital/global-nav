@@ -43,7 +43,9 @@ describe("renderer", () => {
 		it("Creates header root div if it doesn't exist", () => {
 			headerContainer.parentElement.removeChild(headerContainer);
 
-			renderHeader();
+			act(() => {
+				renderHeader();
+			});
 
 			expect(document.getElementById(headerId)).not.toBeNull();
 		});

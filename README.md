@@ -374,7 +374,7 @@ window.onNavigatingHandler = function (e) {
 
   if (e.href === '/#browse') {
     // Trigger some custom behaviour
-  } else window.location.href = e.href; // Fallback to navigation as normal
+  } else window.location.assign(e.href); // Fallback to navigation as normal
 };
 
 var global_nav_config = {
@@ -598,7 +598,7 @@ Pass either a function, or the name of a function defined on `window`. E.g.:
 ```js
 window.onSearchingHandler = function (e) {
   // Define your implementation here e.g.:
-  window.location.href = '/search?q=' + encodeURIComponent(e.query);
+  window.location.assign('/search?q=' + encodeURIComponent(e.query));
 };
 
 var global_nav_config = {
