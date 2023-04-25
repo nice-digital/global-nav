@@ -6,19 +6,6 @@ import userEvent from "@testing-library/user-event";
 import { eventName, defaultEventCategory } from "../tracker";
 
 describe("TrackedLink", () => {
-	beforeEach(() => {
-		window.dataLayer = [];
-
-		window.location = { ...window.location, assign: jest.fn() };
-	});
-
-	afterAll(() => {
-		// Cleanup
-		delete window.dataLayer;
-
-		window.location.assign.mockClear();
-	});
-
 	it("Matches snapshot", () => {
 		const { container } = render(
 			<TrackedLink href="/a-url" eventAction="Action" className="className">
@@ -59,7 +46,7 @@ describe("TrackedLink", () => {
 		]);
 
 		expect(clickEvent.defaultPrevented).toBe(true);
-		expect(window.location.assign).toHaveBeenCalledWith(href);
+		expect(window.location).toBeAt(href);
 	});
 
 	it("should use default event category when none provided", async () => {

@@ -18,4 +18,7 @@ module.exports = {
 		url: "https://global-nav-tests.nice.org.uk/",
 	},
 	testPathIgnorePatterns: ["lib"],
+	globals: {
+		IS_REACT_ACT_ENVIRONMENT: true,
+	},
 };

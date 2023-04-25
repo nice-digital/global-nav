@@ -16,15 +16,6 @@ describe("Header", () => {
 		enabled: null,
 	};
 
-	beforeEach(() => {
-		window.dataLayer = [];
-	});
-
-	afterAll(() => {
-		// Cleanup
-		delete window.dataLayer;
-	});
-
 	it("Matches snapshot", () => {
 		const { container } = render(
 			<Header {...defaultProps} onNavigating="onNavigatingHandler" />
@@ -277,7 +268,7 @@ describe("Header", () => {
 			expect(clickEvent.defaultPrevented).toBe(true);
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location.href).toEqual("https://www.nice.org.uk/");
+			expect(window.location).toBeAt("https://www.nice.org.uk/");
 		});
 	});
 
