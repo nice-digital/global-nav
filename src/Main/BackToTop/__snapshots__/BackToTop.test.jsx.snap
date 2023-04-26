@@ -16,6 +16,7 @@ exports[`BackToTop Matches snapshot 1`] = `
       >
         <div
           class="container container"
+          data-component="container"
         >
           <svg
             aria-hidden="true"
