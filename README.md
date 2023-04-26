@@ -19,8 +19,6 @@
 		- [Non-functional](#non-functional)
 	- [Stack](#stack)
 		- [Principles](#principles)
-		- [Why Nerv?](#why-nerv)
-			- [Why not Preact?](#why-not-preact)
 		- [CSS Modules](#css-modules)
 	- [:rocket: Set up](#rocket-set-up)
 		- [Other commands](#other-commands)
@@ -111,7 +109,6 @@ The following non-functional requirements apply:
 ## Stack
 
 - [React](https://reactjs.org/)
-- [NervJS](https://github.com/NervJS/nerv) for smaller footprint and IE8 support, until we drop support for IE8, then we can consider Preact
 - [SCSS](https://sass-lang.com/documentation/file.SCSS_FOR_SASS_USERS.html) for styles
 - [CSS Modules](https://github.com/css-modules/css-modules) for generated class names
 - [PostCSS](https://postcss.org/) for transforming CSS with plugins:
@@ -144,28 +141,6 @@ Consider the following development principles:
   - as if a single developer worked across the codebase
 - Clear extension points and hooks for integrating into applications
   - To avoid some of the issues from TopHat where there was no consistency
-
-### Why Nerv?
-
-You've probably never heard of [Nerv](https://nerv.aotu.io/). So why use it?
-
-We are using React because:
-
-- it gives us structure to our app
-- is well used in the community
-- is easy to test
-- is being adopted across Digital Services.
-
-However, consider the [non-functional requirements](#non-functional) and [development principles](#principles) above - specifically the need to support IE8 and to have a small bundle size. React works in IE9+ (with Polyfills) and is 31.8K (React 16.2.0 + React DOM minified and gzipped). Both of these make it less than ideal for creating a standalone bundle that will load on every page across NICE alongside each application's code.
-
-This is where Nerv fits in. It's a "blazing fast React alternative, compatible with IE8 and React 16" and is one third of React's size. It's a drop in replacement (via [aliases in Webpack](https://github.com/NervJS/nerv#usage-with-webpack)) so allows us to write 'normal' React, but compile with Nerv.
-
-#### Why not Preact?
-
-We considered [Preact](https://preactjs.com/) as a React alternative as it's only 3kB. However, we discounted it at the time of writing because:
-
-- it didn't have full support for React 16
-- the [browser support](https://preactjs.com/about/browser-support) docs were vague on detail for supporting IE8 and we struggled to get it to work.
 
 ### CSS Modules
 
