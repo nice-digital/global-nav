@@ -8,9 +8,6 @@ const webpack = require("webpack"),
 
 const examples = require("./examples/examples.js");
 
-const ENV = process.env.NODE_ENV || "development",
-	HOT = ENV === "development" && process.env.HOT !== "false";
-
 module.exports = function (env, argv) {
 	const mode = argv.mode,
 		isDevelopment = mode === "development";
@@ -102,7 +99,7 @@ module.exports = function (env, argv) {
 		},
 
 		plugins: [
-			HOT && new ReactRefreshWebpackPlugin(),
+			new ReactRefreshWebpackPlugin(),
 			new ESLintPlugin(),
 			new StyleLintPlugin(),
 			// Add a ponyfill for Promise/fetch implementation in IE 11
@@ -110,7 +107,9 @@ module.exports = function (env, argv) {
 			new webpack.ProvidePlugin({
 				Promise: "promise-polyfill",
 				// Direct path to unfetch because of this: https://github.com/developit/unfetch/pull/164#issuecomment-1426069180
-				fetch: path.resolve(__dirname, "node_modules/unfetch/dist/unfetch.mjs"),
+				fetch: path.resolve(__dirname, "node_modules/unfetch/dist/unfetch.js"),
+				//fetch: "exports-loader?self.fetch!unfetch",
+				//fetch: require.resolve("unfetch"),
 			}),
 
 			new HtmlWebpackPlugin({

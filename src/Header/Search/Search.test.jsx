@@ -46,43 +46,6 @@ describe("Search", () => {
 			expect(input).toHaveAttribute("placeholder", "Test placeholder");
 			expect(input).toHaveValue("diabetes");
 		});
-
-		it("Passes variable name with suggestions and template to autocomplete component", async () => {
-			window.variableName = [
-				{ Title: "diabetes", Link: "/diabetes" },
-				{ Title: "diabetes type 1", Link: "/diabetets-type-1" },
-			];
-			const suggestionTemplate = jest.fn().mockReturnValue("Test");
-			const { getByRole } = render(
-					<Search
-						{...defaultProps}
-						autocomplete={{ suggestions: "variableName", suggestionTemplate }}
-						placeholder="Test placeholder"
-					/>
-				),
-				input = getByRole("combobox"),
-				user = userEvent.setup();
-
-			await user.type(input, "dia");
-
-			await waitFor(() => {
-				expect(suggestionTemplate).toHaveBeenCalledTimes(2);
-			});
-
-			expect(suggestionTemplate.mock.calls[0][0]).toStrictEqual({
-				Title: "diabetes",
-				Link: "/diabetes",
-				TitleHtml: "<mark>dia</mark>betes",
-				TypeAheadType: undefined,
-			});
-
-			expect(suggestionTemplate.mock.calls[1][0]).toStrictEqual({
-				Title: "diabetes type 1",
-				Link: "/diabetets-type-1",
-				TitleHtml: "<mark>dia</mark>betes type 1",
-				TypeAheadType: undefined,
-			});
-		});
 	});
 
 	describe("onSearching", () => {

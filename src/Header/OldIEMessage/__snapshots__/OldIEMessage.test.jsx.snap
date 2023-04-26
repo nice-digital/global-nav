@@ -38,8 +38,7 @@ exports[`OldIEMessage Matches snapshot in IE 8/9 1`] = `
         >
           Google Chrome
         </a>
-         
-        or 
+         or 
         <a
           href="https://www.mozilla.org/en-GB/firefox/new/"
         >
@@ -128,8 +127,7 @@ exports[`OldIEMessage Matches snapshot in IE 10 1`] = `
         >
           Google Chrome
         </a>
-         
-        or 
+         or 
         <a
           href="https://www.mozilla.org/en-GB/firefox/new/"
         >

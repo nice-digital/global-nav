@@ -5,64 +5,26 @@ exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
   <div
     class="ac"
   >
-    <div
-      class="autocomplete__wrapper"
-    >
-      <div
-        style="border: 0px; height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;"
-      >
-        <div
-          aria-atomic="true"
-          aria-live="polite"
-          id="autocomplete__status--A"
-          role="status"
-        />
-        <div
-          aria-atomic="true"
-          aria-live="polite"
-          id="autocomplete__status--B"
-          role="status"
-        />
-      </div>
-      <input
-        aria-activedescendant="false"
-        aria-autocomplete="list"
-        aria-describedby="autocomplete__assistiveHint"
-        aria-expanded="false"
-        aria-owns="autocomplete__listbox"
-        autocomplete="off"
-        class="autocomplete__input autocomplete__input--default"
-        data-hj-allow=""
-        id="autocomplete"
-        maxlength="512"
-        name="q"
-        placeholder=""
-        role="combobox"
-        type="text"
-        value="test"
-      />
-      <ul
-        class="autocomplete__menu autocomplete__menu--overlay autocomplete__menu--hidden"
-        id="autocomplete__listbox"
-        role="listbox"
-      >
-        <li
-          aria-posinset="1"
-          aria-selected="false"
-          aria-setsize="1"
-          class="autocomplete__option"
-          id="autocomplete__option--0"
-          role="option"
-          tabindex="-1"
-        />
-      </ul>
-      <span
-        id="autocomplete__assistiveHint"
-        style="display: none;"
-      >
-        When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.
-      </span>
-    </div>
+    <label
+      class="visually-hidden"
+      data-headlessui-state=""
+      id="headlessui-combobox-label-:r0:"
+    />
+    <input
+      aria-autocomplete="list"
+      aria-expanded="false"
+      aria-labelledby="headlessui-combobox-label-:r0:"
+      autocomplete="off"
+      class="autocomplete__input"
+      data-headlessui-state=""
+      data-hj-allow=""
+      id="autocomplete"
+      maxlength="512"
+      name="q"
+      role="combobox"
+      type="text"
+      value=""
+    />
   </div>
 </div>
 `;

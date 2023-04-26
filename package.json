@@ -7,7 +7,6 @@
   "scripts": {
     "// LOCAL DEV": "",
     "start": "webpack serve --mode development",
-    "start:nohot": "cross-env HOT=false webpack serve --mode development",
     "// PRODUCTION BUILDS": "",
     "build": "webpack --mode=production --config webpack.config.prod.js",
     "es5ify": "cross-env NODE_ENV=production babel src -d lib --extensions \".js\",\".jsx\",\".snap\" --copy-files --no-copy-ignored --ignore \"src/**/*.test.js\",\"src/**/*.test.jsx\",\"src/setupTests.js\",\"src/polyfill/**/*.js\",\"src/cdn.js\",\"src/**/*.snap\"",
@@ -114,15 +113,18 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",
+    "@headlessui/react": "^1.7.14",
     "@mantine/hooks": "^6.0.2",
-    "@nice-digital/design-system": "^4.0.6",
+    "@nice-digital/design-system": "^5.0.4",
     "@use-it/event-listener": "^0.1.7",
-    "accessible-autocomplete": "^2.0.4",
     "classnames": "^2.3.2",
-    "es5-polyfill": "0.0.6",
     "js-cookie": "^3.0.1",
     "prop-types": "^15.8.1",
     "unfetch": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16 || ^17 || ^18",
+    "react-dom": "^16 || ^17 || ^18"
   },
   "files": [
     "lib",
