@@ -74,6 +74,7 @@
 	- [Upgrading to v3](#upgrading-to-v3)
 	- [Upgrading to v4](#upgrading-to-v4)
 	- [Upgrading to v5](#upgrading-to-v5)
+	- [Upgrading to v6](#upgrading-to-v6)
 
 <!-- END doctoc -->
 </details>
@@ -863,3 +864,7 @@ V4 involved updating a lot of dependencies. Mostly this was internal implementat
 ## Upgrading to v5
 
 Version 5 includes updates for the summer 2022 brand refresh. It's mostly an internal refactor of typography and colour updates and shouldn't include any breaking API changes.
+
+## Upgrading to v6
+
+Version 6 is mostly updates of dependencies, the biggest of which was React Testing Library (from Enzyme). It also includes support for React 18 and Design System v5. 

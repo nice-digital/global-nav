@@ -1,219 +1,222 @@
-import React, { Component } from "react";
-import AccessibleAutocomplete from "accessible-autocomplete/react";
+import React, { Fragment, useEffect, useState } from "react";
+import { Combobox } from "@headlessui/react";
 import PropTypes from "prop-types";
+import { useDebouncedValue } from "@mantine/hooks";
+
 import styles from "./Autocomplete.module.scss";
 
 import { suggester } from "./suggester";
-import { isIosDevice } from "./../../../utils";
+import { useIsClient } from "../../../hooks/useIsClient";
 import { trackEvent } from "./../../../tracker";
 import { getCallbackFunction } from "./../../../utils";
-
-/**
- * Debounce
- * See http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
- *
- * @param      {Function}  func       The function to debounce
- * @param      {Integer}  execAsap   Whether to execute the function now
- * @param      {Integer}  threshold  The detection period, in milliseconds
- * @param      {Object}  scope  The context for the debounced function
- * @return     {Function}  { The debounced function }
- */
-const debounce = function (
-	func,
-	execAsap = false,
-	threshold = 100,
-	scope = null
-) {
-	let timeout;
-
-	return function debounced() {
-		let context = scope || this,
-			args = arguments;
-
-		function delayed() {
-			if (!execAsap) func.apply(context, args);
-			timeout = null;
-		}
-
-		if (timeout) clearTimeout(timeout);
-		else if (execAsap) func.apply(context, args);
-
-		timeout = setTimeout(delayed, threshold);
-	};
-};
 
 /** The maximum number of autocomplete results to return */
 const maxResults = 5;
 
+/** The minimum number of characters that should be entered before the autocomplete will attempt to suggest options. */
+const minAutocompleteLength = 3;
+
 /** Delay in millieconds before loading results */
 export const rateLimitWait = 100;
 
-const inputValueTemplate = function (suggestion) {
-		if (!suggestion || !suggestion.Title) return "";
-		return suggestion && suggestion.Title;
-	},
-	suggestionTemplateDefault = function (suggestion) {
-		if (!suggestion || !suggestion.Link) return "";
-		return `<a href="${suggestion.Link}">${
-			suggestion.TitleHtml || suggestion.Title
-		}</a>`;
+const suggestionTemplateDefault = function (suggestion) {
+	if (!suggestion || !suggestion.Link) return "";
+	return `<a href="${suggestion.Link}">${
+		suggestion.TitleHtml || suggestion.Title
+	}</a>`;
+};
+
+export default function Autocomplete(props) {
+	const isClient = useIsClient(),
+		[queryText, setQueryText] = useState(props.query || ""),
+		[debouncedQueryText] = useDebouncedValue(queryText, rateLimitWait),
+		[suggestions, setSuggestions] = useState([]),
+		inputChangeHandler = (event) => {
+			setQueryText(event.target.value);
+		};
+
+	const onValueChangeHandler = (suggestion) => {
+		if (!suggestion) return;
+
+		const element = document.querySelector(
+				".autocomplete__option a[href='" + suggestion.Link + "']"
+			),
+			inputText = document.getElementById("autocomplete").value;
+
+		const eventCallback = () => {
+			const onNavigatingCallback = getCallbackFunction(props.onNavigating);
+
+			if (onNavigatingCallback) {
+				onNavigatingCallback({
+					element,
+					href: suggestion.Link,
+				});
+			} else window.location.assign(suggestion.Link);
+		};
+
+		if (suggestion.TypeAheadType) {
+			trackEvent(
+				"Search - Typeahead select",
+				"Selected: " + suggestion.TypeAheadType,
+				(suggestion.Title + " | " + inputText).toLowerCase(),
+				null,
+				suggestion.Link,
+				eventCallback
+			);
+		} else {
+			trackEvent(
+				"Search",
+				"Typeahead select",
+				suggestion.Title + " | " + inputText,
+				null,
+				suggestion.Link,
+				eventCallback
+			);
+		}
 	};
 
-export default class Autocomplete extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			canUseDOM: false,
-		};
-	}
-
-	componentDidMount() {
-		this.setState({
-			canUseDOM: true,
-		});
-	}
-
-	onConfirm(suggestion) {
-		if (suggestion) {
-			var selectedEl = document.querySelectorAll(
-				".autocomplete__option a[href='" + suggestion.Link + "']"
-			);
-
-			//This var is declared outside the eventcallback function to avoid
-			//loosing the component scope due to hoisting
-			// eslint-disable-next-line react/prop-types
-			const { onNavigating } = this.props;
-			const eventCallback = function () {
-				const onNavigatingCallback = getCallbackFunction(onNavigating);
-
-				if (onNavigatingCallback) {
-					onNavigatingCallback({
-						element: selectedEl,
-						href: suggestion.Link,
-					});
-				} else window.location.assign(suggestion.Link);
-			};
-
-			if (suggestion.TypeAheadType) {
-				trackEvent(
-					"Search - Typeahead select",
-					"Selected: " + suggestion.TypeAheadType,
-					(
-						suggestion.Title +
-						" | " +
-						document.getElementById("autocomplete").value
-					).toLowerCase(),
-					null,
-					suggestion.Link,
-					eventCallback
-				);
-			} else {
-				trackEvent(
-					"Search",
-					"Typeahead select",
-					suggestion.Title +
-						" | " +
-						document.getElementById("autocomplete").value,
-					null,
-					suggestion.Link,
-					eventCallback
-				);
-			}
-		}
-	}
-
-	suggest(query, populateResults) {
+	useEffect(() => {
 		if (
-			this.props.source === false ||
-			query === "" ||
-			query === this.props.placeholder
-		)
+			props.source === false ||
+			debouncedQueryText === "" ||
+			debouncedQueryText.length < minAutocompleteLength
+		) {
+			setSuggestions([]);
 			return;
+		}
 
 		let source;
 
-		if (Array.isArray(this.props.source)) {
-			source = this.props.source;
+		if (Array.isArray(props.source)) {
+			source = props.source;
 		}
 
-		if (
-			typeof this.props.source === "string" &&
-			this.props.source.indexOf("/") === -1
-		) {
-			source = window[this.props.source];
+		if (typeof props.source === "string" && props.source.indexOf("/") === -1) {
+			source = window[props.source];
 			if (!source) return;
 		}
 
 		if (source) {
-			populateResults(suggester(source, query, maxResults));
+			setSuggestions(suggester(source, debouncedQueryText, maxResults));
 			return;
 		}
 
 		// Default to a URL for asynchronously loading suggestions from the server
 		fetch(
-			`${this.props.source}${
-				this.props.source.indexOf("?") === -1 ? "?" : "&"
-			}q=${query}`
+			`${props.source}${
+				props.source.indexOf("?") === -1 ? "?" : "&"
+			}q=${debouncedQueryText}`
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				populateResults(data.slice(0, maxResults));
+				setSuggestions(data.slice(0, maxResults));
 			});
-	}
+	}, [debouncedQueryText]);
 
-	render() {
-		const templates = {
-			inputValue: inputValueTemplate,
-			suggestion: this.props.suggestionTemplate || suggestionTemplateDefault,
-		};
-
-		return (
-			<div className={styles.ac}>
-				{!this.props.source || !this.state.canUseDOM ? (
-					<div className="autocomplete__wrapper">
-						<input
-							type="search"
-							id="autocomplete"
-							name="q"
-							className="autocomplete__input autocomplete__input--default"
-							placeholder={this.props.placeholder}
-							defaultValue={this.props.query}
-							data-hj-allow=""
-							maxLength={512}
-						/>
-					</div>
-				) : (
-					<AccessibleAutocomplete
+	return (
+		<div className={styles.ac}>
+			{!props.source || !isClient ? (
+				<div className="autocomplete__wrapper">
+					<input
+						type="search"
 						id="autocomplete"
 						name="q"
-						placeholder={this.props.placeholder}
-						displayMenu={isIosDevice() ? "inline" : "overlay"}
-						minLength={3}
-						source={debounce(this.suggest, false, rateLimitWait, this)}
-						templates={templates}
-						onConfirm={function (s) {
-							this.onConfirm(s);
-						}.bind(this)}
-						confirmOnBlur={false}
-						showNoOptionsFound={false}
-						defaultValue={this.props.query}
-						ref={function (acElement) {
-							// This relies on an inner implementation detail of the autocomplete component, can we do this in a better way?
-							var inputEl =
-								acElement &&
-								acElement.elementReferences &&
-								acElement.elementReferences[-1];
-							if (inputEl) {
-								inputEl.setAttribute("data-hj-allow", "");
-								inputEl.setAttribute("maxlength", 512);
-							}
-						}}
+						className="autocomplete__input autocomplete__input--default"
+						placeholder={props.placeholder}
+						defaultValue={props.query}
+						data-hj-allow=""
+						maxLength={512}
 					/>
-				)}
-			</div>
-		);
-	}
+				</div>
+			) : (
+				<Combobox value={queryText} onChange={onValueChangeHandler} nullable>
+					<Combobox.Label className="visually-hidden">
+						{props.placeholder}
+					</Combobox.Label>
+					<Combobox.Input
+						id="autocomplete"
+						name="q"
+						className="autocomplete__input"
+						autoComplete="off"
+						maxLength={512}
+						data-hj-allow=""
+						placeholder={props.placeholder}
+						onChange={inputChangeHandler}
+					/>
+					<Combobox.Options className="autocomplete__menu autocomplete__menu--overlay">
+						<Combobox.Option
+							as={Fragment}
+							value={{ Link: `/search?q=${queryText}`, Title: queryText }}
+						>
+							{({ active }) => (
+								<li
+									className={`visually-hidden autocomplete__option ${
+										active ? "autocomplete__option--focused" : ""
+									}`}
+								>
+									<a href={`/search?q=${queryText}`}>
+										{queryText.length === 0 ? (
+											"Empty search"
+										) : (
+											<>
+												Search for <em>{queryText}</em>
+											</>
+										)}
+									</a>
+								</li>
+							)}
+						</Combobox.Option>
+						{suggestions.map((suggestion) => (
+							<Combobox.Option
+								key={suggestion.Title}
+								value={suggestion}
+								as={Fragment}
+							>
+								{({ active }) => (
+									<li
+										className={`autocomplete__option ${
+											active ? "autocomplete__option--focused" : ""
+										}`}
+										dangerouslySetInnerHTML={{
+											__html: (
+												props.suggestionTemplate || suggestionTemplateDefault
+											)(suggestion),
+										}}
+									/>
+								)}
+							</Combobox.Option>
+						))}
+					</Combobox.Options>
+				</Combobox>
+				// <AccessibleAutocomplete
+				// 	id="autocomplete"
+				// 	name="q"
+				// 	placeholder={props.placeholder}
+				// 	displayMenu={isIosDevice() ? "inline" : "overlay"}
+				// 	minLength={3}
+				// 	source={debounce(this.suggest, false, rateLimitWait, this)}
+				// 	templates={templates}
+				// 	onConfirm={function (s) {
+				// 		this.onConfirm(s);
+				// 	}.bind(this)}
+				// 	confirmOnBlur={false}
+				// 	showNoOptionsFound={false}
+				// 	defaultValue={props.query}
+				// 	ref={function (acElement) {
+				// 		// This relies on an inner implementation detail of the autocomplete component, can we do this in a better way?
+				// 		var inputEl =
+				// 			acElement &&
+				// 			acElement.elementReferences &&
+				// 			acElement.elementReferences[-1];
+				// 		if (inputEl) {
+				// 			inputEl.setAttribute("data-hj-allow", "");
+				// 			inputEl.setAttribute("maxlength", 512);
+				// 		}
+				// 	}}
+				// />
+			)}
+		</div>
+	);
 }
 
 Autocomplete.propTypes = {

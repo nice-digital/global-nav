@@ -22,21 +22,29 @@ describe("Autocomplete", () => {
 	describe("Autocomplete", () => {
 		it("should render autocomplete component", () => {
 			const { container } = render(
-				<Autocomplete {...defaultProps} source="/url" query="test" />
+				<Autocomplete {...defaultProps} source="someVariable" query="test" />
 			);
 			expect(container).toMatchSnapshot();
 		});
 
 		it("should render query into defaultValue attribute on autocomplete component", () => {
 			const { getByRole } = render(
-				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
+				<Autocomplete
+					{...defaultProps}
+					source="someVariable"
+					query="diabetes"
+				/>
 			);
 			expect(getByRole("combobox")).toHaveValue("diabetes");
 		});
 
 		it("should add HotJar allowlist attribute to input box", () => {
 			const { getByRole } = render(
-				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
+				<Autocomplete
+					{...defaultProps}
+					source="someVariable"
+					query="diabetes"
+				/>
 			);
 
 			expect(getByRole("combobox")).toHaveAttribute("data-hj-allow", "");
@@ -44,7 +52,11 @@ describe("Autocomplete", () => {
 
 		it("should add 512 character max length", () => {
 			const { getByRole } = render(
-				<Autocomplete {...defaultProps} source="/url" query="diabetes" />
+				<Autocomplete
+					{...defaultProps}
+					source="someVariable"
+					query="diabetes"
+				/>
 			);
 
 			expect(getByRole("combobox")).toHaveAttribute("maxlength", "512");
@@ -56,7 +68,8 @@ describe("Autocomplete", () => {
 				Link: "https://www.nice.org.uk/diabetes1.html",
 			};
 
-			const suggestionTemplate = jest.fn();
+			const suggestionTemplate = (suggestion) =>
+				`Look! ${suggestion.TitleHtml}`;
 
 			const { getByRole } = render(
 					<Autocomplete
@@ -71,13 +84,12 @@ describe("Autocomplete", () => {
 			await user.type(input, "dia");
 
 			await waitFor(() => {
-				expect(suggestionTemplate).toHaveBeenCalledTimes(1);
-			});
-
-			expect(suggestionTemplate.mock.calls[0][0]).toStrictEqual({
-				...option,
-				TitleHtml: "<mark>dia</mark>betes type 1",
-				TypeAheadType: undefined,
+				const option = getByRole("option", {
+					name: "Look! dia betes type 1",
+				});
+				expect(option.innerHTML).toMatchInlineSnapshot(
+					`"Look! <mark>dia</mark>betes type 1"`
+				);
 			});
 		});
 
@@ -88,7 +100,7 @@ describe("Autocomplete", () => {
 			};
 
 			const { getByRole } = render(
-					<Autocomplete {...defaultProps} source={[option]} query="dia" />
+					<Autocomplete {...defaultProps} source={[option]} />
 				),
 				input = getByRole("combobox"),
 				user = userEvent.setup();
@@ -121,7 +133,7 @@ describe("Autocomplete", () => {
 			};
 
 			const { getByRole } = render(
-					<Autocomplete {...defaultProps} source={[option]} query="dia" />
+					<Autocomplete {...defaultProps} source={[option]} />
 				),
 				input = getByRole("combobox"),
 				user = userEvent.setup();
@@ -158,7 +170,7 @@ describe("Autocomplete", () => {
 				input = getByRole("combobox"),
 				user = userEvent.setup();
 
-			await user.type(input, "diab");
+			await user.type(input, "b");
 
 			await waitFor(async () => {
 				const optionLink = getByRole("link", { name: "diab etes type 1" });
@@ -180,7 +192,6 @@ describe("Autocomplete", () => {
 					<Autocomplete
 						{...defaultProps}
 						source={[option]}
-						query="dia"
 						onNavigating={onNavigating}
 					/>
 				),
@@ -219,7 +230,7 @@ describe("Autocomplete", () => {
 
 			await waitFor(() => {
 				const optionLinks = queryAllByRole("link");
-				expect(optionLinks).toHaveLength(1);
+				expect(optionLinks).toHaveLength(2);
 			});
 
 			expect(suggester).toBeCalledTimes(1);

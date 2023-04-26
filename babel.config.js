@@ -3,20 +3,16 @@ module.exports = function (api) {
 
 	return {
 		presets: [
+			"@babel/preset-env",
 			[
-				"@babel/preset-env",
-				{
-					spec: true,
-					useBuiltIns: false,
-					loose: true,
-					modules: "commonjs",
-				},
+				"@babel/preset-react",
+				{ development: !api.env("production"), runtime: "automatic" },
 			],
-			"@babel/preset-react",
 		],
 		plugins: [
 			// Including helpers from plugin-transform-runtime saves ~3Kb from minified bundle size
 			"@babel/plugin-transform-runtime",
 		],
+		...(api.env("development") && { plugins: ["react-refresh/babel"] }),
 	};
 };
