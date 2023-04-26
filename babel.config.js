@@ -12,7 +12,7 @@ module.exports = function (api) {
 		plugins: [
 			// Including helpers from plugin-transform-runtime saves ~3Kb from minified bundle size
 			"@babel/plugin-transform-runtime",
+			...(api.env("development") ? ["react-refresh/babel"] : []),
 		],
-		...(api.env("development") && { plugins: ["react-refresh/babel"] }),
 	};
 };
