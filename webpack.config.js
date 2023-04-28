@@ -45,16 +45,7 @@ module.exports = function (env, argv) {
 				{
 					test: /\.jsx?$/,
 					exclude: /node_modules/,
-					use: [
-						{
-							loader: require.resolve("babel-loader"),
-							options: {
-								plugins: [
-									isDevelopment && require.resolve("react-refresh/babel"),
-								].filter(Boolean),
-							},
-						},
-					],
+					use: "babel-loader",
 					resolve: { extensions: [".js", ".jsx"] },
 				},
 				{
@@ -148,6 +139,8 @@ module.exports = function (env, argv) {
 			.filter(Boolean),
 
 		cache: true,
+
+		target: "web",
 
 		optimization: {
 			minimize: false,

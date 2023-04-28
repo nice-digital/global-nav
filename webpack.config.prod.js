@@ -4,6 +4,9 @@ const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
+const BundleAnalyzerPlugin =
+	require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+
 const pkg = require("./package.json");
 
 module.exports = function (env, argv) {
@@ -77,6 +80,12 @@ module.exports = function (env, argv) {
 					}),
 				],
 			},
+			plugins: [
+				new BundleAnalyzerPlugin({
+					analyzerMode: "static",
+					openAnalyzer: false,
+				}),
+			],
 		}),
 	];
 };
