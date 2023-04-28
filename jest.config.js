@@ -21,4 +21,5 @@ module.exports = {
 	globals: {
 		IS_REACT_ACT_ENVIRONMENT: true,
 	},
+	transformIgnorePatterns: ["node_modules/(?!@mantine/hooks)/"],
 };
