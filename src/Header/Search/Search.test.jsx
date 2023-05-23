@@ -1,12 +1,7 @@
 import React from "react";
 import Search from "./Search";
 
-import {
-	render,
-	createEvent,
-	fireEvent,
-	waitFor,
-} from "@testing-library/react";
+import { render, createEvent, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("Search", () => {
