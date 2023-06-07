@@ -136,7 +136,7 @@ export default function Autocomplete(props) {
 					<Combobox.Input
 						id="autocomplete"
 						name="q"
-						className="autocomplete__input"
+						className="autocomplete__input autocomplete__input--default"
 						autoComplete="off"
 						maxLength={512}
 						data-hj-allow=""
