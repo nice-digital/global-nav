@@ -10,8 +10,8 @@ export function AboutUs({ rootUrl }) {
 		<section aria-label="About - navigation">
 			<h2 className="mt--0">About</h2>
 			<p>
-				We provide national guidance and advice to improve health and social
-				care.
+				NICE helps practitioners and commissioners get the best care to
+				patients, fast, while ensuring value for the taxpayer.
 			</p>
 			<Button variant="cta" to={`${rootUrl}/about`}>
 				Explore about
@@ -99,14 +99,6 @@ export function AboutUs({ rootUrl }) {
 								href={`${rootUrl}/about/nice-communities/nice-and-the-public/public-involvement`}
 							>
 								Public involvement
-							</a>
-						</li>
-						<li>
-							<p>Help shape the future of NICE guidelines:</p>
-							<a
-								href={`${rootUrl}/get-involved/help-shape-the-future-of-nice-guidelines`}
-							>
-								Test our guideline prototype
 							</a>
 						</li>
 					</ul>
