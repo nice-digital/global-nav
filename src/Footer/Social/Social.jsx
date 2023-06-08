@@ -3,7 +3,6 @@ import FacebookIcon from "@nice-digital/icons/lib/Facebook";
 import TwitterIcon from "@nice-digital/icons/lib/Twitter";
 import YouTubeIcon from "@nice-digital/icons/lib/YoutubePlay";
 import LinkedInIcon from "@nice-digital/icons/lib/Linkedin";
-import InstagramIcon from "@nice-digital/icons/lib/Instagram";
 
 import styles from "./Social.module.scss";
 import TrackedLink from "../../TrackedLink";
@@ -42,16 +41,6 @@ export default class Social extends Component {
 						>
 							<YouTubeIcon />
 							YouTube
-						</TrackedLink>
-					</li>
-					<li>
-						<TrackedLink
-							href="https://www.instagram.com/nicecomms/"
-							eventAction={footerClickEventAction}
-							eventLabel="Instagram"
-						>
-							<InstagramIcon />
-							Instagram
 						</TrackedLink>
 					</li>
 					<li>
