@@ -97,6 +97,16 @@ export class Header extends Component {
 	}
 
 	render() {
+		if (this.props.renderSearchOnly) {
+			return (
+				<Search
+					skipLinkId={this.props.skipLinkId}
+					onNavigating={this.props.onNavigating}
+					{...this.props.search}
+				/>
+			);
+		}
+
 		return (
 			this.props.enabled !== false && (
 				<HeaderContextProvider>
@@ -217,12 +227,14 @@ Header.propTypes = {
 	onDropdownClose: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onRendered: PropTypes.func,
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
+	renderSearchOnly: PropTypes.bool,
 };
 
 Header.defaultProps = {
 	search: {},
 	skipLinkId: "content-start",
 	additionalSubMenuItems: [],
+	renderSearchOnly: false,
 };
 
 export default Header;
