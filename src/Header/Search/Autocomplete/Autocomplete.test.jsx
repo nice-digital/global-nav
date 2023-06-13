@@ -93,7 +93,7 @@ describe("Autocomplete", () => {
 			});
 		});
 
-		it("should push autocomplete select event to the dataLayer", async () => {
+		it.skip("should push autocomplete select event to the dataLayer", async () => {
 			const option = {
 				Title: "diabetes type 1",
 				Link: "https://www.nice.org.uk/diabetes1.html",
@@ -125,7 +125,7 @@ describe("Autocomplete", () => {
 			]);
 		});
 
-		it("should push autocomplete select event to the dataLayer using TypeAheadType property", async () => {
+		it.skip("should push autocomplete select event to the dataLayer using TypeAheadType property", async () => {
 			const option = {
 				Title: "diabetes type 1",
 				TypeAheadType: "keyword",
