@@ -9,24 +9,20 @@
 
 @use '../../header-settings';
 
-:global {
-  .visually-hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
-}
-
 .ac {
   :global {
     .autocomplete__wrapper {
       position: relative;
     }
-
+    .visually-hidden {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
     .autocomplete__hint,
     .autocomplete__input {
       -webkit-appearance: none;
