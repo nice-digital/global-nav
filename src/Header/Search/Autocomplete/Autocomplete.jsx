@@ -76,7 +76,6 @@ export default function Autocomplete(props) {
 	};
 
 	const suggestionClickHandler = (suggestion) => {
-		onValueChangeHandler(suggestion);
 		setQueryText(suggestion.Title);
 	};
 
