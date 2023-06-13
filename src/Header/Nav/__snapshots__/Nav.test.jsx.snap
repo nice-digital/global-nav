@@ -72,7 +72,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                     About
                   </h2>
                   <p>
-                    We provide national guidance and advice to improve health and social care.
+                    NICE helps practitioners and commissioners get the best care to patients, fast, while ensuring value for the taxpayer.
                   </p>
                   <a
                     class="button cta"
@@ -203,16 +203,6 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                             href="https://www.test.nice.org/about/nice-communities/nice-and-the-public/public-involvement"
                           >
                             Public involvement
-                          </a>
-                        </li>
-                        <li>
-                          <p>
-                            Help shape the future of NICE guidelines:
-                          </p>
-                          <a
-                            href="https://www.test.nice.org/get-involved/help-shape-the-future-of-nice-guidelines"
-                          >
-                            Test our guideline prototype
                           </a>
                         </li>
                       </ul>
@@ -590,7 +580,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                     About
                   </h2>
                   <p>
-                    We provide national guidance and advice to improve health and social care.
+                    NICE helps practitioners and commissioners get the best care to patients, fast, while ensuring value for the taxpayer.
                   </p>
                   <a
                     class="button cta"
@@ -721,16 +711,6 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                             href="https://www.test.nice.org/about/nice-communities/nice-and-the-public/public-involvement"
                           >
                             Public involvement
-                          </a>
-                        </li>
-                        <li>
-                          <p>
-                            Help shape the future of NICE guidelines:
-                          </p>
-                          <a
-                            href="https://www.test.nice.org/get-involved/help-shape-the-future-of-nice-guidelines"
-                          >
-                            Test our guideline prototype
                           </a>
                         </li>
                       </ul>
@@ -1074,7 +1054,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                     About
                   </h2>
                   <p>
-                    We provide national guidance and advice to improve health and social care.
+                    NICE helps practitioners and commissioners get the best care to patients, fast, while ensuring value for the taxpayer.
                   </p>
                   <a
                     class="button cta"
@@ -1205,16 +1185,6 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                             href="https://www.test.nice.org/about/nice-communities/nice-and-the-public/public-involvement"
                           >
                             Public involvement
-                          </a>
-                        </li>
-                        <li>
-                          <p>
-                            Help shape the future of NICE guidelines:
-                          </p>
-                          <a
-                            href="https://www.test.nice.org/get-involved/help-shape-the-future-of-nice-guidelines"
-                          >
-                            Test our guideline prototype
                           </a>
                         </li>
                       </ul>

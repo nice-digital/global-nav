@@ -60,7 +60,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
               About
             </h2>
             <p>
-              We provide national guidance and advice to improve health and social care.
+              NICE helps practitioners and commissioners get the best care to patients, fast, while ensuring value for the taxpayer.
             </p>
             <a
               class="button cta"
@@ -191,16 +191,6 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
                       href="https://www.nice.org.uk/about/nice-communities/nice-and-the-public/public-involvement"
                     >
                       Public involvement
-                    </a>
-                  </li>
-                  <li>
-                    <p>
-                      Help shape the future of NICE guidelines:
-                    </p>
-                    <a
-                      href="https://www.nice.org.uk/get-involved/help-shape-the-future-of-nice-guidelines"
-                    >
-                      Test our guideline prototype
                     </a>
                   </li>
                 </ul>
