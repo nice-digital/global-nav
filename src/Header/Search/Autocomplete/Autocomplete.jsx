@@ -75,6 +75,17 @@ export default function Autocomplete(props) {
 		}
 	};
 
+	const suggestionClickHandler = (suggestion) => {
+		onValueChangeHandler(suggestion);
+		setQueryText(suggestion.Title);
+	};
+
+	const suggestionKeyDownHandler = (event, suggestion) => {
+		if (event.key === "Enter") {
+			suggestionClickHandler(suggestion);
+		}
+	};
+
 	useEffect(() => {
 		if (
 			props.source === false ||
@@ -182,38 +193,19 @@ export default function Autocomplete(props) {
 												props.suggestionTemplate || suggestionTemplateDefault
 											)(suggestion),
 										}}
+										onClick={() => suggestionClickHandler(suggestion)}
+										onKeyDown={(event) =>
+											suggestionKeyDownHandler(event, suggestion)
+										}
+										role="option"
+										tabIndex={0}
+										aria-selected={active ? "true" : "false"}
 									/>
 								)}
 							</Combobox.Option>
 						))}
 					</Combobox.Options>
 				</Combobox>
-				// <AccessibleAutocomplete
-				// 	id="autocomplete"
-				// 	name="q"
-				// 	placeholder={props.placeholder}
-				// 	displayMenu={isIosDevice() ? "inline" : "overlay"}
-				// 	minLength={3}
-				// 	source={debounce(this.suggest, false, rateLimitWait, this)}
-				// 	templates={templates}
-				// 	onConfirm={function (s) {
-				// 		this.onConfirm(s);
-				// 	}.bind(this)}
-				// 	confirmOnBlur={false}
-				// 	showNoOptionsFound={false}
-				// 	defaultValue={props.query}
-				// 	ref={function (acElement) {
-				// 		// This relies on an inner implementation detail of the autocomplete component, can we do this in a better way?
-				// 		var inputEl =
-				// 			acElement &&
-				// 			acElement.elementReferences &&
-				// 			acElement.elementReferences[-1];
-				// 		if (inputEl) {
-				// 			inputEl.setAttribute("data-hj-allow", "");
-				// 			inputEl.setAttribute("maxlength", 512);
-				// 		}
-				// 	}}
-				// />
 			)}
 		</div>
 	);
