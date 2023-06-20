@@ -40,6 +40,7 @@
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
 					- [Header.skipLinkId](#headerskiplinkid)
+					- [Header.renderSearchOnly](#headerrendersearchonly)
 					- [Header.onNavigating](#headeronnavigating)
 					- [Header.onResize](#headeronresize)
 					- [Header.onDropdownOpen](#headerondropdownopen)
@@ -328,6 +329,13 @@ See [services.json](src/services.json) for a list of the available service ident
 The identifier of the skip link target.
 An empty div with this id will be created at the end of the header, if it doesn't already exist on the page.
 
+###### Header.renderSearchOnly
+
+- Type: `boolean`
+- Default: `false`
+
+Optionally render the header with search box only to aid with debugging by reducing noise in the rendered output.
+
 ###### Header.onNavigating
 
 - Type: `String | Function`
@@ -433,7 +441,6 @@ var global_nav_config = {
   },
 };
 ```
-
 ###### Header.additionalSubMenuItems
 
 - Type: `null | Array`
