@@ -48,7 +48,6 @@
 .menuWrapper {
   background: $nav-background;
   color: $nav-text;
-  // padding: utils.rem(spacing.$x-small 0);
 }
 
 @include media-queries.mq($from: md) {
@@ -70,15 +69,14 @@
   @include media-queries.mq($from: md) {
     @include layout.container;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     justify-content: space-between;
   }
 }
 
 a.link,
 .linkStyling {
-  //qualified this with 'a' and 'button' to add specificity to avoid overrides from application css (NW-1253)
+  // qualified this with 'a' and 'button' to add specificity to avoid overrides from application css (NW-1253)
   align-items: center;
   background: none;
   border: utils.rem(spacing.$x-small) solid $nav-link-border;

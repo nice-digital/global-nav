@@ -75,6 +75,7 @@ declare module "@nice-digital/global-nav" {
 		onDropdownClose?: string | (() => void);
 		onNavigating?: string | OnNavigatingCallback;
 		additionalSubMenuItems?: Array<AdditionalSubMenuItem>;
+		renderSearchOnly?: boolean;
 	};
 
 	export type FooterProps = {

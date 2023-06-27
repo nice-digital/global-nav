@@ -1,129 +1,128 @@
 import React from "react";
 import { NavLinks } from "./NavLinks";
-import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
+import { createEvent, fireEvent, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import services from "./../__mocks__/services.json";
+import { HeaderContextProvider } from "../../context/HeaderContext";
 
 describe("NavLinks", () => {
 	const defaultProps = {
 		servicesToDisplay: services.external,
 	};
 
-	React.useState = jest.fn().mockReturnValue([true, {}]);
-
-	afterEach(() => {
-		jest.clearAllMocks();
+	it.each(
+		services.external
+			.filter(({ header }) => header)
+			.map(({ text }) => ({ text }))
+	)("should render menu item for $text", ({ text }) => {
+		const { getByText } = render(<NavLinks {...defaultProps} />);
+		expect(getByText(text)).toBeInTheDocument();
 	});
 
-	it("should render without crashing", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />);
-		expect(wrapper.length).toEqual(1);
-	});
-	it("should list over the top level items in services", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />);
-		expect(wrapper.find("li[data-tracking]").length).toEqual(
-			services.external.length
-		);
-	});
-
-	it("should render a top level button if there's a dropdown", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />);
-		expect(wrapper.find("button").length).toEqual(
-			services.external.filter((service) => service.dropdown === true).length
-		);
+	it("should render a top level button if there's a dropdown component", () => {
+		const { getByRole } = render(<NavLinks {...defaultProps} />);
+		expect(getByRole("button", { name: "First link" })).toBeInTheDocument();
 	});
 
 	it("should render a top level anchor if there's no dropdown", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />);
-
-		// length check against the number of top level services set to display in the header
-		expect(wrapper.find("a.link").length).toEqual(
-			services.external.filter((service) => service.id && service.header).length
-		);
+		const { getByRole } = render(<NavLinks {...defaultProps} />);
+		expect(
+			getByRole("link", { name: "Second link abbreviation title" })
+		).toBeInTheDocument();
 	});
 
-	it.skip("should add aria-expanded=true to the button of the currently expanded dropdown", () => {
-		const wrapper = shallow(<NavLinks {...defaultProps} />, {
-			idOfOpenDropdown: "link2",
-			setIdOfOpenDropdown: jest.fn(),
-		});
-		const button = wrapper.find("button[id='navlink-link1']");
-		button.simulate("click");
-		expect(button.props()["aria-expanded"]).toEqual(true);
+	it("should add aria-expanded=true to the button of the currently expanded dropdown", async () => {
+		const { getByRole } = render(
+				<HeaderContextProvider>
+					<NavLinks {...defaultProps} />
+				</HeaderContextProvider>
+			),
+			button = getByRole("button", { name: "First link" }),
+			user = userEvent.setup();
+
+		await user.click(button);
+
+		expect(button).toHaveAttribute("aria-expanded", "true");
 	});
 
-	it("should add aria-current=true if the global config currentService matches current service", () => {
-		const wrapper = shallow(
-			<NavLinks {...defaultProps} currentService="link2" />
-		);
-		const link = wrapper.find("a[id='navlink-link2']");
-		expect(link.props()["aria-current"]).toBe(true);
+	it("should add aria-current=true if the global config currentService matches current service", async () => {
+		const { getByRole } = render(
+				<HeaderContextProvider>
+					<NavLinks
+						{...defaultProps}
+						currentService={services.external[0].id}
+					/>
+				</HeaderContextProvider>
+			),
+			button = getByRole("button", { name: "First link" }),
+			user = userEvent.setup();
+
+		await user.click(button);
+
+		expect(button).toHaveAttribute("aria-current", "true");
 	});
 
 	it("should add an abbreviation title label", () => {
-		const wrapper = shallow(
-			<NavLinks {...defaultProps} currentService="link2" />
-		);
-		const abbreviationElement = wrapper.find("[id='navlink-link2']");
-		expect(abbreviationElement.props()["aria-label"]).toBe(
-			"Abbreviation title"
-		);
+		const { getByRole } = render(<NavLinks {...defaultProps} />),
+			secondLink = getByRole("link", {
+				name: "Second link abbreviation title",
+			});
+
+		expect(secondLink).toHaveTextContent("Second link");
 	});
 
-	it.skip("should prevent default and navigate in event callback on nav item click", () => {
-		const wrapper = shallow(
-			<NavLinks {...defaultProps} currentService="link2" />
-		);
+	it("should prevent default and navigate in event callback on nav item click", () => {
+		const { getByRole } = render(
+				<HeaderContextProvider>
+					<NavLinks {...defaultProps} currentService="link2" />
+				</HeaderContextProvider>
+			),
+			secondLink = getByRole("link", {
+				name: "Second link abbreviation title",
+			}),
+			clickEvent = createEvent.click(secondLink);
 
-		const preventDefault = jest.fn();
+		fireEvent(secondLink, clickEvent);
 
-		const link = wrapper.find("a[href='https://url2/']");
-
-		link.props().onClick({
-			preventDefault: preventDefault,
-			currentTarget: {
-				getAttribute: () => "https://url2/",
-			},
-		});
-
-		expect(preventDefault).toHaveBeenCalled();
+		expect(clickEvent.defaultPrevented).toBeTruthy();
 
 		window.dataLayer[0].eventCallback();
-		expect(window.location.href).toEqual("https://url2/");
+		expect(window.location).toBeAt("https://www.test-link2.nice.org/url2/");
 	});
 
-	// it.skip("should push dataLayer event for nav item click", () => {
-	// 	const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
+	it("should push dataLayer event for nav item click", async () => {
+		const { getByRole } = render(
+				<HeaderContextProvider>
+					<NavLinks {...defaultProps} currentService="link2" />
+				</HeaderContextProvider>
+			),
+			secondLink = getByRole("link", {
+				name: "Second link abbreviation title",
+			}),
+			user = userEvent.setup();
 
-	// 	console.log(wrapper.debug());
+		await user.click(secondLink);
 
-	// 	wrapper.find("a[href='https://url1/']").simulate("click", {
-	// 		preventDefault: () => {},
-	// 		currentTarget: {
-	// 			getAttribute: () => "",
-	// 			textContent: "First link",
-	// 		},
-	// 	});
-
-	// 	expect(window.dataLayer).toEqual([
-	// 		{
-	// 			event: eventName,
-	// 			eventCategory: defaultEventCategory,
-	// 			eventAction: headerClickEventAction,
-	// 			eventLabel: "First link",
-	// 			eventCallback: expect.any(Function),
-	// 			eventTimeout: eventTimeout,
-	// 		},
-	// 	]);
-	// });
+		expect(window.dataLayer).toStrictEqual([
+			{
+				destinationUrl: "https://www.test-link2.nice.org/url2/",
+				event: "GlobalNav",
+				eventCategory: "TopHat and footer",
+				eventAction: "Tophat click",
+				eventLabel: "Second link",
+				eventCallback: expect.any(Function),
+				eventTimeout: 2000,
+			},
+		]);
+	});
 
 	it("Matches snapshot with sub links for selected external service", () => {
 		const externalServices = services.external;
 
-		const wrapper = shallow(
+		const { container } = render(
 			<NavLinks {...defaultProps} service={externalServices[1].id} />
 		);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });

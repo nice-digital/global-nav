@@ -4,7 +4,7 @@
       "host": "www.test.nice.org",
       "landingPath": "/url1/",
       "text": "First link",
-      "id": "link1",
+      "id": "about",
       "header": true
     },
     {
@@ -14,7 +14,7 @@
       "id": "link2",
       "header": true,
       "abbreviation": true,
-      "title": "Abbreviation title",
+      "title": "Second link abbreviation title",
       "links": [
         {
           "text": "Sub link 1",
@@ -33,7 +33,7 @@
       "id": "link3",
       "header": true,
       "abbreviation": true,
-      "title": "Abbreviation title",
+      "title": "Third link abbreviation title",
       "links": [
         {
           "text": "Sub link 1",

@@ -20,12 +20,11 @@ export default class TrackedLink extends Component {
 		trackEvent(
 			eventCategory,
 			eventAction,
-			// Support IE8 with innerText
 			eventLabel || e.currentTarget.textContent || e.currentTarget.innerText,
 			null,
 			href,
 			(function () {
-				window.location.href = href;
+				window.location.assign(href);
 			})()
 		);
 	}

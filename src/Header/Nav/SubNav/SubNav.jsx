@@ -32,7 +32,6 @@ export class SubNav extends Component {
 		const { currentTarget } = e;
 		const href = currentTarget.getAttribute("href");
 
-		// To support IE8
 		const eventLabel =
 			currentTarget.textContent ||
 			currentTarget.innerText ||
@@ -54,7 +53,7 @@ export class SubNav extends Component {
 						element: currentTarget,
 						href: href,
 					});
-				} else window.location.href = href;
+				} else window.location.assign(href);
 			}.bind(this)
 		);
 	}

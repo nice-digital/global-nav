@@ -78,7 +78,7 @@ function Account(props) {
 				null,
 				href,
 				function () {
-					window.location.href = href;
+					window.location.assign(href);
 				}
 			);
 		}

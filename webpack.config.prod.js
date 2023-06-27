@@ -4,6 +4,9 @@ const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
+const BundleAnalyzerPlugin =
+	require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+
 const pkg = require("./package.json");
 
 module.exports = function (env, argv) {
@@ -72,17 +75,17 @@ module.exports = function (env, argv) {
 			optimization: {
 				minimize: true,
 				minimizer: [
-					// Custom minimizer so we can uglify with support for IE8.
-					// We can remove this and revert to the default webpack production
-					// minifier when we drop IE8 support
 					new TerserPlugin({
-						terserOptions: {
-							ie8: true,
-						},
 						include: /\.min\.js$/,
 					}),
 				],
 			},
+			plugins: [
+				new BundleAnalyzerPlugin({
+					analyzerMode: "static",
+					openAnalyzer: false,
+				}),
+			],
 		}),
 	];
 };

@@ -1,7 +1,14 @@
 import React from "react";
 import Account from "./Account";
-import { shallow, mount } from "enzyme";
-import toJson from "enzyme-to-json";
+import {
+	render,
+	waitFor,
+	within,
+	createEvent,
+	fireEvent,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+
 import { HeaderContextProvider } from "./../context/HeaderContext";
 
 import {
@@ -48,48 +55,46 @@ describe("Account", () => {
 		document.body.innerHTML = "";
 	});
 
-	it("Renders without crashing", () => {
-		const wrapper = shallow(<Account isLoggedIn={false} />);
-		expect(wrapper).toHaveLength(1);
-	});
-
 	it("Matches snapshot when logged out", () => {
-		const wrapper = shallow(<Account isLoggedIn={false} />);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		const { container } = render(<Account isLoggedIn={false} />);
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Matches snapshot when logged in", () => {
-		const wrapper = shallow(
+		const { container } = render(
 			<Account isLoggedIn={true} accountsData={accountsData} />
 		);
 
-		expect(toJson(wrapper)).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Matches snapshot when logged out using IDAM", () => {
-		const wrapper = shallow(<Account isLoggedIn={false} {...idamProps} />);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		const { container } = render(<Account isLoggedIn={false} {...idamProps} />);
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Matches snapshot when logged in using IDAM", () => {
-		const wrapper = shallow(
+		const { container } = render(
 			<Account isLoggedIn={true} accountsData={idamData} {...idamProps} />
 		);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Is the correct authentication environment when supplied", () => {
-		const wrapper = shallow(<Account isLoggedIn={false} environment="beta" />);
+		const { getByRole } = render(
+			<Account isLoggedIn={false} environment="beta" />
+		);
 
-		expect(wrapper.find(".button").props().href).toBe(
+		expect(getByRole("link", { name: "Sign in" })).toHaveAttribute(
+			"href",
 			"https://beta-accounts.nice.org.uk/signin"
 		);
 	});
 
-	it("Calls onLoginStatusChecked callback prop when mounted", (done) => {
+	it("Calls onLoginStatusChecked callback prop when mounted", async () => {
 		const onLoginStatusChecked = jest.fn();
 
-		mount(
+		render(
 			<HeaderContextProvider>
 				<Account
 					isLoggedIn={false}
@@ -98,7 +103,7 @@ describe("Account", () => {
 			</HeaderContextProvider>
 		);
 
-		setImmediate(() => {
+		await waitFor(() => {
 			expect(onLoginStatusChecked).toHaveBeenCalledWith({
 				links: {
 					"Consultation responses": "https://www.nice.org.uk/consultations/",
@@ -106,194 +111,161 @@ describe("Account", () => {
 				},
 				test: true,
 			});
-			done();
 		});
 	});
 
-	it("Expands account menu when button is clicked", () => {
-		var appContainer = document.createElement("div");
-		document.body.appendChild(appContainer);
+	it("Expands account menu when button is clicked", async () => {
+		const user = userEvent.setup();
 
-		const wrapper = mount(
+		const { getByRole } = render(
 			<HeaderContextProvider>
 				<Account isLoggedIn={true} accountsData={accountsData} />
-			</HeaderContextProvider>,
-			{ attachTo: appContainer }
+			</HeaderContextProvider>
 		);
 
-		wrapper.find("#my-account-button").simulate("click", { pageX: 99 });
-		wrapper.update();
+		const myAccountButton = getByRole("button", { name: "My account" });
 
-		expect(wrapper.find("#my-account-button").props()["aria-expanded"]).toBe(
-			true
-		);
-		var menu = wrapper.find("#my-account");
-		expect(menu.props()["aria-hidden"]).toBe(false);
-		expect(menu.props()["tabIndex"]).toBe(undefined);
+		expect(myAccountButton).toHaveAttribute("aria-expanded", "false");
+
+		await user.click(myAccountButton);
+
+		expect(myAccountButton).toHaveAttribute("aria-expanded", "true");
+
+		const menu = getByRole("menu", { name: "My account" });
+		expect(menu).toHaveAttribute("aria-hidden", "false");
+		expect(menu).toHaveAttribute("tabIndex", "-1");
+		expect(menu).toHaveFocus();
 	});
 
-	it("Moved focus to menu when enter key is pressed on collapsed button", () => {
-		var appContainer = document.createElement("div");
-		document.body.appendChild(appContainer);
+	it("Collapses menu when escape key is pressed on button", async () => {
+		const user = userEvent.setup();
 
-		const wrapper = mount(
+		const { getByRole } = render(
 			<HeaderContextProvider>
 				<Account isLoggedIn={true} accountsData={accountsData} />
-			</HeaderContextProvider>,
-			{ attachTo: appContainer }
+			</HeaderContextProvider>
 		);
 
-		wrapper.find("#my-account-button").simulate("click");
-		wrapper.update();
+		const myAccountButton = getByRole("button", { name: "My account" });
 
-		var menuElement = wrapper.find("#my-account").getDOMNode();
-		expect(menuElement.getAttribute("tabIndex")).toEqual("-1");
-		expect(menuElement).toBe(document.activeElement);
+		expect(myAccountButton).toHaveAttribute("aria-expanded", "false");
+
+		await user.click(myAccountButton);
+
+		expect(myAccountButton).toHaveAttribute("aria-expanded", "true");
+
+		await userEvent.type(myAccountButton, "{esc}");
+
+		expect(myAccountButton).toHaveAttribute("aria-expanded", "false");
+
+		const menu = getByRole("menu", { hidden: true });
+		expect(menu).toHaveAttribute("aria-hidden", "true");
 	});
 
-	it("Collapses menu when escape key is pressed on button", () => {
-		var appContainer = document.createElement("div");
-		document.body.appendChild(appContainer);
+	it("Collapses menu when escape key is pressed on link", async () => {
+		const user = userEvent.setup();
 
-		const wrapper = mount(
+		const { getByRole } = render(
 			<HeaderContextProvider>
 				<Account isLoggedIn={true} accountsData={accountsData} />
-			</HeaderContextProvider>,
-			{ attachTo: appContainer }
+			</HeaderContextProvider>
 		);
 
-		wrapper.find("#my-account-button").simulate("click", {});
-		wrapper.find("#my-account-button").simulate("keydown", { key: "Escape" });
-		wrapper.update();
-		expect(wrapper.find("#my-account-button").props()["aria-expanded"]).toBe(
-			false
-		);
-		expect(wrapper.find("#my-account").props()["aria-hidden"]).toBe(true);
-	});
+		const myAccountButton = getByRole("button", { name: "My account" });
 
-	it("Collapses menu when escape key is pressed on link", () => {
-		var appContainer = document.createElement("div");
-		document.body.appendChild(appContainer);
+		await user.click(myAccountButton);
 
-		const wrapper = mount(
-			<HeaderContextProvider>
-				<Account isLoggedIn={true} accountsData={accountsData} />
-			</HeaderContextProvider>,
-			{ attachTo: appContainer }
-		);
+		expect(myAccountButton).toHaveAttribute("aria-expanded", "true");
 
-		wrapper.find("#my-account-button").simulate("click", {});
+		const menu = getByRole("menu", { hidden: true }),
+			firstMenuLink = within(menu).getAllByRole("menuitem")[0];
 
-		wrapper
-			.find("a[role='menuitem']")
-			.first()
-			.simulate("keydown", { key: "Escape" });
+		firstMenuLink.focus();
+		await userEvent.keyboard("{Escape}");
 
-		expect(
-			wrapper.find("[aria-controls='my-account']").props()["aria-expanded"]
-		).toBe(false);
-		expect(wrapper.find("#my-account").props()["aria-hidden"]).toBe(true);
+		expect(myAccountButton).toHaveAttribute("aria-expanded", "false");
+		expect(myAccountButton).toHaveFocus();
 	});
 
 	describe("tracking", () => {
-		beforeEach(() => {
-			window.dataLayer = [];
-		});
-
-		afterAll(() => {
-			// Cleanup
-			delete window.dataLayer;
-		});
-
-		const trackingTest = (accountsData, linkText, eventLabel, href) => {
-			const wrapper = shallow(
-				<Account
-					isLoggedIn={accountsData != null}
-					accountsData={accountsData}
-				/>
+		it("should not send dataLayer event or prevent default for admin link click", async () => {
+			const { getByRole } = render(
+				<HeaderContextProvider>
+					<Account
+						isLoggedIn={true}
+						accountsData={{
+							display_name: "Joe Bloggs",
+							links: {
+								Admin: "https://accounts.nice.org.uk/admin",
+							},
+						}}
+					/>
+				</HeaderContextProvider>
 			);
 
-			const preventDefault = jest.fn();
+			const user = userEvent.setup(),
+				myAccountButton = getByRole("button", { name: "My account" });
 
-			const button = wrapper.find(`a[children="${linkText}"]`);
+			await user.click(myAccountButton);
 
-			button.props().onClick({
-				preventDefault: preventDefault,
-				currentTarget: {
-					getAttribute: () => href,
-				},
-			});
+			const adminLink = getByRole("menuitem", { name: "Admin" }),
+				clickEvent = createEvent.click(adminLink);
 
-			expect(window.dataLayer).toEqual([
-				{
-					event: eventName,
-					eventCategory: defaultEventCategory,
-					eventAction: headerClickEventAction,
-					eventLabel: eventLabel,
-					destinationUrl: href,
-					eventCallback: expect.any(Function),
-					eventTimeout: eventTimeout,
-				},
-			]);
+			fireEvent(adminLink, clickEvent);
 
-			expect(preventDefault).toHaveBeenCalled();
-
-			window.dataLayer[0].eventCallback();
-			expect(window.location.href).toEqual(href);
-		};
-
-		it("should not send dataLayer event or prevent default for admin link click", () => {
-			const wrapper = shallow(
-				<Account
-					isLoggedIn={true}
-					accountsData={{
-						display_name: "Joe Bloggs",
-						links: {
-							Admin: "https://accounts.nice.org.uk/admin",
-						},
-					}}
-				/>
-			);
-
-			const preventDefault = jest.fn();
-
-			wrapper.find(`a[children="Admin"]`).simulate("click", {
-				preventDefault: preventDefault,
-				currentTarget: {
-					getAttribute: () => "https://accounts.nice.org.uk/admin",
-				},
-			});
-
-			expect(preventDefault).not.toHaveBeenCalled();
-
+			expect(clickEvent.defaultPrevented).toBe(false);
 			expect(window.dataLayer).toHaveLength(0);
 		});
 
-		it("should send event to the dataLayer with navigating event callback for sign in button click", () => {
-			trackingTest(
-				null,
-				"Sign in",
-				"Sign in",
-				"https://beta-accounts.nice.org.uk/signin"
-			);
-		});
-
-		it("should send event to the dataLayer with navigating event callback for edit profile link click", () => {
-			trackingTest(
+		it.each([
+			[
 				accountsData,
 				"Joe Bloggs",
 				"Edit profile",
-				"https://accounts.nice.org.uk/users/12345/editprofile"
-			);
-		});
-
-		it("should send event to the dataLayer with navigating event callback for sign out link click", () => {
-			trackingTest(
+				"https://accounts.nice.org.uk/users/12345/editprofile",
+			],
+			[
 				accountsData,
 				"Sign out",
 				"Sign out",
-				"https://beta-accounts.nice.org.uk/signout"
-			);
-		});
+				"https://accounts.nice.org.uk/signout",
+			],
+		])(
+			"should prevent default, track and navigate",
+			async (accountsData, linkText, eventLabel, href) => {
+				const { getByRole } = render(
+					<HeaderContextProvider>
+						<Account isLoggedIn accountsData={accountsData} />
+					</HeaderContextProvider>
+				);
+
+				const user = userEvent.setup(),
+					myAccountButton = getByRole("button", { name: "My account" });
+
+				await user.click(myAccountButton);
+
+				const menuLink = getByRole("menuitem", { name: linkText }),
+					clickEvent = createEvent.click(menuLink);
+
+				fireEvent(menuLink, clickEvent);
+
+				expect(window.dataLayer).toEqual([
+					{
+						event: eventName,
+						eventCategory: defaultEventCategory,
+						eventAction: headerClickEventAction,
+						eventLabel: eventLabel,
+						destinationUrl: href,
+						eventCallback: expect.any(Function),
+						eventTimeout: eventTimeout,
+					},
+				]);
+
+				expect(clickEvent.defaultPrevented).toBe(true);
+
+				window.dataLayer[0].eventCallback();
+				expect(window.location).toBeAt(href);
+			}
+		);
 	});
 });

@@ -3,7 +3,7 @@
 @use '@nice-digital/nds-core/scss/utils';
 @use '../header-settings';
 
-.link {
+%link {
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
@@ -27,4 +27,8 @@
     width: auto;
     z-index: header-settings.$base-z-index + 5;
   }
+}
+
+.link {
+  @extend %link;
 }

@@ -1,7 +1,6 @@
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-configure({ adapter: new Adapter() });
+/* eslint-env jest */
+import "@testing-library/jest-dom";
+import "jest-location-mock";
 
 // Allow setting user agent in tests
 // https://github.com/facebook/jest/issues/717#issuecomment-246471809
@@ -20,8 +19,15 @@ Object.defineProperty(
 	})(window.navigator.userAgent)
 );
 
-// Need to redefine window location to be able to set the href property
-((oldURL) => {
-	delete global.window.location;
-	global.window.location = new URL(oldURL);
-})(window.location.href);
+// Object.defineProperty(window, "location", {
+// 	value: { ...window.location, assign: jest.fn() },
+// });
+
+beforeEach(() => {
+	window.dataLayer = [];
+});
+
+afterEach(() => {
+	//window.location.assign.mockClear();
+	delete window.dataLayer;
+});

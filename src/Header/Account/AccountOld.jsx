@@ -92,7 +92,7 @@ export default class Account extends Component {
 				null,
 				href,
 				function () {
-					window.location.href = href;
+					window.location.assign(href);
 				}
 			);
 		}

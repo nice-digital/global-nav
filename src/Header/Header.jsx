@@ -31,16 +31,16 @@ export class Header extends Component {
 		this.handleMobileMenuBtnClick = this.handleMobileMenuBtnClick.bind(this);
 		this.handleLoginStatusChecked = this.handleLoginStatusChecked.bind(this);
 		this.handleLogoClick = this.handleLogoClick.bind(this);
+
+		this.headerRef = React.createRef(null);
 	}
 
 	componentDidMount() {
 		if (!document.getElementById(this.props.skipLinkId)) {
 			const firstH1OnPage = document.getElementsByTagName("h1")[0];
-			firstH1OnPage
-				? firstH1OnPage.setAttribute("id", this.props.skipLinkId)
-				: console.warn(
-						`Global nav "skip to link" can't find a H1 tag or an element with the ID of "${this.props.skipLinkId}"`
-				  );
+
+			if (firstH1OnPage)
+				firstH1OnPage.setAttribute("id", this.props.skipLinkId);
 		}
 	}
 
@@ -64,7 +64,7 @@ export class Header extends Component {
 			null,
 			href,
 			function () {
-				window.location.href = href;
+				window.location.assign(href);
 			}
 		);
 	}
@@ -97,6 +97,16 @@ export class Header extends Component {
 	}
 
 	render() {
+		if (this.props.renderSearchOnly) {
+			return (
+				<Search
+					skipLinkId={this.props.skipLinkId}
+					onNavigating={this.props.onNavigating}
+					{...this.props.search}
+				/>
+			);
+		}
+
 		return (
 			this.props.enabled !== false && (
 				<HeaderContextProvider>
@@ -115,7 +125,12 @@ export class Header extends Component {
 						}}
 					</HeaderContext.Consumer>
 
-					<div className={styles.header} data-tracking="Global nav" id="top">
+					<div
+						className={styles.header}
+						data-tracking="Global nav"
+						id="top"
+						ref={this.props.onRendered}
+					>
 						<header aria-label="Site header">
 							<ul className={styles.a11yLinks} aria-label="Accessibility links">
 								<li>
@@ -210,13 +225,16 @@ Header.propTypes = {
 	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onDropdownOpen: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onDropdownClose: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onRendered: PropTypes.func,
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
+	renderSearchOnly: PropTypes.bool,
 };
 
 Header.defaultProps = {
 	search: {},
 	skipLinkId: "content-start",
 	additionalSubMenuItems: [],
+	renderSearchOnly: false,
 };
 
 export default Header;

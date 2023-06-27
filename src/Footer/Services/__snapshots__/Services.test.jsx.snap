@@ -1,29 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Services Matches snapshot 1`] = `
-<nav
-  aria-label="Our services"
-  className="wrapper"
->
-  <ul
-    className="list"
+<div>
+  <nav
+    aria-label="Our services"
+    class="wrapper"
   >
-    <FooterLink
-      footer={true}
-      host="www.test.nice.org"
-      id="link1"
-      key="link1"
-      landingPath="/url1/"
-      text="First link"
-    />
-    <FooterLink
-      footer={true}
-      host="www.test.nice.org"
-      id="link3"
-      key="link3"
-      landingPath="/url3/"
-      text="Third link"
-    />
-  </ul>
-</nav>
+    <ul
+      class="list"
+    >
+      <li>
+        <a
+          class="link"
+          href="https://www.test.nice.org/url1/"
+        >
+          First link
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          href="https://www.test.nice.org/url3/"
+        >
+          Third link
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
 `;

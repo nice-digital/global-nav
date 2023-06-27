@@ -1,7 +1,6 @@
 import React from "react";
 import Nav from "./Nav";
-import { shallow, mount } from "enzyme";
-import toJson from "enzyme-to-json";
+import { render, createEvent, fireEvent } from "@testing-library/react";
 
 import services from "./__mocks__/services.json";
 import {
@@ -20,26 +19,20 @@ describe("Nav", () => {
 		service: null,
 		handleScrim: () => {},
 	};
-	const externalServices = services.external;
-
-	it("Renders without crashing", () => {
-		const wrapper = shallow(<Nav {...defaultProps} />);
-		expect(wrapper).toHaveLength(1);
-	});
 
 	it("Matches snapshot with no accounts links", () => {
-		const wrapper = shallow(<Nav {...defaultProps} />);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		const { container } = render(<Nav {...defaultProps} />);
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Matches snapshot with single accounts link", () => {
 		const accountsLinks = {
 			"Sign in": "https://accounts.nice.org.uk/",
 		};
-		const wrapper = shallow(
+		const { container } = render(
 			<Nav {...defaultProps} accountsLinks={accountsLinks} />
 		);
-		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Matches snapshot with multiple accounts links", () => {
@@ -47,29 +40,28 @@ describe("Nav", () => {
 			"Joe Bloggs": "https://accounts.nice.org.uk/profile",
 			"Sign out": "https://accounts.nice.org.uk/signout",
 		};
-		const wrapper = shallow(
+		const { container } = render(
 			<Nav {...defaultProps} accountsLinks={accountsLinks} />
 		);
-		expect(toJson(wrapper.find("nav").at(1))).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Add expanded class to root element when passed isExpanded prop", () => {
-		const wrapper = shallow(<Nav {...defaultProps} isExpanded={false} />);
-		expect(wrapper.props().className).not.toContain("wrapperExpanded");
-		wrapper.setProps({ isExpanded: true });
-		expect(wrapper.props().className).toContain("wrapperExpanded");
+		const { getByRole, rerender } = render(
+			<Nav {...defaultProps} isExpanded={false} />
+		);
+
+		const wrapper = getByRole("navigation", {
+			name: "primary navigation",
+		}).parentElement;
+
+		expect(wrapper).not.toHaveClass("wrapperExpanded");
+
+		rerender(<Nav {...defaultProps} isExpanded={true} />);
+		expect(wrapper).toHaveClass("wrapperExpanded");
 	});
 
 	describe("tracking", () => {
-		beforeEach(() => {
-			window.dataLayer = [];
-		});
-
-		afterAll(() => {
-			// Cleanup
-			delete window.dataLayer;
-		});
-
 		describe("Accounts links", () => {
 			const accountsLinks = {
 				"Joe Bloggs": "https://accounts.nice.org.uk/users/12345/editprofile",
@@ -77,9 +69,8 @@ describe("Nav", () => {
 				Admin: "https://accounts.nice.org.uk/admin",
 			};
 
-			it("should track edit profile link", () => {
-				const preventDefault = jest.fn();
-				const wrapper = shallow(
+			it("should track edit profile link", async () => {
+				const { getByRole } = render(
 					<Nav
 						{...defaultProps}
 						isExpanded={true}
@@ -87,21 +78,12 @@ describe("Nav", () => {
 					/>
 				);
 
-				wrapper
-					.find(
-						"a[href='https://accounts.nice.org.uk/users/12345/editprofile']"
-					)
-					.simulate("click", {
-						preventDefault: preventDefault,
-						currentTarget: {
-							// Mock e.currentTarget.getAttribute("href")
-							getAttribute: () =>
-								"https://accounts.nice.org.uk/users/12345/editprofile",
-							textContent: "Joe Bloggs",
-						},
-					});
+				const editProfileLink = getByRole("link", { name: "Joe Bloggs" }),
+					clickEvent = createEvent.click(editProfileLink);
 
-				expect(preventDefault).toHaveBeenCalled();
+				fireEvent(editProfileLink, clickEvent);
+
+				expect(clickEvent.defaultPrevented).toBe(true);
 				expect(window.dataLayer).toEqual([
 					{
 						event: eventName,
@@ -117,8 +99,7 @@ describe("Nav", () => {
 			});
 
 			it("should track sign out link", () => {
-				const preventDefault = jest.fn();
-				const wrapper = shallow(
+				const { getByRole } = render(
 					<Nav
 						{...defaultProps}
 						isExpanded={true}
@@ -126,18 +107,12 @@ describe("Nav", () => {
 					/>
 				);
 
-				wrapper
-					.find("a[href='https://accounts.nice.org.uk/signout']")
-					.simulate("click", {
-						preventDefault: preventDefault,
-						currentTarget: {
-							// Mock e.currentTarget.getAttribute("href")
-							getAttribute: () => "https://accounts.nice.org.uk/signout",
-							textContent: "Some log out text",
-						},
-					});
+				const editProfileLink = getByRole("link", { name: "Sign out" }),
+					clickEvent = createEvent.click(editProfileLink);
 
-				expect(preventDefault).toHaveBeenCalled();
+				fireEvent(editProfileLink, clickEvent);
+
+				expect(clickEvent.defaultPrevented).toBe(true);
 				expect(window.dataLayer).toEqual([
 					{
 						event: eventName,
@@ -152,8 +127,7 @@ describe("Nav", () => {
 			});
 
 			it("should not track admin link", () => {
-				const preventDefault = jest.fn();
-				const wrapper = shallow(
+				const { getByRole } = render(
 					<Nav
 						{...defaultProps}
 						isExpanded={true}
@@ -161,18 +135,12 @@ describe("Nav", () => {
 					/>
 				);
 
-				wrapper
-					.find("a[href='https://accounts.nice.org.uk/admin']")
-					.simulate("click", {
-						preventDefault: preventDefault,
-						currentTarget: {
-							// Mock e.currentTarget.getAttribute("href")
-							getAttribute: () => "https://accounts.nice.org.uk/admin",
-							textContent: "Admin",
-						},
-					});
+				const editProfileLink = getByRole("link", { name: "Admin" }),
+					clickEvent = createEvent.click(editProfileLink);
 
-				expect(preventDefault).not.toHaveBeenCalled();
+				fireEvent(editProfileLink, clickEvent);
+
+				expect(clickEvent.defaultPrevented).toBe(false);
 				expect(window.dataLayer).toEqual([]);
 			});
 		});
@@ -182,33 +150,38 @@ describe("Nav", () => {
 		const internalServices = services.internal;
 
 		it("Matches snapshot with sub links for selected internal service", () => {
-			const wrapper = mount(
+			const { container } = render(
 				<Nav {...defaultProps} service={internalServices[0].id} />
 			);
-			expect(toJson(wrapper)).toMatchSnapshot();
+			expect(container).toMatchSnapshot();
 		});
 
 		it("Internal service 1 only renders itself and no other services", () => {
-			const wrapper = mount(
+			const { getByRole, queryByRole } = render(
 				<Nav {...defaultProps} service={internalServices[0].id} />
 			);
 
-			const links = wrapper.find(
-				"a[href='https://www.test.nice.org/first-internal-service']"
-			);
-			expect(links.length).toEqual(1);
-			expect(links.text()).toEqual("First internal service");
+			expect(
+				getByRole("link", { name: "First internal service" })
+			).toBeInTheDocument();
+
+			expect(
+				queryByRole("link", { name: "Second internal service" })
+			).toBeNull();
 		});
 
 		it("Internal service 2 only renders itself and no other services", () => {
-			const wrapper = mount(
+			const { getByRole, queryByRole } = render(
 				<Nav {...defaultProps} service={internalServices[1].id} />
 			);
-			const links = wrapper.find(
-				"a[href='https://www.test.nice.org/second-internal-service']"
-			);
-			expect(links.length).toEqual(1);
-			expect(links.text()).toEqual("Second internal service");
+
+			expect(
+				getByRole("link", { name: "Second internal service" })
+			).toBeInTheDocument();
+
+			expect(
+				queryByRole("link", { name: "First internal service" })
+			).toBeNull();
 		});
 
 		const propsWithAdditionalSubMenuItem = {
@@ -222,26 +195,28 @@ describe("Nav", () => {
 		};
 
 		it("Internal service 1 adds additional sub menu item", () => {
-			const wrapper = mount(
+			const { getByRole } = render(
 				<Nav
 					{...propsWithAdditionalSubMenuItem}
 					service={internalServices[0].id}
 				/>
 			);
-			const links = wrapper.find("a[href='/admin']");
-			expect(links.length).toEqual(1);
-			expect(links.text()).toEqual("Admin");
+
+			expect(getByRole("link", { name: "Admin" })).toHaveAttribute(
+				"href",
+				"/admin"
+			);
 		});
 
 		it("Internal service 2 doesn't show the additional sub menu item for service 1", () => {
-			const wrapper = mount(
+			const { queryByRole } = render(
 				<Nav
 					{...propsWithAdditionalSubMenuItem}
 					service={internalServices[1].id}
 				/>
 			);
-			const links = wrapper.find("a[href='/admin']");
-			expect(links.length).toEqual(0);
+
+			expect(queryByRole("link", { name: "Admin" })).toBeNull();
 		});
 
 		const propsWithAdditionalSubMenuItemForEachService = {
@@ -259,27 +234,31 @@ describe("Nav", () => {
 		};
 
 		it("Internal service 1 gets additional sub menu items when multiple are passed", () => {
-			const wrapper = mount(
+			const { getByRole } = render(
 				<Nav
 					{...propsWithAdditionalSubMenuItemForEachService}
 					service={internalServices[0].id}
 				/>
 			);
-			const links = wrapper.find("a[href='/admin1']");
-			expect(links.length).toEqual(1);
-			expect(links.text()).toEqual("Admin 1");
+
+			expect(getByRole("link", { name: "Admin 1" })).toHaveAttribute(
+				"href",
+				"/admin1"
+			);
 		});
 
 		it("Internal service 2 gets additional sub menu items when multiple are passed", () => {
-			const wrapper = mount(
+			const { getByRole } = render(
 				<Nav
 					{...propsWithAdditionalSubMenuItemForEachService}
 					service={internalServices[1].id}
 				/>
 			);
-			const links = wrapper.find("a[href='/admin2']");
-			expect(links.length).toEqual(1);
-			expect(links.text()).toEqual("Admin 2");
+
+			expect(getByRole("link", { name: "Admin 2" })).toHaveAttribute(
+				"href",
+				"/admin2"
+			);
 		});
 	});
 });
