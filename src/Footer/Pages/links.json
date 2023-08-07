@@ -28,10 +28,7 @@
     "text": "Contact us"
   },
   {
-    "href": "https://www.nice.org.uk/leave-feedback",
-    "hrefOverrides": {
-      "pathways": "https://www.nice.org.uk/NICE-Pathways-feedback"
-    },
+    "href": "https://www.nice.org.uk/forms/leave-feedback",
     "text": "Leave feedback"
   },
   {
@@ -39,7 +36,7 @@
     "text": "Reusing our content"
   },
   {
-    "href": "https://www.nice.org.uk/re-using-our-content/uk-open-content-licence",
+    "href": "https://www.nice.org.uk/forms/use-of-nice-content-in-the-uk",
     "text": "NICE UK Open Content Licence"
   },
   {
