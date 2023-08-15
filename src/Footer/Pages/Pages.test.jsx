@@ -9,7 +9,9 @@ describe("Pages", () => {
 		expect(container).toMatchSnapshot();
 	});
 
-	it("Uses overridden feedback URL as href for site with custom feedback URL", () => {
+	// Skipping this test, as the custom pathways feedback URL is no longer used
+	// If we start overriding links per service again then we can reinstate the test
+	it.skip("Uses overridden feedback URL as href for site with custom feedback URL", () => {
 		const { getByText } = render(<Pages service="pathways" />);
 		expect(getByText("Leave feedback")).toHaveAttribute(
 			"href",

@@ -59,7 +59,7 @@ exports[`Pages Matches snapshot 1`] = `
       </li>
       <li>
         <a
-          href="https://www.nice.org.uk/leave-feedback"
+          href="https://www.nice.org.uk/forms/leave-feedback"
         >
           Leave feedback
         </a>
@@ -73,7 +73,7 @@ exports[`Pages Matches snapshot 1`] = `
       </li>
       <li>
         <a
-          href="https://www.nice.org.uk/re-using-our-content/uk-open-content-licence"
+          href="https://www.nice.org.uk/forms/use-of-nice-content-in-the-uk"
         >
           NICE UK Open Content Licence
         </a>
