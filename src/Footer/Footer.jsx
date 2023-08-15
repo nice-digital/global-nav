@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 import NiceLogo from "@nice-digital/icons/lib/Logo";
 
@@ -11,32 +10,27 @@ import styles from "./Footer.module.scss";
 import TrackedLink from "../TrackedLink";
 import { footerClickEventAction } from "../tracker";
 
-export class Footer extends Component {
-	render() {
-		return (
-			<footer className={styles.footer} data-tracking="Global footer">
-				<div className={styles.container}>
-					<TrackedLink
-						eventAction={footerClickEventAction}
-						eventLabel="Logo"
-						href="https://www.nice.org.uk/"
-						className={styles.logo}
-						aria-label="Go to NICE home page"
-					>
-						<NiceLogo />
-					</TrackedLink>
-					<Services service={this.props.service} />
-					<Pages service={this.props.service} />
-					<Social />
-				</div>
-				<Legal />
-			</footer>
-		);
-	}
-}
-
-Footer.propTypes = {
-	service: PropTypes.string,
+//TODO add string type for service prop
+const Footer = ({ service }) => {
+	return (
+		<footer className={styles.footer} data-tracking="Global footer">
+			<div className={styles.container}>
+				<TrackedLink
+					eventAction={footerClickEventAction}
+					eventLabel="Logo"
+					href="https://www.nice.org.uk/"
+					className={styles.logo}
+					aria-label="Go to NICE home page"
+				>
+					<NiceLogo />
+				</TrackedLink>
+				<Services service={service} />
+				<Pages service={service} />
+				<Social />
+			</div>
+			<Legal />
+		</footer>
+	);
 };
 
 export default Footer;

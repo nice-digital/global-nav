@@ -1,16 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 import styles from "./SkipLink.module.scss";
 
-export default class SkipLink extends Component {
-	constructor(props) {
-		super(props);
-
-		this.handleClick = this.handleClick.bind(this);
-	}
-
-	handleClick(e) {
+const SkipLink = (props) => {
+	const handleClick = (e) => {
 		const href = e.currentTarget.getAttribute("href");
 
 		if (href && href.indexOf("#") === 0) {
@@ -25,25 +18,22 @@ export default class SkipLink extends Component {
 				element.scrollIntoView();
 			}
 		}
-	}
+	};
 
-	render() {
-		return (
-			<a
-				href={this.props.to}
-				className={styles.link}
-				onClick={this.handleClick}
-			>
-				{this.props.children}
-			</a>
-		);
-	}
-}
-
-SkipLink.propTypes = {
-	to: PropTypes.string.isRequired,
-	children: PropTypes.oneOfType([
-		PropTypes.arrayOf(PropTypes.node),
-		PropTypes.node,
-	]).isRequired,
+	return (
+		<a href={props.to} className={styles.link} onClick={handleClick}>
+			{props.children}
+		</a>
+	);
 };
+
+//TODO Convert proptypes to typescript
+// SkipLink.propTypes = {
+// 	to: PropTypes.string.isRequired,
+// 	children: PropTypes.oneOfType([
+// 		PropTypes.arrayOf(PropTypes.node),
+// 		PropTypes.node,
+// 	]).isRequired,
+// };
+
+export default SkipLink;
