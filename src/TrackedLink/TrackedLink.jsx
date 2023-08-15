@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { defaultEventCategory, trackEvent } from "./../tracker";
 
@@ -37,31 +38,27 @@ const TrackedLink = ({
 };
 
 //TODO convert proptypes to typescript types
-// TrackedLink.propTypes = {
-// 	children: PropTypes.node.isRequired,
-// 	href: PropTypes.string.isRequired,
-// 	eventCategory: PropTypes.string.isRequired,
-// 	eventAction: PropTypes.string.isRequired,
-// 	eventLabel: PropTypes.string,
-// 	eventValue: PropTypes.number,
-// 	destinationUrl: PropTypes.string,
-// };
+TrackedLink.propTypes = {
+	children: PropTypes.node.isRequired,
+	href: PropTypes.string.isRequired,
+	eventCategory: PropTypes.string.isRequired,
+	eventAction: PropTypes.string.isRequired,
+	eventLabel: PropTypes.string,
+	eventValue: PropTypes.number,
+	destinationUrl: PropTypes.string,
+};
 
 export default TrackedLink;
 
-// TrackedLink.propTypes = {
-// 	href: PropTypes.string.isRequired,
-// 	children: PropTypes.oneOfType([
-// 		PropTypes.arrayOf(PropTypes.node),
-// 		PropTypes.node,
-// 	]).isRequired,
-// 	eventCategory: PropTypes.string,
-// 	eventAction: PropTypes.string.isRequired,
-// 	eventLabel: PropTypes.string,
-// 	eventValue: PropTypes.number,
-// 	destinationUrl: PropTypes.string,
-// };
-
-// TrackedLink.defaultProps = {
-// 	eventCategory: defaultEventCategory,
-// };
+TrackedLink.propTypes = {
+	href: PropTypes.string.isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+	]).isRequired,
+	eventCategory: PropTypes.string,
+	eventAction: PropTypes.string.isRequired,
+	eventLabel: PropTypes.string,
+	eventValue: PropTypes.number,
+	destinationUrl: PropTypes.string,
+};

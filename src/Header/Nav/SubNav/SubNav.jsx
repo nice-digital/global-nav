@@ -3,6 +3,7 @@ import cksIcon from "./images/cks.svg";
 import bnfIcon from "./images/bnf.svg";
 import bnfcIcon from "./images/bnfc.svg";
 import { getCallbackFunction } from "../../../utils";
+import PropTypes from "prop-types";
 
 const images = {
 	cks: cksIcon,
@@ -94,13 +95,13 @@ const SubNav = (props) => {
 export default SubNav;
 
 //TODO Convert proptypes to typescript
-// SubNav.propTypes = {
-// 	text: PropTypes.string.isRequired,
-// 	links: PropTypes.arrayOf(
-// 		PropTypes.shape({
-// 			href: PropTypes.string.isRequired,
-// 			text: PropTypes.string.isRequired,
-// 		})
-// 	),
-// 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-// };
+SubNav.propTypes = {
+	text: PropTypes.string.isRequired,
+	links: PropTypes.arrayOf(
+		PropTypes.shape({
+			href: PropTypes.string.isRequired,
+			text: PropTypes.string.isRequired,
+		})
+	),
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+};

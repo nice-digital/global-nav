@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-
+import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";
 
 import {
@@ -395,26 +395,19 @@ export class OldHeader extends Component {
 }
 
 //TODO convert proptypes to typescript types
-// Header.propTypes = {
-// 	service: PropTypes.string,
-// 	skipLinkId: PropTypes.string,
-// 	enabled: PropTypes.bool,
-// 	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-// 	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-// 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-// 	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-// 	onDropdownOpen: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-// 	onDropdownClose: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-// 	onRendered: PropTypes.func,
-// 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
-// 	renderSearchOnly: PropTypes.bool,
-// };
-
-// Header.defaultProps = {
-// 	search: {},
-// 	skipLinkId: "content-start",
-// 	additionalSubMenuItems: [],
-// 	renderSearchOnly: false,
-// };
+Header.propTypes = {
+	service: PropTypes.string,
+	skipLinkId: PropTypes.string,
+	enabled: PropTypes.bool,
+	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onDropdownOpen: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onDropdownClose: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onRendered: PropTypes.func,
+	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
+	renderSearchOnly: PropTypes.bool,
+};
 
 export default Header;

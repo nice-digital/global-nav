@@ -21,8 +21,9 @@ import {
 } from "../../tracker";
 
 function Account(props) {
+	const { provider = "niceAccounts" } = props;
 	// We've left this is state as per the pre-hook implementation
-	const [doesUseIdAM] = useState(props.provider == Account.providers.idam);
+	const [doesUseIdAM] = useState(provider == Account.providers.idam);
 
 	const { accountMenuIsExpanded, setAccountMenuIsExpanded } =
 		useContext(HeaderContext);
@@ -129,7 +130,7 @@ function Account(props) {
 		}
 	}, []);
 
-	const { accountsData, environment } = props;
+	const { accountsData, environment = "live" } = props;
 
 	let signInLink = {};
 	if (doesUseIdAM) {
@@ -226,9 +227,4 @@ Account.propTypes = {
 		})
 	),
 	displayName: PropTypes.string,
-};
-
-Account.defaultProps = {
-	environment: "live",
-	provider: "niceAccounts",
 };

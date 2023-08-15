@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import styles from "./SkipLink.module.scss";
 
 const SkipLink = (props) => {
@@ -28,12 +28,12 @@ const SkipLink = (props) => {
 };
 
 //TODO Convert proptypes to typescript
-// SkipLink.propTypes = {
-// 	to: PropTypes.string.isRequired,
-// 	children: PropTypes.oneOfType([
-// 		PropTypes.arrayOf(PropTypes.node),
-// 		PropTypes.node,
-// 	]).isRequired,
-// };
+SkipLink.propTypes = {
+	to: PropTypes.string.isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+	]).isRequired,
+};
 
 export default SkipLink;
