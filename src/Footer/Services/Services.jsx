@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import styles from "./Services.module.scss";
 import TrackedLink from "../../TrackedLink";
 import { footerClickEventAction } from "../../tracker";
@@ -28,14 +28,14 @@ const Services = () => {
 };
 
 // TODO convert footerlink proptypes to typescript
-// FooterLink.propTypes = {
-// 	host: PropTypes.string,
-// 	landingPath: PropTypes.string,
-// 	id: PropTypes.string,
-// 	text: PropTypes.string,
-// 	abbreviation: PropTypes.bool,
-// 	title: PropTypes.string,
-// };
+FooterLink.propTypes = {
+	host: PropTypes.string,
+	landingPath: PropTypes.string,
+	id: PropTypes.string,
+	text: PropTypes.string,
+	abbreviation: PropTypes.bool,
+	title: PropTypes.string,
+};
 
 function FooterLink({ host, landingPath, text, abbreviation, title }) {
 	return (
@@ -62,5 +62,9 @@ function FooterLink({ host, landingPath, text, abbreviation, title }) {
 		</li>
 	);
 }
+
+Services.propTypes = {
+	service: PropTypes.string,
+};
 
 export default Services;

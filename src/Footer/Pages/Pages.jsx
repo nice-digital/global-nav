@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import styles from "./Pages.module.scss";
 
 import pages from "./links.json";
@@ -31,6 +31,10 @@ const Pages = ({ service }) => {
 			</ul>
 		</nav>
 	);
+};
+
+Pages.propTypes = {
+	service: PropTypes.string,
 };
 
 export default Pages;

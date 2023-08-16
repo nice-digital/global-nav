@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import NiceLogo from "@nice-digital/icons/lib/Logo";
 
 import Social from "./Social";
@@ -31,6 +31,10 @@ const Footer = ({ service }) => {
 			<Legal />
 		</footer>
 	);
+};
+
+Footer.propTypes = {
+	service: PropTypes.string,
 };
 
 export default Footer;
