@@ -10,7 +10,15 @@ import styles from "./Search.module.scss";
 
 const searchInputSelector = "header form[role='search'] [name='q']";
 
-const Search = function (props) {
+const Search = function ({
+	url = "/search",
+	autocomplete,
+	skipLinkId,
+	placeholder = "Search NICE…",
+	query = "",
+	onSearching,
+	onNavigating,
+}) {
 	const keyDownHandler = function (e) {
 		// Submit the form when we press enter to allow the enter key functionality:
 		// The accessible-autocomplete doesn't let you use enter by default
@@ -34,14 +42,14 @@ const Search = function (props) {
 	const searchSubmitHandler = function (e) {
 		// If we've got an onSearching prop then cancel the default search behaviour
 		// and call the onSearcing callback with the query value.
-		const { onSearching } = props;
+
 		if (onSearching) {
 			const onSearchingCallback = getCallbackFunction(onSearching);
 
 			if (onSearchingCallback) {
 				e.preventDefault();
 				const query = document.getElementById("autocomplete").value;
-				onSearchingCallback({ query: query });
+				onSearchingCallback({ query });
 				return true;
 			}
 		}
@@ -78,7 +86,7 @@ const Search = function (props) {
 		<form
 			id="global-nav-search-form"
 			role="search"
-			action={props.url}
+			action={url}
 			className={styles.search}
 			onSubmit={searchSubmitHandler}
 			onKeyDown={keyDownHandler}
@@ -86,14 +94,14 @@ const Search = function (props) {
 		>
 			{/* eslint jsx-a11y/label-has-for: 0 */}
 			<label className={styles.label} htmlFor="autocomplete">
-				{props.placeholder}
+				{placeholder}
 			</label>
 			<Autocomplete
-				source={props.autocomplete?.suggestions || props.autocomplete}
-				suggestionTemplate={props.autocomplete?.suggestionTemplate}
-				placeholder={props.placeholder}
-				query={props.query}
-				onNavigating={props.onNavigating}
+				source={autocomplete?.suggestions || autocomplete}
+				suggestionTemplate={autocomplete?.suggestionTemplate}
+				placeholder={placeholder}
+				query={query}
+				onNavigating={onNavigating}
 			/>
 			<button
 				className={styles.button}
@@ -103,7 +111,7 @@ const Search = function (props) {
 			>
 				<SearchIcon className={styles.icon} />
 			</button>
-			<SkipLink to={`#${props.skipLinkId}`}>Skip to content</SkipLink>
+			<SkipLink to={`#${skipLinkId}`}>Skip to content</SkipLink>
 		</form>
 	);
 };
@@ -143,10 +151,4 @@ Search.propTypes = {
 	query: PropTypes.string,
 	onSearching: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-};
-
-Search.defaultProps = {
-	url: "/search",
-	placeholder: "Search NICE…",
-	query: "",
 };

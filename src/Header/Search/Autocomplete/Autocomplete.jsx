@@ -27,8 +27,15 @@ const suggestionTemplateDefault = function (suggestion) {
 };
 
 export default function Autocomplete(props) {
+	const {
+		query,
+		onNavigating,
+		placeholder,
+		suggestionTemplate,
+		source: sourceProp = false,
+	} = props;
 	const isClient = useIsClient(),
-		[queryText, setQueryText] = useState(props.query || ""),
+		[queryText, setQueryText] = useState(query || ""),
 		[debouncedQueryText] = useDebouncedValue(queryText, rateLimitWait),
 		[suggestions, setSuggestions] = useState([]),
 		inputChangeHandler = (event) => {
@@ -44,7 +51,7 @@ export default function Autocomplete(props) {
 			inputText = document.getElementById("autocomplete").value;
 
 		const eventCallback = () => {
-			const onNavigatingCallback = getCallbackFunction(props.onNavigating);
+			const onNavigatingCallback = getCallbackFunction(onNavigating);
 
 			if (onNavigatingCallback) {
 				onNavigatingCallback({
@@ -87,7 +94,7 @@ export default function Autocomplete(props) {
 
 	useEffect(() => {
 		if (
-			props.source === false ||
+			sourceProp === false ||
 			debouncedQueryText === "" ||
 			debouncedQueryText.length < minAutocompleteLength
 		) {
@@ -97,12 +104,12 @@ export default function Autocomplete(props) {
 
 		let source;
 
-		if (Array.isArray(props.source)) {
-			source = props.source;
+		if (Array.isArray(sourceProp)) {
+			source = sourceProp;
 		}
 
-		if (typeof props.source === "string" && props.source.indexOf("/") === -1) {
-			source = window[props.source];
+		if (typeof sourceProp === "string" && sourceProp.indexOf("/") === -1) {
+			source = window[sourceProp];
 			if (!source) return;
 		}
 
@@ -113,8 +120,8 @@ export default function Autocomplete(props) {
 
 		// Default to a URL for asynchronously loading suggestions from the server
 		fetch(
-			`${props.source}${
-				props.source.indexOf("?") === -1 ? "?" : "&"
+			`${sourceProp}${
+				sourceProp.indexOf("?") === -1 ? "?" : "&"
 			}q=${debouncedQueryText}`
 		)
 			.then((response) => response.json())
@@ -125,15 +132,15 @@ export default function Autocomplete(props) {
 
 	return (
 		<div className={styles.ac}>
-			{!props.source || !isClient ? (
+			{!sourceProp || !isClient ? (
 				<div className="autocomplete__wrapper">
 					<input
 						type="search"
 						id="autocomplete"
 						name="q"
 						className="autocomplete__input autocomplete__input--default"
-						placeholder={props.placeholder}
-						defaultValue={props.query}
+						placeholder={placeholder}
+						defaultValue={query}
 						data-hj-allow=""
 						maxLength={512}
 					/>
@@ -141,7 +148,7 @@ export default function Autocomplete(props) {
 			) : (
 				<Combobox value={queryText} onChange={onValueChangeHandler} nullable>
 					<Combobox.Label className="visually-hidden">
-						{props.placeholder}
+						{placeholder}
 					</Combobox.Label>
 					<Combobox.Input
 						id="autocomplete"
@@ -150,7 +157,7 @@ export default function Autocomplete(props) {
 						autoComplete="off"
 						maxLength={512}
 						data-hj-allow=""
-						placeholder={props.placeholder}
+						placeholder={placeholder}
 						onChange={inputChangeHandler}
 					/>
 					<Combobox.Options className="autocomplete__menu autocomplete__menu--overlay">
@@ -188,9 +195,9 @@ export default function Autocomplete(props) {
 											active ? "autocomplete__option--focused" : ""
 										}`}
 										dangerouslySetInnerHTML={{
-											__html: (
-												props.suggestionTemplate || suggestionTemplateDefault
-											)(suggestion),
+											__html: (suggestionTemplate || suggestionTemplateDefault)(
+												suggestion
+											),
 										}}
 										onClick={() => suggestionClickHandler(suggestion)}
 										onKeyDown={(event) =>
@@ -227,8 +234,4 @@ Autocomplete.propTypes = {
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
 	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-};
-
-Autocomplete.defaultProps = {
-	source: false,
 };

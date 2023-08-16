@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import LogoIcon from "@nice-digital/icons/lib/LogoFull";
 
@@ -17,7 +17,186 @@ import { getCallbackFunction } from "../utils";
 import styles from "./Header.module.scss";
 import { HeaderContextProvider, HeaderContext } from "./context/HeaderContext";
 
-export class Header extends Component {
+const Header = ({
+	skipLinkId = "content-start",
+	renderSearchOnly = false,
+	onNavigating,
+	search = {},
+	enabled,
+	onRendered,
+	auth,
+	service,
+	additionalSubMenuItems = [],
+	onDropdownOpen,
+	onDropdownClose,
+}) => {
+	const [isExpanded, setIsExpanded] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [accountsData, setAccountsData] = useState(null);
+
+	useEffect(() => {
+		if (!document.getElementById(skipLinkId)) {
+			const firstH1OnPage = document.getElementsByTagName("h1")[0];
+
+			if (firstH1OnPage) {
+				firstH1OnPage.setAttribute("id", skipLinkId);
+			}
+		}
+	}, [skipLinkId]);
+
+	const handleMobileMenuBtnClick = () => {
+		trackEvent(defaultEventCategory, headerClickEventAction, "Menu");
+
+		setIsExpanded((prevState) => !prevState);
+	};
+
+	const handleLogoClick = (e) => {
+		e.preventDefault();
+
+		const href = e.currentTarget.getAttribute("href");
+
+		trackEvent(
+			defaultEventCategory,
+			headerClickEventAction,
+			"Logo",
+			null,
+			href,
+			function () {
+				window.location.assign(href);
+			}
+		);
+	};
+
+	const handleLoginStatusChecked = (accountsData) => {
+		if (accountsData.display_name) {
+			setIsLoggedIn(true);
+			setAccountsData(accountsData);
+		} else {
+			setIsLoggedIn(false);
+			setAccountsData(accountsData);
+		}
+	};
+
+	const dropdownToggleHandler = (idOfOpenDropdown) => {
+		// If we've got an onDropdownOpen or onDropdownClose prop call the onDropdownOpen or onDropdownClose callback based on idOfOpenDropdown.
+
+		if (onDropdownOpen && idOfOpenDropdown !== null) {
+			const onDropdownOpenCallback = getCallbackFunction(onDropdownOpen);
+			if (onDropdownOpenCallback) {
+				onDropdownOpenCallback();
+			}
+		}
+
+		if (onDropdownClose && idOfOpenDropdown == null) {
+			const onDropdownCloseCallback = getCallbackFunction(onDropdownClose);
+			if (onDropdownCloseCallback) {
+				onDropdownCloseCallback();
+			}
+		}
+	};
+
+	if (renderSearchOnly) {
+		return (
+			<Search skipLinkId={skipLinkId} onNavigating={onNavigating} {...search} />
+		);
+	}
+
+	return (
+		enabled !== false && (
+			<HeaderContextProvider>
+				<HeaderContext.Consumer>
+					{({ idOfOpenDropdown }) => {
+						dropdownToggleHandler(idOfOpenDropdown);
+						return (
+							<span
+								id="scrim"
+								className={idOfOpenDropdown !== null ? styles.scrim : undefined}
+								aria-hidden="true"
+							/>
+						);
+					}}
+				</HeaderContext.Consumer>
+
+				<div
+					className={styles.header}
+					data-tracking="Global nav"
+					id="top"
+					ref={onRendered}
+				>
+					<header aria-label="Site header">
+						<ul className={styles.a11yLinks} aria-label="Accessibility links">
+							<li>
+								<SkipLink to={`#${skipLinkId}`}>Skip to content</SkipLink>
+							</li>
+							<li>
+								<SkipLink to="https://www.nice.org.uk/accessibility">
+									Accessibility help
+								</SkipLink>
+							</li>
+						</ul>
+						<div className={styles.container}>
+							<a
+								href="https://www.nice.org.uk/"
+								aria-label="Home"
+								className={styles.home}
+								onClick={handleLogoClick}
+								data-tracking="Logo"
+							>
+								<LogoIcon className={styles.icon} width={null} height={null} />
+							</a>
+							<div className={styles.wrapper}>
+								<div className={styles.search}>
+									{search && (
+										<Search
+											skipLinkId={skipLinkId}
+											onNavigating={onNavigating}
+											{...search}
+										/>
+									)}
+								</div>
+								<button
+									className={styles.mobileMenuBtn}
+									id="header-menu-button"
+									type="button"
+									aria-controls="header-menu"
+									aria-expanded={isExpanded}
+									aria-haspopup="menu"
+									aria-label={
+										isExpanded ? "Close site menu" : "Expand site menu"
+									}
+									onClick={handleMobileMenuBtnClick}
+								>
+									{isExpanded ? "Close" : "Menu"}
+								</button>
+								{auth !== false && (
+									<div className={styles.account}>
+										<Account
+											onLoginStatusChecked={handleLoginStatusChecked}
+											isLoggedIn={isLoggedIn}
+											accountsData={accountsData}
+											{...auth}
+										/>
+									</div>
+								)}
+							</div>
+						</div>
+						<Nav
+							skipLinkId={skipLinkId}
+							service={service}
+							isExpanded={isExpanded}
+							accountsLinks={accountsData && accountsData.links}
+							onNavigating={onNavigating}
+							additionalSubMenuItems={additionalSubMenuItems}
+						/>
+					</header>
+					<OldIEMessage />
+				</div>
+			</HeaderContextProvider>
+		)
+	);
+};
+
+export class OldHeader extends Component {
 	constructor(props) {
 		super(props);
 
@@ -215,6 +394,7 @@ export class Header extends Component {
 	}
 }
 
+//TODO convert proptypes to typescript types
 Header.propTypes = {
 	service: PropTypes.string,
 	skipLinkId: PropTypes.string,
@@ -228,13 +408,6 @@ Header.propTypes = {
 	onRendered: PropTypes.func,
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
 	renderSearchOnly: PropTypes.bool,
-};
-
-Header.defaultProps = {
-	search: {},
-	skipLinkId: "content-start",
-	additionalSubMenuItems: [],
-	renderSearchOnly: false,
 };
 
 export default Header;
