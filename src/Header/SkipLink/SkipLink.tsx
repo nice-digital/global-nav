@@ -1,9 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styles from "./SkipLink.module.scss";
 
-const SkipLink = (props) => {
-	const handleClick = (e) => {
+interface SkipLinkProps {
+	to: string;
+	children: React.ReactNode;
+}
+
+const SkipLink = (props: SkipLinkProps) => {
+	const handleClick = (e: React.MouseEvent) => {
 		const href = e.currentTarget.getAttribute("href");
 
 		if (href && href.indexOf("#") === 0) {
@@ -25,15 +29,6 @@ const SkipLink = (props) => {
 			{props.children}
 		</a>
 	);
-};
-
-//TODO Convert proptypes to typescript
-SkipLink.propTypes = {
-	to: PropTypes.string.isRequired,
-	children: PropTypes.oneOfType([
-		PropTypes.arrayOf(PropTypes.node),
-		PropTypes.node,
-	]).isRequired,
 };
 
 export default SkipLink;

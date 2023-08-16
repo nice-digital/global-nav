@@ -38,6 +38,14 @@ module.exports = function (env, argv) {
 		module: {
 			rules: [
 				{
+					test: /\.tsx?$/,
+					exclude: /node_modules/,
+					use: "ts-loader",
+					resolve: {
+						extensions: [".tsx", ".ts", ".js"],
+					},
+				},
+				{
 					test: /\.jsx?$/,
 					enforce: "pre",
 					use: "source-map-loader",
