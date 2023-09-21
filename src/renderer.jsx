@@ -69,3 +69,7 @@ export const renderFooter = function () {
 		root.render(<Footer service={config.service} {...config.footer} />);
 	}
 };
+
+//TODO these are called from cdn.js but may be required when installing gn from npm ?
+// renderHeader();
+// renderFooter();
