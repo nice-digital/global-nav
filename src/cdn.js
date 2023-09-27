@@ -6,16 +6,13 @@ renderHeader();
 renderFooter();
 
 // Check if the redirection flag is not set and the environment is development to show html examples
-if (
-	!localStorage.getItem("redirected") &&
-	import.meta.env.MODE === "development"
-) {
-	// Set the redirection flag
-	localStorage.setItem("redirected", "true");
-
-	// Redirect to /examples/ in development mode
-	window.location.href = "/examples/";
-} else {
-	// Clear the redirection flag from localStorage
-	localStorage.removeItem("redirected");
+if (import.meta.env.MODE === "development") {
+	if (
+		["http://localhost:3000", "http://localhost:3000/"].includes(
+			window.location.href
+		) &&
+		import.meta.env.MODE === "development"
+	) {
+		window.location.href = "/examples/";
+	}
 }
