@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>IDAM logged in | Global nav test site | NICE</title>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, minimal-ui"
+		/>
+	</head>
+
+	<body>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital,wght@0,600;1,600&display=swap"
+			rel="stylesheet"
+		/>
+
+		<div id="root">
+			<div>
+				<div class="wrapper">
+					<div class="col leftCol">
+						<h1>NICE accounts</h1>
+						<h6>
+							A single sign-in for the different services offered by NICE.
+						</h6>
+					</div>
+					<div class="mainContainer col rightCol">
+						<div>
+							<div class="navigation">
+								<div class="navigationLink">
+									<h3>Log in</h3>
+									<span>Need a NICE Account?</span
+									><a
+										data-qa-sel="Signup-link-login"
+										activeclassname="activeRoute"
+										href="/register"
+										>Create an account</a
+									>
+								</div>
+							</div>
+							<form class="">
+								<div class="input">
+									<label class="input__label" for="username">Email</label
+									><input
+										name="username"
+										class="input__input"
+										id="username"
+										type="email"
+										data-qa-sel="login-email"
+										placeholder="eg: your.name@example.com..."
+										autocomplete="username"
+									/>
+								</div>
+
+								<div class="input">
+									<label class="input__label" for="password">Password</label
+									><input
+										name="password"
+										class="input__input"
+										id="password"
+										type="password"
+										data-qa-sel="login-password"
+										autocomplete="current-password"
+									/>
+								</div>
+
+								<div>
+									<button data-qa-sel="login-button" class="btn btn--cta">
+										Sign in</button
+									><button
+										data-qa-sel="login-button-social"
+										class="iconBtn social"
+										style="float: right"
+									>
+										<span class="buttonLabel">Or </span
+										><img
+											class="iconBtn-icon"
+											alt="Sign in with google"
+											src="https://s3-eu-west-1.amazonaws.com/nice-identity-hostedpages/test/login/images/btn_google_signin_light_normal_web.png"
+										/>
+									</button>
+								</div>
+							</form>
+							<a
+								class="forgotPasswordLink"
+								data-qa-sel="forgotPassword-link"
+								href="/forgotPassword"
+								>Forgot password?</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const identityAdminLoggedInConfig = {
+				filename: "identityadmin-loggedin",
+				title: "Identity Admin Logged in",
+				global_nav_config: {
+					header: {
+						auth: {
+							provider: "idam",
+							links: [
+								{ text: "Joe Bloggs", url: "#" },
+								{ text: "My profile", url: "/Account/todo" },
+								{ text: "Sign out", url: "/Account/Logout" },
+							],
+							displayName: "Joe Bloggs",
+						},
+						search: {
+							autocomplete: "/niceorg/autocomplete/?ajax=ajax",
+						},
+					},
+				},
+			};
+
+			window.global_nav_config = identityAdminLoggedInConfig.global_nav_config;
+			// import { configs } from "./exampleConfigs.js";
+
+			//TODO figure out when this should be set
+			// var global_nav_config = typeof global_nav_config === "string" ? global_nav_config : JSON.stringify(global_nav_config);
+
+			// window.global_nav_config = configs.identityAdminLoggedIn.global_nav_config;
+		</script>
+		<script type="module" src="/cdn.js"></script>
+		<!-- <script src="//cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"></script> -->
+	</body>
+</html>
