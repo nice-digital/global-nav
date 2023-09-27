@@ -99,13 +99,26 @@
 		</div>
 
 		<script type="module" src="/cdn.js"></script>
-		<script type="module">
-			import { configs } from "./exampleConfigs.js";
+		<script>
+			const identityAdminLoggedOutConfig = {
+				filename: "identityadmin-loggedout",
+				title: "Identity Admin Logged out",
+				global_nav_config: {
+					header: {
+						auth: {
+							provider: "idam",
+							links: [{ text: "Sign in", url: "/Account/Login" }],
+						},
+						search: {
+							autocomplete: "/niceorg/autocomplete/?ajax=ajax",
+						},
+					},
+				},
+			};
 			//TODO figure out when this should be set
 			// var global_nav_config = typeof global_nav_config === "string" ? global_nav_config : JSON.stringify(global_nav_config);
 
-			window.global_nav_config =
-				configs.identityAdminLoggedOut.global_nav_config;
+			window.global_nav_config = identityAdminLoggedOutConfig.global_nav_config;
 		</script>
 		<!-- <script src="//cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"></script> -->
 	</body>

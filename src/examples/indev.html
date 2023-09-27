@@ -74,12 +74,29 @@
 		</div>
 
 		<script type="module" src="/cdn.js"></script>
-		<script type="module">
-			import { configs } from "./exampleConfigs.js";
+		<script>
+			const indevConfig = {
+				filename: "indev",
+				title: "NICE Indevelopment",
+				global_nav_config: {
+					service: "indev",
+					header: {
+						auth: {
+							environment: "test",
+						},
+						additionalSubMenuItems: [
+							{
+								service: "indev",
+								links: [{ text: "Admin", url: "/admin" }],
+							},
+						],
+					},
+				},
+			};
 			//TODO figure out when this should be set
 			// var global_nav_config = typeof global_nav_config === "string" ? global_nav_config : JSON.stringify(global_nav_config);
 
-			window.global_nav_config = configs.indev.global_nav_config;
+			window.global_nav_config = indevConfig.indev.global_nav_config;
 		</script>
 		<!-- <script src="//cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"></script> -->
 	</body>

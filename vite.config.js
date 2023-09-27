@@ -59,26 +59,6 @@ export default defineConfig({
 			//   changeOrigin: true,
 			//   pathRewrite: { "^/evidence": "" },
 			// },
-			// For mimicking BNFC autocomplete endpoint
-			// "/bnfc": {
-			//   target: "https://bnfc.nice.org.uk",
-			//   secure: false,
-			//   changeOrigin: true,
-			//   pathRewrite: { "^/bnfc": "" },
-			// },
-			// For mimicking BNF autocomplete endpoint
-			// "/bnf": {
-			//   target: "https://bnf.nice.org.uk",
-			//   secure: false,
-			//   changeOrigin: true,
-			//   pathRewrite: { "^/bnf": "" },
-			// },
-			// For mimicking CKS autocomplete topics
-			// "/js/topics.txt": {
-			//   target: "https://cks.nice.org.uk",
-			//   secure: false,
-			//   changeOrigin: true,
-			// },
 		},
 	},
 	build: {

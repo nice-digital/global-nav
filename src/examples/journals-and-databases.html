@@ -311,15 +311,26 @@
 		</script>
 
 		<script type="module" src="/cdn.js"></script>
-		<script type="module">
-			import { configs } from "./exampleConfigs.js";
+		<script>
+			const journalsConfig = {
+				filename: "journals-and-databases",
+				title: "Journals and databases",
+				global_nav_config: {
+					service: "journals",
+					header: {
+						search: {
+							autocomplete: "/niceorg/autocomplete/?ajax=ajax",
+						},
+					},
+				},
+			};
 			// https://www.nice.org.uk/about/what-we-do/evidence-services
 			//www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases - this goes to knowledge resources
 
 			//TODO figure out when this should be set
 			// var global_nav_config = typeof global_nav_config === "string" ? global_nav_config : JSON.stringify(global_nav_config);
 
-			window.global_nav_config = configs.journals.global_nav_config;
+			window.global_nav_config = journalsConfig.global_nav_config;
 		</script>
 		<!-- <script src="//cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"></script> -->
 	</body>
