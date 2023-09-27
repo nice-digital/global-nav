@@ -87,16 +87,22 @@
 						additionalSubMenuItems: [
 							{
 								service: "indev",
-								links: [{ text: "Admin", url: "/admin" }],
+								links: [
+									{
+										text: "Admin",
+										url: "/admin",
+									},
+								],
 							},
 						],
 					},
+					footer: {},
 				},
 			};
 			//TODO figure out when this should be set
 			// var global_nav_config = typeof global_nav_config === "string" ? global_nav_config : JSON.stringify(global_nav_config);
 
-			window.global_nav_config = indevConfig.indev.global_nav_config;
+			window.global_nav_config = indevConfig.global_nav_config;
 		</script>
 		<!-- <script src="//cdn.nice.org.uk/cookie-banner/cookie-banner.min.js"></script> -->
 	</body>

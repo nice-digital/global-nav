@@ -40,24 +40,26 @@ export default defineConfig({
 						.replace(/ajax=/, "index=bnfc&"),
 			},
 			// For mimicking cks autocomplete endpoint
-			"/cks/autocomplete": {
-				target: "https://cks.nice.org.uk",
+			"/api/autocomplete?q=test": {
+				target: "https://cks.nice.org.uk", // You can specify a different URL if needed
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/cks/, ""),
+				rewrite: (path) =>
+					path.replace(
+						/^\/api\/autocomplete\?q=.*$/,
+						"/examples/assets/cks-topics.json"
+					),
 			},
+			// "/cks/autocomplete": {
+			// 	target: "https://cks.nice.org.uk",
+			// 	changeOrigin: true,
+			// 	rewrite: (path) => path.replace(/^\/cks/, ""),
+			// },
 			// For mimicking niceorg autocomplete endpoint
 			// "/niceorg": {
 			//   target: "https://www.nice.org.uk",
 			//   secure: false,
 			//   changeOrigin: true,
 			//   pathRewrite: { "^/niceorg": "" },
-			// },
-			// For mimicking niceorg autocomplete endpoint
-			// "/evidence": {
-			//   target: "https://www.evidence.nhs.uk/",
-			//   secure: false,
-			//   changeOrigin: true,
-			//   pathRewrite: { "^/evidence": "" },
 			// },
 		},
 	},
