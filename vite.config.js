@@ -39,7 +39,7 @@ export default defineConfig({
 						.replace(/^\/bnfc\/typeahead/, "/api/typeahead")
 						.replace(/ajax=/, "index=bnfc&"),
 			},
-			// For mimicking cks autocomplete endpoint
+			// For mimicking cks autocomplete endpoint e.g. https://cks.nice.org.uk/api/autocomplete?q=diab
 			"/api/autocomplete?q=test": {
 				target: "https://cks.nice.org.uk", // You can specify a different URL if needed
 				changeOrigin: true,
