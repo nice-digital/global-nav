@@ -26,6 +26,8 @@ export default defineConfig(({ mode }) => {
 		"Licensed under MIT (https://github.com/nice-digital/global-nav/blob/master/LICENSE)",
 	].join("\n");
 
+	const version = env.VITE_APP_VERSION || packageJson.version;
+
 	//TODO test if the banner is working
 	return {
 		root,
@@ -88,6 +90,9 @@ export default defineConfig(({ mode }) => {
 					format: "iife", // Or other format like 'umd', 'cjs', etc.
 				},
 			},
+		},
+		define: {
+			"process.env.VERSION": version,
 		},
 		test: {
 			globals: true,
