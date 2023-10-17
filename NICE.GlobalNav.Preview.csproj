@@ -9,9 +9,13 @@
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<ItemGroup>
-		<Content Include="src\examples\**">
+		<Content Include="dist\*" Exclude="dist/*.html">
 			<Pack>true</Pack>
-			<PackagePath></PackagePath>
+			<PackagePath>global-nav</PackagePath>
+		</Content>
+		<Content Include="src\examples\*">
+			<Pack>true</Pack>
+			<PackagePath>global-nav/$(Version)</PackagePath>
 		</Content>
 	</ItemGroup>
 </Project>
