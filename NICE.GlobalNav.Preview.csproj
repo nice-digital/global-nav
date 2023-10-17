@@ -9,7 +9,7 @@
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 	<ItemGroup>
-		<Content Include="dist\**">
+		<Content Include="src\examples\**">
 			<Pack>true</Pack>
 			<PackagePath></PackagePath>
 		</Content>
