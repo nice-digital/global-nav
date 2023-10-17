@@ -26,8 +26,7 @@ export default defineConfig(({ mode }) => {
 		"Licensed under MIT (https://github.com/nice-digital/global-nav/blob/master/LICENSE)",
 	].join("\n");
 
-	console.log({ bannerContent });
-
+	//TODO test if the banner is working
 	return {
 		root,
 		plugins: [banner(bannerContent), react()],
