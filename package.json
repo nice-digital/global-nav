@@ -27,7 +27,7 @@
     "lint:scss": "stylelint **/*.scss",
     "lint:scss:fix": "npm run lint:scss -- --fix",
     "// LIFECYCLE HOOKS": "",
-    "prepare": "npm run es5ify",
+    "prepare": "npm run build",
     "// TEAMCITY": "",
     "audit:teamcity": "npm audit --audit-level=moderate --json|npm-audit-reporter-teamcity"
   },
