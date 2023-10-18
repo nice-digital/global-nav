@@ -91,9 +91,9 @@ export default defineConfig(({ mode }) => {
 				},
 			},
 		},
-		define: {
-			"process.env.VERSION": version,
-		},
+		// define: {
+		// 	"process.env.VERSION": version,
+		// },
 		test: {
 			globals: true,
 			restoreMocks: true,
