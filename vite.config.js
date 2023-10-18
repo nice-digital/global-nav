@@ -79,6 +79,7 @@ export default defineConfig(({ mode }) => {
 				entry: resolve(root, "index.js"),
 				name: "GlobalNav",
 				fileName: (format) => `global-nav.${format}.js`,
+				format: "cjs",
 			},
 			outDir,
 			emptyOutDir: true,
