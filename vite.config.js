@@ -97,9 +97,9 @@ export default defineConfig(({ mode }) => {
 		// 			? process.env.VITE_APP_VERSION
 		// 			: JSON.stringify(process.env.VITE_APP_VERSION),
 		// },
-		define: {
-			__APP_VERSION__: "1.0.0-debug",
-		},
+		// define: {
+		// 	__APP_VERSION__: "1.0.0-debug",
+		// },
 		test: {
 			globals: true,
 			restoreMocks: true,
