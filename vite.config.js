@@ -91,12 +91,12 @@ export default defineConfig(({ mode }) => {
 				},
 			},
 		},
-		define: {
-			"process.env.VERSION":
-				process.env.NODE_ENV === "production"
-					? process.env.VITE_APP_VERSION
-					: JSON.stringify(process.env.VITE_APP_VERSION),
-		},
+		// define: {
+		// 	__APP_VERSION__:
+		// 		process.env.NODE_ENV === "production"
+		// 			? process.env.VITE_APP_VERSION
+		// 			: JSON.stringify(process.env.VITE_APP_VERSION),
+		// },
 		test: {
 			globals: true,
 			restoreMocks: true,
