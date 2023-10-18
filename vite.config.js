@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
 		"Licensed under MIT (https://github.com/nice-digital/global-nav/blob/master/LICENSE)",
 	].join("\n");
 
-	const version = env.VITE_APP_VERSION || packageJson.version;
+	// const version = env.VITE_APP_VERSION || packageJson.version;
 
 	//TODO test if the banner is working
 	return {
