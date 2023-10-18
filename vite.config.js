@@ -92,7 +92,7 @@ export default defineConfig(({ mode }) => {
 			},
 		},
 		define: {
-			__APP_VERSION__:
+			"process.env.VERSION":
 				process.env.NODE_ENV === "production"
 					? process.env.VITE_APP_VERSION
 					: JSON.stringify(process.env.VITE_APP_VERSION),
