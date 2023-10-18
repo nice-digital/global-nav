@@ -75,6 +75,11 @@ export default defineConfig(({ mode }) => {
 			},
 		},
 		build: {
+			lib: {
+				entry: resolve(root, "index.js"),
+				name: "GlobalNav",
+				fileName: (format) => `global-nav.${format}.js`,
+			},
 			outDir,
 			emptyOutDir: true,
 			sourcemap: true,
