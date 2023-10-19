@@ -1,7 +1,8 @@
 import { resolve } from "path";
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
-import banner from "vite-plugin-banner";
+import banner from "rollup-plugin-banner2";
+import { terser } from "rollup-plugin-terser";
 import packageJson from "./package.json";
 
 const root = resolve(__dirname, "src");
@@ -28,7 +29,7 @@ export default defineConfig(({ mode }) => {
 
 	return {
 		root,
-		plugins: [banner(bannerContent), react()],
+		plugins: [react()],
 		css: {
 			devSourcemap: true,
 		},
@@ -43,12 +44,32 @@ export default defineConfig(({ mode }) => {
 				input: {
 					main: resolve(root, "index.html"),
 				},
-				output: {
-					entryFileNames: "cdn.js", // Set the output file name
-					chunkFileNames: "[name].[hash].js", // set the chunk file names
-					assetFileNames: "[name].[hash].[ext]", //set the asset file names
-					format: "iife", // Or other format like 'umd', 'cjs', etc.
-				},
+				output: [
+					{
+						entryFileNames: "global-nav.min.js", // Set the output file name
+						chunkFileNames: "[name].[hash].js", // set the chunk file names
+						assetFileNames: "[name].[hash].[ext]", //set the asset file names
+						format: "iife", // Or other format like 'umd', 'cjs', etc.
+						plugins: [
+							terser(),
+							banner(
+								() => `/*!\n * ${bannerContent}\n - minified version \n */\n`
+							),
+						],
+					},
+					{
+						entryFileNames: "global-nav.js", // Set the output file name
+						chunkFileNames: "[name].[hash].js", // set the chunk file names
+						assetFileNames: "[name].[hash].[ext]", //set the asset file names
+						format: "iife", // Or other format like 'umd', 'cjs', etc.
+						plugins: [
+							banner(
+								() =>
+									`/*!\n * ${bannerContent}\n - none minified version \n */\n`
+							),
+						],
+					},
+				],
 			},
 		},
 		test: {
