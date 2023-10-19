@@ -26,9 +26,6 @@ export default defineConfig(({ mode }) => {
 		"Licensed under MIT (https://github.com/nice-digital/global-nav/blob/master/LICENSE)",
 	].join("\n");
 
-	// const version = env.VITE_APP_VERSION || packageJson.version;
-
-	//TODO test if the banner is working
 	return {
 		root,
 		plugins: [banner(bannerContent), react()],
@@ -37,49 +34,19 @@ export default defineConfig(({ mode }) => {
 		},
 		server: {
 			port: 3000,
-			proxy: {
-				// key is the prefix to match, value is the target server
-				"/niceorg/autocomplete": {
-					target: "https://www.nice.org.uk",
-					changeOrigin: true,
-					rewrite: (path) => path.replace(/^\/niceorg/, ""),
-				},
-				// For mimicking bnf autocomplete endpoint
-				"/bnf/typeahead": {
-					target: "https://search-api.nice.org.uk",
-					changeOrigin: true,
-					rewrite: (path) =>
-						path
-							.replace(/^\/bnf\/typeahead/, "/api/typeahead")
-							.replace(/ajax=/, "index=bnf&"),
-				},
-				// For mimicking bnfc autocomplete endpoint
-				"/bnfc/typeahead": {
-					target: "https://search-api.nice.org.uk",
-					changeOrigin: true,
-					rewrite: (path) =>
-						path
-							.replace(/^\/bnfc\/typeahead/, "/api/typeahead")
-							.replace(/ajax=/, "index=bnfc&"),
-				},
-				// For mimicking cks autocomplete endpoint e.g. https://cks.nice.org.uk/api/autocomplete?q=diab
-				"/api/autocomplete?q=test": {
-					target: "https://cks.nice.org.uk", // You can specify a different URL if needed
-					changeOrigin: true,
-					rewrite: (path) =>
-						path.replace(
-							/^\/api\/autocomplete\?q=.*$/,
-							"/examples/assets/cks-topics.json"
-						),
-				},
-			},
 		},
 		build: {
 			lib: {
 				entry: resolve(root, "index.js"),
 				name: "GlobalNav",
-				fileName: (format) => `global-nav.${format}.js`,
-				format: "cjs",
+				formats: ["es", "cjs", "iife"],
+				fileName: (format) => {
+					if (format === "iife") {
+						return "cdn.js";
+					} else {
+						return `global-nav.${format}.js`;
+					}
+				},
 			},
 			outDir,
 			emptyOutDir: true,
@@ -88,24 +55,17 @@ export default defineConfig(({ mode }) => {
 				input: {
 					main: resolve(root, "index.html"),
 				},
+				external: ["react", "react-dom"],
 				output: {
-					entryFileNames: "cdn.js", // Set the output file name
-					// chunkFileNames: "[name].[hash].js", // set the chunk file names
-					// assetFileNames: "[name].[hash].[ext]", //set the asset file names
+					// entryFileNames: "cdn.js", // Set the output file name
 					assetFileNames: "[name].[ext]", //set the asset file names
-					format: "iife", // Or other format like 'umd', 'cjs', etc.
+					globals: {
+						react: "React",
+						"react-dom": "ReactDOM",
+					},
 				},
 			},
 		},
-		// define: {
-		// 	__APP_VERSION__:
-		// 		process.env.NODE_ENV === "production"
-		// 			? process.env.VITE_APP_VERSION
-		// 			: JSON.stringify(process.env.VITE_APP_VERSION),
-		// },
-		// define: {
-		// 	__APP_VERSION__: "1.0.0-debug",
-		// },
 		test: {
 			globals: true,
 			restoreMocks: true,
