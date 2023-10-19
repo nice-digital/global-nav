@@ -12,6 +12,7 @@
     "// PRODUCTION BUILDS": "",
     "build": "vite build",
     "build:teamcity": "cross-env NODE_ENV=production",
+    "es5ify": "cross-env NODE_ENV=production babel src -d lib --extensions \".js\",\".jsx\",\".snap\" --copy-files --no-copy-ignored --ignore \"src/**/*.test.js\",\"src/**/*.test.jsx\",\"src/setupTests.js\",\"src/polyfill/**/*.js\",\"src/cdn.js\",\"src/**/*.snap\"",
     "// TESTS": "",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "jest --notify --detectOpenHandles",
@@ -25,6 +26,8 @@
     "lint:js:fix": "npm run lint:js -- --fix",
     "lint:scss": "stylelint **/*.scss",
     "lint:scss:fix": "npm run lint:scss -- --fix",
+    "// LIFECYCLE HOOKS": "",
+    "prepare": "npm run es5ify",
     "// TEAMCITY": "",
     "audit:teamcity": "npm audit --audit-level=moderate --json|npm-audit-reporter-teamcity"
   },
