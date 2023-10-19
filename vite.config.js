@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
 	// if command === serve - you can return a development mode specific config
 	// if command === build - you can return a production mode specific config
 
-	//TODO consider including banner in production mode only
+	//TODO consider including banner in production mode only - only visible in lib modules or chunks
 	const bannerContent = [
 		`NICE Global Nav ${env.VITE_APP_VERSION || packageJson.version} | ${
 			new Date().toISOString().split("T")[0]
@@ -26,9 +26,6 @@ export default defineConfig(({ mode }) => {
 		"Licensed under MIT (https://github.com/nice-digital/global-nav/blob/master/LICENSE)",
 	].join("\n");
 
-	// const version = env.VITE_APP_VERSION || packageJson.version;
-
-	//TODO test if the banner is working
 	return {
 		root,
 		plugins: [banner(bannerContent), react()],
@@ -37,50 +34,8 @@ export default defineConfig(({ mode }) => {
 		},
 		server: {
 			port: 3000,
-			proxy: {
-				// key is the prefix to match, value is the target server
-				"/niceorg/autocomplete": {
-					target: "https://www.nice.org.uk",
-					changeOrigin: true,
-					rewrite: (path) => path.replace(/^\/niceorg/, ""),
-				},
-				// For mimicking bnf autocomplete endpoint
-				"/bnf/typeahead": {
-					target: "https://search-api.nice.org.uk",
-					changeOrigin: true,
-					rewrite: (path) =>
-						path
-							.replace(/^\/bnf\/typeahead/, "/api/typeahead")
-							.replace(/ajax=/, "index=bnf&"),
-				},
-				// For mimicking bnfc autocomplete endpoint
-				"/bnfc/typeahead": {
-					target: "https://search-api.nice.org.uk",
-					changeOrigin: true,
-					rewrite: (path) =>
-						path
-							.replace(/^\/bnfc\/typeahead/, "/api/typeahead")
-							.replace(/ajax=/, "index=bnfc&"),
-				},
-				// For mimicking cks autocomplete endpoint e.g. https://cks.nice.org.uk/api/autocomplete?q=diab
-				"/api/autocomplete?q=test": {
-					target: "https://cks.nice.org.uk", // You can specify a different URL if needed
-					changeOrigin: true,
-					rewrite: (path) =>
-						path.replace(
-							/^\/api\/autocomplete\?q=.*$/,
-							"/examples/assets/cks-topics.json"
-						),
-				},
-			},
 		},
 		build: {
-			lib: {
-				entry: resolve(root, "index.js"),
-				name: "GlobalNav",
-				fileName: (format) => `global-nav.${format}.js`,
-				format: "cjs",
-			},
 			outDir,
 			emptyOutDir: true,
 			sourcemap: true,
@@ -90,22 +45,12 @@ export default defineConfig(({ mode }) => {
 				},
 				output: {
 					entryFileNames: "cdn.js", // Set the output file name
-					// chunkFileNames: "[name].[hash].js", // set the chunk file names
-					// assetFileNames: "[name].[hash].[ext]", //set the asset file names
-					assetFileNames: "[name].[ext]", //set the asset file names
+					chunkFileNames: "[name].[hash].js", // set the chunk file names
+					assetFileNames: "[name].[hash].[ext]", //set the asset file names
 					format: "iife", // Or other format like 'umd', 'cjs', etc.
 				},
 			},
 		},
-		// define: {
-		// 	__APP_VERSION__:
-		// 		process.env.NODE_ENV === "production"
-		// 			? process.env.VITE_APP_VERSION
-		// 			: JSON.stringify(process.env.VITE_APP_VERSION),
-		// },
-		// define: {
-		// 	__APP_VERSION__: "1.0.0-debug",
-		// },
 		test: {
 			globals: true,
 			restoreMocks: true,
