@@ -18,7 +18,6 @@ export default defineConfig(({ mode }) => {
 	// if command === serve - you can return a development mode specific config
 	// if command === build - you can return a production mode specific config
 
-	//TODO consider including banner in production mode only - only visible in lib modules or chunks
 	const bannerContent = [
 		`NICE Global Nav ${env.VITE_APP_VERSION || packageJson.version} | ${
 			new Date().toISOString().split("T")[0]
@@ -51,7 +50,19 @@ export default defineConfig(({ mode }) => {
 						assetFileNames: "[name].[hash].[ext]", //set the asset file names
 						format: "iife", // Or other format like 'umd', 'cjs', etc.
 						plugins: [
-							terser(),
+							terser({
+								mangle: true,
+								compress: {
+									drop_console: true,
+									drop_debugger: true,
+									unsafe: true,
+									pure_getters: true,
+								},
+								output: {
+									comments: false,
+								},
+								toplevel: true,
+							}),
 							banner(
 								() => `/*!\n * ${bannerContent}\n - minified version \n */\n`
 							),

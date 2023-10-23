@@ -850,3 +850,24 @@ Version 5 includes updates for the summer 2022 brand refresh. It's mostly an int
 ## Upgrading to v6
 
 Version 6 is mostly updates of dependencies, the biggest of which was React Testing Library (from Enzyme). It also includes support for React 18 and Design System v5. 
+
+## Upgrading to Version 7
+
+In Version 7, significant changes to improve the development and build processes of the project have been introduced:
+
+### Migrating to Vite
+
+Migration from Webpack to Vite, a faster build tool. Vite provides improved performance and a better development experience with features like Fast Refresh, which replaces React Hot Loader. Terser minification options enable further optimisation of the bundle size, resulting in approximately 10% reduction in bundle size during the build process.
+
+### Custom Build Script: 'build:teamcity'
+
+To distinguish between local development builds and builds on TeamCity, a new custom npm script has been added, 'build:teamcity.'. The local build step does not work on TeamCity as 'vite build' needs to be passed differently for a build configuration step. For production on TeamCity, npm run build:teamcity is used first, then 'vite build' is passed in:
+
+```bash
+run build:teamcity vite build
+```
+
+### Easier transition to TypeScript
+
+With the migration to Vite, transitioning to TypeScript in the future will be more straightforward. Vite's TypeScript support will make the process smoother when the time comes for the project to adopt TypeScript.
+
