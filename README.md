@@ -115,7 +115,7 @@ The following non-functional requirements apply:
 - [PostCSS](https://postcss.org/) for transforming CSS with plugins:
   - [autoprefixer](https://autoprefixer.github.io/) for automatically adding vendor prefixes in CSS
   - and [NICE Digital shared browserslist config](https://github.com/nice-digital/browserslist-config#readme)
-- [Webpack](https://webpack.js.org/) for module bundling
+- [Vite](https://vitejs.dev/) for module bundling
 - [Babel 7](https://babeljs.io/) for ES6/JSX → ES5 transpilation
 - [accessible-autocomplete](https://github.com/alphagov/accessible-autocomplete)
 - [ESLint](https://eslint.org/) for linting our JavaScript
@@ -851,9 +851,13 @@ Version 5 includes updates for the summer 2022 brand refresh. It's mostly an int
 
 Version 6 is mostly updates of dependencies, the biggest of which was React Testing Library (from Enzyme). It also includes support for React 18 and Design System v5. 
 
-## Upgrading to Version 7
+## Upgrading to v7
 
-In Version 7, significant changes to improve the development and build processes of the project have been introduced:
+Updated autocomplete component.
+
+## Upgrading to v7.1
+
+In Version 7.1, significant changes to improve the development and build processes of the project have been introduced:
 
 ### Migrating to Vite
 

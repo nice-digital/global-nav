@@ -11,10 +11,6 @@ import { HeaderContext } from "../../context/HeaderContext";
 
 import {
 	AboutUs,
-	BNF,
-	BNFc,
-	CKS,
-	Guidance,
 	LifeSciences,
 	StandardsAndIndicators,
 } from "./../Dropdown/Components";
@@ -26,12 +22,8 @@ import {
 	headerClickEventAction,
 } from "../../../tracker";
 
-const components = {
+const componentsWithDropdowns = {
 	about: AboutUs,
-	bnf: BNF,
-	bnfc: BNFc,
-	cks: CKS,
-	guidance: Guidance,
 	"life-sciences": LifeSciences,
 	"standards-and-indicators": StandardsAndIndicators,
 };
@@ -93,7 +85,7 @@ export function NavLinks({
 						index
 					) => {
 						const href = `https://${host}${landingPath}`,
-							dropdownComponent = components[id];
+							dropdownComponent = componentsWithDropdowns[id];
 						let ariaCurrent = null;
 
 						if (currentService && id === currentService) {
