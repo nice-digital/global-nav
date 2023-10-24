@@ -2,7 +2,7 @@ import { resolve } from "path";
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import banner from "rollup-plugin-banner2";
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import packageJson from "./package.json";
 
 const root = resolve(__dirname, "src");
