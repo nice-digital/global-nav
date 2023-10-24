@@ -216,9 +216,11 @@ npm run-script test:unit -- -t aria
 
 #### Production build
 
-Run `npm run build -- --env version=1.2.3` to create a production build, where 1.2.3 is any version you want. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
+To distinguish between local development builds and builds on TeamCity, a custom npm script has been added, 'build:teamcity.'. The local build step does not work on TeamCity as 'vite build' needs to be passed differently for a build configuration step. For production on TeamCity, npm run build:teamcity is used first, then 'vite build' is passed in:
 
-> We pass in a version argument (`--env version=X`), because we assume this step will be run by TeamCity. TC (and the NuGet packages we push to Octo) have different versioning schemes from npm packages - build numbers produced by TeamCity aren't valid version numbers that can be used in package.json e.g. a build number of 1.2.3.4-r2a3d4f.
+```bash
+run build:teamcity vite build
+```
 
 ### IDE
 
@@ -862,14 +864,6 @@ In Version 7.1, significant changes to improve the development and build process
 ### Migrating to Vite
 
 Migration from Webpack to Vite, a faster build tool. Vite provides improved performance and a better development experience with features like Fast Refresh, which replaces React Hot Loader. Terser minification options enable further optimisation of the bundle size, resulting in approximately 10% reduction in bundle size during the build process.
-
-### Custom Build Script: 'build:teamcity'
-
-To distinguish between local development builds and builds on TeamCity, a new custom npm script has been added, 'build:teamcity.'. The local build step does not work on TeamCity as 'vite build' needs to be passed differently for a build configuration step. For production on TeamCity, npm run build:teamcity is used first, then 'vite build' is passed in:
-
-```bash
-run build:teamcity vite build
-```
 
 ### Easier transition to TypeScript
 
