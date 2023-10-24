@@ -19,9 +19,9 @@ export default defineConfig(({ mode }) => {
 	// if command === build - you can return a production mode specific config
 
 	const bannerContent = [
-		`NICE Global Nav ${env.VITE_APP_VERSION || packageJson.version} | ${
-			new Date().toISOString().split("T")[0]
-		}`,
+		`NICE Global Nav ${packageJson.version} | build ${
+			env.BUILD_NUMBER || `N/A`
+		} | ${new Date().toISOString().split("T")[0]}`,
 		`© Copyright NICE 2015-${new Date().getFullYear()}`,
 		"Licensed under MIT (https://github.com/nice-digital/global-nav/blob/master/LICENSE)",
 	].join("\n");
