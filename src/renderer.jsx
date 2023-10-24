@@ -1,4 +1,3 @@
-import React from "react";
 import { createRoot } from "react-dom/client";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -69,7 +68,3 @@ export const renderFooter = function () {
 		root.render(<Footer service={config.service} {...config.footer} />);
 	}
 };
-
-//TODO these are called from cdn.js but may be required when installing gn from npm ?
-// renderHeader();
-// renderFooter();
