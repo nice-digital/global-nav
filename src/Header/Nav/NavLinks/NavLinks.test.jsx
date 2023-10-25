@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLinks } from "./NavLinks";
 import { createEvent, fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

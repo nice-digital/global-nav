@@ -1,4 +1,3 @@
-import React from "react";
 import { getIEVersion } from "./ie";
 
 import styles from "./OldIEMessage.module.scss";

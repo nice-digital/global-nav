@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useCallback, useState } from "react";
+import { useEffect, useContext, useCallback, useState } from "react";
 import useEscapeKeydown from "../../../hooks/useEscapeKeydown";
 
 import classnames from "classnames";

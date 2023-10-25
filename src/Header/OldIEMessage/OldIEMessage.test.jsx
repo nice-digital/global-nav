@@ -1,4 +1,3 @@
-import React from "react";
 import OldIEMessage from "./OldIEMessage";
 import { render } from "@testing-library/react";
 

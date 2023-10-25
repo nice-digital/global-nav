@@ -1,5 +1,3 @@
-import React from "react";
-
 import { BackToTop } from "./BackToTop";
 import { render, createEvent, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

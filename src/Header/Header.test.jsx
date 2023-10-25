@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "./Header";
 import { render, within, createEvent, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

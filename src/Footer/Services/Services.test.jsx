@@ -1,5 +1,3 @@
-import React from "react";
-
 import Services from "./Services";
 
 import { render, within } from "@testing-library/react";

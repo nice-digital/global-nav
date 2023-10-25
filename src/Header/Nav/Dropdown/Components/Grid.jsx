@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Grid.module.scss";
 import classNames from "classnames";

@@ -1,10 +1,4 @@
-import React, {
-	useContext,
-	useEffect,
-	useState,
-	useCallback,
-	useRef,
-} from "react";
+import { useContext, useEffect, useState, useCallback, useRef } from "react";
 import { HeaderContext } from "../context/HeaderContext";
 import PropTypes from "prop-types";
 import classnames from "classnames";

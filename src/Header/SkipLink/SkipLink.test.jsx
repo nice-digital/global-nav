@@ -1,4 +1,3 @@
-import React from "react";
 import SkipLink from "./SkipLink";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

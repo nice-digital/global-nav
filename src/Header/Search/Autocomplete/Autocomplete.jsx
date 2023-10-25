@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Combobox } from "@headlessui/react";
 import PropTypes from "prop-types";
-import { useDebouncedValue } from "@mantine/hooks/esm/use-debounced-value/use-debounced-value";
+import { useDebouncedValue } from "@mantine/hooks";
 
 import styles from "./Autocomplete.module.scss";
 
