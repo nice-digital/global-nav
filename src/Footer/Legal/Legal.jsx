@@ -1,5 +1,3 @@
-import React from "react";
-
 import styles from "./Legal.module.scss";
 import TrackedLink from "../../TrackedLink";
 import { footerClickEventAction } from "../../tracker";

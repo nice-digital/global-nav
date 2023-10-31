@@ -115,7 +115,7 @@ The following non-functional requirements apply:
 - [PostCSS](https://postcss.org/) for transforming CSS with plugins:
   - [autoprefixer](https://autoprefixer.github.io/) for automatically adding vendor prefixes in CSS
   - and [NICE Digital shared browserslist config](https://github.com/nice-digital/browserslist-config#readme)
-- [Webpack](https://webpack.js.org/) for module bundling
+- [Vite](https://vitejs.dev/) for module bundling
 - [Babel 7](https://babeljs.io/) for ES6/JSX → ES5 transpilation
 - [accessible-autocomplete](https://github.com/alphagov/accessible-autocomplete)
 - [ESLint](https://eslint.org/) for linting our JavaScript
@@ -216,9 +216,11 @@ npm run-script test:unit -- -t aria
 
 #### Production build
 
-Run `npm run build -- --env version=1.2.3` to create a production build, where 1.2.3 is any version you want. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
+To distinguish between local development builds and builds on TeamCity, a custom npm script has been added, 'build:teamcity.'. The local build step does not work on TeamCity as 'vite build' needs to be passed differently for a build configuration step. For production on TeamCity, npm run build:teamcity is used first, then 'vite build' is passed in:
 
-> We pass in a version argument (`--env version=X`), because we assume this step will be run by TeamCity. TC (and the NuGet packages we push to Octo) have different versioning schemes from npm packages - build numbers produced by TeamCity aren't valid version numbers that can be used in package.json e.g. a build number of 1.2.3.4-r2a3d4f.
+```bash
+run build:teamcity vite build
+```
 
 ### IDE
 
@@ -850,3 +852,20 @@ Version 5 includes updates for the summer 2022 brand refresh. It's mostly an int
 ## Upgrading to v6
 
 Version 6 is mostly updates of dependencies, the biggest of which was React Testing Library (from Enzyme). It also includes support for React 18 and Design System v5. 
+
+## Upgrading to v7
+
+Updated autocomplete component.
+
+## Upgrading to v7.1
+
+In Version 7.1, significant changes to improve the development and build processes of the project have been introduced:
+
+### Migrating to Vite
+
+Migration from Webpack to Vite, a faster build tool. Vite provides improved performance and a better development experience with features like Fast Refresh, which replaces React Hot Loader. Terser minification options enable further optimisation of the bundle size, resulting in approximately 10% reduction in bundle size during the build process.
+
+### Easier transition to TypeScript
+
+With the migration to Vite, transitioning to TypeScript in the future will be more straightforward. Vite's TypeScript support will make the process smoother when the time comes for the project to adopt TypeScript.
+

@@ -1,4 +1,3 @@
-import React from "react";
 import TrackedLink from "./TrackedLink";
 import { render, createEvent, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

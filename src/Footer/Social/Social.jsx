@@ -1,4 +1,3 @@
-import React from "react";
 import FacebookIcon from "@nice-digital/icons/lib/Facebook";
 import TwitterIcon from "@nice-digital/icons/lib/Twitter";
 import YouTubeIcon from "@nice-digital/icons/lib/YoutubePlay";

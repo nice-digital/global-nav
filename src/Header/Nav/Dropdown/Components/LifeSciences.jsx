@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from "react";
 import { Button } from "./Button";
 import { Grid, GridItem } from "./Grid";
 
@@ -21,24 +20,13 @@ export function LifeSciences({ rootUrl }) {
 						<h3 className="mt--d">Get support from NICE</h3>
 						<h4 className="h5 mb--c mt--0">
 							<a
-								href={`${rootUrl}/about/what-we-do/life-sciences/scientific-advice`}
+								href={`${rootUrl}/about/what-we-do/life-sciences/nice-advice-service`}
 							>
-								Scientific advice
+								NICE Advice service
 							</a>
 						</h4>
 						<p className="mt--0">
 							Advisory service for developers of a range of health technologies.
-						</p>
-						<h4 className="h5 mb--c">
-							<a
-								href={`${rootUrl}/about/what-we-do/life-sciences/office-for-market-access`}
-							>
-								Office for Market Access
-							</a>
-						</h4>
-						<p className="mt--0">
-							Engage with NICE and the healthcare system during product
-							development.
 						</p>
 						<h4 className="h5 mb--c">
 							<a

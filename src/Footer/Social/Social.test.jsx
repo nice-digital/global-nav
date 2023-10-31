@@ -1,5 +1,3 @@
-import React from "react";
-
 import Social from "./Social";
 import { render } from "@testing-library/react";
 

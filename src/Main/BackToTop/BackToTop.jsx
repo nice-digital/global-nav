@@ -1,4 +1,3 @@
-import React from "react";
 import ChevronUp from "@nice-digital/icons/lib/ChevronUp";
 import { Container } from "@nice-digital/nds-container";
 

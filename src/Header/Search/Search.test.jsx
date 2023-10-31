@@ -1,4 +1,3 @@
-import React from "react";
 import Search from "./Search";
 
 import { render, createEvent, fireEvent } from "@testing-library/react";

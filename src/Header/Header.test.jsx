@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "./Header";
 import { render, within, createEvent, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -187,7 +186,7 @@ describe("Header", () => {
 					<Header {...defaultProps} onDropdownOpen={"testFunc"} />
 				),
 				user = userEvent.setup(),
-				guidanceMenuButton = getByRole("button", { name: "Guidance" });
+				guidanceMenuButton = getByRole("button", { name: "About" });
 
 			await user.click(guidanceMenuButton);
 
@@ -201,10 +200,10 @@ describe("Header", () => {
 					<Header {...defaultProps} onDropdownClose={"onDropdownCloseFunc"} />
 				),
 				user = userEvent.setup(),
-				guidanceMenuButton = getByRole("button", { name: "Guidance" });
+				aboutMenuButton = getByRole("button", { name: "About" });
 
-			await user.click(guidanceMenuButton);
-			await user.click(guidanceMenuButton);
+			await user.click(aboutMenuButton);
+			await user.click(aboutMenuButton);
 
 			expect(window.onDropdownCloseFunc).toHaveBeenCalledTimes(2);
 		});
@@ -215,9 +214,9 @@ describe("Header", () => {
 					<Header {...defaultProps} onDropdownOpen={onDropdownOpen} />
 				),
 				user = userEvent.setup(),
-				guidanceMenuButton = getByRole("button", { name: "Guidance" });
+				aboutMenuButton = getByRole("button", { name: "About" });
 
-			await user.click(guidanceMenuButton);
+			await user.click(aboutMenuButton);
 
 			expect(onDropdownOpen).toHaveBeenCalledTimes(1);
 		});
@@ -228,10 +227,10 @@ describe("Header", () => {
 					<Header {...defaultProps} onDropdownClose={onDropdownClose} />
 				),
 				user = userEvent.setup(),
-				guidanceMenuButton = getByRole("button", { name: "Guidance" });
+				aboutMenuButton = getByRole("button", { name: "About" });
 
-			await user.click(guidanceMenuButton);
-			await user.click(guidanceMenuButton);
+			await user.click(aboutMenuButton);
+			await user.click(aboutMenuButton);
 
 			expect(onDropdownClose).toHaveBeenCalledTimes(2);
 		});
