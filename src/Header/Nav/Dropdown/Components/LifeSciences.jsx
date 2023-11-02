@@ -25,9 +25,7 @@ export function LifeSciences({ rootUrl }) {
 								NICE Advice service
 							</a>
 						</h4>
-						<p className="mt--0">
-							Advisory service for developers of a range of health technologies.
-						</p>
+						<p className="mt--0">Trusted, unrivalled expertise.</p>
 						<h4 className="h5 mb--c">
 							<a
 								href={`${rootUrl}/about/what-we-do/life-sciences/contact-us-form`}
