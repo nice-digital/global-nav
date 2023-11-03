@@ -32,6 +32,7 @@ button.link {
   }
 
   &[aria-current='true'],
+  &[aria-current='page'],
   &:hover {
     color: $nav-link-hover-text !important;
   }
