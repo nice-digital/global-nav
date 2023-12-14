@@ -12,3 +12,4 @@ Given(
 Given("I go to the NICE homepage", async () => {
 	await browser.navigateTo("https://alpha.nice.org.uk");
 });
+

@@ -65,3 +65,5 @@ errorShots
 errorShots_docker
 
 allure-results
+allure-report
+global-nav.sln

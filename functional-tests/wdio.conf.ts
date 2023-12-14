@@ -12,7 +12,7 @@ export const config: WebdriverIO.Config = {
 	maxInstances: isInDocker ? 5 : 1,
 	path: "/wd/hub",
 
-	specs: ["./features/**/*.feature"],
+	specs: ["./src/features/**/*.feature"],
 
 	capabilities: [
 		{
@@ -42,16 +42,18 @@ export const config: WebdriverIO.Config = {
 	framework: "cucumber",
 	cucumberOpts: {
 		require: [
-			"./steps/**/*.ts",
+			"./src/steps/**/*.ts",
 			"./node_modules/@nice-digital/wdio-cucumber-steps/lib",
 		],
 		tagExpression: "not @pending", // See https://docs.cucumber.io/tag-expressions/
 		timeout: 15000,
 	},
 
-	afterStep: async function (_test, _scenario, { error }) {
+	afterStep: async function (_test, _scenario, { error, passed }) {
 		// Take screenshots on error, these end up in the Allure reports
-		if (error) await browser.saveScreenshot();
+		var fileName = "errorShots/" + "ERROR_" + _scenario.name + ".png";
+		if (error) await browser.takeScreenshot();
+		if (error) await browser.saveScreenshot(fileName);
 	},
 
 	autoCompileOpts: {
