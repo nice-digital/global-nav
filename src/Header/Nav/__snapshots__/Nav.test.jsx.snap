@@ -1,296 +1,1544 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Nav Matches snapshot with multiple accounts links 1`] = `
-<nav
-  aria-label="My account"
-  className="nav myAccount"
->
-  <h2
-    className="myAccountHeading"
-  >
-    My account
-  </h2>
+<div>
   <div
-    className="menuWrapper"
-  >
-    <ul
-      className="menuList"
-    >
-      <li
-        key="https://accounts.nice.org.uk/profile"
-      >
-        <a
-          className="link"
-          href="https://accounts.nice.org.uk/profile"
-          onClick={[Function]}
-        >
-          Joe Bloggs
-        </a>
-      </li>
-      <li
-        key="https://accounts.nice.org.uk/signout"
-      >
-        <a
-          className="link"
-          href="https://accounts.nice.org.uk/signout"
-          onClick={[Function]}
-        >
-          Sign out
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-`;
-
-exports[`Nav Matches snapshot with no accounts links 1`] = `
-<div
-  className="wrapper"
-  id="header-menu"
->
-  <nav
-    aria-label="primary navigation"
-    className="nav"
-    data-tracking="Primary navigation"
-  >
-    <div
-      className="menuWrapper"
-    >
-      <NavLinks
-        currentService={null}
-        servicesToDisplay={
-          Array [
-            Object {
-              "header": true,
-              "host": "www.test.nice.org",
-              "id": "link1",
-              "landingPath": "/url1/",
-              "text": "First link",
-            },
-            Object {
-              "abbreviation": true,
-              "header": true,
-              "host": "www.test-link2.nice.org",
-              "id": "link2",
-              "landingPath": "/url2/",
-              "links": Array [
-                Object {
-                  "href": "/",
-                  "text": "Sub link 1",
-                },
-                Object {
-                  "href": "/test",
-                  "text": "Sub link 2",
-                },
-              ],
-              "text": "Second link",
-              "title": "Abbreviation title",
-            },
-            Object {
-              "abbreviation": true,
-              "header": true,
-              "host": "www.test.nice.org",
-              "id": "link3",
-              "landingPath": "/url3/",
-              "links": Array [
-                Object {
-                  "href": "/",
-                  "text": "Sub link 1",
-                },
-                Object {
-                  "href": "/test",
-                  "text": "Sub link 2",
-                },
-              ],
-              "nestedLinks": Array [
-                Object {
-                  "href": "https://nestedLink1",
-                  "id": "nested-1",
-                  "text": "Nested link one",
-                },
-                Object {
-                  "href": "https://nestedLink2",
-                  "id": "nested-2",
-                  "text": "Nested link two",
-                },
-              ],
-              "text": "Third link",
-              "title": "Abbreviation title",
-            },
-            Object {
-              "header": true,
-              "host": "www.test.nice.org",
-              "id": "test-service",
-              "landingPath": "/url4/",
-              "text": "Fourth link",
-            },
-          ]
-        }
-        subLinks={null}
-      />
-    </div>
-  </nav>
-</div>
-`;
-
-exports[`Nav Matches snapshot with single accounts link 1`] = `
-<nav
-  aria-label="My account"
-  className="nav myAccount"
->
-  <div
-    className="menuWrapper"
-  >
-    <ul
-      className="menuList"
-    >
-      <li
-        key="https://accounts.nice.org.uk/"
-      >
-        <a
-          className="link"
-          href="https://accounts.nice.org.uk/"
-          onClick={[Function]}
-        >
-          Sign in
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-`;
-
-exports[`Nav internalServices Matches snapshot with sub links for selected internal service 1`] = `
-<Nav
-  accountsData={null}
-  additionalSubMenuItems={Array []}
-  handleScrim={[Function]}
-  isExpanded={false}
-  service="internal1"
->
-  <div
-    className="wrapper wrapperWithSubLinks"
+    class="wrapper"
     id="header-menu"
   >
     <nav
       aria-label="primary navigation"
-      className="nav"
+      class="nav"
       data-tracking="Primary navigation"
     >
       <div
-        className="menuWrapper"
+        class="menuWrapper"
       >
-        <NavLinks
-          currentService="internal1"
-          servicesToDisplay={
-            Array [
-              Object {
-                "header": true,
-                "host": "www.test.nice.org",
-                "id": "internal1",
-                "landingPath": "/first-internal-service",
-                "links": Array [
-                  Object {
-                    "href": "/i1sublink1",
-                    "text": "internal1 sub link 1",
-                  },
-                  Object {
-                    "href": "/i2sublink2",
-                    "text": "internal1 sub link 2",
-                  },
-                ],
-                "text": "First internal service",
-              },
-            ]
-          }
-          subLinks={
-            Array [
-              Object {
-                "href": "/i1sublink1",
-                "text": "internal1 sub link 1",
-              },
-              Object {
-                "href": "/i2sublink2",
-                "text": "internal1 sub link 2",
-              },
-            ]
-          }
+        <ul
+          aria-labelledby="header-menu-button"
+          class="menuList"
         >
-          <ul
-            aria-labelledby="header-menu-button"
-            className="menuList"
+          <li
+            data-tracking="First link"
           >
-            <li
-              data-tracking="First internal service"
-              key="internal1"
+            <button
+              aria-controls="dropdown-about"
+              aria-expanded="false"
+              class="link"
+              id="navlink-about"
             >
-              <a
-                aria-current={true}
-                className="link"
-                href="https://www.test.nice.org/first-internal-service"
-                id="navlink-internal1"
-                onClick={[Function]}
+              <span>
+                First link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <span>
-                  First internal service
-                </span>
-              </a>
-              <SubNav
-                links={
-                  Array [
-                    Object {
-                      "href": "/i1sublink1",
-                      "text": "internal1 sub link 1",
-                    },
-                    Object {
-                      "href": "/i2sublink2",
-                      "text": "internal1 sub link 2",
-                    },
-                  ]
-                }
-                text="First internal service"
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <div
+              class="dropdown wrapper"
+              data-tracking="First link dropdown"
+              id="dropdown-about"
+            >
+              <div
+                class="container"
               >
-                <div
-                  className="wrapper"
+                <a
+                  class="skiplink"
+                  href="#navlink-link2"
                 >
-                  <ul
-                    aria-label="First internal service links"
-                    className="list"
+                  Skip 
+                  First link
+                   submenu
+                </a>
+                <section
+                  aria-label="About - navigation"
+                >
+                  <h2
+                    class="mt--0"
                   >
-                    <li
-                      key="0"
+                    About
+                  </h2>
+                  <p>
+                    NICE helps practitioners and commissioners get the best care to patients, fast, while ensuring value for the taxpayer.
+                  </p>
+                  <a
+                    class="button cta"
+                    href="https://www.test.nice.org/about"
+                  >
+                    Explore about
+                  </a>
+                  <div
+                    class="grid"
+                    gutter="loose"
+                  >
+                    <div
+                      class="gridItem aboutCol aboutCol1"
+                      data-tracking="Our programmes"
                     >
-                      <a
-                        aria-current={null}
-                        aria-label="internal1 sub link 1"
-                        className="link"
-                        href="/i1sublink1"
-                        onClick={[Function]}
+                      <h3
+                        class="mt--d"
                       >
-                        internal1 sub link 1
+                        Our programmes
+                      </h3>
+                      <p>
+                        Learn about the information we produce.
+                      </p>
+                      <ul
+                        class="listUnstyled mt--d"
+                      >
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-guidance"
+                          >
+                            Guidance
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-advice"
+                          >
+                            Advice
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/standards-and-indicators/quality-standards"
+                          >
+                            Quality standards
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/standards-and-indicators/indicators"
+                          >
+                            Indicators
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/digital-health"
+                          >
+                            Digital health
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/topic-selection"
+                          >
+                            Topic selection
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="gridItem aboutCol"
+                      data-tracking="Get involved"
+                    >
+                      <h3
+                        class="mt--d"
+                      >
+                        Get involved
+                      </h3>
+                      <ul
+                        class="listColumnar mt--d"
+                      >
+                        <li>
+                          <p>
+                            Understand how decisions are made:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/meetings-in-public"
+                          >
+                            Attend a committee meeting
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Comment on draft guidance:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/consultations"
+                          >
+                            Guidance in consultation
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Be part of a guidance committee:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/our-committees"
+                          >
+                            Join a committee
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Help develop our products:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/stakeholder-registration"
+                          >
+                            Register as a stakeholder
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Putting you at the heart of our work:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/about/nice-communities/nice-and-the-public/public-involvement"
+                          >
+                            Public involvement
+                          </a>
+                        </li>
+                      </ul>
+                      <div
+                        class="grid"
+                      >
+                        <div
+                          class="gridItem"
+                          data-tracking="What we do"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            What we do
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/nice-communities/social-care"
+                              >
+                                Social care
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/life-sciences"
+                              >
+                                Life sciences
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/nice-international"
+                              >
+                                NICE international
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/our-programmes/patient-safety"
+                              >
+                                Patient safety
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making"
+                              >
+                                Shared decision making
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          class="gridItem"
+                          data-tracking="Into practice"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            Into practice
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/nice-communities/social-care/quick-guides"
+                              >
+                                Social care quick guides
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance"
+                              >
+                                Measuring the use of NICE guidance
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice/resource-planner"
+                              >
+                                Resource planner
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice"
+                              >
+                                View all Into practice
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          class="gridItem"
+                          data-tracking="Who we are"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            Who we are
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/board"
+                              >
+                                The board
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026"
+                              >
+                                The NICE strategy 2021 to 2026
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/corporate-publications"
+                              >
+                                Corporate publications
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are"
+                              >
+                                View all Who we are
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <ul
+                    class="inlineList mt--d"
+                    data-tracking="Contact us"
+                  >
+                    <li>
+                      <a
+                        href="https://www.test.nice.org/get-involved/contact-us"
+                      >
+                        Contact us
                       </a>
                     </li>
-                    <li
-                      key="1"
-                    >
+                    <li>
                       <a
-                        aria-current={null}
-                        aria-label="internal1 sub link 2"
-                        className="link"
-                        href="/i2sublink2"
-                        onClick={[Function]}
+                        href="https://www.test.nice.org/get-involved/jobs"
                       >
-                        internal1 sub link 2
+                        Jobs
                       </a>
                     </li>
                   </ul>
-                </div>
-              </SubNav>
-            </li>
-          </ul>
-        </NavLinks>
+                </section>
+                <button
+                  class="exit"
+                  data-tracking="Close menu"
+                >
+                  Close menu 
+                  <svg
+                    aria-hidden="true"
+                    class="icon"
+                    fill="none"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M480 392.508c0 10.052-3.52 18.598-10.559 25.637l-51.296 51.296C411.106 476.48 402.56 480 392.508 480c-10.053 0-18.598-3.52-25.638-10.559L256 358.571l-110.87 110.87C138.09 476.48 129.545 480 119.492 480c-10.052 0-18.598-3.52-25.637-10.559l-51.296-51.296C35.52 411.106 32 402.56 32 392.508c0-10.053 3.52-18.598 10.56-25.638L153.428 256 42.559 145.13C35.52 138.09 32 129.545 32 119.492c0-10.052 3.52-18.598 10.56-25.637l51.295-51.296C100.894 35.52 109.44 32 119.492 32c10.053 0 18.598 3.52 25.638 10.56L256 153.428l110.87-110.87C373.91 35.52 382.455 32 392.508 32c10.052 0 18.598 3.52 25.637 10.56l51.296 51.295C476.48 100.894 480 109.44 480 119.492c0 10.053-3.52 18.598-10.559 25.638L358.571 256l110.87 110.87C476.48 373.91 480 382.455 480 392.508Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li
+            data-tracking="Second link"
+          >
+            <a
+              aria-label="Second link abbreviation title"
+              class="link"
+              href="https://www.test-link2.nice.org/url2/"
+              id="navlink-link2"
+            >
+              <span>
+                Second link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Third link"
+          >
+            <a
+              aria-label="Third link abbreviation title"
+              class="link"
+              href="https://www.test.nice.org/url3/"
+              id="navlink-link3"
+            >
+              <span>
+                Third link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <ul
+              aria-label="More NICE services"
+              class="nonJsDropdown"
+              id="link3"
+            >
+              <li>
+                <a
+                  href="https://nestedLink1"
+                >
+                  Nested link one
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nestedLink2"
+                >
+                  Nested link two
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li
+            data-tracking="Fourth link"
+          >
+            <a
+              class="link"
+              href="https://www.test.nice.org/url4/"
+              id="navlink-test-service"
+            >
+              <span>
+                Fourth link
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <nav
+      aria-label="My account"
+      class="nav myAccount"
+    >
+      <h2
+        class="myAccountHeading"
+      >
+        My account
+      </h2>
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          class="menuList"
+        >
+          <li>
+            <a
+              class="link"
+              href="https://accounts.nice.org.uk/profile"
+            >
+              Joe Bloggs
+            </a>
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://accounts.nice.org.uk/signout"
+            >
+              Sign out
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   </div>
-</Nav>
+</div>
+`;
+
+exports[`Nav Matches snapshot with no accounts links 1`] = `
+<div>
+  <div
+    class="wrapper"
+    id="header-menu"
+  >
+    <nav
+      aria-label="primary navigation"
+      class="nav"
+      data-tracking="Primary navigation"
+    >
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          aria-labelledby="header-menu-button"
+          class="menuList"
+        >
+          <li
+            data-tracking="First link"
+          >
+            <button
+              aria-controls="dropdown-about"
+              aria-expanded="false"
+              class="link"
+              id="navlink-about"
+            >
+              <span>
+                First link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <div
+              class="dropdown wrapper"
+              data-tracking="First link dropdown"
+              id="dropdown-about"
+            >
+              <div
+                class="container"
+              >
+                <a
+                  class="skiplink"
+                  href="#navlink-link2"
+                >
+                  Skip 
+                  First link
+                   submenu
+                </a>
+                <section
+                  aria-label="About - navigation"
+                >
+                  <h2
+                    class="mt--0"
+                  >
+                    About
+                  </h2>
+                  <p>
+                    NICE helps practitioners and commissioners get the best care to patients, fast, while ensuring value for the taxpayer.
+                  </p>
+                  <a
+                    class="button cta"
+                    href="https://www.test.nice.org/about"
+                  >
+                    Explore about
+                  </a>
+                  <div
+                    class="grid"
+                    gutter="loose"
+                  >
+                    <div
+                      class="gridItem aboutCol aboutCol1"
+                      data-tracking="Our programmes"
+                    >
+                      <h3
+                        class="mt--d"
+                      >
+                        Our programmes
+                      </h3>
+                      <p>
+                        Learn about the information we produce.
+                      </p>
+                      <ul
+                        class="listUnstyled mt--d"
+                      >
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-guidance"
+                          >
+                            Guidance
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-advice"
+                          >
+                            Advice
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/standards-and-indicators/quality-standards"
+                          >
+                            Quality standards
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/standards-and-indicators/indicators"
+                          >
+                            Indicators
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/digital-health"
+                          >
+                            Digital health
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/topic-selection"
+                          >
+                            Topic selection
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="gridItem aboutCol"
+                      data-tracking="Get involved"
+                    >
+                      <h3
+                        class="mt--d"
+                      >
+                        Get involved
+                      </h3>
+                      <ul
+                        class="listColumnar mt--d"
+                      >
+                        <li>
+                          <p>
+                            Understand how decisions are made:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/meetings-in-public"
+                          >
+                            Attend a committee meeting
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Comment on draft guidance:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/consultations"
+                          >
+                            Guidance in consultation
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Be part of a guidance committee:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/our-committees"
+                          >
+                            Join a committee
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Help develop our products:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/stakeholder-registration"
+                          >
+                            Register as a stakeholder
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Putting you at the heart of our work:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/about/nice-communities/nice-and-the-public/public-involvement"
+                          >
+                            Public involvement
+                          </a>
+                        </li>
+                      </ul>
+                      <div
+                        class="grid"
+                      >
+                        <div
+                          class="gridItem"
+                          data-tracking="What we do"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            What we do
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/nice-communities/social-care"
+                              >
+                                Social care
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/life-sciences"
+                              >
+                                Life sciences
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/nice-international"
+                              >
+                                NICE international
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/our-programmes/patient-safety"
+                              >
+                                Patient safety
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making"
+                              >
+                                Shared decision making
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          class="gridItem"
+                          data-tracking="Into practice"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            Into practice
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/nice-communities/social-care/quick-guides"
+                              >
+                                Social care quick guides
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance"
+                              >
+                                Measuring the use of NICE guidance
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice/resource-planner"
+                              >
+                                Resource planner
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice"
+                              >
+                                View all Into practice
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          class="gridItem"
+                          data-tracking="Who we are"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            Who we are
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/board"
+                              >
+                                The board
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026"
+                              >
+                                The NICE strategy 2021 to 2026
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/corporate-publications"
+                              >
+                                Corporate publications
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are"
+                              >
+                                View all Who we are
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <ul
+                    class="inlineList mt--d"
+                    data-tracking="Contact us"
+                  >
+                    <li>
+                      <a
+                        href="https://www.test.nice.org/get-involved/contact-us"
+                      >
+                        Contact us
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.test.nice.org/get-involved/jobs"
+                      >
+                        Jobs
+                      </a>
+                    </li>
+                  </ul>
+                </section>
+                <button
+                  class="exit"
+                  data-tracking="Close menu"
+                >
+                  Close menu 
+                  <svg
+                    aria-hidden="true"
+                    class="icon"
+                    fill="none"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M480 392.508c0 10.052-3.52 18.598-10.559 25.637l-51.296 51.296C411.106 476.48 402.56 480 392.508 480c-10.053 0-18.598-3.52-25.638-10.559L256 358.571l-110.87 110.87C138.09 476.48 129.545 480 119.492 480c-10.052 0-18.598-3.52-25.637-10.559l-51.296-51.296C35.52 411.106 32 402.56 32 392.508c0-10.053 3.52-18.598 10.56-25.638L153.428 256 42.559 145.13C35.52 138.09 32 129.545 32 119.492c0-10.052 3.52-18.598 10.56-25.637l51.295-51.296C100.894 35.52 109.44 32 119.492 32c10.053 0 18.598 3.52 25.638 10.56L256 153.428l110.87-110.87C373.91 35.52 382.455 32 392.508 32c10.052 0 18.598 3.52 25.637 10.56l51.296 51.295C476.48 100.894 480 109.44 480 119.492c0 10.053-3.52 18.598-10.559 25.638L358.571 256l110.87 110.87C476.48 373.91 480 382.455 480 392.508Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li
+            data-tracking="Second link"
+          >
+            <a
+              aria-label="Second link abbreviation title"
+              class="link"
+              href="https://www.test-link2.nice.org/url2/"
+              id="navlink-link2"
+            >
+              <span>
+                Second link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Third link"
+          >
+            <a
+              aria-label="Third link abbreviation title"
+              class="link"
+              href="https://www.test.nice.org/url3/"
+              id="navlink-link3"
+            >
+              <span>
+                Third link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <ul
+              aria-label="More NICE services"
+              class="nonJsDropdown"
+              id="link3"
+            >
+              <li>
+                <a
+                  href="https://nestedLink1"
+                >
+                  Nested link one
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nestedLink2"
+                >
+                  Nested link two
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li
+            data-tracking="Fourth link"
+          >
+            <a
+              class="link"
+              href="https://www.test.nice.org/url4/"
+              id="navlink-test-service"
+            >
+              <span>
+                Fourth link
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`Nav Matches snapshot with single accounts link 1`] = `
+<div>
+  <div
+    class="wrapper"
+    id="header-menu"
+  >
+    <nav
+      aria-label="primary navigation"
+      class="nav"
+      data-tracking="Primary navigation"
+    >
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          aria-labelledby="header-menu-button"
+          class="menuList"
+        >
+          <li
+            data-tracking="First link"
+          >
+            <button
+              aria-controls="dropdown-about"
+              aria-expanded="false"
+              class="link"
+              id="navlink-about"
+            >
+              <span>
+                First link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <div
+              class="dropdown wrapper"
+              data-tracking="First link dropdown"
+              id="dropdown-about"
+            >
+              <div
+                class="container"
+              >
+                <a
+                  class="skiplink"
+                  href="#navlink-link2"
+                >
+                  Skip 
+                  First link
+                   submenu
+                </a>
+                <section
+                  aria-label="About - navigation"
+                >
+                  <h2
+                    class="mt--0"
+                  >
+                    About
+                  </h2>
+                  <p>
+                    NICE helps practitioners and commissioners get the best care to patients, fast, while ensuring value for the taxpayer.
+                  </p>
+                  <a
+                    class="button cta"
+                    href="https://www.test.nice.org/about"
+                  >
+                    Explore about
+                  </a>
+                  <div
+                    class="grid"
+                    gutter="loose"
+                  >
+                    <div
+                      class="gridItem aboutCol aboutCol1"
+                      data-tracking="Our programmes"
+                    >
+                      <h3
+                        class="mt--d"
+                      >
+                        Our programmes
+                      </h3>
+                      <p>
+                        Learn about the information we produce.
+                      </p>
+                      <ul
+                        class="listUnstyled mt--d"
+                      >
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-guidance"
+                          >
+                            Guidance
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-advice"
+                          >
+                            Advice
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/standards-and-indicators/quality-standards"
+                          >
+                            Quality standards
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/standards-and-indicators/indicators"
+                          >
+                            Indicators
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/digital-health"
+                          >
+                            Digital health
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.test.nice.org/about/what-we-do/our-programmes/topic-selection"
+                          >
+                            Topic selection
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="gridItem aboutCol"
+                      data-tracking="Get involved"
+                    >
+                      <h3
+                        class="mt--d"
+                      >
+                        Get involved
+                      </h3>
+                      <ul
+                        class="listColumnar mt--d"
+                      >
+                        <li>
+                          <p>
+                            Understand how decisions are made:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/meetings-in-public"
+                          >
+                            Attend a committee meeting
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Comment on draft guidance:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/consultations"
+                          >
+                            Guidance in consultation
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Be part of a guidance committee:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/our-committees"
+                          >
+                            Join a committee
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Help develop our products:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/get-involved/stakeholder-registration"
+                          >
+                            Register as a stakeholder
+                          </a>
+                        </li>
+                        <li>
+                          <p>
+                            Putting you at the heart of our work:
+                          </p>
+                          <a
+                            href="https://www.test.nice.org/about/nice-communities/nice-and-the-public/public-involvement"
+                          >
+                            Public involvement
+                          </a>
+                        </li>
+                      </ul>
+                      <div
+                        class="grid"
+                      >
+                        <div
+                          class="gridItem"
+                          data-tracking="What we do"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            What we do
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/nice-communities/social-care"
+                              >
+                                Social care
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/life-sciences"
+                              >
+                                Life sciences
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/nice-international"
+                              >
+                                NICE international
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/our-programmes/patient-safety"
+                              >
+                                Patient safety
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making"
+                              >
+                                Shared decision making
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          class="gridItem"
+                          data-tracking="Into practice"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            Into practice
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/nice-communities/social-care/quick-guides"
+                              >
+                                Social care quick guides
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice/measuring-the-uptake-of-nice-guidance"
+                              >
+                                Measuring the use of NICE guidance
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice/resource-planner"
+                              >
+                                Resource planner
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do/into-practice"
+                              >
+                                View all Into practice
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          class="gridItem"
+                          data-tracking="Who we are"
+                        >
+                          <h3
+                            class="mt--d"
+                          >
+                            Who we are
+                          </h3>
+                          <ul
+                            class="listUnstyled mt--d"
+                          >
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/board"
+                              >
+                                The board
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/corporate-publications/the-nice-strategy-2021-to-2026"
+                              >
+                                The NICE strategy 2021 to 2026
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are/corporate-publications"
+                              >
+                                Corporate publications
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/who-we-are"
+                              >
+                                View all Who we are
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <ul
+                    class="inlineList mt--d"
+                    data-tracking="Contact us"
+                  >
+                    <li>
+                      <a
+                        href="https://www.test.nice.org/get-involved/contact-us"
+                      >
+                        Contact us
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.test.nice.org/get-involved/jobs"
+                      >
+                        Jobs
+                      </a>
+                    </li>
+                  </ul>
+                </section>
+                <button
+                  class="exit"
+                  data-tracking="Close menu"
+                >
+                  Close menu 
+                  <svg
+                    aria-hidden="true"
+                    class="icon"
+                    fill="none"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 512 512"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M480 392.508c0 10.052-3.52 18.598-10.559 25.637l-51.296 51.296C411.106 476.48 402.56 480 392.508 480c-10.053 0-18.598-3.52-25.638-10.559L256 358.571l-110.87 110.87C138.09 476.48 129.545 480 119.492 480c-10.052 0-18.598-3.52-25.637-10.559l-51.296-51.296C35.52 411.106 32 402.56 32 392.508c0-10.053 3.52-18.598 10.56-25.638L153.428 256 42.559 145.13C35.52 138.09 32 129.545 32 119.492c0-10.052 3.52-18.598 10.56-25.637l51.295-51.296C100.894 35.52 109.44 32 119.492 32c10.053 0 18.598 3.52 25.638 10.56L256 153.428l110.87-110.87C373.91 35.52 382.455 32 392.508 32c10.052 0 18.598 3.52 25.637 10.56l51.296 51.295C476.48 100.894 480 109.44 480 119.492c0 10.053-3.52 18.598-10.559 25.638L358.571 256l110.87 110.87C476.48 373.91 480 382.455 480 392.508Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li
+            data-tracking="Second link"
+          >
+            <a
+              aria-label="Second link abbreviation title"
+              class="link"
+              href="https://www.test-link2.nice.org/url2/"
+              id="navlink-link2"
+            >
+              <span>
+                Second link
+              </span>
+            </a>
+          </li>
+          <li
+            data-tracking="Third link"
+          >
+            <a
+              aria-label="Third link abbreviation title"
+              class="link"
+              href="https://www.test.nice.org/url3/"
+              id="navlink-link3"
+            >
+              <span>
+                Third link
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                fill="none"
+                focusable="false"
+                height="1em"
+                pointer-events="none"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <ul
+              aria-label="More NICE services"
+              class="nonJsDropdown"
+              id="link3"
+            >
+              <li>
+                <a
+                  href="https://nestedLink1"
+                >
+                  Nested link one
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nestedLink2"
+                >
+                  Nested link two
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li
+            data-tracking="Fourth link"
+          >
+            <a
+              class="link"
+              href="https://www.test.nice.org/url4/"
+              id="navlink-test-service"
+            >
+              <span>
+                Fourth link
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <nav
+      aria-label="My account"
+      class="nav myAccount"
+    >
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          class="menuList"
+        >
+          <li>
+            <a
+              class="link"
+              href="https://accounts.nice.org.uk/"
+            >
+              Sign in
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`Nav internalServices Matches snapshot with sub links for selected internal service 1`] = `
+<div>
+  <div
+    class="wrapper wrapperWithSubLinks"
+    id="header-menu"
+  >
+    <nav
+      aria-label="primary navigation"
+      class="nav"
+      data-tracking="Primary navigation"
+    >
+      <div
+        class="menuWrapper"
+      >
+        <ul
+          aria-labelledby="header-menu-button"
+          class="menuList"
+        >
+          <li
+            data-tracking="First internal service"
+          >
+            <a
+              aria-current="true"
+              class="link"
+              href="https://www.test.nice.org/first-internal-service"
+              id="navlink-internal1"
+            >
+              <span>
+                First internal service
+              </span>
+            </a>
+            <div
+              class="wrapper"
+            >
+              <ul
+                aria-label="First internal service links"
+                class="list"
+              >
+                <li>
+                  <a
+                    aria-label="internal1 sub link 1"
+                    class="link"
+                    href="/i1sublink1"
+                  >
+                    internal1 sub link 1
+                  </a>
+                </li>
+                <li>
+                  <a
+                    aria-label="internal1 sub link 2"
+                    class="link"
+                    href="/i2sublink2"
+                  >
+                    internal1 sub link 2
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
 `;

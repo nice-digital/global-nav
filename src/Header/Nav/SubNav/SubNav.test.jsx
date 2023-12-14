@@ -1,7 +1,6 @@
-import React from "react";
 import SubNav from "./SubNav";
-import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
+import { createEvent, fireEvent, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import {
 	eventName,
@@ -9,6 +8,8 @@ import {
 	headerClickEventAction,
 	eventTimeout,
 } from "../../../tracker";
+
+const baseURL = "https://sub-nav-test.nice.org.uk/";
 
 describe("SubNav", () => {
 	const links = [
@@ -26,96 +27,54 @@ describe("SubNav", () => {
 		},
 	];
 
-	it("Renders without crashing", () => {
-		const wrapper = shallow(<SubNav text="BNF" links={links} />);
-		expect(wrapper).toHaveLength(1);
-	});
-
 	it("Matches snapshot", () => {
-		const wrapper = shallow(<SubNav text="BNF" links={links} />);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		const { container } = render(<SubNav text="BNF" links={links} />);
+		expect(container).toMatchSnapshot();
 	});
 
 	it("Adds aria-current=page attribute to link when matches current URL", () => {
 		window.location.pathname = links[1].href;
-		const wrapper = shallow(<SubNav text="BNF" links={links} />);
+		const { getByRole } = render(<SubNav text="BNF" links={links} />);
 
-		expect(wrapper.find("a").at(1).props()["aria-current"]).toEqual("page");
+		expect(getByRole("link", { name: links[1].text })).toHaveAttribute(
+			"aria-current",
+			"page"
+		);
 	});
 
 	it("Adds aria-current=true attribute to link when partially matches current URL", () => {
 		window.location.pathname = links[1].href + "abacavir.html";
-		const wrapper = shallow(<SubNav text="BNF" links={links} />);
+		const { getByRole } = render(<SubNav text="BNF" links={links} />);
 
-		expect(wrapper.find("a").at(0).props()["aria-current"]).toEqual(true);
+		expect(getByRole("link", { name: links[1].text })).toHaveAttribute(
+			"aria-current",
+			"true"
+		);
 	});
 
 	describe("Tracking", () => {
-		beforeEach(() => {
-			window.dataLayer = [];
+		it("should prevent default on link click", () => {
+			const { getByRole } = render(<SubNav text="BNF" links={links} />),
+				link = getByRole("link", { name: links[1].text }),
+				clickEvent = createEvent.click(link);
+
+			fireEvent(link, clickEvent);
+
+			expect(clickEvent.defaultPrevented).toBe(true);
 		});
 
-		afterAll(() => {
-			// Cleanup
-			delete window.dataLayer;
-		});
+		it("should send event to dataLayer on click ", async () => {
+			const { getByRole } = render(<SubNav text="BNF" links={links} />),
+				user = userEvent.setup(),
+				link = getByRole("link", { name: links[1].text });
 
-		it("should call onNavigating on click", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
+			await user.click(link);
 
-			const handleClick = jest.spyOn(wrapper.instance(), "handleClick");
-
-			wrapper.instance().forceUpdate();
-
-			wrapper
-				.find("a")
-				.at(0)
-				.simulate("click", {
-					preventDefault: () => {},
-					currentTarget: {
-						getAttribute: () => "",
-					},
-				});
-
-			expect(handleClick).toHaveBeenCalled();
-		});
-
-		it("should prevent default on click", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
-
-			const preventDefault = jest.fn();
-
-			wrapper
-				.find("a")
-				.at(0)
-				.simulate("click", {
-					preventDefault: preventDefault,
-					currentTarget: {
-						getAttribute: () => "",
-					},
-				});
-
-			expect(preventDefault).toHaveBeenCalled();
-		});
-
-		it("should send event to dataLayer on click ", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
-
-			const eventLabel = links[0].text;
-
-			wrapper
-				.find("a")
-				.at(0)
-				.simulate("click", {
-					preventDefault: () => {},
-					currentTarget: {
-						innerText: eventLabel,
-						getAttribute: () => "",
-					},
-				});
+			const eventLabel = links[1].text;
 
 			expect(window.dataLayer).toEqual([
 				{
+					destinationUrl: links[1].href,
 					event: eventName,
 					eventCategory: defaultEventCategory,
 					eventAction: headerClickEventAction,
@@ -126,105 +85,92 @@ describe("SubNav", () => {
 			]);
 		});
 
-		it("should navigate in callback on click with no onNavigating prop", () => {
-			const wrapper = shallow(<SubNav text="BNF" links={links} />);
+		it("should navigate in callback on click with no onNavigating prop", async () => {
+			const [link1, ...otherLinks] = links,
+				href = baseURL + link1.href;
 
-			const href = "https://sub-nav-test.nice.org.uk/" + links[0].href;
+			const { getByRole } = render(
+					<SubNav
+						text="BNF"
+						links={[
+							{
+								...link1,
+								href,
+							},
+							...otherLinks,
+						]}
+					/>
+				),
+				user = userEvent.setup(),
+				link = getByRole("link", { name: link1.text });
 
-			wrapper
-				.find("a")
-				.at(0)
-				.simulate("click", {
-					preventDefault: () => {},
-					currentTarget: {
-						innerText: "",
-						getAttribute: () => href,
-					},
-				});
-
-			window.dataLayer[0].eventCallback();
-			expect(window.location.href).toEqual(href);
-		});
-
-		it("should navigate in event callback on click with onNavigating prop that doesn't exist", () => {
-			const wrapper = shallow(
-				<SubNav text="BNF" links={links} onNavigating="blah" />
-			);
-
-			const href = "https://sub-nav-test.nice.org.uk/" + links[0].href;
-
-			wrapper
-				.find("a")
-				.at(0)
-				.simulate("click", {
-					preventDefault: () => {},
-					currentTarget: {
-						innerText: "",
-						getAttribute: () => href,
-					},
-				});
+			await user.click(link);
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location.href).toEqual(href);
+			expect(window.location).toBeAt(href);
 		});
 
-		it("should call onNavigating function prop in event callback on click", () => {
+		it("should navigate in event callback on click with onNavigating prop that doesn't exist", async () => {
+			const [link1, ...otherLinks] = links,
+				href = baseURL + link1.href;
+
+			const { getByRole } = render(
+					<SubNav
+						text="BNF"
+						onNavigating="blah"
+						links={[
+							{
+								...link1,
+								href,
+							},
+							...otherLinks,
+						]}
+					/>
+				),
+				user = userEvent.setup(),
+				link = getByRole("link", { name: link1.text });
+
+			await user.click(link);
+
+			window.dataLayer[0].eventCallback();
+			expect(window.location).toBeAt(href);
+		});
+
+		it("should call onNavigating function prop in event callback on click", async () => {
 			const onNavigating = jest.fn();
 
-			const wrapper = shallow(
-				<SubNav text="BNF" links={links} onNavigating={onNavigating} />
-			);
+			const { getByRole } = render(
+					<SubNav text="BNF" links={links} onNavigating={onNavigating} />
+				),
+				user = userEvent.setup(),
+				link = getByRole("link", { name: links[1].text });
 
-			const href = "/test-href";
-
-			const currentTarget = {
-				innerText: "",
-				getAttribute: () => href,
-			};
-
-			wrapper
-				.find("a")
-				.at(0)
-				.simulate("click", {
-					preventDefault: () => {},
-					currentTarget: currentTarget,
-				});
+			await user.click(link);
 
 			window.dataLayer[0].eventCallback();
 			expect(onNavigating).toHaveBeenCalledWith({
-				element: currentTarget,
-				href: href,
+				element: link,
+				href: links[1].href,
 			});
 		});
 
-		it("should call onNavigating string function name prop in event callback on click", () => {
+		it("should call onNavigating string function name prop in event callback on click", async () => {
 			const onNavigating = jest.fn();
 
 			window.onNavigatingHandler = onNavigating;
 
-			const wrapper = shallow(
-				<SubNav text="BNF" links={links} onNavigating="onNavigatingHandler" />
-			);
+			const { getByRole } = render(
+					<SubNav text="BNF" links={links} onNavigating="onNavigatingHandler" />
+				),
+				user = userEvent.setup(),
+				link = getByRole("link", { name: links[1].text });
 
-			const href = "/test-href";
-
-			const currentTarget = {
-				innerText: "",
-				getAttribute: () => href,
-			};
-
-			wrapper
-				.find("a")
-				.at(0)
-				.simulate("click", {
-					preventDefault: () => {},
-					currentTarget: currentTarget,
-				});
+			await user.click(link);
 
 			window.dataLayer[0].eventCallback();
 			expect(onNavigating).toHaveBeenCalledWith({
-				element: currentTarget,
-				href: href,
+				element: link,
+				href: links[1].href,
 			});
 		});
 	});

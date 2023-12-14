@@ -1,5 +1,5 @@
-import React from "react";
-import { mount } from "enzyme";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import useEscapeKeydown from "./useEscapeKeydown";
 
@@ -13,20 +13,22 @@ describe("useEscapeKeydown hook", () => {
 		return <div ref={ref}></div>;
 	}
 
-	it("Returns true when keydown event is the result of escape key", () => {
-		mount(<MyWrapper />);
+	it("Returns true when keydown event is the result of escape key", async () => {
+		render(<MyWrapper />);
 
-		const event = new KeyboardEvent("keydown", { key: "Escape" });
-		document.dispatchEvent(event);
+		const user = userEvent.setup();
+
+		await user.keyboard("{Esc}");
 
 		expect(callbackFunction).toHaveBeenCalledTimes(1);
 	});
 
-	it("Returns false when keydown event is not the result of escape key", () => {
-		mount(<MyWrapper />);
+	it("Returns false when keydown event is not the result of escape key", async () => {
+		render(<MyWrapper />);
 
-		const event = new KeyboardEvent("keydown", { key: "Enter" });
-		document.dispatchEvent(event);
+		const user = userEvent.setup();
+
+		await user.keyboard("a");
 
 		expect(callbackFunction).not.toHaveBeenCalled();
 	});

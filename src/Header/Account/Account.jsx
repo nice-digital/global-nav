@@ -1,10 +1,4 @@
-import React, {
-	useContext,
-	useEffect,
-	useState,
-	useCallback,
-	useRef,
-} from "react";
+import { useContext, useEffect, useState, useCallback, useRef } from "react";
 import { HeaderContext } from "../context/HeaderContext";
 import PropTypes from "prop-types";
 import classnames from "classnames";
@@ -21,8 +15,9 @@ import {
 } from "../../tracker";
 
 function Account(props) {
+	const { provider = "niceAccounts" } = props;
 	// We've left this is state as per the pre-hook implementation
-	const [doesUseIdAM] = useState(props.provider == Account.providers.idam);
+	const [doesUseIdAM] = useState(provider == Account.providers.idam);
 
 	const { accountMenuIsExpanded, setAccountMenuIsExpanded } =
 		useContext(HeaderContext);
@@ -78,7 +73,7 @@ function Account(props) {
 				null,
 				href,
 				function () {
-					window.location.href = href;
+					window.location.assign(href);
 				}
 			);
 		}
@@ -129,7 +124,7 @@ function Account(props) {
 		}
 	}, []);
 
-	const { accountsData, environment } = props;
+	const { accountsData, environment = "live" } = props;
 
 	let signInLink = {};
 	if (doesUseIdAM) {
@@ -226,9 +221,4 @@ Account.propTypes = {
 		})
 	),
 	displayName: PropTypes.string,
-};
-
-Account.defaultProps = {
-	environment: "live",
-	provider: "niceAccounts",
 };

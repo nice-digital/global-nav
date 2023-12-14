@@ -10,7 +10,7 @@
 @use '@nice-digital/nds-core/scss/utils';
 
 .skiplink {
-  @extend .link;
+  @extend %link;
 }
 
 .skiplink:focus:not(:focus-visible) {

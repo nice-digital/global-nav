@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useCallback } from "react";
+import { useEffect, useContext, useCallback, useState } from "react";
 import useEscapeKeydown from "../../../hooks/useEscapeKeydown";
 
 import classnames from "classnames";
@@ -11,10 +11,6 @@ import { HeaderContext } from "../../context/HeaderContext";
 
 import {
 	AboutUs,
-	BNF,
-	BNFc,
-	CKS,
-	Guidance,
 	LifeSciences,
 	StandardsAndIndicators,
 } from "./../Dropdown/Components";
@@ -26,12 +22,8 @@ import {
 	headerClickEventAction,
 } from "../../../tracker";
 
-const components = {
+const componentsWithDropdowns = {
 	about: AboutUs,
-	bnf: BNF,
-	bnfc: BNFc,
-	cks: CKS,
-	guidance: Guidance,
 	"life-sciences": LifeSciences,
 	"standards-and-indicators": StandardsAndIndicators,
 };
@@ -43,7 +35,7 @@ export function NavLinks({
 	onNavigating,
 	skipLinkId,
 }) {
-	const [canUseDOM, setCanUseDOM] = React.useState(false);
+	const [canUseDOM, setCanUseDOM] = useState(false);
 	const { idOfOpenDropdown, setidOfOpenDropdown } = useContext(HeaderContext);
 
 	useEffect(() => {
@@ -64,9 +56,10 @@ export function NavLinks({
 			headerClickEventAction,
 			e.currentTarget.textContent,
 			null,
-			(function () {
-				window.location.href = href;
-			})()
+			href,
+			() => {
+				window.location.assign(href);
+			}
 		);
 	}
 
@@ -92,7 +85,7 @@ export function NavLinks({
 						index
 					) => {
 						const href = `https://${host}${landingPath}`,
-							dropdownComponent = components[id];
+							dropdownComponent = componentsWithDropdowns[id];
 						let ariaCurrent = null;
 
 						if (currentService && id === currentService) {

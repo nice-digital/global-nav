@@ -29,7 +29,7 @@
     float: left;
     margin: 0;
     padding: utils.rem(0 0 0 spacing.$large);
-    width: percentage(math.div(2, 3));
+    width: math.percentage(math.div(2, 3));
   }
 }
 

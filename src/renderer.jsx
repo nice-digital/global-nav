@@ -1,5 +1,4 @@
-import React from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -40,13 +39,17 @@ export const renderHeader = function () {
 			onRendering.call(window, headerElement);
 		}
 
-		render(
-			<Header service={config.service} {...config.header} />,
-			headerElement,
-			function () {
-				const onRendered = ensureCallback(config.header.onRendered);
-				onRendered && onRendered.call(window, headerElement);
-			}
+		const root = createRoot(headerElement),
+			onRendered = ensureCallback(config.header.onRendered);
+
+		root.render(
+			<Header
+				service={config.service}
+				{...config.header}
+				onRendered={() => {
+					onRendered && onRendered(headerElement);
+				}}
+			/>
 		);
 	}
 };
@@ -60,9 +63,8 @@ export const renderFooter = function () {
 		const footerElement =
 			document.getElementById(footerId) || createAndAttachDiv(footerId, false);
 
-		render(
-			<Footer service={config.service} {...config.footer} />,
-			footerElement
-		);
+		const root = createRoot(footerElement);
+
+		root.render(<Footer service={config.service} {...config.footer} />);
 	}
 };

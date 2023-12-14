@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useFocusTrap } from "@mantine/hooks";
 import { HeaderContext } from "../../context/HeaderContext";
 import styles from "./Dropdown.module.scss";

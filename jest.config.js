@@ -12,8 +12,14 @@ module.exports = {
 		"!<rootDir>/src/setupTests.js",
 		"!**/node_modules/**",
 	],
-	snapshotSerializers: ["enzyme-to-json/serializer"],
 	collectCoverage: process.env.TEAMCITY_VERSION ? true : false,
-	testURL: "https://global-nav-tests.nice.org.uk/",
+	testEnvironment: "jsdom",
+	testEnvironmentOptions: {
+		url: "https://global-nav-tests.nice.org.uk/",
+	},
 	testPathIgnorePatterns: ["lib"],
+	globals: {
+		IS_REACT_ACT_ENVIRONMENT: true,
+	},
+	transformIgnorePatterns: ["node_modules/(?!@mantine/hooks)/"],
 };

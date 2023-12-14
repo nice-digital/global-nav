@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { HeaderContext } from "../../Header/context/HeaderContext";
@@ -12,8 +12,14 @@ import {
 	headerClickEventAction,
 } from "../../tracker";
 
-function Nav(props) {
-	const { accountsLinks } = props;
+function Nav({
+	accountsLinks,
+	service,
+	additionalSubMenuItems = [],
+	isExpanded,
+	skipLinkId,
+	onNavigating,
+}) {
 	const { clickOutsideRef } = useContext(HeaderContext);
 
 	function handleAccountNavItemClick(e) {
@@ -37,7 +43,7 @@ function Nav(props) {
 				null,
 				href,
 				function () {
-					window.location.href = href;
+					window.location.assign(href);
 				}
 			);
 		}
@@ -58,7 +64,7 @@ function Nav(props) {
 	let servicesToDisplay = services.external; //default to displaying external services.
 	for (let i = 0; i < services.internal.length; i++) {
 		const internalRootLink = services.internal[i];
-		if (props.service && internalRootLink.id === props.service) {
+		if (service && internalRootLink.id === service) {
 			internalService = true;
 			activeService = internalRootLink;
 			servicesToDisplay = [internalRootLink]; //unlike external, internal services don't display other internal services.
@@ -68,18 +74,18 @@ function Nav(props) {
 	if (!internalService) {
 		for (let i = 0; i < services.external.length; i++) {
 			const externalService = services.external[i];
-			if (props.service && externalService.id === props.service) {
+			if (service && externalService.id === service) {
 				activeService = externalService;
 				break;
 			}
 		}
 	}
 	let additionalSubMenuLinks = [];
-	for (let i = 0; i < props.additionalSubMenuItems.length; i++) {
-		const additionalSubMenuItem = props.additionalSubMenuItems[i];
+	for (let i = 0; i < additionalSubMenuItems.length; i++) {
+		const additionalSubMenuItem = additionalSubMenuItems[i];
 		if (
 			typeof additionalSubMenuItem !== "undefined" &&
-			additionalSubMenuItem.service === props.service &&
+			additionalSubMenuItem.service === service &&
 			Array.isArray(additionalSubMenuItem.links)
 		) {
 			additionalSubMenuLinks = additionalSubMenuItem.links.map((link) => ({
@@ -99,7 +105,7 @@ function Nav(props) {
 			className={classnames(
 				styles.wrapper,
 				{
-					[styles.wrapperExpanded]: props.isExpanded,
+					[styles.wrapperExpanded]: isExpanded,
 				},
 				{
 					[styles.wrapperWithSubLinks]: subLinks,
@@ -114,11 +120,11 @@ function Nav(props) {
 			>
 				<div className={styles.menuWrapper}>
 					<NavLinks
-						skipLinkId={props.skipLinkId}
+						skipLinkId={skipLinkId}
 						servicesToDisplay={servicesToDisplay}
-						currentService={props.service}
+						currentService={service}
 						subLinks={subLinks}
-						onNavigating={props.onNavigating}
+						onNavigating={onNavigating}
 					/>
 				</div>
 			</nav>
@@ -161,8 +167,4 @@ Nav.propTypes = {
 	accountsLinks: PropTypes.object,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
-};
-
-Nav.defaultProps = {
-	additionalSubMenuItems: [],
 };

@@ -19,8 +19,6 @@
 		- [Non-functional](#non-functional)
 	- [Stack](#stack)
 		- [Principles](#principles)
-		- [Why Nerv?](#why-nerv)
-			- [Why not Preact?](#why-not-preact)
 		- [CSS Modules](#css-modules)
 	- [:rocket: Set up](#rocket-set-up)
 		- [Other commands](#other-commands)
@@ -42,6 +40,7 @@
 				- [Header props](#header-props)
 					- [Header.service](#headerservice)
 					- [Header.skipLinkId](#headerskiplinkid)
+					- [Header.renderSearchOnly](#headerrendersearchonly)
 					- [Header.onNavigating](#headeronnavigating)
 					- [Header.onResize](#headeronresize)
 					- [Header.onDropdownOpen](#headerondropdownopen)
@@ -63,7 +62,6 @@
 		- [CDN](#cdn)
 			- [Container IDs](#container-ids)
 			- [Overrides](#overrides)
-			- [Supporting IE8](#supporting-ie8)
 			- [Configuration](#configuration)
 				- [service](#service)
 				- [header](#header)
@@ -75,6 +73,7 @@
 	- [Upgrading to v3](#upgrading-to-v3)
 	- [Upgrading to v4](#upgrading-to-v4)
 	- [Upgrading to v5](#upgrading-to-v5)
+	- [Upgrading to v6](#upgrading-to-v6)
 
 <!-- END doctoc -->
 </details>
@@ -101,26 +100,22 @@ The following non-functional requirements apply:
 
 - _accessible_: to WCAG 2.0 AA
 - _touch_: optimized for touch with sufficient touch targets
-- _performance_: budget of 50KB total minified and gzipped, with single HTTP request
 - _print_: print styles
 - _security_: tested against OWASP top 10 and pen tested
 - _progressive enhancement_:
   - mobile first
   - non-JS fallback for SSR React apps
-- _browser support_: IE8+
-  - 'functional' in < IE11
+- _browser support_: IE11+
 
 ## Stack
 
 - [React](https://reactjs.org/)
-- [NervJS](https://github.com/NervJS/nerv) for smaller footprint and IE8 support, until we drop support for IE8, then we can consider Preact
 - [SCSS](https://sass-lang.com/documentation/file.SCSS_FOR_SASS_USERS.html) for styles
 - [CSS Modules](https://github.com/css-modules/css-modules) for generated class names
 - [PostCSS](https://postcss.org/) for transforming CSS with plugins:
   - [autoprefixer](https://autoprefixer.github.io/) for automatically adding vendor prefixes in CSS
-  - [pixrem](https://github.com/robwierzbowski/node-pixrem) for adding pixel fallbacks to rem values to support IE8+
   - and [NICE Digital shared browserslist config](https://github.com/nice-digital/browserslist-config#readme)
-- [Webpack](https://webpack.js.org/) for module bundling
+- [Vite](https://vitejs.dev/) for module bundling
 - [Babel 7](https://babeljs.io/) for ES6/JSX → ES5 transpilation
 - [accessible-autocomplete](https://github.com/alphagov/accessible-autocomplete)
 - [ESLint](https://eslint.org/) for linting our JavaScript
@@ -129,7 +124,7 @@ The following non-functional requirements apply:
 - [Prettier](https://prettier.io/) for code formatting
 - [Jest](https://jestjs.io/) for JS unit tests and snapshot tests
 - [NICE Design System](https://nice-digital.github.io/nice-design-system/) core for SASS mixins, functions and colour/spacing variables
-- [NICE Icons](https://github.com/nice-digital/nice-icons)
+  - [NICE Icons](https://github.com/nice-digital/nice-icons)
 
 ### Principles
 
@@ -147,30 +142,6 @@ Consider the following development principles:
   - as if a single developer worked across the codebase
 - Clear extension points and hooks for integrating into applications
   - To avoid some of the issues from TopHat where there was no consistency
-
-### Why Nerv?
-
-You've probably never heard of [Nerv](https://nerv.aotu.io/). So why use it?
-
-We are using React because:
-
-- it gives us structure to our app
-- is well used in the community
-- is easy to test
-- is being adopted across Digital Services.
-
-However, consider the [non-functional requirements](#non-functional) and [development principles](#principles) above - specifically the need to support IE8 and to have a small bundle size. React works in IE9+ (with Polyfills) and is 31.8K (React 16.2.0 + React DOM minified and gzipped). Both of these make it less than ideal for creating a standalone bundle that will load on every page across NICE alongside each application's code.
-
-This is where Nerv fits in. It's a "blazing fast React alternative, compatible with IE8 and React 16" and is one third of React's size. It's a drop in replacement (via [aliases in Webpack](https://github.com/NervJS/nerv#usage-with-webpack)) so allows us to write 'normal' React, but compile with Nerv.
-
-#### Why not Preact?
-
-We considered [Preact](https://preactjs.com/) as a React alternative as it's only 3kB. However, we discounted it at the time of writing because:
-
-- it didn't have full support for React 16
-- the [browser support](https://preactjs.com/about/browser-support) docs were vague on detail for supporting IE8 and we struggled to get it to work.
-
-We may consider replacing Nerv with Preact in the future if we drop support for IE8.
 
 ### CSS Modules
 
@@ -190,7 +161,7 @@ Using SCSS allows us to use mixins, functions and variables from the NICE Design
 **TL;DR;** to run the project locally, do the following:
 
 - install [Node 14+](https://nodejs.org/en/download/) or latest LTS version. Or even better, use [Volta](https://volta.sh/) to use the Node version pinned in package.json.
-- run `npm i` on the command line to install dependencies
+- run `npm ci` on the command line to install dependencies
 - run `npm start` on the command line
 - navigate to http://localhost:8080/ in a browser.
 
@@ -200,8 +171,6 @@ This compiles the application and spins up a development server. It then watches
 - automatically rebuilds the app.
 
 It then automatically reloads the application in the Browser (so no need for a manual reload) using [Hot Module Replacement (HMR) in webpack](https://webpack.js.org/concepts/hot-module-replacement/).
-
-> Note HMR doesn't work in IE8. Run the app via `npm run start:nohot` to test in IE8. You'll then to reload manually.
 
 ### Other commands
 
@@ -247,9 +216,11 @@ npm run-script test:unit -- -t aria
 
 #### Production build
 
-Run `npm run build -- --env version=1.2.3` to create a production build, where 1.2.3 is any version you want. This creates a build into the _dist_ folder and is what is used to deploy to the CDN.
+To distinguish between local development builds and builds on TeamCity, a custom npm script has been added, 'build:teamcity.'. The local build step does not work on TeamCity as 'vite build' needs to be passed differently for a build configuration step. For production on TeamCity, npm run build:teamcity is used first, then 'vite build' is passed in:
 
-> We pass in a version argument (`--env version=X`), because we assume this step will be run by TeamCity. TC (and the NuGet packages we push to Octo) have different versioning schemes from npm packages - build numbers produced by TeamCity aren't valid version numbers that can be used in package.json e.g. a build number of 1.2.3.4-r2a3d4f.
+```bash
+run build:teamcity vite build
+```
 
 ### IDE
 
@@ -270,7 +241,6 @@ The following VS Code extensions are **strongly** recommended, but not required:
 
 - Check you have the right version of Node installed
 - Make sure have LF line endings as this is a cross-platform project. This _should_ happen automatically because of settings in _.gitattributes_ and _.editorconfig_.
-- Use normal functions, rather than arrow functions because of support for IE8
 - Watch out for features of React that Nerv doesn't support, for example refs.
 
 ## How to use
@@ -361,6 +331,13 @@ See [services.json](src/services.json) for a list of the available service ident
 The identifier of the skip link target.
 An empty div with this id will be created at the end of the header, if it doesn't already exist on the page.
 
+###### Header.renderSearchOnly
+
+- Type: `boolean`
+- Default: `false`
+
+Optionally render the header with search box only to aid with debugging by reducing noise in the rendered output.
+
 ###### Header.onNavigating
 
 - Type: `String | Function`
@@ -383,7 +360,7 @@ window.onNavigatingHandler = function (e) {
 
   if (e.href === '/#browse') {
     // Trigger some custom behaviour
-  } else window.location.href = e.href; // Fallback to navigation as normal
+  } else window.location.assign(e.href); // Fallback to navigation as normal
 };
 
 var global_nav_config = {
@@ -466,7 +443,6 @@ var global_nav_config = {
   },
 };
 ```
-
 ###### Header.additionalSubMenuItems
 
 - Type: `null | Array`
@@ -607,7 +583,7 @@ Pass either a function, or the name of a function defined on `window`. E.g.:
 ```js
 window.onSearchingHandler = function (e) {
   // Define your implementation here e.g.:
-  window.location.href = '/search?q=' + encodeURIComponent(e.query);
+  window.location.assign('/search?q=' + encodeURIComponent(e.query));
 };
 
 var global_nav_config = {
@@ -718,8 +694,6 @@ or
 
 Note the production build needs the `+` character in the build metadata encoding as `%2B` to avoid browsers interpreting it as a space in the URL.
 
-> See the [IE8](#supporting-ie8) section below if you're supporting IE8.
-
 #### Container IDs
 
 The CDN version of Global Nav creates its own containers for the header and footer if they don't already exist on the page. These containers use the ids:
@@ -757,19 +731,6 @@ Try not to override Global Nav styles in your app: the Global Nav exists to give
   position: relative;
 }
 ```
-
-#### Supporting IE8
-
-Include the Global Nav polyfills before Global Nav itself to support IE8, for example:
-
-```js
-<!--[if lt IE 9]>
-	<script src="//cdn.nice.org.uk/global-nav/global-nav.ie8.min.js"></script>
-<![endif]-->
-<script src="//cdn.nice.org.uk/global-nav/global-nav.min.js"></script>
-```
-
-> Note: if you're supporting IE8 then you'll also need to include [html5shiv](https://github.com/aFarkas/html5shiv) in the `head` because we use HTML5 semantic elements like `header` and `footer`.
 
 #### Configuration
 
@@ -887,3 +848,24 @@ V4 involved updating a lot of dependencies. Mostly this was internal implementat
 ## Upgrading to v5
 
 Version 5 includes updates for the summer 2022 brand refresh. It's mostly an internal refactor of typography and colour updates and shouldn't include any breaking API changes.
+
+## Upgrading to v6
+
+Version 6 is mostly updates of dependencies, the biggest of which was React Testing Library (from Enzyme). It also includes support for React 18 and Design System v5. 
+
+## Upgrading to v7
+
+Updated autocomplete component.
+
+## Upgrading to v7.1
+
+In Version 7.1, significant changes to improve the development and build processes of the project have been introduced:
+
+### Migrating to Vite
+
+Migration from Webpack to Vite, a faster build tool. Vite provides improved performance and a better development experience with features like Fast Refresh, which replaces React Hot Loader. Terser minification options enable further optimisation of the bundle size, resulting in approximately 10% reduction in bundle size during the build process.
+
+### Easier transition to TypeScript
+
+With the migration to Vite, transitioning to TypeScript in the future will be more straightforward. Vite's TypeScript support will make the process smoother when the time comes for the project to adopt TypeScript.
+

@@ -1,24 +1,19 @@
-import React from "react";
-
 import Pages from "./Pages";
-import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
+import { render } from "@testing-library/react";
 
 describe("Pages", () => {
-	it("Renders without crashing", () => {
-		const wrapper = shallow(<Pages />);
-		expect(wrapper).toHaveLength(1);
-	});
-
 	it("Matches snapshot", () => {
-		const wrapper = shallow(<Pages />);
-		expect(toJson(wrapper)).toMatchSnapshot();
+		const { container } = render(<Pages />);
+		expect(container).toMatchSnapshot();
 	});
 
-	it("Uses overridden feedback URL as href for site with custom feedback URL", () => {
-		const wrapper = shallow(<Pages service="pathways" />);
-		expect(
-			wrapper.find("TrackedLink[children='Leave feedback']").prop("href")
-		).toEqual("https://www.nice.org.uk/NICE-Pathways-feedback");
+	// Skipping this test, as the custom pathways feedback URL is no longer used
+	// If we start overriding links per service again then we can reinstate the test
+	it.skip("Uses overridden feedback URL as href for site with custom feedback URL", () => {
+		const { getByText } = render(<Pages service="pathways" />);
+		expect(getByText("Leave feedback")).toHaveAttribute(
+			"href",
+			"https://www.nice.org.uk/NICE-Pathways-feedback"
+		);
 	});
 });

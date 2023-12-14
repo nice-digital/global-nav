@@ -1,15 +1,6 @@
 import { ensureDataLayer, eventName, eventTimeout, trackEvent } from "./";
 
 describe("tracker", () => {
-	beforeEach(() => {
-		window.dataLayer = [];
-	});
-
-	afterAll(() => {
-		// Cleanup
-		delete window.dataLayer;
-	});
-
 	describe("ensureDataLayer", () => {
 		it("should use existing dataLayer array", () => {
 			window.dataLayer = [99];
@@ -20,7 +11,9 @@ describe("tracker", () => {
 		});
 
 		it("should create new, empty dataLayer array if none exists", () => {
-			window.dataLayer = null;
+			delete window.dataLayer;
+
+			expect(window.dataLayer).toBeFalsy();
 
 			ensureDataLayer();
 
@@ -64,7 +57,7 @@ describe("tracker", () => {
 		});
 
 		it("should pass event callback function into dataLayer and clear fallback timer", () => {
-			jest.useFakeTimers();
+			jest.useFakeTimers({ legacyFakeTimers: true });
 			const eventCallback = jest.fn();
 
 			trackEvent(
@@ -83,7 +76,7 @@ describe("tracker", () => {
 		});
 
 		it("should use fallback timer for event callback", () => {
-			jest.useFakeTimers();
+			jest.useFakeTimers({ legacyFakeTimers: true });
 
 			const eventCallback = jest.fn();
 

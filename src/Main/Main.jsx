@@ -1,4 +1,3 @@
-import React from "react";
 import { BackToTop } from "./BackToTop/BackToTop";
 import PropTypes from "prop-types";
 import classnames from "classnames";
@@ -28,7 +27,7 @@ Main.propTypes = {
 		PropTypes.node,
 	]).isRequired,
 	className: PropTypes.string,
-	withPadding: PropTypes.boolean,
+	withPadding: PropTypes.bool,
 };
 
 export default Main;

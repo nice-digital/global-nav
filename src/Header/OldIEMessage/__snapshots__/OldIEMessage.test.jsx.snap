@@ -1,139 +1,141 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OldIEMessage Matches snapshot in IE 8/9 1`] = `
-<aside
-  className="container"
->
-  <div
-    className="alert"
+<div>
+  <aside
+    class="container"
   >
-    <h2>
-      Browser support
-    </h2>
-    <div>
-      <p>
-        Your web browser, Internet Explorer (
-        <abbr
-          title="Internet Explorer"
-        >
-          IE
-        </abbr>
-        ) 
-        9
-        , is out of date. For the best experience, please update your browser to the latest version.
-      </p>
-    </div>
-    <p>
-      We recommend you upgrade to a newer browser such as
-       
-      <a
-        href="https://technet.microsoft.com/en-us/microsoft-edge"
-      >
-        Microsoft Edge
-      </a>
-      , 
-      <a
-        href="https://www.google.com/chrome/"
-      >
-        Google Chrome
-      </a>
-       
-      or 
-      <a
-        href="https://www.mozilla.org/en-GB/firefox/new/"
-      >
-        Firefox
-      </a>
-      .
-    </p>
-  </div>
-</aside>
-`;
-
-exports[`OldIEMessage Matches snapshot in IE 10 1`] = `
-<aside
-  className="container"
->
-  <div
-    className="alert"
-  >
-    <h2>
-      Browser support
-    </h2>
-    <div>
-      <p>
-        Your browser, Internet Explorer (
-        <abbr
-          title="Internet Explorer"
-        >
-          IE
-        </abbr>
-        ) 10, will reach end of support on
-         
-        <strong>
-          <time
-            dateTime="2020-01-31"
+    <div
+      class="alert"
+    >
+      <h2>
+        Browser support
+      </h2>
+      <div>
+        <p>
+          Your web browser, Internet Explorer (
+          <abbr
+            title="Internet Explorer"
           >
-            January 31, 2020
-          </time>
-        </strong>
-        . Microsoft will no longer issue security patches from this date and your browser may become insecure. You can learn more about this in Microsoft’s
+            IE
+          </abbr>
+          ) 
+          9
+          , is out of date. For the best experience, please update your browser to the latest version.
+        </p>
+      </div>
+      <p>
+        We recommend you upgrade to a newer browser such as
          
         <a
-          href="https://support.microsoft.com/en-gb/help/17454/lifecycle-faq-internet-explorer"
+          href="https://technet.microsoft.com/en-us/microsoft-edge"
         >
-          Internet Explorer Lifecycle Policy FAQ
+          Microsoft Edge
+        </a>
+        , 
+        <a
+          href="https://www.google.com/chrome/"
+        >
+          Google Chrome
+        </a>
+         or 
+        <a
+          href="https://www.mozilla.org/en-GB/firefox/new/"
+        >
+          Firefox
         </a>
         .
       </p>
+    </div>
+  </aside>
+</div>
+`;
+
+exports[`OldIEMessage Matches snapshot in IE 10 1`] = `
+<div>
+  <aside
+    class="container"
+  >
+    <div
+      class="alert"
+    >
+      <h2>
+        Browser support
+      </h2>
+      <div>
+        <p>
+          Your browser, Internet Explorer (
+          <abbr
+            title="Internet Explorer"
+          >
+            IE
+          </abbr>
+          ) 10, will reach end of support on
+           
+          <strong>
+            <time
+              datetime="2020-01-31"
+            >
+              January 31, 2020
+            </time>
+          </strong>
+          . Microsoft will no longer issue security patches from this date and your browser may become insecure. You can learn more about this in Microsoft’s
+           
+          <a
+            href="https://support.microsoft.com/en-gb/help/17454/lifecycle-faq-internet-explorer"
+          >
+            Internet Explorer Lifecycle Policy FAQ
+          </a>
+          .
+        </p>
+        <p>
+          NICE will also stop supporting
+           
+          <abbr
+            title="Internet Explorer"
+          >
+            IE
+          </abbr>
+           10 from
+           
+          <time
+            datetime="2020-01-31"
+          >
+            January 31, 2020
+          </time>
+          . This means NICE websites and services may stop functioning correctly in
+           
+          <abbr
+            title="Internet Explorer"
+          >
+            IE
+          </abbr>
+           10 after this date.
+        </p>
+      </div>
       <p>
-        NICE will also stop supporting
+        We recommend you upgrade to a newer browser such as
          
-        <abbr
-          title="Internet Explorer"
+        <a
+          href="https://technet.microsoft.com/en-us/microsoft-edge"
         >
-          IE
-        </abbr>
-         10 from
-         
-        <time
-          dateTime="2020-01-31"
+          Microsoft Edge
+        </a>
+        , 
+        <a
+          href="https://www.google.com/chrome/"
         >
-          January 31, 2020
-        </time>
-        . This means NICE websites and services may stop functioning correctly in
-         
-        <abbr
-          title="Internet Explorer"
+          Google Chrome
+        </a>
+         or 
+        <a
+          href="https://www.mozilla.org/en-GB/firefox/new/"
         >
-          IE
-        </abbr>
-         10 after this date.
+          Firefox
+        </a>
+        .
       </p>
     </div>
-    <p>
-      We recommend you upgrade to a newer browser such as
-       
-      <a
-        href="https://technet.microsoft.com/en-us/microsoft-edge"
-      >
-        Microsoft Edge
-      </a>
-      , 
-      <a
-        href="https://www.google.com/chrome/"
-      >
-        Google Chrome
-      </a>
-       
-      or 
-      <a
-        href="https://www.mozilla.org/en-GB/firefox/new/"
-      >
-        Firefox
-      </a>
-      .
-    </p>
-  </div>
-</aside>
+  </aside>
+</div>
 `;

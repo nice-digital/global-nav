@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
 import cksIcon from "./images/cks.svg";
 import bnfIcon from "./images/bnf.svg";
 import bnfcIcon from "./images/bnfc.svg";
 import { getCallbackFunction } from "../../../utils";
+import PropTypes from "prop-types";
 
 const images = {
 	cks: cksIcon,
@@ -19,20 +18,13 @@ import {
 
 import styles from "./SubNav.module.scss";
 
-export class SubNav extends Component {
-	constructor(props) {
-		super(props);
-
-		this.handleClick = this.handleClick.bind(this);
-	}
-
-	handleClick(e) {
+const SubNav = (props) => {
+	const handleClick = (e) => {
 		e.preventDefault();
 
 		const { currentTarget } = e;
 		const href = currentTarget.getAttribute("href");
 
-		// To support IE8
 		const eventLabel =
 			currentTarget.textContent ||
 			currentTarget.innerText ||
@@ -45,7 +37,7 @@ export class SubNav extends Component {
 			null,
 			href,
 			function () {
-				const { onNavigating } = this.props;
+				const { onNavigating } = props;
 
 				const onNavigatingCallback = getCallbackFunction(onNavigating);
 
@@ -54,57 +46,54 @@ export class SubNav extends Component {
 						element: currentTarget,
 						href: href,
 					});
-				} else window.location.href = href;
-			}.bind(this)
+				} else window.location.assign(href);
+			}
 		);
-	}
+	};
 
-	render() {
-		return (
-			<div className={styles.wrapper}>
-				<ul className={styles.list} aria-label={`${this.props.text} links`}>
-					{this.props.links.map(
-						function (subLink, i) {
-							let ariaCurrent = null;
+	return (
+		<div className={styles.wrapper}>
+			<ul className={styles.list} aria-label={`${props.text} links`}>
+				{props.links.map(function (subLink, i) {
+					let ariaCurrent = null;
 
-							if (typeof window !== "undefined") {
-								if (window.location.pathname === subLink.href) {
-									ariaCurrent = "page";
-								} else if (window.location.pathname.indexOf(subLink.href) === 0)
-									ariaCurrent = true;
-							}
+					if (typeof window !== "undefined") {
+						if (window.location.pathname === subLink.href) {
+							ariaCurrent = "page";
+						} else if (window.location.pathname.indexOf(subLink.href) === 0)
+							ariaCurrent = true;
+					}
 
-							return (
-								<li key={i} className={subLink.image && styles.imageLink}>
-									<a
-										href={subLink.href}
-										aria-current={ariaCurrent}
-										className={styles.link}
-										onClick={this.handleClick}
-										aria-label={subLink.text}
-									>
-										{subLink.image ? (
-											<img
-												src={images[subLink.image]}
-												className={styles.image}
-												alt=""
-											/>
-										) : (
-											subLink.text
-										)}
-									</a>
-								</li>
-							);
-						}.bind(this)
-					)}
-				</ul>
-			</div>
-		);
-	}
-}
+					return (
+						<li key={i} className={subLink.image && styles.imageLink}>
+							<a
+								href={subLink.href}
+								aria-current={ariaCurrent}
+								className={styles.link}
+								onClick={handleClick}
+								aria-label={subLink.text}
+							>
+								{subLink.image ? (
+									<img
+										src={images[subLink.image]}
+										className={styles.image}
+										alt=""
+									/>
+								) : (
+									subLink.text
+								)}
+							</a>
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	);
+};
 
 export default SubNav;
 
+//TODO Convert proptypes to typescript
 SubNav.propTypes = {
 	text: PropTypes.string.isRequired,
 	links: PropTypes.arrayOf(

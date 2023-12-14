@@ -1,53 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
-<div
-  className="ac"
->
-  <e
-    autoselect={false}
-    confirmOnBlur={false}
-    cssNamespace="autocomplete"
-    defaultValue="test"
-    displayMenu="overlay"
-    dropdownArrow={[Function]}
-    id="autocomplete"
-    minLength={3}
-    name="q"
-    onConfirm={[Function]}
-    placeholder=""
-    required={false}
-    showAllValues={false}
-    showNoOptionsFound={false}
-    source={[Function]}
-    tAssistiveHint={[Function]}
-    tNoResults={[Function]}
-    templates={
-      Object {
-        "inputValue": [Function],
-        "suggestion": [Function],
-      }
-    }
-  />
+<div>
+  <div
+    class="ac"
+  >
+    <label
+      class="visually-hidden"
+      data-headlessui-state=""
+      id="headlessui-combobox-label-:r0:"
+    />
+    <input
+      aria-autocomplete="list"
+      aria-expanded="false"
+      aria-labelledby="headlessui-combobox-label-:r0:"
+      autocomplete="off"
+      class="autocomplete__input autocomplete__input--default"
+      data-headlessui-state=""
+      data-hj-allow=""
+      id="autocomplete"
+      maxlength="512"
+      name="q"
+      role="combobox"
+      type="text"
+      value=""
+    />
+  </div>
 </div>
 `;
 
 exports[`Autocomplete Non-autocomplete should render fallback search box when no source 1`] = `
-<div
-  className="ac"
->
+<div>
   <div
-    className="autocomplete__wrapper"
+    class="ac"
   >
-    <input
-      className="autocomplete__input autocomplete__input--default"
-      data-hj-allow=""
-      defaultValue="diabetes"
-      id="autocomplete"
-      maxLength={512}
-      name="q"
-      type="search"
-    />
+    <div
+      class="autocomplete__wrapper"
+    >
+      <input
+        class="autocomplete__input autocomplete__input--default"
+        data-hj-allow=""
+        id="autocomplete"
+        maxlength="512"
+        name="q"
+        type="search"
+        value="diabetes"
+      />
+    </div>
   </div>
 </div>
 `;

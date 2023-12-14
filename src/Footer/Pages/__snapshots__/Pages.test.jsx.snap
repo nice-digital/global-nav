@@ -1,144 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pages Matches snapshot 1`] = `
-<nav
-  className="wrapper"
->
-  <ul
-    className="list"
+<div>
+  <nav
+    class="wrapper"
   >
-    <li
-      key="About NICE"
+    <ul
+      class="list"
     >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="About NICE"
-        href="https://www.nice.org.uk/about"
-      >
-        About NICE
-      </TrackedLink>
-    </li>
-    <li
-      key="Into practice"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Into practice"
-        href="https://www.nice.org.uk/about/what-we-do/into-practice"
-      >
-        Into practice
-      </TrackedLink>
-    </li>
-    <li
-      key="Get involved with NICE"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Get involved with NICE"
-        href="https://www.nice.org.uk/get-involved"
-      >
-        Get involved with NICE
-      </TrackedLink>
-    </li>
-    <li
-      key="Jobs"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Jobs"
-        href="https://www.nice.org.uk/get-involved/jobs"
-      >
-        Jobs
-      </TrackedLink>
-    </li>
-    <li
-      key="News"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="News"
-        href="https://www.nice.org.uk/news"
-      >
-        News
-      </TrackedLink>
-    </li>
-    <li
-      key="Newsletters and alerts"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Newsletters and alerts"
-        href="https://www.nice.org.uk/news/nice-newsletters-and-alerts"
-      >
-        Newsletters and alerts
-      </TrackedLink>
-    </li>
-    <li
-      key="Contact us"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Contact us"
-        href="https://www.nice.org.uk/get-involved/contact-us"
-      >
-        Contact us
-      </TrackedLink>
-    </li>
-    <li
-      key="Leave feedback"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Leave feedback"
-        href="https://www.nice.org.uk/leave-feedback"
-      >
-        Leave feedback
-      </TrackedLink>
-    </li>
-    <li
-      key="Reusing our content"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Reusing our content"
-        href="https://www.nice.org.uk/re-using-our-content"
-      >
-        Reusing our content
-      </TrackedLink>
-    </li>
-    <li
-      key="NICE UK Open Content Licence"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="NICE UK Open Content Licence"
-        href="https://www.nice.org.uk/re-using-our-content/uk-open-content-licence"
-      >
-        NICE UK Open Content Licence
-      </TrackedLink>
-    </li>
-    <li
-      key="Syndicate our content"
-    >
-      <TrackedLink
-        eventAction="Footer click"
-        eventCategory="TopHat and footer"
-        eventLabel="Syndicate our content"
-        href="https://www.nice.org.uk/about/what-we-do/nice-syndication-api"
-      >
-        Syndicate our content
-      </TrackedLink>
-    </li>
-  </ul>
-</nav>
+      <li>
+        <a
+          href="https://www.nice.org.uk/about"
+        >
+          About NICE
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/about/what-we-do/into-practice"
+        >
+          Into practice
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/get-involved"
+        >
+          Get involved with NICE
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/get-involved/jobs"
+        >
+          Jobs
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/news"
+        >
+          News
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/news/nice-newsletters-and-alerts"
+        >
+          Newsletters and alerts
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/get-involved/contact-us"
+        >
+          Contact us
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/forms/leave-feedback"
+        >
+          Leave feedback
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/re-using-our-content"
+        >
+          Reusing our content
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/forms/use-of-nice-content-in-the-uk"
+        >
+          NICE UK Open Content Licence
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/about/what-we-do/nice-syndication-api"
+        >
+          Syndicate our content
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
 `;
