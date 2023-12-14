@@ -8,7 +8,15 @@
     "test": "wdio run wdio.conf.ts",
     "test:allbrowsers": "cross-env ALL_BROWSERS=true npm test",
     "test:docker": "npm test -- --hostname hub --baseUrl https://alpha.nice.org.uk/",
-    "wait-then-test": "npm run test:docker"
+    "wait-then-test": "npm run test:docker",
+    "// LINTING/CODE STYLE": "",
+    "lint": "npm run prettier && npm run lint:ts && npm run typecheck",
+    "prettier": "prettier --check \"./**/*.{ts,tsx,js}\"",
+    "prettier:fix": "npm run prettier -- --write",
+    "lint:ts": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:ts:fix": "npm run lint:ts -- --fix",
+    "// TYPECHECKING": "",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -38,7 +46,13 @@
     "typescript": "^4.3.5",
     "wait-on": "^6.0.0",
     "wdio-teamcity-reporter": "^2.3.0",
-    "webdriverio": "^7.9.0"
+    "webdriverio": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2"
   },
   "dependencies": {
     "xmlhttprequest": "^1.8.0"
