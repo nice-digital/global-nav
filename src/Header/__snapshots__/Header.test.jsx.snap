@@ -303,7 +303,7 @@ exports[`Header Matches snapshot 1`] = `
                           <p>
                             <a
                               class="button primary"
-                              href="https://www.nice.org.uk/standards-and-indicators/index"
+                              href="https://www.nice.org.uk/indicators/published"
                             >
                               View list of indicators
                             </a>

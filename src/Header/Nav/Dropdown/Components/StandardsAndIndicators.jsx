@@ -64,10 +64,7 @@ export function StandardsAndIndicators({ rootUrl }) {
 						processes linked by evidence to improved outcomes.
 					</p>
 					<p>
-						<Button
-							variant="primary"
-							to={`${rootUrl}/standards-and-indicators/index`}
-						>
+						<Button variant="primary" to={`${rootUrl}/indicators/published`}>
 							View list of indicators
 						</Button>
 					</p>
