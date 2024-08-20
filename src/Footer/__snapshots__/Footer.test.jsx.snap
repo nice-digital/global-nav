@@ -178,6 +178,13 @@ exports[`Footer Matches snapshot 1`] = `
               Syndicate our content
             </a>
           </li>
+          <li>
+            <a
+              href="https://www.nice.org.uk/events"
+            >
+              Events
+            </a>
+          </li>
         </ul>
       </nav>
       <div
