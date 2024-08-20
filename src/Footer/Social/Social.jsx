@@ -1,5 +1,5 @@
 import FacebookIcon from "@nice-digital/icons/lib/Facebook";
-import TwitterIcon from "@nice-digital/icons/lib/Twitter";
+import XLogo from "@nice-digital/icons/lib/XLogo";
 import YouTubeIcon from "@nice-digital/icons/lib/YoutubePlay";
 import LinkedInIcon from "@nice-digital/icons/lib/Linkedin";
 
@@ -23,12 +23,11 @@ const Social = () => {
 				</li>
 				<li>
 					<TrackedLink
-						href="https://twitter.com/NICEcomms"
+						href="https://x.com/NICEcomms"
 						eventAction={footerClickEventAction}
-						eventLabel="Twitter"
+						eventLabel="X"
 					>
-						<TwitterIcon />
-						Twitter
+						<XLogo />X
 					</TrackedLink>
 				</li>
 				<li>

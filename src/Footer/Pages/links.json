@@ -42,5 +42,9 @@
   {
     "href": "https://www.nice.org.uk/about/what-we-do/nice-syndication-api",
     "text": "Syndicate our content"
+  },
+  {
+    "href": "https://www.nice.org.uk/events",
+    "text": "Events"
   }
 ]
