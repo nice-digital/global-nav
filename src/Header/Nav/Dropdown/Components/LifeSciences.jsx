@@ -97,9 +97,7 @@ export function LifeSciences({ rootUrl }) {
 					<GridItem>
 						<h3 className="mt--d">Register your product</h3>
 						<h4 className="h5 mb--c mt--0">
-							<a href="https://www.healthtechconnect.org.uk">
-								Non-pharmaceutical
-							</a>
+							<a href="https://innovation.nhs.uk/ ">Non-pharmaceutical</a>
 						</h4>
 						<p className="mt--0">
 							HealthTech Connect is a clear and simple point of entry for health
