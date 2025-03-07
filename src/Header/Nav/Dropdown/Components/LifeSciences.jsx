@@ -100,8 +100,9 @@ export function LifeSciences({ rootUrl }) {
 							<a href="https://innovation.nhs.uk/ ">Non-pharmaceutical</a>
 						</h4>
 						<p className="mt--0">
-							HealthTech Connect is a clear and simple point of entry for health
-							technologies to access support and national evaluation programmes.
+							NHS Innovation Service is a clear and simple point of entry for
+							health technologies to access support and national evaluation
+							programmes.
 						</p>
 						<h4 className="h5 mb--c">
 							<a href="https://www.ukpharmascan.org.uk">Pharmaceutical</a>
