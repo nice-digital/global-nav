@@ -549,7 +549,7 @@ exports[`Header Matches snapshot 1`] = `
                               class="h5 mb--c mt--0"
                             >
                               <a
-                                href="https://www.healthtechconnect.org.uk"
+                                href="https://innovation.nhs.uk/ "
                               >
                                 Non-pharmaceutical
                               </a>
@@ -557,7 +557,7 @@ exports[`Header Matches snapshot 1`] = `
                             <p
                               class="mt--0"
                             >
-                              HealthTech Connect is a clear and simple point of entry for health technologies to access support and national evaluation programmes.
+                              NHS Innovation Service is a clear and simple point of entry for health technologies to access support and national evaluation programmes.
                             </p>
                             <h4
                               class="h5 mb--c"
