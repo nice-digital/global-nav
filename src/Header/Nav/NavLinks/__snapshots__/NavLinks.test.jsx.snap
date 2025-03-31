@@ -244,6 +244,13 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
                           Shared decision making
                         </a>
                       </li>
+                      <li>
+                        <a
+                          href="https://www.nice.org.uk/about/what-we-do"
+                        >
+                          View all What we do
+                        </a>
+                      </li>
                     </ul>
                   </div>
                   <div

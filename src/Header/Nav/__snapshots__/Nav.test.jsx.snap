@@ -256,6 +256,13 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                                 Shared decision making
                               </a>
                             </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do"
+                              >
+                                View all What we do
+                              </a>
+                            </li>
                           </ul>
                         </div>
                         <div
@@ -764,6 +771,13 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                                 Shared decision making
                               </a>
                             </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do"
+                              >
+                                View all What we do
+                              </a>
+                            </li>
                           </ul>
                         </div>
                         <div
@@ -1236,6 +1250,13 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                                 href="https://www.test.nice.org/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/shared-decision-making"
                               >
                                 Shared decision making
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="https://www.test.nice.org/about/what-we-do"
+                              >
+                                View all What we do
                               </a>
                             </li>
                           </ul>
