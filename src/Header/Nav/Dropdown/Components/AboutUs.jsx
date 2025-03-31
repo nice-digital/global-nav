@@ -135,6 +135,11 @@ export function AboutUs({ rootUrl }) {
 										Shared decision making
 									</a>
 								</li>
+								<li>
+									<a href={`${rootUrl}/about/what-we-do`}>
+										View all What we do
+									</a>
+								</li>
 							</ul>
 						</GridItem>
 						<GridItem data-tracking="Into practice">
