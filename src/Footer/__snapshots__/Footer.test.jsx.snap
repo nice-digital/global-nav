@@ -88,6 +88,14 @@ exports[`Footer Matches snapshot 1`] = `
           <li>
             <a
               class="link"
+              href="https://www.nice.org.uk/about-us"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              class="link"
               href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
             >
               Knowledge resources

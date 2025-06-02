@@ -186,9 +186,11 @@ describe("Header", () => {
 					<Header {...defaultProps} onDropdownOpen={"testFunc"} />
 				),
 				user = userEvent.setup(),
-				guidanceMenuButton = getByRole("button", { name: "About" });
+				MoreFromNICEMenuButton = getByRole("button", {
+					name: "More from NICE",
+				});
 
-			await user.click(guidanceMenuButton);
+			await user.click(MoreFromNICEMenuButton);
 
 			expect(window.testFunc).toHaveBeenCalledTimes(1);
 		});
@@ -200,10 +202,12 @@ describe("Header", () => {
 					<Header {...defaultProps} onDropdownClose={"onDropdownCloseFunc"} />
 				),
 				user = userEvent.setup(),
-				aboutMenuButton = getByRole("button", { name: "About" });
+				MoreFromNICEMenuButton = getByRole("button", {
+					name: "More from NICE",
+				});
 
-			await user.click(aboutMenuButton);
-			await user.click(aboutMenuButton);
+			await user.click(MoreFromNICEMenuButton);
+			await user.click(MoreFromNICEMenuButton);
 
 			expect(window.onDropdownCloseFunc).toHaveBeenCalledTimes(2);
 		});
@@ -214,9 +218,11 @@ describe("Header", () => {
 					<Header {...defaultProps} onDropdownOpen={onDropdownOpen} />
 				),
 				user = userEvent.setup(),
-				aboutMenuButton = getByRole("button", { name: "About" });
+				MoreFromNICEMenuButton = getByRole("button", {
+					name: "More from NICE",
+				});
 
-			await user.click(aboutMenuButton);
+			await user.click(MoreFromNICEMenuButton);
 
 			expect(onDropdownOpen).toHaveBeenCalledTimes(1);
 		});
@@ -227,10 +233,12 @@ describe("Header", () => {
 					<Header {...defaultProps} onDropdownClose={onDropdownClose} />
 				),
 				user = userEvent.setup(),
-				aboutMenuButton = getByRole("button", { name: "About" });
+				MoreFromNICEMenuButton = getByRole("button", {
+					name: "More from NICE",
+				});
 
-			await user.click(aboutMenuButton);
-			await user.click(aboutMenuButton);
+			await user.click(MoreFromNICEMenuButton);
+			await user.click(MoreFromNICEMenuButton);
 
 			expect(onDropdownClose).toHaveBeenCalledTimes(2);
 		});

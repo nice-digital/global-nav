@@ -133,10 +133,19 @@
     },
     {
       "host": "www.nice.org.uk",
-      "landingPath": "/about",
-      "text": "About",
+      "landingPath": "/about-us",
+      "text": "About us",
       "id": "about",
-      "header": true
+      "header": false,
+      "footer": true
+    },
+    {
+      "host": "www.nice.org.uk",
+      "landingPath": "/more-from-nice",
+      "text": "More from NICE",
+      "id": "more-from-nice",
+      "header": true,
+      "footer": false
     },
     {
       "host": "www.nice.org.uk",
