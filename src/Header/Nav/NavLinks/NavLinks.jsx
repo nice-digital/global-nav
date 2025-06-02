@@ -10,6 +10,7 @@ import Dropdown from "../Dropdown";
 import { HeaderContext } from "../../context/HeaderContext";
 
 import {
+	MoreFromNICE,
 	AboutUs,
 	LifeSciences,
 	StandardsAndIndicators,
@@ -23,6 +24,7 @@ import {
 } from "../../../tracker";
 
 const componentsWithDropdowns = {
+	"more-from-nice": MoreFromNICE,
 	about: AboutUs,
 	"life-sciences": LifeSciences,
 	"standards-and-indicators": StandardsAndIndicators,
