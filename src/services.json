@@ -22,7 +22,7 @@
       "text": "Life sciences",
       "id": "life-sciences",
       "footer": true,
-      "header": true
+      "header": false
     },
     {
       "host": "bnf.nice.org.uk",
