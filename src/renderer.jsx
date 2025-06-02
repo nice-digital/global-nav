@@ -1,3 +1,4 @@
+import "./styles/global.scss";
 import { createRoot } from "react-dom/client";
 import Header from "./Header";
 import Footer from "./Footer";

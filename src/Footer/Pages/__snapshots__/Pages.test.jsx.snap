@@ -10,13 +10,6 @@ exports[`Pages Matches snapshot 1`] = `
     >
       <li>
         <a
-          href="https://www.nice.org.uk/about"
-        >
-          About NICE
-        </a>
-      </li>
-      <li>
-        <a
           href="https://www.nice.org.uk/about/what-we-do/into-practice"
         >
           Into practice
@@ -34,6 +27,13 @@ exports[`Pages Matches snapshot 1`] = `
           href="https://www.nice.org.uk/get-involved/jobs"
         >
           Jobs
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.nice.org.uk/about-us"
+        >
+          About us
         </a>
       </li>
       <li>

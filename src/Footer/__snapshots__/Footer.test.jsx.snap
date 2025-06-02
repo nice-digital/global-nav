@@ -88,14 +88,6 @@ exports[`Footer Matches snapshot 1`] = `
           <li>
             <a
               class="link"
-              href="https://www.nice.org.uk/about-us"
-            >
-              About us
-            </a>
-          </li>
-          <li>
-            <a
-              class="link"
               href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
             >
               Knowledge resources
@@ -109,13 +101,6 @@ exports[`Footer Matches snapshot 1`] = `
         <ul
           class="list"
         >
-          <li>
-            <a
-              href="https://www.nice.org.uk/about"
-            >
-              About NICE
-            </a>
-          </li>
           <li>
             <a
               href="https://www.nice.org.uk/about/what-we-do/into-practice"
@@ -135,6 +120,13 @@ exports[`Footer Matches snapshot 1`] = `
               href="https://www.nice.org.uk/get-involved/jobs"
             >
               Jobs
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nice.org.uk/about-us"
+            >
+              About us
             </a>
           </li>
           <li>

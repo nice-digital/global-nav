@@ -1,0 +1,5 @@
+@use '../Main/BackToTop/BackToTop.module.scss' as backToTop;
+
+html {
+  scroll-padding-top: backToTop.$back-to-top-height;
+}
