@@ -10,9 +10,9 @@ import Dropdown from "../Dropdown";
 import { HeaderContext } from "../../context/HeaderContext";
 
 import {
-	AboutUs,
-	LifeSciences,
-	StandardsAndIndicators,
+	MoreFromNICE,
+	// LifeSciences,
+	// StandardsAndIndicators,
 } from "./../Dropdown/Components";
 
 import styles from "./NavLinks.module.scss";
@@ -23,9 +23,9 @@ import {
 } from "../../../tracker";
 
 const componentsWithDropdowns = {
-	about: AboutUs,
-	"life-sciences": LifeSciences,
-	"standards-and-indicators": StandardsAndIndicators,
+	"more-from-nice": MoreFromNICE,
+	// "life-sciences": LifeSciences,
+	// "standards-and-indicators": StandardsAndIndicators,
 };
 
 export function NavLinks({
@@ -63,9 +63,12 @@ export function NavLinks({
 		);
 	}
 
-	const escapeKeydown = useCallback(function (result) {
-		if (result) setidOfOpenDropdown(null);
-	}, []);
+	const escapeKeydown = useCallback(
+		function (result) {
+			if (result) setidOfOpenDropdown(null);
+		},
+		[setidOfOpenDropdown]
+	);
 
 	const { keydownRef } = useEscapeKeydown(escapeKeydown);
 
