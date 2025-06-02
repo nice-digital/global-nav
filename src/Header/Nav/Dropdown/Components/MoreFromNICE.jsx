@@ -2,7 +2,6 @@
 import { Grid, GridItem } from "./Grid";
 import styles from "./Components.module.scss";
 import classnames from "classnames";
-import { Button } from "./Button";
 
 export function MoreFromNICE({ rootUrl }) {
 	return (
@@ -13,9 +12,6 @@ export function MoreFromNICE({ rootUrl }) {
 					data-tracking="Get involved"
 					className={classnames(styles.aboutCol)}
 				>
-					<Button variant="cta" to={`${rootUrl}/about`}>
-						Explore about
-					</Button>
 					<ul className={classnames(styles.listColumnar, "mt--d")}>
 						<li>
 							<a href={`${rootUrl}/`}>What NICE does</a>
