@@ -1,9 +1,5 @@
 [
   {
-    "href": "https://www.nice.org.uk/about",
-    "text": "About NICE"
-  },
-  {
     "href": "https://www.nice.org.uk/about/what-we-do/into-practice",
     "text": "Into practice"
   },
@@ -14,6 +10,10 @@
   {
     "href": "https://www.nice.org.uk/get-involved/jobs",
     "text": "Jobs"
+  },
+  {
+    "href": "https://www.nice.org.uk/about-us",
+    "text": "About us"
   },
   {
     "href": "https://www.nice.org.uk/news",
