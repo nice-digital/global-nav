@@ -215,7 +215,7 @@ exports[`Header Matches snapshot 1`] = `
                   >
                     <a
                       class="skiplink"
-                      href="#navlink-life-sciences"
+                      href="#navlink-cks"
                     >
                       Skip 
                       Standards and indicators
@@ -354,6 +354,20 @@ exports[`Header Matches snapshot 1`] = `
                 </div>
               </li>
               <li
+                data-tracking="Clinical Knowledge Summaries (CKS)"
+              >
+                <a
+                  aria-label="false"
+                  class="link"
+                  href="https://cks.nice.org.uk/"
+                  id="navlink-cks"
+                >
+                  <span>
+                    Clinical Knowledge Summaries (CKS)
+                  </span>
+                </a>
+              </li>
+              <li
                 data-tracking="British National Formulary (BNF)"
               >
                 <a
@@ -378,20 +392,6 @@ exports[`Header Matches snapshot 1`] = `
                 >
                   <span>
                     British National Formulary for Children (BNFC)
-                  </span>
-                </a>
-              </li>
-              <li
-                data-tracking="Clinical Knowledge Summaries (CKS)"
-              >
-                <a
-                  aria-label="false"
-                  class="link"
-                  href="https://cks.nice.org.uk/"
-                  id="navlink-cks"
-                >
-                  <span>
-                    Clinical Knowledge Summaries (CKS)
                   </span>
                 </a>
               </li>

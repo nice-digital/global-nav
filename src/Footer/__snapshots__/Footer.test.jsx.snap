@@ -56,6 +56,14 @@ exports[`Footer Matches snapshot 1`] = `
           <li>
             <a
               class="link"
+              href="https://cks.nice.org.uk/"
+            >
+              Clinical Knowledge Summaries (CKS)
+            </a>
+          </li>
+          <li>
+            <a
+              class="link"
               href="https://www.nice.org.uk/about/what-we-do/life-sciences"
             >
               Life sciences
@@ -75,14 +83,6 @@ exports[`Footer Matches snapshot 1`] = `
               href="https://bnfc.nice.org.uk/"
             >
               British National Formulary for Children (BNFC)
-            </a>
-          </li>
-          <li>
-            <a
-              class="link"
-              href="https://cks.nice.org.uk/"
-            >
-              Clinical Knowledge Summaries (CKS)
             </a>
           </li>
           <li>

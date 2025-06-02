@@ -17,6 +17,39 @@
       "header": true
     },
     {
+      "host": "cks.nice.org.uk",
+      "landingPath": "/",
+      "text": "Clinical Knowledge Summaries (CKS)",
+      "abbreviation": false,
+      "title": "Clinical Knowledge Summaries",
+      "id": "cks",
+      "footer": true,
+      "header": true,
+      "links": [
+        {
+          "image": "cks",
+          "text": "CKS - Home",
+          "href": "/"
+        },
+        {
+          "text": "Health topics A to Z",
+          "href": "/topics/"
+        },
+        {
+          "text": "Specialities",
+          "href": "/specialities/"
+        },
+        {
+          "text": "What's new",
+          "href": "/whats-new/"
+        },
+        {
+          "text": "About CKS",
+          "href": "/about/"
+        }
+      ]
+    },
+    {
       "host": "www.nice.org.uk",
       "landingPath": "/about/what-we-do/life-sciences",
       "text": "Life sciences",
@@ -94,39 +127,6 @@
         },
         {
           "text": "About BNFC",
-          "href": "/about/"
-        }
-      ]
-    },
-    {
-      "host": "cks.nice.org.uk",
-      "landingPath": "/",
-      "text": "Clinical Knowledge Summaries (CKS)",
-      "abbreviation": false,
-      "title": "Clinical Knowledge Summaries",
-      "id": "cks",
-      "footer": true,
-      "header": true,
-      "links": [
-        {
-          "image": "cks",
-          "text": "CKS - Home",
-          "href": "/"
-        },
-        {
-          "text": "Health topics A to Z",
-          "href": "/topics/"
-        },
-        {
-          "text": "Specialities",
-          "href": "/specialities/"
-        },
-        {
-          "text": "What's new",
-          "href": "/whats-new/"
-        },
-        {
-          "text": "About CKS",
           "href": "/about/"
         }
       ]
