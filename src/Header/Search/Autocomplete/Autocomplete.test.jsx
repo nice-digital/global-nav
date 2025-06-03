@@ -235,6 +235,26 @@ describe("Autocomplete", () => {
 			expect(suggester).toBeCalledTimes(1);
 			expect(suggester).toBeCalledWith([option], "diabe", 5);
 		});
+
+		it("announces the number of autocomplete results in the live region", async () => {
+			const option = {
+				Title: "diabetes type 1",
+				Link: "/diabetes1",
+			};
+			const { getByRole, findByText } = render(
+				<Autocomplete source={[option]} query="dia" />
+			);
+			const input = getByRole("combobox");
+			const user = userEvent.setup();
+
+			await user.type(input, "b");
+
+			const announcement = await findByText(
+				/1 search autocomplete result available\. Use up and down arrow keys to review and Enter to select\./i,
+				{ selector: 'div[aria-live="polite"]' }
+			);
+			expect(announcement).toBeInTheDocument();
+		});
 	});
 
 	describe("Non-autocomplete", () => {

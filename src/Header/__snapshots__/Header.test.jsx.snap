@@ -80,6 +80,11 @@ exports[`Header Matches snapshot 1`] = `
                 class="ac"
               >
                 <div
+                  aria-atomic="true"
+                  aria-live="polite"
+                  style="position: absolute; left: -9999px; height: 1px; width: 1px; overflow: hidden;"
+                />
+                <div
                   class="autocomplete__wrapper"
                 >
                   <input

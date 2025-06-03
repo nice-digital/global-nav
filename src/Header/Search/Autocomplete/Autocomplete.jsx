@@ -38,6 +38,7 @@ export default function Autocomplete(props) {
 		[queryText, setQueryText] = useState(query || ""),
 		[debouncedQueryText] = useDebouncedValue(queryText, rateLimitWait),
 		[suggestions, setSuggestions] = useState([]),
+		[liveMessage, setLiveMessage] = useState(""),
 		inputChangeHandler = (event) => {
 			setQueryText(event.target.value);
 		};
@@ -99,6 +100,7 @@ export default function Autocomplete(props) {
 			debouncedQueryText.length < minAutocompleteLength
 		) {
 			setSuggestions([]);
+			setLiveMessage("");
 			return;
 		}
 
@@ -114,7 +116,13 @@ export default function Autocomplete(props) {
 		}
 
 		if (source) {
-			setSuggestions(suggester(source, debouncedQueryText, maxResults));
+			const results = suggester(source, debouncedQueryText, maxResults);
+			setSuggestions(results);
+			setLiveMessage(
+				`${results.length} search autocomplete result${
+					results.length !== 1 ? "s" : ""
+				} available. Use up and down arrow keys to review and Enter to select.`
+			);
 			return;
 		}
 
@@ -126,12 +134,32 @@ export default function Autocomplete(props) {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				setSuggestions(data.slice(0, maxResults));
+				const results = data.slice(0, maxResults);
+				setSuggestions(results);
+				setLiveMessage(
+					`${results.length} result${
+						results.length !== 1 ? "s" : ""
+					} available. Use up and down arrow keys to review and Enter to select.`
+				);
 			});
-	}, [debouncedQueryText]);
+	}, [debouncedQueryText, sourceProp]);
 
 	return (
 		<div className={styles.ac}>
+			{/* ARIA live region for screen reader announcements */}
+			<div
+				aria-live="polite"
+				aria-atomic="true"
+				style={{
+					position: "absolute",
+					left: "-9999px",
+					height: "1px",
+					width: "1px",
+					overflow: "hidden",
+				}}
+			>
+				{liveMessage}
+			</div>
 			{!sourceProp || !isClient ? (
 				<div className="autocomplete__wrapper">
 					<input
