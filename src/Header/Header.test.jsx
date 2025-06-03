@@ -248,7 +248,9 @@ describe("Header", () => {
 		it("should track logo click", async () => {
 			const { getByRole } = render(<Header {...defaultProps} />),
 				user = userEvent.setup(),
-				homeLink = getByRole("link", { name: "Home" });
+				homeLink = getByRole("link", {
+					name: "NICE: National Institute for Health and Care Excellence homepage",
+				});
 
 			await user.click(homeLink);
 
@@ -267,7 +269,9 @@ describe("Header", () => {
 
 		it("should prevent default and navigate in event callback on logo click", () => {
 			const { getByRole } = render(<Header {...defaultProps} />),
-				homeLink = getByRole("link", { name: "Home" }),
+				homeLink = getByRole("link", {
+					name: "NICE: National Institute for Health and Care Excellence homepage",
+				}),
 				clickEvent = createEvent.click(homeLink);
 
 			fireEvent(homeLink, clickEvent);

@@ -24,6 +24,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
             <button
               aria-controls="dropdown-more-from-nice"
               aria-expanded="false"
+              aria-label="First link"
               class="link"
               id="navlink-more-from-nice"
             >
@@ -190,7 +191,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
             data-tracking="Second link"
           >
             <a
-              aria-label="Second link abbreviation title"
+              aria-label="Second link abbreviation title (lnk2)"
               class="link"
               href="https://www.test-link2.nice.org/url2/"
               id="navlink-link2"
@@ -204,7 +205,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
             data-tracking="Third link"
           >
             <a
-              aria-label="Third link abbreviation title"
+              aria-label="Third link abbreviation title (lnk3)"
               class="link"
               href="https://www.test.nice.org/url3/"
               id="navlink-link3"
@@ -254,6 +255,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
             data-tracking="Fourth link"
           >
             <a
+              aria-label="Fourth link"
               class="link"
               href="https://www.test.nice.org/url4/"
               id="navlink-test-service"
@@ -328,6 +330,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
             <button
               aria-controls="dropdown-more-from-nice"
               aria-expanded="false"
+              aria-label="First link"
               class="link"
               id="navlink-more-from-nice"
             >
@@ -494,7 +497,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
             data-tracking="Second link"
           >
             <a
-              aria-label="Second link abbreviation title"
+              aria-label="Second link abbreviation title (lnk2)"
               class="link"
               href="https://www.test-link2.nice.org/url2/"
               id="navlink-link2"
@@ -508,7 +511,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
             data-tracking="Third link"
           >
             <a
-              aria-label="Third link abbreviation title"
+              aria-label="Third link abbreviation title (lnk3)"
               class="link"
               href="https://www.test.nice.org/url3/"
               id="navlink-link3"
@@ -558,6 +561,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
             data-tracking="Fourth link"
           >
             <a
+              aria-label="Fourth link"
               class="link"
               href="https://www.test.nice.org/url4/"
               id="navlink-test-service"
@@ -598,6 +602,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
             <button
               aria-controls="dropdown-more-from-nice"
               aria-expanded="false"
+              aria-label="First link"
               class="link"
               id="navlink-more-from-nice"
             >
@@ -764,7 +769,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
             data-tracking="Second link"
           >
             <a
-              aria-label="Second link abbreviation title"
+              aria-label="Second link abbreviation title (lnk2)"
               class="link"
               href="https://www.test-link2.nice.org/url2/"
               id="navlink-link2"
@@ -778,7 +783,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
             data-tracking="Third link"
           >
             <a
-              aria-label="Third link abbreviation title"
+              aria-label="Third link abbreviation title (lnk3)"
               class="link"
               href="https://www.test.nice.org/url3/"
               id="navlink-link3"
@@ -828,6 +833,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
             data-tracking="Fourth link"
           >
             <a
+              aria-label="Fourth link"
               class="link"
               href="https://www.test.nice.org/url4/"
               id="navlink-test-service"
@@ -888,6 +894,7 @@ exports[`Nav internalServices Matches snapshot with sub links for selected inter
           >
             <a
               aria-current="true"
+              aria-label="First internal service"
               class="link"
               href="https://www.test.nice.org/first-internal-service"
               id="navlink-internal1"

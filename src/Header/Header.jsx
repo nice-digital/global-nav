@@ -137,7 +137,7 @@ const Header = ({
 						<div className={styles.container}>
 							<a
 								href="https://www.nice.org.uk/"
-								aria-label="Home"
+								aria-label="NICE: National Institute for Health and Care Excellence homepage"
 								className={styles.home}
 								onClick={handleLogoClick}
 								data-tracking="Logo"
@@ -326,7 +326,7 @@ export class OldHeader extends Component {
 							<div className={styles.container}>
 								<a
 									href="https://www.nice.org.uk/"
-									aria-label="Home"
+									aria-label="NICE: National Institute for Health and Care Excellence homepage"
 									className={styles.home}
 									onClick={this.handleLogoClick}
 									data-tracking="Logo"
@@ -396,6 +396,21 @@ export class OldHeader extends Component {
 
 //TODO convert proptypes to typescript types
 Header.propTypes = {
+	service: PropTypes.string,
+	skipLinkId: PropTypes.string,
+	enabled: PropTypes.bool,
+	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onDropdownOpen: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onDropdownClose: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	onRendered: PropTypes.func,
+	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
+	renderSearchOnly: PropTypes.bool,
+};
+
+OldHeader.propTypes = {
 	service: PropTypes.string,
 	skipLinkId: PropTypes.string,
 	enabled: PropTypes.bool,

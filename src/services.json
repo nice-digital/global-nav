@@ -11,7 +11,7 @@
     {
       "host": "www.nice.org.uk",
       "landingPath": "/standards-and-indicators",
-      "text": "Standards and indicators",
+      "text": "Standards\u00A0and indicators",
       "id": "standards-and-indicators",
       "footer": true,
       "header": true
@@ -19,8 +19,8 @@
     {
       "host": "cks.nice.org.uk",
       "landingPath": "/",
-      "text": "Clinical Knowledge Summaries (CKS)",
-      "abbreviation": false,
+      "text": "Clinical\u00A0Knowledge Summaries (CKS)",
+      "abbreviation": "CKS",
       "title": "Clinical Knowledge Summaries",
       "id": "cks",
       "footer": true,
@@ -60,8 +60,8 @@
     {
       "host": "bnf.nice.org.uk",
       "landingPath": "/",
-      "text": "British National Formulary (BNF)",
-      "abbreviation": false,
+      "text": "British National Formulary\u00A0(BNF)",
+      "abbreviation": "BNF",
       "title": "British National Formulary",
       "id": "bnf",
       "footer": true,
@@ -98,7 +98,7 @@
       "host": "bnfc.nice.org.uk",
       "landingPath": "/",
       "text": "British National Formulary for Children (BNFC)",
-      "abbreviation": false,
+      "abbreviation": "BNFC",
       "title": "British National Formulary for Children",
       "id": "bnfc",
       "footer": true,

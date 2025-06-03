@@ -27,7 +27,7 @@ describe("NavLinks", () => {
 	it("should render a top level anchor if there's no dropdown", () => {
 		const { getByRole } = render(<NavLinks {...defaultProps} />);
 		expect(
-			getByRole("link", { name: "Second link abbreviation title" })
+			getByRole("link", { name: "Second link abbreviation title (lnk2)" })
 		).toBeInTheDocument();
 	});
 
@@ -65,7 +65,7 @@ describe("NavLinks", () => {
 	it("should add an abbreviation title label", () => {
 		const { getByRole } = render(<NavLinks {...defaultProps} />),
 			secondLink = getByRole("link", {
-				name: "Second link abbreviation title",
+				name: "Second link abbreviation title (lnk2)",
 			});
 
 		expect(secondLink).toHaveTextContent("Second link");
@@ -78,7 +78,7 @@ describe("NavLinks", () => {
 				</HeaderContextProvider>
 			),
 			secondLink = getByRole("link", {
-				name: "Second link abbreviation title",
+				name: "Second link abbreviation title (lnk2)",
 			}),
 			clickEvent = createEvent.click(secondLink);
 
@@ -97,7 +97,7 @@ describe("NavLinks", () => {
 				</HeaderContextProvider>
 			),
 			secondLink = getByRole("link", {
-				name: "Second link abbreviation title",
+				name: "Second link abbreviation title (lnk2)",
 			}),
 			user = userEvent.setup();
 

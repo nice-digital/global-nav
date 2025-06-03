@@ -12,6 +12,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       <button
         aria-controls="dropdown-more-from-nice"
         aria-expanded="false"
+        aria-label="First link"
         class="link"
         id="navlink-more-from-nice"
       >
@@ -178,7 +179,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       data-tracking="Second link"
     >
       <a
-        aria-label="Second link abbreviation title"
+        aria-label="Second link abbreviation title (lnk2)"
         class="link"
         href="https://www.test-link2.nice.org/url2/"
         id="navlink-link2"
@@ -192,7 +193,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       data-tracking="Third link"
     >
       <a
-        aria-label="Third link abbreviation title"
+        aria-label="Third link abbreviation title (lnk3)"
         class="link"
         href="https://www.test.nice.org/url3/"
         id="navlink-link3"
@@ -242,6 +243,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
       data-tracking="Fourth link"
     >
       <a
+        aria-label="Fourth link"
         class="link"
         href="https://www.test.nice.org/url4/"
         id="navlink-test-service"

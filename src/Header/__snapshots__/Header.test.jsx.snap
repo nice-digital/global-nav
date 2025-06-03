@@ -39,7 +39,7 @@ exports[`Header Matches snapshot 1`] = `
         class="container"
       >
         <a
-          aria-label="Home"
+          aria-label="NICE: National Institute for Health and Care Excellence homepage"
           class="home"
           data-tracking="Logo"
           href="https://www.nice.org.uk/"
@@ -167,6 +167,7 @@ exports[`Header Matches snapshot 1`] = `
                 data-tracking="Guidance"
               >
                 <a
+                  aria-label="Guidance"
                   class="link"
                   href="https://www.nice.org.uk/guidance"
                   id="navlink-guidance"
@@ -180,6 +181,7 @@ exports[`Header Matches snapshot 1`] = `
                 data-tracking="Standards and indicators"
               >
                 <a
+                  aria-label="Standards and indicators"
                   class="link"
                   href="https://www.nice.org.uk/standards-and-indicators"
                   id="navlink-standards-and-indicators"
@@ -193,7 +195,7 @@ exports[`Header Matches snapshot 1`] = `
                 data-tracking="Clinical Knowledge Summaries (CKS)"
               >
                 <a
-                  aria-label="false"
+                  aria-label="Clinical Knowledge Summaries (CKS)"
                   class="link"
                   href="https://cks.nice.org.uk/"
                   id="navlink-cks"
@@ -207,7 +209,7 @@ exports[`Header Matches snapshot 1`] = `
                 data-tracking="British National Formulary (BNF)"
               >
                 <a
-                  aria-label="false"
+                  aria-label="British National Formulary (BNF)"
                   class="link"
                   href="https://bnf.nice.org.uk/"
                   id="navlink-bnf"
@@ -221,7 +223,7 @@ exports[`Header Matches snapshot 1`] = `
                 data-tracking="British National Formulary for Children (BNFC)"
               >
                 <a
-                  aria-label="false"
+                  aria-label="British National Formulary for Children (BNFC)"
                   class="link"
                   href="https://bnfc.nice.org.uk/"
                   id="navlink-bnfc"
@@ -237,6 +239,7 @@ exports[`Header Matches snapshot 1`] = `
                 <button
                   aria-controls="dropdown-more-from-nice"
                   aria-expanded="false"
+                  aria-label="More from NICE"
                   class="link"
                   id="navlink-more-from-nice"
                 >

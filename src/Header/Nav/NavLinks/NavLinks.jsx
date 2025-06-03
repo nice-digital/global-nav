@@ -109,7 +109,11 @@ export function NavLinks({
 										aria-controls={`dropdown-${id}`}
 										aria-expanded={id === idOfOpenDropdown ? true : false}
 										id={`navlink-${id}`}
-										aria-label={abbreviation && title}
+										aria-label={
+											title && abbreviation
+												? `${title} (${abbreviation})`
+												: text.replace(/\u00A0/g, " ")
+										}
 									>
 										<span>{text}</span>
 										{id === idOfOpenDropdown ? (
@@ -131,7 +135,11 @@ export function NavLinks({
 											className={styles.link}
 											onClick={handleNavLinkClick}
 											id={`navlink-${id}`}
-											aria-label={abbreviation && title}
+											aria-label={
+												title && abbreviation
+													? `${title} (${abbreviation})`
+													: text.replace(/\u00A0/g, " ")
+											}
 										>
 											<span>{text}</span>
 											{nestedLinks && (
