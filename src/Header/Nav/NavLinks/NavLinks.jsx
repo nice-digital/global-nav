@@ -9,7 +9,7 @@ import SubNav from "../SubNav";
 import Dropdown from "../Dropdown";
 import { HeaderContext } from "../../context/HeaderContext";
 
-import { MoreFromNICE, LifeSciences } from "./../Dropdown/Components";
+import { MoreFromNICE } from "./../Dropdown/Components";
 
 import styles from "./NavLinks.module.scss";
 import {
@@ -20,7 +20,6 @@ import {
 
 const componentsWithDropdowns = {
 	"more-from-nice": MoreFromNICE,
-	"life-sciences": LifeSciences,
 };
 
 export function NavLinks({

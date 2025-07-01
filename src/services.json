@@ -50,14 +50,6 @@
       ]
     },
     {
-      "host": "www.nice.org.uk",
-      "landingPath": "/about/what-we-do/life-sciences",
-      "text": "Life sciences",
-      "id": "life-sciences",
-      "footer": true,
-      "header": false
-    },
-    {
       "host": "bnf.nice.org.uk",
       "landingPath": "/",
       "text": "British National Formulary\u00A0(BNF)",
@@ -133,18 +125,26 @@
     },
     {
       "host": "www.nice.org.uk",
+      "landingPath": "/about/what-we-do/life-sciences",
+      "text": "Life sciences",
+      "id": "life-sciences",
+      "footer": true,
+      "header": true
+    },
+    {
+      "host": "www.nice.org.uk",
       "landingPath": "/more-from-nice",
-      "text": "More from NICE",
+      "text": "More\u00A0from NICE",
       "id": "more-from-nice",
       "header": true,
       "footer": false
     },
     {
       "host": "www.nice.org.uk",
-      "landingPath": "/about/what-we-do/evidence-services/journals-and-databases",
-      "title": "Journals and databases",
-      "text": "Knowledge resources",
-      "id": "knowledge-resources",
+      "landingPath": "/library-and-knowledge-services",
+      "title": "Library and knowledge services",
+      "text": "Library and knowledge services",
+      "id": "knowledge-services",
       "footer": true,
       "header": false
     }

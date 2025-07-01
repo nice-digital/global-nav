@@ -14,28 +14,32 @@ export function MoreFromNICE({ rootUrl }) {
 				>
 					<ul className={classnames(styles.listColumnar, "mt--d")}>
 						<li>
-							<a href={`${rootUrl}/`}>What NICE does</a>
+							<a href={`${rootUrl}/about-us/what-we-do`}>What NICE does</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/`}>About us</a>
+							<a href={`${rootUrl}/about-us`}>About us</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/`}>Reusing our content</a>
+							<a href={`${rootUrl}/re-using-our-content`}>
+								Reusing our content
+							</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/`}>Implementing NICE guidance</a>
+							<a href={`${rootUrl}/get-involved/implementing-nice-guidance`}>
+								Implementing NICE guidance
+							</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/`}>News, blogs and podcasts</a>
+							<a href={`${rootUrl}/news`}>News, blogs and podcasts</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/`}>Contact us</a>
+							<a href={`${rootUrl}/get-involved/contact-us`}>Contact us</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/`}>Get involved</a>
+							<a href={`${rootUrl}/get-involved`}>Get involved</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/`}>Careers</a>
+							<a href={`${rootUrl}/careers`}>Careers</a>
 						</li>
 					</ul>
 				</GridItem>
