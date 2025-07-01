@@ -175,9 +175,6 @@ export default function Autocomplete(props) {
 				</div>
 			) : (
 				<Combobox value={queryText} onChange={onValueChangeHandler} nullable>
-					<Combobox.Label className="visually-hidden">
-						{placeholder}
-					</Combobox.Label>
 					<Combobox.Input
 						id="autocomplete"
 						name="q"

@@ -10,15 +10,9 @@ exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
       aria-live="polite"
       style="position: absolute; left: -9999px; height: 1px; width: 1px; overflow: hidden;"
     />
-    <label
-      class="visually-hidden"
-      data-headlessui-state=""
-      id="headlessui-combobox-label-:r0:"
-    />
     <input
       aria-autocomplete="list"
       aria-expanded="false"
-      aria-labelledby="headlessui-combobox-label-:r0:"
       autocomplete="off"
       class="autocomplete__input autocomplete__input--default"
       data-headlessui-state=""
