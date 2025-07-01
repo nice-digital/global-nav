@@ -32,7 +32,7 @@ FooterLink.propTypes = {
 	landingPath: PropTypes.string,
 	id: PropTypes.string,
 	text: PropTypes.string,
-	abbreviation: PropTypes.bool,
+	abbreviation: PropTypes.string,
 	title: PropTypes.string,
 };
 
