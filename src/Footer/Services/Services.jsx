@@ -32,7 +32,7 @@ FooterLink.propTypes = {
 	landingPath: PropTypes.string,
 	id: PropTypes.string,
 	text: PropTypes.string,
-	abbreviation: PropTypes.string,
+	abbreviation: PropTypes.bool,
 	title: PropTypes.string,
 };
 
@@ -48,8 +48,7 @@ function FooterLink({ host, landingPath, text, abbreviation, title }) {
 				{abbreviation ? (
 					<>
 						<abbr title={title}>
-							{abbreviation}{" "}
-							<span className={styles.visuallyHidden}>{title}</span>
+							{text} <span className={styles.visuallyHidden}>{title}</span>
 						</abbr>
 						<span aria-hidden="true" className={styles.tooltip}>
 							{title}
