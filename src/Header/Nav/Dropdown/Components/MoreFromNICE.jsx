@@ -9,7 +9,7 @@ export function MoreFromNICE({ rootUrl }) {
 			<h2 className="mt--0">Explore more from NICE</h2>
 			<Grid gutter="loose">
 				<GridItem
-					data-tracking="Get involved"
+					data-tracking="Quick links"
 					className={classnames(styles.aboutCol)}
 				>
 					<ul className={classnames(styles.listColumnar, "mt--d")}>
