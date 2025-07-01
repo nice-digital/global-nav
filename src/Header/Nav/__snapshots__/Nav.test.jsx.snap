@@ -78,7 +78,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                   >
                     <div
                       class="gridItem aboutCol"
-                      data-tracking="Quick links"
+                      data-tracking="Explore more"
                     >
                       <ul
                         class="listColumnar mt--d"
@@ -145,7 +145,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                   <hr />
                   <ul
                     class="inlineList mt--d"
-                    data-tracking="Contact us"
+                    data-tracking="Quick links"
                   >
                     <li>
                       <a
@@ -384,7 +384,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                   >
                     <div
                       class="gridItem aboutCol"
-                      data-tracking="Quick links"
+                      data-tracking="Explore more"
                     >
                       <ul
                         class="listColumnar mt--d"
@@ -451,7 +451,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                   <hr />
                   <ul
                     class="inlineList mt--d"
-                    data-tracking="Contact us"
+                    data-tracking="Quick links"
                   >
                     <li>
                       <a
@@ -656,7 +656,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                   >
                     <div
                       class="gridItem aboutCol"
-                      data-tracking="Quick links"
+                      data-tracking="Explore more"
                     >
                       <ul
                         class="listColumnar mt--d"
@@ -723,7 +723,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                   <hr />
                   <ul
                     class="inlineList mt--d"
-                    data-tracking="Contact us"
+                    data-tracking="Quick links"
                   >
                     <li>
                       <a

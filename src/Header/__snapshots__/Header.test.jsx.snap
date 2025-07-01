@@ -312,7 +312,7 @@ exports[`Header Matches snapshot 1`] = `
                       >
                         <div
                           class="gridItem aboutCol"
-                          data-tracking="Quick links"
+                          data-tracking="Explore more"
                         >
                           <ul
                             class="listColumnar mt--d"
@@ -379,7 +379,7 @@ exports[`Header Matches snapshot 1`] = `
                       <hr />
                       <ul
                         class="inlineList mt--d"
-                        data-tracking="Contact us"
+                        data-tracking="Quick links"
                       >
                         <li>
                           <a

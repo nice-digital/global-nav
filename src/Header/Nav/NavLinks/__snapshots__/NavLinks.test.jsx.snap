@@ -66,7 +66,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
             >
               <div
                 class="gridItem aboutCol"
-                data-tracking="Quick links"
+                data-tracking="Explore more"
               >
                 <ul
                   class="listColumnar mt--d"
@@ -133,7 +133,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
             <hr />
             <ul
               class="inlineList mt--d"
-              data-tracking="Contact us"
+              data-tracking="Quick links"
             >
               <li>
                 <a

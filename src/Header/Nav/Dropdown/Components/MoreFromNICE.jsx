@@ -9,7 +9,7 @@ export function MoreFromNICE({ rootUrl }) {
 			<h2 className="mt--0">Explore more from NICE</h2>
 			<Grid gutter="loose">
 				<GridItem
-					data-tracking="Quick links"
+					data-tracking="Explore more"
 					className={classnames(styles.aboutCol)}
 				>
 					<ul className={classnames(styles.listColumnar, "mt--d")}>
@@ -47,7 +47,7 @@ export function MoreFromNICE({ rootUrl }) {
 			<hr />
 			<ul
 				className={classnames(styles.inlineList, "mt--d")}
-				data-tracking="Contact us"
+				data-tracking="Quick links"
 			>
 				<li>
 					<a href={`${rootUrl}/`}>Join a committee</a>
