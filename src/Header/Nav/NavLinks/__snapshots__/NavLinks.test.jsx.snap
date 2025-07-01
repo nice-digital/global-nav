@@ -73,56 +73,56 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
                 >
                   <li>
                     <a
-                      href="https://www.nice.org.uk/"
+                      href="https://www.nice.org.uk/about-us/what-we-do"
                     >
                       What NICE does
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/"
+                      href="https://www.nice.org.uk/about-us"
                     >
                       About us
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/"
+                      href="https://www.nice.org.uk/re-using-our-content"
                     >
                       Reusing our content
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/"
+                      href="https://www.nice.org.uk/get-involved/implementing-nice-guidance"
                     >
                       Implementing NICE guidance
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/"
+                      href="https://www.nice.org.uk/news"
                     >
                       News, blogs and podcasts
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/"
+                      href="https://www.nice.org.uk/get-involved/contact-us"
                     >
                       Contact us
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/"
+                      href="https://www.nice.org.uk/get-involved"
                     >
                       Get involved
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/"
+                      href="https://www.nice.org.uk/careers"
                     >
                       Careers
                     </a>

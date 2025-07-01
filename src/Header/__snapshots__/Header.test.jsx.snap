@@ -239,7 +239,21 @@ exports[`Header Matches snapshot 1`] = `
                 </a>
               </li>
               <li
-                data-tracking="More from NICE"
+                data-tracking="Life sciences"
+              >
+                <a
+                  aria-label="Life sciences"
+                  class="link"
+                  href="https://www.nice.org.uk/about/what-we-do/life-sciences"
+                  id="navlink-life-sciences"
+                >
+                  <span>
+                    Life sciences
+                  </span>
+                </a>
+              </li>
+              <li
+                data-tracking="More from NICE"
               >
                 <button
                   aria-controls="dropdown-more-from-nice"
@@ -249,7 +263,7 @@ exports[`Header Matches snapshot 1`] = `
                   id="navlink-more-from-nice"
                 >
                   <span>
-                    More from NICE
+                    More from NICE
                   </span>
                   <svg
                     aria-hidden="true"
@@ -270,7 +284,7 @@ exports[`Header Matches snapshot 1`] = `
                 </button>
                 <div
                   class="dropdown wrapper"
-                  data-tracking="More from NICE dropdown"
+                  data-tracking="More from NICE dropdown"
                   id="dropdown-more-from-nice"
                 >
                   <div
@@ -278,10 +292,10 @@ exports[`Header Matches snapshot 1`] = `
                   >
                     <a
                       class="skiplink"
-                      href="#navlink-more-from-nice"
+                      href="#navlink-knowledge-services"
                     >
                       Skip 
-                      More from NICE
+                      More from NICE
                        submenu
                     </a>
                     <section
@@ -305,56 +319,56 @@ exports[`Header Matches snapshot 1`] = `
                           >
                             <li>
                               <a
-                                href="https://www.nice.org.uk/"
+                                href="https://www.nice.org.uk/about-us/what-we-do"
                               >
                                 What NICE does
                               </a>
                             </li>
                             <li>
                               <a
-                                href="https://www.nice.org.uk/"
+                                href="https://www.nice.org.uk/about-us"
                               >
                                 About us
                               </a>
                             </li>
                             <li>
                               <a
-                                href="https://www.nice.org.uk/"
+                                href="https://www.nice.org.uk/re-using-our-content"
                               >
                                 Reusing our content
                               </a>
                             </li>
                             <li>
                               <a
-                                href="https://www.nice.org.uk/"
+                                href="https://www.nice.org.uk/get-involved/implementing-nice-guidance"
                               >
                                 Implementing NICE guidance
                               </a>
                             </li>
                             <li>
                               <a
-                                href="https://www.nice.org.uk/"
+                                href="https://www.nice.org.uk/news"
                               >
                                 News, blogs and podcasts
                               </a>
                             </li>
                             <li>
                               <a
-                                href="https://www.nice.org.uk/"
+                                href="https://www.nice.org.uk/get-involved/contact-us"
                               >
                                 Contact us
                               </a>
                             </li>
                             <li>
                               <a
-                                href="https://www.nice.org.uk/"
+                                href="https://www.nice.org.uk/get-involved"
                               >
                                 Get involved
                               </a>
                             </li>
                             <li>
                               <a
-                                href="https://www.nice.org.uk/"
+                                href="https://www.nice.org.uk/careers"
                               >
                                 Careers
                               </a>
