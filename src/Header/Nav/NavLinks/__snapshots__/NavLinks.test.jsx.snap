@@ -66,7 +66,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
             >
               <div
                 class="gridItem aboutCol"
-                data-tracking="Get involved"
+                data-tracking="Quick links"
               >
                 <ul
                   class="listColumnar mt--d"

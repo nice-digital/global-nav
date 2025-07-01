@@ -78,7 +78,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                   >
                     <div
                       class="gridItem aboutCol"
-                      data-tracking="Get involved"
+                      data-tracking="Quick links"
                     >
                       <ul
                         class="listColumnar mt--d"
@@ -384,7 +384,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                   >
                     <div
                       class="gridItem aboutCol"
-                      data-tracking="Get involved"
+                      data-tracking="Quick links"
                     >
                       <ul
                         class="listColumnar mt--d"
@@ -656,7 +656,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                   >
                     <div
                       class="gridItem aboutCol"
-                      data-tracking="Get involved"
+                      data-tracking="Quick links"
                     >
                       <ul
                         class="listColumnar mt--d"
