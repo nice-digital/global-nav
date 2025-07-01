@@ -58,7 +58,71 @@ exports[`Footer Matches snapshot 1`] = `
               class="link"
               href="https://cks.nice.org.uk/"
             >
-              Clinical Knowledge Summaries (CKS)
+              <abbr
+                title="Clinical Knowledge Summaries"
+              >
+                CKS
+                 
+                <span
+                  class="visuallyHidden"
+                >
+                  Clinical Knowledge Summaries
+                </span>
+              </abbr>
+              <span
+                aria-hidden="true"
+                class="tooltip"
+              >
+                Clinical Knowledge Summaries
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://bnf.nice.org.uk/"
+            >
+              <abbr
+                title="British National Formulary"
+              >
+                BNF
+                 
+                <span
+                  class="visuallyHidden"
+                >
+                  British National Formulary
+                </span>
+              </abbr>
+              <span
+                aria-hidden="true"
+                class="tooltip"
+              >
+                British National Formulary
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://bnfc.nice.org.uk/"
+            >
+              <abbr
+                title="British National Formulary for Children"
+              >
+                BNFC
+                 
+                <span
+                  class="visuallyHidden"
+                >
+                  British National Formulary for Children
+                </span>
+              </abbr>
+              <span
+                aria-hidden="true"
+                class="tooltip"
+              >
+                British National Formulary for Children
+              </span>
             </a>
           </li>
           <li>
@@ -72,25 +136,9 @@ exports[`Footer Matches snapshot 1`] = `
           <li>
             <a
               class="link"
-              href="https://bnf.nice.org.uk/"
+              href="https://www.nice.org.uk/library-and-knowledge-services"
             >
-              British National Formulary (BNF)
-            </a>
-          </li>
-          <li>
-            <a
-              class="link"
-              href="https://bnfc.nice.org.uk/"
-            >
-              British National Formulary for Children (BNFC)
-            </a>
-          </li>
-          <li>
-            <a
-              class="link"
-              href="https://www.nice.org.uk/about/what-we-do/evidence-services/journals-and-databases"
-            >
-              Knowledge resources
+              Library and knowledge services
             </a>
           </li>
         </ul>
@@ -103,23 +151,23 @@ exports[`Footer Matches snapshot 1`] = `
         >
           <li>
             <a
-              href="https://www.nice.org.uk/about/what-we-do/into-practice"
+              href="https://www.nice.org.uk/about-us/what-we-do"
             >
-              Into practice
+              What NICE does
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nice.org.uk/get-involved/implementing-nice-guidance"
+            >
+              Implementing NICE guidance
             </a>
           </li>
           <li>
             <a
               href="https://www.nice.org.uk/get-involved"
             >
-              Get involved with NICE
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.nice.org.uk/get-involved/jobs"
-            >
-              Jobs
+              Get involved
             </a>
           </li>
           <li>
@@ -131,9 +179,16 @@ exports[`Footer Matches snapshot 1`] = `
           </li>
           <li>
             <a
+              href="https://www.nice.org.uk/careers"
+            >
+              Careers
+            </a>
+          </li>
+          <li>
+            <a
               href="https://www.nice.org.uk/news"
             >
-              News
+              News, blogs and podcasts
             </a>
           </li>
           <li>
