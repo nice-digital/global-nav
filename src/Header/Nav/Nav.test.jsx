@@ -1,7 +1,7 @@
 import Nav from "./Nav";
 import { render, createEvent, fireEvent } from "@testing-library/react";
 
-import services from "./__mocks__/services.json";
+import services from "./__fixtures__/services.json";
 import {
 	eventName,
 	defaultEventCategory,
@@ -9,7 +9,9 @@ import {
 	eventTimeout,
 } from "../../tracker";
 
-jest.mock("./../../services.json", () => require("./__mocks__/services.json"));
+jest.mock("./../../services.json", () =>
+	require("./__fixtures__/services.json")
+);
 
 describe("Nav", () => {
 	const defaultProps = {

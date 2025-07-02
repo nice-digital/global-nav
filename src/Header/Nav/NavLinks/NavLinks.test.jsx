@@ -2,7 +2,7 @@ import { NavLinks } from "./NavLinks";
 import { createEvent, fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import services from "./../__mocks__/services.json";
+import services from "./../__fixtures__/services.json";
 import { HeaderContextProvider } from "../../context/HeaderContext";
 
 describe("NavLinks", () => {

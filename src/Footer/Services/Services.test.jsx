@@ -2,9 +2,11 @@ import Services from "./Services";
 
 import { render, within } from "@testing-library/react";
 
-import services from "./__mocks__/services.json";
+import services from "./__fixtures__/services.json";
 
-jest.mock("./../../services.json", () => require("./__mocks__/services.json"));
+jest.mock("./../../services.json", () =>
+	require("./__fixtures__/services.json")
+);
 
 describe("Services", () => {
 	it("Matches snapshot", () => {

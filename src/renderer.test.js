@@ -2,7 +2,7 @@ import { waitFor } from "@testing-library/react";
 import { headerId, footerId, renderHeader, renderFooter } from "./renderer";
 
 jest.mock("./services.json", () =>
-	require("./Header/Nav/__mocks__/services.json")
+	require("./Header/Nav/__fixtures__/services.json")
 );
 
 describe("renderer", () => {

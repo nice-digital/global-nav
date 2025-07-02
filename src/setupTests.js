@@ -25,9 +25,24 @@ Object.defineProperty(
 
 beforeEach(() => {
 	window.dataLayer = [];
+
+	// Mock console.error to suppress JSDOM navigation errors
+	const originalConsoleError = console.error;
+	jest.spyOn(console, "error").mockImplementation((...args) => {
+		// Check if this is a JSDOM navigation error
+		const message = args[0]?.toString() || "";
+		if (message.includes("Not implemented: navigation")) {
+			return; // Suppress this error
+		}
+		// Allow other errors through
+		originalConsoleError(...args);
+	});
 });
 
 afterEach(() => {
 	//window.location.assign.mockClear();
 	delete window.dataLayer;
+
+	// Restore console.error
+	console.error.mockRestore?.();
 });

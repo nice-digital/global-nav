@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Dropdown } from "./Dropdown";
 
 jest.mock("../../../services.json", () =>
-	require("./../__mocks__/services.json")
+	require("./../__fixtures__/services.json")
 );
 
 const DropdownComponent = () => <div data-testid="dropdown-component"></div>;
