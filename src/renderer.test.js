@@ -1,4 +1,4 @@
-import { act } from "react-dom/test-utils";
+import { waitFor } from "@testing-library/react";
 import { headerId, footerId, renderHeader, renderFooter } from "./renderer";
 
 jest.mock("./services.json", () =>
@@ -40,33 +40,35 @@ describe("renderer", () => {
 	});
 
 	describe("Header", () => {
-		it("Creates header root div if it doesn't exist", () => {
+		it("Creates header root div if it doesn't exist", async () => {
 			headerContainer.parentElement.removeChild(headerContainer);
 
-			act(() => {
+			await waitFor(() => {
 				renderHeader();
 			});
 
 			expect(document.getElementById(headerId)).not.toBeNull();
 		});
 
-		it("Renders header into existing header container div", () => {
+		it("Renders header into existing header container div", async () => {
 			expect(headerContainer.textContent).toEqual("");
 
-			act(() => {
+			await waitFor(() => {
 				renderHeader();
 			});
 
-			expect(headerContainer.textContent.length).toBeGreaterThan(0);
+			await waitFor(() => {
+				expect(headerContainer.textContent.length).toBeGreaterThan(0);
+			});
 		});
 
-		it("Doesn't render header if header is disabled", () => {
+		it("Doesn't render header if header is disabled", async () => {
 			window.global_nav_config = {
 				service: "test-service",
 				header: false,
 			};
 
-			act(() => {
+			await waitFor(() => {
 				renderHeader();
 			});
 
@@ -74,7 +76,7 @@ describe("renderer", () => {
 		});
 
 		describe("Render callbacks", () => {
-			it("Calls onRendering callback from function reference", () => {
+			it("Calls onRendering callback from function reference", async () => {
 				const onRendering = jest.fn();
 
 				window.global_nav_config = {
@@ -83,14 +85,14 @@ describe("renderer", () => {
 					},
 				};
 
-				act(() => {
+				await waitFor(() => {
 					renderHeader();
 				});
 
 				expect(onRendering).toHaveBeenCalledWith(headerContainer);
 			});
 
-			it("Calls onRendering callback from function name", () => {
+			it("Calls onRendering callback from function name", async () => {
 				const onRendering = jest.fn();
 
 				window.headerRenderingCallback = onRendering;
@@ -100,7 +102,7 @@ describe("renderer", () => {
 					},
 				};
 
-				act(() => {
+				await waitFor(() => {
 					renderHeader();
 				});
 
@@ -109,7 +111,7 @@ describe("renderer", () => {
 				delete window.headerRenderingCallback;
 			});
 
-			it("Calls onRendered callback from function reference", () => {
+			it("Calls onRendered callback from function reference", async () => {
 				const onRendered = jest.fn();
 
 				window.global_nav_config = {
@@ -118,14 +120,16 @@ describe("renderer", () => {
 					},
 				};
 
-				act(() => {
+				await waitFor(() => {
 					renderHeader();
 				});
 
-				expect(onRendered).toHaveBeenCalledWith(headerContainer);
+				await waitFor(() => {
+					expect(onRendered).toHaveBeenCalledWith(headerContainer);
+				});
 			});
 
-			it("Calls onRendered callback from function name", () => {
+			it("Calls onRendered callback from function name", async () => {
 				const onRendered = jest.fn();
 
 				window.headerRenderedCallback = onRendered;
@@ -135,11 +139,13 @@ describe("renderer", () => {
 					},
 				};
 
-				act(() => {
+				await waitFor(() => {
 					renderHeader();
 				});
 
-				expect(onRendered).toHaveBeenCalledWith(headerContainer);
+				await waitFor(() => {
+					expect(onRendered).toHaveBeenCalledWith(headerContainer);
+				});
 
 				delete window.headerRenderedCallback;
 			});
@@ -147,38 +153,40 @@ describe("renderer", () => {
 	});
 
 	describe("Footer", () => {
-		it("Creates footer root div if it doesn't exist", () => {
+		it("Creates footer root div if it doesn't exist", async () => {
 			footerContainer.parentElement.removeChild(footerContainer);
 
-			act(() => {
+			await waitFor(() => {
 				renderFooter();
 			});
 
 			expect(document.getElementById(footerId)).not.toBeNull();
 		});
 
-		it("Doesn't render footer if footer is disabled", () => {
+		it("Doesn't render footer if footer is disabled", async () => {
 			window.global_nav_config = {
 				footer: false,
 			};
 
 			expect(footerContainer.textContent).toEqual("");
 
-			act(() => {
+			await waitFor(() => {
 				renderFooter();
 			});
 
 			expect(headerContainer).toHaveTextContent("");
 		});
 
-		it("Renders footer into existing footer container div", () => {
+		it("Renders footer into existing footer container div", async () => {
 			expect(footerContainer.textContent).toEqual("");
 
-			act(() => {
+			await waitFor(() => {
 				renderFooter();
 			});
 
-			expect(footerContainer.textContent.length).toBeGreaterThan(0);
+			await waitFor(() => {
+				expect(footerContainer.textContent.length).toBeGreaterThan(0);
+			});
 		});
 	});
 });
