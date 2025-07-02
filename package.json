@@ -110,7 +110,7 @@
     "@babel/runtime": "^7.21.0",
     "@headlessui/react": "^1.7.14",
     "@mantine/hooks": "^7.1.5",
-    "@nice-digital/design-system": "^5.0.28",
+    "@nice-digital/design-system": "^5.5.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@use-it/event-listener": "^0.1.7",
     "classnames": "^2.3.2",
