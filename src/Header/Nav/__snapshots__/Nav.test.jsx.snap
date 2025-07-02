@@ -85,7 +85,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                       >
                         <li>
                           <a
-                            href="https://www.test.nice.org/about-us/what-we-do"
+                            href="https://www.test.nice.org/what-nice-does"
                           >
                             What NICE does
                           </a>
@@ -99,14 +99,14 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/re-using-our-content"
+                            href="https://www.test.nice.org/reusing-our-content"
                           >
                             Reusing our content
                           </a>
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/get-involved/implementing-nice-guidance"
+                            href="https://www.test.nice.org/implementing-nice-guidance"
                           >
                             Implementing NICE guidance
                           </a>
@@ -120,7 +120,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/get-involved/contact-us"
+                            href="https://www.test.nice.org/contact-us"
                           >
                             Contact us
                           </a>
@@ -149,14 +149,14 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                   >
                     <li>
                       <a
-                        href="https://www.test.nice.org/"
+                        href="https://www.test.nice.org/get-involved/our-committees"
                       >
                         Join a committee
                       </a>
                     </li>
                     <li>
                       <a
-                        href="https://www.test.nice.org/"
+                        href="https://www.test.nice.org/get-involved/consultations"
                       >
                         Comment on a consultation
                       </a>
@@ -391,7 +391,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                       >
                         <li>
                           <a
-                            href="https://www.test.nice.org/about-us/what-we-do"
+                            href="https://www.test.nice.org/what-nice-does"
                           >
                             What NICE does
                           </a>
@@ -405,14 +405,14 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/re-using-our-content"
+                            href="https://www.test.nice.org/reusing-our-content"
                           >
                             Reusing our content
                           </a>
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/get-involved/implementing-nice-guidance"
+                            href="https://www.test.nice.org/implementing-nice-guidance"
                           >
                             Implementing NICE guidance
                           </a>
@@ -426,7 +426,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/get-involved/contact-us"
+                            href="https://www.test.nice.org/contact-us"
                           >
                             Contact us
                           </a>
@@ -455,14 +455,14 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                   >
                     <li>
                       <a
-                        href="https://www.test.nice.org/"
+                        href="https://www.test.nice.org/get-involved/our-committees"
                       >
                         Join a committee
                       </a>
                     </li>
                     <li>
                       <a
-                        href="https://www.test.nice.org/"
+                        href="https://www.test.nice.org/get-involved/consultations"
                       >
                         Comment on a consultation
                       </a>
@@ -663,7 +663,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                       >
                         <li>
                           <a
-                            href="https://www.test.nice.org/about-us/what-we-do"
+                            href="https://www.test.nice.org/what-nice-does"
                           >
                             What NICE does
                           </a>
@@ -677,14 +677,14 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/re-using-our-content"
+                            href="https://www.test.nice.org/reusing-our-content"
                           >
                             Reusing our content
                           </a>
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/get-involved/implementing-nice-guidance"
+                            href="https://www.test.nice.org/implementing-nice-guidance"
                           >
                             Implementing NICE guidance
                           </a>
@@ -698,7 +698,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                         </li>
                         <li>
                           <a
-                            href="https://www.test.nice.org/get-involved/contact-us"
+                            href="https://www.test.nice.org/contact-us"
                           >
                             Contact us
                           </a>
@@ -727,14 +727,14 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                   >
                     <li>
                       <a
-                        href="https://www.test.nice.org/"
+                        href="https://www.test.nice.org/get-involved/our-committees"
                       >
                         Join a committee
                       </a>
                     </li>
                     <li>
                       <a
-                        href="https://www.test.nice.org/"
+                        href="https://www.test.nice.org/get-involved/consultations"
                       >
                         Comment on a consultation
                       </a>

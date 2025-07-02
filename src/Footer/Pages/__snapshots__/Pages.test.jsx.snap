@@ -10,14 +10,14 @@ exports[`Pages Matches snapshot 1`] = `
     >
       <li>
         <a
-          href="https://www.nice.org.uk/about-us/what-we-do"
+          href="https://www.nice.org.uk/what-nice-does"
         >
           What NICE does
         </a>
       </li>
       <li>
         <a
-          href="https://www.nice.org.uk/get-involved/implementing-nice-guidance"
+          href="https://www.nice.org.uk/implementing-nice-guidance"
         >
           Implementing NICE guidance
         </a>
@@ -52,14 +52,14 @@ exports[`Pages Matches snapshot 1`] = `
       </li>
       <li>
         <a
-          href="https://www.nice.org.uk/news/nice-newsletters-and-alerts"
+          href="https://www.nice.org.uk/nice-newsletters-and-alerts"
         >
           Newsletters and alerts
         </a>
       </li>
       <li>
         <a
-          href="https://www.nice.org.uk/get-involved/contact-us"
+          href="https://www.nice.org.uk/contact-us"
         >
           Contact us
         </a>
@@ -73,7 +73,7 @@ exports[`Pages Matches snapshot 1`] = `
       </li>
       <li>
         <a
-          href="https://www.nice.org.uk/re-using-our-content"
+          href="https://www.nice.org.uk/reusing-our-content"
         >
           Reusing our content
         </a>

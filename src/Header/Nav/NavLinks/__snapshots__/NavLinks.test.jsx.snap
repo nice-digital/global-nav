@@ -73,7 +73,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
                 >
                   <li>
                     <a
-                      href="https://www.nice.org.uk/about-us/what-we-do"
+                      href="https://www.nice.org.uk/what-nice-does"
                     >
                       What NICE does
                     </a>
@@ -87,14 +87,14 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/re-using-our-content"
+                      href="https://www.nice.org.uk/reusing-our-content"
                     >
                       Reusing our content
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/get-involved/implementing-nice-guidance"
+                      href="https://www.nice.org.uk/implementing-nice-guidance"
                     >
                       Implementing NICE guidance
                     </a>
@@ -108,7 +108,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
                   </li>
                   <li>
                     <a
-                      href="https://www.nice.org.uk/get-involved/contact-us"
+                      href="https://www.nice.org.uk/contact-us"
                     >
                       Contact us
                     </a>
@@ -137,14 +137,14 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
             >
               <li>
                 <a
-                  href="https://www.nice.org.uk/"
+                  href="https://www.nice.org.uk/get-involved/our-committees"
                 >
                   Join a committee
                 </a>
               </li>
               <li>
                 <a
-                  href="https://www.nice.org.uk/"
+                  href="https://www.nice.org.uk/get-involved/consultations"
                 >
                   Comment on a consultation
                 </a>

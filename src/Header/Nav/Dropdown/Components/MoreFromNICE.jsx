@@ -14,18 +14,16 @@ export function MoreFromNICE({ rootUrl }) {
 				>
 					<ul className={classnames(styles.listColumnar, "mt--d")}>
 						<li>
-							<a href={`${rootUrl}/about-us/what-we-do`}>What NICE does</a>
+							<a href={`${rootUrl}/what-nice-does`}>What NICE does</a>
 						</li>
 						<li>
 							<a href={`${rootUrl}/about-us`}>About us</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/re-using-our-content`}>
-								Reusing our content
-							</a>
+							<a href={`${rootUrl}/reusing-our-content`}>Reusing our content</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/get-involved/implementing-nice-guidance`}>
+							<a href={`${rootUrl}/implementing-nice-guidance`}>
 								Implementing NICE guidance
 							</a>
 						</li>
@@ -33,7 +31,7 @@ export function MoreFromNICE({ rootUrl }) {
 							<a href={`${rootUrl}/news`}>News, blogs and podcasts</a>
 						</li>
 						<li>
-							<a href={`${rootUrl}/get-involved/contact-us`}>Contact us</a>
+							<a href={`${rootUrl}/contact-us`}>Contact us</a>
 						</li>
 						<li>
 							<a href={`${rootUrl}/get-involved`}>Get involved</a>
@@ -50,10 +48,14 @@ export function MoreFromNICE({ rootUrl }) {
 				data-tracking="Quick links"
 			>
 				<li>
-					<a href={`${rootUrl}/`}>Join a committee</a>
+					<a href={`${rootUrl}/get-involved/our-committees`}>
+						Join a committee
+					</a>
 				</li>
 				<li>
-					<a href={`${rootUrl}/`}>Comment on a consultation</a>
+					<a href={`${rootUrl}/get-involved/consultations`}>
+						Comment on a consultation
+					</a>
 				</li>
 			</ul>
 		</section>
