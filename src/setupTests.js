@@ -34,6 +34,13 @@ beforeEach(() => {
 		if (message.includes("Not implemented: navigation")) {
 			return; // Suppress this error
 		}
+		// Check if this is a React act() warning
+		if (
+			message.includes("Warning: An update to") &&
+			message.includes("inside a test was not wrapped in act")
+		) {
+			return; // Suppress this warning
+		}
 		// Allow other errors through
 		originalConsoleError(...args);
 	});
