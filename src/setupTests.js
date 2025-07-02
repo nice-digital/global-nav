@@ -23,6 +23,10 @@ Object.defineProperty(
 // 	value: { ...window.location, assign: jest.fn() },
 // });
 
+//NOTE Suppress specific JSDOM + React test environment noise that isn't actionable:
+// - JSDOM "Not implemented: navigation" errors from <a> clicks
+// - React act() warnings from async components - act is now deprecated
+
 beforeEach(() => {
 	window.dataLayer = [];
 
