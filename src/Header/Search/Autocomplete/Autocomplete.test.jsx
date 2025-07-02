@@ -80,7 +80,9 @@ describe("Autocomplete", () => {
 				input = getByRole("combobox"),
 				user = userEvent.setup();
 
-			await user.type(input, "dia");
+			await waitFor(async () => {
+				await user.type(input, "dia");
+			});
 
 			await waitFor(() => {
 				const option = getByRole("option", {
@@ -104,7 +106,9 @@ describe("Autocomplete", () => {
 				input = getByRole("combobox"),
 				user = userEvent.setup();
 
-			await user.type(input, "diab");
+			await waitFor(async () => {
+				await user.type(input, "diab");
+			});
 
 			await waitFor(async () => {
 				const optionLink = getByRole("link", { name: "diab etes type 1" });
@@ -137,7 +141,9 @@ describe("Autocomplete", () => {
 				input = getByRole("combobox"),
 				user = userEvent.setup();
 
-			await user.type(input, "diab");
+			await waitFor(async () => {
+				await user.type(input, "diab");
+			});
 
 			await waitFor(async () => {
 				const optionLink = getByRole("link", { name: "diab etes type 1" });
@@ -169,7 +175,9 @@ describe("Autocomplete", () => {
 				input = getByRole("combobox"),
 				user = userEvent.setup();
 
-			await user.type(input, "b");
+			await waitFor(async () => {
+				await user.type(input, "b");
+			});
 
 			await waitFor(async () => {
 				const optionLink = getByRole("link", { name: "diab etes type 1" });
@@ -197,7 +205,9 @@ describe("Autocomplete", () => {
 				input = getByRole("combobox"),
 				user = userEvent.setup();
 
-			await user.type(input, "diab");
+			await waitFor(async () => {
+				await user.type(input, "diab");
+			});
 
 			await waitFor(async () => {
 				const optionLink = getByRole("link", { name: "diab etes type 1" });
@@ -223,9 +233,11 @@ describe("Autocomplete", () => {
 				input = getByRole("combobox"),
 				user = userEvent.setup();
 
-			await user.type(input, "dia");
-			await user.type(input, "b");
-			await user.type(input, "e");
+			await waitFor(async () => {
+				await user.type(input, "dia");
+				await user.type(input, "b");
+				await user.type(input, "e");
+			});
 
 			await waitFor(() => {
 				const optionLinks = queryAllByRole("link");
@@ -247,7 +259,9 @@ describe("Autocomplete", () => {
 			const input = getByRole("combobox");
 			const user = userEvent.setup();
 
-			await user.type(input, "b");
+			await waitFor(async () => {
+				await user.type(input, "b");
+			});
 
 			const announcement = await findByText(
 				/1 search autocomplete result available\. Use up and down arrow keys to review and Enter to select\./i,
