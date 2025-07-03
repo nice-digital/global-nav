@@ -5,9 +5,25 @@ import userEvent from "@testing-library/user-event";
 import { eventName, defaultEventCategory } from "../tracker";
 
 describe("TrackedLink", () => {
+	let navigateMock;
+
+	beforeEach(() => {
+		navigateMock = jest.fn();
+		Object.defineProperty(window, "dataLayer", {
+			value: [],
+			writable: true,
+			configurable: true,
+		});
+	});
+
 	it("Matches snapshot", () => {
 		const { container } = render(
-			<TrackedLink href="/a-url" eventAction="Action" className="className">
+			<TrackedLink
+				href="/a-url"
+				eventAction="Action"
+				className="className"
+				navigate={navigateMock}
+			>
 				Some text
 			</TrackedLink>
 		);
@@ -16,7 +32,7 @@ describe("TrackedLink", () => {
 
 	it("should send event to the dataLayer with navigating event callback on link click", async () => {
 		const href = "https://www.nice.org.uk/a-url",
-			eventName = "GlobalNav",
+			localEventName = "GlobalNav",
 			eventAction = "Test action",
 			eventLabel = "Test label";
 
@@ -25,6 +41,7 @@ describe("TrackedLink", () => {
 					eventAction={eventAction}
 					eventLabel={eventLabel}
 					href={href}
+					navigate={navigateMock}
 				>
 					Some text
 				</TrackedLink>
@@ -35,17 +52,20 @@ describe("TrackedLink", () => {
 		fireEvent(link, clickEvent);
 
 		expect(window.dataLayer).toStrictEqual([
-			{
-				event: eventName,
+			expect.objectContaining({
+				event: localEventName,
 				eventCategory: defaultEventCategory,
 				eventAction: eventAction,
 				eventLabel: eventLabel,
 				destinationUrl: href,
-			},
+			}),
 		]);
 
 		expect(clickEvent.defaultPrevented).toBe(true);
-		expect(window.location).toBeAt(href);
+		// Manually invoke the eventCallback to simulate analytics completion
+		window.dataLayer[0].eventCallback();
+
+		expect(navigateMock).toHaveBeenCalledWith(href);
 	});
 
 	it("should use default event category when none provided", async () => {
@@ -58,6 +78,7 @@ describe("TrackedLink", () => {
 					href={href}
 					eventAction={eventAction}
 					eventLabel={eventLabel}
+					navigate={navigateMock}
 				>
 					Some text
 				</TrackedLink>
@@ -68,13 +89,13 @@ describe("TrackedLink", () => {
 		await user.click(link);
 
 		expect(window.dataLayer).toStrictEqual([
-			{
+			expect.objectContaining({
 				event: eventName,
 				eventCategory: defaultEventCategory,
 				eventAction: eventAction,
 				eventLabel: eventLabel,
 				destinationUrl: href,
-			},
+			}),
 		]);
 	});
 
@@ -84,7 +105,11 @@ describe("TrackedLink", () => {
 			textContent = "Some text content";
 
 		const { getByRole } = render(
-				<TrackedLink href={href} eventAction={eventAction}>
+				<TrackedLink
+					href={href}
+					eventAction={eventAction}
+					navigate={navigateMock}
+				>
 					{textContent}
 				</TrackedLink>
 			),
@@ -94,13 +119,13 @@ describe("TrackedLink", () => {
 		await user.click(link);
 
 		expect(window.dataLayer).toStrictEqual([
-			{
+			expect.objectContaining({
 				event: eventName,
 				eventCategory: defaultEventCategory,
 				eventAction: eventAction,
 				eventLabel: textContent,
 				destinationUrl: href,
-			},
+			}),
 		]);
 	});
 });

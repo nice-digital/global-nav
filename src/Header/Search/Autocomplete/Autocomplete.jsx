@@ -33,6 +33,7 @@ export default function Autocomplete(props) {
 		placeholder,
 		suggestionTemplate,
 		source: sourceProp = false,
+		navigate = (url) => window.location.assign(url),
 	} = props;
 	const isClient = useIsClient(),
 		[queryText, setQueryText] = useState(query || ""),
@@ -59,7 +60,7 @@ export default function Autocomplete(props) {
 					element,
 					href: suggestion.Link,
 				});
-			} else window.location.assign(suggestion.Link);
+			} else navigate(suggestion.Link);
 		};
 
 		if (suggestion.TypeAheadType) {
@@ -259,4 +260,5 @@ Autocomplete.propTypes = {
 	placeholder: PropTypes.string,
 	query: PropTypes.string,
 	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+	navigate: PropTypes.func,
 };

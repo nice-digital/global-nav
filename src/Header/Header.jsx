@@ -29,6 +29,7 @@ const Header = ({
 	additionalSubMenuItems = [],
 	onDropdownOpen,
 	onDropdownClose,
+	navigate = (url) => window.location.assign(url),
 }) => {
 	const [isExpanded, setIsExpanded] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -61,9 +62,7 @@ const Header = ({
 			"Logo",
 			null,
 			href,
-			function () {
-				window.location.assign(href);
-			}
+			() => navigate(href) // <-- use injected navigation
 		);
 	};
 
@@ -396,18 +395,18 @@ export class OldHeader extends Component {
 
 //TODO convert proptypes to typescript types
 Header.propTypes = {
-	service: PropTypes.string,
 	skipLinkId: PropTypes.string,
-	enabled: PropTypes.bool,
-	search: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-	auth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+	renderSearchOnly: PropTypes.bool,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-	onResize: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	search: PropTypes.object,
+	enabled: PropTypes.bool,
+	onRendered: PropTypes.func,
+	auth: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+	service: PropTypes.string,
+	additionalSubMenuItems: PropTypes.array,
 	onDropdownOpen: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	onDropdownClose: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-	onRendered: PropTypes.func,
-	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
-	renderSearchOnly: PropTypes.bool,
+	navigate: PropTypes.func,
 };
 
 OldHeader.propTypes = {

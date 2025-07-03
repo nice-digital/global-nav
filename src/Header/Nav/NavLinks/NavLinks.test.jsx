@@ -72,9 +72,14 @@ describe("NavLinks", () => {
 	});
 
 	it("should prevent default and navigate in event callback on nav item click", () => {
+		const navigateMock = jest.fn();
 		const { getByRole } = render(
 				<HeaderContextProvider>
-					<NavLinks {...defaultProps} currentService="link2" />
+					<NavLinks
+						{...defaultProps}
+						currentService="link2"
+						navigate={navigateMock}
+					/>
 				</HeaderContextProvider>
 			),
 			secondLink = getByRole("link", {
@@ -87,7 +92,9 @@ describe("NavLinks", () => {
 		expect(clickEvent.defaultPrevented).toBeTruthy();
 
 		window.dataLayer[0].eventCallback();
-		expect(window.location).toBeAt("https://www.test-link2.nice.org/url2/");
+		expect(navigateMock).toHaveBeenCalledWith(
+			"https://www.test-link2.nice.org/url2/"
+		);
 	});
 
 	it("should push dataLayer event for nav item click", async () => {

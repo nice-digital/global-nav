@@ -15,7 +15,10 @@ import {
 } from "../../tracker";
 
 function Account(props) {
-	const { provider = "niceAccounts" } = props;
+	const {
+		provider = "niceAccounts",
+		navigate = (url) => window.location.assign(url),
+	} = props;
 	// We've left this is state as per the pre-hook implementation
 	const [doesUseIdAM] = useState(provider == Account.providers.idam);
 
@@ -26,10 +29,13 @@ function Account(props) {
 		myAccountButton = useRef(),
 		myAccountMenu = useRef();
 
-	const handleMyAccountButtonClick = useCallback((e) => {
-		keypress.current = e.pageX;
-		setAccountMenuIsExpanded((prevState) => !prevState);
-	}, []);
+	const handleMyAccountButtonClick = useCallback(
+		(e) => {
+			keypress.current = e.pageX;
+			setAccountMenuIsExpanded((prevState) => !prevState);
+		},
+		[setAccountMenuIsExpanded]
+	);
 
 	function focusAccount() {
 		myAccountMenu && myAccountMenu.current.setAttribute("tabIndex", -1);
@@ -73,7 +79,7 @@ function Account(props) {
 				null,
 				href,
 				function () {
-					window.location.assign(href);
+					navigate(href);
 				}
 			);
 		}
@@ -122,7 +128,7 @@ function Account(props) {
 					console.warn("Couldn't load account data from NICE accounts", e);
 				});
 		}
-	}, []);
+	}, [props, doesUseIdAM]);
 
 	const { accountsData, environment = "live" } = props;
 
@@ -221,4 +227,5 @@ Account.propTypes = {
 		})
 	),
 	displayName: PropTypes.string,
+	navigate: PropTypes.func,
 };

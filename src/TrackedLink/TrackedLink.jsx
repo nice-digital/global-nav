@@ -8,8 +8,7 @@ const TrackedLink = ({
 	eventCategory = defaultEventCategory,
 	eventAction,
 	eventLabel,
-	eventValue,
-	destinationUrl,
+	navigate = (url) => window.location.assign(url),
 	...props
 }) => {
 	const handleClick = (e) => {
@@ -23,9 +22,7 @@ const TrackedLink = ({
 			eventLabel || e.currentTarget.textContent || e.currentTarget.innerText,
 			null,
 			href,
-			(function () {
-				window.location.assign(href);
-			})()
+			() => navigate(href)
 		);
 	};
 
@@ -60,4 +57,5 @@ TrackedLink.propTypes = {
 	eventLabel: PropTypes.string,
 	eventValue: PropTypes.number,
 	destinationUrl: PropTypes.string,
+	navigate: PropTypes.func,
 };

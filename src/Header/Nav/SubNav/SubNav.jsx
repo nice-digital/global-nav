@@ -19,6 +19,14 @@ import {
 import styles from "./SubNav.module.scss";
 
 const SubNav = (props) => {
+	const {
+		text,
+		links,
+		onNavigating,
+		location = window.location,
+		navigate = (url) => window.location.assign(url),
+	} = props;
+
 	const handleClick = (e) => {
 		e.preventDefault();
 
@@ -37,8 +45,6 @@ const SubNav = (props) => {
 			null,
 			href,
 			function () {
-				const { onNavigating } = props;
-
 				const onNavigatingCallback = getCallbackFunction(onNavigating);
 
 				if (onNavigatingCallback) {
@@ -46,21 +52,21 @@ const SubNav = (props) => {
 						element: currentTarget,
 						href: href,
 					});
-				} else window.location.assign(href);
+				} else navigate(href);
 			}
 		);
 	};
 
 	return (
 		<div className={styles.wrapper}>
-			<ul className={styles.list} aria-label={`${props.text} links`}>
-				{props.links.map(function (subLink, i) {
+			<ul className={styles.list} aria-label={`${text} links`}>
+				{links.map(function (subLink, i) {
 					let ariaCurrent = null;
 
-					if (typeof window !== "undefined") {
-						if (window.location.pathname === subLink.href) {
+					if (typeof location !== "undefined") {
+						if (location.pathname === subLink.href) {
 							ariaCurrent = "page";
-						} else if (window.location.pathname.indexOf(subLink.href) === 0)
+						} else if (location.pathname.indexOf(subLink.href) === 0)
 							ariaCurrent = true;
 					}
 
@@ -91,8 +97,6 @@ const SubNav = (props) => {
 	);
 };
 
-export default SubNav;
-
 //TODO Convert proptypes to typescript
 SubNav.propTypes = {
 	text: PropTypes.string.isRequired,
@@ -103,4 +107,8 @@ SubNav.propTypes = {
 		})
 	),
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	location: PropTypes.object,
+	navigate: PropTypes.func,
 };
+
+export default SubNav;

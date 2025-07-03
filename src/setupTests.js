@@ -1,6 +1,5 @@
 /* eslint-env jest */
 import "@testing-library/jest-dom";
-import "jest-location-mock";
 
 // Allow setting user agent in tests
 // https://github.com/facebook/jest/issues/717#issuecomment-246471809
@@ -18,10 +17,6 @@ Object.defineProperty(
 		};
 	})(window.navigator.userAgent)
 );
-
-// Object.defineProperty(window, "location", {
-// 	value: { ...window.location, assign: jest.fn() },
-// });
 
 //NOTE Suppress specific JSDOM + React test environment noise that isn't actionable:
 // - JSDOM "Not implemented: navigation" errors from <a> clicks

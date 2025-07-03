@@ -33,8 +33,10 @@ describe("SubNav", () => {
 	});
 
 	it("Adds aria-current=page attribute to link when matches current URL", () => {
-		window.location.pathname = links[1].href;
-		const { getByRole } = render(<SubNav text="BNF" links={links} />);
+		const mockLocation = { pathname: links[1].href };
+		const { getByRole } = render(
+			<SubNav text="BNF" links={links} location={mockLocation} />
+		);
 
 		expect(getByRole("link", { name: links[1].text })).toHaveAttribute(
 			"aria-current",
@@ -43,8 +45,10 @@ describe("SubNav", () => {
 	});
 
 	it("Adds aria-current=true attribute to link when partially matches current URL", () => {
-		window.location.pathname = links[1].href + "abacavir.html";
-		const { getByRole } = render(<SubNav text="BNF" links={links} />);
+		const mockLocation = { pathname: links[1].href + "abacavir.html" };
+		const { getByRole } = render(
+			<SubNav text="BNF" links={links} location={mockLocation} />
+		);
 
 		expect(getByRole("link", { name: links[1].text })).toHaveAttribute(
 			"aria-current",
@@ -87,7 +91,8 @@ describe("SubNav", () => {
 
 		it("should navigate in callback on click with no onNavigating prop", async () => {
 			const [link1, ...otherLinks] = links,
-				href = baseURL + link1.href;
+				href = baseURL + link1.href,
+				navigateMock = jest.fn();
 
 			const { getByRole } = render(
 					<SubNav
@@ -99,6 +104,7 @@ describe("SubNav", () => {
 							},
 							...otherLinks,
 						]}
+						navigate={navigateMock}
 					/>
 				),
 				user = userEvent.setup(),
@@ -107,12 +113,13 @@ describe("SubNav", () => {
 			await user.click(link);
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location).toBeAt(href);
+			expect(navigateMock).toHaveBeenCalledWith(href);
 		});
 
 		it("should navigate in event callback on click with onNavigating prop that doesn't exist", async () => {
 			const [link1, ...otherLinks] = links,
-				href = baseURL + link1.href;
+				href = baseURL + link1.href,
+				navigateMock = jest.fn();
 
 			const { getByRole } = render(
 					<SubNav
@@ -125,6 +132,7 @@ describe("SubNav", () => {
 							},
 							...otherLinks,
 						]}
+						navigate={navigateMock}
 					/>
 				),
 				user = userEvent.setup(),
@@ -133,7 +141,7 @@ describe("SubNav", () => {
 			await user.click(link);
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location).toBeAt(href);
+			expect(navigateMock).toHaveBeenCalledWith(href);
 		});
 
 		it("should call onNavigating function prop in event callback on click", async () => {

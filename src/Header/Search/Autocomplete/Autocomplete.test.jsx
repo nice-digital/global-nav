@@ -168,9 +168,15 @@ describe("Autocomplete", () => {
 				Title: "diabetes type 1",
 				Link: "https://www.nice.org.uk/diabetes1.html",
 			};
+			const navigateMock = jest.fn();
 
 			const { getByRole } = render(
-					<Autocomplete {...defaultProps} source={[option]} query="dia" />
+					<Autocomplete
+						{...defaultProps}
+						source={[option]}
+						query="dia"
+						navigate={navigateMock}
+					/>
 				),
 				input = getByRole("combobox"),
 				user = userEvent.setup();
@@ -185,7 +191,9 @@ describe("Autocomplete", () => {
 			});
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location).toBeAt("https://www.nice.org.uk/diabetes1.html");
+			expect(navigateMock).toHaveBeenCalledWith(
+				"https://www.nice.org.uk/diabetes1.html"
+			);
 		});
 
 		it("should call onNavigating prop function with selected option in event callback", async () => {
@@ -244,8 +252,8 @@ describe("Autocomplete", () => {
 				expect(optionLinks).toHaveLength(2);
 			});
 
-			expect(suggester).toBeCalledTimes(1);
-			expect(suggester).toBeCalledWith([option], "diabe", 5);
+			expect(suggester).toHaveBeenCalledTimes(1);
+			expect(suggester).toHaveBeenCalledWith([option], "diabe", 5);
 		});
 
 		it("announces the number of autocomplete results in the live region", async () => {

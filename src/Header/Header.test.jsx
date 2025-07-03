@@ -97,7 +97,7 @@ describe("Header", () => {
 
 		it("Doesn't render search if search is disabled", () => {
 			const { queryByRole } = render(
-				<Header {...defaultProps} search={false} />
+				<Header {...defaultProps} search={null} />
 			);
 			expect(queryByRole("search")).toBeNull();
 		});
@@ -268,7 +268,10 @@ describe("Header", () => {
 		});
 
 		it("should prevent default and navigate in event callback on logo click", () => {
-			const { getByRole } = render(<Header {...defaultProps} />),
+			const navigateMock = jest.fn();
+			const { getByRole } = render(
+					<Header {...defaultProps} navigate={navigateMock} />
+				),
 				homeLink = getByRole("link", {
 					name: "NICE: National Institute for Health and Care Excellence homepage",
 				}),
@@ -279,7 +282,7 @@ describe("Header", () => {
 			expect(clickEvent.defaultPrevented).toBe(true);
 
 			window.dataLayer[0].eventCallback();
-			expect(window.location).toBeAt("https://www.nice.org.uk/");
+			expect(navigateMock).toHaveBeenCalledWith("https://www.nice.org.uk/");
 		});
 	});
 

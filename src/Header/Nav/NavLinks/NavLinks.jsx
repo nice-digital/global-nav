@@ -28,6 +28,7 @@ export function NavLinks({
 	subLinks,
 	onNavigating,
 	skipLinkId,
+	navigate = (url) => window.location.assign(url),
 }) {
 	const [canUseDOM, setCanUseDOM] = useState(false);
 	const { idOfOpenDropdown, setidOfOpenDropdown } = useContext(HeaderContext);
@@ -51,9 +52,7 @@ export function NavLinks({
 			e.currentTarget.textContent,
 			null,
 			href,
-			() => {
-				window.location.assign(href);
-			}
+			() => navigate(href)
 		);
 	}
 
@@ -208,6 +207,7 @@ NavLinks.propTypes = {
 	subLinks: PropTypes.array,
 	onNavigating: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 	handleScrim: PropTypes.func,
+	navigate: PropTypes.func,
 };
 
 export default NavLinks;

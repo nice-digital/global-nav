@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { HeaderContextProvider } from "./../context/HeaderContext";
+import { HeaderContextProvider } from "../context/HeaderContext";
 
 import {
 	eventName,
@@ -50,7 +50,12 @@ describe("Account", () => {
 		},
 	};
 
+	beforeEach(() => {
+		window.dataLayer = [];
+	});
+
 	afterEach(() => {
+		jest.restoreAllMocks();
 		document.body.innerHTML = "";
 	});
 
@@ -63,7 +68,6 @@ describe("Account", () => {
 		const { container } = render(
 			<Account isLoggedIn={true} accountsData={accountsData} />
 		);
-
 		expect(container).toMatchSnapshot();
 	});
 
@@ -153,7 +157,7 @@ describe("Account", () => {
 
 		expect(myAccountButton).toHaveAttribute("aria-expanded", "true");
 
-		await userEvent.type(myAccountButton, "{esc}");
+		await user.keyboard("{Escape}");
 
 		expect(myAccountButton).toHaveAttribute("aria-expanded", "false");
 
@@ -176,11 +180,11 @@ describe("Account", () => {
 
 		expect(myAccountButton).toHaveAttribute("aria-expanded", "true");
 
-		const menu = getByRole("menu", { hidden: true }),
-			firstMenuLink = within(menu).getAllByRole("menuitem")[0];
+		const menu = getByRole("menu", { hidden: true });
+		const firstMenuLink = within(menu).getAllByRole("menuitem")[0];
 
 		firstMenuLink.focus();
-		await userEvent.keyboard("{Escape}");
+		await user.keyboard("{Escape}");
 
 		expect(myAccountButton).toHaveAttribute("aria-expanded", "false");
 		expect(myAccountButton).toHaveFocus();
@@ -188,6 +192,7 @@ describe("Account", () => {
 
 	describe("tracking", () => {
 		it("should not send dataLayer event or prevent default for admin link click", async () => {
+			const mockNavigate = jest.fn();
 			const { getByRole } = render(
 				<HeaderContextProvider>
 					<Account
@@ -198,22 +203,24 @@ describe("Account", () => {
 								Admin: "https://accounts.nice.org.uk/admin",
 							},
 						}}
+						navigate={mockNavigate}
 					/>
 				</HeaderContextProvider>
 			);
 
-			const user = userEvent.setup(),
-				myAccountButton = getByRole("button", { name: "My account" });
+			const user = userEvent.setup();
+			const myAccountButton = getByRole("button", { name: "My account" });
 
 			await user.click(myAccountButton);
 
-			const adminLink = getByRole("menuitem", { name: "Admin" }),
-				clickEvent = createEvent.click(adminLink);
+			const adminLink = getByRole("menuitem", { name: "Admin" });
+			const clickEvent = createEvent.click(adminLink);
 
 			fireEvent(adminLink, clickEvent);
 
 			expect(clickEvent.defaultPrevented).toBe(false);
 			expect(window.dataLayer).toHaveLength(0);
+			expect(mockNavigate).not.toHaveBeenCalled();
 		});
 
 		it.each([
@@ -232,19 +239,24 @@ describe("Account", () => {
 		])(
 			"should prevent default, track and navigate",
 			async (accountsData, linkText, eventLabel, href) => {
+				const mockNavigate = jest.fn();
 				const { getByRole } = render(
 					<HeaderContextProvider>
-						<Account isLoggedIn accountsData={accountsData} />
+						<Account
+							isLoggedIn
+							accountsData={accountsData}
+							navigate={mockNavigate}
+						/>
 					</HeaderContextProvider>
 				);
 
-				const user = userEvent.setup(),
-					myAccountButton = getByRole("button", { name: "My account" });
+				const user = userEvent.setup();
+				const myAccountButton = getByRole("button", { name: "My account" });
 
 				await user.click(myAccountButton);
 
-				const menuLink = getByRole("menuitem", { name: linkText }),
-					clickEvent = createEvent.click(menuLink);
+				const menuLink = getByRole("menuitem", { name: linkText });
+				const clickEvent = createEvent.click(menuLink);
 
 				fireEvent(menuLink, clickEvent);
 
@@ -263,7 +275,7 @@ describe("Account", () => {
 				expect(clickEvent.defaultPrevented).toBe(true);
 
 				window.dataLayer[0].eventCallback();
-				expect(window.location).toBeAt(href);
+				expect(mockNavigate).toHaveBeenCalledWith(href);
 			}
 		);
 	});
