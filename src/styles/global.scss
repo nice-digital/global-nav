@@ -1,5 +1,7 @@
-@use '../Main/BackToTop/BackToTop.module.scss' as backToTop;
+//TODO GN-228 accessibility fix removed as it causes issues in InDev
 
-html {
-  scroll-padding-top: backToTop.$back-to-top-height;
-}
+// @use '../Main/BackToTop/BackToTop.module.scss' as backToTop;
+
+// html {
+//   scroll-padding-top: backToTop.$back-to-top-height;
+// }
