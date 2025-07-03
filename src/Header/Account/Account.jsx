@@ -90,44 +90,47 @@ function Account(props) {
 			"Consultation responses": "https://www.nice.org.uk/consultations/",
 		};
 
-		if (doesUseIdAM) {
-			//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
-			//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
-			//the following just converts the idam format to the nice accounts format.
+		async function fetchAccountData() {
+			if (doesUseIdAM) {
+				//nice accounts supplies links like: {"John Holland":"https://accounts.nice.org.uk/users/143980/editprofile","Sign out":"https://accounts.nice.org.uk/signout"}
+				//idam supplies links like:[{ key: "My profile", value: "/Account/todo" },{ key: "Sign out", value: "/Account/Logout" }]
+				//the following just converts the idam format to the nice accounts format.
 
-			const { displayName } = props;
-			const isLoggedIn = !!displayName;
+				const { displayName } = props;
+				const isLoggedIn = !!displayName;
 
-			let links = props.links.reduce(function (links, link) {
-				links[link.text] = link.url;
-				return links;
-			}, {});
+				let links = props.links.reduce(function (links, link) {
+					links[link.text] = link.url;
+					return links;
+				}, {});
 
-			if (isLoggedIn) {
-				links = { ...consultationsResponsesLink, ...links };
-			}
+				if (isLoggedIn) {
+					links = { ...consultationsResponsesLink, ...links };
+				}
 
-			const convertedData = {
-				display_name: displayName,
-				links: links,
-			};
+				const convertedData = {
+					display_name: displayName,
+					links: links,
+				};
 
-			if (props.onLoginStatusChecked) {
-				props.onLoginStatusChecked(convertedData);
-			}
-		} else {
-			//NICE accounts
-			niceAccountsLoggedIn(props.environment)
-				.then(function (data) {
+				if (props.onLoginStatusChecked) {
+					props.onLoginStatusChecked(convertedData);
+				}
+			} else {
+				//NICE accounts
+				try {
+					const data = await niceAccountsLoggedIn(props.environment);
 					if (props.onLoginStatusChecked) {
 						data.links = { ...consultationsResponsesLink, ...data.links };
 						props.onLoginStatusChecked(data);
 					}
-				})
-				.catch(function (e) {
+				} catch (e) {
 					console.warn("Couldn't load account data from NICE accounts", e);
-				});
+				}
+			}
 		}
+
+		fetchAccountData();
 	}, [props, doesUseIdAM]);
 
 	const { accountsData, environment = "live" } = props;
