@@ -15,6 +15,17 @@ export const checkIsLoggedIn = function (environment) {
 
 		let done = false;
 
+		const timeout = setTimeout(() => {
+			if (!done) {
+				done = true;
+				if (body && script.parentNode) {
+					script.onload = script.onreadystatechange = null;
+					body.removeChild(script);
+				}
+				reject(new Error("Timeout loading NICE Accounts tophat script"));
+			}
+		}, 5000); // 5 seconds
+
 		script.onload = script.onreadystatechange = function () {
 			if (
 				!done &&
@@ -23,6 +34,7 @@ export const checkIsLoggedIn = function (environment) {
 					script.readyState === "complete")
 			) {
 				done = true;
+				clearTimeout(timeout);
 				// Handle memory leak in IE
 				script.onload = script.onreadystatechange = null;
 				if (body && script.parentNode) {
@@ -32,7 +44,16 @@ export const checkIsLoggedIn = function (environment) {
 				resolve(window._na);
 			}
 		};
-		script.onerror = reject;
+		script.onerror = function () {
+			if (!done) {
+				done = true;
+				clearTimeout(timeout);
+				if (body && script.parentNode) {
+					body.removeChild(script);
+				}
+				reject(new Error("Failed to load NICE Accounts tophat script"));
+			}
+		};
 
 		body.insertBefore(script, body.firstChild);
 	});
