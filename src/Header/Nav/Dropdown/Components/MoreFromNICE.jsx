@@ -5,7 +5,7 @@ import classnames from "classnames";
 
 export function MoreFromNICE({ rootUrl }) {
 	return (
-		<section aria-label="About - navigation">
+		<section aria-label="More from NICE - navigation">
 			<h2 className="mt--0">Explore more from NICE</h2>
 			<Grid gutter="loose">
 				<GridItem
