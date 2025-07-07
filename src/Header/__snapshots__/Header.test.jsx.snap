@@ -299,7 +299,7 @@ exports[`Header Matches snapshot 1`] = `
                        submenu
                     </a>
                     <section
-                      aria-label="About - navigation"
+                      aria-label="More from NICE - navigation"
                     >
                       <h2
                         class="mt--0"

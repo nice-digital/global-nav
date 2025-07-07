@@ -53,7 +53,7 @@ exports[`NavLinks Matches snapshot with sub links for selected external service 
              submenu
           </a>
           <section
-            aria-label="About - navigation"
+            aria-label="More from NICE - navigation"
           >
             <h2
               class="mt--0"

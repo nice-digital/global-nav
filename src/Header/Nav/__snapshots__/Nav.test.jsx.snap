@@ -65,7 +65,7 @@ exports[`Nav Matches snapshot with multiple accounts links 1`] = `
                    submenu
                 </a>
                 <section
-                  aria-label="About - navigation"
+                  aria-label="More from NICE - navigation"
                 >
                   <h2
                     class="mt--0"
@@ -371,7 +371,7 @@ exports[`Nav Matches snapshot with no accounts links 1`] = `
                    submenu
                 </a>
                 <section
-                  aria-label="About - navigation"
+                  aria-label="More from NICE - navigation"
                 >
                   <h2
                     class="mt--0"
@@ -643,7 +643,7 @@ exports[`Nav Matches snapshot with single accounts link 1`] = `
                    submenu
                 </a>
                 <section
-                  aria-label="About - navigation"
+                  aria-label="More from NICE - navigation"
                 >
                   <h2
                     class="mt--0"
