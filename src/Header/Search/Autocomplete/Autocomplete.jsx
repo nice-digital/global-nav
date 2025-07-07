@@ -16,7 +16,7 @@ const maxResults = 5;
 /** The minimum number of characters that should be entered before the autocomplete will attempt to suggest options. */
 const minAutocompleteLength = 3;
 
-/** Delay in millieconds before loading results */
+/** Delay in milliseconds before loading results */
 export const rateLimitWait = 100;
 
 const suggestionTemplateDefault = function (suggestion) {
