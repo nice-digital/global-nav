@@ -73,8 +73,12 @@ button.link {
 }
 
 .icon {
+  align-self: flex-start;
   flex-shrink: 0;
   margin-left: utils.rem(spacing.$x-small);
+  margin-top: utils.rem(spacing.$x-small);
+  vertical-align: text-top;
+
   @include media-queries.mq($from: md) {
     margin-left: 0;
   }
