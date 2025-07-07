@@ -195,8 +195,10 @@ export default function Autocomplete(props) {
 									className={`visually-hidden autocomplete__option ${
 										active ? "autocomplete__option--focused" : ""
 									}`}
+									aria-hidden="true"
+									tabIndex={-1}
 								>
-									<a href={`/search?q=${queryText}`}>
+									<a href={`/search?q=${queryText}`} tabIndex={-1}>
 										{queryText.length === 0 ? (
 											"Empty search"
 										) : (
@@ -243,20 +245,16 @@ export default function Autocomplete(props) {
 }
 
 Autocomplete.propTypes = {
-	source: PropTypes.oneOfType([
-		PropTypes.bool,
-		PropTypes.string,
-		PropTypes.arrayOf(
-			PropTypes.shape({
-				Title: PropTypes.string.isRequired,
-				TitleHtml: PropTypes.string,
-				TypeAheadType: PropTypes.string,
-				Link: PropTypes.string.isRequired,
-			})
-		),
-	]),
-	suggestionTemplate: PropTypes.func,
-	placeholder: PropTypes.string,
 	query: PropTypes.string,
-	onNavigating: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+	onNavigating: PropTypes.func,
+	placeholder: PropTypes.string,
+	suggestionTemplate: PropTypes.func,
+	source: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.string,
+		PropTypes.shape({
+			Link: PropTypes.string,
+			Title: PropTypes.string,
+		}),
+	]),
 };

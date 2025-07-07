@@ -229,7 +229,7 @@ describe("Autocomplete", () => {
 
 			await waitFor(() => {
 				const optionLinks = queryAllByRole("link");
-				expect(optionLinks).toHaveLength(2);
+				expect(optionLinks).toHaveLength(1);
 			});
 
 			expect(suggester).toBeCalledTimes(1);
