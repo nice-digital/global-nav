@@ -26,6 +26,10 @@
   padding-bottom: utils.rem(spacing.$large);
   padding-top: utils.rem(spacing.$large);
   position: relative;
+
+  hr {
+    margin-top: 0;
+  }
 }
 
 .exit {
