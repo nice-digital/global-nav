@@ -10,6 +10,8 @@
 @use '../header-settings';
 @use '../../Common.module.scss';
 
+$chevron-vertical-nudge-desktop: -3 * utils.rem(spacing.$x-small);
+
 .wrapper {
   @include visibility.hide-print;
   display: none;
@@ -62,15 +64,14 @@
 
   > li {
     margin: 0;
-    @include media-queries.mq($from: md) {
-      flex-grow: 1;
-    }
   }
+
   @include media-queries.mq($from: md) {
     @include layout.container;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    gap: utils.rem(spacing.$medium);
+    justify-content: flex-start;
   }
 }
 
@@ -121,6 +122,17 @@ a.link,
     &:focus {
       outline-color: colours.$focus;
       outline-offset: utils.rem(-(spacing.$small));
+    }
+  }
+
+  svg {
+    align-self: center;
+    margin-left: utils.rem(spacing.$x-small);
+    position: relative;
+    vertical-align: middle;
+
+    @include media-queries.mq($from: md) {
+      top: $chevron-vertical-nudge-desktop;
     }
   }
 

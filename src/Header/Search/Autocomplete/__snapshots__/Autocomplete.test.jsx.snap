@@ -5,15 +5,14 @@ exports[`Autocomplete Autocomplete should render autocomplete component 1`] = `
   <div
     class="ac"
   >
-    <label
-      class="visually-hidden"
-      data-headlessui-state=""
-      id="headlessui-combobox-label-:r0:"
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      style="position: absolute; left: -9999px; height: 1px; width: 1px; overflow: hidden;"
     />
     <input
       aria-autocomplete="list"
       aria-expanded="false"
-      aria-labelledby="headlessui-combobox-label-:r0:"
       autocomplete="off"
       class="autocomplete__input autocomplete__input--default"
       data-headlessui-state=""
@@ -34,6 +33,11 @@ exports[`Autocomplete Non-autocomplete should render fallback search box when no
   <div
     class="ac"
   >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      style="position: absolute; left: -9999px; height: 1px; width: 1px; overflow: hidden;"
+    />
     <div
       class="autocomplete__wrapper"
     >

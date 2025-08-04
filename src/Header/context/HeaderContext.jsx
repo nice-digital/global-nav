@@ -45,9 +45,11 @@ export const HeaderContextProvider = function ({ children }) {
 		};
 	}, [handleClickOutsideHeaderMenu]);
 
+	const locationHref = typeof location == "undefined" ? null : location.href;
+
 	useEffect(() => {
 		setidOfOpenDropdown(null);
-	}, [typeof location == "undefined" ? null : location.href]);
+	}, [locationHref]);
 
 	const popStateHandler = () => {
 		setidOfOpenDropdown(null);

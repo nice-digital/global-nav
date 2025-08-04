@@ -4,7 +4,7 @@
       "host": "www.test.nice.org",
       "landingPath": "/url1/",
       "text": "First link",
-      "id": "about",
+      "id": "more-from-nice",
       "header": true
     },
     {
@@ -13,7 +13,7 @@
       "text": "Second link",
       "id": "link2",
       "header": true,
-      "abbreviation": true,
+      "abbreviation": "lnk2",
       "title": "Second link abbreviation title",
       "links": [
         {
@@ -32,7 +32,7 @@
       "text": "Third link",
       "id": "link3",
       "header": true,
-      "abbreviation": true,
+      "abbreviation": "lnk3",
       "title": "Third link abbreviation title",
       "links": [
         {

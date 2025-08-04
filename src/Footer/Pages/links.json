@@ -1,30 +1,34 @@
 [
   {
-    "href": "https://www.nice.org.uk/about",
-    "text": "About NICE"
+    "href": "https://www.nice.org.uk/what-nice-does",
+    "text": "What NICE does"
   },
   {
-    "href": "https://www.nice.org.uk/about/what-we-do/into-practice",
-    "text": "Into practice"
+    "href": "https://www.nice.org.uk/implementing-nice-guidance",
+    "text": "Implementing NICE guidance"
   },
   {
     "href": "https://www.nice.org.uk/get-involved",
-    "text": "Get involved with NICE"
+    "text": "Get involved"
   },
   {
-    "href": "https://www.nice.org.uk/get-involved/jobs",
-    "text": "Jobs"
+    "href": "https://www.nice.org.uk/about-us",
+    "text": "About us"
+  },
+  {
+    "href": "https://www.nice.org.uk/careers",
+    "text": "Careers"
   },
   {
     "href": "https://www.nice.org.uk/news",
-    "text": "News"
+    "text": "News, blogs and podcasts"
   },
   {
-    "href": "https://www.nice.org.uk/news/nice-newsletters-and-alerts",
+    "href": "https://www.nice.org.uk/nice-newsletters-and-alerts",
     "text": "Newsletters and alerts"
   },
   {
-    "href": "https://www.nice.org.uk/get-involved/contact-us",
+    "href": "https://www.nice.org.uk/contact-us",
     "text": "Contact us"
   },
   {
@@ -32,7 +36,7 @@
     "text": "Leave feedback"
   },
   {
-    "href": "https://www.nice.org.uk/re-using-our-content",
+    "href": "https://www.nice.org.uk/reusing-our-content",
     "text": "Reusing our content"
   },
   {

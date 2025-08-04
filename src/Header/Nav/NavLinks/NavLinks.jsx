@@ -9,11 +9,7 @@ import SubNav from "../SubNav";
 import Dropdown from "../Dropdown";
 import { HeaderContext } from "../../context/HeaderContext";
 
-import {
-	AboutUs,
-	LifeSciences,
-	StandardsAndIndicators,
-} from "./../Dropdown/Components";
+import { MoreFromNICE } from "./../Dropdown/Components";
 
 import styles from "./NavLinks.module.scss";
 import {
@@ -23,9 +19,7 @@ import {
 } from "../../../tracker";
 
 const componentsWithDropdowns = {
-	about: AboutUs,
-	"life-sciences": LifeSciences,
-	"standards-and-indicators": StandardsAndIndicators,
+	"more-from-nice": MoreFromNICE,
 };
 
 export function NavLinks({
@@ -63,9 +57,12 @@ export function NavLinks({
 		);
 	}
 
-	const escapeKeydown = useCallback(function (result) {
-		if (result) setidOfOpenDropdown(null);
-	}, []);
+	const escapeKeydown = useCallback(
+		function (result) {
+			if (result) setidOfOpenDropdown(null);
+		},
+		[setidOfOpenDropdown]
+	);
 
 	const { keydownRef } = useEscapeKeydown(escapeKeydown);
 
@@ -111,7 +108,11 @@ export function NavLinks({
 										aria-controls={`dropdown-${id}`}
 										aria-expanded={id === idOfOpenDropdown ? true : false}
 										id={`navlink-${id}`}
-										aria-label={abbreviation && title}
+										aria-label={
+											title && abbreviation
+												? `${title} (${abbreviation})`
+												: text.replace(/\u00A0/g, " ")
+										}
 									>
 										<span>{text}</span>
 										{id === idOfOpenDropdown ? (
@@ -133,7 +134,11 @@ export function NavLinks({
 											className={styles.link}
 											onClick={handleNavLinkClick}
 											id={`navlink-${id}`}
-											aria-label={abbreviation && title}
+											aria-label={
+												title && abbreviation
+													? `${title} (${abbreviation})`
+													: text.replace(/\u00A0/g, " ")
+											}
 										>
 											<span>{text}</span>
 											{nestedLinks && (
