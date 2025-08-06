@@ -61,7 +61,9 @@ function Nav({
 	// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find for support
 	let activeService = null;
 	let internalService = false;
-	let servicesToDisplay = services.external; //default to displaying external services.
+	let servicesToDisplay = services.external.filter(
+		(service) => service.header === true
+	); // only display external services with header=true
 	for (let i = 0; i < services.internal.length; i++) {
 		const internalRootLink = services.internal[i];
 		if (service && internalRootLink.id === service) {
