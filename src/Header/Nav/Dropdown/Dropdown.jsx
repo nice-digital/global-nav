@@ -2,7 +2,6 @@
 import { useContext } from "react";
 import { useFocusTrap } from "@mantine/hooks";
 import { HeaderContext } from "../../context/HeaderContext";
-import SkipLink from "../../SkipLink";
 import styles from "./Dropdown.module.scss";
 import reset from "./Reset.module.scss";
 import classnames from "classnames";

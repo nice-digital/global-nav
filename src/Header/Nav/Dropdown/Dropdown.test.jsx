@@ -29,8 +29,14 @@ describe("Dropdown", () => {
 	});
 
 	it("Should render a skip link when there is a next nav item to skip to", () => {
-		const closingFunction = jest.fn(),
-			{ getByRole } = render(
+		const closingFunction = jest.fn();
+
+		// Add the element that the skip link will target
+		const dummyTarget = document.createElement("div");
+		dummyTarget.id = "navlink-next-thing";
+		document.body.appendChild(dummyTarget);
+
+		const { getByRole } = render(
 				<Dropdown
 					{...defaultProps}
 					nextNavSlug="next-thing"
