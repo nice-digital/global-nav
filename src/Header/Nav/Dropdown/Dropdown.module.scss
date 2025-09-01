@@ -42,6 +42,7 @@
     column-gap: utils.rem(spacing.$small);
     cursor: pointer;
     display: flex;
+    font-size: inherit;
     padding: utils.rem(spacing.$small);
     position: absolute;
     right: utils.rem(spacing.$medium);

@@ -22,12 +22,19 @@ export function Dropdown({
 	const focusTrapRef = useFocusTrap(idOfOpenDropdown !== null);
 
 	function handleSkipLink(e) {
-		e.preventDefault();
-		const element = document.getElementById(e.target.hash.substr(1));
-		requestAnimationFrame(() => {
-			element && element.focus();
-		});
-		closeDropdown();
+		const href = e.currentTarget.getAttribute("href");
+
+		if (href && href.indexOf("#") === 0) {
+			const id = href.split("#")[1],
+				element = document.getElementById(id);
+
+			if (element) {
+				e.preventDefault();
+				element.setAttribute("tabIndex", "-1");
+				element.focus();
+				closeDropdown();
+			}
+		}
 	}
 
 	const { host } = services.external.find((service) => service.id == id);
