@@ -14,66 +14,66 @@
 <!-- START doctoc -->
 
 - [Global navigation](#global-navigation)
-	- [What is it?](#what-is-it)
-		- [Functionality](#functionality)
-		- [Non-functional](#non-functional)
-	- [Stack](#stack)
-		- [Principles](#principles)
-		- [CSS Modules](#css-modules)
-	- [:rocket: Set up](#rocket-set-up)
-		- [Other commands](#other-commands)
-			- [Tests](#tests)
-				- [Run individual files](#run-individual-files)
-				- [Run individual tests](#run-individual-tests)
-			- [Linting](#linting)
-			- [Production build](#production-build)
-		- [IDE](#ide)
-			- [Extensions](#extensions)
-		- [Gotchas](#gotchas)
-	- [How to use](#how-to-use)
-		- [React](#react)
-			- [Installation](#installation)
-			- [Usage](#usage)
-			- [Props](#props)
-				- [Main props](#main-props)
-					- [Main.withPadding](#mainwithpadding)
-				- [Header props](#header-props)
-					- [Header.service](#headerservice)
-					- [Header.skipLinkId](#headerskiplinkid)
-					- [Header.renderSearchOnly](#headerrendersearchonly)
-					- [Header.onNavigating](#headeronnavigating)
-					- [Header.onResize](#headeronresize)
-					- [Header.onDropdownOpen](#headerondropdownopen)
-					- [Header.onDropdownClose](#headerondropdownclose)
-					- [Header.additionalSubMenuItems](#headeradditionalsubmenuitems)
-					- [Header.search](#headersearch)
-					- [Header.search.url](#headersearchurl)
-					- [Header.search.autocomplete](#headersearchautocomplete)
-					- [Header.search.placeholder](#headersearchplaceholder)
-					- [Header.search.query](#headersearchquery)
-					- [Header.search.onSearching](#headersearchonsearching)
-					- [Header.auth](#headerauth)
-					- [Header.auth.environment](#headerauthenvironment)
-					- [Header.auth.provider](#headerauthprovider)
-					- [Header.auth.links](#headerauthlinks)
-					- [Header.auth.displayName](#headerauthdisplayname)
-				- [Footer props](#footer-props)
-					- [Footer.service](#footerservice)
-		- [CDN](#cdn)
-			- [Container IDs](#container-ids)
-			- [Overrides](#overrides)
-			- [Configuration](#configuration)
-				- [service](#service)
-				- [header](#header)
-					- [header.onRendering](#headeronrendering)
-					- [header.onRendered](#headeronrendered)
-				- [footer](#footer)
-	- [Deployments](#deployments)
-	- [Upgrading to v2](#upgrading-to-v2)
-	- [Upgrading to v3](#upgrading-to-v3)
-	- [Upgrading to v4](#upgrading-to-v4)
-	- [Upgrading to v5](#upgrading-to-v5)
-	- [Upgrading to v6](#upgrading-to-v6)
+  - [What is it?](#what-is-it)
+    - [Functionality](#functionality)
+    - [Non-functional](#non-functional)
+  - [Stack](#stack)
+    - [Principles](#principles)
+    - [CSS Modules](#css-modules)
+  - [:rocket: Set up](#rocket-set-up)
+    - [Other commands](#other-commands)
+      - [Tests](#tests)
+        - [Run individual files](#run-individual-files)
+        - [Run individual tests](#run-individual-tests)
+      - [Linting](#linting)
+      - [Production build](#production-build)
+    - [IDE](#ide)
+      - [Extensions](#extensions)
+    - [Gotchas](#gotchas)
+  - [How to use](#how-to-use)
+    - [React](#react)
+      - [Installation](#installation)
+      - [Usage](#usage)
+      - [Props](#props)
+        - [Main props](#main-props)
+          - [Main.withPadding](#mainwithpadding)
+        - [Header props](#header-props)
+          - [Header.service](#headerservice)
+          - [Header.skipLinkId](#headerskiplinkid)
+          - [Header.renderSearchOnly](#headerrendersearchonly)
+          - [Header.onNavigating](#headeronnavigating)
+          - [Header.onResize](#headeronresize)
+          - [Header.onDropdownOpen](#headerondropdownopen)
+          - [Header.onDropdownClose](#headerondropdownclose)
+          - [Header.additionalSubMenuItems](#headeradditionalsubmenuitems)
+          - [Header.search](#headersearch)
+          - [Header.search.url](#headersearchurl)
+          - [Header.search.autocomplete](#headersearchautocomplete)
+          - [Header.search.placeholder](#headersearchplaceholder)
+          - [Header.search.query](#headersearchquery)
+          - [Header.search.onSearching](#headersearchonsearching)
+          - [Header.auth](#headerauth)
+          - [Header.auth.environment](#headerauthenvironment)
+          - [Header.auth.provider](#headerauthprovider)
+          - [Header.auth.links](#headerauthlinks)
+          - [Header.auth.displayName](#headerauthdisplayname)
+        - [Footer props](#footer-props)
+          - [Footer.service](#footerservice)
+    - [CDN](#cdn)
+      - [Container IDs](#container-ids)
+      - [Overrides](#overrides)
+      - [Configuration](#configuration)
+        - [service](#service)
+        - [header](#header)
+          - [header.onRendering](#headeronrendering)
+          - [header.onRendered](#headeronrendered)
+        - [footer](#footer)
+  - [Deployments](#deployments)
+  - [Upgrading to v2](#upgrading-to-v2)
+  - [Upgrading to v3](#upgrading-to-v3)
+  - [Upgrading to v4](#upgrading-to-v4)
+  - [Upgrading to v5](#upgrading-to-v5)
+  - [Upgrading to v6](#upgrading-to-v6)
 
 <!-- END doctoc -->
 </details>
@@ -162,8 +162,8 @@ Using SCSS allows us to use mixins, functions and variables from the NICE Design
 
 - install [Node 14+](https://nodejs.org/en/download/) or latest LTS version. Or even better, use [Volta](https://volta.sh/) to use the Node version pinned in package.json.
 - run `npm ci` on the command line to install dependencies
-- run `npm start` on the command line
-- navigate to http://localhost:8080/ in a browser.
+- run `npm run dev` on the command line
+- navigate to <http://localhost:3000/> in a browser.
 
 This compiles the application and spins up a development server. It then watches for changes to files and:
 
@@ -260,7 +260,7 @@ This is a good option if you're rendering you're app's interface via React, eith
 
 Install the package and require the `Header`, `Footer` and `Main` React components into your application, just as you would for any other 3rd party component:
 
-#### Installation
+#### Installation for new projects
 
 First, install the _@nice-digital/global-nav_ package [from npm](https://www.npmjs.com/package/@nice-digital/global-nav) into your project:
 
@@ -292,11 +292,12 @@ const search = {
 const page = () => (
   <div>
     <Header service="guidance" search={search} />
-		<Main withPadding={true} myOptionalProp={myOptionalProp} className="my-optional-class" >{/* Your page content here */} </Main>
+  <Main withPadding={true} myOptionalProp={myOptionalProp} className="my-optional-class" >{/* Your page content here */} </Main>
     <Footer />
   </div>
 );
 ```
+
 Wrapping your template with the main component will render a main tag in the html with a back to top link.
 
 For a full list of all the available props, see the [props section](#props) below:
@@ -443,6 +444,7 @@ var global_nav_config = {
   },
 };
 ```
+
 ###### Header.additionalSubMenuItems
 
 - Type: `null | Array`
@@ -450,7 +452,7 @@ var global_nav_config = {
 
 Pass an `additionalSubMenuItems` array to add extra sub menu items for a given service.
 
-The array should be an array of objects, each containing a `service: string` and another array of `links: Array`. 
+The array should be an array of objects, each containing a `service: string` and another array of `links: Array`.
 The links array should contain an array of `text: string` and `url: string`. E.g:
 
 ```js
@@ -518,7 +520,7 @@ The response is expected to be JSON in the format `Array<{ Title: string, TitleH
     "Title": "Paracetamol",
     "TitleHtml": "<mark>Para</mark>cetamol",
     "Link": "/search?q=Paracetamol",
-		"TypeAheadType": "keyword"
+  "TypeAheadType": "keyword"
   }
 ]
 ```
@@ -527,20 +529,20 @@ Or to customise the template for autocomplete suggestions, pass an object with `
 
 ```jsx
 const autocompleteOptions = {
-		// Suggestions can be either the name of a variable, a remote url starting with a slash or an array
-		suggestions: "/a-remote-url",
-		// Return an HTML string, for example:
-		suggestionTemplate: (suggestion) => {
-			if (!suggestion || !suggestion.Link) return "";
-			return `<a href="${suggestion.Link}">${
-				suggestion.TitleHtml || suggestion.Title
-			}</a>`;
-		}
-	};
+  // Suggestions can be either the name of a variable, a remote url starting with a slash or an array
+  suggestions: "/a-remote-url",
+  // Return an HTML string, for example:
+  suggestionTemplate: (suggestion) => {
+   if (!suggestion || !suggestion.Link) return "";
+   return `<a href="${suggestion.Link}">${
+    suggestion.TitleHtml || suggestion.Title
+   }</a>`;
+  }
+ };
 
 <Header search={{
-		autocomplete: autocompleteOptions
-	}} />;
+  autocomplete: autocompleteOptions
+ }} />;
 ```
 
 If you're using TypeScript, then you can import types e.g.:
@@ -851,7 +853,7 @@ Version 5 includes updates for the summer 2022 brand refresh. It's mostly an int
 
 ## Upgrading to v6
 
-Version 6 is mostly updates of dependencies, the biggest of which was React Testing Library (from Enzyme). It also includes support for React 18 and Design System v5. 
+Version 6 is mostly updates of dependencies, the biggest of which was React Testing Library (from Enzyme). It also includes support for React 18 and Design System v5.
 
 ## Upgrading to v7
 
@@ -868,4 +870,3 @@ Migration from Webpack to Vite, a faster build tool. Vite provides improved perf
 ### Easier transition to TypeScript
 
 With the migration to Vite, transitioning to TypeScript in the future will be more straightforward. Vite's TypeScript support will make the process smoother when the time comes for the project to adopt TypeScript.
-
