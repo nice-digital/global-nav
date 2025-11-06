@@ -20,6 +20,12 @@
   @include layout.container;
 }
 
+.cyberlogo {
+  border: none;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+}
 .menu {
   @include visibility.hide-print;
   margin: utils.rem(0 0 spacing.$medium);
@@ -62,13 +68,9 @@
   .wrapper {
     @include layout.clearfix;
   }
-
-  .menu {
-    float: left;
-    margin: 0;
-  }
-
-  .copyright {
-    float: right;
+}
+@include media-queries.mq($until: md) {
+  .cyberlogo {
+    margin-top: utils.rem(spacing.$medium);
   }
 }
