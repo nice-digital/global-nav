@@ -21,11 +21,12 @@
 }
 
 .cyberlogo {
-  border: none;
-  width: 100px;
-  height: 100px;
   background: transparent;
+  border: none;
+  height: 100px;
+  width: 100px;
 }
+
 .menu {
   @include visibility.hide-print;
   margin: utils.rem(0 0 spacing.$medium);

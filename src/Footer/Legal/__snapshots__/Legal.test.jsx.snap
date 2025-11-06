@@ -8,76 +8,95 @@ exports[`Legal Matches snapshot 1`] = `
     <div
       class="container"
     >
-      <nav
-        aria-label="Legal menu"
-        class="menu"
+      <div
+        class="grid"
       >
-        <ul>
-          <li>
-            <a
-              href="https://www.nice.org.uk/accessibility"
-            >
-              Accessibility
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.nice.org.uk/freedom-of-information"
-            >
-              Freedom of information
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.nice.org.uk/glossary"
-            >
-              Glossary
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.nice.org.uk/terms-and-conditions"
-            >
-              Terms and conditions
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.nice.org.uk/privacy-notice"
-            >
-              Privacy notice
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.nice.org.uk/cookies"
-            >
-              Cookies
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <p
-        class="copyright"
-      >
-        ©
-         
-        <abbr
-          title="National Institute for Health and Care Excellence"
+        <div
+          data-component="grid-item"
+          data-g="12 md:9"
         >
-          NICE
-        </abbr>
-         
-        2000
-        . All rights reserved. Subject to
-         
-        <a
-          href="https://www.nice.org.uk/terms-and-conditions#notice-of-rights"
+          <nav
+            aria-label="Legal menu"
+            class="menu"
+          >
+            <ul>
+              <li>
+                <a
+                  href="https://www.nice.org.uk/accessibility"
+                >
+                  Accessibility
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.nice.org.uk/freedom-of-information"
+                >
+                  Freedom of information
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.nice.org.uk/glossary"
+                >
+                  Glossary
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.nice.org.uk/terms-and-conditions"
+                >
+                  Terms and conditions
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.nice.org.uk/privacy-notice"
+                >
+                  Privacy notice
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.nice.org.uk/cookies"
+                >
+                  Cookies
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <p
+            class="copyright"
+          >
+            ©
+             
+            <abbr
+              title="National Institute for Health and Care Excellence"
+            >
+              NICE
+            </abbr>
+             
+            2000
+            . All rights reserved. Subject to
+             
+            <a
+              href="https://www.nice.org.uk/terms-and-conditions#notice-of-rights"
+            >
+              Notice of rights
+            </a>
+            .
+          </p>
+        </div>
+        <div
+          data-component="grid-item"
+          data-g="12 md:3"
         >
-          Notice of rights
-        </a>
-        .
-      </p>
+          <iframe
+            class="cyberlogo"
+            src="https://registry.blockmarktech.com/certificates/99cdb154-4ee0-41a4-bdef-6d2fa58bf757/widget/?tooltip_position=bottom_right&theme=transparent&hover=t"
+            title="Cyber Essentials Certification"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
