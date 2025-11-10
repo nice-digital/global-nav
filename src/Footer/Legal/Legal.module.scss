@@ -27,6 +27,10 @@
   width: 100px;
 }
 
+.invalidCyberlogo {
+  display: flex;
+}
+
 .menu {
   @include visibility.hide-print;
   margin: utils.rem(0 0 spacing.$medium);
