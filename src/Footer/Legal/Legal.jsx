@@ -2,13 +2,17 @@ import styles from "./Legal.module.scss";
 import TrackedLink from "../../TrackedLink";
 import { footerClickEventAction } from "../../tracker";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { useEffect, useState } from "react";
+
+const CERTIFICATE = {
+	id: "99cdb154-4ee0-41a4-bdef-6d2fa58bf757",
+	expiryDate: "2026-06-02",
+};
 
 const Legal = () => {
-	const expiryDate = "2026-06-02";
 	const today = new Date();
-	const expiry = new Date(expiryDate);
+	const expiry = new Date(CERTIFICATE.expiryDate);
 	const isValid = today < expiry;
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
@@ -16,7 +20,7 @@ const Legal = () => {
 					<GridItem
 						cols={12}
 						md={{ cols: isValid ? 9 : 12 }}
-						className={isValid ? undefined : styles.invalidCyberlogo}
+						className={!isValid ? styles.invalidCyberlogo : undefined}
 					>
 						<nav className={styles.menu} aria-label="Legal menu">
 							<ul>
@@ -95,7 +99,7 @@ const Legal = () => {
 					{isValid && (
 						<GridItem cols={12} md={{ cols: 3 }}>
 							<iframe
-								src="https://registry.blockmarktech.com/certificates/99cdb154-4ee0-41a4-bdef-6d2fa58bf757/widget/?tooltip_position=bottom_right&theme=transparent&hover=t"
+								src={`https://registry.blockmarktech.com/certificates/${CERTIFICATE.id}/widget/?tooltip_position=bottom_right&theme=transparent&hover=t`}
 								className={styles.cyberlogo}
 								title="Cyber Essentials Certification"
 							></iframe>
