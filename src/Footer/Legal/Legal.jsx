@@ -20,7 +20,7 @@ const Legal = () => {
 					<GridItem
 						cols={12}
 						md={{ cols: isValid ? 9 : 12 }}
-						className={!isValid ? styles.invalidCyberlogo : undefined}
+						className={!isValid ? styles.invalidCyberLogo : undefined}
 					>
 						<nav className={styles.menu} aria-label="Legal menu">
 							<ul>
@@ -100,7 +100,7 @@ const Legal = () => {
 						<GridItem cols={12} md={{ cols: 3 }}>
 							<iframe
 								src={`https://registry.blockmarktech.com/certificates/${CERTIFICATE.id}/widget/?tooltip_position=bottom_right&theme=transparent&hover=t`}
-								className={styles.cyberlogo}
+								className={styles.cyberLogo}
 								title="Cyber Essentials Certification"
 							></iframe>
 						</GridItem>
