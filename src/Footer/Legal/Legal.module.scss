@@ -21,6 +21,7 @@
 }
 
 .cyberLogo {
+  margin-top: utils.rem(spacing.$medium);
   background: transparent;
   border: none;
   height: 100px;
@@ -74,8 +75,8 @@
     @include layout.clearfix;
   }
 }
-@include media-queries.mq($until: md) {
-  .cyberlogo {
-    margin-top: utils.rem(spacing.$medium);
+@include media-queries.mq($from: md) {
+  .cyberLogo {
+    margin-top: 0;
   }
 }
