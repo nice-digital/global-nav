@@ -91,7 +91,7 @@ exports[`Legal Matches snapshot 1`] = `
           data-g="12 md:3"
         >
           <iframe
-            class="cyberlogo"
+            class="cyberLogo"
             src="https://registry.blockmarktech.com/certificates/99cdb154-4ee0-41a4-bdef-6d2fa58bf757/widget/?tooltip_position=bottom_right&theme=transparent&hover=t"
             title="Cyber Essentials Certification"
           />
