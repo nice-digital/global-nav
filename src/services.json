@@ -89,9 +89,9 @@
     {
       "host": "bnfc.nice.org.uk",
       "landingPath": "/",
-      "text": "British National Formulary for Children (BNFC)",
+      "text": "BNF for Children (BNFC)",
       "abbreviation": "BNFC",
-      "title": "British National Formulary for Children",
+      "title": "BNF for Children",
       "id": "bnfc",
       "footer": true,
       "header": true,
@@ -149,7 +149,6 @@
       "header": false
     }
   ],
-
   "internal": [
     {
       "host": "www.nice.org.uk",
