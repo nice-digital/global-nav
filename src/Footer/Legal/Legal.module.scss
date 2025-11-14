@@ -20,18 +20,6 @@
   @include layout.container;
 }
 
-.cyberLogo {
-  margin-top: utils.rem(spacing.$medium);
-  background: transparent;
-  border: none;
-  height: 100px;
-  width: 100px;
-}
-
-.invalidCyberLogo {
-  display: flex;
-}
-
 .menu {
   @include visibility.hide-print;
   margin: utils.rem(0 0 spacing.$medium);
@@ -61,6 +49,29 @@
   }
 }
 
+.cyberLogo {
+  margin-top: utils.rem(spacing.$medium);
+  background: transparent;
+  border: none;
+  height: 100px;
+  width: 100px;
+}
+
+.legalGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.legalMenuSection {
+  grid-column: span 12;
+}
+
+.cyberLogoSection {
+  grid-column: span 12;
+  display: flex;
+  justify-content: flex-start;
+}
+
 @include media-queries.mq($from: sm) {
   .menu {
     li {
@@ -70,13 +81,29 @@
   }
 }
 
-@include media-queries.mq($from: lg) {
-  .wrapper {
-    @include layout.clearfix;
-  }
-}
 @include media-queries.mq($from: md) {
   .cyberLogo {
     margin-top: 0;
+  }
+}
+
+@include media-queries.mq($from: md) {
+  .legalMenuSection {
+    grid-column: span 9;
+  }
+
+  .legalGrid:not(:has(.cyberLogoSection)) .legalMenuSection {
+    grid-column: span 12;
+    display: flex;
+  }
+
+  .cyberLogoSection {
+    grid-column: span 3;
+  }
+}
+
+@include media-queries.mq($from: lg) {
+  .wrapper {
+    @include layout.clearfix;
   }
 }

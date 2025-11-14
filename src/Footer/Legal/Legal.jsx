@@ -1,7 +1,6 @@
 import styles from "./Legal.module.scss";
 import TrackedLink from "../../TrackedLink";
 import { footerClickEventAction } from "../../tracker";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 const cyberEssentialsCertificate = {
 	id: "99cdb154-4ee0-41a4-bdef-6d2fa58bf757",
@@ -18,14 +17,8 @@ const Legal = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
-				<Grid>
-					<GridItem
-						cols={12}
-						md={{ cols: isCyberEssentialsValid ? 9 : 12 }}
-						className={
-							!isCyberEssentialsValid ? styles.invalidCyberLogo : undefined
-						}
-					>
+				<div className={styles.legalGrid}>
+					<div className={styles.legalMenuSection}>
 						<nav className={styles.menu} aria-label="Legal menu">
 							<ul>
 								<li>
@@ -99,17 +92,18 @@ const Legal = () => {
 							</TrackedLink>
 							.
 						</p>
-					</GridItem>
+					</div>
+
 					{isCyberEssentialsValid && (
-						<GridItem cols={12} md={{ cols: 3 }}>
+						<div className={styles.cyberLogoSection}>
 							<iframe
 								src={`https://registry.blockmarktech.com/certificates/${cyberEssentialsCertificate.id}/widget/?tooltip_position=bottom_right&theme=transparent&hover=t`}
-								className={styles.cyberLogo}
 								title="Cyber Essentials Certification"
+								className={styles.cyberLogo}
 							></iframe>
-						</GridItem>
+						</div>
 					)}
-				</Grid>
+				</div>
 			</div>
 		</div>
 	);
