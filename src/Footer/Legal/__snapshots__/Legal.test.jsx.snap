@@ -9,11 +9,10 @@ exports[`Legal Matches snapshot 1`] = `
       class="container"
     >
       <div
-        class="grid"
+        class="legalGrid"
       >
         <div
-          data-component="grid-item"
-          data-g="12 md:9"
+          class="legalMenuSection"
         >
           <nav
             aria-label="Legal menu"
@@ -87,8 +86,7 @@ exports[`Legal Matches snapshot 1`] = `
           </p>
         </div>
         <div
-          data-component="grid-item"
-          data-g="12 md:3"
+          class="cyberLogoSection"
         >
           <iframe
             class="cyberLogo"
