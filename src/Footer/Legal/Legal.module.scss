@@ -57,16 +57,19 @@
   width: 100px;
 }
 
-.legalGrid {
+.layout {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
 
-.legalMenuSection {
-  grid-column: span 12;
+.menuWrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.cyberLogoSection {
+.cyberLogoWrapper {
   grid-column: span 12;
   display: flex;
   justify-content: flex-start;
@@ -82,23 +85,18 @@
 }
 
 @include media-queries.mq($from: md) {
-  .cyberLogo {
-    margin-top: 0;
-  }
-}
-
-@include media-queries.mq($from: md) {
-  .legalMenuSection {
+  .layout:has(.cyberLogoWrapper) .menuWrapper {
     grid-column: span 9;
+    display: block;
   }
 
-  .legalGrid:not(:has(.cyberLogoSection)) .legalMenuSection {
-    grid-column: span 12;
+  .layout:has(.cyberLogoWrapper) .cyberLogoWrapper {
+    grid-column: span 3;
     display: flex;
   }
 
-  .cyberLogoSection {
-    grid-column: span 3;
+  .cyberLogo {
+    margin-top: 0;
   }
 }
 

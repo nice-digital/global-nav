@@ -17,8 +17,8 @@ const Legal = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
-				<div className={styles.legalGrid}>
-					<div className={styles.legalMenuSection}>
+				<div className={styles.layout}>
+					<div className={styles.menuWrapper}>
 						<nav className={styles.menu} aria-label="Legal menu">
 							<ul>
 								<li>
@@ -95,7 +95,7 @@ const Legal = () => {
 					</div>
 
 					{isCyberEssentialsValid && (
-						<div className={styles.cyberLogoSection}>
+						<div className={styles.cyberLogoWrapper}>
 							<iframe
 								src={`https://registry.blockmarktech.com/certificates/${cyberEssentialsCertificate.id}/widget/?tooltip_position=bottom_right&theme=transparent&hover=t`}
 								title="Cyber Essentials Certification"

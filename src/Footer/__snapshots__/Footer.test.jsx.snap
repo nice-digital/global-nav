@@ -347,10 +347,10 @@ exports[`Footer Matches snapshot 1`] = `
         class="container"
       >
         <div
-          class="legalGrid"
+          class="layout"
         >
           <div
-            class="legalMenuSection"
+            class="menuWrapper"
           >
             <nav
               aria-label="Legal menu"
@@ -424,7 +424,7 @@ exports[`Footer Matches snapshot 1`] = `
             </p>
           </div>
           <div
-            class="cyberLogoSection"
+            class="cyberLogoWrapper"
           >
             <iframe
               class="cyberLogo"
