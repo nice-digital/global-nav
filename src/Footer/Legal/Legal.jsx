@@ -97,7 +97,7 @@ const Legal = () => {
 					{isCyberEssentialsValid && (
 						<div className={styles.cyberLogoWrapper}>
 							<iframe
-								src={`https://registry.blockmarktech.com/certificates/${cyberEssentialsCertificate.id}/widget/?tooltip_position=bottom_right&theme=transparent&hover=t`}
+								src="https://registry.blockmarktech.com/certificates/99cdb154-4ee0-41a4-bdef-6d2fa58bf757/widget/?tooltip_position=bottom_left&theme=transparent&hover=t"
 								title="Cyber Essentials Certification"
 								className={styles.cyberLogo}
 							></iframe>

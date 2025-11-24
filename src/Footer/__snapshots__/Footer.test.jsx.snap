@@ -428,7 +428,7 @@ exports[`Footer Matches snapshot 1`] = `
           >
             <iframe
               class="cyberLogo"
-              src="https://registry.blockmarktech.com/certificates/99cdb154-4ee0-41a4-bdef-6d2fa58bf757/widget/?tooltip_position=bottom_right&theme=transparent&hover=t"
+              src="https://registry.blockmarktech.com/certificates/99cdb154-4ee0-41a4-bdef-6d2fa58bf757/widget/?tooltip_position=bottom_left&theme=transparent&hover=t"
               title="Cyber Essentials Certification"
             />
           </div>

@@ -50,11 +50,11 @@
 }
 
 .cyberLogo {
-  margin-top: utils.rem(spacing.$medium);
   background: transparent;
   border: none;
-  height: 100px;
-  width: 100px;
+  height: 132px;
+  margin-top: utils.rem(spacing.$medium);
+  width: 132px;
 }
 
 .layout {
@@ -63,15 +63,15 @@
 }
 
 .menuWrapper {
-  grid-column: 1 / -1;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  grid-column: 1 / -1;
+  justify-content: space-between;
 }
 
 .cyberLogoWrapper {
-  grid-column: span 12;
   display: flex;
+  grid-column: span 12;
   justify-content: flex-start;
 }
 
@@ -86,13 +86,13 @@
 
 @include media-queries.mq($from: md) {
   .layout:has(.cyberLogoWrapper) .menuWrapper {
-    grid-column: span 9;
     display: block;
+    grid-column: span 9;
   }
 
   .layout:has(.cyberLogoWrapper) .cyberLogoWrapper {
-    grid-column: span 3;
     display: flex;
+    grid-column: span 3;
   }
 
   .cyberLogo {
