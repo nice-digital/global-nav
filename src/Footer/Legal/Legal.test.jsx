@@ -20,7 +20,7 @@ describe("Legal", () => {
 	});
 
 	it("renders Cyber Essentials iframe when certificate is valid", () => {
-		mockDate("2026-06-01T23:59:59.500Z");
+		mockDate("2025-06-01T23:59:59.500Z");
 
 		render(<Legal />);
 		const iframe = screen.getByTitle("Cyber Essentials Certification");
