@@ -12,8 +12,9 @@ const Legal = () => {
 	const cyberEssentialsExpiryDate = new Date(
 		cyberEssentialsCertificate.expiryDate
 	);
+
 	const isCyberEssentialsValid = today < cyberEssentialsExpiryDate;
-	console.log({ isCyberEssentialsValid });
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>

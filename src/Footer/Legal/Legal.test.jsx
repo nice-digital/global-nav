@@ -19,6 +19,7 @@ describe("Legal", () => {
 		MockDate.reset();
 	});
 
+	// NOTE: the cyberlogo exipry will change annually. Dates and snapshots will need updating
 	it("renders Cyber Essentials iframe when certificate is valid", () => {
 		mockDate("2025-06-01T23:59:59.500Z");
 
@@ -28,6 +29,8 @@ describe("Legal", () => {
 		expect(iframe).toBeInTheDocument();
 		expect(iframe.tagName).toBe("IFRAME");
 	});
+
+	// NOTE: the cyberlogo exipry will change annually. Dates and snapshots will need updating
 	it("does not render Cyber Essentials iframe when certificate is invalid", () => {
 		mockDate("2026-06-03T00:00:00Z");
 
