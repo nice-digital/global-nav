@@ -96,6 +96,10 @@
     grid-column: span 3;
   }
 
+  .layout:has(.cyberLogoWrapper) .menu {
+    margin-bottom: utils.rem(spacing.$medium);
+  }
+
   .cyberLogo {
     margin-top: 0;
   }
@@ -104,5 +108,9 @@
 @include media-queries.mq($from: lg) {
   .wrapper {
     @include layout.clearfix;
+  }
+
+  .menu {
+    margin-bottom: 0;
   }
 }
