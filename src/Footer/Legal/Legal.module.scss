@@ -86,9 +86,9 @@
 
 @include media-queries.mq($from: md) {
   .layout:has(.cyberLogoWrapper) .menuWrapper {
+    align-content: center;
     display: block;
     grid-column: span 9;
-    align-content: center;
   }
 
   .layout:has(.cyberLogoWrapper) .cyberLogoWrapper {
