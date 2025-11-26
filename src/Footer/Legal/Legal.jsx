@@ -4,7 +4,7 @@ import { footerClickEventAction } from "../../tracker";
 
 const cyberEssentialsCertificate = {
 	id: "99cdb154-4ee0-41a4-bdef-6d2fa58bf757",
-	expiryDate: "2025-06-02",
+	expiryDate: "2026-06-02",
 };
 
 const Legal = () => {
@@ -13,7 +13,7 @@ const Legal = () => {
 		cyberEssentialsCertificate.expiryDate
 	);
 	const isCyberEssentialsValid = today < cyberEssentialsExpiryDate;
-
+	console.log({ isCyberEssentialsValid });
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
