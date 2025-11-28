@@ -49,6 +49,32 @@
   }
 }
 
+.cyberLogo {
+  background: transparent;
+  border: none;
+  height: 137px;
+  margin-top: utils.rem(spacing.$medium);
+  width: 132px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.menuWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1 / -1;
+  justify-content: space-between;
+}
+
+.cyberLogoWrapper {
+  display: flex;
+  grid-column: span 12;
+  justify-content: flex-start;
+}
+
 @include media-queries.mq($from: sm) {
   .menu {
     li {
@@ -58,17 +84,33 @@
   }
 }
 
+@include media-queries.mq($from: md) {
+  .layout:has(.cyberLogoWrapper) .menuWrapper {
+    align-content: center;
+    display: block;
+    grid-column: span 9;
+  }
+
+  .layout:has(.cyberLogoWrapper) .cyberLogoWrapper {
+    display: flex;
+    grid-column: span 3;
+  }
+
+  .layout:has(.cyberLogoWrapper) .menu {
+    margin-bottom: utils.rem(spacing.$medium);
+  }
+
+  .cyberLogo {
+    margin-top: 0;
+  }
+}
+
 @include media-queries.mq($from: lg) {
   .wrapper {
     @include layout.clearfix;
   }
 
   .menu {
-    float: left;
-    margin: 0;
-  }
-
-  .copyright {
-    float: right;
+    margin-bottom: 0;
   }
 }
