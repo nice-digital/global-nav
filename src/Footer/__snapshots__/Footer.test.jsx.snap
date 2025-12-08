@@ -107,21 +107,21 @@ exports[`Footer Matches snapshot 1`] = `
               href="https://bnfc.nice.org.uk/"
             >
               <abbr
-                title="British National Formulary for Children"
+                title="BNF for Children"
               >
-                British National Formulary for Children (BNFC)
+                BNF for Children (BNF)
                  
                 <span
                   class="visuallyHidden"
                 >
-                  British National Formulary for Children
+                  BNF for Children
                 </span>
               </abbr>
               <span
                 aria-hidden="true"
                 class="tooltip"
               >
-                British National Formulary for Children
+                BNF for Children
               </span>
             </a>
           </li>
