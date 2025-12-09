@@ -228,7 +228,7 @@ exports[`Header Matches snapshot 1`] = `
                 data-tracking="BNF for Children (BNFC)"
               >
                 <a
-                  aria-label="BNF for Children (BNFC)"
+                  aria-label="British National Formulary for Children (BNFC)"
                   class="link"
                   href="https://bnfc.nice.org.uk/"
                   id="navlink-bnfc"
