@@ -50,6 +50,14 @@ const Search = function ({
 				e.preventDefault();
 				const query = document.getElementById("autocomplete").value;
 				onSearchingCallback({ query });
+
+				// Move focus to search results after hitting search/enter
+				window.requestAnimationFrame(() => {
+					const results = document.getElementById("search-results"); //need to add this id to search results component in next-web
+					if (results) {
+						results.focus();
+					}
+				});
 				return true;
 			}
 		}
