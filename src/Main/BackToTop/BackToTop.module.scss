@@ -79,3 +79,7 @@ $back-to-top-height: utils.rem(
     z-index: 1;
   }
 }
+
+:focus-visible {
+  scroll-margin-bottom: $back-to-top-height; //need a deployment to test this properly
+}
