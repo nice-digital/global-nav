@@ -111,7 +111,6 @@ const Search = function ({
 			>
 				<SearchIcon className={styles.icon} />
 			</button>
-			<SkipLink to={`#${skipLinkId}`}>Skip to content</SkipLink>
 		</form>
 	);
 };
