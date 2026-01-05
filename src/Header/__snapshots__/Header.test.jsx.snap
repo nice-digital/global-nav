@@ -225,7 +225,7 @@ exports[`Header Matches snapshot 1`] = `
                 </a>
               </li>
               <li
-                data-tracking="British National Formulary for Children (BNFC)"
+                data-tracking="BNF for Children (BNFC)"
               >
                 <a
                   aria-label="British National Formulary for Children (BNFC)"
@@ -234,7 +234,7 @@ exports[`Header Matches snapshot 1`] = `
                   id="navlink-bnfc"
                 >
                   <span>
-                    British National Formulary for Children (BNFC)
+                    BNF for Children (BNFC)
                   </span>
                 </a>
               </li>

@@ -118,4 +118,5 @@
 
 .image {
   height: 100%;
+  padding: utils.rem(spacing.$small + spacing.$x-small 0);
 }
