@@ -109,7 +109,7 @@ exports[`Footer Matches snapshot 1`] = `
               <abbr
                 title="British National Formulary for Children"
               >
-                British National Formulary for Children (BNFC)
+                BNF for Children (BNFC)
                  
                 <span
                   class="visuallyHidden"
@@ -412,7 +412,7 @@ exports[`Footer Matches snapshot 1`] = `
                 NICE
               </abbr>
                
-              2025
+              2026
               . All rights reserved. Subject to
                
               <a
