@@ -15,7 +15,8 @@ export function Main(props) {
 			)}
 			{...rest}
 		>
-			{children}
+			<div style={{ paddingBottom: "4rem" }}>{children}</div>
+
 			<BackToTop />
 		</main>
 	);
