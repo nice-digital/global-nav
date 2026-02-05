@@ -120,12 +120,6 @@ exports[`Header Matches snapshot 1`] = `
                   />
                 </svg>
               </button>
-              <a
-                class="link"
-                href="#content-start"
-              >
-                Skip to content
-              </a>
             </form>
           </div>
           <button
