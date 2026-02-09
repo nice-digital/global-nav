@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import SearchIcon from "@nice-digital/icons/lib/Search";
 
 import Autocomplete from "./Autocomplete";
-import SkipLink from "../SkipLink";
+
 import { getCallbackFunction } from "../../utils";
 
 import styles from "./Search.module.scss";
@@ -13,7 +13,6 @@ const searchInputSelector = "header form[role='search'] [name='q']";
 const Search = function ({
 	url = "/search",
 	autocomplete,
-	skipLinkId,
 	placeholder = "Search NICE…",
 	query = "",
 	onSearching,
@@ -50,14 +49,6 @@ const Search = function ({
 				e.preventDefault();
 				const query = document.getElementById("autocomplete").value;
 				onSearchingCallback({ query });
-
-				// Move focus to search results after hitting search/enter
-				window.requestAnimationFrame(() => {
-					const results = document.getElementById("search-results"); //need to add this id to search results component in next-web
-					if (results) {
-						results.focus();
-					}
-				});
 				return true;
 			}
 		}
