@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import SearchIcon from "@nice-digital/icons/lib/Search";
 
 import Autocomplete from "./Autocomplete";
-import SkipLink from "../SkipLink";
+
 import { getCallbackFunction } from "../../utils";
 
 import styles from "./Search.module.scss";
@@ -13,7 +13,6 @@ const searchInputSelector = "header form[role='search'] [name='q']";
 const Search = function ({
 	url = "/search",
 	autocomplete,
-	skipLinkId,
 	placeholder = "Search NICE…",
 	query = "",
 	onSearching,
@@ -111,7 +110,6 @@ const Search = function ({
 			>
 				<SearchIcon className={styles.icon} />
 			</button>
-			<SkipLink to={`#${skipLinkId}`}>Skip to content</SkipLink>
 		</form>
 	);
 };

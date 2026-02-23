@@ -1,5 +1,5 @@
 import Header from "./Header";
-import { render, within, createEvent, fireEvent } from "@testing-library/react";
+import { render, createEvent, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import {
@@ -125,13 +125,14 @@ describe("Header", () => {
 
 		it("should create skip link to given target ID", () => {
 			const { getByRole } = render(
-					<Header {...defaultProps} search={{ skipLinkId: "chickens" }} />
-				),
-				search = getByRole("search");
+				<Header {...defaultProps} skipLinkId="chickens" />
+			);
 
-			expect(
-				within(search).getByRole("link", { name: "Skip to content" })
-			).toHaveAttribute("href", "#chickens");
+			const skipLink = getByRole("link", {
+				name: /skip to content/i,
+			});
+
+			expect(skipLink).toHaveAttribute("href", "#chickens");
 		});
 	});
 
