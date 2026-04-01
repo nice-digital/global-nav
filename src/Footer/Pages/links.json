@@ -32,20 +32,20 @@
     "text": "Contact us"
   },
   {
-    "href": "https://www.nice.org.uk/forms/leave-feedback",
-    "text": "Leave feedback"
+    "href": "https://www.nice.org.uk/website-feedback",
+    "text": "Website feedback"
   },
   {
     "href": "https://www.nice.org.uk/reusing-our-content",
     "text": "Reusing our content"
   },
   {
-    "href": "https://www.nice.org.uk/forms/use-of-nice-content-in-the-uk",
-    "text": "NICE UK Open Content Licence"
+    "href": "https://www.nice.org.uk/reusing-our-content/nice-uk-open-content-licence",
+    "text": "NICE UK open content licence"
   },
   {
-    "href": "https://www.nice.org.uk/about/what-we-do/nice-syndication-api",
-    "text": "Syndicate our content"
+    "href": "https://www.nice.org.uk/reusing-our-content/nice-syndication-api",
+    "text": "NICE syndication API"
   },
   {
     "href": "https://www.nice.org.uk/events",
