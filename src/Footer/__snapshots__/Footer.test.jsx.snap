@@ -209,7 +209,7 @@ exports[`Footer Matches snapshot 1`] = `
             <a
               href="https://www.nice.org.uk/website-feedback"
             >
-              Website feedback
+              Leave feedback
             </a>
           </li>
           <li>
@@ -223,14 +223,14 @@ exports[`Footer Matches snapshot 1`] = `
             <a
               href="https://www.nice.org.uk/reusing-our-content/nice-uk-open-content-licence"
             >
-              NICE UK open content licence
+              NICE UK Open Content Licence
             </a>
           </li>
           <li>
             <a
               href="https://www.nice.org.uk/reusing-our-content/nice-syndication-api"
             >
-              NICE syndication API
+              Syndicate our content
             </a>
           </li>
           <li>
