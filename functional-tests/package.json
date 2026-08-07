@@ -1,0 +1,63 @@
+{
+  "name": "@nice-digital/frontend-testing-base",
+  "private": true,
+  "version": "2.0.0",
+  "description": "A place from which to start browser driven testing",
+  "main": "wdio.conf.ts",
+  "scripts": {
+    "test": "wdio run wdio.conf.ts",
+    "test:allbrowsers": "cross-env ALL_BROWSERS=true npm test",
+    "test:docker": "npm test -- --hostname hub --baseUrl https://alpha.nice.org.uk/",
+    "wait-then-test": "npm run test:docker",
+    "// LINTING/CODE STYLE": "",
+    "lint": "npm run prettier && npm run lint:ts && npm run typecheck",
+    "prettier": "prettier --check \"./**/*.{ts,tsx,js}\"",
+    "prettier:fix": "npm run prettier -- --write",
+    "lint:ts": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:ts:fix": "npm run lint:ts -- --fix",
+    "// TYPECHECKING": "",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nice-digital/frontend-testing-base.git"
+  },
+  "author": "NICE Digital Services",
+  "contributors": [
+    "Ian Routledge <ian@ediblecode.com>",
+    "Dave Wong"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/nice-digital/frontend-testing-base#readme",
+  "engines": {
+    "node": ">= 12"
+  },
+  "devDependencies": {
+    "@nice-digital/wdio-cucumber-steps": "^2.0.3",
+    "@types/node": "^20.9.0",
+    "@wdio/allure-reporter": "^7.9.0",
+    "@wdio/cli": "^7.9.0",
+    "@wdio/cucumber-framework": "^7.9.0",
+    "@wdio/local-runner": "^7.19.7",
+    "@wdio/selenium-standalone-service": "^7.8.0",
+    "@wdio/spec-reporter": "^7.9.0",
+    "@cucumber/cucumber": "^7.3.2",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5",
+    "wait-on": "^6.0.0",
+    "wdio-teamcity-reporter": "^2.3.0",
+    "webdriverio": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  },
+  "volta": {
+    "node": "14.19.0"
+  }
+}
