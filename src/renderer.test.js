@@ -1,5 +1,12 @@
 import { act } from "react-dom/test-utils";
-import { headerId, footerId, renderHeader, renderFooter } from "./renderer";
+import {
+	headerId,
+	footerId,
+	loadAwsWaf,
+	renderHeader,
+	renderFooter,
+} from "./renderer";
+import { scriptId } from "./aws-waf";
 
 jest.mock("./services.json", () =>
 	require("./Header/Nav/__mocks__/services.json")
@@ -37,6 +44,48 @@ describe("renderer", () => {
 		document.body.innerHTML = "";
 
 		delete window.global_nav_config;
+	});
+
+	describe("AWS WAF challenge", () => {
+		const awsWafScriptURL = "https://localhost:4000/mock-aws-waf-jsapi.js";
+
+		afterEach(() => {
+			document.head.innerHTML = "";
+		});
+
+		it("Doesn't load the AWS WAF script for a hostname with no web ACL", () => {
+			expect(loadAwsWaf()).toBe(false);
+			expect(document.getElementById(scriptId)).toBeNull();
+		});
+
+		it("Loads the AWS WAF script from config with header and footer disabled", () => {
+			window.global_nav_config = {
+				awsWafScriptURL,
+				header: false,
+				footer: false,
+			};
+
+			expect(loadAwsWaf()).toBe(true);
+			expect(document.getElementById(scriptId)).toHaveAttribute(
+				"src",
+				awsWafScriptURL
+			);
+		});
+
+		it("Doesn't load the AWS WAF script when disabled in config", () => {
+			window.global_nav_config = {
+				awsWafScriptURL: false,
+			};
+
+			expect(loadAwsWaf()).toBe(false);
+
+			act(() => {
+				renderHeader();
+				renderFooter();
+			});
+
+			expect(document.getElementById(scriptId)).toBeNull();
+		});
 	});
 
 	describe("Header", () => {

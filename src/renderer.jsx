@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import Header from "./Header";
 import Footer from "./Footer";
+import { loadAwsWafChallenge } from "./aws-waf";
 
 export const headerId = "global-nav-header";
 export const footerId = "global-nav-footer";
@@ -23,6 +24,13 @@ const ensureCallback = function (callback) {
 		}
 	}
 	return null;
+};
+
+// Load here, because header and footer can be switched off in config and the challenge would not then happen
+export const loadAwsWaf = function () {
+	const config = window.global_nav_config || {};
+
+	return loadAwsWafChallenge(config.awsWafScriptURL);
 };
 
 export const renderHeader = function () {
