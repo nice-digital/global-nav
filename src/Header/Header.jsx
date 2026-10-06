@@ -13,6 +13,7 @@ import Search from "./Search";
 import Account from "./Account";
 import SkipLink from "./SkipLink";
 import { getCallbackFunction } from "../utils";
+import { awsWafScriptURLPropType } from "../aws-waf/propTypes";
 import { useAwsWafChallenge } from "../hooks/useAwsWafChallenge";
 
 import styles from "./Header.module.scss";
@@ -412,7 +413,7 @@ Header.propTypes = {
 	onRendered: PropTypes.func,
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
 	renderSearchOnly: PropTypes.bool,
-	awsWafScriptURL: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+	awsWafScriptURL: awsWafScriptURLPropType,
 };
 
 OldHeader.propTypes = {

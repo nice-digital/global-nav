@@ -17,13 +17,26 @@ export const getIntegration = function (hostname) {
 	return integrations.find(({ hosts }) => hosts.indexOf(hostname) > -1);
 };
 
-// Either the SDK has already run, we've already added it, or the host page loads it for itself
-const isAlreadyOnPage = function () {
-	return !!(
-		window.AwsWafIntegration ||
+// How long a caller of `whenAwsWafTokenReady` is held up before it goes ahead without a token
+const tokenTimeout = 5000;
+
+// The SDK's script tag, whether we added it or the host page loads it for itself
+const findSdkScript = function () {
+	return (
 		document.getElementById(scriptId) ||
 		document.querySelector("script[src*='.awswaf.com/']")
 	);
+};
+
+// Either the SDK has already run, we've already added it, or the host page loads it for itself
+const isAlreadyOnPage = function () {
+	return !!(window.AwsWafIntegration || findSdkScript());
+};
+
+const getToken = function () {
+	const sdk = window.AwsWafIntegration;
+
+	return sdk && typeof sdk.getToken === "function" ? sdk.getToken() : undefined;
 };
 
 /**
@@ -65,4 +78,43 @@ export const loadAwsWafChallenge = function (scriptURL) {
 	document.head.appendChild(script);
 
 	return true;
+};
+
+/**
+ * Waits for the SDK to hold a token, so that a request made straight afterwards carries the
+ * `aws-waf-token` cookie. For requests to another service behind a web ACL that can't go through
+ * the SDK's own `fetch`, e.g. the NICE Accounts script tag.
+ *
+ * The promise always resolves and never rejects: straight away when there's no SDK on the page, and
+ * after the timeout if the SDK can't get a token. The caller's request goes ahead either way, and
+ * it's for the web ACL to decide what to do with one that has no token.
+ *
+ * @param {number} [timeout] The longest to wait, in milliseconds
+ * @returns {Promise<void>}
+ */
+export const whenAwsWafTokenReady = function (timeout = tokenTimeout) {
+	return new Promise(function (resolve) {
+		const timer = setTimeout(resolve, timeout),
+			done = function () {
+				clearTimeout(timer);
+				resolve();
+			};
+
+		// Look for the SDK on the next tick, not now. A child's effects run before its parent's, so
+		// when the account menu asks, the header hasn't added the script yet
+		Promise.resolve()
+			.then(function () {
+				if (window.AwsWafIntegration) return getToken();
+
+				const script = findSdkScript();
+
+				if (!script) return;
+
+				return new Promise(function (loaded) {
+					script.addEventListener("load", loaded);
+					script.addEventListener("error", loaded);
+				}).then(getToken);
+			})
+			.then(done, done);
+	});
 };

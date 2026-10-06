@@ -8,6 +8,7 @@ import Pages from "./Pages";
 import styles from "./Footer.module.scss";
 import TrackedLink from "../TrackedLink";
 import { footerClickEventAction } from "../tracker";
+import { awsWafScriptURLPropType } from "../aws-waf/propTypes";
 import { useAwsWafChallenge } from "../hooks/useAwsWafChallenge";
 
 //TODO add string type for service prop
@@ -37,7 +38,7 @@ const Footer = ({ service, awsWafScriptURL }) => {
 
 Footer.propTypes = {
 	service: PropTypes.string,
-	awsWafScriptURL: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+	awsWafScriptURL: awsWafScriptURLPropType,
 };
 
 export default Footer;
