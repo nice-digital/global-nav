@@ -900,6 +900,16 @@ export const integrations = [
 
 A new or changed entry needs a Global Nav release. Services loading the unversioned CDN bundle pick that up straight away; services using the npm package pick it up when they next upgrade and deploy.
 
+#### NICE Accounts
+
+NICE Accounts sits behind a web ACL too, and the header calls it to find out whether you're signed in. That call is a script tag, which can't send the token as a header, so it relies on the `aws-waf-token` cookie instead. Global Nav waits for the SDK to have a token before it makes the call, so the cookie is there to send. With no SDK on the page it doesn't wait at all, and if the SDK hasn't got a token after 5 seconds it makes the call anyway.
+
+This only works when the cookie reaches `accounts.nice.org.uk`:
+
+- The page has to be on `nice.org.uk`. A browser won't send a cookie from one domain to another, so services on other domains, and sandbox on `sandbox1-ds.net`, call NICE Accounts without a token.
+- The cookie has to be set on `.nice.org.uk` and not on the exact hostname. The shipped entries do that with `cookieDomains`. An [`awsWafScriptURL`](#headerawswafscripturl) override doesn't, so set `window.awsWafCookieDomainList = ['.nice.org.uk']` on the page before Global Nav loads.
+- `.nice.org.uk` has to be on the token domain list of both web ACLs: the one in front of the page and the one in front of NICE Accounts.
+
 #### Content Security Policy
 
 If your service sets a Content Security Policy then `script-src` and `connect-src` need to allow `https://*.awswaf.com`.
