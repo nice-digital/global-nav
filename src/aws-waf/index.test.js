@@ -228,6 +228,143 @@ describe("aws-waf", () => {
 		});
 	});
 
+	describe("whenAwsWafTokenReady", () => {
+		// Lets the promise chain inside the module run
+		const flushPromises = async () => {
+			for (let i = 0; i < 5; i++) await Promise.resolve();
+		};
+
+		const addSdkScript = (scriptId) => {
+			const script = document.createElement("script");
+
+			script.id = scriptId;
+			document.head.appendChild(script);
+
+			return script;
+		};
+
+		afterEach(() => {
+			jest.useRealTimers();
+		});
+
+		it("Resolves straight away when there's no SDK on the page", async () => {
+			const { whenAwsWafTokenReady } = loadModule();
+
+			await expect(whenAwsWafTokenReady()).resolves.toBeUndefined();
+		});
+
+		it("Waits for the SDK's token when the SDK has already loaded", async () => {
+			const { whenAwsWafTokenReady } = loadModule(),
+				onReady = jest.fn();
+
+			let resolveToken;
+
+			window.AwsWafIntegration = {
+				getToken: jest.fn(
+					() => new Promise((resolve) => (resolveToken = resolve))
+				),
+			};
+
+			whenAwsWafTokenReady().then(onReady);
+			await flushPromises();
+
+			expect(window.AwsWafIntegration.getToken).toHaveBeenCalledTimes(1);
+			expect(onReady).not.toHaveBeenCalled();
+
+			resolveToken("a-token");
+			await flushPromises();
+
+			expect(onReady).toHaveBeenCalledWith(undefined);
+		});
+
+		it("Waits for the script to load, then for the SDK's token", async () => {
+			const { whenAwsWafTokenReady, scriptId } = loadModule(),
+				script = addSdkScript(scriptId),
+				getToken = jest.fn(() => Promise.resolve("a-token")),
+				onReady = jest.fn();
+
+			whenAwsWafTokenReady().then(onReady);
+			await flushPromises();
+
+			expect(onReady).not.toHaveBeenCalled();
+
+			window.AwsWafIntegration = { getToken };
+			script.dispatchEvent(new Event("load"));
+			await flushPromises();
+
+			expect(getToken).toHaveBeenCalledTimes(1);
+			expect(onReady).toHaveBeenCalled();
+		});
+
+		it("Finds a script added just after it's called", async () => {
+			const { whenAwsWafTokenReady, scriptId } = loadModule(),
+				onReady = jest.fn();
+
+			whenAwsWafTokenReady().then(onReady);
+
+			const script = addSdkScript(scriptId);
+
+			await flushPromises();
+
+			expect(onReady).not.toHaveBeenCalled();
+
+			script.dispatchEvent(new Event("load"));
+			await flushPromises();
+
+			expect(onReady).toHaveBeenCalled();
+		});
+
+		it("Resolves when the script fails to load", async () => {
+			const { whenAwsWafTokenReady, scriptId } = loadModule(),
+				script = addSdkScript(scriptId),
+				ready = whenAwsWafTokenReady();
+
+			await flushPromises();
+			script.dispatchEvent(new Event("error"));
+
+			await expect(ready).resolves.toBeUndefined();
+		});
+
+		it("Resolves when the SDK can't get a token", async () => {
+			const { whenAwsWafTokenReady } = loadModule();
+
+			window.AwsWafIntegration = {
+				getToken: () => Promise.reject(new Error("No token for you")),
+			};
+
+			await expect(whenAwsWafTokenReady()).resolves.toBeUndefined();
+		});
+
+		it("Resolves when the SDK has no getToken", async () => {
+			const { whenAwsWafTokenReady } = loadModule();
+
+			window.AwsWafIntegration = {};
+
+			await expect(whenAwsWafTokenReady()).resolves.toBeUndefined();
+		});
+
+		it("Gives up waiting after the timeout", async () => {
+			jest.useFakeTimers();
+
+			const { whenAwsWafTokenReady } = loadModule(),
+				onReady = jest.fn();
+
+			window.AwsWafIntegration = { getToken: () => new Promise(() => {}) };
+
+			whenAwsWafTokenReady(2000).then(onReady);
+
+			jest.advanceTimersByTime(1999);
+			await flushPromises();
+
+			expect(onReady).not.toHaveBeenCalled();
+
+			jest.advanceTimersByTime(1);
+			await flushPromises();
+
+			expect(onReady).toHaveBeenCalled();
+		});
+	});
+
 	describe("integrations", () => {
 		it("Every integration lists at least one hostname", () => {
 			const { integrations } = jest.requireActual("./integrations");
