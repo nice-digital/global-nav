@@ -123,7 +123,8 @@ export const integrations = [
 			"dev.nice.org.uk",
 			"dev-indev.nice.org.uk",
 		],
-		scriptURL: "",
+		scriptURL:
+			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/9435ee08f314/challenge.js",
 		cookieDomains,
 	},
 	{
