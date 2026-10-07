@@ -24,7 +24,7 @@
  * ! The hostnames below were grouped by which ones resolved to the same address in DNS on
  * ! 2026-10-01, on the basis that a shared address means a shared load balancer. That's a starting
  * ! point, not the truth: confirm the grouping with ops when they hand over each script URL, and
- * ! merge or split entries to match the web ACLs they actually create. Every URL is empty until then.
+ * ! merge or split entries to match the web ACLs they actually create. A URL is empty until then.
  *
  * @see https://docs.aws.amazon.com/waf/latest/developerguide/waf-js-challenge-api.html
  */
@@ -118,6 +118,7 @@ export const integrations = [
 	{
 		hosts: [
 			"test.nice.org.uk",
+			"test-next-feature.nice.org.uk",
 			"test-indev.nice.org.uk",
 			"test-publications.nice.org.uk",
 			"dev.nice.org.uk",
