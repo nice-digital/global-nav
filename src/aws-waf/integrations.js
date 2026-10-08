@@ -21,10 +21,8 @@
  * A hostname that isn't listed gets no script, which is what we want for localhost and for any
  * environment with no web ACL in front of it.
  *
- * ! The hostnames below were grouped by which ones resolved to the same address in DNS on
- * ! 2026-10-01, on the basis that a shared address means a shared load balancer. That's a starting
- * ! point, not the truth: confirm the grouping with ops when they hand over each script URL, and
- * ! merge or split entries to match the web ACLs they actually create. A URL is empty until then.
+ * The entries below are ops' official list of which hostnames sit behind which web ACL, as of
+ * 2026-10-08. When ops add a hostname or rotate a URL, change it here and release.
  *
  * @see https://docs.aws.amazon.com/waf/latest/developerguide/waf-js-challenge-api.html
  */
@@ -40,35 +38,16 @@ export const integrations = [
 		cookieDomains: [".sandbox1-ds.net"],
 	},
 
-	// Live. Main site's load balancer fronts next-web, guidance-web, consultations and the
-	// niceorg backend, so they're all covered by this one entry. The bare nice.org.uk redirects to
-	// www and is served from a different address, so it's left out: no page ever renders there.
+	// Live. One web ACL fronts the main site, BNF, BNFC, CKS and indev. The bare nice.org.uk
+	// redirects to www, so it's left out: no page ever renders there.
 	{
-		hosts: ["www.nice.org.uk"],
-		scriptURL:
-			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
-		cookieDomains,
-	},
-	{
-		hosts: ["bnf.nice.org.uk"],
-		scriptURL:
-			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
-		cookieDomains,
-	},
-	{
-		hosts: ["bnfc.nice.org.uk"],
-		scriptURL:
-			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
-		cookieDomains,
-	},
-	{
-		hosts: ["cks.nice.org.uk"],
-		scriptURL:
-			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
-		cookieDomains,
-	},
-	{
-		hosts: ["indev.nice.org.uk"],
+		hosts: [
+			"www.nice.org.uk",
+			"bnf.nice.org.uk",
+			"bnfc.nice.org.uk",
+			"cks.nice.org.uk",
+			"indev.nice.org.uk",
+		],
 		scriptURL:
 			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
 		cookieDomains,
