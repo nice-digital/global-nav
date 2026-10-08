@@ -45,112 +45,100 @@ export const integrations = [
 	// www and is served from a different address, so it's left out: no page ever renders there.
 	{
 		hosts: ["www.nice.org.uk"],
-		scriptURL: "",
+		scriptURL:
+			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
 		cookieDomains,
 	},
 	{
 		hosts: ["bnf.nice.org.uk"],
-		scriptURL: "",
+		scriptURL:
+			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
 		cookieDomains,
 	},
 	{
 		hosts: ["bnfc.nice.org.uk"],
-		scriptURL: "",
+		scriptURL:
+			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
 		cookieDomains,
 	},
 	{
 		hosts: ["cks.nice.org.uk"],
-		scriptURL: "",
+		scriptURL:
+			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
 		cookieDomains,
 	},
 	{
 		hosts: ["indev.nice.org.uk"],
-		scriptURL: "",
+		scriptURL:
+			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
 		cookieDomains,
 	},
 
-	// Alpha
+	// Alpha, beta, test and dev environments behind the shared pre-production web ACL
 	{
 		hosts: [
+			// Alpha
 			"alpha.nice.org.uk",
+			"alpha-arms.nice.org.uk",
+			"alpha-scheduler.nice.org.uk",
+			"alpha-timelines.nice.org.uk",
+			"alpha-docgen.nice.org.uk",
+			"alpha-perfdash.nice.org.uk",
+			"alpha-identityadmin.nice.org.uk",
+			"alpha-identityapi.nice.org.uk",
 			"alpha-indev.nice.org.uk",
+			"alpha.indev.nice.org.uk",
+			"alpha-api.nice.org.uk",
 			"alpha-monitoring.nice.org.uk",
+			"alpha-next-web-api.nice.org.uk",
 			"alpha-publications.nice.org.uk",
-		],
-		scriptURL: "",
-		cookieDomains,
-	},
+			"alpha-next-feature.nice.org.uk",
 
-	// Beta
-	{
-		hosts: ["beta.nice.org.uk", "beta-monitoring.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["beta-indev.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["beta-publications.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["beta-bnf.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["beta-bnfc.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["beta-cks.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
+			// Beta
+			"beta.nice.org.uk",
+			"beta-appraisals.nice.org.uk",
+			"beta-accounts.nice.org.uk",
+			"beta-docs.nice.org.uk",
+			"beta-perfdash.nice.org.uk",
+			"beta-publications.nice.org.uk",
+			"beta.publications.nice.org.uk",
+			"beta.openathens.nice.org.uk",
+			"beta-openathens.nice.org.uk",
+			"beta-identityapi.nice.org.uk",
+			"beta-identityadmin.nice.org.uk",
+			"beta-monitoring.nice.org.uk",
+			"beta-next-web-api.nice.org.uk",
+			"beta-indev.nice.org.uk",
+			"beta.indev.nice.org.uk",
+			"beta-docsupply.nice.org.uk",
+			"beta-api.nice.org.uk",
+			"beta-bnf.nice.org.uk",
+			"beta-bnfc.nice.org.uk",
+			"beta-cks.nice.org.uk",
 
-	// Test and dev. The main site, indev and publications on test resolve to the same address as
-	// the main site and indev on dev, so they look to share one load balancer
-	{
-		hosts: [
+			// Test
 			"test.nice.org.uk",
 			"test-next-feature.nice.org.uk",
 			"test-indev.nice.org.uk",
 			"test-publications.nice.org.uk",
+			"test-monitoring.nice.org.uk",
+			"test-reviewer.nice.org.uk",
+			"test-accounts.nice.org.uk",
+			"test-bnf.nice.org.uk",
+			"test-bnfc.nice.org.uk",
+			"test-cks.nice.org.uk",
+
+			// Dev
 			"dev.nice.org.uk",
 			"dev-indev.nice.org.uk",
+			"dev-monitoring.nice.org.uk",
+
+			// Shared / special
+			"ping-logger.nice.org.uk",
+			"aslive-publications.nice.org.uk",
 		],
 		scriptURL:
 			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/9435ee08f314/challenge.js",
-		cookieDomains,
-	},
-	{
-		hosts: ["test-monitoring.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["dev-monitoring.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["test-bnf.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["test-bnfc.nice.org.uk"],
-		scriptURL: "",
-		cookieDomains,
-	},
-	{
-		hosts: ["test-cks.nice.org.uk"],
-		scriptURL: "",
 		cookieDomains,
 	},
 ];
