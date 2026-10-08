@@ -3,9 +3,19 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 import styles from "./Main.module.scss";
+import { awsWafScriptURLPropType } from "../aws-waf/propTypes";
+import { useAwsWafChallenge } from "../hooks/useAwsWafChallenge";
 
 export function Main(props) {
-	const { children, className, withPadding = true, ...rest } = props;
+	const {
+		children,
+		className,
+		withPadding = true,
+		awsWafScriptURL,
+		...rest
+	} = props;
+
+	useAwsWafChallenge(awsWafScriptURL);
 
 	return (
 		<main
@@ -28,6 +38,7 @@ Main.propTypes = {
 	]).isRequired,
 	className: PropTypes.string,
 	withPadding: PropTypes.bool,
+	awsWafScriptURL: awsWafScriptURLPropType,
 };
 
 export default Main;
