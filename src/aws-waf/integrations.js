@@ -97,6 +97,7 @@ export const integrations = [
 			"test-next-feature.nice.org.uk",
 			"test-indev.nice.org.uk",
 			"test-identityadmin.nice.org.uk",
+			"test-identityapi.nice.org.uk",
 			"test-identity.nice.org.uk",
 			"test-publications.nice.org.uk",
 			"test-monitoring.nice.org.uk",
