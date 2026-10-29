@@ -8,6 +8,7 @@ import {
 	headerClickEventAction,
 	eventTimeout,
 } from "./../tracker";
+import { scriptId } from "../aws-waf";
 
 describe("Header", () => {
 	const defaultProps = {
@@ -20,6 +21,41 @@ describe("Header", () => {
 			<Header {...defaultProps} onNavigating="onNavigatingHandler" />
 		);
 		expect(container).toMatchSnapshot();
+	});
+
+	describe("AWS WAF challenge", () => {
+		const awsWafScriptURL = "https://localhost:4000/mock-aws-waf-jsapi.js";
+
+		afterEach(() => {
+			document.head.innerHTML = "";
+		});
+
+		it("Doesn't load the AWS WAF script for a hostname with no web ACL", () => {
+			render(<Header {...defaultProps} />);
+
+			expect(document.getElementById(scriptId)).toBeNull();
+		});
+
+		it("Loads the AWS WAF script from the awsWafScriptURL prop", () => {
+			render(<Header {...defaultProps} awsWafScriptURL={awsWafScriptURL} />);
+
+			expect(document.getElementById(scriptId)).toHaveAttribute(
+				"src",
+				awsWafScriptURL
+			);
+		});
+
+		it("Loads the AWS WAF script even when the header itself is disabled", () => {
+			render(
+				<Header
+					{...defaultProps}
+					enabled={false}
+					awsWafScriptURL={awsWafScriptURL}
+				/>
+			);
+
+			expect(document.getElementById(scriptId)).not.toBeNull();
+		});
 	});
 
 	describe("Mobile menu button", () => {

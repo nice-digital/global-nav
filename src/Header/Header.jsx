@@ -13,6 +13,8 @@ import Search from "./Search";
 import Account from "./Account";
 import SkipLink from "./SkipLink";
 import { getCallbackFunction } from "../utils";
+import { awsWafScriptURLPropType } from "../aws-waf/propTypes";
+import { useAwsWafChallenge } from "../hooks/useAwsWafChallenge";
 
 import styles from "./Header.module.scss";
 import { HeaderContextProvider, HeaderContext } from "./context/HeaderContext";
@@ -29,10 +31,13 @@ const Header = ({
 	additionalSubMenuItems = [],
 	onDropdownOpen,
 	onDropdownClose,
+	awsWafScriptURL,
 }) => {
 	const [isExpanded, setIsExpanded] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [accountsData, setAccountsData] = useState(null);
+
+	useAwsWafChallenge(awsWafScriptURL);
 
 	useEffect(() => {
 		if (!document.getElementById(skipLinkId)) {
@@ -408,6 +413,7 @@ Header.propTypes = {
 	onRendered: PropTypes.func,
 	additionalSubMenuItems: PropTypes.arrayOf(PropTypes.object),
 	renderSearchOnly: PropTypes.bool,
+	awsWafScriptURL: awsWafScriptURLPropType,
 };
 
 OldHeader.propTypes = {

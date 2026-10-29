@@ -8,9 +8,13 @@ import Pages from "./Pages";
 import styles from "./Footer.module.scss";
 import TrackedLink from "../TrackedLink";
 import { footerClickEventAction } from "../tracker";
+import { awsWafScriptURLPropType } from "../aws-waf/propTypes";
+import { useAwsWafChallenge } from "../hooks/useAwsWafChallenge";
 
 //TODO add string type for service prop
-const Footer = ({ service }) => {
+const Footer = ({ service, awsWafScriptURL }) => {
+	useAwsWafChallenge(awsWafScriptURL);
+
 	return (
 		<footer className={styles.footer} data-tracking="Global footer">
 			<div className={styles.container}>
@@ -34,6 +38,7 @@ const Footer = ({ service }) => {
 
 Footer.propTypes = {
 	service: PropTypes.string,
+	awsWafScriptURL: awsWafScriptURLPropType,
 };
 
 export default Footer;

@@ -66,8 +66,16 @@ declare module "@nice-digital/global-nav" {
 		links: Array<Link>;
 	};
 
+	/**
+	 * The header, footer and main each load the AWS WAF JavaScript SDK if the page's hostname is
+	 * behind a web ACL that Global Nav knows about. Pass an integration URL to use that instead,
+	 * or `false` to not load the SDK at all e.g. because your app loads it for itself.
+	 */
+	export type AwsWafScriptURL = string | false;
+
 	export type HeaderProps = {
 		service?: Service;
+		awsWafScriptURL?: AwsWafScriptURL;
 		skipLinkId?: string;
 		search?: false | SearchProps;
 		auth?: NiceAccountsProviderProps | IdamProviderProps | false;
@@ -80,6 +88,7 @@ declare module "@nice-digital/global-nav" {
 
 	export type FooterProps = {
 		service?: Service;
+		awsWafScriptURL?: AwsWafScriptURL;
 	};
 
 	export interface MainProps {
@@ -90,6 +99,7 @@ declare module "@nice-digital/global-nav" {
 		/** Additional classnames for the main element. */
 		className?: string;
 		withPadding?: boolean;
+		awsWafScriptURL?: AwsWafScriptURL;
 	}
 
 	const Header: React.FC<HeaderProps>;
