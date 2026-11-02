@@ -7,8 +7,9 @@
  * CloudFront distribution) share a web ACL, and so share an entry.
  *
  * Each entry is:
- * - `hosts` - the exact hostnames served from behind the web ACL, e.g. `["www.nice.org.uk"]`. No
- *   wildcards, so list every hostname.
+ * - `hosts` - the hostnames served from behind the web ACL, e.g. `["www.nice.org.uk"]`. A leading
+ *   wildcard, e.g. `"*.nice.org.uk"`, matches any subdomain at any depth, but not the bare domain.
+ *   An exact hostname always beats a wildcard, wherever either one is in the table.
  * - `scriptURL` - the integration URL from 'Application integration' in the AWS WAF console. Ops are
  *   issuing the 'Intelligent threat integration' one, which ends in `challenge.js`, e.g.
  *   `https://<id>.eu-west-1.sdk.awswaf.com/<id>/<id>/challenge.js`. The 'CAPTCHA integration' one
@@ -22,7 +23,10 @@
  * environment with no web ACL in front of it.
  *
  * The entries below are ops' official list of which hostnames sit behind which web ACL, as of
- * 2026-10-08. When ops add a hostname or rotate a URL, change it here and release.
+ * 2026-10-08, with every nice.org.uk subdomain on live now covered by a wildcard. Ops' individual
+ * live hostnames are kept commented out for reference; any also listed against pre-production are
+ * marked `overlap` in both places. When ops add a hostname or rotate a URL, change it here and
+ * release.
  *
  * @see https://docs.aws.amazon.com/waf/latest/developerguide/waf-js-challenge-api.html
  */
@@ -38,115 +42,133 @@ export const integrations = [
 		cookieDomains: [".sandbox1-ds.net"],
 	},
 
-	// Live. One web ACL fronts the main site, BNF, BNFC, CKS and indev. The bare nice.org.uk
-	// redirects to www, so it's left out: no page ever renders there.
+	// Live. One web ACL fronts every subdomain of nice.org.uk, apart from the pre-production
+	// hostnames listed exactly in the next entry: an exact hostname beats the wildcard.
 	{
 		hosts: [
-			"www.nice.org.uk",
-			"bnf.nice.org.uk",
-			"bnfc.nice.org.uk",
-			"cks.nice.org.uk",
-			"indev.nice.org.uk",
-			"accounts.nice.org.uk",
-			"admin.nice.org.uk",
-			"alpha-kibana.nice.org.uk",
-			"alpha-norma.nice.org.uk",
-			"alpha-reviewer.nice.org.uk",
-			"alpha-reviewer-archive.nice.org.uk",
-			"alpha-sga*.nice.org.uk",
-			"api.nice.org.uk",
-			"api-alpha-norma.nice.org.uk",
-			"api-norma.nice.org.uk",
-			"appraisals.nice.org.uk",
-			"archive.nice.org.uk",
-			"arms.nice.org.uk",
-			"aslive-reviewer.nice.org.uk",
-			"aws-monitoring.search.nice.org.uk",
-			"beta-docsupply-api.nice.org.uk",
-			"beta-es7-kibana.nice.org.uk",
-			"beta-reviewer.nice.org.uk",
-			"beta-reviewer-archive.nice.org.uk",
-			"bnfappauth.nice.org.uk",
-			"bnfc-test-rke.nice.org.uk",
-			"bnf-test-rke.nice.org.uk",
-			"dev.nice.org.uk",
-			"dev-indev.nice.org.uk",
-			"dev-monitoring.nice.org.uk",
-			"docgen.nice.org.uk",
-			"docsupply.nice.org.uk",
-			"docsupply-rke-dev.nice.org.uk",
-			"documentconverter.nice.org.uk",
-			"edit.healthtechconnect.org.uk",
-			"guidance.nice.org.uk",
-			"hdas.nice.org.uk",
-			"holding-page.nice.org.uk",
-			"identityadmin.nice.org.uk",
-			"identityapi.nice.org.uk",
-			"investigation-reviewer.nice.org.uk",
-			"journals.nice.org.uk",
-			"jupyterhub.nice.org.uk",
-			"ld.nice.org.uk",
-			"live-publications.nice.org.uk",
-			"meta.nice.org.uk",
-			"monitoring.nice.org.uk",
-			"new-docsupply.nice.org.uk",
-			"next-web-api.nice.org.uk",
+			"*.nice.org.uk",
 			"nice.org.uk",
-			"nicetimes.nice.org.uk",
-			"norma.nice.org.uk",
-			"nuget.nice.org.uk",
-			"openathens.nice.org.uk",
-			"performance.nice.org.uk",
-			"rabbit-admin.nice.org.uk",
-			"rancher-rke-test.nice.org.uk",
-			"rancher-rke-test2.nice.org.uk",
-			"reviewer.nice.org.uk",
-			"reviewer-archive.nice.org.uk",
-			"rstudio-python.nice.org.uk",
-			"scheduler.nice.org.uk",
-			"scheduler-sanity.nice.org.uk",
-			"secure.ukpharmascan.org.uk",
-			"ses.nice.org.uk",
-			"space.nice.org.uk",
-			"sp-auth.nice.org.uk",
-			"storyblok-preview.nice.org.uk",
-			"test.api.nice.org.uk",
-			"test.docgen.nice.org.uk",
-			"test.indev.nice.org.uk",
-			"test.medtech.nice.org.uk",
-			"test.nice.org.uk",
-			"test.publications.nice.org.uk",
-			"test.ukpharmascan.org.uk",
-			"test-api.nice.org.uk",
-			"test-appraisals.nice.org.uk",
-			"test-docgen.nice.org.uk",
-			"test-docsupply.nice.org.uk",
-			"test-docsupply-api.nice.org.uk",
-			"test-es7-kibana.nice.org.uk",
-			"test-identityadmin.nice.org.uk",
-			"test-identityapi.nice.org.uk",
-			"test-indev.nice.org.uk",
-			"test-medtech.nice.org.uk",
-			"test-monitoring.nice.org.uk",
-			"test-next-feature.nice.org.uk",
-			"test-next-web-api.nice.org.uk",
-			"test-publications.nice.org.uk",
-			"test-reviewer-archive.nice.org.uk",
-			"test-rke-medtech.nice.org.uk",
-			"test-sga*.nice.org.uk",
-			"test-space.nice.org.uk",
-			"test-storyblok.nice.org.uk",
-			"training.ukpharmascan.org.uk",
-			"training-meta.nice.org.uk",
-			"www.healthtechconnect.org.uk",
-			"www.ukpharmascan.org.uk",
+
+			// Ops' list, now covered by the wildcard above. Lines marked `overlap` are also listed
+			// exactly against the pre-production web ACL below, so they get that one instead.
+			// "www.nice.org.uk",
+			// "bnf.nice.org.uk",
+			// "bnfc.nice.org.uk",
+			// "cks.nice.org.uk",
+			// "indev.nice.org.uk",
+			// "accounts.nice.org.uk",
+			// "admin.nice.org.uk",
+			// "alpha-kibana.nice.org.uk",
+			// "alpha-norma.nice.org.uk",
+			// "alpha-reviewer.nice.org.uk",
+			// "alpha-reviewer-archive.nice.org.uk",
+			// "alpha-sga*.nice.org.uk",
+			// "api.nice.org.uk",
+			// "api-alpha-norma.nice.org.uk",
+			// "api-norma.nice.org.uk",
+			// "appraisals.nice.org.uk",
+			// "archive.nice.org.uk",
+			// "arms.nice.org.uk",
+			// "aslive-reviewer.nice.org.uk",
+			// "aws-monitoring.search.nice.org.uk",
+			// "beta-docsupply-api.nice.org.uk",
+			// "beta-es7-kibana.nice.org.uk",
+			// "beta-reviewer.nice.org.uk",
+			// "beta-reviewer-archive.nice.org.uk",
+			// "bnfappauth.nice.org.uk",
+			// "bnfc-test-rke.nice.org.uk",
+			// "bnf-test-rke.nice.org.uk",
+			// "dev.nice.org.uk", // overlap: moved to pre-production
+			// "dev-indev.nice.org.uk", // overlap: moved to pre-production
+			// "dev-monitoring.nice.org.uk", // overlap: moved to pre-production
+			// "docgen.nice.org.uk",
+			// "docsupply.nice.org.uk",
+			// "docsupply-rke-dev.nice.org.uk",
+			// "documentconverter.nice.org.uk",
+			// "guidance.nice.org.uk",
+			// "hdas.nice.org.uk",
+			// "holding-page.nice.org.uk",
+			// "identityadmin.nice.org.uk",
+			// "identityapi.nice.org.uk",
+			// "investigation-reviewer.nice.org.uk",
+			// "journals.nice.org.uk",
+			// "jupyterhub.nice.org.uk",
+			// "ld.nice.org.uk",
+			// "live-publications.nice.org.uk",
+			// "meta.nice.org.uk",
+			// "monitoring.nice.org.uk",
+			// "new-docsupply.nice.org.uk",
+			// "next-web-api.nice.org.uk",
+			// "nicetimes.nice.org.uk",
+			// "norma.nice.org.uk",
+			// "nuget.nice.org.uk",
+			// "openathens.nice.org.uk",
+			// "performance.nice.org.uk",
+			// "rabbit-admin.nice.org.uk",
+			// "rancher-rke-test.nice.org.uk",
+			// "rancher-rke-test2.nice.org.uk",
+			// "reviewer.nice.org.uk",
+			// "reviewer-archive.nice.org.uk",
+			// "rstudio-python.nice.org.uk",
+			// "scheduler.nice.org.uk",
+			// "scheduler-sanity.nice.org.uk",
+			// "ses.nice.org.uk",
+			// "space.nice.org.uk",
+			// "sp-auth.nice.org.uk",
+			// "storyblok-preview.nice.org.uk",
+			// "test.api.nice.org.uk",
+			// "test.docgen.nice.org.uk",
+			// "test.indev.nice.org.uk",
+			// "test.medtech.nice.org.uk",
+			// "test.nice.org.uk", // overlap: moved to pre-production
+			// "test.publications.nice.org.uk",
+			// "test-api.nice.org.uk",
+			// "test-appraisals.nice.org.uk",
+			// "test-docgen.nice.org.uk",
+			// "test-docsupply.nice.org.uk",
+			// "test-docsupply-api.nice.org.uk",
+			// "test-es7-kibana.nice.org.uk",
+			// "test-identityadmin.nice.org.uk", // overlap: moved to pre-production
+			// "test-identityapi.nice.org.uk", // overlap: moved to pre-production
+			// "test-indev.nice.org.uk", // overlap: moved to pre-production
+			// "test-medtech.nice.org.uk",
+			// "test-monitoring.nice.org.uk", // overlap: moved to pre-production
+			// "test-next-feature.nice.org.uk", // overlap: moved to pre-production
+			// "test-next-web-api.nice.org.uk",
+			// "test-publications.nice.org.uk", // overlap: moved to pre-production
+			// "test-reviewer-archive.nice.org.uk",
+			// "test-rke-medtech.nice.org.uk",
+			// "test-sga*.nice.org.uk",
+			// "test-space.nice.org.uk",
+			// "test-storyblok.nice.org.uk",
+			// "training-meta.nice.org.uk",
 		],
 		scriptURL:
 			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
 		cookieDomains,
 	},
 
-	// Alpha, beta, test and dev environments behind the shared pre-production web ACL
+	// Live, off nice.org.uk: same web ACL as above (MedTech / HealthTech Connect and UK PharmaScan).
+	// No `cookieDomains`: a page on another domain can't set a .nice.org.uk cookie, so the token
+	// stays on the exact hostname.
+	{
+		hosts: [
+			"edit.healthtechconnect.org.uk",
+			"secure.ukpharmascan.org.uk",
+			"test.ukpharmascan.org.uk",
+			"training.ukpharmascan.org.uk",
+			"www.healthtechconnect.org.uk",
+			"www.ukpharmascan.org.uk",
+		],
+		scriptURL:
+			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
+	},
+
+	// Alpha, beta, test and dev environments behind the shared pre-production web ACL.
+	//
+	// Lines marked `overlap: moved from live` are on ops' live list too, and got the live script
+	// until the live entry became a wildcard. Being exact, they now win here instead. If ops
+	// confirm one belongs on live, comment its line out here and the live wildcard picks it up again.
 	{
 		hosts: [
 			// Alpha
@@ -186,14 +208,14 @@ export const integrations = [
 			"beta-cks.nice.org.uk",
 
 			// Test
-			"test.nice.org.uk",
-			"test-next-feature.nice.org.uk",
-			"test-indev.nice.org.uk",
-			"test-identityadmin.nice.org.uk",
-			"test-identityapi.nice.org.uk",
+			"test.nice.org.uk", // overlap: moved from live
+			"test-next-feature.nice.org.uk", // overlap: moved from live
+			"test-indev.nice.org.uk", // overlap: moved from live
+			"test-identityadmin.nice.org.uk", // overlap: moved from live
+			"test-identityapi.nice.org.uk", // overlap: moved from live
 			"test-identity.nice.org.uk",
-			"test-publications.nice.org.uk",
-			"test-monitoring.nice.org.uk",
+			"test-publications.nice.org.uk", // overlap: moved from live
+			"test-monitoring.nice.org.uk", // overlap: moved from live
 			"test-reviewer.nice.org.uk",
 			"test-accounts.nice.org.uk",
 			"test-bnf.nice.org.uk",
@@ -201,9 +223,9 @@ export const integrations = [
 			"test-cks.nice.org.uk",
 
 			// Dev
-			"dev.nice.org.uk",
-			"dev-indev.nice.org.uk",
-			"dev-monitoring.nice.org.uk",
+			"dev.nice.org.uk", // overlap: moved from live
+			"dev-indev.nice.org.uk", // overlap: moved from live
+			"dev-monitoring.nice.org.uk", // overlap: moved from live
 
 			// Shared / special
 			"ping-logger.nice.org.uk",

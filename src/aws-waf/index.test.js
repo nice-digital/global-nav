@@ -47,6 +47,76 @@ describe("aws-waf", () => {
 
 			expect(getIntegration("test.www.nice.org.uk")).toBeUndefined();
 		});
+
+		it("Matches a subdomain against a wildcard host, at any depth", () => {
+			const integration = {
+					hosts: ["*.nice.org.uk"],
+					scriptURL: "https://x.test/",
+				},
+				{ getIntegration } = loadModule([integration]);
+
+			expect(getIntegration("beta-accounts.nice.org.uk")).toBe(integration);
+			expect(getIntegration("alpha.indev.nice.org.uk")).toBe(integration);
+		});
+
+		it("Doesn't match the bare domain or a lookalike domain against a wildcard host", () => {
+			const { getIntegration } = loadModule([
+				{ hosts: ["*.nice.org.uk"], scriptURL: "https://x.test/" },
+			]);
+
+			expect(getIntegration("nice.org.uk")).toBeUndefined();
+			expect(getIntegration("evilnice.org.uk")).toBeUndefined();
+			expect(getIntegration("www.nice.org.uk.evil.test")).toBeUndefined();
+		});
+
+		it("Prefers an exact hostname over a wildcard listed before it", () => {
+			const exact = integrationForThisHost(),
+				{ getIntegration } = loadModule([
+					{ hosts: ["*.nice.org.uk"], scriptURL: "https://wildcard.test/" },
+					exact,
+				]);
+
+			expect(getIntegration("www.nice.org.uk")).toBe(exact);
+		});
+
+		it("Gives every nice.org.uk subdomain the live web ACL, except the pre-production hostnames", () => {
+			jest.resetModules();
+			jest.dontMock("./integrations");
+			const { getIntegration } = require("./index"),
+				live = getIntegration("www.nice.org.uk"),
+				preProduction = getIntegration("beta-accounts.nice.org.uk");
+
+			expect(live.hosts).toContain("*.nice.org.uk");
+			["accounts", "bnf", "anything-new", "aws-monitoring.search"].forEach(
+				(sub) => {
+					expect(getIntegration(`${sub}.nice.org.uk`)).toBe(live);
+				}
+			);
+
+			expect(preProduction).not.toBe(live);
+			// An overlap: in ops' live list too, but listed exactly against pre-production
+			expect(getIntegration("test-next-feature.nice.org.uk")).toBe(
+				preProduction
+			);
+		});
+
+		it("Gives the live web ACL to the live hostnames off nice.org.uk, without widening the cookie", () => {
+			jest.resetModules();
+			jest.dontMock("./integrations");
+			const { getIntegration } = require("./index"),
+				live = getIntegration("www.nice.org.uk");
+
+			[
+				"www.healthtechconnect.org.uk",
+				"edit.healthtechconnect.org.uk",
+				"www.ukpharmascan.org.uk",
+				"secure.ukpharmascan.org.uk",
+			].forEach((host) => {
+				const integration = getIntegration(host);
+				expect(integration.scriptURL).toBe(live.scriptURL);
+				expect(integration.cookieDomains).toBeUndefined();
+			});
+		});
 	});
 
 	describe("loadAwsWafChallenge", () => {
@@ -386,12 +456,12 @@ describe("aws-waf", () => {
 			});
 		});
 
-		it("Every hostname is a lower case hostname with no scheme, port or path", () => {
+		it("Every hostname is a lower case hostname, optionally with a leading wildcard, and no scheme, port or path", () => {
 			const { integrations } = jest.requireActual("./integrations");
 
 			integrations.forEach(({ hosts }) => {
 				hosts.forEach((host) => {
-					expect(host).toMatch(/^([a-z0-9-]+\.)+[a-z]+$/);
+					expect(host).toMatch(/^(\*\.)?([a-z0-9-]+\.)+[a-z]+$/);
 				});
 			});
 		});
@@ -402,7 +472,9 @@ describe("aws-waf", () => {
 			integrations.forEach(({ hosts, cookieDomains = [] }) => {
 				cookieDomains.forEach((cookieDomain) => {
 					hosts.forEach((host) => {
-						expect(host.endsWith(cookieDomain)).toBe(true);
+						expect(
+							host.endsWith(cookieDomain) || host === cookieDomain.slice(1)
+						).toBe(true);
 					});
 				});
 			});

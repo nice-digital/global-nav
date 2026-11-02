@@ -894,7 +894,7 @@ export const integrations = [
 ];
 ```
 
-- `hosts` are exact hostnames, no wildcards. Hostnames that share a load balancer (or CloudFront distribution) share a web ACL, so list them all against the one entry. The entries we ship were grouped by which hostnames resolve to the same address, which is a best guess at that: confirm it against the web ACLs ops actually create, and merge or split entries to match.
+- `hosts` are exact hostnames, or a leading wildcard like `*.nice.org.uk`, which matches any subdomain at any depth but not the bare domain. An exact hostname always wins over a wildcard, wherever either one is in the table. Hostnames that share a load balancer (or CloudFront distribution) share a web ACL, so list them all against the one entry. The entries we ship were grouped by which hostnames resolve to the same address, which is a best guess at that: confirm it against the web ACLs ops actually create, and merge or split entries to match.
 - `scriptURL` comes from _Application integration_ in the AWS WAF console. Ops are issuing the _Intelligent threat integration_ URL, which ends in `challenge.js`; the _CAPTCHA integration_ one ends in `jsapi.js` and works the same way. It isn't a secret: it ends up in the page source. Leave it empty for a web ACL that doesn't exist yet and the entry does nothing.
 - `cookieDomains` is optional, e.g. `['.nice.org.uk']`. It widens the token cookie from the exact hostname so that one token works across subdomains. It's only valid once the same domain is on the web ACL's token domain list, otherwise AWS rejects the tokens, so ask ops for that at the same time as the URL. The shipped entries all set it.
 

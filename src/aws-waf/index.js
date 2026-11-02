@@ -7,14 +7,30 @@ export const scriptId = "global-nav-aws-waf";
 // header, footer or main asks next
 let isDisabled = false;
 
+// A host pattern `*.example.com` matches any subdomain of example.com, at any depth, but not
+// example.com itself
+const matchesWildcard = function (pattern, hostname) {
+	return (
+		pattern.indexOf("*.") === 0 &&
+		hostname.length > pattern.length - 1 &&
+		hostname.slice(-(pattern.length - 1)) === pattern.slice(1)
+	);
+};
+
 /**
- * Finds the web ACL integration for the given hostname, if we know of one
+ * Finds the web ACL integration for the given hostname, if we know of one. An exact hostname wins
+ * over a wildcard, wherever in the list either one is.
  *
  * @param {string} hostname
  * @returns {object | undefined}
  */
 export const getIntegration = function (hostname) {
-	return integrations.find(({ hosts }) => hosts.indexOf(hostname) > -1);
+	return (
+		integrations.find(({ hosts }) => hosts.indexOf(hostname) > -1) ||
+		integrations.find(({ hosts }) =>
+			hosts.some((host) => matchesWildcard(host, hostname))
+		)
+	);
 };
 
 // How long a caller of `whenAwsWafTokenReady` is held up before it goes ahead without a token
