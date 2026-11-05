@@ -2,7 +2,17 @@
 // Returns a promise that resolves with the data from NICE Accounts.
 // Returns a promise that rejects if the data could not be loaded.
 
+import { whenAwsWafTokenReady } from "../../aws-waf";
+
 export const checkIsLoggedIn = function (environment) {
+	// NICE Accounts sits behind an AWS WAF web ACL. A script tag can't send the token as a header,
+	// so wait for the SDK to set the token cookie, which the browser then sends along by itself
+	return whenAwsWafTokenReady().then(function () {
+		return loadAccountsData(environment);
+	});
+};
+
+const loadAccountsData = function (environment) {
 	return new Promise(function (resolve, reject) {
 		const url = getDomainBaseUrl(environment) + "tophat";
 
