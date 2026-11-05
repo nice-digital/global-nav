@@ -107,9 +107,6 @@ export const integrations = [
 	{
 		hosts: [
 			"edit.healthtechconnect.org.uk",
-			"secure.ukpharmascan.org.uk",
-			"test.ukpharmascan.org.uk",
-			"training.ukpharmascan.org.uk",
 			"www.healthtechconnect.org.uk",
 			"www.ukpharmascan.org.uk",
 		],
