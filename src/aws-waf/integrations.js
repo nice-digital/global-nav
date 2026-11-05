@@ -57,32 +57,16 @@ export const integrations = [
 			// "indev.nice.org.uk",
 			// "accounts.nice.org.uk",
 			// "admin.nice.org.uk",
-			// "alpha-kibana.nice.org.uk",
-			// "alpha-norma.nice.org.uk",
-			// "alpha-reviewer.nice.org.uk",
-			// "alpha-reviewer-archive.nice.org.uk",
-			// "alpha-sga*.nice.org.uk",
 			// "api.nice.org.uk",
 			// "api-alpha-norma.nice.org.uk",
 			// "api-norma.nice.org.uk",
 			// "appraisals.nice.org.uk",
 			// "archive.nice.org.uk",
 			// "arms.nice.org.uk",
-			// "aslive-reviewer.nice.org.uk",
 			// "aws-monitoring.search.nice.org.uk",
-			// "beta-docsupply-api.nice.org.uk",
-			// "beta-es7-kibana.nice.org.uk",
-			// "beta-reviewer.nice.org.uk",
-			// "beta-reviewer-archive.nice.org.uk",
 			// "bnfappauth.nice.org.uk",
-			// "bnfc-test-rke.nice.org.uk",
-			// "bnf-test-rke.nice.org.uk",
-			// "dev.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "dev-indev.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "dev-monitoring.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
 			// "docgen.nice.org.uk",
 			// "docsupply.nice.org.uk",
-			// "docsupply-rke-dev.nice.org.uk",
 			// "documentconverter.nice.org.uk",
 			// "guidance.nice.org.uk",
 			// "hdas.nice.org.uk",
@@ -91,7 +75,6 @@ export const integrations = [
 			// "identityapi.nice.org.uk",
 			// "investigation-reviewer.nice.org.uk",
 			// "journals.nice.org.uk",
-			// "jupyterhub.nice.org.uk",
 			// "ld.nice.org.uk",
 			// "live-publications.nice.org.uk",
 			// "meta.nice.org.uk",
@@ -104,8 +87,6 @@ export const integrations = [
 			// "openathens.nice.org.uk",
 			// "performance.nice.org.uk",
 			// "rabbit-admin.nice.org.uk",
-			// "rancher-rke-test.nice.org.uk",
-			// "rancher-rke-test2.nice.org.uk",
 			// "reviewer.nice.org.uk",
 			// "reviewer-archive.nice.org.uk",
 			// "rstudio-python.nice.org.uk",
@@ -114,33 +95,6 @@ export const integrations = [
 			// "ses.nice.org.uk",
 			// "space.nice.org.uk",
 			// "sp-auth.nice.org.uk",
-			// "storyblok-preview.nice.org.uk",
-			// "test.api.nice.org.uk",
-			// "test.docgen.nice.org.uk",
-			// "test.indev.nice.org.uk",
-			// "test.medtech.nice.org.uk",
-			// "test.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "test.publications.nice.org.uk",
-			// "test-api.nice.org.uk",
-			// "test-appraisals.nice.org.uk",
-			// "test-docgen.nice.org.uk",
-			// "test-docsupply.nice.org.uk",
-			// "test-docsupply-api.nice.org.uk",
-			// "test-es7-kibana.nice.org.uk",
-			// "test-identityadmin.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "test-identityapi.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "test-indev.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "test-medtech.nice.org.uk",
-			// "test-monitoring.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "test-next-feature.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "test-next-web-api.nice.org.uk",
-			// "test-publications.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
-			// "test-reviewer-archive.nice.org.uk",
-			// "test-rke-medtech.nice.org.uk",
-			// "test-sga*.nice.org.uk",
-			// "test-space.nice.org.uk",
-			// "test-storyblok.nice.org.uk",
-			// "training-meta.nice.org.uk",
 		],
 		scriptURL:
 			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/1d47535b626c/challenge.js",
@@ -205,28 +159,82 @@ export const integrations = [
 			"beta-cks.nice.org.uk",
 
 			// Test
-			// "test.nice.org.uk", // overlap: covered in wildcard in the protection pack above
-			// "test-next-feature.nice.org.uk", // overlap: covered in wildcard in the protection pack above
-			// "test-indev.nice.org.uk", // overlap: covered in wildcard in the protection pack above
-			// "test-identityadmin.nice.org.uk", // overlap: covered in wildcard in the protection pack above
-			// "test-identityapi.nice.org.uk", // overlap: covered in wildcard in the protection pack above
 			"test-identity.nice.org.uk",
-			// "test-publications.nice.org.uk", // overlap: covered in wildcard in the protection pack above
-			// "test-monitoring.nice.org.uk", // overlap: covered in wildcard in the protection pack above
 			"test-reviewer.nice.org.uk",
 			"test-accounts.nice.org.uk",
 			"test-bnf.nice.org.uk",
 			"test-bnfc.nice.org.uk",
 			"test-cks.nice.org.uk",
 
-			// Dev
-			// "dev.nice.org.uk", // overlap: covered in wildcard in the protection pack above
-			// "dev-indev.nice.org.uk", // overlap: covered in wildcard in the protection pack above
-			// "dev-monitoring.nice.org.uk", // overlap: covered in wildcard in the protection pack above
-
 			// Shared / special
 			"ping-logger.nice.org.uk",
 			"aslive-publications.nice.org.uk",
+
+			//preprod from WEB-65
+			// PREPROD-consolidated-ALB-int-1
+			"alpha-kibana.nice.org.uk",
+			"alpha-norma.nice.org.uk",
+			"api-alpha-norma.nice.org.uk",
+			"beta-docsupply-api.nice.org.uk",
+			"beta-es7-kibana.nice.org.uk",
+			"jupyterhub.nice.org.uk",
+			"rstudio-python.nice.org.uk",
+			"storyblok-preview.nice.org.uk",
+			"test-docsupply-api.nice.org.uk",
+			"test-es7-kibana.nice.org.uk",
+
+			// PREPROD-consolidated-ALB-test-1
+			"alpha-reviewer.nice.org.uk",
+			"alpha-reviewer-archive.nice.org.uk",
+			"alpha-sga*.nice.org.uk",
+			"aslive-reviewer.nice.org.uk",
+			"beta-reviewer.nice.org.uk",
+			"beta-reviewer-archive.nice.org.uk",
+			"dev.nice.org.uk",
+			"dev-indev.nice.org.uk",
+			"dev-monitoring.nice.org.uk",
+			"test.api.nice.org.uk",
+			"test.docgen.nice.org.uk",
+			"test.indev.nice.org.uk",
+			"test.medtech.nice.org.uk",
+			"test.nice.org.uk",
+			"test.publications.nice.org.uk",
+			"test.ukpharmascan.org.uk",
+			"test-api.nice.org.uk",
+			"test-appraisals.nice.org.uk",
+			"test-docgen.nice.org.uk",
+			"test-docsupply.nice.org.uk",
+			"test-identityadmin.nice.org.uk",
+			"test-identityapi.nice.org.uk",
+			"test-indev.nice.org.uk",
+			"test-medtech.nice.org.uk",
+			"test-monitoring.nice.org.uk",
+			"test-next-feature.nice.org.uk",
+			"test-next-web-api.nice.org.uk",
+			"test-publications.nice.org.uk",
+			"test-reviewer-archive.nice.org.uk",
+			"test-sga*.nice.org.uk",
+			"test-storyblok.nice.org.uk",
+			"training-meta.nice.org.uk",
+
+			// BUILD-consolidated-test-ALB-1
+			"rancher-rke-test.nice.org.uk",
+			"rancher-rke-test2.nice.org.uk",
+
+			// test-rancher-lb
+			"bnfc-test-rke.nice.org.uk",
+			"bnf-test-rke.nice.org.uk",
+			"docsupply-rke-dev.nice.org.uk",
+			"rancher-rke-test.nice.org.uk",
+			"test-rke-medtech.nice.org.uk",
+
+			//ukps-preprod
+			"secure.ukpharmascan.org.uk",
+			"training.ukpharmascan.org.uk",
+
+			//ukpsr5-preprod
+			"secure.ukpharmascan.org.uk",
+			"training.ukpharmascan.org.uk",
 		],
 		scriptURL:
 			"https://ddbd340a0652.eu-west-1.sdk.awswaf.com/ddbd340a0652/9435ee08f314/challenge.js",
