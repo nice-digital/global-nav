@@ -42,15 +42,14 @@ export const integrations = [
 		cookieDomains: [".sandbox1-ds.net"],
 	},
 
-	// Live. One web ACL fronts every subdomain of nice.org.uk, apart from the pre-production
+	// One web ACL fronts every subdomain of nice.org.uk, apart from specific named pre-production
 	// hostnames listed exactly in the next entry: an exact hostname beats the wildcard.
 	{
 		hosts: [
 			"*.nice.org.uk",
 			"nice.org.uk",
 
-			// Ops' list, now covered by the wildcard above. Lines marked `overlap` are also listed
-			// exactly against the pre-production web ACL below, so they get that one instead.
+			// Ops' list, now covered by the wildcard above.
 			// "www.nice.org.uk",
 			// "bnf.nice.org.uk",
 			// "bnfc.nice.org.uk",
@@ -78,9 +77,9 @@ export const integrations = [
 			// "bnfappauth.nice.org.uk",
 			// "bnfc-test-rke.nice.org.uk",
 			// "bnf-test-rke.nice.org.uk",
-			// "dev.nice.org.uk", // overlap: moved to pre-production
-			// "dev-indev.nice.org.uk", // overlap: moved to pre-production
-			// "dev-monitoring.nice.org.uk", // overlap: moved to pre-production
+			// "dev.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
+			// "dev-indev.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
+			// "dev-monitoring.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
 			// "docgen.nice.org.uk",
 			// "docsupply.nice.org.uk",
 			// "docsupply-rke-dev.nice.org.uk",
@@ -120,7 +119,7 @@ export const integrations = [
 			// "test.docgen.nice.org.uk",
 			// "test.indev.nice.org.uk",
 			// "test.medtech.nice.org.uk",
-			// "test.nice.org.uk", // overlap: moved to pre-production
+			// "test.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
 			// "test.publications.nice.org.uk",
 			// "test-api.nice.org.uk",
 			// "test-appraisals.nice.org.uk",
@@ -128,14 +127,14 @@ export const integrations = [
 			// "test-docsupply.nice.org.uk",
 			// "test-docsupply-api.nice.org.uk",
 			// "test-es7-kibana.nice.org.uk",
-			// "test-identityadmin.nice.org.uk", // overlap: moved to pre-production
-			// "test-identityapi.nice.org.uk", // overlap: moved to pre-production
-			// "test-indev.nice.org.uk", // overlap: moved to pre-production
+			// "test-identityadmin.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
+			// "test-identityapi.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
+			// "test-indev.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
 			// "test-medtech.nice.org.uk",
-			// "test-monitoring.nice.org.uk", // overlap: moved to pre-production
-			// "test-next-feature.nice.org.uk", // overlap: moved to pre-production
+			// "test-monitoring.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
+			// "test-next-feature.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
 			// "test-next-web-api.nice.org.uk",
-			// "test-publications.nice.org.uk", // overlap: moved to pre-production
+			// "test-publications.nice.org.uk", // wildcard above covers this pre-proed - commented out in pre-prod list
 			// "test-reviewer-archive.nice.org.uk",
 			// "test-rke-medtech.nice.org.uk",
 			// "test-sga*.nice.org.uk",
@@ -166,9 +165,7 @@ export const integrations = [
 
 	// Alpha, beta, test and dev environments behind the shared pre-production web ACL.
 	//
-	// Lines marked `overlap: moved from live` are on ops' live list too, and got the live script
-	// until the live entry became a wildcard. Being exact, they now win here instead. If ops
-	// confirm one belongs on live, comment its line out here and the live wildcard picks it up again.
+	// Lines marked `overlap: ` are on ops 'live' list above, and get the live script via wildcard.
 	{
 		hosts: [
 			// Alpha
@@ -208,14 +205,14 @@ export const integrations = [
 			"beta-cks.nice.org.uk",
 
 			// Test
-			"test.nice.org.uk", // overlap: moved from live
-			"test-next-feature.nice.org.uk", // overlap: moved from live
-			"test-indev.nice.org.uk", // overlap: moved from live
-			"test-identityadmin.nice.org.uk", // overlap: moved from live
-			"test-identityapi.nice.org.uk", // overlap: moved from live
+			// "test.nice.org.uk", // overlap: covered in wildcard in the protection pack above
+			// "test-next-feature.nice.org.uk", // overlap: covered in wildcard in the protection pack above
+			// "test-indev.nice.org.uk", // overlap: covered in wildcard in the protection pack above
+			// "test-identityadmin.nice.org.uk", // overlap: covered in wildcard in the protection pack above
+			// "test-identityapi.nice.org.uk", // overlap: covered in wildcard in the protection pack above
 			"test-identity.nice.org.uk",
-			"test-publications.nice.org.uk", // overlap: moved from live
-			"test-monitoring.nice.org.uk", // overlap: moved from live
+			// "test-publications.nice.org.uk", // overlap: covered in wildcard in the protection pack above
+			// "test-monitoring.nice.org.uk", // overlap: covered in wildcard in the protection pack above
 			"test-reviewer.nice.org.uk",
 			"test-accounts.nice.org.uk",
 			"test-bnf.nice.org.uk",
@@ -223,9 +220,9 @@ export const integrations = [
 			"test-cks.nice.org.uk",
 
 			// Dev
-			"dev.nice.org.uk", // overlap: moved from live
-			"dev-indev.nice.org.uk", // overlap: moved from live
-			"dev-monitoring.nice.org.uk", // overlap: moved from live
+			// "dev.nice.org.uk", // overlap: covered in wildcard in the protection pack above
+			// "dev-indev.nice.org.uk", // overlap: covered in wildcard in the protection pack above
+			// "dev-monitoring.nice.org.uk", // overlap: covered in wildcard in the protection pack above
 
 			// Shared / special
 			"ping-logger.nice.org.uk",
